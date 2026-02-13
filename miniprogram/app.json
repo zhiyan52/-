@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/example/index",
+    "moudules/modules/modules",
+    "profile/profile/profile"
+  ],
+  "subpackages": [
+    {
+      "root": "gujian/gujian",
+      "pages": ["gujian"]
+    },
+    {
+      "root": "feiyi/feiyi",
+      "pages": ["feiyi"]
+    },
+    {
+      "root": "diancang/diancang",
+      "pages": ["diancang"]
+    },
+    {
+      "root": "mingsu/mingsu",
+      "pages": ["mingsu"]
+    },
+    {
+      "root": "shuhua/shuhua",
+      "pages": ["shuhua"]
+    }
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/components/shou.png",
+        "selectedIconPath": "/components/shou.png"
+      },
+      {
+        "pagePath": "moudules/modules/modules",
+        "text": "模块总览",
+        "iconPath": "/components/zonglan.png",
+        "selectedIconPath": "/components/zonglan.png"
+      },
+      {
+        "pagePath": "profile/profile/profile",
+        "text": "个人中心",
+        "iconPath": "/components/yonghu.png",
+        "selectedIconPath": "/components/yonghu.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}
