@@ -1,0 +1,56 @@
+ <!--index.wxml-->
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="header">
+     <image  class="shangyan" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shouye/shangyan(1).png" ></image>
+     
+    <view class="search-bar"> 
+      <input class="search-input" placeholder="搜索文化内容..." />
+      <icon class="search-icon" type="search" size="30" color="#333"></icon>
+ 
+    </view>
+  </view>
+<!-- 五大模块 -->
+<view class="modules">
+  <image 
+    class="module-img" 
+    wx:for="{{modules}}" 
+    wx:key="id" 
+    src="{{item.image}}" 
+    mode="aspectFill"
+    bindtap="navigateToModule" 
+    data-url="{{item.url}}"
+  ></image>
+</view>
+  <!-- 每日文化小知识 -->
+  <view class="knowledge-section">
+    <view class="section-title">每日文化小知识</view>
+    <view class="knowledge-content">
+      <text>{{knowledgeContent}}</text>
+    </view>
+  </view>
+
+  <!-- 文化打卡 -->
+  <view class="checkin-section">
+    <button class="checkin-btn" bindtap="handleCheckin">
+      <image class="seal-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shouye/yizhangg.webp"></image>
+      文化打卡
+    </button>
+  </view>
+
+  <!-- 底部导航栏 -->
+  <!--<view class="tabbar">
+  <view class="tabbar-item active" bindtap="switchTab" data-tab="index">
+    <view class="tabbar-icon">🏮</view>
+    <text>首页</text>
+  </view>
+  <view class="tabbar-item" bindtap="switchTab" data-tab="modules">
+    <view class="tabbar-icon">📜</view>
+    <text>模块总览</text>
+  </view>
+  <view class="tabbar-item" bindtap="switchTab" data-tab="profile">
+    <view class="tabbar-icon">🪷</view>
+    <text>个人中心</text>
+  </view>
+</view>-->
+</view>

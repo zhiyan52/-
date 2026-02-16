@@ -1,0 +1,121 @@
+ /* pages/gujian/gujian.wxss */
+.container {
+  background-color: #b6e8cc;
+  min-height: 100vh;
+  padding: 20rpx;
+  font-family: "KaiTi", "楷体", serif;
+}
+.main-title-bar{
+  position: relative;
+  top: -150rpx;
+  width: 780rpx;
+  height: 190rpx;
+  margin-top: 0%;
+}
+.title-img {
+  width: 780rpx;
+  max-width: 90%;
+  display: block;
+  margin: 0 auto;
+  }
+/* 分类列表 */
+ /* 整体容器：垂直排列 */
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+  padding: 30rpx;
+  margin-top: 0rpx;
+}
+
+/* 每个分类项：占满一行，居中 */
+.category-item {
+  height: 175rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 图片：宽度占满，高度自适应 */
+.category-img {
+  width: 650rpx;
+  height: 170rpx;
+  border-radius: 12rpx;
+}
+/* 底部按钮区 */
+/*.footer-buttons {
+  top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+.btn {
+  flex: 1;
+  height: 100rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 8rpx rgba(0,0,0,0.1);
+  border: 3rpx solid #d4af37;
+}
+.btn.primary {
+  background: linear-gradient(90deg, #0a4d4a, #1a6b66);
+  color: #fff;
+}
+.btn.secondary {
+  background: linear-gradient(90deg, #8b2323, #a52a2a);
+  color: #fff;
+}*/
+.footer-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 30rpx;
+  padding: 0 30rpx;
+  margin-top: 40rpx;
+}
+
+.btn {
+  flex: none;
+  width: 200rpx;
+  height: 100rpx;
+  border-radius: 50rpx / 25rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  font-weight: bold;
+  font-family: "KaiTi", "STKaiti", sans-serif;
+  color: #fff;
+  border: 3rpx solid #e7e74d;
+  box-shadow: 0 6rpx 12rpx rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s ease; /* 加个过渡更丝滑 */
+}
+
+/* 默认全是红色 */
+.btn.primary,
+.btn.secondary {
+  background: linear-gradient(135deg, #912626, #a83232);
+}
+
+/* 点击时变成绿色 */
+.btn.primary:active,
+.btn.secondary:active {
+  background: linear-gradient(135deg, #115a58, #115550);
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 2rpx 4rpx rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
