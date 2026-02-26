@@ -1,2 +1,93 @@
 <!--mingsu/mingsu/mingsu.wxml-->
-<text>mingsu/mingsu/mingsu.wxml</text>
+<!-- 顶部轮播图 - 民俗主题banner -->
+<swiper class="banner-swiper" indicator-dots circular autoplay interval="3000" duration="500">
+  <swiper-item wx:for="{{bannerList}}" wx:key="id">
+    <image class="banner-img" src="{{item.imageUrl}}" mode="widthFix" alt="{{item.title}}"></image>
+  </swiper-item>
+</swiper>
+
+<!-- 打卡+每日民俗模块 - 国风双栏布局 -->
+<view class="daily-box">
+  <!-- 左侧打卡区域 -->
+  <view class="sign-card" bindtap="onSignTap">
+    <view class="sign-title">文化打卡</view>
+    <view class="sign-days">累计打卡 {{signDays}} 天</view>
+    <view class="sign-btn {{isSigned ? 'signed' : ''}}">
+      {{isSigned ? '今日已打卡' : '立即打卡'}}
+    </view>
+  </view>
+
+  <!-- 右侧每日民俗小知识 - 和首页联动 -->
+  <view class="folk-knowledge">
+    <view class="knowledge-title">每日民俗小知识</view>
+    <view class="knowledge-desc">{{dailyFolk.desc}}</view>
+  </view>
+</view>
+
+<!-- 分类导航栏 - 横向滚动筛选 -->
+<scroll-view class="category-scroll" scroll-x scroll-with-animation>
+  <view class="category-list">
+    <view 
+      class="category-item {{currentCategory === index ? 'active' : ''}}" 
+      wx:for="{{categoryList}}" 
+      wx:key="id"
+      data-index="{{index}}"
+      bindtap="onCategoryChange"
+    >
+      {{item.name}}
+    </view>
+  </view>
+</scroll-view>
+
+<!-- 民俗内容主体列表 -->
+<view class="folk-list">
+  <!-- 空状态提示 -->
+  <view class="empty-box" wx:if="{{folkList.length === 0 && !loading}}">
+    <text>暂无相关民俗内容\n换个分类看看吧~</text>
+  </view>
+
+  <!-- 列表项 -->
+  <view 
+    class="folk-item" 
+    wx:for="{{folkList}}" 
+    wx:key="id"
+    data-item="{{item}}"
+    bindtap="goToDetail"
+  >
+    <!-- 左侧封面图 -->
+    <image class="folk-cover" src="{{item.cover}}" mode="aspectFill" alt="{{item.title}}"></image>
+    
+    <!-- 右侧内容区 -->
+    <view class="folk-content">
+      <view class="folk-title">{{item.title}}</view>
+      <view class="folk-desc">{{item.desc}}</view>
+      
+      <!-- 底部数据栏 -->
+      <view class="folk-footer">
+        <view class="folk-count">
+          <text class="count-item">浏览 {{item.viewCount}}</text>
+          <text class="count-item">收藏 {{item.collectCount}}</text>
+        </view>
+        
+        <!-- 收藏按钮 - 阻止冒泡，不触发详情页跳转 -->
+        <view 
+          class="collect-btn {{collectList.includes(item.id) ? 'collected' : ''}}" 
+          data-item="{{item}}"
+          catchtap="onCollectTap"
+        >
+          {{collectList.includes(item.id) ? '已收藏' : '收藏'}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态提示 -->
+  <view class="loading-box" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 无更多数据提示 -->
+  <view class="no-more-box" wx:if="{{!hasMore && folkList.length > 0}}">
+    <text>—— 没有更多民俗内容啦 ——</text>
+  </view>
+</view>
