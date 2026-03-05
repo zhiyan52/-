@@ -1,4 +1,4 @@
 {
-  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
-  "cloudfunctionRoot": "cloudfuctions/"
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/"
+   
 }

@@ -1,0 +1,92 @@
+<view class="page">
+  <!-- 顶部导航 -->
+  <view class="navbar">
+    <view class="back" bindtap="goBack">← 返回</view>
+    <view class="title">宫殿建筑</view>
+    <view class="star {{collected?'on':''}}" bindtap="collect">
+      {{collected?'★ 已收藏':'☆ 收藏'}}
+    </view>
+  </view>
+
+  <!-- 快速导航 -->
+  <view class="quick-nav">
+    <view bindtap="goTo" data-to="part1">概览</view>
+    <view bindtap="goTo" data-to="part2">布局</view>
+    <view bindtap="goTo" data-to="part3">结构</view>
+    <view bindtap="goTo" data-to="part4">装饰</view>
+    <view bindtap="goTo" data-to="part5">历史</view>
+  </view>
+
+  <!-- 主图 -->
+  <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/GONG.png" 
+    class="main-img" mode="aspectFill" mode="widthFix"
+    bindtap="preview" data-src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/GONG.png"></image>
+
+  <!-- 概览 -->
+  <view class="card" id="part1">
+    <view class="card-title" bindtap="toggle" data-show="show1">
+      🏮 宫殿概览
+      <text class="arrow">{{show1?'−':'+'}}</text>
+    </view>
+    <view class="card-content" wx:if="{{show1}}">
+      宫殿是中国古代等级最高、规模最宏大的建筑类型，专为帝王理政、居住、祭祀而建，象征皇权至高无上。以北京故宫为代表，整体布局严格遵循中轴对称、前朝后寝、左祖右社的礼制思想，黄瓦红墙、斗拱巍峨、气势恢宏，是中华古建筑艺术的巅峰之作。
+    </view>
+  </view>
+
+  <!-- 布局 -->
+  <view class="card" id="part2">
+    <view class="card-title" bindtap="toggle" data-show="show2">
+      🏯 布局与规制
+      <text class="arrow">{{show2?'−':'+'}}</text>
+    </view>
+    <view class="card-content" wx:if="{{show2}}">
+      宫殿以南北中轴线贯穿全局，重要建筑沿轴线排列，东西对称，体现“居中为尊”。前朝用于大典朝会，空间开阔雄伟；后寝为帝后起居，布局温馨内敛。一进一进的院落层层递进，营造庄严深邃的仪式感。
+    </view>
+  </view>
+
+  <!-- 结构 -->
+  <view class="card" id="part3">
+    <view class="card-title" bindtap="toggle" data-show="show3">
+      🔨 核心建筑结构
+      <text class="arrow">{{show3?'−':'+'}}</text>
+    </view>
+    <view class="card-content" wx:if="{{show3}}">
+      <view class="item" bindtap="tip" data-txt="太和殿是故宫等级最高的大殿，用于登基、大婚等大典。">• 太和殿</view>
+      <view class="item" bindtap="tip" data-txt="斗拱是中国古建特有结构，承重、抗震、显等级。">• 斗拱</view>
+      <view class="item" bindtap="tip" data-txt="须弥座台基抬高建筑，象征皇权高高在上。">• 须弥座台基</view>
+      <view class="item" bindtap="tip" data-txt="黄色琉璃瓦为皇家专用，金碧辉煌，等级最高。">• 琉璃瓦顶</view>
+    </view>
+  </view>
+
+  <!-- 装饰 -->
+  <view class="card" id="part4">
+    <view class="card-title" bindtap="toggle" data-show="show4">
+      🎨 装饰艺术
+      <text class="arrow">{{show4?'−':'+'}}</text>
+    </view>
+    <view class="card-content" wx:if="{{show4}}">
+      宫殿装饰以龙纹、和玺彩画、脊兽、雕花门窗为主，每一处纹样都有严格等级与吉祥寓意。彩画用金量大、色彩华贵，是古代工艺最高水平的体现。
+    </view>
+  </view>
+
+  <!-- 历史 -->
+  <view class="card" id="part5">
+    <view class="card-title" bindtap="toggle" data-show="show5">
+      📜 历史与文化价值
+      <text class="arrow">{{show5?'−':'+'}}</text>
+    </view>
+    <view class="card-content" wx:if="{{show5}}">
+      北京故宫始建于明永乐四年，建成于永乐十八年，历经明清两代24位皇帝，距今超600年。它是世界现存最大、最完整的木质古建筑群，是中华文明与世界文化遗产的杰出代表。
+    </view>
+  </view>
+
+  <!-- 语音讲解 -->
+  <view class="voice-bar" bindtap="playVoice">
+    <text>🔊 语音讲解</text>
+  </view>
+
+  <!-- 分享 -->
+  <view class="share-bar" open-type="share">
+    <text>分享此页</text>
+  </view>
+</view>

@@ -26,6 +26,17 @@
     {
       "root": "shuhua/shuhua",
       "pages": ["shuhua"]
+    },
+    {
+      "root": "gujianSub", 
+      "name": "gujianPackage", 
+      "pages": [
+        "gongdian/gongdian",     
+        "yuanlin/yuanlin",   
+        "minju/minju",          
+        "tage/tage",            
+        "qiaoliang/qiaoliang"   
+      ]
     }
   ],
   "tabBar": {
@@ -47,7 +58,7 @@
         "text": "个人中心",
         "iconPath": "/components/yonghu.png",
         "selectedIconPath": "/components/yonghu.png"
-      }
+      } 
     ]
   },
   "window": {
