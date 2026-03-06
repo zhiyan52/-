@@ -1,12 +1,3 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "民俗百味",
-  "navigationBarBackgroundColor": "#2D7D58",
-  "navigationBarTextStyle": "white",
-  "backgroundColor": "#F5F2E9",
-  "backgroundTextStyle": "dark",
-  "enablePullDownRefresh": true,
-  "onReachBottomDistance": 80,
-  "enableShareAppMessage": true,
-  "enableShareTimeline": true
+  "usingComponents": {}
 }
