@@ -1,66 +1,50 @@
-// diancang/diancang/diancang.js
+// pages/classic/classic.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    tabList: [
+      { id: 1, name: '四书五经' },
+      { id: 2, name: '诸子百家' },
+      { id: 3, name: '唐诗宋词' },
+      { id: 4, name: '明清小说' }
+    ],
+    currentTab: 0,
+    bookList: [
+      { id: 'lunyu', name: '论语', cover: '/images/classic/lunyu.png', category: 1 },
+      { id: 'mengzi', name: '孟子', cover: '/images/classic/mengzi.png', category: 1 },
+      { id: 'zhuangzi', name: '庄子', cover: '/images/classic/zhuangzi.png', category: 2 }
+    ],
+    cachedCount: 2
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onLoad() {
+    this.loadCachedData();
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  // 切换分类标签
+  switchTab(e) {
+    const index = e.currentTarget.dataset.index;
+    this.setData({ currentTab: index });
+    this.filterBookList(index);
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  // 筛选对应分类的典籍
+  filterBookList(tabIndex) {
+    const categoryId = this.data.tabList[tabIndex].id;
+    // 实际开发中可从全量数据中筛选
+    console.log('当前分类ID:', categoryId);
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
+  // 加载本地缓存数据
+  loadCachedData() {
+    const cached = wx.getStorageSync('cached_classics') || [];
+    this.setData({ cachedCount: cached.length });
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  // 跳转到典籍详情页
+  goToDetail(e) {
+    const bookId = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: `/pages/classic-detail/classic-detail?id=${bookId}`
+    });
   }
-})
+});

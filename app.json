@@ -9,33 +9,45 @@
   "subpackages": [
     {
       "root": "gujian/gujian",
-      "pages": ["gujian"]
+      "pages": [
+        "gujian"
+      ]
     },
     {
       "root": "feiyi/feiyi",
-      "pages": ["feiyi"]
+      "pages": [
+        "feiyi"
+      ]
     },
     {
       "root": "diancang/diancang",
-      "pages": ["diancang"]
+      "pages": [
+        "diancang",
+        "diancang.wxss",
+        "diancang-detail"
+      ]
     },
     {
       "root": "mingsu/mingsu",
-      "pages": ["mingsu"]
+      "pages": [
+        "mingsu"
+      ]
     },
     {
       "root": "shuhua/shuhua",
-      "pages": ["shuhua"]
+      "pages": [
+        "shuhua"
+      ]
     },
     {
-      "root": "gujianSub", 
-      "name": "gujianPackage", 
+      "root": "gujianSub",
+      "name": "gujianPackage",
       "pages": [
-        "gongdian/gongdian",     
-        "yuanlin/yuanlin",   
-        "minju/minju",          
-        "tage/tage",            
-        "qiaoliang/qiaoliang"   
+        "gongdian/gongdian",
+        "yuanlin/yuanlin",
+        "minju/minju",
+        "tage/tage",
+        "qiaoliang/qiaoliang"
       ]
     }
   ],
@@ -58,7 +70,7 @@
         "text": "个人中心",
         "iconPath": "/components/yonghu.png",
         "selectedIconPath": "/components/yonghu.png"
-      } 
+      }
     ]
   },
   "window": {

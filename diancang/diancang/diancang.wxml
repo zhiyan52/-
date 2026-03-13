@@ -1,2 +1,32 @@
-<!--diancang/diancang/diancang.wxml-->
-<text>diancang/diancang/diancang.wxml</text>
+<!--pages/classic/classic.wxml-->
+<view class="container">
+  <!-- 顶部分类标签栏 -->
+  <scroll-view class="tab-bar" scroll-x="true">
+    <view 
+      class="tab-item {{currentTab === index ? 'active' : ''}}" 
+      wx:for="{{tabList}}" 
+      wx:key="id"
+      bindtap="switchTab"
+      data-index="{{index}}"
+    >
+      {{item.name}}
+    </view>
+  </scroll-view>
+
+  <!-- 典籍卡片列表 -->
+  <view class="book-list">
+    <view 
+      class="book-card" 
+      wx:for="{{bookList}}" 
+      wx:key="id"
+      bindtap="goToDetail"
+      data-id="{{item.id}}"
+    >
+      <image class="book-cover" src="{{item.cover}}" mode="aspectFill"></image>
+      <text class="book-name">{{item.name}}</text>
+    </view>
+  </view>
+
+  <!-- 缓存提示 -->
+  <view class="cache-tip">已缓存 {{cachedCount}} 部典籍，离线可查看</view>
+</view>
