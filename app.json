@@ -23,7 +23,6 @@
       "root": "diancang/diancang",
       "pages": [
         "diancang",
-        "diancang.wxss",
         "diancang-detail"
       ]
     },

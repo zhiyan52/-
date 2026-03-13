@@ -1,2 +1,42 @@
-<!--diancang/diancang/diancang-detail.wxml-->
-<text>diancang/diancang/diancang-detail.wxml</text>
+<!-- diancang/diancang/diancang-detail.wxml -->
+<view class="container">
+  <!-- 典籍头部信息 -->
+  <view class="book-header">
+    <text class="book-title">{{bookInfo.name}}</text>
+    <text class="book-desc">{{bookInfo.desc}}</text>
+  </view>
+
+  <!-- 名句列表 -->
+  <view class="sentence-list">
+    <view class="sentence-item" wx:for="{{sentenceList}}" wx:key="id">
+      <view class="original">【原文】{{item.original}}</view>
+      <view class="note">【注释】{{item.note}}</view>
+      <view class="translation">【译文】{{item.translation}}</view>
+      <view class="action-bar">
+        <button class="action-btn {{item.isCollected ? 'collected' : ''}}" 
+                bindtap="toggleCollect" data-id="{{item.id}}">
+          {{item.isCollected ? '已收藏' : '收藏'}}
+        </button>
+        <button class="action-btn" bindtap="goToExtract" data-id="{{item.id}}">摘抄</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 趣味问答 -->
+  <view class="quiz-section">
+    <text class="quiz-title">趣味问答</text>
+    <text class="quiz-question">{{quiz.question}}</text>
+    <view class="quiz-options">
+      <view class="quiz-option {{selectedOption === index ? 'selected' : ''}}" 
+            wx:for="{{quiz.options}}" wx:key="*this"
+            bindtap="selectOption" data-index="{{index}}">
+        {{item}}
+      </view>
+    </view>
+    <view class="quiz-result" wx:if="{{showResult}}">
+      <text class="{{isCorrect ? 'correct' : 'wrong'}}">
+        {{isCorrect ? '✅ 回答正确！' : '❌ 回答错误，正确答案是：' + quiz.answer}}
+      </text>
+    </view>
+  </view>
+</view>

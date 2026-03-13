@@ -44,7 +44,7 @@ Page({
   goToDetail(e) {
     const bookId = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: `/pages/classic-detail/classic-detail?id=${bookId}`
+      url: `/diancang/diancang/diancang-detail?id=${bookId}`
     });
   }
 });
