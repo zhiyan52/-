@@ -1,2 +1,26 @@
-<!--gujianSub/tage/tage.wxml-->
-<text>gujianSub/tage/tage.wxml</text>
+<view class="container">
+  <!-- 轮播 -->
+  <swiper class="banner" indicator-dots autoplay interval="3000" circular>
+    <swiper-item wx:for="{{swiperList}}" wx:key="*this">
+      <image src="{{item}}" class="banner-img" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 搜索+地图 -->
+  <view class="search-map-row">
+    <input class="search-input" placeholder="搜索塔阁名称" value="{{searchKey}}" bindinput="onSearchInput" />
+    <button class="map-btn" bindtap="goTowerMap">地图</button>
+  </view>
+
+  <!-- 塔阁列表 -->
+  <scroll-view class="list" scroll-y>
+    <view class="card" wx:for="{{filteredList}}" wx:key="name" bindtap="goDetail" data-item="{{item}}">
+      <image src="{{item.img}}" class="card-img" mode="aspectFill"></image>
+      <view class="card-body">
+        <text class="card-title">{{item.name}}</text>
+        <text class="card-desc">{{item.intro}}</text>
+        <text class="card-loc">📍 {{item.location}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

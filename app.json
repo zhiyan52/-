@@ -31,11 +31,30 @@
       "root": "gujianSub", 
       "name": "gujianPackage", 
       "pages": [
-        "gongdian/gongdian",     
+        "gongdian/gongdian", 
+        "gongdian/detail" ,  
+        "gongdian/placemap" ,
         "yuanlin/yuanlin",   
-        "minju/minju",          
-        "tage/tage",            
-        "qiaoliang/qiaoliang"   
+        "yuanlin/detail",
+        "yuanlin/placemap",
+        "minju/minju",     
+        "minju/detail",
+        "minju/placemap",
+        "tage/tage", 
+        "tage/detail" ,
+        "tage/placemap"  ,        
+        "qiaoliang/qiaoliang",
+        "qiaoliang/detail" ,
+        "qiaoliang/placemap"
+      ]
+    },
+    {
+      "root": "youxi", 
+      "name": "youxi", 
+      "pages": [
+        "puzzle/puzzle",
+        "play/play"
+            
       ]
     }
   ],
@@ -62,13 +81,18 @@
     ]
   },
   "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "中国十大宫殿",
+    "navigationBarBackgroundColor": "#2C2621",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "dark"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2",
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于展示宫殿位置地图"
+    }
+  }
+
 }

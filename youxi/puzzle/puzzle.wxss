@@ -1,0 +1,54 @@
+/* youxi/puzzle/puzzle.wxss */.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  background: #fdfbf6;
+  min-height: 100vh;
+  font-family: "楷体", "KaiTi", serif;
+}
+
+.info {
+  display: flex;
+  width: 680rpx;
+  justify-content: space-between;
+  margin: 20rpx 0;
+  font-size: 32rpx;
+  color: #5a3e2b;
+}
+
+.title {
+  font-size: 38rpx;
+  margin: 20rpx 0;
+  color: #333;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 160rpx);
+  grid-template-rows: repeat(4, 160rpx);
+  gap: 3rpx;
+  background: #8c6c4e;
+  padding: 3rpx;
+  border-radius: 8rpx;
+}
+
+.piece {
+  width: 160rpx;
+  height: 160rpx;
+  background-image: url("https://picsum.photos/640/640");
+  background-size: 640rpx 640rpx;
+  border-radius: 4rpx;
+}
+
+.btns {
+  margin-top: 30rpx;
+}
+
+.btn {
+  padding: 20rpx 40rpx;
+  background: #d9b98e;
+  color: #fff;
+  border-radius: 10rpx;
+  font-size: 32rpx;
+}

@@ -1,20 +1,84 @@
-page{background:#f6f2ec;color:#333;font-family:楷体,serif;}
-.navbar{display:flex;justify-content:space-between;align-items:center;padding:25rpx 20rpx;background:#9c2c1a;color:#fff;}
-.back{font-size:28rpx;}
-.title{font-size:36rpx;font-weight:bold;}
-.star{font-size:26rpx;color:#fff;}
-.star.on{color:#ffbc00;}
+page {
+  background: #f5f7f6;
+  font-family: "PingFang SC", "Helvetica Neue", "宋体", sans-serif;
+}
 
-.quick-nav{display:flex;justify-content:space-around;padding:20rpx;background:#fff;margin-bottom:20rpx;}
-.quick-nav view{font-size:26rpx;color:#9c2c1a;}
+.container {
+  min-height: 100vh;
+}
 
-.main-img{width:100%;border-radius:12rpx;margin:0 20rpx 24rpx;width:calc(100% - 40rpx);}
+/* 轮播 */
+.banner {
+  width: 100%;
+  height: 360rpx;
+}
+.banner-img {
+  width: 100%;
+  height: 100%;
+}
 
-.card{background:#fff;border-radius:16rpx;margin:0 20rpx 24rpx;overflow:hidden;}
-.card-title{padding:28rpx 24rpx;font-size:32rpx;font-weight:bold;color:#9c2c1a;display:flex;justify-content:space-between;align-items:center;}
-.arrow{font-size:40rpx;color:#999;}
-.card-content{padding:0 24rpx 28rpx;font-size:28rpx;line-height:1.8;color:#444;}
-.item{padding:12rpx 0;font-size:29rpx;}
+/* 搜索 + 地图 同一行 */
+.search-map-row {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  background: #fff;
+  gap: 20rpx;
+}
+.search-input {
+  flex: 1;
+  height: 76rpx;
+  background: #f1f4f3;
+  border-radius: 40rpx;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  color: #666;
+  border: none;
+}
+.map-btn {
+  width: 100rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  text-align: center;
+  background: #3e5b57;
+  color: #fff;
+  border-radius: 38rpx;
+  font-size: 26rpx;
+  border: none;
+}
 
-.voice-bar{background:#fff;color:#9c2c1a;text-align:center;padding:24rpx;border-radius:12rpx;margin:30rpx 20rpx;font-size:28rpx;}
-.share-bar{background:#9c2c1a;color:#fff;text-align:center;padding:24rpx;border-radius:12rpx;margin:0 20rpx 40rpx;font-size:28rpx;}
+/* 卡片列表 */
+.list {
+  padding: 0 30rpx 30rpx;
+}
+.card {
+  background: #fff;
+  border-radius: 28rpx;
+  overflow: hidden;
+  margin-bottom: 26rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0,0,0,0.05);
+}
+.card-img {
+  width: 100%;
+  height: 280rpx;
+}
+.card-body {
+  padding: 30rpx;
+}
+.card-title {
+  display: block;
+  font-size: 36rpx;
+  color: #2c3634;
+  margin-bottom: 10rpx;
+}
+.card-desc {
+  display: block;
+  font-size: 26rpx;
+  color: #777;
+  line-height: 1.5;
+  margin-bottom: 14rpx;
+}
+.card-loc {
+  font-size: 24rpx;
+  color: #5a7470;
+}
