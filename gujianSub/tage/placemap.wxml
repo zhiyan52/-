@@ -1,2 +1,11 @@
-<!--gujianSub/tage/placemap.wxml-->
-<text>gujianSub/tage/placemap.wxml</text>
+<view class="page">
+  <map 
+    id="towerMap"
+    class="map"
+    longitude="{{centerLng}}"
+    latitude="{{centerLat}}"
+    scale="5"
+    markers="{{markers}}"
+    bindmarkertap="onMarkerTap"
+  ></map>
+</view>

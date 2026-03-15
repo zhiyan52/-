@@ -206,12 +206,12 @@ Page({
   goDetail(e) {
     const item = e.currentTarget.dataset.item;
     wx.navigateTo({
-      url: `/gujianSub/bridge/detail?item=${encodeURIComponent(JSON.stringify(item))}`
+      url: `/gujianSub/qiaoliang/detail?item=${encodeURIComponent(JSON.stringify(item))}`
     });
   },
   goBridgeMap() {
     wx.navigateTo({
-      url: '/gujianSub/bridge/placemap'
+      url: '/gujianSub/qiaoliang/placemap'
     })
   }
 })

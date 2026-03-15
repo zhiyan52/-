@@ -1,2 +1,13 @@
-<!--gujianSub/minju/placemap.wxml-->
-<text>gujianSub/minju/placemap.wxml</text>
+ <!--gujianSub/minju/placemap.wxml-->
+ 
+<view class="page">
+  <map 
+    id="minjuMap"
+    class="map"
+    longitude="{{centerLng}}"
+    latitude="{{centerLat}}"
+    scale="5"
+    markers="{{markers}}"
+    bindmarkertap="onMarkerTap"
+  ></map>
+</view>

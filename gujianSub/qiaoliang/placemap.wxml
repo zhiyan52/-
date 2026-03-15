@@ -1,2 +1,11 @@
-<!--gujianSub/qiaoliang/placemap.wxml-->
-<text>gujianSub/qiaoliang/placemap.wxml</text>
+<view class="page">
+  <map 
+    id="bridgeMap"
+    class="map"
+    longitude="{{centerLng}}"
+    latitude="{{centerLat}}"
+    scale="5"
+    markers="{{markers}}"
+    bindmarkertap="onMarkerTap"
+  ></map>
+</view>
