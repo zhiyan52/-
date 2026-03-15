@@ -42,30 +42,29 @@
       "root": "gujianSub",
       "name": "gujianPackage",
       "pages": [
-        "gongdian/gongdian", 
-        "gongdian/detail" ,  
-        "gongdian/placemap" ,
-        "yuanlin/yuanlin",   
+        "gongdian/gongdian",
+        "gongdian/detail",
+        "gongdian/placemap",
+        "yuanlin/yuanlin",
         "yuanlin/detail",
         "yuanlin/placemap",
-        "minju/minju",     
+        "minju/minju",
         "minju/detail",
         "minju/placemap",
-        "tage/tage", 
-        "tage/detail" ,
-        "tage/placemap"  ,        
+        "tage/tage",
+        "tage/detail",
+        "tage/placemap",
         "qiaoliang/qiaoliang",
-        "qiaoliang/detail" ,
+        "qiaoliang/detail",
         "qiaoliang/placemap"
       ]
     },
     {
-      "root": "youxi", 
-      "name": "youxi", 
+      "root": "youxi",
+      "name": "youxi",
       "pages": [
         "puzzle/puzzle",
         "play/play"
-            
       ]
     }
   ],
@@ -105,5 +104,4 @@
       "desc": "用于展示宫殿位置地图"
     }
   }
-
 }
