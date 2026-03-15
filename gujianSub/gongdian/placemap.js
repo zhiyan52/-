@@ -105,7 +105,7 @@ Page({
     ];
     const item = palaceList[markerId - 1];
     wx.navigateTo({
-      url: `/pages/palaceDetail/palaceDetail?item=${encodeURIComponent(JSON.stringify(item))}`
+      url: `/gujianSub/gongdian/palacemap?item=${encodeURIComponent(JSON.stringify(item))}`
     });
   }
 });
