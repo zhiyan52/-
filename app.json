@@ -57,14 +57,26 @@
         "qiaoliang/qiaoliang",
         "qiaoliang/detail",
         "qiaoliang/placemap"
+      ],
+      "permission": {
+        "scope.userLocation": {
+          "desc": "你的位置信息将用于民居位置导航"
+        }
+      },
+      "requiredPrivateInfos": [
+        "getLocation",
+        "openLocation"
       ]
     },
+    
     {
       "root": "youxi",
       "name": "youxi",
       "pages": [
         "puzzle/puzzle",
-        "play/play"
+        "play/play",
+        "quiz/quiz",
+        "index/index"
       ]
     }
   ],

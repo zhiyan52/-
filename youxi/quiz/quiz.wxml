@@ -1,0 +1,15 @@
+<view class="result-container">
+  <view class="result-card">
+    <view class="title">答题完成！</view>
+    <view class="score-box">
+      <view class="score-text">你的得分</view>
+      <view class="score-num">{{score}}/{{total}}</view>
+      <view class="rate">正确率：{{rate}}%</view>
+    </view>
+    <view class="desc" wx:if="{{rate>=80}}">太棒了！你是古建筑小达人～</view>
+    <view class="desc" wx:elif="{{rate>=60}}">不错哦！再努努力就是古建筑专家啦～</view>
+    <view class="desc" wx:else>加油！多了解古建筑知识，下次一定更好～</view>
+    <button class="restart-btn" bindtap="restartGame">重新答题</button>
+    <button class="back-btn" bindtap="backHome">返回首页</button>
+  </view>
+</view>

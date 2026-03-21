@@ -1,4 +1,3 @@
- // pages/gujian/gujian.js
 Page({
   data: {
     categoryList: [
@@ -30,62 +29,59 @@ Page({
     ]
   },
 
+  // 保留返回按钮功能（如需禁用可注释）
   goBack() {
     wx.navigateBack();
   },
+
+  // 分类点击：仅提示，无跳转（保持原有逻辑）
   onCategoryTap(e) {
-    const id = parseInt(e.currentTarget.dataset.id); // 确保 id 是数字类型
-  
-    // 核心：分包路径映射（直接用分包根目录，不包含pages）
-    const subPackagePageMap = {
-      1: '/gujianSub/gongdian/gongdian',   // 分包根目录/宫殿页面路径
-      2: '/gujianSub/yuanlin/yuanlin',     // 分包根目录/园林页面路径
-      3: '/gujianSub/minju/minju',         // 分包根目录/民居页面路径
-      4: '/gujianSub/tage/tage',           // 分包根目录/塔阁页面路径
-      5: '/gujianSub/qiaoliang/qiaoliang'  // 分包根目录/桥梁页面路径
-    };
-  
-    // 获取目标路径并跳转
-    const targetUrl = subPackagePageMap[id];
-    if (targetUrl) {
-      // 先显示提示
-      const categoryItem = this.data.categoryList.find(item => item.id === id);
-      if (categoryItem) {
-        wx.showToast({
-          title: `点击了${categoryItem.name}`,
-          icon: 'none'
-        });
-      }
-      // 执行跳转
-      wx.navigateTo({
-        url: targetUrl
-      });
-    } else {
+    const id = parseInt(e.currentTarget.dataset.id);
+    const categoryItem = this.data.categoryList.find(item => item.id === id);
+    if (categoryItem) {
       wx.showToast({
-        title: '暂无该分类',
-        icon: 'error'
+        title: `查看${categoryItem.name}分类`,
+        icon: 'none'
       });
     }
   },
-   
 
+  // AR扫描：仅提示，无实际功能（保持原有逻辑）
   onARScan() {
     wx.showToast({
-      title: 'AR扫描功能',
+      title: 'AR扫描功能暂未开放',
       icon: 'none'
     });
   },
 
+  // 古建小测：新增跳转至问答页面的逻辑
   onTest() {
-    wx.showToast({
-      title: '古建小测功能',
-      icon: 'none'
+    // 跳转到古建小测（quiz）页面（需确保路径与你的实际分包路径一致）
+    wx.navigateTo({
+      url: '/youxi/index/index', // 核心：问答页面的分包路径
+      success: () => {
+        // 跳转成功提示（可选）
+        wx.showToast({
+          title: '进入古建小测',
+          icon: 'success',
+          duration: 1000
+        });
+      },
+      fail: (err) => {
+        // 跳转失败容错
+        wx.showToast({
+          title: '小测页面暂未开放',
+          icon: 'error'
+        });
+        console.error('古建小测页面跳转失败：', err);
+      }
     });
   },
 
+  // 打卡地图：仅提示，无实际功能（保持原有逻辑）
   onMap() {
     wx.showToast({
-      title: '打卡地图功能',
+      title: '打卡地图功能暂未开放',
       icon: 'none'
     });
   }

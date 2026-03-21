@@ -80,7 +80,7 @@ Page({
         name: "滕王阁",
         intro: "江西南昌·江南三大名楼，滕王阁序发源地。",
         detail: "滕王阁始建于唐永徽四年（653年），因王勃《滕王阁序》闻名天下，“落霞与孤鹜齐飞，秋水共长天一色”写尽此处风光。楼阁高大宏伟，依山傍水，为江南古建筑典范。",
-        img: "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/tower/tengwang.jpg",
+        img: "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/tower/tengwanng.jpg",
         location: "江西省南昌市东湖区沿江路",
         latitude: 28.6899,
         longitude: 115.8857,

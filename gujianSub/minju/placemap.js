@@ -77,12 +77,18 @@ Page({
   },
 
   onLoad() {
+    // 获取用户当前位置，兼容授权失败的情况
     wx.getLocation({
+      type: 'gcj02', // 微信小程序默认的火星坐标系
       success: (res) => {
         this.setData({
           centerLat: res.latitude,
           centerLng: res.longitude
         });
+      },
+      fail: (err) => {
+        console.log('获取位置失败，使用默认位置', err);
+        // 授权失败时仍使用默认位置，不影响功能
       }
     });
   },
@@ -90,62 +96,13 @@ Page({
   // 点击标记跳转到民居详情
   onMarkerTap(e) {
     const markerId = e.detail.markerId;
-    const minjuList = [
-      {
-        name: "北京四合院",
-        latitude: 39.9289,
-        longitude: 116.3883
-      },
-      {
-        name: "福建土楼",
-        latitude: 24.7569,
-        longitude: 117.0169
-      },
-      {
-        name: "山西平遥古城民居",
-        latitude: 37.2075,
-        longitude: 112.1818
-      },
-      {
-        name: "云南丽江古城民居",
-        latitude: 26.8679,
-        longitude: 100.2373
-      },
-      {
-        name: "安徽宏村民居",
-        latitude: 30.1089,
-        longitude: 117.9278
-      },
-      {
-        name: "广东开平碉楼",
-        latitude: 22.3569,
-        longitude: 112.6389
-      },
-      {
-        name: "陕西窑洞",
-        latitude: 36.6069,
-        longitude: 109.4722
-      },
-      {
-        name: "江南水乡民居",
-        latitude: 31.0822,
-        longitude: 120.8967
-      },
-      {
-        name: "四川吊脚楼",
-        latitude: 29.5658,
-        longitude: 106.5872
-      },
-      {
-        name: "蒙古包",
-        latitude: 43.9389,
-        longitude: 116.0478
-      }
-    ];
-
-    const item = minjuList[markerId - 1];
-    wx.navigateTo({
-      url: `/gujianSub/minju/detail?item=${encodeURIComponent(JSON.stringify(item))}`
-    });
+    // 优化：直接从markers数组获取数据，避免重复定义
+    const item = this.data.markers.find(marker => marker.id === markerId);
+    
+    if (item) {
+      wx.navigateTo({
+        url: `/gujianSub/minju/detail?item=${encodeURIComponent(JSON.stringify(item))}`
+      });
+    }
   }
 });

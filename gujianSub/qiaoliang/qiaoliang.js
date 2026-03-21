@@ -148,7 +148,7 @@ Page({
         name: "泸定桥",
         intro: "四川甘孜·铁索悬桥，红军飞夺泸定桥纪念地。",
         detail: "泸定桥始建于清康熙四十四年，全长103.67米，由13根铁链固定两岸组成，是大渡河上最早的铁索桥。1935年红军飞夺泸定桥，使其成为中国革命历史的重要地标，是古代西南交通的咽喉要道。",
-        img: "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/bridge/ludingqiao.jpg",
+        img: "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/bridge/luqingqiao.jpg",
         location: "四川省甘孜州泸定县大渡河",
         latitude: 29.9139,
         longitude: 102.2508,
