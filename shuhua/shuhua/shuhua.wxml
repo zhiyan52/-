@@ -16,11 +16,4 @@
       <image src="{{item.img}}" class="category-img" mode="aspectFill"></image>
     </view>
   </view>
-
-  <!-- 底部按钮区 -->
-  <view class="footer-buttons">
-    <view class="btn primary" bindtap="onARScan">AR扫描</view>
-    <view class="btn secondary" bindtap="onTest">趣味问答</view>
-    <view class="btn secondary" bindtap="onMap">打卡地图</view>
-  </view>
 </view>
