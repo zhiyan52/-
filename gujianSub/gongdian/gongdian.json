@@ -1,6 +1,8 @@
+ 
 {
   "usingComponents": {},
-  "navigationBarTitleText": "宫殿",
-  "navigationBarBackgroundColor": "#9c2c1a",
-  "navigationBarTextStyle": "white"
+  "navigationBarTitleText": "中国十大宫殿",
+  "navigationBarBackgroundColor": "#8d6e63",
+  "navigationBarTextStyle": "white",
+  "backgroundTextStyle": "dark"
 }

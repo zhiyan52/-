@@ -1,0 +1,175 @@
+/* gujianSub/tage/detail.wxss *//* gujianSub/minju/detail.wxss */page {
+  background: #f5f7f6;
+  font-family: "PingFang SC", "Helvetica Neue", "宋体", sans-serif;
+}
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+/* 大图 */
+.main-img {
+  width: 100%;
+  height: 440rpx;
+  object-fit: cover;
+}
+
+/* 悬浮卡片 */
+.card {
+  margin: 0rpx 30rpx 30rpx;
+  background: #fff;
+  border-radius: 32rpx;
+  padding: 50rpx 40rpx;
+  box-shadow: 0 15rpx 45rpx rgba(62, 91, 87, 0.08);
+  position: relative;
+  z-index: 10;
+}
+
+/* 标题 */
+.head {
+  text-align: center;
+}
+.title {
+  display: block;
+  font-size: 44rpx;
+  font-weight: 600;
+  color: #2d3735;
+  margin-bottom: 12rpx;
+}
+.addr {
+  font-size: 26rpx;
+  color: #5b7571;
+}
+
+/* 标签 */
+.tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-top: 24rpx;
+}
+.tag {
+  background: #e6eceb;
+  color: #3e5b57;
+  font-size: 24rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+/* 装饰线 */
+.line {
+  width: 70rpx;
+  height: 6rpx;
+  background: #3e5b57;
+  border-radius: 3rpx;
+  margin: 40rpx auto;
+}
+
+/* 信息组 */
+.info-group {
+  background: #f9faf9;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 40rpx;
+}
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #e6eceb;
+}
+.info-item:last-child {
+  border-bottom: none;
+}
+.info-label {
+  font-size: 26rpx;
+  color: #5b7571;
+}
+.info-value {
+  font-size: 26rpx;
+  color: #2d3735;
+  font-weight: 500;
+}
+
+/* 模块标题 */
+.section {
+  margin-bottom: 40rpx;
+}
+.section-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #2d3735;
+  margin-bottom: 20rpx;
+  padding-left: 16rpx;
+  border-left: 6rpx solid #3e5b57;
+}
+.section-content {
+  font-size: 29rpx;
+  line-height: 1.9;
+  color: #4a5755;
+  letter-spacing: 1rpx;
+}
+
+/* 游览信息 */
+.tour-info {
+  background: #f9faf9;
+  border-radius: 20rpx;
+  padding: 30rpx;
+}
+.tour-item {
+  font-size: 27rpx;
+  color: #4a5755;
+  margin-bottom: 16rpx;
+}
+.tour-item:last-child {
+  margin-bottom: 0;
+}
+
+/* 按钮 */
+.btns {
+  display: flex;
+  padding: 10 10rpx;
+  gap: 20rpx;
+}
+.btn {
+  width: 180rpx;
+  height: 60rpx;
+  text-align: center;
+  border-radius: 22rpx;
+  font-size: 30rpx;
+  border: none;
+}
+.nav {
+  background: #3e5b57;
+  color: #fff;
+}
+.star {
+  background: #f1f4f3;
+  color: #3e5b57;
+}
+.star.active {
+  background: #3e5b57;
+  color: #fff;
+}
+.share {
+  background: #f1f4f3;
+  color: #3e5b57;
+}
+
+/* 返回顶部 */
+.back-top {
+  position: fixed;
+  right: 30rpx;
+  bottom: 120rpx;
+  width: 70rpx;
+  height: 70rpx;
+  background: #3e5b57;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  z-index: 999;
+}

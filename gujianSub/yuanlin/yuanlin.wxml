@@ -1,2 +1,28 @@
-<!--gujianSub/yuanlin/yuanlin.wxml-->
-<text>gujianSub/yuanlin/yuanlin.wxml</text>
+<view class="container">
+  <!-- 顶部轮播 -->
+  <swiper class="banner" indicator-dots autoplay interval="3000" circular>
+    <swiper-item wx:for="{{swiperList}}" wx:key="*this">
+      <image src="{{item}}" class="banner-img" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 搜索 + 地图按钮 同一行（修改搜索提示文案） -->
+  <view class="search-map-row">
+    <!-- 关键修改：占位符从“搜索宫殿名称”改为“搜索园林名称” -->
+    <input class="search-input" placeholder="搜索园林名称" value="{{searchKey}}" bindinput="onSearchInput" />
+    <!-- 关键修改：按钮点击事件从 goPalaceMap 改为 goGardenMap -->
+    <button class="map-btn" bindtap="goGardenMap">地图</button>
+  </view>
+
+  <!-- 园林列表（原是宫殿列表，仅注释修改，渲染逻辑不变） -->
+  <scroll-view class="list" scroll-y>
+    <view class="card" wx:for="{{filteredList}}" wx:key="name" bindtap="goDetail" data-item="{{item}}">
+      <image src="{{item.img}}" class="card-img" mode="aspectFill"></image>
+      <view class="card-body">
+        <text class="card-title">{{item.name}}</text>
+        <text class="card-desc">{{item.intro}}</text>
+        <text class="card-loc">📍 {{item.location}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "中国十大园林",
+  "navigationBarBackgroundColor": "#8d6e63",
+  "navigationBarTextStyle": "white",
+  "backgroundTextStyle": "dark"
 }

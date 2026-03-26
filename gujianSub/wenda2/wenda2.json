@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+    "navigationBarTitleText": "答题结果",
+    "enableShareAppMessage": true,
+    "backgroundColor": "#f8f4e9",
+    "backgroundTextStyle": "dark"
+}

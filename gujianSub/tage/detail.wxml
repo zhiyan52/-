@@ -1,0 +1,76 @@
+<view class="container">
+  <!-- 顶部大图 → 点击可全屏 -->
+  <image src="{{item.img}}" class="main-img" mode="aspectFill" bindtap="previewImage"></image>
+
+  <!-- 悬浮卡片 -->
+  <view class="card">
+    <!-- 标题 -->
+    <view class="head">
+      <text class="title">{{item.name}}</text>
+      <text class="addr">📍 {{item.location}}</text>
+    </view>
+
+    <!-- 亮点标签 -->
+    <view class="tags">
+      <text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text>
+    </view>
+
+    <!-- 装饰线 -->
+    <view class="line"></view>
+
+    <!-- 基本信息卡片 -->
+    <view class="info-group">
+      <view class="info-item">
+        <text class="info-label">始建年代</text>
+        <text class="info-value">{{item.age}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">所属朝代</text>
+        <text class="info-value">{{item.dynasty}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">文保等级</text>
+        <text class="info-value">{{item.level}}</text>
+      </view>
+    </view>
+
+    <!-- 建筑特色 -->
+    <view class="section">
+      <view class="section-title">🏛 建筑特色</view>
+      <text class="section-content">{{item.feature}}</text>
+    </view>
+
+    <!-- 游览信息 -->
+    <view class="section">
+      <view class="section-title">🕙 游览信息</view>
+      <view class="tour-info">
+        <view class="tour-item">
+          <text>🕒 开放时间：{{item.open_time}}</text>
+        </view>
+        <view class="tour-item">
+          <text>🎫 门票参考：{{item.ticket}}</text>
+        </view>
+        <view class="tour-item">
+          <text>⏱ 建议时长：{{item.duration}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 详细介绍 -->
+    <view class="section">
+      <view class="section-title">📜 详细介绍</view>
+      <text class="section-content">{{item.detail}}</text>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="btns">
+    <button class="btn nav" bindtap="openMap">🗺️ 一键导航</button>
+    <button class="btn star {{isCollected ? 'active' : ''}}" bindtap="toggleCollect">
+      {{isCollected ? '★ 已收藏' : '☆ 收藏'}}
+    </button>
+  </view>
+
+  <!-- 返回顶部 -->
+  <view class="back-top" wx:if="{{showBackTop}}" bindtap="backToTop">🔝</view>
+</view>

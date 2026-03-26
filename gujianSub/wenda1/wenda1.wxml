@@ -1,0 +1,29 @@
+<!--youxi/wenda1/wenda1.wxml-->
+<view class="page-container">
+  <view class="header-section">
+    <text class="main-title">古建筑趣味问答</text>
+    <text class="sub-title">传承古建文化 · 提升文化素养</text>
+  </view>
+
+  <view class="question-card">
+    <view class="question-num">第 {{index+1}} 题 / 共80题</view>
+    <view class="question-content">{{currentQuestion.question}}</view>
+  </view>
+
+  <view class="options-box">
+    <view
+      class="option-item {{selected === index ? 'selected' : ''}}"
+      wx:for="{{currentQuestion.options}}"
+      wx:key="index"
+      data-index="{{index}}"
+      bindtap="selectOption"
+    >
+      <text class="option-tag">{{item.tag}}</text>
+      <text class="option-text">{{item.text}}</text>
+    </view>
+  </view>
+
+  <view class="submit-box">
+    <view class="submit-btn" bindtap="submitAnswer">提交答案</view>
+  </view>
+</view>

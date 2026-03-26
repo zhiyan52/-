@@ -1,0 +1,13 @@
+<!--gujianSub/gongdian/placemap.wxml-->
+ 
+<view class="page">
+  <map 
+    id="palaceMap"
+    class="map"
+    longitude="{{centerLng}}"
+    latitude="{{centerLat}}"
+    scale="5"
+    markers="{{markers}}"
+    bindmarkertap="onMarkerTap"
+  ></map>
+</view>
