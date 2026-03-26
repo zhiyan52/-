@@ -56,7 +56,9 @@
         "tage/placemap",
         "qiaoliang/qiaoliang",
         "qiaoliang/detail",
-        "qiaoliang/placemap"
+        "qiaoliang/placemap",
+        "wenda1/wenda1",
+        "wenda2/wenda2"
       ],
       "permission": {
         "scope.userLocation": {
@@ -66,17 +68,6 @@
       "requiredPrivateInfos": [
         "getLocation",
         "openLocation"
-      ]
-    },
-    
-    {
-      "root": "youxi",
-      "name": "youxi",
-      "pages": [
-        "puzzle/puzzle",
-        "play/play",
-        "quiz/quiz",
-        "index/index"
       ]
     }
   ],

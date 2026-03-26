@@ -1,0 +1,21 @@
+<!--gujianSub/wenda2/wenda2.wxml-->
+ 
+<view class="result-container">
+  <!-- 分数卡片区域 -->
+  <view class="score-card">
+    <view class="score-num">{{score}}</view>
+    <text class="score-label">答对题数</text>
+    <view class="rate">正确率：{{correctRate}}%</view>
+  </view>
+
+  <!-- 等级标签 -->
+  <view class="level-tag {{score >= 64 ? 'gold' : score >= 48 ? 'silver' : 'copper'}}">
+    <text>{{score >= 64 ? '黄金段位' : score >= 48 ? '白银段位' : '青铜段位'}}</text>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="btn-group">
+    <button class="btn primary" bindtap="handleRestart">再来一局</button>
+    <button class="btn secondary" bindtap="handleBack">返回首页</button>
+  </view>
+</view>
