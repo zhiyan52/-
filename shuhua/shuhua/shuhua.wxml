@@ -1,2 +1,19 @@
 <!--shuhua/shuhua/shuhua.wxml-->
-<text>shuhua/shuhua/shuhua.wxml</text>
+<view class="container">
+  <!-- 主标题牌匾 -->
+  <view class="main-title-bar">
+    <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/ad44bcf5e09545bfbedb396f4f7ee88d.jpg" mode="aspectFit" class="title-img"></image>
+  </view>
+
+  <!-- 两个分类项 -->
+  <view class="category-list">
+    <view 
+      class="category-item" 
+      wx:for="{{categoryList}}" 
+      wx:key="id"
+      bindtap="onCategoryTap"
+      data-id="{{item.id}}">
+      <image src="{{item.img}}" class="category-img" mode="aspectFill"></image>
+    </view>
+  </view>
+</view>
