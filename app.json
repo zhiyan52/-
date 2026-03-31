@@ -4,7 +4,8 @@
     "pages/example/index",
     "moudules/modules/modules",
     "profile/profile/profile",
-    "pages/map/map"
+    "pages/map/map",
+    "cloudfunctions/getAudio"
   ],
   "subpackages": [
     {
@@ -14,10 +15,15 @@
       ]
     },
     {
-      "root": "feiyi/feiyi",
+      "root": "pages/feiyi/",
       "pages": [
-        "feiyi"
-      ]
+        "pages/index/index",
+        "pages/detail/detail",
+        "pages/inheritor/inheritor",
+        "data/categories.js"
+      ],
+      "name": "feiyi",
+      "independent": false
     },
     {
       "root": "diancang/diancang",
@@ -60,6 +66,16 @@
         "wenda1/wenda1",
         "wenda2/wenda2"
       ],
+      "preloadRule": {
+        "pages/index/index": {
+          "network": "all",
+          "packages": [
+            "feiyi",
+            "dianji",
+            "minsu"
+          ]
+        }
+      },
       "permission": {
         "scope.userLocation": {
           "desc": "你的位置信息将用于民居位置导航"

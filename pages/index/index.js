@@ -12,7 +12,7 @@ Page({
         id: 2,
         title: "非遗匠心",
         image: "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shouye/feiyi(1)(1).png",
-        url: "/feiyi/feiyi/feiyi"
+        url: "/pages/feiyi/pages/index/index"
       },
       {
         id: 3,
