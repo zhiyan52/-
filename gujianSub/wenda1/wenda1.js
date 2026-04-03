@@ -80,47 +80,186 @@ const questionBank = [
   { question: "“须弥座”源自？", options: [{ tag: "A", text: "佛教文化" }, { tag: "B", text: "道教文化" }, { tag: "C", text: "儒家礼制" }, { tag: "D", text: "民间习俗" }], answer: "A" },
   { question: "“筒瓦”和“板瓦”用于？", options: [{ tag: "A", text: "屋顶覆盖" }, { tag: "B", text: "墙面" }, { tag: "C", text: "台基" }, { tag: "D", text: "地面" }], answer: "A" }
 ];
-
+ 
 Page({
   data: {
     questionBank: questionBank,
     currentQuestion: null,
     index: 0,
     selected: -1,
-    score: 0
+    score: 0,
+    streak: 0,           // 连续正确数
+    timer: 30,           // 倒计时
+    isSubmitted: false,  // 是否已提交
+    isCorrect: false,    // 答案是否正确
+    showKnowledge: false,  // 显示知识点
+    animationData: {}    // 动画数据
   },
+
+  timerInterval: null,
 
   onLoad() {
     this.setData({ currentQuestion: questionBank[0] });
+    this.startTimer();
   },
 
+  onUnload() {
+    this.stopTimer();
+  },
+
+  // 倒计时
+  startTimer() {
+    this.stopTimer();
+    this.setData({ timer: 30 });
+    this.timerInterval = setInterval(() => {
+      const newTimer = this.data.timer - 1;
+      if (newTimer <= 0) {
+        this.stopTimer();
+        this.autoSubmit();
+        return;
+      }
+      this.setData({ timer: newTimer });
+    }, 1000);
+  },
+
+  stopTimer() {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
+    }
+  },
+
+  // 选择选项
   selectOption(e) {
-    this.setData({ selected: e.currentTarget.dataset.index });
+    if (this.data.isSubmitted) return;
+    const index = e.currentTarget.dataset.index;
+    this.setData({ selected: index });
+    wx.vibrateShort({ type: 'light' });
   },
 
+  // 自动提交（超时）
+  autoSubmit() {
+    if (this.data.selected === -1) {
+      this.setData({ selected: 0 }); // 默认选A
+    }
+    this.submitAnswer();
+  },
+
+  // 提交答案
   submitAnswer() {
-    const { selected, currentQuestion, index, score } = this.data;
+    const { selected, currentQuestion, index, score, streak } = this.data;
     if (selected === -1) {
       wx.showToast({ title: "请选择答案", icon: "none" });
       return;
     }
+
+    this.stopTimer();
     const isCorrect = currentQuestion.options[selected].tag === currentQuestion.answer;
     const newScore = isCorrect ? score + 1 : score;
+    const newStreak = isCorrect ? streak + 1 : 0;
 
-    wx.showToast({ title: isCorrect ? "正确" : "错误", icon: isCorrect ? "success" : "error" });
+    // 震动反馈
+    wx.vibrateShort({ type: isCorrect ? 'light' : 'heavy' });
 
+    // 播放动画
+    if (isCorrect) {
+      this.playCorrectAnimation();
+    } else {
+      this.playWrongAnimation();
+    }
+
+    this.setData({
+      isSubmitted: true,
+      isCorrect: isCorrect,
+      score: newScore,
+      streak: newStreak
+    });
+
+    // 延迟显示知识点
     setTimeout(() => {
-      const next = index + 1;
-      if (next >= questionBank.length) {
-        wx.navigateTo({ url: `/gujianSub/wenda2/wenda2?score=${newScore}&total=80` });
-      } else {
-        this.setData({
-          index: next,
-          currentQuestion: questionBank[next],
-          selected: -1,
-          score: newScore
-        });
-      }
-    }, 1000);
-  }
+      this.setData({ showKnowledge: true });
+    }, 600);
+  },
+
+  // 正确动画
+  playCorrectAnimation() {
+    const animation = wx.createAnimation({
+      duration: 400,
+      timingFunction: 'ease'
+    });
+    animation.scale(1.05).step();
+    animation.scale(1).step();
+    this.setData({ animationData: animation.export() });
+  },
+
+  // 错误动画
+  playWrongAnimation() {
+    const animation = wx.createAnimation({
+      duration: 100,
+      timingFunction: 'linear'
+    });
+    animation.translateX(-10).step();
+    animation.translateX(10).step();
+    animation.translateX(-10).step();
+    animation.translateX(10).step();
+    animation.translateX(0).step();
+    this.setData({ animationData: animation.export() });
+  },
+
+  // 下一题
+  nextQuestion() {
+    const next = this.data.index + 1;
+    if (next >= this.data.questionBank.length) {
+      wx.redirectTo({
+        url: `/gujianSub/wenda2/wenda2?score=${this.data.score}&total=80&maxStreak=${this.data.streak}`
+      });
+      return;
+    }
+
+    this.setData({
+      index: next,
+      currentQuestion: this.data.questionBank[next],
+      selected: -1,
+      isSubmitted: false,
+      isCorrect: false,
+      showKnowledge: false,
+      animationData: {}
+    });
+
+    this.startTimer();
+  },
+
+  // 查看相关建筑
+  viewBuilding(e) {
+    const name = e.currentTarget.dataset.name;
+    wx.navigateTo({
+      url: `/gujianSub/building/building?name=${name}`
+    });
+  },
+
+  // 收藏题目
+  favoriteQuestion() {
+    const favorites = wx.getStorageSync('favoriteQuestions') || [];
+    const current = this.data.currentQuestion;
+    if (!favorites.find(q => q.question === current.question)) {
+      favorites.push(current);
+      wx.setStorageSync('favoriteQuestions', favorites);
+      wx.showToast({ title: '已收藏', icon: 'success' });
+    }
+  },
+  // 在 Page 配置中添加
+getCorrectIndex() {
+  const { currentQuestion } = this.data;
+  if (!currentQuestion) return -1;
+  return currentQuestion.options.findIndex(opt => opt.tag === currentQuestion.answer);
+},
+
+goBack() {
+  wx.navigateBack();
+},
+
+closeKnowledge() {
+  // 点击遮罩不关闭，必须通过按钮继续
+}
+
 });

@@ -1,21 +1,82 @@
-<!--gujianSub/wenda2/wenda2.wxml-->
- 
+ <!--gujianSub/wenda2/wenda2.wxml-->
 <view class="result-container">
-  <!-- 分数卡片区域 -->
-  <view class="score-card">
-    <view class="score-num">{{score}}</view>
-    <text class="score-label">答对题数</text>
-    <view class="rate">正确率：{{correctRate}}%</view>
+  <!-- 彩纸特效层 -->
+  <view class="confetti-layer" wx:if="{{showConfetti}}">
+    <view wx:for="{{20}}" wx:key="*this" class="confetti" style="left: {{index*5}}; animation-delay: {{index*0.1}}s; background: {{['#ffd700','#ff6b6b','#4ecdc4','#45b7d1'][index%4]}}"></view>
   </view>
 
-  <!-- 等级标签 -->
-  <view class="level-tag {{score >= 64 ? 'gold' : score >= 48 ? 'silver' : 'copper'}}">
-    <text>{{score >= 64 ? '黄金段位' : score >= 48 ? '白银段位' : '青铜段位'}}</text>
+  <!-- 结果卡片 -->
+  <view class="result-card">
+    <!-- 段位徽章 -->
+    <view class="rank-badge" style="background: {{rankColor}}">
+      <text class="rank-text">{{rank}}</text>
+      <view class="rank-shine"></view>
+    </view>
+
+    <!-- 分数 -->
+    <view class="score-wrap" animation="{{animationData}}">
+      <text class="score-num">{{score}}</text>
+      <text class="score-total">/ {{total}}</text>
+    </view>
+
+    <!-- 正确率环 -->
+    <view class="rate-ring">
+      <view class="ring-bg"></view>
+      <view class="ring-fill" style="background: conic-gradient({{rankColor}} {{correctRate}}, transparent 0)"></view>
+      <view class="ring-inner">
+        <text class="rate-num">{{correctRate}}%</text>
+        <text class="rate-label">正确率</text>
+      </view>
+    </view>
+
+    <!-- 数据标签 -->
+    <view class="stats-row">
+      <view class="stat-item">
+        <text class="stat-num">{{maxStreak}}</text>
+        <text class="stat-label">最高连对</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-num">{{score * 10}}</text>
+        <text class="stat-label">获得积分</text>
+      </view>
+    </view>
   </view>
 
-  <!-- 操作按钮 -->
-  <view class="btn-group">
-    <button class="btn primary" bindtap="handleRestart">再来一局</button>
-    <button class="btn secondary" bindtap="handleBack">返回首页</button>
+  <!-- 成就提示 -->
+  <view class="achievement-tip" wx:if="{{score >= 64}}">
+    <text class="tip-icon">🏆</text>
+    <text class="tip-text">恭喜获得{{rank}}段位！</text>
+  </view>
+
+  <!-- 操作按钮组 -->
+  <view class="action-grid">
+    <view class="action-btn" bindtap="handleRestart">
+      <text class="btn-icon">🔄</text>
+      <text class="btn-label">再来一局</text>
+    </view>
+    <view class="action-btn" bindtap="viewMistakes">
+      <text class="btn-icon">📋</text>
+      <text class="btn-label">错题回顾</text>
+    </view>
+    <view class="action-btn" bindtap="viewRank">
+      <text class="btn-icon">🏅</text>
+      <text class="btn-label">排行榜</text>
+    </view>
+    <view class="action-btn" bindtap="generatePoster">
+      <text class="btn-icon">🖼️</text>
+      <text class="btn-label">分享海报</text>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-bar">
+    <button class="share-btn" open-type="share">
+      <text class="share-icon">📤</text>
+      <text>分享给好友</text>
+    </button>
+    <view class="back-btn" bindtap="handleBack">
+      <text>返回首页</text>
+    </view>
   </view>
 </view>

@@ -64,7 +64,8 @@
         "qiaoliang/detail",
         "qiaoliang/placemap",
         "wenda1/wenda1",
-        "wenda2/wenda2"
+        "wenda2/wenda2",
+        "building3D/building3D"
       ],
       "preloadRule": {
         "pages/index/index": {

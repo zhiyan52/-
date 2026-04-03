@@ -8,19 +8,43 @@
   <!-- 五个分类项 -->
   <view class="category-list">
     <view 
-      class="category-item" 
+      class="category-item {{pressedIndex === index ? 'pressed' : ''}} {{item.loaded ? 'loaded' : ''}}"
       wx:for="{{categoryList}}" 
       wx:key="id"
+      bindtouchstart="onTouchStart"
+      bindtouchend="onTouchEnd"
       bindtap="onCategoryTap"
-      data-id="{{item.id}}">
-      <image src="{{item.img}}" class="category-img" mode="aspectFill"></image>
+      data-id="{{item.id}}"
+      data-index="{{index}}">
+      
+      <!-- 加载骨架屏 -->
+      <view class="skeleton" wx:if="{{!item.loaded}}">
+        <view class="skeleton-shimmer"></view>
+      </view>
+      
+      <!-- 图片 -->
+      <image src="{{item.img}}" class="category-img" mode="aspectFill" lazy-load></image>
+      
+      <!-- 悬停提示 -->
+      <view class="hover-hint" wx:if="{{pressedIndex === index}}">
+        <text class="hint-text">点击进入</text>
+      </view>
     </view>
   </view>
 
   <!-- 底部按钮区 -->
   <view class="footer-buttons">
-    <view class="btn primary" bindtap="onARScan">AR扫描</view>
-    <view class="btn secondary" bindtap="onTest" >趣味问答</view>
-    <view class="btn secondary" bindtap="onMap">打卡地图</view>
+    <view class="btn primary" bindtap="onARScan">
+      <text class="btn-icon">📷</text>
+      <text class="btn-text">AR扫描</text>
+    </view>
+    <view class="btn secondary" bindtap="onTest">
+      <text class="btn-icon">❓</text>
+      <text class="btn-text">趣味问答</text>
+    </view>
+    <view class="btn secondary" bindtap="onMap">
+      <text class="btn-icon">📍</text>
+      <text class="btn-text">打卡地图</text>
+    </view>
   </view>
 </view>

@@ -1,29 +1,97 @@
-<!--youxi/wenda1/wenda1.wxml-->
+ <!--gujianSub/wenda1/wenda1.wxml-->
 <view class="page-container">
+  <!-- 顶部进度栏 -->
+  <view class="progress-header">
+    <view class="back-btn" bindtap="goBack">←</view>
+    <view class="progress-info">
+      <text class="progress-text">第 {{index+1}} 题 / 共80题</text>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{(index+1)/80*100}}"></view>
+      </view>
+    </view>
+    <view class="score-display">
+      <text class="score-num">{{score}}</text>
+      <text class="score-label">分</text>
+    </view>
+  </view>
+
+  <!-- 标题 -->
   <view class="header-section">
     <text class="main-title">古建筑趣味问答</text>
     <text class="sub-title">传承古建文化 · 提升文化素养</text>
   </view>
 
-  <view class="question-card">
-    <view class="question-num">第 {{index+1}} 题 / 共80题</view>
-    <view class="question-content">{{currentQuestion.question}}</view>
-  </view>
-
-  <view class="options-box">
-    <view
-      class="option-item {{selected === index ? 'selected' : ''}}"
-      wx:for="{{currentQuestion.options}}"
-      wx:key="index"
-      data-index="{{index}}"
-      bindtap="selectOption"
-    >
-      <text class="option-tag">{{item.tag}}</text>
-      <text class="option-text">{{item.text}}</text>
+  <!-- 倒计时 -->
+  <view class="timer-wrap {{timer<=5?'urgent':''}}">
+    <view class="timer-circle">
+      <text class="timer-num">{{timer}}</text>
+    </view>
+    <view class="streak" wx:if="{{streak>0}}">
+      <text class="fire">🔥</text>
+      <text class="streak-num">{{streak}}</text>
     </view>
   </view>
 
+  <!-- 题目卡片 -->
+  <view class="question-card" animation="{{animationData}}">
+    <view class="question-num">第 {{index+1}} 题</view>
+    <view class="question-content">{{currentQuestion.question}}</view>
+  </view>
+
+  <!-- 选项列表 -->
+  <view class="options-box">
+    <view
+      class="option-item {{selected === idx ? 'selected' : ''}} {{isSubmitted && idx === getCorrectIndex() ? 'correct' : ''}} {{isSubmitted && selected === idx && !isCorrect ? 'wrong' : ''}}"
+      wx:for="{{currentQuestion.options}}"
+      wx:for-index="idx"
+      wx:key="idx"
+      data-index="{{idx}}"
+      bindtap="selectOption"
+    >
+      <view class="option-tag">{{item.tag}}</view>
+      <text class="option-text">{{item.text}}</text>
+      <image wx:if="{{isSubmitted && idx === getCorrectIndex()}}" class="status-icon" src="/images/icon-correct.png"/>
+      <image wx:if="{{isSubmitted && selected === idx && !isCorrect}}" class="status-icon" src="/images/icon-wrong.png"/>
+    </view>
+  </view>
+
+  <!-- 提交/下一题按钮 -->
   <view class="submit-box">
-    <view class="submit-btn" bindtap="submitAnswer">提交答案</view>
+    <view class="submit-btn {{selected!==-1?'active':''}} {{isSubmitted?'submitted':''}}" bindtap="{{isSubmitted?'nextQuestion':'submitAnswer'}}">
+      {{isSubmitted?(index<79?'下一题 →':'查看结果'):'提交答案'}}
+    </view>
+  </view>
+
+  <!-- 知识点弹窗 -->
+  <view class="knowledge-mask {{showKnowledge?'show':''}}" bindtap="closeKnowledge"></view>
+  <view class="knowledge-panel {{showKnowledge?'show':''}}">
+    <view class="panel-header">
+      <view class="result-badge {{isCorrect?'correct':'wrong'}}">
+        {{isCorrect?'回答正确！':'回答错误'}}
+      </view>
+      <view class="streak-badge" wx:if="{{streak>1}}">
+        <text class="fire">🔥</text>
+        <text>连续{{streak}}题</text>
+      </view>
+    </view>
+
+    <view class="knowledge-content">
+      <text class="knowledge-title">{{currentQuestion.knowledge.title}}</text>
+      <text class="knowledge-desc">{{currentQuestion.knowledge.content}}</text>
+      
+      <view class="related-box" wx:if="{{currentQuestion.knowledge.related}}">
+        <text class="related-title">相关建筑</text>
+        <view class="related-tags">
+          <view class="tag" wx:for="{{currentQuestion.knowledge.related}}" wx:key="*this" data-name="{{item}}" bindtap="viewBuilding">
+            {{item}}
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="panel-footer">
+      <view class="fav-btn" bindtap="favoriteQuestion">⭐ 收藏本题</view>
+      <view class="next-btn" bindtap="nextQuestion">{{index<79?'下一题':'查看结果'}} →</view>
+    </view>
   </view>
 </view>

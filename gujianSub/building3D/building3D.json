@@ -1,0 +1,7 @@
+{
+  "usingComponents": {} ,
+    "navigationBarTitleText": "3D建筑拆解",
+    "navigationBarBackgroundColor": "#1a1a2e",
+    "navigationBarTextStyle": "white",
+    "disableScroll": true
+}
