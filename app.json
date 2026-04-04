@@ -35,8 +35,23 @@
     {
       "root": "mingsu/mingsu",
       "pages": [
-        "mingsu"
-      ]
+        "mingsu",
+        "pages/categories/categories",
+        "pages/categories/seasons",
+        "pages/categories/regions",
+        "pages/categories/intangible",
+        "pages/categories/cakes",
+        "pages/detail/detail",
+        "pages/3d-model/3d-model",
+        "pages/checkin/checkin",
+        "pages/community/community",
+        "pages/profile/profile",
+        "pages/search/search",
+        "pages/encyclopedia/encyclopedia",
+        "pages/encyclopedia/course-detail"
+      ],
+      "name": "mingsu",
+      "independent": false
     },
     {
       "root": "shuhua/shuhua",

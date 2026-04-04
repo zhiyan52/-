@@ -1,0 +1,134 @@
+/* mingsu/mingsu/pages/categories/cakes.wxss */
+
+/* 顶部导航栏 */
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 32rpx;
+  background-color: #8B4513;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.back-btn {
+  font-size: 32rpx;
+  padding: 8rpx;
+}
+
+.nav-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  font-family: '楷体', 'STKaiti', serif;
+}
+
+.placeholder {
+  width: 40rpx;
+}
+
+/* 传统糕饼列表 */
+.cakes-list {
+  padding: 24rpx 32rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  margin-bottom: 40rpx;
+}
+
+.cake-item {
+  background-color: white;
+  border-radius: 16rpx;
+  overflow: hidden;
+  border: 1rpx solid #e8ddd1;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.cake-item:hover {
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
+  transform: translateY(-4rpx);
+}
+
+.cake-img {
+  width: 100%;
+  height: 240rpx;
+  object-fit: cover;
+}
+
+.cake-info {
+  padding: 24rpx;
+}
+
+.cake-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.cake-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+}
+
+.cake-type {
+  padding: 4rpx 16rpx;
+  background-color: #8B4513;
+  color: white;
+  border-radius: 12rpx;
+  font-size: 20rpx;
+  margin-left: 16rpx;
+}
+
+.cake-desc {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.4;
+  margin-bottom: 16rpx;
+}
+
+.cake-meaning, .cake-history {
+  display: flex;
+  gap: 12rpx;
+  margin-bottom: 12rpx;
+}
+
+.meaning-label, .history-label {
+  font-size: 24rpx;
+  color: #333;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.meaning-text, .history-text {
+  flex: 1;
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* 响应式适配 */
+@media (max-width: 375px) {
+  .cake-img {
+    height: 200rpx;
+  }
+  
+  .cake-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8rpx;
+  }
+  
+  .cake-type {
+    margin-left: 0;
+  }
+  
+  .cake-meaning, .cake-history {
+    flex-direction: column;
+    gap: 4rpx;
+  }
+}

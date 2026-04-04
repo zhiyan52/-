@@ -1,0 +1,52 @@
+<!--mingsu/mingsu/pages/community/community.wxml-->
+
+<!-- 话题列表 -->
+<view class="posts-list">
+  <view class="post-item" wx:for="{{posts}}" wx:key="id">
+    <view class="post-header">
+      <image class="user-avatar" src="{{item.user.avatar}}" mode="aspectFill"></image>
+      <view class="user-info">
+        <view class="user-name">{{item.user.name}}</view>
+        <view class="post-time">{{item.time}}</view>
+      </view>
+    </view>
+    <view class="post-content">{{item.content}}</view>
+    <view class="post-images" wx:if="{{item.images.length > 0}}">
+      <image class="post-image" wx:for="{{item.images}}" wx:key="index" src="{{item}}" mode="aspectFill"></image>
+    </view>
+    <view class="post-actions">
+      <view class="action-item" bindtap="toggleLike" data-id="{{item.id}}">
+        <text class="action-icon">{{item.liked ? '❤️' : '🤍'}}</text>
+        <text class="action-text">{{item.likes}}</text>
+      </view>
+      <view class="action-item" bindtap="viewComments" data-id="{{item.id}}">
+        <text class="action-icon">💬</text>
+        <text class="action-text">{{item.comments}}</text>
+      </view>
+      <view class="action-item">
+        <text class="action-icon">↗️</text>
+        <text class="action-text">分享</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 发布话题弹窗 -->
+<view class="modal-overlay" wx:if="{{showPostModal}}" bindtap="closePostModal"></view>
+<view class="post-modal" wx:if="{{showPostModal}}">
+  <view class="modal-header">
+    <view class="modal-title">发布话题</view>
+    <view class="close-btn" bindtap="closePostModal">
+      <text>×</text>
+    </view>
+  </view>
+  <textarea class="post-input" placeholder="分享你的民俗文化感悟..." value="{{newPostContent}}" bindinput="inputPostContent"></textarea>
+  <view class="modal-footer">
+    <view class="cancel-btn" bindtap="closePostModal">
+      <text>取消</text>
+    </view>
+    <view class="confirm-btn" bindtap="publishPost">
+      <text>发布</text>
+    </view>
+  </view>
+</view>

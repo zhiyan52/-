@@ -1,0 +1,90 @@
+<!--mingsu/mingsu/pages/profile/profile.wxml-->
+<!--mingsu/mingsu/pages/profile/profile.wxml-->
+
+<!-- 用户信息卡片 -->
+<view class="user-card">
+  <image class="user-avatar" src="{{userInfo.avatar}}" mode="aspectFill"></image>
+  <view class="user-info">
+    <view class="user-name">{{userInfo.name}}</view>
+    <view class="user-level">{{userInfo.level}}</view>
+  </view>
+  <view class="points-card">
+    <view class="points-label">积分</view>
+    <view class="points-value">{{userInfo.points}}</view>
+  </view>
+</view>
+
+<!-- 功能模块 -->
+<view class="function-section">
+  <view class="section-title">我的功能</view>
+  
+  <view class="function-item" bindtap="goToCollections">
+    <view class="function-icon">⭐</view>
+    <view class="function-name">我的收藏</view>
+    <view class="function-arrow">→</view>
+  </view>
+  
+  <view class="function-item" bindtap="goToFootprints">
+    <view class="function-icon">👣</view>
+    <view class="function-name">浏览足迹</view>
+    <view class="function-arrow">→</view>
+  </view>
+  
+  <view class="function-item" bindtap="goToCheckin">
+    <view class="function-icon">📅</view>
+    <view class="function-name">打卡记录</view>
+    <view class="function-arrow">→</view>
+  </view>
+  
+  <view class="function-item" bindtap="goToCommunity">
+    <view class="function-icon">💬</view>
+    <view class="function-name">话题社区</view>
+    <view class="function-arrow">→</view>
+  </view>
+</view>
+
+<!-- 打卡统计 -->
+<view class="checkin-section">
+  <view class="section-title">学习统计</view>
+  <view class="checkin-stats">
+    <view class="stat-item">
+      <view class="stat-value">{{checkinStats.totalDays}}</view>
+      <view class="stat-label">总打卡天数</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-value">{{checkinStats.consecutiveDays}}</view>
+      <view class="stat-label">连续打卡</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-value">{{checkinStats.certificates}}</view>
+      <view class="stat-label">获得证书</view>
+    </view>
+  </view>
+</view>
+
+<!-- 设置模块 -->
+<view class="settings-section">
+  <view class="section-title">设置</view>
+  
+  <view class="setting-item" bindtap="goToEditProfile">
+    <view class="setting-icon">👤</view>
+    <view class="setting-name">个人资料</view>
+    <view class="setting-arrow">→</view>
+  </view>
+  
+  <view class="setting-item" bindtap="clearCache">
+    <view class="setting-icon">🗑️</view>
+    <view class="setting-name">清除缓存</view>
+    <view class="setting-arrow">→</view>
+  </view>
+  
+  <view class="setting-item" bindtap="aboutUs">
+    <view class="setting-icon">ℹ️</view>
+    <view class="setting-name">关于我们</view>
+    <view class="setting-arrow">→</view>
+  </view>
+  
+  <view class="logout-btn" bindtap="logout">
+    <text>退出登录</text>
+  </view>
+</view>

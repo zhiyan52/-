@@ -1,0 +1,233 @@
+/* mingsu/mingsu/pages/detail/detail.wxss */
+
+/* 顶部导航栏 */
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 32rpx;
+  background-color: #8B4513;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.back-btn {
+  font-size: 32rpx;
+  padding: 8rpx;
+}
+
+.nav-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  font-family: '楷体', 'STKaiti', serif;
+  flex: 1;
+  text-align: center;
+  margin: 0 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 24rpx;
+}
+
+.action-btn {
+  font-size: 24rpx;
+  padding: 8rpx 16rpx;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 16rpx;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 图片轮播 */
+.image-swiper {
+  width: 100%;
+  height: 400rpx;
+}
+
+.detail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 文化科普区 */
+.cultural-section {
+  background-color: white;
+  margin: 24rpx 0;
+  padding: 32rpx;
+  border-top: 1rpx solid #e8ddd1;
+  border-bottom: 1rpx solid #e8ddd1;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 24rpx;
+  font-family: '楷体', 'STKaiti', serif;
+}
+
+.cultural-item {
+  margin-bottom: 24rpx;
+  padding-bottom: 24rpx;
+  border-bottom: 1rpx solid #f0e6d8;
+}
+
+.cultural-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.item-label {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.item-content {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+.master-name {
+  font-size: 26rpx;
+  color: #8B4513;
+  font-weight: bold;
+  margin-bottom: 4rpx;
+}
+
+.master-desc {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* 3D食器查看入口 */
+.model-section {
+  margin: 24rpx 32rpx;
+  background-color: white;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  border: 1rpx solid #e8ddd1;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.model-section:hover {
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
+  transform: translateY(-4rpx);
+}
+
+.model-content {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+
+.model-icon {
+  font-size: 64rpx;
+}
+
+.model-info {
+  flex: 1;
+}
+
+.model-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 4rpx;
+}
+
+.model-desc {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.model-arrow {
+  font-size: 32rpx;
+  color: #8B4513;
+  font-weight: bold;
+}
+
+/* 相关推荐 */
+.related-section {
+  margin: 40rpx 0;
+  padding: 0 32rpx;
+}
+
+.related-list {
+  display: flex;
+  gap: 24rpx;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 16rpx;
+}
+
+.related-list::-webkit-scrollbar {
+  display: none;
+}
+
+.related-item {
+  flex: 0 0 200rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.related-img {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 12rpx;
+  object-fit: cover;
+  border: 1rpx solid #e8ddd1;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.related-name {
+  font-size: 24rpx;
+  color: #333;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* 响应式适配 */
+@media (max-width: 375px) {
+  .image-swiper {
+    height: 300rpx;
+  }
+  
+  .cultural-section {
+    padding: 24rpx;
+  }
+  
+  .model-section {
+    margin: 24rpx;
+    padding: 24rpx;
+  }
+  
+  .related-item {
+    flex: 0 0 160rpx;
+  }
+  
+  .related-img {
+    width: 160rpx;
+    height: 160rpx;
+  }
+}

@@ -1,0 +1,41 @@
+<!--mingsu/mingsu/pages/categories/seasons.wxml-->
+
+<!-- 季节选择器 -->
+<scroll-view class="season-selector" scroll-x scroll-with-animation>
+  <view class="season-list">
+    <view 
+      class="season-item {{currentSeason === item.id ? 'active' : ''}}" 
+      wx:for="{{seasons}}" 
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="changeSeason"
+    >
+      {{item.name}}
+    </view>
+  </view>
+</scroll-view>
+
+<!-- 节气列表 -->
+<view class="solar-terms-section">
+  <view class="section-title">二十四节气</view>
+  <view class="solar-terms-list">
+    <view class="solar-term-item" wx:for="{{currentSolarTerms}}" wx:key="id">
+      <view class="solar-term-name">{{item.name}}</view>
+      <view class="solar-term-desc">{{item.desc}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 应季美食 -->
+<view class="seasonal-foods-section">
+  <view class="section-title">应季美食</view>
+  <view class="seasonal-foods-list">
+    <view class="seasonal-food-item" wx:for="{{currentSeasonalFoods}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      <image class="food-img" src="{{item.imageUrl}}" mode="aspectFill" alt="{{item.name}}"></image>
+      <view class="food-info">
+        <view class="food-name">{{item.name}}</view>
+        <view class="food-desc">{{item.desc}}</view>
+      </view>
+    </view>
+  </view>
+</view>

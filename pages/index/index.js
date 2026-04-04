@@ -99,7 +99,20 @@ Page({
   // 点击模块跳转
   navigateToModule(e) {
     const url = e.currentTarget.dataset.url;
-    wx.navigateTo({ url });
+    console.log('点击跳转:', url);
+    
+    // 使用 wx.navigateTo 跳转到分包页面
+    wx.navigateTo({
+      url: url,
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({
+          title: '页面加载中，请稍候',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    });
   },
 
   // 文化打卡功能

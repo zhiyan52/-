@@ -1,0 +1,84 @@
+<!--mingsu/mingsu/pages/detail/detail.wxml-->
+
+<!-- 高清大图展示 -->
+<swiper class="image-swiper" indicator-dots circular bindchange="changeImage">
+  <swiper-item wx:for="{{foodDetail.images}}" wx:key="index">
+    <image class="detail-image" src="{{item}}" mode="aspectFill" bindtap="previewImage" data-src="{{item}}"></image>
+  </swiper-item>
+</swiper>
+
+<!-- 文化科普区 -->
+<view class="cultural-section">
+  <view class="section-title">文化科普</view>
+  
+  <view class="cultural-item">
+    <view class="item-label">名称</view>
+    <view class="item-content">{{foodDetail.name}}</view>
+  </view>
+  
+  <view class="cultural-item">
+    <view class="item-label">分类</view>
+    <view class="item-content">{{foodDetail.category}}</view>
+  </view>
+  
+  <view class="cultural-item">
+    <view class="item-label">地域</view>
+    <view class="item-content">{{foodDetail.region}}</view>
+  </view>
+  
+  <view class="cultural-item">
+    <view class="item-label">描述</view>
+    <view class="item-content">{{foodDetail.desc}}</view>
+  </view>
+  
+  <view class="cultural-item">
+    <view class="item-label">由来</view>
+    <view class="item-content">{{foodDetail.origin}}</view>
+  </view>
+  
+  <view class="cultural-item">
+    <view class="item-label">典故</view>
+    <view class="item-content">{{foodDetail.story}}</view>
+  </view>
+  
+  <view class="cultural-item">
+    <view class="item-label">文化寓意</view>
+    <view class="item-content">{{foodDetail.meaning}}</view>
+  </view>
+  
+  <view class="cultural-item">
+    <view class="item-label">制作工艺</view>
+    <view class="item-content">{{foodDetail.process}}</view>
+  </view>
+  
+  <view class="cultural-item" wx:if="{{foodDetail.master}}">
+    <view class="item-label">传承人</view>
+    <view class="item-content">
+      <view class="master-name">{{foodDetail.master}}</view>
+      <view class="master-desc">{{foodDetail.masterDesc}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 3D食器查看入口 -->
+<view class="model-section" bindtap="goTo3DModel">
+  <view class="model-content">
+    <view class="model-icon">🔮</view>
+    <view class="model-info">
+      <view class="model-title">3D食器查看</view>
+      <view class="model-desc">探索传统食器的结构与文化</view>
+    </view>
+    <view class="model-arrow">→</view>
+  </view>
+</view>
+
+<!-- 相关推荐 -->
+<view class="related-section">
+  <view class="section-title">相关推荐</view>
+  <view class="related-list">
+    <view class="related-item" wx:for="{{foodDetail.related}}" wx:key="id" bindtap="goToRelatedDetail" data-id="{{item.id}}">
+      <image class="related-img" src="{{item.imageUrl}}" mode="aspectFill" alt="{{item.name}}"></image>
+      <view class="related-name">{{item.name}}</view>
+    </view>
+  </view>
+</view>

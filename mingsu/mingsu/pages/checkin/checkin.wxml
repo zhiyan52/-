@@ -1,0 +1,76 @@
+<!--mingsu/mingsu/pages/checkin/checkin.wxml-->
+
+<!-- 打卡统计卡片 -->
+<view class="checkin-card">
+  <view class="checkin-status">
+    <view class="status-icon">{{checkinStatus ? '✅' : '📅'}}</view>
+    <view class="status-info">
+      <view class="status-title">{{checkinStatus ? '今日已打卡' : '今日未打卡'}}</view>
+      <view class="status-desc">连续打卡 {{checkinDays}} 天</view>
+    </view>
+    <view class="checkin-btn" bindtap="doCheckin" wx:if="{{!checkinStatus}}">
+      <text>立即打卡</text>
+    </view>
+    <view class="checked-btn" wx:else>
+      <text>已打卡</text>
+    </view>
+  </view>
+  <view class="points-info">
+    <view class="points-label">总积分</view>
+    <view class="points-value">{{totalPoints}}</view>
+  </view>
+</view>
+
+<!-- 今日任务 -->
+<view class="task-section">
+  <view class="section-title">今日任务</view>
+  <view class="task-item" bindtap="completeTask" data-id="{{todayTask.id}}">
+    <view class="task-checkbox {{todayTask.completed ? 'checked' : ''}}">
+      <text wx:if="{{todayTask.completed}}">✓</text>
+    </view>
+    <view class="task-info">
+      <view class="task-title">{{todayTask.title}}</view>
+      <view class="task-points">+{{todayTask.points}} 积分</view>
+    </view>
+    <view class="task-arrow">→</view>
+  </view>
+</view>
+
+<!-- 任务列表 -->
+<view class="tasks-section">
+  <view class="section-title">任务列表</view>
+  <view class="tasks-list">
+    <view class="task-item" wx:for="{{tasks}}" wx:key="id" bindtap="completeTask" data-id="{{item.id}}">
+      <view class="task-checkbox {{item.completed ? 'checked' : ''}}">
+        <text wx:if="{{item.completed}}">✓</text>
+      </view>
+      <view class="task-info">
+        <view class="task-title">{{item.title}}</view>
+        <view class="task-points">+{{item.points}} 积分</view>
+      </view>
+      <view class="task-arrow">→</view>
+    </view>
+  </view>
+</view>
+
+<!-- 证书区域 -->
+<view class="certificate-section">
+  <view class="section-title">
+    <text>我的证书</text>
+    <view class="generate-btn" bindtap="generateCertificate">
+      <text>生成证书</text>
+    </view>
+  </view>
+  <view class="certificates-list">
+    <view class="certificate-item" wx:for="{{certificates}}" wx:key="id">
+      <image class="certificate-img" src="{{item.imageUrl}}" mode="aspectFill" alt="{{item.name}}"></image>
+      <view class="certificate-info">
+        <view class="certificate-name">{{item.name}}</view>
+        <view class="certificate-desc">{{item.desc}}</view>
+        <view class="save-btn" bindtap="saveCertificate" data-id="{{item.id}}">
+          <text>保存证书</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

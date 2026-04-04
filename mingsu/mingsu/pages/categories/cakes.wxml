@@ -1,0 +1,23 @@
+<!--mingsu/mingsu/pages/categories/cakes.wxml-->
+
+<!-- 糕饼分类 -->
+<view class="cakes-list">
+  <view class="cake-item" wx:for="{{cakes}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+    <image class="cake-img" src="{{item.imageUrl}}" mode="aspectFill" alt="{{item.name}}"></image>
+    <view class="cake-info">
+      <view class="cake-header">
+        <view class="cake-name">{{item.name}}</view>
+        <view class="cake-type">{{item.type}}</view>
+      </view>
+      <view class="cake-desc">{{item.desc}}</view>
+      <view class="cake-meaning">
+        <view class="meaning-label">文化寓意：</view>
+        <view class="meaning-text">{{item.meaning}}</view>
+      </view>
+      <view class="cake-history">
+        <view class="history-label">历史渊源：</view>
+        <view class="history-text">{{item.history}}</view>
+      </view>
+    </view>
+  </view>
+</view>
