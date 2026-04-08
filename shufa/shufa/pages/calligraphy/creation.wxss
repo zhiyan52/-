@@ -1,0 +1,387 @@
+/* shufa/shufa/pages/calligraphy/creation.wxss */
+.page-container {
+  background: linear-gradient(180deg, #f8f4e9 0%, #ede8d0 100%);
+  min-height: 100vh;
+  font-family: "KaiTi", "STKaiti", "PingFang SC", sans-serif;
+}
+
+/* 顶部导航 */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-back {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-btn {
+  font-size: 36rpx;
+  color: #333;
+}
+
+.header-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.header-right {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.help-btn {
+  font-size: 28rpx;
+  color: #666;
+  padding: 10rpx 15rpx;
+  border-radius: 15rpx;
+  background: #f5f5f5;
+}
+
+/* 文字输入 */
+.input-section {
+  margin: 30rpx;
+  background: white;
+  border-radius: 15rpx;
+  padding: 25rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.input-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15rpx;
+}
+
+.input-textarea {
+  width: 100%;
+  min-height: 200rpx;
+  padding: 20rpx;
+  border: 1rpx solid #e5e5e5;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  font-family: "KaiTi", "STKaiti", "PingFang SC", sans-serif;
+  line-height: 1.5;
+  resize: none;
+  box-sizing: border-box;
+}
+
+.input-hint {
+  font-size: 20rpx;
+  color: #999;
+  margin-top: 10rpx;
+  text-align: right;
+}
+
+/* 通用区块样式 */
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  border-left: 8rpx solid #b22222;
+  padding-left: 15rpx;
+}
+
+/* 书体选择 */
+.style-section {
+  margin: 30rpx 0;
+  padding: 0 30rpx;
+}
+
+.style-scroll {
+  white-space: nowrap;
+}
+
+.style-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 40rpx;
+  padding: 20rpx;
+  background: white;
+  border-radius: 15rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  min-width: 120rpx;
+}
+
+.style-active {
+  background: linear-gradient(135deg, #b22222, #cd853f);
+  color: white;
+}
+
+.style-icon {
+  font-size: 48rpx;
+  margin-bottom: 10rpx;
+}
+
+.style-name {
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+/* 模板选择 */
+.template-section {
+  margin: 30rpx 0;
+  padding: 0 30rpx;
+}
+
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+}
+
+.template-item {
+  background: white;
+  border-radius: 15rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.template-active {
+  border: 3rpx solid #b22222;
+}
+
+.template-image {
+  width: 100%;
+  height: 150rpx;
+  border-radius: 15rpx 15rpx 0 0;
+}
+
+.template-name {
+  padding: 15rpx;
+  text-align: center;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 印章选择 */
+.seal-section {
+  margin: 30rpx 0;
+  padding: 0 30rpx;
+}
+
+.seal-scroll {
+  white-space: nowrap;
+}
+
+.seal-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 30rpx;
+  padding: 15rpx;
+  background: white;
+  border-radius: 15rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  min-width: 100rpx;
+}
+
+.seal-active {
+  border: 3rpx solid #b22222;
+}
+
+.seal-image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.seal-name {
+  font-size: 22rpx;
+  color: #333;
+}
+
+/* 操作按钮 */
+.action-section {
+  margin: 30rpx;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20rpx;
+}
+
+.action-btn {
+  padding: 25rpx;
+  border-radius: 15rpx;
+  font-size: 26rpx;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.action-btn.primary {
+  background: linear-gradient(90deg, #b22222, #cd853f);
+  color: white;
+}
+
+.action-btn.secondary {
+  background: white;
+  color: #333;
+  border: 1rpx solid #e5e5e5;
+}
+
+/* 预览弹窗 */
+.preview-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.preview-content {
+  background: white;
+  border-radius: 20rpx;
+  width: 80%;
+  max-width: 600rpx;
+  max-height: 80vh;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.3);
+}
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.preview-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.preview-close {
+  font-size: 36rpx;
+  color: #999;
+  cursor: pointer;
+}
+
+.preview-image {
+  width: 100%;
+  height: 400rpx;
+  object-fit: contain;
+  background: #f5f5f5;
+}
+
+.preview-actions {
+  display: flex;
+  gap: 20rpx;
+  padding: 20rpx;
+  border-top: 1rpx solid #e5e5e5;
+}
+
+.preview-btn {
+  flex: 1;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(90deg, #b22222, #cd853f);
+  color: white;
+}
+
+/* 底部Tab */
+.tab-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: white;
+  border-top: 1rpx solid #e5e5e5;
+  padding: 15rpx 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rpx;
+  padding: 10rpx;
+  color: #666;
+}
+
+.tab-item.tab-active {
+  color: #b22222;
+}
+
+.tab-icon {
+  font-size: 36rpx;
+}
+
+.tab-text {
+  font-size: 20rpx;
+}
+
+.tab-create {
+  background: linear-gradient(90deg, #b22222, #cd853f);
+  color: white;
+  border-radius: 50%;
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(178, 34, 34, 0.3);
+}
+
+.tab-create .tab-icon {
+  font-size: 48rpx;
+  line-height: 1;
+}
+
+.tab-create .tab-text {
+  font-size: 18rpx;
+  margin-top: -5rpx;
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+  .template-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .preview-content {
+    width: 90%;
+  }
+}

@@ -1,0 +1,147 @@
+<!-- gujianSub/discover/discover.wxml -->
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="top-nav">
+    <view class="nav-left" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="nav-title">发现</view>
+    <view class="nav-right">
+      <text class="search-icon" bindtap="goToSearch">🔍</text>
+      <text class="message-icon" bindtap="goToMessage">💬</text>
+    </view>
+  </view>
+
+  <!-- Tab栏 -->
+  <view class="tab-bar">
+    <view 
+      class="tab-item {{activeTab === 'follow' ? 'active' : ''}}" 
+      data-tab="follow"
+      bindtap="switchTab"
+    >
+      关注
+    </view>
+    <view 
+      class="tab-item {{activeTab === 'recommend' ? 'active' : ''}}" 
+      data-tab="recommend"
+      bindtap="switchTab"
+    >
+      推荐
+    </view>
+    <view 
+      class="tab-item {{activeTab === 'nearby' ? 'active' : ''}}" 
+      data-tab="nearby"
+      bindtap="switchTab"
+    >
+      附近
+    </view>
+    <view 
+      class="tab-item {{activeTab === 'topic' ? 'active' : ''}}" 
+      data-tab="topic"
+      bindtap="switchTab"
+    >
+      专题
+    </view>
+  </view>
+
+  <!-- 内容列表 -->
+  <view class="content-list">
+    <block wx:for="{{posts}}" wx:key="id">
+      <!-- 用户动态 -->
+      <view class="post-item" wx:if="{{item.type === 'user'}}">
+        <view class="post-header">
+          <image class="user-avatar" src="{{item.user.avatar}}"></image>
+          <text class="user-name">{{item.user.name}}</text>
+        </view>
+        <text class="post-content">{{item.content}}</text>
+        <view class="image-grid" wx:if="{{item.images && item.images.length > 0}}">
+          <block wx:for="{{item.images}}" wx:key="index">
+            <image class="grid-image" src="{{item}}" mode="aspectFill"></image>
+          </block>
+        </view>
+        <text class="post-description">{{item.description}}</text>
+        <view class="post-footer">
+          <view class="action-buttons">
+            <view class="action-btn" bindtap="likePost" data-id="{{item.id}}">
+              <text class="action-icon">{{item.liked ? '❤️' : '🤍'}}</text>
+              <text class="action-text">{{item.likes}}</text>
+            </view>
+            <view class="action-btn" bindtap="commentPost" data-id="{{item.id}}">
+              <text class="action-icon">💬</text>
+              <text class="action-text">{{item.comments}}</text>
+            </view>
+            <view class="action-btn" bindtap="sharePost" data-id="{{item.id}}">
+              <text class="action-icon">↗️</text>
+              <text class="action-text">分享</text>
+            </view>
+          </view>
+          <text class="post-meta">{{item.time}}·{{item.location}}</text>
+        </view>
+      </view>
+
+      <!-- 官方内容 -->
+      <view class="post-item" wx:elif="{{item.type === 'official'}}">
+        <view class="post-header">
+          <image class="user-avatar" src="{{item.user.avatar}}"></image>
+          <view class="user-info">
+            <text class="user-name">{{item.user.name}}</text>
+            <text class="official-badge">官方</text>
+          </view>
+        </view>
+        <text class="post-content">{{item.content}}</text>
+        <view class="video-container" wx:if="{{item.video}}">
+          <image class="video-cover" src="{{item.video}}"></image>
+          <view class="play-button">▶️</view>
+        </view>
+        <text class="post-description">{{item.description}}</text>
+        <view class="post-footer">
+          <view class="action-buttons">
+            <view class="action-btn" bindtap="likePost" data-id="{{item.id}}">
+              <text class="action-icon">{{item.liked ? '❤️' : '🤍'}}</text>
+              <text class="action-text">{{item.likes}}</text>
+            </view>
+            <view class="action-btn" bindtap="commentPost" data-id="{{item.id}}">
+              <text class="action-icon">💬</text>
+              <text class="action-text">{{item.comments}}</text>
+            </view>
+            <view class="action-btn" bindtap="sharePost" data-id="{{item.id}}">
+              <text class="action-icon">↗️</text>
+              <text class="action-text">分享</text>
+            </view>
+          </view>
+          <text class="post-meta">{{item.time}}·{{item.location}}</text>
+        </view>
+      </view>
+
+      <!-- 话题内容 -->
+      <view class="post-item" wx:elif="{{item.type === 'topic'}}">
+        <view class="topic-tag">
+          <text class="topic-text">#{{item.topic}}</text>
+        </view>
+        <text class="post-content">{{item.content}}</text>
+        <view class="image-grid" wx:if="{{item.images && item.images.length > 0}}">
+          <block wx:for="{{item.images}}" wx:key="index">
+            <image class="grid-image" src="{{item}}" mode="aspectFill"></image>
+          </block>
+        </view>
+        <view class="post-footer">
+          <view class="action-buttons">
+            <view class="action-btn" bindtap="likePost" data-id="{{item.id}}">
+              <text class="action-icon">{{item.liked ? '❤️' : '🤍'}}</text>
+              <text class="action-text">{{item.likes}}</text>
+            </view>
+            <view class="action-btn" bindtap="commentPost" data-id="{{item.id}}">
+              <text class="action-icon">💬</text>
+              <text class="action-text">{{item.comments}}</text>
+            </view>
+            <view class="action-btn" bindtap="sharePost" data-id="{{item.id}}">
+              <text class="action-icon">↗️</text>
+              <text class="action-text">分享</text>
+            </view>
+          </view>
+          <text class="post-meta">{{item.time}}·{{item.location}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

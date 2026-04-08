@@ -1,40 +1,21 @@
-<!--mingsu/mingsu/pages/categories/regions.wxml-->
-
-<!-- 地区选择器 -->
-<scroll-view class="region-selector" scroll-x scroll-with-animation>
-  <view class="region-list">
-    <view 
-      class="region-item {{currentRegion === item.id ? 'active' : ''}}" 
-      wx:for="{{regions}}" 
-      wx:key="id"
-      data-id="{{item.id}}"
-      bindtap="changeRegion"
-    >
-      {{item.name}}
+<!-- mingsu/mingsu/pages/categories/regions.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="header-back" bindtap="goBack">
+      <text class="back-icon">←</text>
     </view>
+    <view class="header-title">地域珍味</view>
   </view>
-</scroll-view>
-
-<!-- 省份列表 -->
-<view class="provinces-section">
-  <view class="section-title">省份列表</view>
-  <view class="provinces-list">
-    <view class="province-item" wx:for="{{currentProvinces}}" wx:key="*this">
-      {{item}}
-    </view>
-  </view>
-</view>
-
-<!-- 地方美食 -->
-<view class="regional-foods-section">
-  <view class="section-title">地方美食</view>
-  <view class="regional-foods-list">
-    <view class="regional-food-item" wx:for="{{currentFoods}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
-      <image class="food-img" src="{{item.imageUrl}}" mode="aspectFill" alt="{{item.name}}"></image>
-      <view class="food-info">
-        <view class="food-name">{{item.name}}</view>
-        <view class="food-province">{{item.province}}</view>
-        <view class="food-desc">{{item.desc}}</view>
+  
+  <view class="content">
+    <view class="region-list">
+      <view class="region-item" wx:for="{{regionList}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+        <image class="region-img" src="{{item.imageUrl}}" mode="aspectFill" alt="{{item.title}}"></image>
+        <view class="region-info">
+          <view class="region-title">{{item.title}}</view>
+          <view class="region-desc">{{item.desc}}</view>
+          <view class="region-location">{{item.location}}</view>
+        </view>
       </view>
     </view>
   </view>

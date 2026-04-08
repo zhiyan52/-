@@ -1,0 +1,98 @@
+<!-- gujianSub/search/search.wxml -->
+<view class="container">
+  <!-- 搜索框 -->
+  <view class="search-header">
+    <view class="search-box">
+      <text class="search-icon">🔍</text>
+      <input 
+        class="search-input" 
+        placeholder="搜索古建筑、朝代、地域..." 
+        value="{{searchText}}"
+        bindinput="inputSearch"
+        bindconfirm="submitSearch"
+      ></input>
+    </view>
+    <text class="cancel-btn" bindtap="cancelSearch">取消</text>
+  </view>
+
+  <!-- 历史搜索 -->
+  <view class="section" wx:if="{{historyList.length > 0}}">
+    <view class="section-header">
+      <text class="section-title">历史搜索</text>
+      <text class="clear-btn" bindtap="clearHistory">清空</text>
+    </view>
+    <view class="tag-list">
+      <block wx:for="{{historyList}}" wx:key="index">
+        <view class="tag-item" bindtap="clickHistory" data-text="{{item}}">
+          <text class="tag-text">{{item}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 热门搜索 -->
+  <view class="section">
+    <text class="section-title">热门搜索</text>
+    <view class="hot-list">
+      <block wx:for="{{hotList}}" wx:key="index">
+        <view class="hot-item" bindtap="clickHot" data-text="{{item}}">
+          <text class="hot-rank">{{index + 1}}</text>
+          <text class="hot-text">{{item}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 筛选查找 -->
+  <view class="section">
+    <text class="section-title">筛选查找</text>
+    
+    <!-- 按朝代 -->
+    <view class="filter-group">
+      <text class="filter-title">按朝代</text>
+      <view class="filter-options">
+        <block wx:for="{{dynastyList}}" wx:key="index">
+          <view 
+            class="filter-item {{selectedDynasty === item ? 'active' : ''}}" 
+            bindtap="selectDynasty" 
+            data-dynasty="{{item}}"
+          >
+            {{item}}
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 按地域 -->
+    <view class="filter-group">
+      <text class="filter-title">按地域</text>
+      <view class="filter-options">
+        <block wx:for="{{regionList}}" wx:key="index">
+          <view 
+            class="filter-item {{selectedRegion === item ? 'active' : ''}}" 
+            bindtap="selectRegion" 
+            data-region="{{item}}"
+          >
+            {{item}}
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 按类型 -->
+    <view class="filter-group">
+      <text class="filter-title">按类型</text>
+      <view class="filter-options">
+        <block wx:for="{{typeList}}" wx:key="index">
+          <view 
+            class="filter-item {{selectedType === item ? 'active' : ''}}" 
+            bindtap="selectType" 
+            data-type="{{item}}"
+          >
+            {{item}}
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

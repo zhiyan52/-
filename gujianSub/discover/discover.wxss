@@ -1,0 +1,265 @@
+/* gujianSub/discover/discover.wxss */
+.container {
+  min-height: 100vh;
+  background-color: #f5f2e9;
+  background-image: linear-gradient(rgba(245, 242, 233, 0.8), rgba(245, 242, 233, 0.8)), url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23d4af37" fill-opacity="0.05" fill-rule="evenodd"%3E%3Cpath d="M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z"/%3E%3C/g%3E%3C/svg%3E');
+}
+
+/* 顶部导航栏 */
+.top-nav {
+  background-color: #2C2621;
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-left {
+  width: 30px;
+}
+
+.back-icon {
+  color: #d4af37;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-title {
+  flex: 1;
+  text-align: center;
+  color: #d4af37;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'STSong', serif;
+}
+
+.nav-right {
+  display: flex;
+  gap: 15px;
+}
+
+.search-icon, .message-icon {
+  color: #d4af37;
+  font-size: 18px;
+}
+
+/* Tab栏 */
+.tab-bar {
+  display: flex;
+  background-color: #fff;
+  padding: 10px 0;
+  border-bottom: 1px solid #e6d7b8;
+  position: sticky;
+  top: 56px;
+  z-index: 99;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #666;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.tab-item.active {
+  color: #2C2621;
+  font-weight: bold;
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  background-color: #d4af37;
+  border-radius: 2px;
+}
+
+/* 内容列表 */
+.content-list {
+  padding: 15px;
+}
+
+/* 帖子项 */
+.post-item {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e6d7b8;
+}
+
+/* 帖子头部 */
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #2C2621;
+}
+
+.official-badge {
+  background-color: #d4af37;
+  color: #2C2621;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+/* 帖子内容 */
+.post-content {
+  font-size: 14px;
+  color: #2C2621;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+/* 图片网格 */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.grid-image {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* 视频容器 */
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #fff;
+}
+
+/* 帖子描述 */
+.post-description {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+/* 话题标签 */
+.topic-tag {
+  background-color: #f0e6d2;
+  color: #8a6d3b;
+  padding: 4px 12px;
+  border-radius: 15px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.topic-text {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* 帖子底部 */
+.post-footer {
+  border-top: 1px solid #f0e6d2;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.action-btn:active {
+  color: #d4af37;
+}
+
+.action-icon {
+  font-size: 16px;
+}
+
+.action-text {
+  font-size: 12px;
+}
+
+.post-meta {
+  font-size: 12px;
+  color: #999;
+}
+
+/* 响应式调整 */
+@media (max-width: 375px) {
+  .post-item {
+    padding: 12px;
+  }
+  
+  .image-grid {
+    gap: 6px;
+  }
+}

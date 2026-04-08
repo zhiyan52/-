@@ -1,0 +1,113 @@
+<!-- shufa/shufa/pages/calligraphy/creation.wxml -->
+<view class="page-container">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <view class="header-left">
+      <view class="back-btn" bindtap="goBack">←</view>
+    </view>
+    <view class="header-title">集字坊</view>
+    <view class="header-right">
+      <view class="help-btn" bindtap="showHelp">帮助</view>
+    </view>
+  </view>
+
+  <!-- 文字输入 -->
+  <view class="input-section">
+    <view class="input-title">输入文字</view>
+    <textarea class="input-textarea" placeholder="请输入要集字的内容..." value="{{inputText}}" bindinput="handleInput"></textarea>
+    <view class="input-hint">支持1-500字，可自动排版</view>
+  </view>
+
+  <!-- 书体选择 -->
+  <view class="style-section">
+    <view class="section-title">书体选择</view>
+    <scroll-view scroll-x class="style-scroll">
+      <view class="style-item" wx:for="{{styleOptions}}" wx:key="id"
+            data-style="{{item.id}}" bindtap="selectStyle"
+            class="{{selectedStyle === item.id ? 'style-active' : ''}}">
+        <view class="style-icon">{{item.icon}}</view>
+        <view class="style-name">{{item.name}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 模板选择 -->
+  <view class="template-section">
+    <view class="section-title">创作模板</view>
+    <view class="template-grid">
+      <view class="template-item" wx:for="{{templateOptions}}" wx:key="id"
+            data-template="{{item.id}}" bindtap="selectTemplate"
+            class="{{selectedTemplate === item.id ? 'template-active' : ''}}">
+        <image class="template-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="template-name">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 印章选择 -->
+  <view class="seal-section">
+    <view class="section-title">印章落款</view>
+    <scroll-view scroll-x class="seal-scroll">
+      <view class="seal-item" wx:for="{{sealOptions}}" wx:key="id"
+            data-id="{{item.id}}" bindtap="selectSeal"
+            class="{{selectedSeal === item.id ? 'seal-active' : ''}}">
+        <image class="seal-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="seal-name">{{item.name}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-section">
+    <view class="action-grid">
+      <view class="action-btn primary" bindtap="generateCalligraphy">
+        生成作品
+      </view>
+      <view class="action-btn secondary" bindtap="saveCreation">
+        保存作品
+      </view>
+      <view class="action-btn secondary" bindtap="shareCreation">
+        分享作品
+      </view>
+    </view>
+  </view>
+
+  <!-- 预览弹窗 -->
+  <view class="preview-modal" wx:if="{{showPreview}}">
+    <view class="preview-content">
+      <view class="preview-header">
+        <view class="preview-title">作品预览</view>
+        <view class="preview-close" bindtap="closePreview">×</view>
+      </view>
+      <image class="preview-image" src="{{previewImage}}" mode="aspectFit"></image>
+      <view class="preview-actions">
+        <view class="preview-btn" bindtap="saveCreation">保存</view>
+        <view class="preview-btn" bindtap="shareCreation">分享</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部Tab -->
+  <view class="tab-bar">
+    <view class="tab-item">
+      <text class="tab-icon">🏠</text>
+      <text class="tab-text">首页</text>
+    </view>
+    <view class="tab-item">
+      <text class="tab-icon">🔍</text>
+      <text class="tab-text">发现</text>
+    </view>
+    <view class="tab-item tab-create tab-active">
+      <text class="tab-icon">+</text>
+      <text class="tab-text">创作</text>
+    </view>
+    <view class="tab-item">
+      <text class="tab-icon">📚</text>
+      <text class="tab-text">雅集</text>
+    </view>
+    <view class="tab-item">
+      <text class="tab-icon">👤</text>
+      <text class="tab-text">我的</text>
+    </view>
+  </view>
+</view>

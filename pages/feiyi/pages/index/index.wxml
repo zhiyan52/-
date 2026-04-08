@@ -1,2 +1,15 @@
 <!--pages/feiyi/pages/index/index.wxml-->
-<text>pages/feiyi/pages/index/index.wxml</text>
+<view class="container">
+  <view class="header">
+    <text class="title">非遗文化</text>
+  </view>
+  <view class="content">
+    <text class="welcome">欢迎来到非遗文化页面</text>
+    <view class="button-container">
+      <view class="nav-button" bindtap="goToGujian">
+        <text class="button-icon">🏛️</text>
+        <text class="button-text">前往古建雅韵</text>
+      </view>
+    </view>
+  </view>
+</view>

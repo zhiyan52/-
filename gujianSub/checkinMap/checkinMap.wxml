@@ -1,0 +1,93 @@
+<!-- gujianSub/checkinMap/checkinMap.wxml -->
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="top-nav">
+    <view class="nav-left" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="nav-title">打卡地图</view>
+    <view class="nav-right">
+      <text class="list-icon" bindtap="toggleList">📋</text>
+      <text class="filter-icon" bindtap="openFilter">⚙️</text>
+    </view>
+  </view>
+
+  <!-- 地图区域 -->
+  <view class="map-container">
+    <!-- 这里可以使用地图组件 -->
+    <view class="map-placeholder">
+      <text class="map-text">地图加载中...</text>
+      
+      <!-- 模拟标记点 -->
+      <view class="marker checked" style="top: 30%; left: 50%;">
+        <text class="marker-icon">🏛️</text>
+        <text class="marker-label">故宫</text>
+      </view>
+      <view class="marker unchecked" style="top: 45%; left: 30%;">
+        <text class="marker-icon">🌳</text>
+        <text class="marker-label">颐和园</text>
+      </view>
+      <view class="marker recommended" style="top: 60%; left: 65%;">
+        <text class="marker-icon">🕌</text>
+        <text class="marker-label">天坛</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 标记点图例 -->
+  <view class="legend">
+    <view class="legend-item">
+      <view class="legend-marker checked"></view>
+      <text class="legend-text">已打卡</text>
+    </view>
+    <view class="legend-item">
+      <view class="legend-marker unchecked"></view>
+      <text class="legend-text">未打卡</text>
+    </view>
+    <view class="legend-item">
+      <view class="legend-marker recommended"></view>
+      <text class="legend-text">推荐</text>
+    </view>
+  </view>
+
+  <!-- 选中标记点信息 -->
+  <view class="marker-info" wx:if="{{selectedMarker}}">
+    <text class="info-name">{{selectedMarker.name}}</text>
+    <text class="info-address">{{selectedMarker.address}}</text>
+    <text class="info-distance">{{selectedMarker.distance}}</text>
+    <view class="info-actions">
+      <view class="action-btn checkin" bindtap="checkin">
+        <text class="action-icon">📷</text>
+        <text class="action-text">打卡</text>
+      </view>
+      <view class="action-btn navigate" bindtap="navigate">
+        <text class="action-icon">🧭</text>
+        <text class="action-text">导航</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 列表视图 -->
+  <view class="list-view" wx:if="{{showList}}">
+    <view class="list-header">
+      <text class="list-title">附近古建筑</text>
+      <text class="close-icon" bindtap="toggleList">✕</text>
+    </view>
+    <view class="list-content">
+      <block wx:for="{{markers}}" wx:key="id">
+        <view class="list-item">
+          <view class="item-status {{item.status}}"></view>
+          <view class="item-info">
+            <text class="item-name">{{item.name}}</text>
+            <text class="item-address">{{item.address}}</text>
+            <text class="item-distance">{{item.distance}}</text>
+          </view>
+          <view class="item-actions">
+            <view class="item-btn" bindtap="checkin">打卡</view>
+            <view class="item-btn" bindtap="navigate">导航</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

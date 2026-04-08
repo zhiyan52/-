@@ -1,4 +1,4 @@
- // index.js
+// index.js
 Page({
   data: {
     modules: [
@@ -30,7 +30,7 @@ Page({
         id: 5,
         title: "书画雅集",
         image: "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shouye/shuhua(1).png",
-        url: "/shuhua/shuhua/shuhua"
+        url: "/shufa/shufa/shufa"
       }
     ],
     knowledgeContent: "今日小知识：中国古建筑中的斗拱，不仅是承重结构，更是等级与美学的象征。"
@@ -45,20 +45,20 @@ Page({
         traceUser: true
       });
     }
-  
+
     // 先加载云图片链接
     this.loadCloudImages().then(() => {
       // 图片链接加载完成后，再加载知识内容
       this.loadDailyKnowledge();
     });
   },
-  
+
   // 新增：加载云存储图片的临时链接
   loadCloudImages() {
     const { modules } = this.data;
     // 提取所有云文件ID
     const fileIDs = modules.map(item => item.image);
-  
+
     return new Promise((resolve, reject) => {
       wx.cloud.getTempFileURL({
         fileList: fileIDs,
@@ -100,7 +100,7 @@ Page({
   navigateToModule(e) {
     const url = e.currentTarget.dataset.url;
     console.log('点击跳转:', url);
-    
+
     // 使用 wx.navigateTo 跳转到分包页面
     wx.navigateTo({
       url: url,
@@ -154,14 +154,14 @@ Page({
   },
 
   // 底部导航切换
-   switchTab(e) {
+  switchTab(e) {
     const tab = e.currentTarget.dataset.tab;
     if (tab === 'modules') {
       wx.switchTab({ url: '/moudeles/modules/modules' });
     } else if (tab === 'profile') {
       wx.switchTab({ url: '/profile/profile/profile' });
     } else if (tab === 'index') {
-      wx.switchTab({ url: '/pages/index/index' }); 
-    } 
+      wx.switchTab({ url: '/pages/index/index' });
+    }
   }
 });

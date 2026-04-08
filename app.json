@@ -9,6 +9,20 @@
   ],
   "subpackages": [
     {
+      "root": "shufa/shufa",
+      "pages": [
+        "shufa",
+        "pages/calligraphy/main",
+        "pages/calligraphy/copybook",
+        "pages/calligraphy/character",
+        "pages/calligraphy/creation",
+        "pages/calligraphy/social",
+        "pages/calligraphy/collection"
+      ],
+      "name": "shufa",
+      "independent": false
+    },
+    {
       "root": "gujian/gujian",
       "pages": [
         "gujian"
@@ -63,6 +77,10 @@
       "root": "gujianSub",
       "name": "gujianPackage",
       "pages": [
+        "gujianSub",
+        "discover/discover",
+        "search/search",
+        "checkinMap/checkinMap",
         "gongdian/gongdian",
         "gongdian/detail",
         "gongdian/placemap",

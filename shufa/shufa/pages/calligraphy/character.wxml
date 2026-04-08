@@ -1,0 +1,168 @@
+<!-- shufa/shufa/pages/calligraphy/character.wxml -->
+<view class="page-container">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <view class="header-left">
+      <view class="back-btn" bindtap="goBack">←</view>
+    </view>
+    <view class="header-title">单字精临</view>
+    <view class="header-right">
+      <view class="info-btn" bindtap="showInfo">ℹ️</view>
+    </view>
+  </view>
+
+  <!-- 单字信息 -->
+  <view class="character-info">
+    <view class="character-main">
+      <view class="character-display">
+        <view class="character-char">{{character.char}}</view>
+        <view class="character-meta">
+          <text class="character-style">{{character.fontStyle}}</text>
+          <text class="character-author">{{character.author}}</text>
+          <text class="character-copybook">{{character.copybook}}</text>
+        </view>
+      </view>
+      <view class="character-details">
+        <view class="detail-item">
+          <text class="detail-label">读音：</text>
+          <text class="detail-value">{{character.pronunciation}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="detail-label">释义：</text>
+          <text class="detail-value">{{character.meaning}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 笔画顺序 -->
+  <view class="stroke-section">
+    <view class="section-title">笔画顺序</view>
+    <view class="stroke-display">
+      <view class="stroke-canvas">
+        <view class="stroke-grid" class="{{gridType}}">
+          <view class="character-stroke">{{character.char}}</view>
+          <view class="stroke-order" wx:if="{{showStrokeOrder}}">
+            <view class="stroke-line" wx:for="{{character.strokeOrder}}" wx:key="index"
+                  class="{{index < currentStroke ? 'stroke-active' : ''}}">
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="stroke-controls">
+        <view class="control-btn" bindtap="startStrokeOrder">
+          <text class="control-icon">▶️</text>
+          <text class="control-text">演示笔顺</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 辅助线选择 -->
+  <view class="grid-section">
+    <view class="section-title">辅助线</view>
+    <scroll-view scroll-x class="grid-scroll">
+      <view class="grid-item" data-grid="mizi" bindtap="toggleGrid"
+            class="{{gridType === 'mizi' ? 'grid-active' : ''}}">
+        <text class="grid-name">米字格</text>
+      </view>
+      <view class="grid-item" data-grid="tianzi" bindtap="toggleGrid"
+            class="{{gridType === 'tianzi' ? 'grid-active' : ''}}">
+        <text class="grid-name">田字格</text>
+      </view>
+      <view class="grid-item" data-grid="jiugong" bindtap="toggleGrid"
+            class="{{gridType === 'jiugong' ? 'grid-active' : ''}}">
+        <text class="grid-name">九宫格</text>
+      </view>
+      <view class="grid-item" data-grid="huigong" bindtap="toggleGrid"
+            class="{{gridType === 'huigong' ? 'grid-active' : ''}}">
+        <text class="grid-name">回宫格</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 临摹区域 -->
+  <view class="practice-section">
+    <view class="section-title">临摹练习</view>
+    <view class="practice-canvas" bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd">
+      <view class="practice-grid" class="{{gridType}}">
+        <!-- 书写区域 -->
+        <view class="drawing-area">
+          <view class="drawing-path" wx:if="drawingPath.length > 1">
+            <canvas class="drawing-canvas" style="width: 100%; height: 100%;"></canvas>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="practice-controls">
+      <view class="control-btn" bindtap="clearDrawing">
+        <text class="control-icon">🗑️</text>
+        <text class="control-text">清除</text>
+      </view>
+      <view class="control-btn" bindtap="startEvaluation">
+        <text class="control-icon">AI</text>
+        <text class="control-text">智能评测</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 字符导航 -->
+  <view class="navigation-section">
+    <view class="nav-btn" bindtap="previousCharacter">
+      <text class="nav-icon">←</text>
+      <text class="nav-text">上一字</text>
+    </view>
+    <view class="nav-btn" bindtap="nextCharacter">
+      <text class="nav-text">下一字</text>
+      <text class="nav-icon">→</text>
+    </view>
+  </view>
+
+  <!-- 评测结果弹窗 -->
+  <view class="evaluation-modal" wx:if="{{showEvaluation}}">
+    <view class="evaluation-content">
+      <view class="evaluation-header">
+        <view class="evaluation-title">评测结果</view>
+        <view class="evaluation-close" bindtap="closeEvaluation">×</view>
+      </view>
+      <view class="evaluation-score">
+        <text class="score-number">{{evaluationResult.score}}</text>
+        <text class="score-label">分</text>
+      </view>
+      <view class="evaluation-suggestions">
+        <view class="suggestion-title">改进建议：</view>
+        <view class="suggestion-item" wx:for="{{evaluationResult.suggestions}}" wx:key="index">
+          • {{item}}
+        </view>
+      </view>
+      <view class="evaluation-actions">
+        <view class="eval-btn" bindtap="closeEvaluation">确定</view>
+        <view class="eval-btn" bindtap="clearDrawing">重新书写</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部Tab -->
+  <view class="tab-bar">
+    <view class="tab-item">
+      <text class="tab-icon">🏠</text>
+      <text class="tab-text">首页</text>
+    </view>
+    <view class="tab-item">
+      <text class="tab-icon">🔍</text>
+      <text class="tab-text">发现</text>
+    </view>
+    <view class="tab-item tab-create">
+      <text class="tab-icon">+</text>
+      <text class="tab-text">创作</text>
+    </view>
+    <view class="tab-item tab-active">
+      <text class="tab-icon">📚</text>
+      <text class="tab-text">雅集</text>
+    </view>
+    <view class="tab-item">
+      <text class="tab-icon">👤</text>
+      <text class="tab-text">我的</text>
+    </view>
+  </view>
+</view>

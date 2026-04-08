@@ -1,4 +1,4 @@
- // mingsu/mingsu/mingsu.js
+// mingsu/mingsu/mingsu.js
 Page({
 
   /**
@@ -8,19 +8,19 @@ Page({
     bannerList: [
       {
         id: 1,
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=traditional%20chinese%20folk%20food%20festival%20banner%20with%20traditional%20patterns&image_size=landscape_16_9',
+        imageUrl: '/images/blank.png',
         title: '民俗美食文化节',
         subtitle: '探索中华传统饮食文化'
       },
       {
         id: 2,
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20seasonal%20food%20solar%20terms&image_size=landscape_16_9',
+        imageUrl: '/images/blank.png',
         title: '二十四节气食俗',
         subtitle: '不时不食，顺时而食'
       },
       {
         id: 3,
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20intangible%20cultural%20heritage%20food%20craftsmanship&image_size=landscape_16_9',
+        imageUrl: '/images/blank.png',
         title: '非遗美食技艺',
         subtitle: '传承千年的匠心工艺'
       }
@@ -30,13 +30,13 @@ Page({
         id: 1,
         title: '清明青团',
         desc: '清明节传统食品，象征着对祖先的缅怀',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20qingming%20festival%20green%20rice%20cake%20traditional%20food&image_size=square'
+        imageUrl: '/images/blank.png'
       },
       {
         id: 2,
         title: '立夏蛋',
         desc: '立夏吃蛋，祈求夏日平安健康',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20lixia%20solar%20term%20eggs%20traditional%20food&image_size=square'
+        imageUrl: '/images/blank.png'
       }
     ],
     waterfallList: [
@@ -61,7 +61,7 @@ Page({
       {
         id: 4,
         title: '苏州糕点',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=suzhou%20traditional%20pastries%20chinese%20food&image_size=square',
+        imageUrl: '/images/blank.png',
         tags: ['传统糕饼', '江苏']
       }
     ]
@@ -87,7 +87,11 @@ Page({
    */
   goToSearch() {
     wx.navigateTo({
-      url: '/mingsu/mingsu/pages/search/search'
+      url: '/mingsu/mingsu/pages/search/search',
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({ title: '页面加载失败', icon: 'error' });
+      }
     });
   },
 
@@ -96,7 +100,11 @@ Page({
    */
   goToProfile() {
     wx.navigateTo({
-      url: '/mingsu/mingsu/pages/profile/profile'
+      url: '/mingsu/mingsu/pages/profile/profile',
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({ title: '页面加载失败', icon: 'error' });
+      }
     });
   },
 
@@ -123,7 +131,11 @@ Page({
         url = '/mingsu/mingsu/pages/categories/categories';
     }
     wx.navigateTo({
-      url: url
+      url: url,
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({ title: '页面加载失败', icon: 'error' });
+      }
     });
   },
 
@@ -132,7 +144,11 @@ Page({
    */
   goToCategoryList() {
     wx.navigateTo({
-      url: '/mingsu/mingsu/pages/categories/categories'
+      url: '/mingsu/mingsu/pages/categories/categories',
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({ title: '页面加载失败', icon: 'error' });
+      }
     });
   },
 
@@ -142,7 +158,11 @@ Page({
   goToDetail(e) {
     const id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: `/mingsu/mingsu/pages/detail/detail?id=${id}`
+      url: `/mingsu/mingsu/pages/detail/detail?id=${id}`,
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({ title: '页面加载失败', icon: 'error' });
+      }
     });
   },
 
@@ -151,7 +171,11 @@ Page({
    */
   goToCheckin() {
     wx.navigateTo({
-      url: '/mingsu/mingsu/pages/checkin/checkin'
+      url: '/mingsu/mingsu/pages/checkin/checkin',
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({ title: '页面加载失败', icon: 'error' });
+      }
     });
   },
 
@@ -160,7 +184,11 @@ Page({
    */
   goToClassroom() {
     wx.navigateTo({
-      url: '/mingsu/mingsu/pages/encyclopedia/encyclopedia'
+      url: '/mingsu/mingsu/pages/encyclopedia/encyclopedia',
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({ title: '页面加载失败', icon: 'error' });
+      }
     });
   },
 
@@ -180,7 +208,7 @@ Page({
     return {
       title: '民俗百味 | 探索中华传统饮食文化',
       path: '/mingsu/mingsu/mingsu',
-      imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20food%20culture%20banner&image_size=landscape_16_9'
+      imageUrl: '/images/blank.png'
     };
   },
 
@@ -190,7 +218,7 @@ Page({
   onShareTimeline() {
     return {
       title: '民俗百味 | 探索中华传统饮食文化的魅力',
-      imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20food%20culture%20banner&image_size=landscape_16_9'
+      imageUrl: '/images/blank.png'
     };
   }
 })

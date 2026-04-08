@@ -1,0 +1,130 @@
+<!-- shufa/shufa/shufa.wxml -->
+<view class="page-container">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <view class="header-left">
+      <view class="back-btn" bindtap="goBack">←</view>
+    </view>
+    <view class="header-title">书法雅集</view>
+    <view class="header-right">
+      <view class="message-btn" bindtap="goToMessage">消息</view>
+      <view class="my-btn" bindtap="goToMyPage">我的</view>
+    </view>
+  </view>
+
+  <!-- 轮播Banner -->
+  <view class="banner-section">
+    <swiper class="banner-swiper" indicator-dots circular autoplay interval="3000">
+      <swiper-item wx:for="{{bannerList}}" wx:key="id">
+        <navigator url="{{item.url}}" hover-class="none">
+          <image class="banner-image" src="{{item.image}}" mode="aspectFill"></image>
+          <view class="banner-title">{{item.title}}</view>
+        </navigator>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 功能入口 -->
+  <view class="function-section">
+    <view class="function-grid">
+      <view class="function-item" bindtap="goToCopybookPage">
+        <view class="function-icon">临帖阁</view>
+        <view class="function-text">学习</view>
+      </view>
+      <view class="function-item" bindtap="goToCreationPage">
+        <view class="function-icon">集字坊</view>
+        <view class="function-text">创作</view>
+      </view>
+      <view class="function-item" bindtap="goToSocialPage">
+        <view class="function-icon">雅集社</view>
+        <view class="function-text">社交</view>
+      </view>
+      <view class="function-item" bindtap="goToCollectionPage">
+        <view class="function-icon">墨宝阁</view>
+        <view class="function-text">收藏</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 最近临帖 -->
+  <view class="section">
+    <view class="section-title">最近临帖</view>
+    <view class="recent-copybooks">
+      <view class="copybook-item" wx:for="{{recentCopybooks}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+        <image class="copybook-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="copybook-info">
+          <view class="copybook-title">{{item.title}}</view>
+          <view class="copybook-author">{{item.author}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 推荐碑帖 -->
+  <view class="section">
+    <view class="section-title">推荐碑帖</view>
+    <view class="recommended-copybooks">
+      <view class="recommended-item" wx:for="{{recommendedCopybooks}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+        <image class="recommended-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="recommended-info">
+          <view class="recommended-title">{{item.title}}</view>
+          <view class="recommended-meta">
+            <text class="recommended-author">{{item.author}}</text>
+            <text class="recommended-style">{{item.style}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 雅集动态 -->
+  <view class="section">
+    <view class="section-title">雅集动态</view>
+    <view class="social-posts">
+      <view class="social-post" wx:for="{{socialPosts}}" wx:key="id">
+        <view class="post-header">
+          <image class="user-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+          <view class="user-info">
+            <view class="user-name">{{item.user}}</view>
+          </view>
+        </view>
+        <view class="post-content">{{item.content}}</view>
+        <image class="post-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="post-actions">
+          <view class="action-item">
+            <text class="action-icon">❤️</text>
+            <text class="action-text">{{item.likes}}</text>
+          </view>
+          <view class="action-item">
+            <text class="action-icon">💬</text>
+            <text class="action-text">{{item.comments}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部Tab -->
+  <view class="tab-bar">
+    <view class="tab-item">
+      <text class="tab-icon">🏠</text>
+      <text class="tab-text">首页</text>
+    </view>
+    <view class="tab-item">
+      <text class="tab-icon">🔍</text>
+      <text class="tab-text">发现</text>
+    </view>
+    <view class="tab-item tab-create">
+      <text class="tab-icon">+</text>
+      <text class="tab-text">创作</text>
+    </view>
+    <view class="tab-item tab-active">
+      <text class="tab-icon">📚</text>
+      <text class="tab-text">雅集</text>
+    </view>
+    <view class="tab-item">
+      <text class="tab-icon">👤</text>
+      <text class="tab-text">我的</text>
+    </view>
+  </view>
+</view>

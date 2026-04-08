@@ -1,21 +1,20 @@
-<!--mingsu/mingsu/pages/categories/intangible.wxml-->
-
-<!-- 非遗美食列表 -->
-<view class="intangible-list">
-  <view class="intangible-item" wx:for="{{intangibleFoods}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
-    <image class="intangible-img" src="{{item.imageUrl}}" mode="aspectFill" alt="{{item.name}}"></image>
-    <view class="intangible-info">
-      <view class="intangible-header">
-        <view class="intangible-name">{{item.name}}</view>
-        <view class="intangible-level">{{item.level}}</view>
-      </view>
-      <view class="intangible-region">{{item.region}}</view>
-      <view class="intangible-desc">{{item.desc}}</view>
-      <view class="intangible-master">
-        <view class="master-label">传承人：</view>
-        <view class="master-info">
-          <view class="master-name">{{item.master}}</view>
-          <view class="master-desc">{{item.masterDesc}}</view>
+<!-- mingsu/mingsu/pages/categories/intangible.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="header-back" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="header-title">非遗食韵</view>
+  </view>
+  
+  <view class="content">
+    <view class="intangible-list">
+      <view class="intangible-item" wx:for="{{intangibleList}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+        <image class="intangible-img" src="{{item.imageUrl}}" mode="aspectFill" alt="{{item.title}}"></image>
+        <view class="intangible-info">
+          <view class="intangible-title">{{item.title}}</view>
+          <view class="intangible-desc">{{item.desc}}</view>
+          <view class="intangible-level">{{item.level}}</view>
         </view>
       </view>
     </view>

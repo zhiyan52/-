@@ -1,67 +1,102 @@
 // mingsu/mingsu/pages/categories/categories.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     categories: [
       {
         id: 'seasons',
         title: '时令食俗',
+        desc: '二十四节气传统饮食',
         icon: '🌱',
-        desc: '二十四节气与传统节日的饮食习俗',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20seasonal%20food%20solar%20terms&image_size=square'
+        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20solar%20terms%20seasonal%20food%20culture&image_size=square'
       },
       {
         id: 'regions',
         title: '地域珍味',
+        desc: '各地特色美食文化',
         icon: '🗺️',
-        desc: '中国各地特色民俗小吃与饮食文化',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20regional%20food%20map%20traditional%20cuisine&image_size=square'
+        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20regional%20food%20map%20culture&image_size=square'
       },
       {
         id: 'intangible',
         title: '非遗食韵',
+        desc: '非物质文化遗产美食',
         icon: '🏆',
-        desc: '非物质文化遗产美食与制作技艺',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20intangible%20cultural%20heritage%20food%20craftsmanship&image_size=square'
+        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20intangible%20cultural%20heritage%20food&image_size=square'
       },
       {
         id: 'cakes',
         title: '传统糕饼',
+        desc: '经典糕点制作技艺',
         icon: '🎂',
-        desc: '中式传统糕点与节庆食品文化',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20pastries%20cakes%20festive%20food&image_size=square'
+        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20pastries%20cakes&image_size=square'
+      },
+      {
+        id: 'festivals',
+        title: '节日美食',
+        desc: '传统节日特色饮食',
+        icon: '🎉',
+        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20festival%20food%20culture&image_size=square'
+      },
+      {
+        id: 'crafts',
+        title: '制作技艺',
+        desc: '传统美食制作工艺',
+        icon: '👨‍🍳',
+        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20food%20craftsmanship&image_size=square'
       }
     ]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-    wx.setNavigationBarTitle({
-      title: '分类浏览'
-    });
+  onLoad() {
+    this.loadCategories();
   },
 
-  /**
-   * 跳转到分类详情页
-   */
+  loadCategories() {
+    console.log('加载分类数据');
+  },
+
   goToCategory(e) {
-    const categoryId = e.currentTarget.dataset.id;
+    const id = e.currentTarget.dataset.id;
+    let url = '';
+    
+    switch (id) {
+      case 'seasons':
+        url = '/mingsu/mingsu/pages/categories/seasons';
+        break;
+      case 'regions':
+        url = '/mingsu/mingsu/pages/categories/regions';
+        break;
+      case 'intangible':
+        url = '/mingsu/mingsu/pages/categories/intangible';
+        break;
+      case 'cakes':
+        url = '/mingsu/mingsu/pages/categories/cakes';
+        break;
+      default:
+        wx.showToast({
+          title: '该分类暂未开放',
+          icon: 'error'
+        });
+        return;
+    }
+    
     wx.navigateTo({
-      url: `/mingsu/mingsu/pages/categories/${categoryId}`
+      url: url,
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({
+          title: '页面加载失败',
+          icon: 'error'
+        });
+      }
     });
   },
 
-  /**
-   * 返回首页
-   */
-  goToHome() {
-    wx.navigateBack({
-      delta: 1
-    });
+  onShareAppMessage() {
+    return {
+      title: '民俗百味分类 | 探索中华传统饮食文化',
+      path: '/mingsu/mingsu/pages/categories/categories',
+      imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20food%20categories%20culture&image_size=landscape_16_9'
+    };
   }
-})
+});

@@ -84,5 +84,16 @@ async getAudio(heritageId) {
   } catch (err) {
     console.error('调用云函数失败:', err);
   }
-}
+},
+
+  // 跳转到古建雅韵页面
+  goToGujian() {
+    wx.navigateTo({
+      url: '/gujianSub/gujianSub',
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({ title: '页面加载失败', icon: 'error' });
+      }
+    });
+  }
 })

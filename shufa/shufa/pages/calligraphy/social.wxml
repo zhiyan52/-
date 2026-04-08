@@ -1,0 +1,114 @@
+<!-- shufa/shufa/pages/calligraphy/social.wxml -->
+<view class="page-container">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <view class="header-left">
+      <view class="back-btn" bindtap="goBack">←</view>
+    </view>
+    <view class="header-title">雅集社</view>
+    <view class="header-right">
+      <view class="publish-btn" bindtap="publishPost">发布</view>
+    </view>
+  </view>
+
+  <!-- 每日一题 -->
+  <view class="daily-topic">
+    <view class="topic-header">
+      <view class="topic-icon">📅</view>
+      <view class="topic-title">每日一题</view>
+    </view>
+    <view class="topic-content">
+      <image class="topic-image" src="{{dailyTopic.image}}" mode="aspectFill"></image>
+      <view class="topic-info">
+        <view class="topic-main-title">{{dailyTopic.title}}</view>
+        <view class="topic-description">{{dailyTopic.description}}</view>
+        <view class="topic-stats">
+          <text class="topic-participants">👥 {{dailyTopic.participants}}人参与</text>
+          <text class="topic-deadline">⏰ 截止：{{dailyTopic.deadline}}</text>
+        </view>
+        <view class="topic-action">
+          <view class="join-btn" bindtap="joinDailyTopic">立即参与</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 雅集动态 -->
+  <view class="social-section">
+    <view class="section-title">雅集动态</view>
+    <view class="social-posts">
+      <view class="social-post" wx:for="{{socialPosts}}" wx:key="id">
+        <view class="post-header" bindtap="goToUserProfile" data-user-id="{{item.id}}">
+          <image class="user-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+          <view class="user-info">
+            <view class="user-name">{{item.user}}</view>
+            <view class="post-time">{{item.time}}</view>
+          </view>
+        </view>
+        <view class="post-content">{{item.content}}</view>
+        <image class="post-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="post-actions">
+          <view class="action-item" bindtap="toggleLike" data-id="{{item.id}}">
+            <text class="action-icon">{{item.liked ? '❤️' : '🤍'}}</text>
+            <text class="action-text">{{item.likes}}</text>
+          </view>
+          <view class="action-item" bindtap="showComments" data-id="{{item.id}}">
+            <text class="action-icon">💬</text>
+            <text class="action-text">{{item.comments}}</text>
+          </view>
+          <view class="action-item">
+            <text class="action-icon">🔗</text>
+            <text class="action-text">分享</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 评论弹窗 -->
+  <view class="comments-modal" wx:if="{{showComments}}">
+    <view class="comments-content">
+      <view class="comments-header">
+        <view class="comments-title">评论</view>
+        <view class="comments-close" bindtap="closeComments">×</view>
+      </view>
+      <scroll-view class="comments-list" scroll-y>
+        <view class="comment-item" wx:for="{{comments}}" wx:key="id">
+          <view class="comment-header">
+            <view class="comment-user">{{item.user}}</view>
+            <view class="comment-time">{{item.time}}</view>
+          </view>
+          <view class="comment-content">{{item.content}}</view>
+        </view>
+      </scroll-view>
+      <view class="comments-input">
+        <input class="comment-input" placeholder="写下你的评论..." value="{{commentInput}}" bindinput="handleCommentInput"></input>
+        <view class="comment-submit" bindtap="submitComment">发送</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部Tab -->
+  <view class="tab-bar">
+    <view class="tab-item">
+      <text class="tab-icon">🏠</text>
+      <text class="tab-text">首页</text>
+    </view>
+    <view class="tab-item">
+      <text class="tab-icon">🔍</text>
+      <text class="tab-text">发现</text>
+    </view>
+    <view class="tab-item tab-create">
+      <text class="tab-icon">+</text>
+      <text class="tab-text">创作</text>
+    </view>
+    <view class="tab-item tab-active">
+      <text class="tab-icon">📚</text>
+      <text class="tab-text">雅集</text>
+    </view>
+    <view class="tab-item">
+      <text class="tab-icon">👤</text>
+      <text class="tab-text">我的</text>
+    </view>
+  </view>
+</view>
