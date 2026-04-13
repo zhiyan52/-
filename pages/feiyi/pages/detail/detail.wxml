@@ -1,2 +1,140 @@
 <!--pages/feiyi/pages/detail/detail.wxml-->
-<text>pages/feiyi/pages/detail/detail.wxml</text>
+<view class="detail-container">
+  <!-- 顶部大图 -->
+  <view class="hero-section">
+    <swiper class="image-swiper" indicator-dots="{{images.length > 1}}" autoplay="{{false}}">
+      <swiper-item wx:for="{{images}}" wx:key="index">
+        <image src="{{item}}" mode="aspectFill" class="hero-image"/>
+      </swiper-item>
+    </swiper>
+    <view class="hero-overlay">
+      <text class="hero-title">{{heritage.name}}</text>
+      <view class="hero-meta">
+        <text class="meta-tag grade-{{heritage.meta.grade}}">{{heritage.meta.grade}}</text>
+        <text class="meta-region">{{heritage.meta.region}}</text>
+      </view>
+    </view>
+    <view class="back-btn" bindtap="goBack">
+      <text>←</text>
+    </view>
+  </view>
+
+  <!-- 内容区 -->
+  <scroll-view class="content-scroll" scroll-y="true">
+    <!-- 标签 -->
+    <view class="tags-section" wx:if="{{heritage.display.tags.length > 0}}">
+      <text class="tag" wx:for="{{heritage.display.tags}}" wx:key="index">{{item}}</text>
+    </view>
+
+    <!-- 简介卡片 -->
+    <view class="section-card intro-card">
+      <view class="card-header">
+        <text class="card-icon">📜</text>
+        <text class="card-title">项目简介</text>
+        <text class="word-count">{{heritage.wordCount}}字</text>
+      </view>
+      <text class="intro-text">{{heritage.introduction}}</text>
+      <view class="audio-section" wx:if="{{heritage.audio.hasAudio}}">
+        <view class="audio-player-btn {{isPlaying ? 'playing' : ''}}" bindtap="toggleAudio">
+          <view class="play-icon">
+            <text>{{isPlaying ? '⏸' : '▶'}}</text>
+          </view>
+          <view class="audio-info">
+            <text class="audio-title">{{isPlaying ? '正在播放...' : '聆听非遗'}}</text>
+            <text class="audio-desc">{{heritage.audio.script}}</text>
+          </view>
+          <view class="audio-duration">{{audioProgress}}/{{heritage.audio.duration}}s</view>
+        </view>
+        <progress 
+          percent="{{audioPercent}}" 
+          activeColor="#8B4513"
+          backgroundColor="#e0e0e0"
+          stroke-width="3"
+        />
+      </view>
+    </view>
+
+    <!-- 传承人卡片 -->
+    <view class="section-card inheritor-card" wx:if="{{inheritor}}">
+      <view class="card-header">
+        <text class="card-icon">👤</text>
+        <text class="card-title">非遗传承人</text>
+      </view>
+      <view class="inheritor-content" bindtap="goToInheritor">
+        <image class="inheritor-photo" src="{{inheritor.avatar}}" mode="aspectFill"/>
+        <view class="inheritor-main">
+          <view class="inheritor-header">
+            <text class="inheritor-name">{{inheritor.name}}</text>
+            <text class="inheritor-badge">{{inheritor.level}}</text>
+          </view>
+          <text class="inheritor-title">{{inheritor.title}}</text>
+          <text class="inheritor-brief">{{inheritor.brief}}</text>
+          <view class="inheritor-link">
+            <text>查看传承人详情 →</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 历史渊源 -->
+    <view class="section-card" wx:if="{{heritage.detail.history}}">
+      <view class="card-header">
+        <text class="card-icon">📚</text>
+        <text class="card-title">历史渊源</text>
+      </view>
+      <text class="section-text">{{heritage.detail.history}}</text>
+    </view>
+
+    <!-- 技艺特色 -->
+    <view class="section-card" wx:if="{{heritage.detail.technique}}">
+      <view class="card-header">
+        <text class="card-icon">🔧</text>
+        <text class="card-title">技艺特色</text>
+      </view>
+      <text class="section-text">{{heritage.detail.technique}}</text>
+    </view>
+
+    <!-- 文化价值 -->
+    <view class="section-card" wx:if="{{heritage.detail.value}}">
+      <view class="card-header">
+        <text class="card-icon">💎</text>
+        <text class="card-title">文化价值</text>
+      </view>
+      <text class="section-text">{{heritage.detail.value}}</text>
+    </view>
+
+    <!-- 元信息 -->
+    <view class="meta-section">
+      <view class="meta-row">
+        <text class="meta-label">非遗编号</text>
+        <text class="meta-value">{{heritage.id}}</text>
+      </view>
+      <view class="meta-row">
+        <text class="meta-label">列入时间</text>
+        <text class="meta-value">{{heritage.meta.year}}年 · {{heritage.meta.batch}}</text>
+      </view>
+      <view class="meta-row" wx:if="{{heritage.meta.UNESCO}}">
+        <text class="meta-label">国际认证</text>
+        <text class="meta-value highlight">人类非物质文化遗产（{{heritage.meta.UNESCOYear}}年）</text>
+      </view>
+    </view>
+
+    <!-- 底部间距 -->
+    <view class="bottom-space"></view>
+  </scroll-view>
+
+  <!-- 底部操作栏 -->
+  <view class="action-bar">
+    <view class="action-item" bindtap="toggleFavorite">
+      <text class="action-icon">{{isFavorite ? '★' : '☆'}}</text>
+      <text class="action-text">{{isFavorite ? '已收藏' : '收藏'}}</text>
+    </view>
+    <view class="action-item" bindtap="share">
+      <text class="action-icon">↗</text>
+      <text class="action-text">分享</text>
+    </view>
+    <view class="action-primary" bindtap="showMore">
+      <text>探索更多{{categoryName}}</text>
+    </view>
+  </view>
+</view>

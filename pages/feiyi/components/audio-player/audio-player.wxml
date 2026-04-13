@@ -1,0 +1,48 @@
+<!--components/audio-player/audio-player.wxml-->
+<view class="audio-player {{show ? 'show' : ''}} {{isPlaying ? 'playing' : ''}}" wx:if="{{show}}">
+  <view class="player-content">
+    <!-- 封面缩略图 -->
+    <image class="player-thumb" src="{{heritageImage}}" mode="aspectFill"/>
+    
+    <!-- 信息区 -->
+    <view class="player-info">
+      <text class="player-title">{{heritageName}}</text>
+      <text class="player-subtitle">{{playingText}} / {{duration}}s · {{categoryName}}</text>
+    </view>
+    
+    <!-- 控制按钮 -->
+    <view class="player-controls">
+      <view class="control-btn" bindtap="onPrev" wx:if="{{hasPrev}}">
+        <text class="btn-icon">⏮</text>
+      </view>
+      
+      <view class="control-btn play-btn" bindtap="onPlayPause">
+        <text class="btn-icon">{{isPlaying ? '⏸' : '▶'}}</text>
+      </view>
+      
+      <view class="control-btn" bindtap="onNext" wx:if="{{hasNext}}">
+        <text class="btn-icon">⏭</text>
+      </view>
+      
+      <view class="control-btn close-btn" bindtap="onClose">
+        <text class="btn-icon">✕</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 进度条 -->
+  <view class="progress-wrapper">
+    <progress 
+      class="player-progress"
+      percent="{{progressPercent}}" 
+      activeColor="#fff"
+      backgroundColor="rgba(255,255,255,0.3)"
+      stroke-width="3"
+      active="true"
+      active-mode="forwards"
+    />
+  </view>
+  
+  <!-- 背景模糊 -->
+  <view class="player-bg" style="background-image: url({{heritageImage}})"></view>
+</view>
