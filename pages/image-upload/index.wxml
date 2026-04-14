@@ -1,0 +1,35 @@
+<!--pages/image-upload/index.wxml-->
+<view class="container">
+  <view class="title">图片上传示例</view>
+  
+  <!-- 上传按钮 -->
+  <button 
+    type="primary" 
+    bindtap="chooseImage"
+    loading="{{uploading}}"
+    disabled="{{uploading}}"
+  >
+    {{uploading ? '上传中...' : '选择图片'}}
+  </button>
+  
+  <!-- 图片展示区域 -->
+  <view class="image-list">
+    <block wx:for="{{imageList}}" wx:key="{{index}}">
+      <view class="image-item">
+        <image 
+          src="{{item}}" 
+          mode="aspectFill"
+          bindtap="previewImage"
+          data-src="{{item}}"
+        />
+        <view class="delete-btn" bindtap="deleteImage" data-index="{{index}}">
+          ×
+        </view>
+      </view>
+    </block>
+  </view>
+  
+  <view class="tip">
+    <text>提示：图片会上传到云存储，并返回云文件ID</text>
+  </view>
+</view>

@@ -42,9 +42,12 @@
       <view class="stroke-canvas">
         <view class="stroke-grid" class="{{gridType}}">
           <view class="character-stroke">{{character.char}}</view>
-          <view class="stroke-order" wx:if="{{showStrokeOrder}}">
-            <view class="stroke-line" wx:for="{{character.strokeOrder}}" wx:key="index"
-                  class="{{index < currentStroke ? 'stroke-active' : ''}}">
+          <view class="stroke-lines">
+            <view class="stroke-line" wx:for="{{strokeOrder}}" wx:key="index"
+                  style="width: {{item.length}}rpx;
+                         left: {{item.x1 * 1.5}}rpx; top: {{item.y1 * 1.5}}rpx;
+                         transform: rotate({{item.rotation}}deg);
+                         opacity: {{index < currentStroke ? 1 : 0}};">
             </view>
           </view>
         </view>
@@ -54,6 +57,13 @@
           <text class="control-icon">▶️</text>
           <text class="control-text">演示笔顺</text>
         </view>
+        <view class="control-btn" bindtap="resetStroke">
+          <text class="control-icon">🔄</text>
+          <text class="control-text">重置</text>
+        </view>
+      </view>
+      <view class="stroke-info">
+        <text class="stroke-count">当前笔画：{{currentStroke}} / {{character.strokeOrder.length}}</text>
       </view>
     </view>
   </view>
@@ -88,9 +98,7 @@
       <view class="practice-grid" class="{{gridType}}">
         <!-- 书写区域 -->
         <view class="drawing-area">
-          <view class="drawing-path" wx:if="drawingPath.length > 1">
-            <canvas class="drawing-canvas" style="width: 100%; height: 100%;"></canvas>
-          </view>
+          <canvas class="drawing-canvas" canvas-id="drawingCanvas" style="width: 100%; height: 100%;"></canvas>
         </view>
       </view>
     </view>

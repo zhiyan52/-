@@ -1,2 +1,71 @@
 <!--shufa/shufa/pages/calligraphy/main.wxml-->
-<text>shufa/shufa/pages/calligraphy/main.wxml</text>
+<view class="main-page">
+  <view class="banner">
+    <view class="banner-content">
+      <text class="banner-title">书画雅集</text>
+      <text class="banner-subtitle">传统书画轻量化欣赏</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">书画分类</view>
+    <view class="category-grid">
+      <view class="category-card calligraphy" bindtap="navigateToCalligraphy">
+        <view class="category-icon">✍️</view>
+        <view class="category-info">
+          <text class="category-name">书法</text>
+          <text class="category-desc">篆隶楷行草</text>
+        </view>
+      </view>
+      <view class="category-card painting" bindtap="navigateToPainting">
+        <view class="category-icon">🖼️</view>
+        <view class="category-info">
+          <text class="category-name">国画</text>
+          <text class="category-desc">山水·花鸟·人物</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">名家名作</view>
+    <view class="featured-list">
+      <view class="featured-item" bindtap="navigateToPainting">
+        <image src="https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/fuchun.jpg?sign=xxx&t=xxx" mode="aspectFill" class="featured-image"></image>
+        <view class="featured-overlay">
+          <text class="featured-title">富春山居图</text>
+          <text class="featured-author">黄公望 · 元代</text>
+        </view>
+      </view>
+      <view class="featured-item" bindtap="navigateToPainting">
+        <image src="https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/qianli.jpg?sign=xxx&t=xxx" mode="aspectFill" class="featured-image"></image>
+        <view class="featured-overlay">
+          <text class="featured-title">千里江山图</text>
+          <text class="featured-author">王希孟 · 北宋</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">快速入口</view>
+    <view class="quick-links">
+      <view class="quick-link" bindtap="navigateToCharacter">
+        <view class="quick-icon">📝</view>
+        <text class="quick-name">单字精临</text>
+      </view>
+      <view class="quick-link" bindtap="navigateToCollection">
+        <view class="quick-icon">📚</view>
+        <text class="quick-name">作品集</text>
+      </view>
+      <view class="quick-link" bindtap="navigateToCopybook">
+        <view class="quick-icon">📖</view>
+        <text class="quick-name">字帖</text>
+      </view>
+      <view class="quick-link" bindtap="navigateToCreation">
+        <view class="quick-icon">🎨</view>
+        <text class="quick-name">创作</text>
+      </view>
+    </view>
+  </view>
+</view>

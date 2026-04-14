@@ -5,19 +5,22 @@
     "moudules/modules/modules",
     "profile/profile/profile",
     "pages/map/map",
-    "cloudfunctions/getAudio"
+    "cloudfunctions/getAudio",
+    "pages/image-upload/index"
   ],
   "subpackages": [
     {
       "root": "shufa/shufa",
       "pages": [
         "shufa",
+        "pages/calligraphy/welcome",
         "pages/calligraphy/main",
         "pages/calligraphy/copybook",
         "pages/calligraphy/character",
         "pages/calligraphy/creation",
         "pages/calligraphy/social",
-        "pages/calligraphy/collection"
+        "pages/calligraphy/collection",
+        "pages/calligraphy/painting"
       ],
       "name": "shufa",
       "independent": false
@@ -48,8 +51,7 @@
       "pages": [
         "pages/index/index",
         "pages/detail/detail",
-        "pages/inheritor/inheritor",
-        "data/categories.js"
+        "pages/inheritor/inheritor"
       ],
       "name": "feiyi",
       "independent": false
@@ -122,8 +124,8 @@
           "network": "all",
           "packages": [
             "feiyi",
-            "dianji",
-            "minsu"
+            "diancang",
+            "mingsu"
           ]
         }
       },

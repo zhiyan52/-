@@ -1,9 +1,8 @@
- // pages/diancang/diancang.js
 Page({
   data: {
     currentCategory: 'all',
     todayDate: '',
-    
+
     // 轮播推荐数据 - 使用在线图片
     featuredList: [
       {
@@ -120,35 +119,30 @@ Page({
   },
 
   onLoad: function (options) {
-    // 初始化页面
     this.setTodayDate();
   },
 
-  // 设置今日日期
   setTodayDate: function () {
     const date = new Date();
     const year = date.getFullYear();
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const day = date.getDate().toString().padStart(2, '0');
     const todayDate = `${year}年${month}月${day}日`;
-    
+
     this.setData({
       todayDate: todayDate
     });
   },
 
-  // 切换分类
   switchCategory: function (e) {
     const category = e.currentTarget.dataset.category;
     this.setData({
       currentCategory: category
     });
-    
-    // 这里可以添加根据分类筛选数据的逻辑
+
     console.log('切换到分类:', category);
   },
 
-  // 跳转到详情页
   goToDetail: function (e) {
     const id = e.currentTarget.dataset.id;
     wx.navigateTo({
@@ -156,14 +150,12 @@ Page({
     });
   },
 
-  // 查看更多
   viewMore: function () {
     wx.navigateTo({
       url: '/diancang/diancang-list'
     });
   },
 
-  // 打开AR功能
   openAR: function () {
     wx.showToast({
       title: 'AR识典功能开发中',
@@ -171,14 +163,12 @@ Page({
     });
   },
 
-  // 开始典籍问答
   startQuiz: function () {
     wx.navigateTo({
       url: '/diancang/diancang-quiz'
     });
   },
 
-  // 查看藏馆地图
   viewMap: function () {
     wx.navigateTo({
       url: '/diancang/diancang-map'

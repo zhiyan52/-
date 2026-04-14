@@ -1,0 +1,28 @@
+<!--components/category-nav/category-nav.wxml-->
+<scroll-view 
+  class="category-scroll" 
+  scroll-x="true" 
+  scroll-with-animation="true"
+  scroll-into-view="cat-{{activeId}}"
+  enhanced="true"
+  show-scrollbar="false"
+>
+  <view class="category-list">
+    <view 
+      wx:for="{{categories}}" 
+      wx:key="id"
+      id="cat-{{item.id}}"
+      class="category-item {{activeId === item.id ? 'active' : ''}}"
+      style="{{activeId === item.id ? '--active-color: ' + item.color : ''}}"
+      bindtap="onCategoryTap"
+      data-id="{{item.id}}"
+    >
+      <view class="icon-wrapper">
+        <text class="category-icon">{{item.icon}}</text>
+        <view class="active-indicator" wx:if="{{activeId === item.id}}"></view>
+      </view>
+      <text class="category-name">{{item.name}}</text>
+      <text class="category-desc" wx:if="{{activeId === item.id}}">{{item.description}}</text>
+    </view>
+  </view>
+</scroll-view>

@@ -12,8 +12,17 @@
       wx:for="{{categoryList}}" 
       wx:key="id"
       bindtap="onCategoryTap"
-      data-id="{{item.id}}">
-      <image src="{{item.img}}" class="category-img" mode="aspectFill"></image>
+      data-id="{{item.id}}"
+      style="background-color: {{item.bgColor}}">
+      <image src="{{item.img}}" class="category-bg-img" mode="aspectFill"></image>
+      <view class="category-overlay">
+        <view class="category-icon">
+          <text wx:if="{{item.id === 1}}">✏️</text>
+          <text wx:else>🖼️</text>
+        </view>
+        <view class="category-title">{{item.name}}</view>
+        <view class="category-desc">{{item.desc}}</view>
+      </view>
     </view>
   </view>
 </view>

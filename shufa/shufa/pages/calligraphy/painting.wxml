@@ -1,0 +1,63 @@
+<!--shufa/shufa/pages/calligraphy/painting.wxml-->
+<view class="painting-page">
+  <view class="header">
+    <view class="title">国画欣赏</view>
+    <view class="subtitle">传统国画之美</view>
+  </view>
+
+  <view class="category-tabs">
+    <view 
+      class="tab-item {{activeCategory === item.id ? 'active' : ''}}" 
+      wx:for="{{categories}}" 
+      wx:key="id"
+      bindtap="switchCategory"
+      data-id="{{item.id}}">
+      <text class="tab-icon">{{item.icon}}</text>
+      <text class="tab-name">{{item.name}}</text>
+    </view>
+  </view>
+
+  <view class="painting-list">
+    <view 
+      class="painting-card" 
+      wx:for="{{currentList}}" 
+      wx:key="id"
+      bindtap="showPaintingDetail"
+      data-painting="{{item}}">
+      <view class="painting-image">
+        <image src="{{item.image}}" mode="aspectFill" class="painting-img"></image>
+      </view>
+      <view class="painting-info">
+        <view class="painting-title">{{item.title}}</view>
+        <view class="painting-author">{{item.author}} · {{item.dynasty}}</view>
+        <view class="painting-desc">{{item.description}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="detail-modal" wx:if="{{showDetail}}" bindtap="closeDetail">
+    <view class="detail-content" catchtap="closeDetail">
+      <view class="detail-header">
+        <text class="detail-title">{{currentPainting.title}}</text>
+        <view class="close-btn" bindtap="closeDetail">✕</view>
+      </view>
+      <view class="detail-image">
+        <image src="{{currentPainting.image}}" mode="aspectFit" class="detail-img"></image>
+      </view>
+      <view class="detail-info">
+        <view class="detail-author">
+          <text class="label">作者：</text>
+          <text class="value">{{currentPainting.author}}</text>
+        </view>
+        <view class="detail-dynasty">
+          <text class="label">朝代：</text>
+          <text class="value">{{currentPainting.dynasty}}</text>
+        </view>
+        <view class="detail-description">
+          <text class="label">作品简介：</text>
+          <text class="value">{{currentPainting.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

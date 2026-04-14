@@ -30,7 +30,7 @@ Page({
         id: 5,
         title: "书画雅集",
         image: "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shouye/shuhua(1).png",
-        url: "/shufa/shufa/shufa"
+        url: "/shufa/shufa/pages/calligraphy/welcome"
       }
     ],
     knowledgeContent: "今日小知识：中国古建筑中的斗拱，不仅是承重结构，更是等级与美学的象征。"
@@ -46,28 +46,83 @@ Page({
       });
     }
 
-    // 先加载云图片链接
-    this.loadCloudImages().then(() => {
+    // 获取用户openid
+    this.getUserOpenId().then(() => {
+      // 先加载云图片链接
+      return this.loadCloudImages();
+    }).then(() => {
       // 图片链接加载完成后，再加载知识内容
       this.loadDailyKnowledge();
+    });
+  },
+
+  // 获取用户openid
+  getUserOpenId() {
+    return new Promise((resolve, reject) => {
+      // 检查全局是否已有openid
+      if (getApp().globalData.openid) {
+        resolve();
+        return;
+      }
+
+      // 尝试调用云函数获取openid
+      wx.cloud.callFunction({
+        name: 'login',
+        data: {},
+        success: (res) => {
+          getApp().globalData.openid = res.result.openid;
+          resolve();
+        },
+        fail: (err) => {
+          console.error('获取openid失败：', err);
+          // 即使获取失败，也继续执行，使用临时openid
+          getApp().globalData.openid = 'temp_openid_' + Date.now();
+          resolve();
+        }
+      });
     });
   },
 
   // 新增：加载云存储图片的临时链接
   loadCloudImages() {
     const { modules } = this.data;
-    // 提取所有云文件ID
-    const fileIDs = modules.map(item => item.image);
+    // 提取所有云文件ID，过滤掉非云存储路径
+    const fileIDs = modules.map(item => {
+      // 检查是否是云存储路径
+      if (item.image && item.image.startsWith('cloud://')) {
+        // 提取fileID部分（去掉cloud://前缀）
+        return item.image;
+      }
+      return item.image;
+    });
 
     return new Promise((resolve, reject) => {
+      // 过滤出有效的云存储路径
+      const validFileIDs = fileIDs.filter(id => id && id.startsWith('cloud://'));
+      
+      if (validFileIDs.length === 0) {
+        // 没有需要处理的云存储图片，直接 resolve
+        resolve();
+        return;
+      }
+
       wx.cloud.getTempFileURL({
-        fileList: fileIDs,
+        fileList: validFileIDs,
         success: (res) => {
+          // 创建一个映射，将原始fileID映射到临时链接
+          const tempUrlMap = {};
+          validFileIDs.forEach((fileID, index) => {
+            if (res.fileList[index] && res.fileList[index].tempFileURL) {
+              tempUrlMap[fileID] = res.fileList[index].tempFileURL;
+            }
+          });
+
           // 将返回的临时链接更新到modules数组中
-          const updatedModules = modules.map((item, index) => ({
+          const updatedModules = modules.map(item => ({
             ...item,
-            image: res.fileList[index].tempFileURL
+            image: tempUrlMap[item.image] || item.image
           }));
+          
           this.setData({
             modules: updatedModules
           });
@@ -75,7 +130,8 @@ Page({
         },
         fail: (err) => {
           console.error("获取云文件链接失败：", err);
-          reject(err);
+          // 即使获取失败，也继续执行，使用原始图片路径
+          resolve();
         }
       });
     });
@@ -157,7 +213,7 @@ Page({
   switchTab(e) {
     const tab = e.currentTarget.dataset.tab;
     if (tab === 'modules') {
-      wx.switchTab({ url: '/moudeles/modules/modules' });
+      wx.switchTab({ url: '/moudules/modules/modules' });
     } else if (tab === 'profile') {
       wx.switchTab({ url: '/profile/profile/profile' });
     } else if (tab === 'index') {

@@ -5,12 +5,16 @@
       {
         id: 1,
         name: '书法',
-        img: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/9853c0f7ee3ccbe0a2111ce6fe973d0b.jpg'
+        desc: '篆隶楷行草，临帖创作',
+        img: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/8eea8030d597d75ca17091f7ace26f5d.jpg?sign=b12162b9e3deb072134516573f116905&t=1776175850',
+        bgColor: '#2d3748'
       },
       {
         id: 2,
         name: '国画',
-        img: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/68a9c2fb1ec2f3615e07a6d69dabaf4c.jpg'
+        desc: '山水花鸟人物，名家名作',
+        img: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/9b8d237c51e3b922d16dc3eae5723004.jpg?sign=e74ddbadb70750b501ac085fe694804b&t=1776176161',
+        bgColor: '#8B4513'
       },
     ]
   },

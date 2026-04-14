@@ -1,69 +1,54 @@
 // pages/feiyi/pages/index/index.js
+const DataLoader = require('../../utils/data-loader');
+const AudioManager = require('../../utils/audio-manager');
+const { HeritageDataUtils, INHERITORS } = require('../../data/index.js');
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    categories: [],
+    currentCategory: 'all',
+    
+    searchKeyword: '',
+    isSearching: false,
+    
+    heritageList: [],
+    page: 1,
+    pageSize: 10,
+    hasMore: true,
+    loading: false,
+    sortBy: 'sortOrder',
+    listTitle: '全部非遗',
+    
+    hotList: [],
+    
+    stats: {
+      total: 0,
+      withAudio: 0,
+      inheritors: 0
+    },
+    
+    currentPlayingId: '',
+    showAudioPlayer: false,
+    audioPlaylist: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onLoad() {
+    this._initPage();
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow() {
-
+    this._syncAudioStatus();
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom() {
-
+    if (this.data.hasMore && !this.data.loading) {
+      this._loadMore();
+    }
   },
 
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage() {
-
   },
-  // 获取音频
+
   async getAudio(heritageId) {
     try {
       const res = await wx.cloud.callFunction({
@@ -75,7 +60,6 @@ Page({
       });
 
       if (res.result.code === 0) {
-        // 播放音频
         this.audioManager.play(res.result.data.audioUrl);
       } else {
         console.error('获取音频失败:', res.result.message);
@@ -86,14 +70,240 @@ Page({
     }
   },
 
-  // 跳转到古建雅韵页面
-  goToGujian() {
-    wx.navigateTo({
-      url: '/gujianSub/gujianSub',
-      fail: (err) => {
-        console.error('跳转失败:', err);
-        wx.showToast({ title: '页面加载失败', icon: 'error' });
-      }
+  onPullDownRefresh() {
+    this._refreshData().finally(() => {
+      wx.stopPullDownRefresh();
     });
+  },
+
+  onHide() {
+  },
+
+  onUnload() {
+    if (!this.data.showAudioPlayer) {
+      AudioManager.stop();
+    }
+  },
+
+  async _initPage() {
+    wx.showLoading({ title: '加载中' });
+    
+    try {
+      const [categories, stats, hotList] = await Promise.all([
+        DataLoader.getCategories(),
+        DataLoader.getStatistics(),
+        DataLoader.getRecommendations('hot', 5)
+      ]);
+      
+      const inheritorsCount = Array.isArray(INHERITORS) ? INHERITORS.length : 0;
+      
+      this.setData({
+        categories: categories || [],
+        stats: {
+          ...stats,
+          inheritors: inheritorsCount
+        },
+        hotList: hotList || []
+      });
+      
+      await this._loadList();
+      
+    } catch (err) {
+      console.error('初始化失败:', err);
+      wx.showToast({ title: '加载失败', icon: 'none' });
+    } finally {
+      wx.hideLoading();
+    }
+  },
+
+  async _loadList(reset = false) {
+    if (this.data.loading) return;
+    
+    const page = reset ? 1 : this.data.page;
+    
+    this.setData({ loading: true });
+    
+    try {
+      const result = await DataLoader.getHeritageList({
+        category: this.data.currentCategory,
+        page: page,
+        pageSize: this.data.pageSize,
+        keyword: this.data.searchKeyword,
+        sortBy: this.data.sortBy
+      });
+      
+      const list = result.list || [];
+      const audioItems = list.filter(h => h.audio?.hasAudio).map(h => h.id);
+      
+      this.setData({
+        heritageList: reset ? list : [...this.data.heritageList, ...list],
+        page: page + 1,
+        hasMore: result.hasMore || false,
+        audioPlaylist: reset ? audioItems : [...this.data.audioPlaylist, ...audioItems]
+      });
+      
+      if (page === 1 && audioItems.length > 0) {
+        AudioManager.preload(audioItems.slice(0, 3));
+      }
+      
+    } catch (err) {
+      console.error('加载列表失败:', err);
+      wx.showToast({ title: '加载失败', icon: 'none' });
+    } finally {
+      this.setData({ loading: false });
+    }
+  },
+
+  _loadMore() {
+    this._loadList();
+  },
+
+  async _refreshData() {
+    this.setData({
+      page: 1,
+      hasMore: true,
+      heritageList: []
+    });
+    await this._loadList(true);
+  },
+
+  onCategoryChange(e) {
+    const { id } = e.detail || {};
+    if (!id) return;
+    
+    const { CategoryMap } = require('../../data/index.js');
+    const categoryName = CategoryMap.getName(id) || '其他';
+    
+    this.setData({
+      currentCategory: id,
+      listTitle: categoryName + '非遗',
+      page: 1,
+      hasMore: true,
+      heritageList: [],
+      searchKeyword: '',
+      isSearching: false
+    });
+    
+    this._loadList(true);
+  },
+
+  onSearchInput(e) {
+    this.setData({ searchKeyword: e.detail?.value || '' });
+  },
+
+  onSearchConfirm() {
+    if (!this.data.searchKeyword.trim()) return;
+    
+    this.setData({
+      isSearching: true,
+      listTitle: `搜索：${this.data.searchKeyword}`,
+      page: 1,
+      hasMore: true,
+      heritageList: [],
+      currentCategory: 'all'
+    });
+    
+    this._loadList(true);
+  },
+
+  clearSearch() {
+    this.setData({
+      searchKeyword: '',
+      isSearching: false,
+      listTitle: '全部非遗',
+      page: 1,
+      hasMore: true,
+      heritageList: []
+    });
+    
+    this._loadList(true);
+  },
+
+  changeSort(e) {
+    const { type } = e.currentTarget?.dataset || {};
+    if (!type) return;
+    
+    this.setData({
+      sortBy: type,
+      page: 1,
+      hasMore: true,
+      heritageList: []
+    });
+    
+    this._loadList(true);
+  },
+
+  viewAllHot() {
+    this.setData({
+      sortBy: 'sortOrder',
+      listTitle: '热门推荐'
+    });
+    this._loadList(true);
+  },
+
+  goToDetail(e) {
+    const { id } = e.detail || {};
+    if (!id) return;
+    
+    wx.navigateTo({
+      url: `/pages/feiyi/pages/detail/detail?id=${id}`
+    });
+  },
+
+  goToInheritor(e) {
+    const { id } = e.detail || {};
+    if (!id) return;
+    
+    wx.navigateTo({
+      url: `/pages/feiyi/pages/inheritor/inheritor?id=${id}`
+    });
+  },
+
+  onAudioPlay(e) {
+    const { id } = e.detail || {};
+    if (!id) return;
+    
+    this.setData({
+      currentPlayingId: id,
+      showAudioPlayer: true
+    });
+    
+    const player = this.selectComponent('#globalPlayer');
+    if (player) {
+      player.setPlaylist(this.data.audioPlaylist);
+    }
+  },
+
+  onAudioPause(e) {
+    this.setData({ currentPlayingId: '' });
+  },
+
+  onAudioEnd(e) {
+  },
+
+  onAudioChange(e) {
+    const { id } = e.detail || {};
+    if (!id) return;
+    
+    this.setData({ currentPlayingId: id });
+  },
+
+  onAudioClose() {
+    this.setData({ showAudioPlayer: false });
+    AudioManager.stop();
+  },
+
+  _syncAudioStatus() {
+    try {
+      const status = AudioManager.getStatus();
+      if (status.isPlaying && status.heritageId) {
+        this.setData({
+          currentPlayingId: status.heritageId,
+          showAudioPlayer: true
+        });
+      }
+    } catch (err) {
+      console.error('同步音频状态失败:', err);
+    }
   }
-})
+});

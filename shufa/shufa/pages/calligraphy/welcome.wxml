@@ -1,0 +1,31 @@
+<!-- shufa/shufa/pages/calligraphy/welcome.wxml -->
+<view class="welcome-page">
+  <view class="welcome-header">
+    <image class="welcome-title-image" src="https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/ad44bcf5e09545bfbedb396f4f7ee88d.jpg?sign=987905f07b0f4db8e940949b377ee6b6&t=1776162226" mode="aspectFit"></image>
+  </view>
+
+  <view class="category-container">
+    <view 
+      class="category-card" 
+      wx:for="{{categories}}" 
+      wx:key="id"
+      bindtap="goToCategory"
+      data-id="{{item.id}}">
+      <image class="card-bg-img" src="{{item.img}}" mode="aspectFill"></image>
+      <view class="card-overlay">
+        <view class="category-icon">
+          <text wx:if="{{item.id === 1}}">✏️</text>
+          <text wx:else>🖼️</text>
+        </view>
+        <view class="category-info">
+          <text class="category-name">{{item.name}}</text>
+          <text class="category-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <text class="footer-text">古雅文轩 · 传承经典</text>
+  </view>
+</view>

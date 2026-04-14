@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "category-nav": "../../components/category-nav/category-nav",
+    "heritage-card": "../../components/heritage-card/heritage-card",
+    "audio-player": "../../components/audio-player/audio-player"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "navigationStyle": "custom"
 }
