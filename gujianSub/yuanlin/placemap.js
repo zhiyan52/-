@@ -8,70 +8,70 @@ Page({
         latitude: 39.9928,
         longitude: 116.2752,
         name: "颐和园",
-        iconPath: "/images/marker.png"
+        iconPath: "https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/images/marker.png"
       },
       {
         id: 2,
         latitude: 31.3176,
         longitude: 120.6336,
         name: "拙政园",
-        iconPath: "/images/marker.png"
+        iconPath: "https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/images/marker.png"
       },
       {
         id: 3,
         latitude: 31.3190,
         longitude: 120.6469,
         name: "留园",
-        iconPath: "/images/marker.png"
+        iconPath: "https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/images/marker.png"
       },
       {
         id: 4,
         latitude: 40.9722,
         longitude: 117.9400,
         name: "承德避暑山庄",
-        iconPath: "/images/marker.png"
+        iconPath: "https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/images/marker.png"
       },
       {
         id: 5,
         latitude: 31.3090,
         longitude: 120.6297,
         name: "沧浪亭",
-        iconPath: "/images/marker.png"
+        iconPath: "https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/images/marker.png"
       },
       {
         id: 6,
         latitude: 31.3215,
         longitude: 120.6450,
         name: "狮子林",
-        iconPath: "/images/marker.png"
+        iconPath: "https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/images/marker.png"
       },
       {
         id: 7,
         latitude: 31.3185,
         longitude: 120.6395,
         name: "环秀山庄",
-        iconPath: "/images/marker.png"
+        iconPath: "https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/images/marker.png"
       },
       {
         id: 8,
         latitude: 31.5865,
         longitude: 120.2997,
         name: "寄畅园",
-        iconPath: "/images/marker.png"
+        iconPath: "https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/images/marker.png"
       },
       {
         id: 9,
         latitude: 32.3932,
         longitude: 119.4210,
         name: "个园",
-        iconPath: "/images/marker.png"
+        iconPath: "https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/images/marker.png"
       },
       {
         id: 10,
         latitude: 31.2272,
         longitude: 121.4808,
         name: "豫园",
-        iconPath: "/images/marker.png"
+        iconPath: "https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/images/marker.png"
       }
     ]
   },

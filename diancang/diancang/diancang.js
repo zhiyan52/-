@@ -9,9 +9,9 @@ Page({
     ],
     currentTab: 0,
     bookList: [
-      { id: 'lunyu', name: '论语', cover: '/images/classic/lunyu.png', category: 1 },
-      { id: 'mengzi', name: '孟子', cover: '/images/classic/mengzi.png', category: 1 },
-      { id: 'zhuangzi', name: '庄子', cover: '/images/classic/zhuangzi.png', category: 2 }
+      { id: 'lunyu', name: '论语', cover: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/images/classic/lunyu.png', category: 1 },
+      { id: 'mengzi', name: '孟子', cover: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/images/classic/mengzi.png', category: 1 },
+      { id: 'zhuangzi', name: '庄子', cover: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/images/classic/zhuangzi.png', category: 2 }
     ],
     cachedCount: 2
   },

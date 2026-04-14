@@ -7,45 +7,79 @@
     </view>
     <view class="header-title">临帖阁</view>
     <view class="header-right">
-      <view class="more-btn" bindtap="showMore">•••</view>
+      <view class="more-btn">•••</view>
     </view>
   </view>
 
   <!-- 书体分类 -->
   <view class="category-section">
+    <view class="section-label">选择书体</view>
     <scroll-view scroll-x class="category-scroll">
-      <view class="category-item" wx:for="{{copybookCategories}}" wx:key="id"
-            data-category="{{item.id}}" bindtap="selectCategory"
-            class="{{selectedCategory === item.id ? 'category-active' : ''}}">
+      <view 
+        class="category-item" 
+        wx:for="{{copybookCategories}}" 
+        wx:key="id"
+        data-category="{{item.id}}" 
+        bindtap="selectCategory"
+        class="{{selectedCategory === item.id ? 'category-active' : ''}}">
         <view class="category-icon">{{item.icon}}</view>
         <view class="category-name">{{item.name}}</view>
+        <view class="category-desc">{{item.desc}}</view>
       </view>
     </scroll-view>
   </view>
 
   <!-- 辅助线选择 -->
   <view class="grid-section">
-    <view class="grid-title">辅助线</view>
+    <view class="section-label">辅助线</view>
     <scroll-view scroll-x class="grid-scroll">
-      <view class="grid-item" wx:for="{{gridTypes}}" wx:key="id"
-            data-grid="{{item.id}}" bindtap="selectGrid"
-            class="{{selectedGrid === item.id ? 'grid-active' : ''}}">
+      <view 
+        class="grid-item" 
+        wx:for="{{gridTypes}}" 
+        wx:key="id"
+        data-grid="{{item.id}}" 
+        bindtap="selectGrid"
+        class="{{selectedGrid === item.id ? 'grid-active' : ''}}">
         <view class="grid-name">{{item.name}}</view>
       </view>
     </scroll-view>
   </view>
 
+  <!-- 当前选中信息 -->
+  <view class="info-bar">
+    <view class="info-item">
+      <text class="info-label">当前书体：</text>
+      <text class="info-value">{{selectedCategoryName}}</text>
+    </view>
+    <view class="info-item">
+      <text class="info-label">辅助线：</text>
+      <text class="info-value">{{selectedGridName}}</text>
+    </view>
+  </view>
+
   <!-- 碑帖列表 -->
   <view class="copybook-section">
-    <view class="section-title">推荐碑帖</view>
+    <view class="section-header">
+      <view class="section-title">推荐碑帖</view>
+      <view class="section-count">共 {{currentCopybookList.length}} 篇</view>
+    </view>
     <view class="copybook-list">
-      <view class="copybook-item" wx:for="{{copybookList}}" wx:key="id" bindtap="goToCharacterDetail" data-id="{{item.id}}">
-        <image class="copybook-image" src="{{item.image}}" mode="aspectFill"></image>
+      <view 
+        class="copybook-item" 
+        wx:for="{{currentCopybookList}}" 
+        wx:key="id" 
+        bindtap="goToCharacterDetail" 
+        data-id="{{item.id}}">
+        <view class="copybook-cover">
+          <image class="copybook-image" src="{{item.image}}" mode="aspectFill"></image>
+          <view class="difficulty-tag difficulty-{{item.difficulty === '极高' ? 'extreme' : item.difficulty === '高' ? 'high' : 'medium'}}">
+            {{item.difficulty}}难度
+          </view>
+        </view>
         <view class="copybook-info">
           <view class="copybook-title">{{item.title}}</view>
           <view class="copybook-meta">
             <text class="copybook-author">{{item.author}}</text>
-            <text class="copybook-style">{{item.style}}</text>
             <text class="copybook-dynasty">{{item.dynasty}}</text>
           </view>
           <view class="copybook-description">{{item.description}}</view>
@@ -58,11 +92,11 @@
   <view class="action-section">
     <view class="action-grid">
       <view class="action-item" bindtap="startARCopy">
-        <view class="action-icon">AR</view>
-        <view class="action-text">投影临摹</view>
+        <view class="action-icon">🎯</view>
+        <view class="action-text">AR临摹</view>
       </view>
       <view class="action-item" bindtap="startEvaluation">
-        <view class="action-icon">AI</view>
+        <view class="action-icon">📊</view>
         <view class="action-text">智能评测</view>
       </view>
       <view class="action-item">
@@ -87,7 +121,7 @@
       <text class="tab-text">发现</text>
     </view>
     <view class="tab-item tab-create">
-      <text class="tab-icon">+</text>
+      <text class="tab-icon">✏️</text>
       <text class="tab-text">创作</text>
     </view>
     <view class="tab-item tab-active">

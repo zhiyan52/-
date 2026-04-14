@@ -5,19 +5,19 @@ Page({
       {
         id: 1,
         title: '每日一题：兰亭序临帖',
-        image: '/images/blank.png',
+        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20calligraphy%20art%20Lanting%20Xu%20elegant%20traditional%20ink%20painting&image_size=landscape_16_9',
         url: '/shufa/shufa/pages/calligraphy/copybook'
       },
       {
         id: 2,
         title: '名家推荐：颜真卿多宝塔',
-        image: '/images/blank.png',
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/0abbae0ad05c709849293bd13c4c0894.jpg?sign=caa248035a87ad04c5ef86ac936c82e2&t=1776168343',
         url: '/shufa/shufa/pages/calligraphy/copybook'
       },
       {
         id: 3,
         title: '集字创作：春日诗词',
-        image: '/images/blank.png',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/13772bd1a1123fa20a8d1c0d634a37ef.jpg',
         url: '/shufa/shufa/pages/calligraphy/creation'
       }
     ],
@@ -26,19 +26,19 @@ Page({
         id: 1,
         title: '兰亭序',
         author: '王羲之',
-        image: '/images/blank.png'
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/7065908c8ee948baf94da92d8a23159b.jpg?sign=fae9cc6170a0966ad9e67cb9104a82d6&t=1776081395&v=recent1'
       },
       {
         id: 2,
         title: '九成宫醴泉铭',
         author: '欧阳询',
-        image: '/images/blank.png'
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/8073854ce4abb2a62478f7eca5623b3c.jpg?sign=882c3ea5cbaf96c33bb0480f52e221e6&t=1776081358&v=recent2'
       },
       {
         id: 3,
         title: '多宝塔感应碑',
         author: '颜真卿',
-        image: '/images/blank.png'
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/0abbae0ad05c709849293bd13c4c0894.jpg?sign=ad85d3aedee90f30305dcde9b705276b&t=1776081326&v=recent3'
       }
     ],
     recommendedCopybooks: [
@@ -47,39 +47,39 @@ Page({
         title: '兰亭序',
         author: '王羲之',
         style: '行书',
-        image: '/images/blank.png'
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/419d1ef8e81eb7f73406fc4878209967.jpg?sign=88f5317d2cf73df2faa993b33d983c65&t=1776168940'
       },
       {
         id: 2,
         title: '九成宫醴泉铭',
         author: '欧阳询',
         style: '楷书',
-        image: '/images/blank.png'
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/8073854ce4abb2a62478f7eca5623b3c.jpg?sign=882c3ea5cbaf96c33bb0480f52e221e6&t=1776081358&v=rec2'
       },
       {
         id: 3,
         title: '多宝塔感应碑',
         author: '颜真卿',
         style: '楷书',
-        image: '/images/blank.png'
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/0abbae0ad05c709849293bd13c4c0894.jpg?sign=ad85d3aedee90f30305dcde9b705276b&t=1776081326&v=rec3'
       }
     ],
     socialPosts: [
       {
         id: 1,
         user: '书法爱好者',
-        avatar: '/images/blank.png',
+        avatar: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/7065908c8ee948baf94da92d8a23159b.jpg?sign=fae9cc6170a0966ad9e67cb9104a82d6&t=1776081395&v=avatar1',
         content: '今日临写兰亭序，感觉进步了一些',
-        image: '/images/blank.png',
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/8073854ce4abb2a62478f7eca5623b3c.jpg?sign=882c3ea5cbaf96c33bb0480f52e221e6&t=1776081358&v=social1',
         likes: 23,
         comments: 5
       },
       {
         id: 2,
         user: '墨香书斋',
-        avatar: '/images/blank.png',
+        avatar: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/8073854ce4abb2a62478f7eca5623b3c.jpg?sign=882c3ea5cbaf96c33bb0480f52e221e6&t=1776081358&v=avatar2',
         content: '集字创作：春日偶成',
-        image: '/images/blank.png',
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/0abbae0ad05c709849293bd13c4c0894.jpg?sign=ad85d3aedee90f30305dcde9b705276b&t=1776081326&v=social2',
         likes: 45,
         comments: 12
       }

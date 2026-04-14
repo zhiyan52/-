@@ -30,7 +30,7 @@ Page({
         id: 5,
         title: "书画雅集",
         image: "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shouye/shuhua(1).png",
-        url: "/shufa/shufa/shufa"
+        url: "/shufa/shufa/pages/calligraphy/welcome"
       }
     ],
     knowledgeContent: "今日小知识：中国古建筑中的斗拱，不仅是承重结构，更是等级与美学的象征。"

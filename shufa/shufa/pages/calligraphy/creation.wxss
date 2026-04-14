@@ -5,6 +5,74 @@
   font-family: "KaiTi", "STKaiti", "PingFang SC", sans-serif;
 }
 
+/* 轮播图样式 */
+.swiper-section {
+  margin: 20rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.banner-swiper {
+  height: 300rpx;
+}
+
+.banner-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  display: flex;
+  align-items: baseline;
+  gap: 10rpx;
+}
+
+.banner-desc {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.banner-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: white;
+}
+
+.swiper-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 15rpx;
+  padding: 15rpx 0;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.indicator-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: #ccc;
+  transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+  width: 30rpx;
+  border-radius: 6rpx;
+  background: linear-gradient(90deg, #b22222, #cd853f);
+}
+
 /* 顶部导航 */
 .header {
   display: flex;
@@ -192,23 +260,33 @@
   background: white;
   border-radius: 15rpx;
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
-  min-width: 100rpx;
+  min-width: 260rpx;
 }
 
 .seal-active {
   border: 3rpx solid #b22222;
 }
 
+.seal-images {
+  white-space: nowrap;
+}
+
 .seal-image {
-  width: 80rpx;
-  height: 80rpx;
-  border-radius: 10rpx;
-  margin-bottom: 10rpx;
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 8rpx;
+  margin-right: 10rpx;
+  display: inline-block;
+}
+
+.seal-image:last-child {
+  margin-right: 0;
 }
 
 .seal-name {
   font-size: 22rpx;
   color: #333;
+  margin-top: 10rpx;
 }
 
 /* 操作按钮 */
@@ -371,6 +449,52 @@
   margin-top: -5rpx;
 }
 
+/* 图片展示区 */
+.image-showcase-section {
+  margin: 30rpx 0;
+  padding: 0 30rpx;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15rpx;
+}
+
+.image-column {
+  background: white;
+  border-radius: 15rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  padding: 15rpx;
+}
+
+.column-title {
+  font-size: 22rpx;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 10rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.column-images {
+  white-space: nowrap;
+}
+
+.column-image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  margin-right: 10rpx;
+  display: inline-block;
+}
+
+.column-image:last-child {
+  margin-right: 0;
+}
+
 /* 响应式设计 */
 @media (max-width: 375px) {
   .template-grid {
@@ -383,5 +507,9 @@
   
   .preview-content {
     width: 90%;
+  }
+  
+  .image-grid {
+    grid-template-columns: 1fr;
   }
 }

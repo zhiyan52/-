@@ -1,66 +1,51 @@
 // shufa/shufa/pages/calligraphy/main.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
-
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  navigateToCalligraphy() {
+    wx.switchTab({
+      url: '/shufa/shufa/pages/calligraphy/copybook'
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  navigateToPainting() {
+    wx.navigateTo({
+      url: '/shufa/shufa/pages/calligraphy/painting'
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
+  navigateToCharacter() {
+    wx.navigateTo({
+      url: '/shufa/shufa/pages/calligraphy/character'
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
+  navigateToCollection() {
+    wx.navigateTo({
+      url: '/shufa/shufa/pages/calligraphy/collection'
+    });
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
+  navigateToCopybook() {
+    wx.switchTab({
+      url: '/shufa/shufa/pages/calligraphy/copybook'
+    });
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
+  navigateToCreation() {
+    wx.navigateTo({
+      url: '/shufa/shufa/pages/calligraphy/creation'
+    });
   },
 
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage() {
-
+    return {
+      title: '书画雅集',
+      path: '/shufa/shufa/pages/calligraphy/main'
+    };
   }
-})
+});

@@ -11,6 +11,35 @@
     </view>
   </view>
 
+  <!-- 轮播图区域 -->
+  <view class="swiper-section">
+    <swiper 
+      class="banner-swiper" 
+      indicator-dots="true" 
+      autoplay="true" 
+      circular="true" 
+      interval="4000" 
+      duration="800"
+      bindchange="onSwiperChange">
+      <swiper-item wx:for="{{swiperList}}" wx:key="id">
+        <view class="banner-item">
+          <image class="banner-image" src="{{item.image}}" mode="aspectFill"></image>
+          <view class="banner-overlay">
+            <view class="banner-desc">{{item.desc}}：</view>
+            <view class="banner-title">{{item.title}}</view>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+    <view class="swiper-indicator">
+      <view 
+        class="indicator-dot" 
+        wx:for="{{swiperList}}" 
+        wx:key="id"
+        class="{{swiperCurrent === index ? 'active' : ''}}"></view>
+    </view>
+  </view>
+
   <!-- 文字输入 -->
   <view class="input-section">
     <view class="input-title">输入文字</view>
@@ -51,10 +80,25 @@
       <view class="seal-item" wx:for="{{sealOptions}}" wx:key="id"
             data-id="{{item.id}}" bindtap="selectSeal"
             class="{{selectedSeal === item.id ? 'seal-active' : ''}}">
-        <image class="seal-image" src="{{item.image}}" mode="aspectFill"></image>
+        <scroll-view scroll-x class="seal-images">
+          <image class="seal-image" wx:for="{{item.images}}" wx:key="index" src="{{item}}" mode="aspectFill"></image>
+        </scroll-view>
         <view class="seal-name">{{item.name}}</view>
       </view>
     </scroll-view>
+  </view>
+
+  <!-- 图片展示区 -->
+  <view class="image-showcase-section">
+    <view class="section-title">作品展示</view>
+    <view class="image-grid">
+      <view class="image-column" wx:for="{{imageColumns}}" wx:key="index">
+        <view class="column-title">{{item.title}}</view>
+        <scroll-view scroll-x class="column-images">
+          <image class="column-image" wx:for="{{item.images}}" wx:key="index" src="{{item}}" mode="aspectFill"></image>
+        </scroll-view>
+      </view>
+    </view>
   </view>
 
   <!-- 操作按钮 -->
