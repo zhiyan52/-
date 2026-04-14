@@ -138,8 +138,18 @@ class CacheManager {
 
   // 获取缓存的非遗列表
   getHeritageList(category = 'all') {
-    const key = `${CACHE_KEYS.HERITAGE_LIST}_${category}`;
-    return this.get(key, CACHE_CONFIG.expireTime.list);
+    try {
+      const key = `${CACHE_KEYS.HERITAGE_LIST}_${category}`;
+      const cached = this.get(key, CACHE_CONFIG.expireTime.list);
+      // 验证缓存数据是否有效
+      if (cached && Array.isArray(cached)) {
+        return cached;
+      }
+      return null;
+    } catch (err) {
+      console.error('获取缓存的非遗列表失败:', err);
+      return null;
+    }
   }
 
   // 缓存非遗详情

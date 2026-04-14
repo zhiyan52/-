@@ -12,11 +12,10 @@ const HERITAGE_LIST = [
     briefName: '剪纸',
     // 轻量图片配置（建议尺寸：750x400，压缩至50KB以内）
     images: {
-      cover: 'cloud://cultural-heritage/heritage/paper-cut/cover.jpg',
-      thumbnail: 'cloud://cultural-heritage/heritage/paper-cut/thumb.jpg',
+      cover: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/552ee7b9591fb8742523836ad27b58dc.jpg',
+      thumbnail: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/8495f32183e1b3a5258363724f5383f3.jpg',
       detail: [
-        'cloud://cultural-heritage/heritage/paper-cut/detail-1.jpg',
-        'cloud://cultural-heritage/heritage/paper-cut/detail-2.jpg'
+        'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/561fc507daa7a31e0c15d6574ef30591.jpg','cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/8a88cf49e76266b9c11287ceaa4980a9.jpg'
       ]
     },
     // 核心介绍（严格控制在200字以内）
@@ -29,7 +28,7 @@ const HERITAGE_LIST = [
       level: '国家级',
       title: '国家级非物质文化遗产代表性传承人',
       brief: '从事剪纸艺术40余年，创新"染色"技法，作品《奥运福娃》被国际奥委会收藏。',
-      avatar: 'cloud://cultural-heritage/inheritor/zhou.jpg'
+      avatar: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/7dea98fd55222edfb610681365c2467a.jpg'
     },
     // 音频配置（10秒轻量音频）
     audio: {
@@ -72,10 +71,10 @@ const HERITAGE_LIST = [
     name: '苏绣',
     briefName: '苏绣',
     images: {
-      cover: 'cloud://cultural-heritage/heritage/su-embroidery/cover.jpg',
-      thumbnail: 'cloud://cultural-heritage/heritage/su-embroidery/thumb.jpg',
+      cover: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/ec9dca1178ce420ae64c8caa94ed0144.jpg',
+      thumbnail: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/a518548b88e52c5921f42060d3070482.jpg',
       detail: [
-        'cloud://cultural-heritage/heritage/su-embroidery/detail-1.jpg'
+        'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/a518548b88e52c5921f42060d3070482.jpg','cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/95f9837059320921c3acea4c9f38164f.jpg'
       ]
     },
     introduction: '苏绣是苏州地区刺绣产品的总称，为江苏省苏州市民间传统美术。苏绣起源于苏州，是四大名绣之一，国家级非物质文化遗产之一。苏绣具有图案秀丽、构思巧妙、绣工细致、针法活泼、色彩清雅的独特风格。',
@@ -86,7 +85,7 @@ const HERITAGE_LIST = [
       level: '国家级',
       title: '国家级非物质文化遗产代表性传承人',
       brief: '当代苏绣领军人物，首创"融针绣"技法，作品被中南海、人民大会堂等收藏。',
-      avatar: 'cloud://cultural-heritage/inheritor/yao.jpg'
+      avatar: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/bed167d5ee9ac26aabddbf7b247dc2ed.jpg'
     },
     audio: {
       hasAudio: true,
@@ -123,11 +122,11 @@ const HERITAGE_LIST = [
     name: '京剧',
     briefName: '京剧',
     images: {
-      cover: 'cloud://cultural-heritage/heritage/peking-opera/cover.jpg',
-      thumbnail: 'cloud://cultural-heritage/heritage/peking-opera/thumb.jpg',
+      cover: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/941dda8ac272d90e1f7e291852c6484d.jpg',
+      thumbnail: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/941dda8ac272d90e1f7e291852c6484d.jpg',
       detail: [
-        'cloud://cultural-heritage/heritage/peking-opera/detail-1.jpg',
-        'cloud://cultural-heritage/heritage/peking-opera/detail-2.jpg'
+        'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/b24a5ec78d1a71125b14746c4053bcdd.jpg',
+        'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/ea943ea418c3da7eb3145a16b84214c1.jpg'
       ]
     },
     introduction: '京剧，又称平剧、京戏等，中国国粹之一，是中国影响最大的戏曲剧种，分布地以北京为中心，遍及全国各地。京剧在文学、表演、音乐、舞台美术等各个方面都有一套规范化的艺术表现形式。',
@@ -138,7 +137,7 @@ const HERITAGE_LIST = [
       level: '国家级',
       title: '国家级非物质文化遗产代表性传承人',
       brief: '梅兰芳之子，梅派艺术传人，致力于京剧艺术的传承与推广。',
-      avatar: 'cloud://cultural-heritage/inheritor/mei.jpg'
+      avatar: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/02bef3326d56054b21f4408589cbc93d.jpg'
     },
     audio: {
       hasAudio: true,
@@ -176,10 +175,10 @@ const HERITAGE_LIST = [
     name: '华县皮影戏',
     briefName: '皮影戏',
     images: {
-      cover: 'cloud://cultural-heritage/heritage/shadow-puppet/cover.jpg',
-      thumbnail: 'cloud://cultural-heritage/heritage/shadow-puppet/thumb.jpg',
+      cover: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/00a126e50ce1d715ce3ea0097f2f524e.jpg',
+      thumbnail: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/00a126e50ce1d715ce3ea0097f2f524e.jpg',
       detail: [
-        'cloud://cultural-heritage/heritage/shadow-puppet/detail-1.jpg'
+        'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/2acbe08700c45146cd59db1a4f67844b.jpg','cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/b92580ced4b2604728fc20b1086de6e6.jpg'
       ]
     },
     introduction: '皮影戏，又称"影子戏"或"灯影戏"，是一种以兽皮或纸板做成的人物剪影以表演故事的民间戏剧。表演时，艺人们在白色幕布后面，一边操纵影人，一边用当地流行的曲调讲述故事。',
@@ -190,7 +189,7 @@ const HERITAGE_LIST = [
       level: '国家级',
       title: '国家级非物质文化遗产代表性传承人',
       brief: '华县皮影戏第四代传人，被誉为"中国皮影第一刀"，雕刻技艺精湛。',
-      avatar: 'cloud://cultural-heritage/inheritor/wei.jpg'
+      avatar: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/9aaaa712e8edf09c6ce15a8a59ab3df4.jpg'
     },
     audio: {
       hasAudio: true,
@@ -228,10 +227,10 @@ const HERITAGE_LIST = [
     name: '昆曲',
     briefName: '昆曲',
     images: {
-      cover: 'cloud://cultural-heritage/heritage/kunqu/cover.jpg',
-      thumbnail: 'cloud://cultural-heritage/heritage/kunqu/thumb.jpg',
+      cover: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/739651c168267578cf453e0d6a0c1315.jpg',
+      thumbnail: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/739651c168267578cf453e0d6a0c1315.jpg',
       detail: [
-        'cloud://cultural-heritage/heritage/kunqu/detail-1.jpg'
+        'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/84bd85562e8a7c70d868a3a88f2d658e.jpg','cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/7c920a48aa585065bad2c10aad2cffc5.jpg'
       ]
     },
     introduction: '昆曲，原名"昆山腔"或简称"昆腔"，是中国古老的戏曲声腔、剧种，现又被称为"昆剧"。昆曲是汉族传统戏曲中最古老的剧种之一，也是中国汉族传统文化艺术，特别是戏曲艺术中的珍品。',
@@ -242,7 +241,7 @@ const HERITAGE_LIST = [
       level: '国家级',
       title: '国家级非物质文化遗产代表性传承人',
       brief: '昆曲表演艺术家，工小生，被誉为"昆曲第一小生"。',
-      avatar: 'cloud://cultural-heritage/inheritor/cai.jpg'
+      avatar: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/b2b7a228ac831c675268e029ec9c829a.jpg'
     },
     audio: {
       hasAudio: true,
@@ -280,10 +279,10 @@ const HERITAGE_LIST = [
     name: '景德镇手工制瓷',
     briefName: '景德镇瓷',
     images: {
-      cover: 'cloud://cultural-heritage/heritage/jdz-porcelain/cover.jpg',
-      thumbnail: 'cloud://cultural-heritage/heritage/jdz-porcelain/thumb.jpg',
+      cover: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/072fd52d04d53c8766494ffad0a5b1b7.jpg',
+      thumbnail: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/072fd52d04d53c8766494ffad0a5b1b7.jpg',
       detail: [
-        'cloud://cultural-heritage/heritage/jdz-porcelain/detail-1.jpg'
+        'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/212e3172c926df605418d2dceec4f9a4.jpg','cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/d1ce5214279d1379633f4f2e426ad3cf.jpg'
       ]
     },
     introduction: '景德镇手工制瓷技艺是以高岭土等为原料，经制料、成型、装饰、烧成等工序制作瓷器的传统手工技艺。景德镇瓷器以"白如玉、明如镜、薄如纸、声如磬"的独特风格蜚声海内外。',
@@ -294,7 +293,7 @@ const HERITAGE_LIST = [
       level: '国家级',
       title: '中国工艺美术大师',
       brief: '景德镇陶瓷艺术大师，从事陶瓷美术创作70余年，是景德镇瓷坛的泰斗级人物。',
-      avatar: 'cloud://cultural-heritage/inheritor/wang.jpg'
+      avatar: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/1fcf1d09b4c517bb14ca6bf2186d9e90.jpg'
     },
     audio: {
       hasAudio: false, // 此项目暂无音频
@@ -327,10 +326,10 @@ const HERITAGE_LIST = [
     name: '古琴艺术',
     briefName: '古琴',
     images: {
-      cover: 'cloud://cultural-heritage/heritage/guqin/cover.jpg',
-      thumbnail: 'cloud://cultural-heritage/heritage/guqin/thumb.jpg',
+      cover: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/ac5814986543a6a19c351755a8c2a53e.jpg',
+      thumbnail: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/ac5814986543a6a19c351755a8c2a53e.jpg',
       detail: [
-        'cloud://cultural-heritage/heritage/guqin/detail-1.jpg'
+        'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/38706c7314245c61a95b27f152f25a9f.jpg','cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/12c1d69e2768835c9f9fedef0c95fb1e.jpg'
       ]
     },
     introduction: '古琴又称"琴"、"七弦琴"，是中国最古老的弹拨乐器之一。古琴艺术是中国传统音乐文化的重要组成部分，包含琴曲、琴谱、琴歌、琴论、琴史等内容，具有深厚的文化内涵。',
@@ -341,7 +340,7 @@ const HERITAGE_LIST = [
       level: '国家级',
       title: '国家级非物质文化遗产代表性传承人',
       brief: '当代著名古琴演奏家，从事古琴演奏、教学60余年，录制多张古琴专辑。',
-      avatar: 'cloud://cultural-heritage/inheritor/gong.jpg'
+      avatar: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/f8de33b1aaf67693cbd8086a2c0164df.jpg'
     },
     audio: {
       hasAudio: true,
@@ -379,21 +378,21 @@ const HERITAGE_LIST = [
     name: '端午节',
     briefName: '端午',
     images: {
-      cover: 'cloud://cultural-heritage/heritage/dragon-boat/cover.jpg',
-      thumbnail: 'cloud://cultural-heritage/heritage/dragon-boat/thumb.jpg',
+      cover: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/a9d7e4c4cae2df12c8bc3dbf713f80a5.jpg',
+      thumbnail: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/a9d7e4c4cae2df12c8bc3dbf713f80a5.jpg',
       detail: [
-        'cloud://cultural-heritage/heritage/dragon-boat/detail-1.jpg'
+        'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/1685f92e89064e732b80c454954ca205.jpg','cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/6cbf99ce7a06c1896b0ffcb950f465cc.jpg'
       ]
     },
     introduction: '端午节，又称端阳节、龙舟节等，是中国四大传统节日之一。端午节起源于上古先民择"飞龙在天"吉日拜祭龙祖、祈福辟邪，后因战国时期的楚国诗人屈原在该日抱石跳汨罗江自尽，统治者为树立忠君爱国标签将端午作为纪念屈原的节日。',
     wordCount: 138,
     inheritor: {
       id: 'inh-008',
-      name: '罗晓云',
+      name: '伏泽诚',
       level: '省级',
       title: '湖南省非物质文化遗产代表性传承人',
       brief: '汨罗江畔粽子制作技艺传承人，致力于端午文化的保护与传播。',
-      avatar: 'cloud://cultural-heritage/inheritor/luo.jpg'
+      avatar: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/0e75918661a2115459ddc024cbaaa56e.jpg'
     },
     audio: {
       hasAudio: true,

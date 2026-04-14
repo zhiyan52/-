@@ -3,8 +3,14 @@
  * 统一封装数据获取逻辑，处理缓存、分页、筛选
  */
 
-const { HeritageDataUtils, InheritorUtils, CATEGORIES, CategoryMap } = require('../data/index.js');
+const { HeritageDataUtils, InheritorUtils, CATEGORIES, CategoryMap, HERITAGE_LIST } = require('../data/index.js');
 const { CacheManager } = require('./cache-manager');
+
+// 打印数据加载情况
+console.log('DataLoader初始化:', {
+  heritageListLength: HERITAGE_LIST ? HERITAGE_LIST.length : 0,
+  categoriesLength: CATEGORIES ? CATEGORIES.length : 0
+});
 
 class DataLoader {
   constructor() {
@@ -20,14 +26,40 @@ class DataLoader {
 
   // 获取分类列表
   async getCategories() {
-    // 检查缓存
-    const cached = CacheManager.getCategories();
-    if (cached) return cached;
+    try {
+      // 检查缓存
+      const cached = CacheManager.getCategories();
+      if (cached) return cached;
 
-    // 直接使用本地数据
-    const categories = CATEGORIES;
-    CacheManager.cacheCategories(categories);
-    return categories;
+      // 直接使用本地数据
+      const categories = CATEGORIES;
+      if (categories && Array.isArray(categories) && categories.length > 0) {
+        CacheManager.cacheCategories(categories);
+        return categories;
+      } else {
+        console.warn('分类数据为空，使用默认分类');
+        // 使用默认分类数据
+        const defaultCategories = [
+          { id: 'all', name: '全部', icon: '🏛️', description: '展示所有非遗项目', color: '#8B4513' },
+          { id: 'craft', name: '传统技艺', icon: '🔨', description: '传统手工艺制作技术', color: '#A0522D' },
+          { id: 'art', name: '传统美术', icon: '🎨', description: '传统绘画、雕塑等艺术形式', color: '#CD853F' },
+          { id: 'opera', name: '传统戏曲', icon: '🎭', description: '传统戏剧表演艺术', color: '#D2691E' },
+          { id: 'custom', name: '传统民俗', icon: '🏮', description: '民间传统节日与习俗', color: '#BC8F8F' }
+        ];
+        CacheManager.cacheCategories(defaultCategories);
+        return defaultCategories;
+      }
+    } catch (err) {
+      console.error('获取分类失败:', err);
+      // 返回默认分类
+      return [
+        { id: 'all', name: '全部', icon: '🏛️', description: '展示所有非遗项目', color: '#8B4513' },
+        { id: 'craft', name: '传统技艺', icon: '🔨', description: '传统手工艺制作技术', color: '#A0522D' },
+        { id: 'art', name: '传统美术', icon: '🎨', description: '传统绘画、雕塑等艺术形式', color: '#CD853F' },
+        { id: 'opera', name: '传统戏曲', icon: '🎭', description: '传统戏剧表演艺术', color: '#D2691E' },
+        { id: 'custom', name: '传统民俗', icon: '🏮', description: '民间传统节日与习俗', color: '#BC8F8F' }
+      ];
+    }
   }
 
   // 获取非遗列表（支持分页、筛选）
@@ -44,7 +76,16 @@ class DataLoader {
     // 检查缓存（仅第一页）
     if (useCache && page === 1 && !keyword) {
       const cached = CacheManager.getHeritageList(category);
-      if (cached) return cached;
+      if (cached && Array.isArray(cached)) {
+        // 缓存的是数组，需要包装成与_fetchHeritageList方法返回的结构相同的对象
+        return {
+          list: cached,
+          page,
+          pageSize,
+          total: cached.length,
+          hasMore: cached.length >= pageSize
+        };
+      }
     }
 
     // 构建缓存key
@@ -172,37 +213,60 @@ class DataLoader {
   // ============ 私有方法 ============
 
   async _fetchHeritageList({ category, page, pageSize, keyword, sortBy }) {
-    // 模拟异步延迟（实际项目中这里是网络请求）
-    await new Promise(resolve => setTimeout(resolve, 100));
+    try {
+      console.log('开始获取非遗列表:', { category, page, pageSize, keyword, sortBy });
+      
+      // 模拟异步延迟（实际项目中这里是网络请求）
+      await new Promise(resolve => setTimeout(resolve, 100));
 
-    let list;
-    
-    if (keyword) {
-      // 搜索模式
-      const searchResult = await this.search(keyword, { category, limit: 100 });
-      list = searchResult.list;
-    } else {
-      // 正常分页
-      const result = HeritageDataUtils.getByPage(page, pageSize, category);
-      list = result.list;
+      let list;
+      
+      if (keyword) {
+        // 搜索模式
+        console.log('搜索模式:', keyword);
+        const searchResult = await this.search(keyword, { category, limit: 100 });
+        list = searchResult.list;
+        console.log('搜索结果数量:', list.length);
+      } else {
+        // 正常分页
+        console.log('正常分页模式:', category);
+        const result = HeritageDataUtils.getByPage(page, pageSize, category);
+        list = result.list;
+        console.log('分页结果数量:', list.length);
+        console.log('总数量:', result.total);
+      }
+
+      // 排序
+      list = this._sortList(list, sortBy);
+      console.log('排序后数量:', list.length);
+
+      // 补充分类名称
+      list = list.map(item => ({
+        ...item,
+        categoryName: this._getCategoryName(item.categoryId)
+      }));
+
+      const result = {
+        list: list || [],
+        page,
+        pageSize,
+        total: keyword ? list.length : HeritageDataUtils.getByCategory(category).length,
+        hasMore: (list || []).length === pageSize
+      };
+      
+      console.log('返回结果:', result);
+      return result;
+    } catch (err) {
+      console.error('获取非遗列表失败:', err);
+      // 返回空列表，避免页面显示错误
+      return {
+        list: [],
+        page,
+        pageSize,
+        total: 0,
+        hasMore: false
+      };
     }
-
-    // 排序
-    list = this._sortList(list, sortBy);
-
-    // 补充分类名称
-    list = list.map(item => ({
-      ...item,
-      categoryName: this._getCategoryName(item.categoryId)
-    }));
-
-    return {
-      list: list || [],
-      page,
-      pageSize,
-      total: keyword ? list.length : HeritageDataUtils.getByCategory(category).length,
-      hasMore: (list || []).length === pageSize
-    };
   }
 
   _sortList(list, sortBy) {
@@ -218,7 +282,9 @@ class DataLoader {
   }
 
   _getCategoryName(categoryId) {
-    return CategoryMap.getName(categoryId) || '其他';
+    const name = CategoryMap.getName(categoryId) || '其他';
+    console.log('获取分类名称:', { categoryId, name });
+    return name;
   }
 }
 

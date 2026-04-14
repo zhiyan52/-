@@ -15,7 +15,7 @@ const INHERITORS = [
     year: 2009,
     projectId: 'hj-001',
     projectName: '蔚县剪纸',
-    avatar: 'cloud://cultural-heritage/inheritor/zhou.jpg',
+    avatar: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/7dea98fd55222edfb610681365c2467a.jpg',
     brief: '从事剪纸艺术40余年，创新"染色"技法',
     fullIntro: '周淑英，国家级非物质文化遗产蔚县剪纸代表性传承人。自幼随父学艺，在继承传统的基础上大胆创新，将传统剪纸与现代审美相结合，形成了独特的艺术风格。代表作品《奥运福娃》被国际奥委会收藏。',
     honors: ['中国工艺美术大师', '河北省民间文艺家协会副主席'],

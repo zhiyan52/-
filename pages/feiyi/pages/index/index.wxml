@@ -117,7 +117,7 @@
     </view>
 
     <view class="empty-state" wx:if="{{!loading && heritageList.length === 0}}">
-      <image class="empty-icon" src="/images/empty.png"/>
+      <image class="empty-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/5d57897bbb1c3b4426f02150ab4fb7e3.jpg"/>
       <text>暂无相关内容</text>
       <text class="empty-tip">试试其他分类或关键词</text>
     </view>

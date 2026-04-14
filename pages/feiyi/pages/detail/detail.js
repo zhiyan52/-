@@ -55,7 +55,11 @@ Page({
     wx.showLoading({ title: '加载中' });
     
     try {
-      const heritage = await DataLoader.getHeritageDetail(id);
+      // 清理缓存，确保获取最新数据
+      const { CacheManager } = require('../../utils/cache-manager');
+      CacheManager.remove(`heritage_detail_${id}`);
+      
+      const heritage = await DataLoader.getHeritageDetail(id, false);
       
       // 获取完整传承人信息
       let inheritor = null;

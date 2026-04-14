@@ -14,7 +14,7 @@
   <view class="image-wrapper">
     <image 
       class="heritage-image" 
-      src="{{imageUrl}}" 
+      src="{{heritage.images.cover}}" 
       mode="aspectFill"
       lazy-load="{{true}}"
       loading="lazy"
