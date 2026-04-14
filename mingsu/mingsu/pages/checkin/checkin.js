@@ -6,7 +6,7 @@ Page({
         id: 1,
         date: '2026-04-01',
         food: '清明青团',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20qingming%20festival%20green%20rice%20cake&image_size=square',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/1.jpg',
         location: '江南地区',
         notes: '第一次尝试做青团，味道不错！'
       },
@@ -14,7 +14,7 @@ Page({
         id: 2,
         date: '2026-03-28',
         food: '北京烤鸭',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=beijing%20roast%20duck&image_size=square',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/2.jpg',
         location: '北京',
         notes: '正宗的北京烤鸭，皮脆肉嫩！'
       }

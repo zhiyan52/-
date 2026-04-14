@@ -1,0 +1,45 @@
+<!-- 智能导览页面 -->
+<view class="ai-guide-container">
+  <view class="header">
+    <text class="title">智能导览</text>
+    <text class="subtitle">AI为您讲解古建筑</text>
+  </view>
+  
+  <view class="building-list">
+    <text class="section-title">选择古建筑</text>
+    <view class="building-items">
+      <view class="building-item" bindtap="selectBuilding" data-building="forbidden-city">
+        <image src="/images/forbidden-city.jpg" class="building-image" />
+        <text class="building-name">故宫</text>
+      </view>
+      <view class="building-item" bindtap="selectBuilding" data-building="summer-palace">
+        <image src="/images/summer-palace.jpg" class="building-image" />
+        <text class="building-name">颐和园</text>
+      </view>
+      <view class="building-item" bindtap="selectBuilding" data-building="temple-of-heaven">
+        <image src="/images/temple-of-heaven.jpg" class="building-image" />
+        <text class="building-name">天坛</text>
+      </view>
+      <view class="building-item" bindtap="selectBuilding" data-building="suzhou-garden">
+        <image src="/images/suzhou-garden.jpg" class="building-image" />
+        <text class="building-name">苏州园林</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="ai-content" wx:if="{{selectedBuilding}}">
+    <text class="content-title">{{selectedBuilding.name}}导览</text>
+    <view class="ai-response">
+      <view class="loading" wx:if="{{loading}}">
+        <text>AI正在生成讲解...</text>
+      </view>
+      <view wx:else>
+        <text class="ai-text">{{aiResponse}}</text>
+      </view>
+    </view>
+    <view class="control-buttons">
+      <button class="button" bindtap="startGuide">开始导览</button>
+      <button class="button" bindtap="stopGuide">停止导览</button>
+    </view>
+  </view>
+</view>

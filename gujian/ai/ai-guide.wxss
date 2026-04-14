@@ -1,0 +1,125 @@
+/* 智能导览页面样式 */
+.ai-guide-container {
+  background-color: #ffffff;
+  min-height: 100vh;
+  padding: 20rpx 30rpx;
+}
+
+.header {
+  text-align: center;
+  padding: 40rpx 0 30rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: 500;
+  color: #333;
+  letter-spacing: 2rpx;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #888;
+  margin-top: 10rpx;
+  display: block;
+}
+
+.building-list {
+  margin-top: 40rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.building-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.building-item {
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+  padding: 20rpx;
+  text-align: center;
+}
+
+.building-image {
+  width: 100%;
+  height: 180rpx;
+  border-radius: 8rpx;
+  margin-bottom: 15rpx;
+}
+
+.building-name {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 400;
+}
+
+.ai-content {
+  margin-top: 50rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.content-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.ai-response {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 25rpx;
+  min-height: 200rpx;
+  margin-bottom: 30rpx;
+}
+
+.loading {
+  text-align: center;
+  color: #888;
+  padding: 40rpx 0;
+}
+
+.ai-text {
+  font-size: 28rpx;
+  color: #444;
+  line-height: 1.5;
+}
+
+.control-buttons {
+  display: flex;
+  gap: 20rpx;
+}
+
+.button {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.button:first-child {
+  background: #333;
+  color: #fff;
+}
+
+.button:last-child {
+  background: #f0f0f0;
+  color: #333;
+}

@@ -21,8 +21,7 @@ Page({
         region: '江南地区',
         season: '春季',
         images: [
-          'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20qingming%20festival%20green%20rice%20cake%20traditional%20food&image_size=landscape_16_9',
-          'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=making%20qingming%20green%20rice%20cake%20process&image_size=landscape_16_9'
+          'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/1.jpg'
         ],
         description: '清明青团是清明节的传统食品，用糯米粉和艾草汁制成，象征着对祖先的缅怀和对春天的迎接。',
         history: '青团的历史可以追溯到唐代，最初是用来祭祀祖先的祭品，后来逐渐成为清明节的特色食品。',
@@ -38,8 +37,7 @@ Page({
         region: '北京',
         season: '四季皆宜',
         images: [
-          'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=beijing%20roast%20duck%20traditional%20chinese%20food&image_size=landscape_16_9',
-          'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=beijing%20roast%20duck%20slicing%20process&image_size=landscape_16_9'
+          'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/2.jpg'
         ],
         description: '北京烤鸭是北京最著名的菜式，以色泽红艳，肉质肥而不腻，外脆里嫩著称。',
         history: '北京烤鸭的历史可以追溯到南北朝时期，经过数百年的发展，成为了北京的代表性美食。',

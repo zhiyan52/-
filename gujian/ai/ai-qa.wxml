@@ -1,0 +1,54 @@
+<!-- 文化问答页面 -->
+<view class="ai-qa-container">
+  <view class="header">
+    <text class="title">文化问答</text>
+    <text class="subtitle">AI解答古建筑疑问</text>
+  </view>
+  
+  <view class="qa-section">
+    <text class="section-title">常见问题</text>
+    <view class="faq-list">
+      <view class="faq-item" bindtap="selectFAQ" data-question="故宫有多少年历史？">
+        <text class="faq-question">故宫有多少年历史？</text>
+      </view>
+      <view class="faq-item" bindtap="selectFAQ" data-question="苏州园林有什么特点？">
+        <text class="faq-question">苏州园林有什么特点？</text>
+      </view>
+      <view class="faq-item" bindtap="selectFAQ" data-question="古建筑的榫卯结构是什么？">
+        <text class="faq-question">古建筑的榫卯结构是什么？</text>
+      </view>
+      <view class="faq-item" bindtap="selectFAQ" data-question="天坛的建筑意义是什么？">
+        <text class="faq-question">天坛的建筑意义是什么？</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="input-section">
+    <text class="section-title">提出问题</text>
+    <view class="input-container">
+      <input 
+        class="input" 
+        placeholder="输入您的问题..."
+        placeholder-class="input-placeholder"
+        bindinput="inputChange"
+        value="{{userQuestion}}"
+      />
+      <button class="send-button" bindtap="sendQuestion">
+        <text>发送</text>
+      </button>
+    </view>
+  </view>
+  
+  <view class="response-section" wx:if="{{showResponse}}">
+    <text class="response-title">AI回答</text>
+    <view class="response-content">
+      <view class="loading" wx:if="{{loading}}">
+        <text>AI正在思考...</text>
+      </view>
+      <view wx:else>
+        <text class="user-question">Q: {{userQuestion}}</text>
+        <text class="ai-answer">A: {{aiAnswer}}</text>
+      </view>
+    </view>
+  </view>
+</view>

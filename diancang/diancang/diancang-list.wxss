@@ -1,0 +1,160 @@
+/* 典藏列表页面样式 */
+.list-container {
+  background-color: #f8f4e9;
+  min-height: 100vh;
+  padding: 0 30rpx;
+}
+
+/* 顶部导航栏 */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100rpx;
+  padding: 0 20rpx;
+  background: #2C2621;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.back-icon {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.nav-title {
+  font-size: 28rpx;
+}
+
+.nav-center {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.nav-right {
+  font-size: 32rpx;
+}
+
+/* 筛选栏 */
+.filter-bar {
+  display: flex;
+  gap: 20rpx;
+  padding: 20rpx 0;
+  background: #fff;
+  border-radius: 0 0 20rpx 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+  margin-bottom: 20rpx;
+}
+
+.filter-item {
+  flex: 1;
+  text-align: center;
+  padding: 15rpx;
+  border-radius: 25rpx;
+  background: #f8f9fa;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.filter-item.active {
+  background: #8B4513;
+  color: #fff;
+}
+
+/* 藏品列表 */
+.collection-list {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.collection-item {
+  display: flex;
+  gap: 20rpx;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.collection-item:last-child {
+  border-bottom: none;
+}
+
+.item-image {
+  width: 160rpx;
+  height: 220rpx;
+  border-radius: 12rpx;
+}
+
+.item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.item-desc {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.4;
+  margin-bottom: 15rpx;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.item-meta {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+}
+
+.meta-tag {
+  background: #e8f4f8;
+  color: #3498db;
+  font-size: 20rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+}
+
+.meta-era {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.meta-views {
+  font-size: 20rpx;
+  color: #999;
+  margin-left: auto;
+}
+
+/* 加载更多 */
+.load-more {
+  text-align: center;
+  padding: 30rpx;
+  margin-top: 20rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+  font-size: 28rpx;
+  color: #8B4513;
+  font-weight: 500;
+}

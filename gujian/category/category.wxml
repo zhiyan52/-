@@ -1,4 +1,4 @@
- <!--pages/gujian/gujian.wxml-->
+<!-- gujian/category/category.wxml-->
 <view class="container">
   <!-- 主标题牌匾 -->
   <view class="main-title-bar">

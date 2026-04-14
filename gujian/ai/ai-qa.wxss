@@ -1,0 +1,144 @@
+/* 文化问答页面样式 */
+.ai-qa-container {
+  background-color: #ffffff;
+  min-height: 100vh;
+  padding: 20rpx 30rpx;
+}
+
+.header {
+  text-align: center;
+  padding: 40rpx 0 30rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: 500;
+  color: #333;
+  letter-spacing: 2rpx;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #888;
+  margin-top: 10rpx;
+  display: block;
+}
+
+.qa-section {
+  margin-top: 40rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.faq-list {
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.faq-item {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 25rpx;
+  margin-bottom: 15rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+}
+
+.faq-item:last-child {
+  margin-bottom: 0;
+}
+
+.faq-question {
+  font-size: 28rpx;
+  color: #444;
+  line-height: 1.4;
+}
+
+.input-section {
+  margin-top: 50rpx;
+}
+
+.input-container {
+  display: flex;
+  gap: 20rpx;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.input {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #fff;
+  border-radius: 40rpx;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.input-placeholder {
+  color: #999;
+}
+
+.send-button {
+  width: 120rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #333;
+  color: #fff;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.response-section {
+  margin-top: 50rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.response-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.response-content {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 25rpx;
+  min-height: 200rpx;
+}
+
+.loading {
+  text-align: center;
+  color: #888;
+  padding: 40rpx 0;
+}
+
+.user-question {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.ai-answer {
+  font-size: 28rpx;
+  color: #444;
+  line-height: 1.5;
+}

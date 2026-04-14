@@ -1,0 +1,192 @@
+/* 语音讲解页面样式 */
+.ai-voice-container {
+  background-color: #ffffff;
+  min-height: 100vh;
+  padding: 20rpx 30rpx;
+}
+
+.header {
+  text-align: center;
+  padding: 40rpx 0 30rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: 500;
+  color: #333;
+  letter-spacing: 2rpx;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #888;
+  margin-top: 10rpx;
+  display: block;
+}
+
+.building-section {
+  margin-top: 40rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.building-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.building-item {
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+  padding: 20rpx;
+  text-align: center;
+}
+
+.building-image {
+  width: 100%;
+  height: 180rpx;
+  border-radius: 8rpx;
+  margin-bottom: 15rpx;
+}
+
+.building-name {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 400;
+}
+
+.player-section {
+  margin-top: 50rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.player-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.player-content {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 25rpx;
+}
+
+.player-info {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.player-image {
+  width: 150rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+}
+
+.player-details {
+  flex: 1;
+}
+
+.player-desc {
+  font-size: 28rpx;
+  color: #444;
+  line-height: 1.4;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.player-duration {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.player-controls {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.control-button {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.control-button:first-child {
+  background: #333;
+  color: #fff;
+}
+
+.control-button:not(:first-child) {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.progress-section {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.current-time,
+.total-time {
+  font-size: 24rpx;
+  color: #666;
+  width: 80rpx;
+  text-align: center;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8rpx;
+  background: #e0e0e0;
+  border-radius: 4rpx;
+}
+
+.tips-section {
+  margin-top: 50rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.tips-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.tips-content {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 25rpx;
+}
+
+.tips-text {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 10rpx;
+  display: block;
+}

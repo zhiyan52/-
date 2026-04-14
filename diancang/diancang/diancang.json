@@ -1,4 +1,10 @@
 {
-  "navigationBarTitleText": "典籍拾珠",
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "典藏拾珠",
+  "navigationBarBackgroundColor": "#7fb8a5",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#e8f4f0"
 }
+
+ 

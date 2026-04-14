@@ -56,7 +56,7 @@ Page({
   toggleAnimation() {
     const isPlaying = !this.data.isPlaying;
     this.setData({ isPlaying });
-    
+
     if (isPlaying) {
       this.startAnimation();
     } else {
@@ -73,7 +73,7 @@ Page({
     setTimeout(() => {
       this.setData({ modelStatus: '拆解中' });
     }, 1000);
-    
+
     setTimeout(() => {
       this.setData({ modelStatus: '已拆解' });
       this.setData({ isPlaying: false });
@@ -92,7 +92,7 @@ Page({
    */
   resetModel() {
     console.log('重置模型');
-    this.setData({ 
+    this.setData({
       modelStatus: '完整',
       isPlaying: false
     });

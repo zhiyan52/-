@@ -1,0 +1,76 @@
+<!-- 语音讲解页面 -->
+<view class="ai-voice-container">
+  <view class="header">
+    <text class="title">语音讲解</text>
+    <text class="subtitle">沉浸式古建筑讲解体验</text>
+  </view>
+  
+  <view class="building-section">
+    <text class="section-title">选择古建筑</text>
+    <view class="building-list">
+      <view class="building-item" bindtap="selectBuilding" data-building="forbidden-city">
+        <image src="/images/forbidden-city.jpg" class="building-image" />
+        <text class="building-name">故宫</text>
+      </view>
+      <view class="building-item" bindtap="selectBuilding" data-building="summer-palace">
+        <image src="/images/summer-palace.jpg" class="building-image" />
+        <text class="building-name">颐和园</text>
+      </view>
+      <view class="building-item" bindtap="selectBuilding" data-building="temple-of-heaven">
+        <image src="/images/temple-of-heaven.jpg" class="building-image" />
+        <text class="building-name">天坛</text>
+      </view>
+      <view class="building-item" bindtap="selectBuilding" data-building="suzhou-garden">
+        <image src="/images/suzhou-garden.jpg" class="building-image" />
+        <text class="building-name">苏州园林</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="player-section" wx:if="{{selectedBuilding}}">
+    <text class="player-title">{{selectedBuilding.name}}语音讲解</text>
+    <view class="player-content">
+      <view class="player-info">
+        <image src="{{selectedBuilding.image}}" class="player-image" />
+        <view class="player-details">
+          <text class="player-desc">{{selectedBuilding.desc}}</text>
+          <text class="player-duration">讲解时长：{{selectedBuilding.duration}}</text>
+        </view>
+      </view>
+      
+      <view class="player-controls">
+        <button class="control-button" bindtap="playPause">
+          <text>{{isPlaying ? '暂停' : '播放'}}</text>
+        </button>
+        <button class="control-button" bindtap="stop">
+          <text>停止</text>
+        </button>
+        <button class="control-button" bindtap="repeat">
+          <text>重复</text>
+        </button>
+      </view>
+      
+      <view class="progress-section">
+        <text class="current-time">{{currentTime}}</text>
+        <slider 
+          class="progress-bar" 
+          min="0" 
+          max="100" 
+          value="{{progress}}" 
+          bindchange="seek"
+        />
+        <text class="total-time">{{selectedBuilding.duration}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="tips-section">
+    <text class="tips-title">使用提示</text>
+    <view class="tips-content">
+      <text class="tips-text">1. 选择您感兴趣的古建筑</text>
+      <text class="tips-text">2. 点击播放按钮开始语音讲解</text>
+      <text class="tips-text">3. 可随时暂停、停止或重复播放</text>
+      <text class="tips-text">4. 拖动进度条调整播放位置</text>
+    </view>
+  </view>
+</view>

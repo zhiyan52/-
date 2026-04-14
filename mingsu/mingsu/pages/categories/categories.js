@@ -7,42 +7,42 @@ Page({
         title: '时令食俗',
         desc: '二十四节气传统饮食',
         icon: '🌱',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20solar%20terms%20seasonal%20food%20culture&image_size=square'
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/c1.jpg'
       },
       {
         id: 'regions',
         title: '地域珍味',
         desc: '各地特色美食文化',
         icon: '🗺️',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20regional%20food%20map%20culture&image_size=square'
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/c2.jpg'
       },
       {
         id: 'intangible',
         title: '非遗食韵',
         desc: '非物质文化遗产美食',
         icon: '🏆',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20intangible%20cultural%20heritage%20food&image_size=square'
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/c3.jpg'
       },
       {
         id: 'cakes',
         title: '传统糕饼',
         desc: '经典糕点制作技艺',
         icon: '🎂',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20pastries%20cakes&image_size=square'
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/c4.jpg'
       },
       {
         id: 'festivals',
         title: '节日美食',
         desc: '传统节日特色饮食',
         icon: '🎉',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20festival%20food%20culture&image_size=square'
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/c5.jpg'
       },
       {
         id: 'crafts',
         title: '制作技艺',
         desc: '传统美食制作工艺',
         icon: '👨‍🍳',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20food%20craftsmanship&image_size=square'
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/c6.jpg'
       }
     ]
   },
@@ -58,7 +58,7 @@ Page({
   goToCategory(e) {
     const id = e.currentTarget.dataset.id;
     let url = '';
-    
+
     switch (id) {
       case 'seasons':
         url = '/mingsu/mingsu/pages/categories/seasons';
@@ -79,7 +79,7 @@ Page({
         });
         return;
     }
-    
+
     wx.navigateTo({
       url: url,
       fail: (err) => {

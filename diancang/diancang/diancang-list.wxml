@@ -1,0 +1,51 @@
+<!-- 典藏列表页面 -->
+<view class="list-container">
+  <!-- 顶部导航栏 -->
+  <view class="nav-bar">
+    <view class="nav-left" bindtap="goBack">
+      <text class="back-icon">←</text>
+      <text class="nav-title">返回</text>
+    </view>
+    <text class="nav-center">典藏列表</text>
+    <view class="nav-right">
+      <text class="filter-icon" bindtap="showFilter">🔍</text>
+    </view>
+  </view>
+  
+  <!-- 筛选栏 -->
+  <view class="filter-bar">
+    <view class="filter-item {{selectedFilter === 'all' ? 'active' : ''}}" data-filter="all" bindtap="selectFilter">
+      <text>全部</text>
+    </view>
+    <view class="filter-item {{selectedFilter === 'classics' ? 'active' : ''}}" data-filter="classics" bindtap="selectFilter">
+      <text>经史子集</text>
+    </view>
+    <view class="filter-item {{selectedFilter === 'artifacts' ? 'active' : ''}}" data-filter="artifacts" bindtap="selectFilter">
+      <text>珍贵文物</text>
+    </view>
+    <view class="filter-item {{selectedFilter === 'calligraphy' ? 'active' : ''}}" data-filter="calligraphy" bindtap="selectFilter">
+      <text>书法碑帖</text>
+    </view>
+  </view>
+  
+  <!-- 藏品列表 -->
+  <view class="collection-list">
+    <view class="collection-item" wx:for="{{collections}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      <image class="item-image" src="{{item.image}}" mode="aspectFill" />
+      <view class="item-info">
+        <text class="item-title">{{item.title}}</text>
+        <text class="item-desc">{{item.desc}}</text>
+        <view class="item-meta">
+          <view class="meta-tag">{{item.category}}</view>
+          <text class="meta-era">{{item.era}}</text>
+          <text class="meta-views">{{item.views}}次浏览</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 加载更多 -->
+  <view class="load-more" bindtap="loadMore">
+    <text>加载更多</text>
+  </view>
+</view>

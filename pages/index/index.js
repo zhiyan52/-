@@ -6,7 +6,7 @@ Page({
         id: 1,
         title: "古建雅韵",
         image: "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shouye/gujian (1)(1).png",
-        url: "/gujian/gujian/gujian"
+        url: "/gujian/home/home"
       },
       {
         id: 2,

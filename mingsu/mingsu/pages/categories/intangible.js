@@ -7,28 +7,28 @@ Page({
         title: '景德镇陶瓷茶具',
         desc: '景德镇陶瓷烧制技艺，国家级非物质文化遗产',
         level: '国家级非遗',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=jingdezhen%20ceramic%20tea%20set%20traditional%20craft&image_size=landscape_16_9'
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/6.jpg'
       },
       {
         id: 7,
         title: '苏绣茶席',
         desc: '苏州刺绣技艺，国家级非物质文化遗产',
         level: '国家级非遗',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=suzhou%20embroidery%20tea%20ceremony%20traditional%20craft&image_size=landscape_16_9'
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/7.jpg'
       },
       {
         id: 8,
         title: '茅台酒',
         desc: '贵州茅台酒酿制技艺，国家级非物质文化遗产',
         level: '国家级非遗',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=maotai%20liquor%20traditional%20chinese%20alcohol&image_size=landscape_16_9'
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/8.jpg'
       },
       {
         id: 9,
         title: '山西老陈醋',
         desc: '山西老陈醋酿制技艺，国家级非物质文化遗产',
         level: '国家级非遗',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=shanxi%20mature%20vinegar%20traditional%20chinese%20condiment&image_size=landscape_16_9'
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/9.jpg'
       }
     ]
   },

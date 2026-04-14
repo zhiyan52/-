@@ -5,33 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bannerList: [
-      {
-        id: 1,
-        title: '应县木塔',
-        dynasty: '辽·清宁二年',
-        description: '世界最高木塔，无钉无铆',
-        image: '/images/blank.png',
-        url: '/gujianSub/gongdian/detail?id=1'
-      },
-      {
-        id: 2,
-        title: '故宫',
-        dynasty: '明·永乐四年',
-        description: '世界上现存规模最大、保存最为完整的木质结构古建筑之一',
-        image: '/images/blank.png',
-        url: '/gujianSub/gongdian/detail?id=2'
-      },
-      {
-        id: 3,
-        title: '苏州园林',
-        dynasty: '明·嘉靖年间',
-        description: '中国古典园林的杰出代表',
-        image: '/images/blank.png',
-        url: '/gujianSub/yuanlin/detail?id=1'
-      }
-    ],
-    currentBanner: 0,
     categoryList: [
       {
         id: 'gongdian',
@@ -89,22 +62,6 @@ Page({
         icon: '🎭',
         url: '/pages/feiyi/pages/index/index'
       }
-    ],
-    recommendList: [
-      {
-        id: 1,
-        title: '营造学堂：斗拱入门',
-        duration: '12分钟',
-        learners: '1.2万人已学',
-        image: '/images/blank.png'
-      },
-      {
-        id: 2,
-        title: '专题：唐代木构巡礼',
-        duration: '8座建筑',
-        learners: '3条路线',
-        image: '/images/blank.png'
-      }
     ]
   },
 
@@ -112,34 +69,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.startBannerAutoPlay();
-  },
-
-  /**
-   * 开始轮播图自动播放
-   */
-  startBannerAutoPlay() {
-    this.bannerTimer = setInterval(() => {
-      const current = this.data.currentBanner;
-      const next = (current + 1) % this.data.bannerList.length;
-      this.setData({ currentBanner: next });
-    }, 3000);
-  },
-
-  /**
-   * 停止轮播图自动播放
-   */
-  onHide() {
-    if (this.bannerTimer) {
-      clearInterval(this.bannerTimer);
-    }
-  },
-
-  /**
-   * 轮播图切换
-   */
-  bannerChange(e) {
-    this.setData({ currentBanner: e.detail.current });
+    console.log('加载古建雅韵分类页面');
   },
 
   /**
@@ -171,38 +101,11 @@ Page({
   },
 
   /**
-   * 跳转到推荐内容
+   * 跳转到分类页面
    */
-  goToRecommend(e) {
-    const id = e.currentTarget.dataset.id;
+  goToCategoryList() {
     wx.navigateTo({
-      url: `/gujianSub/gongdian/detail?id=${id}`,
-      fail: (err) => {
-        console.error('跳转失败:', err);
-        wx.showToast({ title: '页面加载失败', icon: 'error' });
-      }
-    });
-  },
-
-  /**
-   * 跳转到发现页面
-   */
-  goToDiscover() {
-    wx.navigateTo({
-      url: '/gujianSub/discover/discover',
-      fail: (err) => {
-        console.error('跳转失败:', err);
-        wx.showToast({ title: '页面加载失败', icon: 'error' });
-      }
-    });
-  },
-
-  /**
-   * 跳转到雅集页面
-   */
-  goToSocial() {
-    wx.navigateTo({
-      url: '/gujianSub/social/social',
+      url: '/gujianSub/gujianSub',
       fail: (err) => {
         console.error('跳转失败:', err);
         wx.showToast({ title: '页面加载失败', icon: 'error' });

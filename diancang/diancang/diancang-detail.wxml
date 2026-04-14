@@ -1,42 +1,126 @@
-<!-- diancang/diancang/diancang-detail.wxml -->
-<view class="container">
-  <!-- 典籍头部信息 -->
-  <view class="book-header">
-    <text class="book-title">{{bookInfo.name}}</text>
-    <text class="book-desc">{{bookInfo.desc}}</text>
+<!-- 典藏详情页面 -->
+<view class="detail-container">
+  <!-- 顶部导航栏 -->
+  <view class="nav-bar">
+    <view class="nav-left" bindtap="goBack">
+      <text class="back-icon">←</text>
+      <text class="nav-title">返回</text>
+    </view>
+    <text class="nav-center">典藏详情</text>
+    <view class="nav-right">
+      <text class="share-icon">🔗</text>
+      <text class="favorite-icon" bindtap="toggleFavorite">❤️</text>
+    </view>
   </view>
-
-  <!-- 名句列表 -->
-  <view class="sentence-list">
-    <view class="sentence-item" wx:for="{{sentenceList}}" wx:key="id">
-      <view class="original">【原文】{{item.original}}</view>
-      <view class="note">【注释】{{item.note}}</view>
-      <view class="translation">【译文】{{item.translation}}</view>
-      <view class="action-bar">
-        <button class="action-btn {{item.isCollected ? 'collected' : ''}}" 
-                bindtap="toggleCollect" data-id="{{item.id}}">
-          {{item.isCollected ? '已收藏' : '收藏'}}
-        </button>
-        <button class="action-btn" bindtap="goToExtract" data-id="{{item.id}}">摘抄</button>
+  
+  <!-- 藏品基本信息 -->
+  <view class="basic-info">
+    <view class="cover-section">
+      <image class="cover-image" src="{{collection.cover}}" mode="aspectFill" />
+      <view class="cover-frame">
+        <view class="frame-top"></view>
+        <view class="frame-right"></view>
+        <view class="frame-bottom"></view>
+        <view class="frame-left"></view>
+      </view>
+      <view class="seal-mark">珍藏</view>
+    </view>
+    
+    <view class="info-section">
+      <text class="collection-title">{{collection.title}}</text>
+      <view class="meta-info">
+        <view class="meta-item">
+          <text class="meta-label">类别：</text>
+          <text class="meta-value">{{collection.category}}</text>
+        </view>
+        <view class="meta-item">
+          <text class="meta-label">年代：</text>
+          <text class="meta-value">{{collection.era}}</text>
+        </view>
+        <view class="meta-item">
+          <text class="meta-label">作者：</text>
+          <text class="meta-value">{{collection.author}}</text>
+        </view>
+      </view>
+      <view class="stats">
+        <view class="stat-item">
+          <text class="stat-icon">👁</text>
+          <text class="stat-value">{{collection.views}}</text>
+          <text class="stat-label">浏览</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-icon">⭐</text>
+          <text class="stat-value">{{collection.favorites}}</text>
+          <text class="stat-label">收藏</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-icon">💬</text>
+          <text class="stat-value">{{collection.comments}}</text>
+          <text class="stat-label">评论</text>
+        </view>
       </view>
     </view>
   </view>
-
-  <!-- 趣味问答 -->
-  <view class="quiz-section">
-    <text class="quiz-title">趣味问答</text>
-    <text class="quiz-question">{{quiz.question}}</text>
-    <view class="quiz-options">
-      <view class="quiz-option {{selectedOption === index ? 'selected' : ''}}" 
-            wx:for="{{quiz.options}}" wx:key="*this"
-            bindtap="selectOption" data-index="{{index}}">
-        {{item}}
+  
+  <!-- 藏品描述 -->
+  <view class="description-section">
+    <view class="section-header">
+      <text class="section-title">藏品介绍</text>
+      <view class="section-line"></view>
+    </view>
+    <text class="description">{{collection.description}}</text>
+  </view>
+  
+  <!-- 藏品细节 -->
+  <view class="details-section">
+    <view class="section-header">
+      <text class="section-title">详细信息</text>
+      <view class="section-line"></view>
+    </view>
+    <view class="detail-list">
+      <view class="detail-item">
+        <text class="detail-label">尺寸：</text>
+        <text class="detail-value">{{collection.size}}</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">材质：</text>
+        <text class="detail-value">{{collection.material}}</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">收藏地：</text>
+        <text class="detail-value">{{collection.location}}</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">入藏时间：</text>
+        <text class="detail-value">{{collection.acquisitionDate}}</text>
       </view>
     </view>
-    <view class="quiz-result" wx:if="{{showResult}}">
-      <text class="{{isCorrect ? 'correct' : 'wrong'}}">
-        {{isCorrect ? '✅ 回答正确！' : '❌ 回答错误，正确答案是：' + quiz.answer}}
-      </text>
+  </view>
+  
+  <!-- 相关图片 -->
+  <view class="gallery-section">
+    <view class="section-header">
+      <text class="section-title">相关图片</text>
+      <view class="section-line"></view>
+    </view>
+    <view class="gallery-grid">
+      <image class="gallery-image" wx:for="{{collection.images}}" wx:key="index" src="{{item}}" mode="aspectFill" bindtap="previewImage" data-index="{{index}}" />
+    </view>
+  </view>
+  
+  <!-- 底部操作栏 -->
+  <view class="action-bar">
+    <view class="action-btn" bindtap="addComment">
+      <text class="btn-icon">💬</text>
+      <text class="btn-text">评论</text>
+    </view>
+    <view class="action-btn" bindtap="shareCollection">
+      <text class="btn-icon">🔗</text>
+      <text class="btn-text">分享</text>
+    </view>
+    <view class="action-btn primary" bindtap="readOnline">
+      <text class="btn-icon">📖</text>
+      <text class="btn-text">在线阅读</text>
     </view>
   </view>
 </view>

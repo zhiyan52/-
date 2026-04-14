@@ -1,4 +1,4 @@
- /* pages/gujian/gujian.wxss */
+/* gujian/category/category.wxss */
 .container {
   background: linear-gradient(180deg, #b6e8cc 0%, #a8d5ba 100%);
   min-height: 100vh;

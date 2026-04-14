@@ -1,4 +1,4 @@
- // pages/gujian/gujian.js
+// gujian/category/category.js
 Page({
   data: {
     categoryList: [
@@ -71,7 +71,7 @@ Page({
   onTouchStart(e) {
     const index = e.currentTarget.dataset.index;
     this.setData({ pressedIndex: index });
-    
+
     // 轻微震动反馈
     wx.vibrateShort({ type: 'light' });
   },
@@ -84,13 +84,13 @@ Page({
   onCategoryTap(e) {
     const id = parseInt(e.currentTarget.dataset.id);
     const index = e.currentTarget.dataset.index;
-    
+
     // 保持按压状态一会儿再跳转
     this.setData({ pressedIndex: index });
-    
+
     setTimeout(() => {
       this.setData({ pressedIndex: -1 });
-      
+
       const subPackagePageMap = {
         1: '/gujianSub/gongdian/gongdian',
         2: '/gujianSub/yuanlin/yuanlin',

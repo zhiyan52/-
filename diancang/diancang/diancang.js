@@ -1,50 +1,187 @@
-// pages/classic/classic.js
+ // pages/diancang/diancang.js
 Page({
   data: {
-    tabList: [
-      { id: 1, name: '四书五经' },
-      { id: 2, name: '诸子百家' },
-      { id: 3, name: '唐诗宋词' },
-      { id: 4, name: '明清小说' }
+    currentCategory: 'all',
+    todayDate: '',
+    
+    // 轮播推荐数据 - 使用在线图片
+    featuredList: [
+      {
+        id: 1,
+        image: 'https://picsum.photos/400/200?random=1',
+        tag: '镇馆之宝',
+        title: '《永乐大典》',
+        description: '中国古代最大的百科全书，被誉为"世界有史以来最大的百科全书"'
+      },
+      {
+        id: 2,
+        image: 'https://picsum.photos/400/200?random=2',
+        tag: '稀世珍本',
+        title: '《四库全书》',
+        description: '清代乾隆时期编修的大型丛书，分经史子集四部'
+      },
+      {
+        id: 3,
+        image: 'https://picsum.photos/400/200?random=3',
+        tag: '国宝级',
+        title: '《清明上河图》',
+        description: '北宋张择端绘制的风俗画，中国十大传世名画之一'
+      }
     ],
-    currentTab: 0,
-    bookList: [
-      { id: 'lunyu', name: '论语', cover: '/images/classic/lunyu.png', category: 1 },
-      { id: 'mengzi', name: '孟子', cover: '/images/classic/mengzi.png', category: 1 },
-      { id: 'zhuangzi', name: '庄子', cover: '/images/classic/zhuangzi.png', category: 2 }
+
+    // 今日典籍
+    dailyBook: {
+      id: 101,
+      cover: 'https://picsum.photos/240/320?random=4',
+      name: '《论语》',
+      dynasty: '春秋',
+      author: '孔子弟子及再传弟子',
+      summary: '儒家经典著作之一，主要记录孔子及其弟子的言行，集中体现了孔子的政治主张、伦理思想、道德观念及教育原则等。',
+      views: 12580,
+      favorites: 3421
+    },
+
+    // 典藏列表
+    collectionList: [
+      {
+        id: 201,
+        image: 'https://picsum.photos/200/280?random=5',
+        category: '经部',
+        name: '《周易》',
+        era: '西周',
+        size: 'large'
+      },
+      {
+        id: 202,
+        image: 'https://picsum.photos/200/280?random=6',
+        category: '史部',
+        name: '《史记》',
+        era: '西汉'
+      },
+      {
+        id: 203,
+        image: 'https://picsum.photos/200/280?random=7',
+        category: '子部',
+        name: '《道德经》',
+        era: '春秋'
+      },
+      {
+        id: 204,
+        image: 'https://picsum.photos/200/280?random=8',
+        category: '集部',
+        name: '《楚辞》',
+        era: '战国'
+      },
+      {
+        id: 205,
+        image: 'https://picsum.photos/400/300?random=9',
+        category: '金石',
+        name: '毛公鼎',
+        era: '西周晚期',
+        size: 'large'
+      }
     ],
-    cachedCount: 2
+
+    // 书法列表
+    calligraphyList: [
+      {
+        id: 301,
+        image: 'https://picsum.photos/200/350?random=10',
+        calligrapher: '王羲之',
+        scriptType: '行书',
+        title: '《兰亭集序》'
+      },
+      {
+        id: 302,
+        image: 'https://picsum.photos/200/350?random=11',
+        calligrapher: '颜真卿',
+        scriptType: '楷书',
+        title: '《多宝塔碑》'
+      },
+      {
+        id: 303,
+        image: 'https://picsum.photos/200/350?random=12',
+        calligrapher: '苏轼',
+        scriptType: '行书',
+        title: '《寒食帖》'
+      },
+      {
+        id: 304,
+        image: 'https://picsum.photos/200/350?random=13',
+        calligrapher: '张旭',
+        scriptType: '草书',
+        title: '《古诗四帖》'
+      }
+    ],
+
+    // 知识内容
+    knowledgeContent: '古籍装帧形式历经演变，先后出现过卷轴装、经折装、旋风装、蝴蝶装、包背装、线装等多种形态。其中线装书因其牢固耐用、翻阅方便，自明代中期起成为最主流的书籍装帧形式，沿用至今。',
+    knowledgeSource: '《中国古籍装订技术史》'
   },
 
-  onLoad() {
-    this.loadCachedData();
+  onLoad: function (options) {
+    // 初始化页面
+    this.setTodayDate();
   },
 
-  // 切换分类标签
-  switchTab(e) {
-    const index = e.currentTarget.dataset.index;
-    this.setData({ currentTab: index });
-    this.filterBookList(index);
+  // 设置今日日期
+  setTodayDate: function () {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const todayDate = `${year}年${month}月${day}日`;
+    
+    this.setData({
+      todayDate: todayDate
+    });
   },
 
-  // 筛选对应分类的典籍
-  filterBookList(tabIndex) {
-    const categoryId = this.data.tabList[tabIndex].id;
-    // 实际开发中可从全量数据中筛选
-    console.log('当前分类ID:', categoryId);
+  // 切换分类
+  switchCategory: function (e) {
+    const category = e.currentTarget.dataset.category;
+    this.setData({
+      currentCategory: category
+    });
+    
+    // 这里可以添加根据分类筛选数据的逻辑
+    console.log('切换到分类:', category);
   },
 
-  // 加载本地缓存数据
-  loadCachedData() {
-    const cached = wx.getStorageSync('cached_classics') || [];
-    this.setData({ cachedCount: cached.length });
-  },
-
-  // 跳转到典籍详情页
-  goToDetail(e) {
-    const bookId = e.currentTarget.dataset.id;
+  // 跳转到详情页
+  goToDetail: function (e) {
+    const id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: `/diancang/diancang/diancang-detail?id=${bookId}`
+      url: '/diancang/diancang-detail?id=' + id
+    });
+  },
+
+  // 查看更多
+  viewMore: function () {
+    wx.navigateTo({
+      url: '/diancang/diancang-list'
+    });
+  },
+
+  // 打开AR功能
+  openAR: function () {
+    wx.showToast({
+      title: 'AR识典功能开发中',
+      icon: 'none'
+    });
+  },
+
+  // 开始典籍问答
+  startQuiz: function () {
+    wx.navigateTo({
+      url: '/diancang/diancang-quiz'
+    });
+  },
+
+  // 查看藏馆地图
+  viewMap: function () {
+    wx.navigateTo({
+      url: '/diancang/diancang-map'
     });
   }
 });

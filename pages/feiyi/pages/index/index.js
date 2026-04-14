@@ -64,27 +64,27 @@ Page({
 
   },
   // 获取音频
-async getAudio(heritageId) {
-  try {
-    const res = await wx.cloud.callFunction({
-      name: 'getAudio',
-      data: {
-        heritageId: heritageId,
-        type: 'intro'
+  async getAudio(heritageId) {
+    try {
+      const res = await wx.cloud.callFunction({
+        name: 'getAudio',
+        data: {
+          heritageId: heritageId,
+          type: 'intro'
+        }
+      });
+
+      if (res.result.code === 0) {
+        // 播放音频
+        this.audioManager.play(res.result.data.audioUrl);
+      } else {
+        console.error('获取音频失败:', res.result.message);
       }
-    });
-    
-    if (res.result.code === 0) {
-      // 播放音频
-      this.audioManager.play(res.result.data.audioUrl);
-    } else {
-      console.error('获取音频失败:', res.result.message);
+
+    } catch (err) {
+      console.error('调用云函数失败:', err);
     }
-    
-  } catch (err) {
-    console.error('调用云函数失败:', err);
-  }
-},
+  },
 
   // 跳转到古建雅韵页面
   goToGujian() {

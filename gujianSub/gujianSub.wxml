@@ -9,33 +9,6 @@
     </view>
   </view>
 
-  <!-- 每日一建轮播图 -->
-  <view class="banner-section">
-    <swiper 
-      class="banner-swiper" 
-      indicator-dots="true" 
-      indicator-color="#fff" 
-      indicator-active-color="#d4af37" 
-      autoplay="true" 
-      interval="3000" 
-      duration="500"
-      bindchange="bannerChange"
-    >
-      <block wx:for="{{bannerList}}" wx:key="id">
-        <swiper-item>
-          <view class="banner-item" data-url="{{item.url}}" bindtap="goToRecommend">
-            <image class="banner-image" src="{{item.image}}" mode="aspectFill"></image>
-            <view class="banner-overlay">
-              <text class="banner-title">{{item.title}}</text>
-              <text class="banner-dynasty">{{item.dynasty}}</text>
-              <text class="banner-description">{{item.description}}</text>
-            </view>
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
-
   <!-- 营造分类 -->
   <view class="category-section">
     <text class="section-title">营造分类</text>
@@ -64,42 +37,19 @@
     </view>
   </view>
 
-  <!-- 营造推荐 -->
-  <view class="recommend-section">
-    <text class="section-title">营造推荐</text>
-    <block wx:for="{{recommendList}}" wx:key="id">
-      <view class="recommend-item" data-id="{{item.id}}" bindtap="goToRecommend">
-        <view class="recommend-image">
-          <image src="{{item.image}}" mode="aspectFill"></image>
-        </view>
-        <view class="recommend-info">
-          <text class="recommend-title">{{item.title}}</text>
-          <text class="recommend-meta">{{item.duration}}· {{item.learners}}</text>
-        </view>
-      </view>
-    </block>
-  </view>
-
-  <!-- 底部Tab栏 -->
-  <view class="bottom-tab">
-    <view class="tab-item active">
-      <text class="tab-icon">🏠</text>
-      <text class="tab-text">首页</text>
+  <!-- 底部导航栏 -->
+  <view class="bottom-nav">
+    <view class="nav-item active">
+      <text class="nav-icon">🏠</text>
+      <text class="nav-text">主页</text>
     </view>
-    <view class="tab-item" bindtap="goToDiscover">
-      <text class="tab-icon">🔍</text>
-      <text class="tab-text">发现</text>
+    <view class="nav-item" bindtap="goToCategoryList">
+      <text class="nav-icon">📚</text>
+      <text class="nav-text">分类</text>
     </view>
-    <view class="tab-item">
-      <text class="tab-icon add-icon">+</text>
-    </view>
-    <view class="tab-item" bindtap="goToSocial">
-      <text class="tab-icon">👥</text>
-      <text class="tab-text">雅集</text>
-    </view>
-    <view class="tab-item" bindtap="goToProfile">
-      <text class="tab-icon">👤</text>
-      <text class="tab-text">我的</text>
+    <view class="nav-item" bindtap="goToProfile">
+      <text class="nav-icon">👤</text>
+      <text class="nav-text">我的</text>
     </view>
   </view>
 </view>

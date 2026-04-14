@@ -235,8 +235,8 @@
   color: #666;
 }
 
-/* 底部Tab栏 */
-.bottom-tab {
+/* 底部导航栏 */
+.bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -249,7 +249,7 @@
   z-index: 100;
 }
 
-.tab-item {
+.nav-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -259,32 +259,17 @@
   transition: color 0.3s ease;
 }
 
-.tab-item.active {
+.nav-item.active {
   color: #d4af37;
 }
 
-.tab-icon {
+.nav-icon {
   font-size: 20px;
   margin-bottom: 4px;
 }
 
-.tab-text {
+.nav-text {
   font-size: 12px;
-}
-
-.add-icon {
-  width: 40px;
-  height: 40px;
-  background-color: #d4af37;
-  color: #2C2621;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: -10px;
-  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
 }
 
 /* 响应式调整 */

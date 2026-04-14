@@ -1,0 +1,95 @@
+<!-- 古建雅韵 - 简约版 -->
+<view class="home-container">
+  <!-- 顶部标题区 -->
+  <view class="header">
+    <text class="title">古建雅韵</text>
+    <text class="subtitle">传承东方营造智慧</text>
+  </view>
+  
+  <!-- 主视觉区 -->
+  <view class="hero">
+    <image src="/images/hero.jpg" class="hero-image" />
+  </view>
+  
+  <!-- 功能入口 -->
+  <view class="features">
+    <view class="feature-row">
+      <view class="feature-item">
+        <image src="/icons/culture.png" class="feature-icon" />
+        <text>建筑文化</text>
+      </view>
+      <view class="feature-item">
+        <image src="/icons/structure.png" class="feature-icon" />
+        <text>营造技艺</text>
+      </view>
+    </view>
+    <view class="feature-row">
+      <view class="feature-item">
+        <image src="/icons/visit.png" class="feature-icon" />
+        <text>虚拟游览</text>
+      </view>
+      <view class="feature-item">
+        <image src="/icons/collection.png" class="feature-icon" />
+        <text>我的收藏</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 精选推荐 -->
+  <view class="section">
+    <text class="section-title">精选古建</text>
+    <view class="recommendations">
+      <view class="recommend-item">
+        <image src="/images/recommend1.jpg" class="rec-image" />
+        <text class="rec-title">故宫太和殿</text>
+      </view>
+      <view class="recommend-item">
+        <image src="/images/recommend2.jpg" class="rec-image" />
+        <text class="rec-title">苏州园林</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 智能功能 -->
+  <view class="section">
+    <text class="section-title">智能功能</text>
+    <view class="features">
+      <view class="feature-row">
+        <view class="feature-item" bindtap="navigateToAI">
+          <image src="/icons/ai-guide.png" class="feature-icon" />
+          <text>智能导览</text>
+        </view>
+        <view class="feature-item" bindtap="navigateToQA">
+          <image src="/icons/ai-qa.png" class="feature-icon" />
+          <text>文化问答</text>
+        </view>
+      </view>
+      <view class="feature-row">
+        <view class="feature-item" bindtap="navigateToRecommend">
+          <image src="/icons/ai-recommend.png" class="feature-icon" />
+          <text>个性化推荐</text>
+        </view>
+        <view class="feature-item" bindtap="navigateToVoice">
+          <image src="/icons/ai-voice.png" class="feature-icon" />
+          <text>语音讲解</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 底部导航 - 优化 -->
+<view class="tab-bar">
+  <view class="tab-item {{activeTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">
+    <image src="{{activeTab === 0 ? '/images/icon/home_active.png' : '/images/icon/home.png'}}"></image>
+    <text>首页</text>
+  </view>
+  <view class="tab-item {{activeTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">
+    <image src="{{activeTab === 1 ? '/images/icon/category_active.png' : '/images/icon/category.png'}}"></image>
+    <text>分类</text>
+  </view>
+  <view class="tab-item {{activeTab === 2 ? 'active' : ''}}" bindtap="switchTab" data-index="2">
+    <image src="{{activeTab === 2 ? '/images/icon/user_active.png' : '/images/icon/user.png'}}"></image>
+    <text>我的</text>
+  </view>
+</view>

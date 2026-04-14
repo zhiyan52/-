@@ -1,10 +1,14 @@
 /* mingsu/mingsu/pages/categories/cakes.wxss */
 
+.container {
+  min-height: 100vh;
+  background-color: #f9f5f0;
+}
+
 /* 顶部导航栏 */
-.top-nav {
+.header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 20rpx 32rpx;
   background-color: #8B4513;
   color: white;
@@ -13,24 +17,31 @@
   z-index: 100;
 }
 
-.back-btn {
+.header-back {
   font-size: 32rpx;
   padding: 8rpx;
+  margin-right: 32rpx;
 }
 
-.nav-title {
+.back-icon {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.header-title {
   font-size: 32rpx;
   font-weight: bold;
   font-family: '楷体', 'STKaiti', serif;
+  flex: 1;
 }
 
-.placeholder {
-  width: 40rpx;
+/* 内容区域 */
+.content {
+  padding: 24rpx 32rpx;
 }
 
 /* 传统糕饼列表 */
-.cakes-list {
-  padding: 24rpx 32rpx;
+.cake-list {
   display: flex;
   flex-direction: column;
   gap: 24rpx;
@@ -46,7 +57,7 @@
   transition: all 0.3s ease;
 }
 
-.cake-item:hover {
+.cake-item:active {
   box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
   transform: translateY(-4rpx);
 }
@@ -61,27 +72,12 @@
   padding: 24rpx;
 }
 
-.cake-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12rpx;
-}
-
-.cake-name {
+.cake-title {
   font-size: 32rpx;
   font-weight: bold;
   color: #333;
-  flex: 1;
-}
-
-.cake-type {
-  padding: 4rpx 16rpx;
-  background-color: #8B4513;
-  color: white;
-  border-radius: 12rpx;
-  font-size: 20rpx;
-  margin-left: 16rpx;
+  margin-bottom: 12rpx;
+  font-family: '楷体', 'STKaiti', serif;
 }
 
 .cake-desc {
@@ -91,24 +87,17 @@
   margin-bottom: 16rpx;
 }
 
-.cake-meaning, .cake-history {
+.cake-origin {
+  font-size: 22rpx;
+  color: #999;
   display: flex;
-  gap: 12rpx;
-  margin-bottom: 12rpx;
+  align-items: center;
 }
 
-.meaning-label, .history-label {
-  font-size: 24rpx;
-  color: #333;
-  font-weight: bold;
-  flex-shrink: 0;
-}
-
-.meaning-text, .history-text {
-  flex: 1;
-  font-size: 24rpx;
-  color: #666;
-  line-height: 1.4;
+.cake-origin::before {
+  content: '📍';
+  margin-right: 8rpx;
+  font-size: 20rpx;
 }
 
 /* 响应式适配 */
@@ -117,18 +106,19 @@
     height: 200rpx;
   }
   
-  .cake-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8rpx;
+  .header-title {
+    font-size: 28rpx;
   }
   
-  .cake-type {
-    margin-left: 0;
+  .cake-title {
+    font-size: 28rpx;
   }
   
-  .cake-meaning, .cake-history {
-    flex-direction: column;
-    gap: 4rpx;
+  .cake-desc {
+    font-size: 22rpx;
+  }
+  
+  .cake-origin {
+    font-size: 20rpx;
   }
 }

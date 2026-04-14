@@ -19,10 +19,10 @@ Page({
   onLoad(options) {
     const courseId = parseInt(options.id);
     this.setData({ courseId });
-    
+
     // 加载课程数据
     this.loadCourseData(courseId);
-    
+
     // 检查学习状态
     this.checkLearningStatus(courseId);
   },
@@ -37,7 +37,7 @@ Page({
         id: 1,
         title: '二十四节气食俗文化',
         desc: '了解中国传统二十四节气对应的食俗文化，不时不食，顺时而食。',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20solar%20terms%20food%20culture%20traditional&image_size=square',
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/c1.jpg',
         category: '节气',
         duration: '15分钟',
         viewCount: 2580,
@@ -58,7 +58,7 @@ Page({
         id: 2,
         title: '非遗美食制作技艺',
         desc: '探索中国传统非遗美食的制作工艺，感受匠心传承。',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20intangible%20cultural%20heritage%20food%20craftsmanship&image_size=square',
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/c6.jpg',
         category: '工艺',
         duration: '20分钟',
         viewCount: 1890,
@@ -77,7 +77,7 @@ Page({
         id: 3,
         title: '中国八大菜系',
         desc: '了解中国八大菜系的特色与代表菜品，品味地域文化。',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20eight%20great%20cuisines%20food%20culture&image_size=square',
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/c2.jpg',
         category: '地域',
         duration: '25分钟',
         viewCount: 3200,
@@ -96,7 +96,7 @@ Page({
         id: 4,
         title: '传统节日美食',
         desc: '探索中国传统节日中的特色美食，感受节日氛围。',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20festival%20food%20culture&image_size=square',
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/s4.jpg',
         category: '节气',
         duration: '18分钟',
         viewCount: 2150,
@@ -115,7 +115,7 @@ Page({
         id: 5,
         title: '中华茶文化',
         desc: '了解中国茶文化的起源、发展与品茶艺术。',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20tea%20culture%20traditional%20ceremony&image_size=square',
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/tea.jpg',
         category: '历史',
         duration: '22分钟',
         viewCount: 1680,
@@ -134,7 +134,7 @@ Page({
         id: 6,
         title: '传统糕点制作',
         desc: '学习中国传统糕点的制作方法和文化寓意。',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20pastries%20making%20culture&image_size=square',
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/c4.jpg',
         category: '工艺',
         duration: '16分钟',
         viewCount: 1420,
@@ -153,7 +153,7 @@ Page({
         id: 7,
         title: '江南美食文化',
         desc: '探索江南地区的特色美食和饮食文化。',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=jiangnan%20chinese%20food%20culture%20traditional&image_size=square',
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/jiangmei.jpg',
         category: '地域',
         duration: '19分钟',
         viewCount: 1950,
@@ -172,7 +172,7 @@ Page({
         id: 8,
         title: '食器文化史',
         desc: '了解中国传统食器的发展历程和文化内涵。',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20food%20utensils%20history%20culture&image_size=square',
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/shiqi.jpg',
         category: '历史',
         duration: '14分钟',
         viewCount: 1280,
@@ -188,10 +188,10 @@ Page({
         keyPoints: ['食器是艺术品', '鼎象征权力', '筷子体现中国智慧']
       }
     ];
-    
+
     const course = courses.find(c => c.id === courseId);
     if (course) {
-      this.setData({ 
+      this.setData({
         course,
         keyPoints: course.keyPoints || []
       });
@@ -206,7 +206,7 @@ Page({
   checkLearningStatus(courseId) {
     const completedCourses = wx.getStorageSync('completedCourses') || [];
     const isCompleted = completedCourses.includes(courseId);
-    this.setData({ 
+    this.setData({
       isCompleted,
       progress: isCompleted ? 100 : 0
     });
@@ -233,7 +233,7 @@ Page({
   scrollToSection(e) {
     const index = e.currentTarget.dataset.index;
     this.setData({ currentSection: index });
-    
+
     // 滚动到对应位置
     wx.createSelectorQuery()
       .select(`#section-${index}`)
@@ -253,23 +253,23 @@ Page({
    */
   completeLearning() {
     const { courseId } = this.data;
-    
+
     // 保存学习记录
     let completedCourses = wx.getStorageSync('completedCourses') || [];
     if (!completedCourses.includes(courseId)) {
       completedCourses.push(courseId);
       wx.setStorageSync('completedCourses', completedCourses);
-      
+
       // 增加积分
       let userPoints = wx.getStorageSync('userPoints') || 0;
       userPoints += 10;
       wx.setStorageSync('userPoints', userPoints);
-      
-      this.setData({ 
+
+      this.setData({
         isCompleted: true,
         progress: 100
       });
-      
+
       wx.showToast({
         title: '学习完成！积分+10',
         icon: 'success',

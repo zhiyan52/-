@@ -1,0 +1,55 @@
+<!-- 典藏阅读器页面 -->
+<view class="reader-container">
+  <!-- 顶部导航栏 -->
+  <view class="nav-bar">
+    <view class="nav-left" bindtap="goBack">
+      <text class="back-icon">←</text>
+      <text class="nav-title">返回</text>
+    </view>
+    <text class="nav-center">{{book.title}}</text>
+    <view class="nav-right" bindtap="showMenu">
+      <text class="menu-icon">☰</text>
+    </view>
+  </view>
+  
+  <!-- 阅读内容 -->
+  <view class="content-section" bindtap="toggleMenu">
+    <view class="book-info">
+      <text class="book-title">{{book.title}}</text>
+      <text class="book-author">{{book.author}}</text>
+      <text class="book-era">{{book.era}}</text>
+    </view>
+    
+    <view class="chapter-list" wx:if="{{showChapters}}">
+      <text class="chapter-title">目录</text>
+      <view class="chapter-item" wx:for="{{book.chapters}}" wx:key="index" bindtap="selectChapter" data-index="{{index}}">
+        <text class="chapter-number">{{index + 1}}</text>
+        <text class="chapter-name">{{item.title}}</text>
+      </view>
+    </view>
+    
+    <view class="reading-content" wx:else>
+      <text class="chapter-title">{{currentChapter.title}}</text>
+      <text class="content">{{currentChapter.content}}</text>
+    </view>
+  </view>
+  
+  <!-- 底部工具栏 -->
+  <view class="tool-bar" wx:if="{{showToolBar}}">
+    <view class="tool-item" bindtap="prevChapter">
+      <text class="tool-icon">上一章</text>
+    </view>
+    <view class="tool-item" bindtap="toggleChapters">
+      <text class="tool-icon">目录</text>
+    </view>
+    <view class="tool-item" bindtap="nextChapter">
+      <text class="tool-icon">下一章</text>
+    </view>
+    <view class="tool-item" bindtap="adjustFont">
+      <text class="tool-icon">字体</text>
+    </view>
+    <view class="tool-item" bindtap="adjustTheme">
+      <text class="tool-icon">主题</text>
+    </view>
+  </view>
+</view>

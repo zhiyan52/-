@@ -8,19 +8,19 @@ Page({
     bannerList: [
       {
         id: 1,
-        imageUrl: '/images/blank.png',
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/4.jpg',
         title: '民俗美食文化节',
         subtitle: '探索中华传统饮食文化'
       },
       {
         id: 2,
-        imageUrl: '/images/blank.png',
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/jieqi.jpg',
         title: '二十四节气食俗',
         subtitle: '不时不食，顺时而食'
       },
       {
         id: 3,
-        imageUrl: '/images/blank.png',
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/c6.jpg',
         title: '非遗美食技艺',
         subtitle: '传承千年的匠心工艺'
       }
@@ -30,38 +30,38 @@ Page({
         id: 1,
         title: '清明青团',
         desc: '清明节传统食品，象征着对祖先的缅怀',
-        imageUrl: '/images/blank.png'
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/1.jpg'
       },
       {
         id: 2,
         title: '立夏蛋',
         desc: '立夏吃蛋，祈求夏日平安健康',
-        imageUrl: '/images/blank.png'
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/s2.jpg'
       }
     ],
     waterfallList: [
       {
         id: 1,
         title: '北京烤鸭',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=beijing%20roast%20duck%20traditional%20chinese%20food&image_size=square',
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/2.jpg',
         tags: ['地域珍味', '北京']
       },
       {
         id: 2,
         title: '四川火锅',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=sichuan%20hot%20pot%20traditional%20chinese%20food&image_size=square',
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/3.jpg',
         tags: ['地域珍味', '四川']
       },
       {
         id: 3,
         title: '广式早茶',
-        imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=cantonese%20morning%20tea%20traditional%20chinese%20food&image_size=square',
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/4.jpg',
         tags: ['地域珍味', '广东']
       },
       {
         id: 4,
         title: '苏州糕点',
-        imageUrl: '/images/blank.png',
+        imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/5.jpg',
         tags: ['传统糕饼', '江苏']
       }
     ]

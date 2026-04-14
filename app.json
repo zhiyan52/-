@@ -23,9 +23,24 @@
       "independent": false
     },
     {
-      "root": "gujian/gujian",
+      "root": "gujian/home",
       "pages": [
-        "gujian"
+        "home"
+      ]
+    },
+    {
+      "root": "gujian/category",
+      "pages": [
+        "category"
+      ]
+    },
+    {
+      "root": "gujian/ai",
+      "pages": [
+        "ai-guide",
+        "ai-qa",
+        "ai-recommend",
+        "ai-voice"
       ]
     },
     {
@@ -43,7 +58,9 @@
       "root": "diancang/diancang",
       "pages": [
         "diancang",
-        "diancang-detail"
+        "diancang-detail",
+        "diancang-list",
+        "diancang-reader"
       ]
     },
     {

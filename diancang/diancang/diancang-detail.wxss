@@ -1,131 +1,311 @@
-/* diancang/diancang/diancang-detail.wxss */
-.container {
-  padding: 20rpx;
-  background-color: #f8f5f0;
+/* 典藏详情页面样式 */
+.detail-container {
+  background-color: #f8f4e9;
   min-height: 100vh;
+  padding: 0 30rpx;
 }
 
-.book-header {
-  margin-bottom: 40rpx;
-  text-align: center;
+/* 顶部导航栏 */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100rpx;
+  padding: 0 20rpx;
+  background: #2C2621;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.book-title {
-  display: block;
-  font-size: 48rpx;
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.back-icon {
+  font-size: 36rpx;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 20rpx;
 }
 
-.book-desc {
+.nav-title {
   font-size: 28rpx;
-  color: #666;
 }
 
-.sentence-list {
-  margin-bottom: 60rpx;
-}
-
-.sentence-item {
-  background-color: #fff;
-  border-radius: 15rpx;
-  padding: 30rpx;
-  margin-bottom: 30rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
-}
-
-.original, .note, .translation {
-  font-size: 30rpx;
-  line-height: 1.8;
-  margin-bottom: 15rpx;
-}
-
-.original {
-  color: #333;
+.nav-center {
+  font-size: 32rpx;
   font-weight: 500;
 }
 
-.note {
-  color: #999;
-  font-size: 26rpx;
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30rpx;
 }
 
-.translation {
+.share-icon,
+.favorite-icon {
+  font-size: 32rpx;
+}
+
+/* 基本信息 */
+.basic-info {
+  display: flex;
+  gap: 30rpx;
+  padding: 40rpx 0;
+  background: #fff;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.cover-section {
+  position: relative;
+  width: 240rpx;
+  height: 320rpx;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
+}
+
+.cover-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 4rpx solid #8B4513;
+  border-radius: 12rpx;
+  pointer-events: none;
+}
+
+.frame-top,
+.frame-right,
+.frame-bottom,
+.frame-left {
+  position: absolute;
+  background: #8B4513;
+}
+
+.frame-top {
+  top: -4rpx;
+  left: 30rpx;
+  right: 30rpx;
+  height: 4rpx;
+}
+
+.frame-right {
+  top: 30rpx;
+  right: -4rpx;
+  bottom: 30rpx;
+  width: 4rpx;
+}
+
+.frame-bottom {
+  bottom: -4rpx;
+  left: 30rpx;
+  right: 30rpx;
+  height: 4rpx;
+}
+
+.frame-left {
+  top: 30rpx;
+  left: -4rpx;
+  bottom: 30rpx;
+  width: 4rpx;
+}
+
+.seal-mark {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  background: #8B4513;
+  color: #fff;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 20rpx;
+  font-weight: bold;
+  transform: rotate(15deg);
+}
+
+.info-section {
+  flex: 1;
+}
+
+.collection-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.meta-info {
+  margin-bottom: 25rpx;
+}
+
+.meta-item {
+  display: flex;
+  margin-bottom: 10rpx;
+}
+
+.meta-label {
+  font-size: 24rpx;
+  color: #666;
+  width: 80rpx;
+}
+
+.meta-value {
+  font-size: 24rpx;
+  color: #333;
+  flex: 1;
+}
+
+.stats {
+  display: flex;
+  gap: 40rpx;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-icon {
+  font-size: 32rpx;
+  margin-bottom: 5rpx;
+}
+
+.stat-value {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.stat-label {
+  font-size: 20rpx;
   color: #666;
 }
 
+/* 通用区块样式 */
+.description-section,
+.details-section,
+.gallery-section {
+  background: #fff;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-right: 20rpx;
+}
+
+.section-line {
+  flex: 1;
+  height: 2rpx;
+  background: #e0e0e0;
+}
+
+/* 藏品描述 */
+.description {
+  font-size: 26rpx;
+  color: #444;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* 详细信息 */
+.detail-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-label {
+  font-size: 22rpx;
+  color: #666;
+  margin-bottom: 5rpx;
+}
+
+.detail-value {
+  font-size: 24rpx;
+  color: #333;
+  font-weight: 400;
+}
+
+/* 相关图片 */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15rpx;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 180rpx;
+  border-radius: 8rpx;
+}
+
+/* 底部操作栏 */
 .action-bar {
   display: flex;
   gap: 20rpx;
-  margin-top: 20rpx;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
 }
 
 .action-btn {
   flex: 1;
-  padding: 15rpx 0;
-  font-size: 28rpx;
-  border-radius: 30rpx;
-  background-color: #c8b69e;
-  color: #fff;
-  border: none;
-}
-
-.action-btn.collected {
-  background-color: #a67c52;
-}
-
-.quiz-section {
-  background-color: #fff;
-  border-radius: 15rpx;
-  padding: 30rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
-}
-
-.quiz-title {
-  display: block;
-  font-size: 36rpx;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 20rpx;
-}
-
-.quiz-question {
-  display: block;
-  font-size: 30rpx;
-  color: #333;
-  margin-bottom: 30rpx;
-}
-
-.quiz-options {
   display: flex;
   flex-direction: column;
-  gap: 20rpx;
-  margin-bottom: 30rpx;
-}
-
-.quiz-option {
+  align-items: center;
   padding: 20rpx;
-  border: 2rpx solid #ddd;
-  border-radius: 15rpx;
-  font-size: 28rpx;
-  color: #333;
+  border-radius: 12rpx;
+  background: #f8f9fa;
 }
 
-.quiz-option.selected {
-  border-color: #c8b69e;
-  background-color: #f5f0e9;
+.action-btn.primary {
+  background: #8B4513;
+  color: #fff;
 }
 
-.quiz-result {
-  text-align: center;
-  font-size: 30rpx;
+.btn-icon {
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
 }
 
-.correct {
-  color: #52c41a;
+.btn-text {
+  font-size: 24rpx;
+  font-weight: 500;
 }
 
-.wrong {
-  color: #ff4d4f;
+.action-btn.primary .btn-text {
+  color: #fff;
 }
