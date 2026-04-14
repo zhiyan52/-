@@ -1,0 +1,74 @@
+<!--components/heritage-card/heritage-card.wxml-->
+<view class="heritage-card {{isHot ? 'hot' : ''}}" bindtap="onCardTap">
+  <!-- 热度标识 -->
+  <view class="hot-badge" wx:if="{{isHot}}">
+    <text class="hot-text">HOT</text>
+  </view>
+  
+  <!-- 音频标识 -->
+  <view class="audio-badge" wx:if="{{hasAudio}}">
+    <text class="audio-icon">🎵</text>
+  </view>
+  
+  <!-- 封面图 -->
+  <view class="image-wrapper">
+    <image 
+      class="heritage-image" 
+      src="{{heritage.images.cover}}" 
+      mode="aspectFill"
+      lazy-load="{{true}}"
+      loading="lazy"
+      binderror="onImageError"
+    />
+    <view class="image-overlay"></view>
+  </view>
+  
+  <!-- 内容区 -->
+  <view class="card-content">
+    <!-- 标题行 -->
+    <view class="title-row">
+      <text class="heritage-name">{{name}}</text>
+      <view class="category-tag" style="background: {{categoryColor}}20; color: {{categoryColor}}">
+        {{categoryName}}
+      </view>
+    </view>
+    
+    <!-- 简介（200字以内） -->
+    <text class="heritage-brief">{{brief}}</text>
+    
+    <!-- 底部信息栏 -->
+    <view class="card-footer">
+      <!-- 传承人 -->
+      <view class="inheritor-info" bindtap="onInheritorTap" data-id="{{inheritorId}}">
+        <image class="inheritor-avatar" src="{{inheritorAvatar}}" mode="aspectFill"/>
+        <text class="inheritor-name">{{inheritorName}}</text>
+        <text class="inheritor-level">{{inheritorLevel}}</text>
+      </view>
+      
+      <!-- 音频播放按钮 -->
+      <view 
+        class="audio-btn {{isPlaying ? 'playing' : ''}}" 
+        wx:if="{{hasAudio}}"
+        catchtap="onAudioTap"
+      >
+        <view class="audio-wave" wx:if="{{isPlaying}}">
+          <view class="wave-bar"></view>
+          <view class="wave-bar"></view>
+          <view class="wave-bar"></view>
+        </view>
+        <text class="audio-icon-static" wx:else>▶</text>
+        <text class="audio-text">{{isPlaying ? playingText : '听音'}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 进度条（播放时显示） -->
+  <view class="progress-bar" wx:if="{{isPlaying && showProgress}}">
+    <progress 
+      percent="{{progressPercent}}" 
+      activeColor="{{categoryColor}}"
+      backgroundColor="rgba(255,255,255,0.3)"
+      stroke-width="2"
+    />
+  </view>
+</view>

@@ -36,8 +36,7 @@
       "pages": [
         "pages/index/index",
         "pages/detail/detail",
-        "pages/inheritor/inheritor",
-        "data/categories.js"
+        "pages/inheritor/inheritor"
       ],
       "name": "feiyi",
       "independent": false
@@ -108,8 +107,8 @@
           "network": "all",
           "packages": [
             "feiyi",
-            "dianji",
-            "minsu"
+            "diancang",
+            "mingsu"
           ]
         }
       },
