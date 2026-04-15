@@ -1,6 +1,6 @@
 {
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
-  "cloudfunctionRoot": "cloudfuctions/",
+  "cloudfunctionRoot": "cloudfunctions/",
   "appid": "wx8d92e6f590c3804b",
   "setting": {
     "es6": false,

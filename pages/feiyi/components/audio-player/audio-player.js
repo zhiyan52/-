@@ -40,22 +40,22 @@ Component({
   },
 
   methods: {
-    _onPlay: function(data) {
+    _onPlay: function (data) {
       this._updateDisplay(data.heritageId);
       this.setData({ isPlaying: true });
     }.bind(this),
 
-    _onPause: function() {
+    _onPause: function () {
       this.setData({ isPlaying: false });
     }.bind(this),
 
-    _onEnded: function() {
+    _onEnded: function () {
       this.setData({ isPlaying: false, progressPercent: 0 });
       // 自动播放下一首
       this._playNext();
     }.bind(this),
 
-    _onProgress: function(data) {
+    _onProgress: function (data) {
       const percent = (data.progress / data.duration) * 100;
       this.setData({
         progressPercent: percent,
@@ -66,16 +66,16 @@ Component({
     _updateDisplay(heritageId) {
       const { HeritageDataUtils } = require('../../data/');
       const heritage = HeritageDataUtils.getById(heritageId);
-      
+
       if (heritage) {
         this.setData({
           heritageId: heritage.id,
           heritageName: heritage.name,
-          heritageImage: heritage.images?.cover || '/images/default-heritage.jpg',
+          heritageImage: (heritage.images && heritage.images.cover) || '/images/default-heritage.jpg',
           categoryName: heritage.categoryName || '非遗',
-          duration: heritage.audio?.duration || 10
+          duration: (heritage.audio && heritage.audio.duration) || 10
         });
-        
+
         // 更新播放列表状态
         this._updatePlaylistStatus();
       }
@@ -129,7 +129,7 @@ Component({
     _playById(id) {
       const { HeritageDataUtils } = require('../../data/');
       const heritage = HeritageDataUtils.getById(id);
-      if (heritage && heritage.audio?.hasAudio) {
+      if (heritage && heritage.audio && heritage.audio.hasAudio) {
         AudioManager.play(id, heritage.audio.src);
         this.triggerEvent('change', { id });
       }

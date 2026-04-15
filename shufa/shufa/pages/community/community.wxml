@@ -1,0 +1,197 @@
+<!-- 书画雅集社区页面 -->
+<view class="community-container">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <view class="header-title">书画社区</view>
+    <view class="header-actions">
+      <text class="action-btn" bindtap="showFeedback">意见反馈</text>
+    </view>
+  </view>
+
+  <!-- 发帖入口 -->
+  <view class="post-entry" bindtap="createPost">
+    <image class="user-avatar-small" src="{{userInfo.avatarUrl || '/components/yonghu.png'}}"></image>
+    <view class="post-input-placeholder">分享你的书画作品...</view>
+    <text class="post-icon">✏️</text>
+  </view>
+
+  <!-- Tab切换 -->
+  <view class="tab-bar">
+    <view class="tab-item {{activeTab === 'hot' ? 'active' : ''}}" bindtap="switchTab" data-tab="hot">
+      <text>热门</text>
+    </view>
+    <view class="tab-item {{activeTab === 'new' ? 'active' : ''}}" bindtap="switchTab" data-tab="new">
+      <text>最新</text>
+    </view>
+    <view class="tab-item {{activeTab === 'follow' ? 'active' : ''}}" bindtap="switchTab" data-tab="follow">
+      <text>关注</text>
+    </view>
+  </view>
+
+  <!-- 帖子列表 -->
+  <view class="post-list">
+    <view class="post-item" wx:for="{{postList}}" wx:key="id">
+      <!-- 用户信息 -->
+      <view class="post-header">
+        <image class="post-avatar" src="{{item.avatarUrl}}"></image>
+        <view class="post-user-info">
+          <text class="post-username">{{item.username}}</text>
+          <text class="post-time">{{item.time}}</text>
+        </view>
+        <view class="post-more" bindtap="showPostOptions" data-id="{{item.id}}">
+          <text>···</text>
+        </view>
+      </view>
+
+      <!-- 帖子内容 -->
+      <view class="post-content">
+        <text class="post-text">{{item.content}}</text>
+        <view class="post-images" wx:if="{{item.images.length > 0}}">
+          <image 
+            class="post-image {{item.images.length === 1 ? 'single' : ''}}" 
+            wx:for="{{item.images}}" 
+            wx:for-item="img" 
+            wx:key="index"
+            src="{{img}}"
+            mode="aspectFill"
+            bindtap="previewImage"
+            data-url="{{img}}"
+            data-urls="{{item.images}}"
+          ></image>
+        </view>
+      </view>
+
+      <!-- 帖子标签 -->
+      <view class="post-tags" wx:if="{{item.tags.length > 0}}">
+        <text class="tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="index">#{{tag}}</text>
+      </view>
+
+      <!-- 帖子操作 -->
+      <view class="post-actions">
+        <view class="action-item {{item.isLiked ? 'liked' : ''}}" bindtap="toggleLike" data-id="{{item.id}}">
+          <text class="action-icon">{{item.isLiked ? '❤️' : '🤍'}}</text>
+          <text class="action-count">{{item.likeCount}}</text>
+        </view>
+        <view class="action-item" bindtap="showComments" data-id="{{item.id}}">
+          <text class="action-icon">💬</text>
+          <text class="action-count">{{item.commentCount}}</text>
+        </view>
+        <view class="action-item {{item.isCollected ? 'collected' : ''}}" bindtap="toggleCollect" data-id="{{item.id}}">
+          <text class="action-icon">{{item.isCollected ? '⭐' : '☆'}}</text>
+          <text class="action-count">{{item.collectCount}}</text>
+        </view>
+        <view class="action-item" bindtap="sharePost" data-id="{{item.id}}">
+          <text class="action-icon">📤</text>
+          <text class="action-count">分享</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 加载更多 -->
+    <view class="load-more" bindtap="loadMore" wx:if="{{hasMore}}">
+      <text>加载更多</text>
+    </view>
+
+    <!-- 无数据提示 -->
+    <view class="no-data" wx:if="{{postList.length === 0}}">
+      <text class="no-data-icon">📝</text>
+      <text class="no-data-text">暂无帖子，快来发布第一个吧！</text>
+    </view>
+  </view>
+
+  <!-- 发帖按钮 -->
+  <view class="fab-btn" bindtap="createPost">
+    <text class="fab-icon">+</text>
+  </view>
+
+  <!-- 评论弹窗 -->
+  <view class="comment-modal" wx:if="{{showCommentModal}}" bindtap="hideComments">
+    <view class="comment-content" catchtap="stopPropagation">
+      <view class="comment-header">
+        <text class="comment-title">评论 ({{currentPost.commentCount}})</text>
+        <text class="comment-close" bindtap="hideComments">×</text>
+      </view>
+      
+      <scroll-view class="comment-list" scroll-y>
+        <view class="comment-item" wx:for="{{commentList}}" wx:key="id">
+          <image class="comment-avatar" src="{{item.avatarUrl}}"></image>
+          <view class="comment-info">
+            <text class="comment-username">{{item.username}}</text>
+            <text class="comment-text">{{item.content}}</text>
+            <view class="comment-footer">
+              <text class="comment-time">{{item.time}}</text>
+              <text class="comment-reply" bindtap="replyComment" data-id="{{item.id}}">回复</text>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+
+      <view class="comment-input-bar">
+        <input 
+          class="comment-input" 
+          placeholder="说点什么..." 
+          value="{{commentInput}}"
+          bindinput="onCommentInput"
+        />
+        <view class="comment-send" bindtap="submitComment">发送</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 意见反馈弹窗 -->
+  <view class="feedback-modal" wx:if="{{showFeedbackModal}}" bindtap="hideFeedback">
+    <view class="feedback-content" catchtap="stopPropagation">
+      <view class="feedback-header">
+        <text class="feedback-title">意见反馈</text>
+        <text class="feedback-close" bindtap="hideFeedback">×</text>
+      </view>
+      
+      <view class="feedback-form">
+        <view class="feedback-type">
+          <text class="feedback-label">反馈类型</text>
+          <view class="type-options">
+            <view 
+              class="type-option {{feedbackType === 'bug' ? 'active' : ''}}" 
+              bindtap="selectFeedbackType" 
+              data-type="bug"
+            >Bug反馈</view>
+            <view 
+              class="type-option {{feedbackType === 'suggest' ? 'active' : ''}}" 
+              bindtap="selectFeedbackType" 
+              data-type="suggest"
+            >功能建议</view>
+            <view 
+              class="type-option {{feedbackType === 'other' ? 'active' : ''}}" 
+              bindtap="selectFeedbackType" 
+              data-type="other"
+            >其他</view>
+          </view>
+        </view>
+
+        <view class="feedback-textarea">
+          <text class="feedback-label">详细描述</text>
+          <textarea 
+            class="feedback-input" 
+            placeholder="请详细描述您的问题或建议..." 
+            value="{{feedbackContent}}"
+            bindinput="onFeedbackInput"
+            maxlength="500"
+          ></textarea>
+          <text class="feedback-count">{{feedbackContent.length}}/500</text>
+        </view>
+
+        <view class="feedback-contact">
+          <text class="feedback-label">联系方式（选填）</text>
+          <input 
+            class="contact-input" 
+            placeholder="手机号或邮箱" 
+            value="{{feedbackContact}}"
+            bindinput="onContactInput"
+          />
+        </view>
+
+        <view class="feedback-submit" bindtap="submitFeedback">提交反馈</view>
+      </view>
+    </view>
+  </view>
+</view>

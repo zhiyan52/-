@@ -71,5 +71,12 @@ Page({
     wx.navigateTo({
       url: '/competition/competition-center'
     });
+  },
+
+  // 跳转到社区
+  goToCommunity: function () {
+    wx.navigateTo({
+      url: '/gujian/home/pages/community/community'
+    });
   }
 });

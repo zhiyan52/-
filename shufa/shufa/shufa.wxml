@@ -44,6 +44,12 @@
         <view class="function-text">收藏</view>
       </view>
     </view>
+    <view class="function-grid">
+      <view class="function-item" bindtap="goToCommunity">
+        <view class="function-icon">💬</view>
+        <view class="function-text">书画社区</view>
+      </view>
+    </view>
   </view>
 
   <!-- 最近临帖 -->
@@ -73,6 +79,44 @@
             <text class="recommended-style">{{item.style}}</text>
           </view>
         </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 国画作品 -->
+  <view class="section">
+    <view class="section-title">国画作品</view>
+    <view class="painting-grid">
+      <view class="painting-item" wx:for="{{paintings}}" wx:key="id" bindtap="goToPaintingDetail" data-id="{{item.id}}">
+        <image class="painting-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="painting-info">
+          <view class="painting-title">{{item.title}}</view>
+          <view class="painting-author">{{item.author}}</view>
+          <view class="painting-category">{{item.category}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 国画分类 -->
+  <view class="section">
+    <view class="section-title">国画分类</view>
+    <view class="painting-categories">
+      <view class="category-item" bindtap="goToPaintingCategory" data-category="山水">
+        <view class="category-icon">⛰️</view>
+        <view class="category-name">山水画</view>
+      </view>
+      <view class="category-item" bindtap="goToPaintingCategory" data-category="花鸟">
+        <view class="category-icon">🌸</view>
+        <view class="category-name">花鸟画</view>
+      </view>
+      <view class="category-item" bindtap="goToPaintingCategory" data-category="人物">
+        <view class="category-icon">👤</view>
+        <view class="category-name">人物画</view>
+      </view>
+      <view class="category-item" bindtap="goToPaintingCategory" data-category="水墨">
+        <view class="category-icon">墨</view>
+        <view class="category-name">水墨画</view>
       </view>
     </view>
   </view>
@@ -122,7 +166,7 @@
       <text class="tab-icon">📚</text>
       <text class="tab-text">雅集</text>
     </view>
-    <view class="tab-item">
+    <view class="tab-item" bindtap="goToMyPage">
       <text class="tab-icon">👤</text>
       <text class="tab-text">我的</text>
     </view>

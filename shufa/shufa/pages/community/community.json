@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "书画社区",
+  "navigationBarBackgroundColor": "#1A365D",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#F8F0E3",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

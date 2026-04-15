@@ -19,6 +19,12 @@ Page({
         title: '集字创作：春日诗词',
         image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/13772bd1a1123fa20a8d1c0d634a37ef.jpg',
         url: '/shufa/shufa/pages/calligraphy/creation'
+      },
+      {
+        id: 4,
+        title: '国画欣赏：富春山居图',
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/fuchun.jpg?sign=xxx&t=xxx',
+        url: '/shufa/shufa/shufa'
       }
     ],
     recentCopybooks: [
@@ -64,6 +70,36 @@ Page({
         image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/0abbae0ad05c709849293bd13c4c0894.jpg?sign=ad85d3aedee90f30305dcde9b705276b&t=1776081326&v=rec3'
       }
     ],
+    paintings: [
+      {
+        id: 1,
+        title: '富春山居图',
+        author: '黄公望 · 元代',
+        category: '山水画',
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/fuchun.jpg?sign=xxx&t=xxx'
+      },
+      {
+        id: 2,
+        title: '千里江山图',
+        author: '王希孟 · 北宋',
+        category: '山水画',
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/qianli.jpg?sign=xxx&t=xxx'
+      },
+      {
+        id: 3,
+        title: '清明上河图',
+        author: '张择端 · 北宋',
+        category: '人物画',
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/9b8d237c51e3b922d16dc3eae5723004.jpg?sign=e74ddbadb70750b501ac085fe694804b&t=1776176161'
+      },
+      {
+        id: 4,
+        title: '花鸟画',
+        author: '齐白石 · 现代',
+        category: '花鸟画',
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/9b8d237c51e3b922d16dc3eae5723004.jpg?sign=e74ddbadb70750b501ac085fe694804b&t=1776176161'
+      }
+    ],
     socialPosts: [
       {
         id: 1,
@@ -90,6 +126,7 @@ Page({
     this.loadBannerData();
     this.loadRecentCopybooks();
     this.loadRecommendedCopybooks();
+    this.loadPaintings();
     this.loadSocialPosts();
   },
 
@@ -107,6 +144,32 @@ Page({
 
   loadSocialPosts() {
     console.log('加载雅集动态');
+  },
+
+  loadPaintings() {
+    console.log('加载国画作品');
+  },
+
+  goToPaintingDetail(e) {
+    const id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: `/shufa/shufa/pages/calligraphy/painting?id=${id}`,
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({ title: '页面加载失败', icon: 'error' });
+      }
+    });
+  },
+
+  goToPaintingCategory(e) {
+    const category = e.currentTarget.dataset.category;
+    wx.navigateTo({
+      url: `/shufa/shufa/pages/calligraphy/painting?category=${category}`,
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({ title: '页面加载失败', icon: 'error' });
+      }
+    });
   },
 
   goToCopybookPage() {
@@ -170,6 +233,16 @@ Page({
   goToMyPage() {
     wx.navigateTo({
       url: '/shufa/shufa/pages/calligraphy/collection',
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({ title: '页面加载失败', icon: 'error' });
+      }
+    });
+  },
+
+  goToCommunity() {
+    wx.navigateTo({
+      url: '/shufa/shufa/pages/community/community',
       fail: (err) => {
         console.error('跳转失败:', err);
         wx.showToast({ title: '页面加载失败', icon: 'error' });

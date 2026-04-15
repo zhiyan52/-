@@ -30,7 +30,7 @@ Page({
         id: 5,
         title: "书画雅集",
         image: "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shouye/shuhua(1).png",
-        url: "/shufa/shufa/pages/calligraphy/welcome"
+        url: "/shufa/shufa/shufa"
       }
     ],
     knowledgeContent: "今日小知识：中国古建筑中的斗拱，不仅是承重结构，更是等级与美学的象征。"
@@ -99,7 +99,7 @@ Page({
     return new Promise((resolve, reject) => {
       // 过滤出有效的云存储路径
       const validFileIDs = fileIDs.filter(id => id && id.startsWith('cloud://'));
-      
+
       if (validFileIDs.length === 0) {
         // 没有需要处理的云存储图片，直接 resolve
         resolve();
@@ -122,7 +122,7 @@ Page({
             ...item,
             image: tempUrlMap[item.image] || item.image
           }));
-          
+
           this.setData({
             modules: updatedModules
           });
@@ -173,32 +173,11 @@ Page({
 
   // 文化打卡功能
   handleCheckin() {
-    const db = wx.cloud.database();
-    const _ = db.command;
-    const today = new Date().toDateString();
-
-    // 检查今日是否已打卡
-    db.collection('user_checkin').where({
-      openid: getApp().globalData.openid,
-      date: today
-    }).get().then(res => {
-      if (res.data.length > 0) {
-        wx.showToast({ title: '今日已打卡', icon: 'none' });
-      } else {
-        // 新增打卡记录
-        db.collection('user_checkin').add({
-          data: {
-            openid: getApp().globalData.openid,
-            date: today,
-            createTime: db.serverDate()
-          }
-        }).then(() => {
-          wx.showToast({ title: '打卡成功' });
-          // 更新用户连续打卡天数
-          this.updateCheckinStreak();
-        }).catch(err => {
-          wx.showToast({ title: '打卡失败', icon: 'none' });
-        });
+    wx.navigateTo({
+      url: '/pages/checkin/checkin',
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({ title: '页面加载失败', icon: 'error' });
       }
     });
   },
@@ -219,5 +198,16 @@ Page({
     } else if (tab === 'index') {
       wx.switchTab({ url: '/pages/index/index' });
     }
+  },
+
+  // 跳转到AI文化助手
+  goToAIAssistant() {
+    wx.navigateTo({
+      url: '/ai-assistant/ai-assistant',
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({ title: '页面加载失败', icon: 'error' });
+      }
+    });
   }
 });

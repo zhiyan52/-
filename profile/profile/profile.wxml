@@ -1,2 +1,166 @@
-<!--profile/profile/profile.wxml-->
-<text>profile/profile/profile.wxml</text>
+<!-- 个人中心页面 -->
+<view class="profile-container">
+  <!-- 未登录状态 -->
+  <view class="login-section" wx:if="{{!isLoggedIn}}">
+    <view class="login-header">
+      <image class="default-avatar" src="/components/yonghu.png"></image>
+      <text class="login-title">登录后享受更多功能</text>
+      <text class="login-subtitle">微信一键登录，安全便捷</text>
+    </view>
+    <button class="login-btn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">
+      <text class="btn-text">微信一键登录</text>
+    </button>
+  </view>
+  
+  <!-- 已登录状态 -->
+  <view class="user-section" wx:else>
+    <view class="user-header">
+      <image class="user-avatar" src="{{userInfo.avatarUrl || '/components/yonghu.png'}}"></image>
+      <view class="user-info">
+        <text class="user-name">{{userInfo.nickName || '用户'}}</text>
+        <text class="user-phone">{{userInfo.phone || '未绑定手机号'}}</text>
+      </view>
+    </view>
+    
+    <view class="profile-menu">
+      <view class="menu-item" bindtap="bindPhone">
+        <text class="menu-icon">📱</text>
+        <text class="menu-title">绑定手机号</text>
+        <text class="menu-arrow">→</text>
+      </view>
+      <view class="menu-item" bindtap="viewCollection">
+        <text class="menu-icon">⭐</text>
+        <text class="menu-title">我的收藏</text>
+        <text class="menu-arrow">→</text>
+      </view>
+      <view class="menu-item" bindtap="viewHistory">
+        <text class="menu-icon">📖</text>
+        <text class="menu-title">浏览历史</text>
+        <text class="menu-arrow">→</text>
+      </view>
+      <view class="menu-item" bindtap="viewCertificate">
+        <text class="menu-icon">🏅</text>
+        <text class="menu-title">我的数字证书</text>
+        <text class="menu-arrow">→</text>
+      </view>
+      <view class="menu-item" bindtap="viewCulturalMap">
+        <text class="menu-icon">🗺️</text>
+        <text class="menu-title">文化研学足迹地图</text>
+        <text class="menu-arrow">→</text>
+      </view>
+      <view class="menu-item" bindtap="viewSettings">
+        <text class="menu-icon">⚙️</text>
+        <text class="menu-title">设置</text>
+        <text class="menu-arrow">→</text>
+      </view>
+    </view>
+    
+    <!-- 打卡数据统计 -->
+    <view class="checkin-stats-section">
+      <text class="section-title">打卡数据</text>
+      <view class="stats-card">
+        <view class="stat-item">
+          <view class="stat-number">{{checkinData.totalDays}}</view>
+          <view class="stat-label">累计打卡</view>
+        </view>
+        <view class="stat-divider"></view>
+        <view class="stat-item">
+          <view class="stat-number">{{checkinData.streakDays}}</view>
+          <view class="stat-label">连续打卡</view>
+        </view>
+        <view class="stat-divider"></view>
+        <view class="stat-item">
+          <view class="stat-number">{{checkinData.totalPoints}}</view>
+          <view class="stat-label">累计积分</view>
+        </view>
+      </view>
+      
+      <!-- 打卡趋势图表 -->
+      <view class="chart-container">
+        <view class="chart-item">
+          <view class="chart-title">打卡趋势</view>
+          <view class="chart-content">
+            <view class="bar-chart">
+              <view class="bar" style="height: 30%;"><text>1月</text></view>
+              <view class="bar" style="height: 45%;"><text>2月</text></view>
+              <view class="bar" style="height: 60%;"><text>3月</text></view>
+              <view class="bar" style="height: 80%;"><text>4月</text></view>
+              <view class="bar" style="height: 100%;"><text>5月</text></view>
+            </view>
+          </view>
+        </view>
+        <view class="chart-item">
+          <view class="chart-title">积分增长</view>
+          <view class="chart-content">
+            <view class="line-chart">
+              <view class="line"></view>
+              <view class="chart-dots">
+                <view class="dot" style="left: 0%; top: 60%;"></view>
+                <view class="dot" style="left: 25%; top: 45%;"></view>
+                <view class="dot" style="left: 50%; top: 70%;"></view>
+                <view class="dot" style="left: 75%; top: 55%;"></view>
+                <view class="dot" style="left: 100%; top: 85%;"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 打卡奖励 -->
+      <view class="rewards-section">
+        <text class="section-title">我的奖励</text>
+        <view class="rewards-list">
+          <view class="reward-item" wx:for="{{rewards}}" wx:key="id">
+            <view class="reward-icon">{{item.icon}}</view>
+            <view class="reward-info">
+              <view class="reward-title">{{item.title}}</view>
+              <view class="reward-desc">{{item.desc}}</view>
+            </view>
+            <view class="reward-status" wx:if="{{item.achieved}}">
+              <text class="achieved-text">已获得</text>
+            </view>
+            <view class="reward-status locked" wx:else>
+              <text class="locked-text">未解锁</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 子页面个人中心入口 -->
+    <view class="subpage-profile-section">
+      <text class="section-title">专题个人中心</text>
+      <view class="subpage-menu">
+        <view class="menu-item" bindtap="goToGujianProfile">
+          <text class="menu-icon">🏯</text>
+          <text class="menu-title">古建雅韵个人中心</text>
+          <text class="menu-arrow">→</text>
+        </view>
+        <view class="menu-item" bindtap="goToFeiyiProfile">
+          <text class="menu-icon">🎨</text>
+          <text class="menu-title">非遗匠心个人中心</text>
+          <text class="menu-arrow">→</text>
+        </view>
+        <view class="menu-item" bindtap="goToDiancangProfile">
+          <text class="menu-icon">🏺</text>
+          <text class="menu-title">典藏拾珠个人中心</text>
+          <text class="menu-arrow">→</text>
+        </view>
+        <view class="menu-item" bindtap="goToMingsuProfile">
+          <text class="menu-icon">🍲</text>
+          <text class="menu-title">民俗百味个人中心</text>
+          <text class="menu-arrow">→</text>
+        </view>
+        <view class="menu-item" bindtap="goToShufaProfile">
+          <text class="menu-icon">✍️</text>
+          <text class="menu-title">书画雅集个人中心</text>
+          <text class="menu-arrow">→</text>
+        </view>
+      </view>
+    </view>
+    
+    <view class="logout-btn" bindtap="logout">
+      <text class="btn-text">退出登录</text>
+    </view>
+  </view>
+</view>

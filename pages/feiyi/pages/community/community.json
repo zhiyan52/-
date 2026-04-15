@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "非遗社区",
+  "navigationBarBackgroundColor": "#D4A574",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#FFF5E6",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

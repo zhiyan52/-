@@ -10,12 +10,12 @@ Page({
     inheritor: null,
     images: [],
     categoryName: '',
-    
+
     // 音频
     isPlaying: false,
     audioProgress: 0,
     audioPercent: 0,
-    
+
     // 收藏
     isFavorite: false
   },
@@ -27,7 +27,7 @@ Page({
       wx.navigateBack();
       return;
     }
-    
+
     this.setData({ heritageId: id });
     this._loadDetail(id);
     this._checkFavorite(id);
@@ -53,28 +53,31 @@ Page({
   // ============ 数据加载 ============
   async _loadDetail(id) {
     wx.showLoading({ title: '加载中' });
-    
+
     try {
       // 清理缓存，确保获取最新数据
       const { CacheManager } = require('../../utils/cache-manager');
       CacheManager.remove(`heritage_detail_${id}`);
-      
+
       const heritage = await DataLoader.getHeritageDetail(id, false);
-      
+
       // 获取完整传承人信息
       let inheritor = null;
-      if (heritage.inheritor?.id) {
+      if (heritage.inheritor && heritage.inheritor.id) {
         inheritor = await DataLoader.getInheritorDetail(heritage.inheritor.id);
       }
-      
+
       // 处理图片数组
-      const images = heritage.images?.detail?.length > 0 
-        ? [heritage.images.cover, ...heritage.images.detail]
-        : [heritage.images?.cover || '/images/default-heritage.jpg'];
-      
+      let images = [];
+      if (heritage.images && heritage.images.detail && heritage.images.detail.length > 0) {
+        images = [heritage.images.cover, ...heritage.images.detail];
+      } else {
+        images = [(heritage.images && heritage.images.cover) || '/images/default-heritage.jpg'];
+      }
+
       // 获取分类名
       const { CategoryMap } = require('../../data/index.js');
-      
+
       // 处理等级类名
       if (heritage.meta.grade === '国家级') {
         heritage.meta.grade = 'national';
@@ -88,15 +91,15 @@ Page({
         images,
         categoryName: CategoryMap.getName(heritage.categoryId)
       });
-      
+
       // 设置页面标题
       wx.setNavigationBarTitle({ title: heritage.name });
-      
+
       // 预加载音频
-      if (heritage.audio?.hasAudio) {
+      if (heritage.audio && heritage.audio.hasAudio) {
         AudioManager.preload([id]);
       }
-      
+
     } catch (err) {
       console.error('加载详情失败:', err);
       wx.showToast({ title: '加载失败', icon: 'none' });
@@ -108,8 +111,8 @@ Page({
   // ============ 音频控制 ============
   toggleAudio() {
     const { heritage, isPlaying } = this.data;
-    
-    if (!heritage.audio?.hasAudio) {
+
+    if (!heritage.audio || !heritage.audio.hasAudio) {
       wx.showToast({ title: '暂无音频', icon: 'none' });
       return;
     }
@@ -121,13 +124,13 @@ Page({
       // 监听进度
       AudioManager.on('onProgress', this._onAudioProgress);
       AudioManager.on('onEnded', this._onAudioEnded);
-      
+
       AudioManager.play(heritage.id, heritage.audio.src);
       this.setData({ isPlaying: true });
     }
   },
 
-  _onAudioProgress: function(data) {
+  _onAudioProgress: function (data) {
     if (data.heritageId === this.data.heritageId) {
       const percent = (data.progress / data.duration) * 100;
       this.setData({
@@ -137,7 +140,7 @@ Page({
     }
   }.bind(this),
 
-  _onAudioEnded: function(data) {
+  _onAudioEnded: function (data) {
     if (data.heritageId === this.data.heritageId) {
       this.setData({
         isPlaying: false,
@@ -165,7 +168,7 @@ Page({
   toggleFavorite() {
     const { heritageId, isFavorite } = this.data;
     const favorites = wx.getStorageSync('heritage_favorites') || [];
-    
+
     if (isFavorite) {
       const idx = favorites.indexOf(heritageId);
       if (idx > -1) favorites.splice(idx, 1);
@@ -174,7 +177,7 @@ Page({
       favorites.push(heritageId);
       wx.showToast({ title: '收藏成功', icon: 'success' });
     }
-    
+
     wx.setStorageSync('heritage_favorites', favorites);
     this.setData({ isFavorite: !isFavorite });
   },
@@ -193,7 +196,7 @@ Page({
     return {
       title: `${heritage.name} - 非遗匠心`,
       path: `/pages/feiyi/pages/detail/detail?id=${heritage.id}`,
-      imageUrl: heritage.images?.cover
+      imageUrl: heritage.images && heritage.images.cover
     };
   },
 

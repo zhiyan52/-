@@ -1,51 +1,52 @@
 <view class="container">
-  <!-- 顶部标题区域 -->
-  <view class="header-section">
-    <view class="header-decoration left"></view>
-    <view class="title-wrapper">
-      <text class="main-title">典藏拾珠</text>
-      <text class="sub-title">千年文脉 · 典籍流芳</text>
-    </view>
-    <view class="header-decoration right"></view>
+
+  <!-- 轮播图 -->
+  <view class="banner-section">
+    <swiper class="banner-swiper" indicator-dots="true" autoplay="true" interval="4000" duration="600" circular="true" indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#D4A017">
+      <swiper-item wx:for="{{bannerList}}" wx:key="index">
+        <image class="banner-image" src="{{item.image}}" mode="aspectFill" />
+      </swiper-item>
+    </swiper>
   </view>
 
   <!-- 搜索栏 -->
   <view class="search-bar">
     <view class="search-input-wrapper">
-      <text class="search-icon">🔍</text>
+      <view class="search-icon-simple">
+        <view class="icon-circle"></view>
+        <view class="icon-handle"></view>
+      </view>
       <input class="search-input" placeholder="搜索典籍、文物、历史人物..." placeholder-class="placeholder-style" />
     </view>
   </view>
 
   <!-- 分类标签 -->
-  <scroll-view class="category-scroll" scroll-x="true" show-scrollbar="false">
-    <view class="category-list">
-      <view class="category-item {{currentCategory === 'all' ? 'active' : ''}}" data-category="all" bindtap="switchCategory">
-        <text>全部</text>
-        <view class="category-line"></view>
-      </view>
-      <view class="category-item {{currentCategory === 'classics' ? 'active' : ''}}" data-category="classics" bindtap="switchCategory">
-        <text>经史子集</text>
-        <view class="category-line"></view>
-      </view>
-      <view class="category-item {{currentCategory === 'artifacts' ? 'active' : ''}}" data-category="artifacts" bindtap="switchCategory">
-        <text>珍贵文物</text>
-        <view class="category-line"></view>
-      </view>
-      <view class="category-item {{currentCategory === 'calligraphy' ? 'active' : ''}}" data-category="calligraphy" bindtap="switchCategory">
-        <text>书法碑帖</text>
-        <view class="category-line"></view>
-      </view>
-      <view class="category-item {{currentCategory === 'paintings' ? 'active' : ''}}" data-category="paintings" bindtap="switchCategory">
-        <text>传世名画</text>
-        <view class="category-line"></view>
-      </view>
-      <view class="category-item {{currentCategory === 'bamboo' ? 'active' : ''}}" data-category="bamboo" bindtap="switchCategory">
-        <text>简帛文献</text>
-        <view class="category-line"></view>
-      </view>
+  <view class="category-grid">
+    <view class="category-grid-item {{currentCategory === 'all' ? 'active' : ''}}" data-category="all" bindtap="switchCategory">
+      <text class="category-icon">📚</text>
+      <text class="category-name">全部</text>
     </view>
-  </scroll-view>
+    <view class="category-grid-item {{currentCategory === 'classics' ? 'active' : ''}}" data-category="classics" bindtap="switchCategory">
+      <text class="category-icon">📜</text>
+      <text class="category-name">经史子集</text>
+    </view>
+    <view class="category-grid-item {{currentCategory === 'artifacts' ? 'active' : ''}}" data-category="artifacts" bindtap="switchCategory">
+      <text class="category-icon">🏺</text>
+      <text class="category-name">珍贵文物</text>
+    </view>
+    <view class="category-grid-item {{currentCategory === 'calligraphy' ? 'active' : ''}}" data-category="calligraphy" bindtap="switchCategory">
+      <text class="category-icon">✍️</text>
+      <text class="category-name">书法碑帖</text>
+    </view>
+    <view class="category-grid-item {{currentCategory === 'paintings' ? 'active' : ''}}" data-category="paintings" bindtap="switchCategory">
+      <text class="category-icon">🖼️</text>
+      <text class="category-name">传世名画</text>
+    </view>
+    <view class="category-grid-item {{currentCategory === 'bamboo' ? 'active' : ''}}" data-category="bamboo" bindtap="switchCategory">
+      <text class="category-icon">📖</text>
+      <text class="category-name">简帛文献</text>
+    </view>
+  </view>
 
   <!-- 轮播推荐 -->
   <view class="featured-section">
@@ -138,6 +139,12 @@
         <view class="activity-icon">🧩</view>
         <text class="activity-title">典籍拼图</text>
         <text class="activity-desc">拼出名画，赢取奖励</text>
+        <view class="activity-arrow">→</view>
+      </view>
+      <view class="activity-card" bindtap="goToCommunity">
+        <view class="activity-icon">💬</view>
+        <text class="activity-title">典藏社区</text>
+        <text class="activity-desc">分享交流，共同鉴赏</text>
         <view class="activity-arrow">→</view>
       </view>
     </view>
@@ -241,4 +248,20 @@
 
   <!-- 底部留白 -->
   <view class="bottom-space"></view>
+
+  <!-- 底部导航 -->
+  <view class="tab-bar">
+    <navigator url="/pages/index/index" class="tab-item {{activeTab === 0 ? 'active' : ''}}">
+      <image src="/components/shou.png" class="tab-image"></image>
+      <text>首页</text>
+    </navigator>
+    <view class="tab-item {{activeTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">
+      <image src="/components/zonglan.png" class="tab-image"></image>
+      <text>分类</text>
+    </view>
+    <navigator url="/diancang/diancang/pages/profile/profile" class="tab-item {{activeTab === 2 ? 'active' : ''}}">
+      <image src="/components/yonghu.png" class="tab-image"></image>
+      <text>我的</text>
+    </navigator>
+  </view>
 </view>

@@ -1,0 +1,183 @@
+<!-- pages/checkin/checkin.wxml -->
+<view class="checkin-container">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <view class="header-left" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="header-title">文化打卡</view>
+    <view class="header-right" bindtap="goToCertificate">
+      <text class="certificate-icon">🏅</text>
+    </view>
+  </view>
+
+  <!-- 打卡状态 -->
+  <view class="checkin-status">
+    <view class="status-card">
+      <view class="status-item">
+        <view class="status-number">{{checkinData.totalDays}}</view>
+        <view class="status-label">累计打卡</view>
+      </view>
+      <view class="status-divider"></view>
+      <view class="status-item">
+        <view class="status-number">{{checkinData.streakDays}}</view>
+        <view class="status-label">连续打卡</view>
+      </view>
+      <view class="status-divider"></view>
+      <view class="status-item">
+        <view class="status-number">{{checkinData.totalPoints}}</view>
+        <view class="status-label">累计积分</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 每日打卡 -->
+  <view class="daily-checkin">
+    <view class="section-title">
+      <text class="title-icon">📅</text>
+      <text class="title-text">每日打卡</text>
+    </view>
+    <view class="checkin-btn-container">
+      <button class="checkin-btn" bindtap="handleDailyCheckin" wx:if="{{!hasCheckedInToday}}">
+        <image class="seal-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shouye/yizhangg.webp"></image>
+        立即打卡
+      </button>
+      <view class="checked-in-btn" wx:else>
+        <image class="seal-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shouye/yizhangg.webp"></image>
+        <text class="checked-in-text">今日已打卡</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 打卡日历 -->
+  <view class="calendar-section">
+    <view class="section-title">
+      <text class="title-icon">📆</text>
+      <text class="title-text">打卡日历</text>
+      <view class="calendar-nav">
+        <text class="nav-btn" bindtap="prevMonth">&lt;</text>
+        <text class="current-month">{{currentYear}}年{{currentMonth}}月</text>
+        <text class="nav-btn" bindtap="nextMonth">&gt;</text>
+      </view>
+    </view>
+    <view class="calendar">
+      <view class="calendar-weekdays">
+        <view class="weekday">日</view>
+        <view class="weekday">一</view>
+        <view class="weekday">二</view>
+        <view class="weekday">三</view>
+        <view class="weekday">四</view>
+        <view class="weekday">五</view>
+        <view class="weekday">六</view>
+      </view>
+      <view class="calendar-days">
+        <view class="calendar-day" wx:for="{{calendarDays}}" wx:key="index">
+          <view class="day-content" 
+                class="{{item.status}}" 
+                bindtap="checkDayDetail" 
+                data-day="{{item.day}}"
+                data-month="{{item.month}}"
+                data-year="{{item.year}}">
+            <text class="day-number">{{item.day}}</text>
+            <text class="day-indicator" wx:if="{{item.status === 'checked'}}">✓</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 打卡任务 -->
+  <view class="tasks-section">
+    <view class="section-title">
+      <text class="title-icon">🎯</text>
+      <text class="title-text">打卡任务</text>
+    </view>
+    <view class="tasks-list">
+      <view class="task-item" wx:for="{{tasks}}" wx:key="id">
+        <view class="task-info">
+          <view class="task-title">{{item.title}}</view>
+          <view class="task-reward">+{{item.reward}}积分</view>
+        </view>
+        <view class="task-status">
+          <view class="status-btn" bindtap="completeTask" data-id="{{item.id}}" wx:if="{{!item.completed}}">
+            去完成
+          </view>
+          <view class="status-completed" wx:else>
+            <text class="completed-icon">✓</text>
+            已完成
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 连续打卡奖励 -->
+  <view class="rewards-section">
+    <view class="section-title">
+      <text class="title-icon">🏆</text>
+      <text class="title-text">连续打卡奖励</text>
+    </view>
+    <view class="rewards-grid">
+      <view class="reward-card" wx:for="{{rewards}}" wx:key="id">
+        <view class="reward-icon">{{item.icon}}</view>
+        <view class="reward-title">{{item.title}}</view>
+        <view class="reward-desc">{{item.desc}}</view>
+        <view class="reward-status" wx:if="{{item.achieved}}">
+          <text class="achieved-text">已获得</text>
+        </view>
+        <view class="reward-status locked" wx:else>
+          <text class="locked-text">未解锁</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 数据可视化 -->
+  <view class="data-section">
+    <view class="section-title">
+      <text class="title-icon">📊</text>
+      <text class="title-text">打卡数据</text>
+    </view>
+    <view class="chart-container">
+      <view class="chart-item">
+        <view class="chart-title">打卡趋势</view>
+        <view class="chart-content">
+          <view class="bar-chart">
+            <view class="bar" style="height: 30%;"><text>1月</text></view>
+            <view class="bar" style="height: 45%;"><text>2月</text></view>
+            <view class="bar" style="height: 60%;"><text>3月</text></view>
+            <view class="bar" style="height: 80%;"><text>4月</text></view>
+            <view class="bar" style="height: 100%;"><text>5月</text></view>
+          </view>
+        </view>
+      </view>
+      <view class="chart-item">
+        <view class="chart-title">积分增长</view>
+        <view class="chart-content">
+          <view class="line-chart">
+            <view class="line"></view>
+            <view class="chart-dots">
+              <view class="dot" style="left: 0%; top: 60%;"></view>
+              <view class="dot" style="left: 25%; top: 45%;"></view>
+              <view class="dot" style="left: 50%; top: 70%;"></view>
+              <view class="dot" style="left: 75%; top: 55%;"></view>
+              <view class="dot" style="left: 100%; top: 85%;"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 打卡成功弹窗 -->
+  <view class="success-modal" wx:if="{{showSuccessModal}}" bindtap="hideSuccessModal">
+    <view class="success-content" catchtap="stopPropagation">
+      <view class="success-icon">🎉</view>
+      <view class="success-title">打卡成功！</view>
+      <view class="success-desc">获得{{rewardPoints}}积分</view>
+      <view class="success-btn" bindtap="hideSuccessModal">
+        确定
+      </view>
+    </view>
+  </view>
+</view>

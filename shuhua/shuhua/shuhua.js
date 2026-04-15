@@ -1,6 +1,15 @@
 // pages/shuhua/shuhua.js
- Page({
+Page({
   data: {
+    // 轮播图数据 - 使用云存储
+    bannerList: [
+      {
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/lunbo1.jpg'
+      },
+      {
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/home/lunbo2.jpg'
+      }
+    ],
     categoryList: [
       {
         id: 1,
@@ -24,13 +33,13 @@
   },
   onCategoryTap(e) {
     const id = parseInt(e.currentTarget.dataset.id); // 确保 id 是数字类型
-  
+
     // 核心：分包路径映射（直接用分包根目录，不包含pages）
     const subPackagePageMap = {
       1: '/shuhuaSub/shufa/shufa',   // 分包根目录/宫殿页面路径
       2: '/shuhuaSub/guohua/guohua',     // 分包根目录/园林页面路径
     };
-  
+
     // 获取目标路径并跳转
     const targetUrl = subPackagePageMap[id];
     if (targetUrl) {

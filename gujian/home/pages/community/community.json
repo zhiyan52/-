@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "古建社区",
+  "navigationBarBackgroundColor": "#8B4513",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#F5E6D3",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

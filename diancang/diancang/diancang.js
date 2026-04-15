@@ -1,7 +1,18 @@
 Page({
   data: {
+    activeTab: 1,
     currentCategory: 'all',
     todayDate: '',
+
+    // 轮播图数据 - 使用云存储
+    bannerList: [
+      {
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/lunbo1.png'
+      },
+      {
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/lunbo1.png'
+      }
+    ],
 
     // 轮播推荐数据 - 使用在线图片
     featuredList: [
@@ -200,6 +211,19 @@ Page({
     wx.showToast({
       title: '典籍拼图功能开发中',
       icon: 'none'
+    });
+  },
+
+  goToCommunity: function () {
+    wx.navigateTo({
+      url: '/diancang/diancang/pages/community/community'
+    });
+  },
+
+  switchTab: function (e) {
+    const index = e.currentTarget.dataset.index;
+    this.setData({
+      activeTab: index
     });
   }
 });

@@ -43,13 +43,13 @@ Component({
     categoryColor: '#8B4513',
     isHot: false,
     hasAudio: false,
-    
+
     // 传承人信息
     inheritorId: '',
     inheritorName: '',
     inheritorAvatar: '',
     inheritorLevel: '',
-    
+
     // 音频状态
     isPlaying: false,
     progressPercent: 0,
@@ -62,7 +62,7 @@ Component({
       AudioManager.on('onProgress', this._onAudioProgress);
       AudioManager.on('onEnded', this._onAudioEnded);
     },
-    
+
     detached() {
       // 取消监听
       AudioManager.off('onProgress', this._onAudioProgress);
@@ -74,22 +74,22 @@ Component({
     // 处理传入的数据
     _processData(heritage) {
       const { CategoryMap } = require('../../data/index.js');
-      
+
       this.setData({
         id: heritage.id,
         name: heritage.name,
         brief: heritage.introduction || heritage.brief || '',
-        imageUrl: heritage.images?.cover || heritage.image || '/images/default-heritage.jpg',
+        imageUrl: (heritage.images && heritage.images.cover) || heritage.image || '/images/default-heritage.jpg',
         categoryName: CategoryMap.getName(heritage.categoryId) || '其他',
         categoryColor: this._getCategoryColor(heritage.categoryId),
-        isHot: heritage.display?.isHot || false,
-        hasAudio: heritage.audio?.hasAudio || false,
-        
+        isHot: (heritage.display && heritage.display.isHot) || false,
+        hasAudio: (heritage.audio && heritage.audio.hasAudio) || false,
+
         // 传承人信息
-        inheritorId: heritage.inheritor?.id || '',
-        inheritorName: heritage.inheritor?.name || '未知',
-        inheritorAvatar: heritage.inheritor?.avatar || '/images/default-avatar.jpg',
-        inheritorLevel: heritage.inheritor?.level === '国家级' ? '国级' : (heritage.inheritor?.level || '')
+        inheritorId: (heritage.inheritor && heritage.inheritor.id) || '',
+        inheritorName: (heritage.inheritor && heritage.inheritor.name) || '未知',
+        inheritorAvatar: (heritage.inheritor && heritage.inheritor.avatar) || '/images/default-avatar.jpg',
+        inheritorLevel: (heritage.inheritor && heritage.inheritor.level === '国家级') ? '国级' : ((heritage.inheritor && heritage.inheritor.level) || '')
       });
     },
 
@@ -116,9 +116,9 @@ Component({
 
     // 卡片点击
     onCardTap() {
-      this.triggerEvent('tap', { 
+      this.triggerEvent('tap', {
         id: this.data.id,
-        heritage: this.properties.heritage 
+        heritage: this.properties.heritage
       });
     },
 
@@ -126,8 +126,8 @@ Component({
     onInheritorTap(e) {
       e.stopPropagation();
       if (this.data.inheritorId) {
-        this.triggerEvent('tapInheritor', { 
-          id: this.data.inheritorId 
+        this.triggerEvent('tapInheritor', {
+          id: this.data.inheritorId
         });
       }
     },
@@ -135,11 +135,11 @@ Component({
     // 音频按钮点击
     onAudioTap(e) {
       e.stopPropagation();
-      
+
       if (!this.data.hasAudio) return;
 
       const heritage = this.properties.heritage;
-      
+
       if (this.data.isPlaying) {
         // 暂停
         AudioManager.pause();
@@ -154,7 +154,7 @@ Component({
     },
 
     // 音频进度回调
-    _onAudioProgress: function(data) {
+    _onAudioProgress: function (data) {
       if (data.heritageId === this.data.id) {
         const percent = (data.progress / data.duration) * 100;
         this.setData({
@@ -165,7 +165,7 @@ Component({
     }.bind(this),
 
     // 音频结束回调
-    _onAudioEnded: function(data) {
+    _onAudioEnded: function (data) {
       if (data.heritageId === this.data.id) {
         this.setData({
           isPlaying: false,

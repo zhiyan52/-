@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "AI文化助手",
+  "navigationBarBackgroundColor": "#343a40",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#f8f9fa",
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {}
+}

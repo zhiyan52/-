@@ -15,7 +15,7 @@
 }
 
 .header-title {
-  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  background: linear-gradient(135deg, #000000 0%, #1A1A1A 100%);
   padding: 20rpx 60rpx;
   border-radius: 50rpx;
   position: relative;
@@ -114,6 +114,11 @@
   margin-bottom: 20rpx;
   border-radius: 50%;
   border: 2rpx solid #D4A017;
+}
+
+.feature-icon-text {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
 }
 
 .feature-item text {

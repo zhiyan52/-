@@ -109,6 +109,19 @@ Page({
   },
 
   /**
+   * 跳转到社区
+   */
+  goToCommunity() {
+    wx.navigateTo({
+      url: '/mingsu/mingsu/pages/community/community',
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({ title: '页面加载失败', icon: 'error' });
+      }
+    });
+  },
+
+  /**
    * 跳转到分类页面
    */
   goToCategory(e) {

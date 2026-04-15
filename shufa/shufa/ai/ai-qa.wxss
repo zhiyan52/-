@@ -1,1 +1,241 @@
-/* shufa/shufa/ai/ai-qa.wxss */
+/* 文化问答页面 - 传统中国风样式 */
+.qa-container {
+  padding: 30rpx;
+  background-color: #E8F5E8;
+  min-height: 100vh;
+}
+
+/* 顶部标题栏 */
+.header {
+  text-align: center;
+  margin: 20rpx 0 40rpx;
+  position: relative;
+}
+
+.title {
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  padding: 20rpx 60rpx;
+  border-radius: 50rpx;
+  position: relative;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+  display: inline-block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #D4A017;
+  font-family: "STKaiti", "KaiTi", serif;
+  letter-spacing: 8rpx;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.2);
+}
+
+.title::before,
+.title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40rpx;
+  height: 40rpx;
+  background: #D4A017;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #1A365D;
+  font-weight: bold;
+}
+
+.title::before {
+  left: -20rpx;
+  content: '卍';
+}
+
+.title::after {
+  right: -20rpx;
+  content: '卍';
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #2C5282;
+  font-family: "STKaiti", "KaiTi", serif;
+  margin-top: 20rpx;
+  display: block;
+}
+
+.chat-container {
+  background: #F8F0E3;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 40rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+}
+
+.message-list {
+  max-height: 600rpx;
+  overflow-y: auto;
+  margin-bottom: 20rpx;
+}
+
+.message-item {
+  display: flex;
+  margin-bottom: 20rpx;
+  align-items: flex-start;
+}
+
+.ai-message {
+  flex-direction: row;
+}
+
+.user-message {
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  color: #D4A017;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  margin-right: 15rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.user-avatar {
+  margin-right: 0;
+  margin-left: 15rpx;
+  background: linear-gradient(135deg, #D4A017 0%, #F0C14B 100%);
+  color: #1A365D;
+}
+
+.message-content {
+  flex: 1;
+  background: #F8F0E3;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  max-width: 70%;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.08);
+  border: 2rpx solid #D4A017;
+}
+
+.user-content {
+  background: #F8F0E3;
+  border-color: #1A365D;
+}
+
+.message-content text {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.input-section {
+  display: flex;
+  align-items: center;
+  background: #F8F0E3;
+  border-radius: 50rpx;
+  padding: 10rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.08);
+}
+
+.input-box {
+  flex: 1;
+  padding: 15rpx 20rpx;
+  font-size: 28rpx;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
+  background: transparent;
+  placeholder-color: #999;
+}
+
+.send-btn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  color: #D4A017;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 2rpx 8rpx rgba(26, 54, 93, 0.3);
+  transition: all 0.3s ease;
+}
+
+.send-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4rpx 12rpx rgba(26, 54, 93, 0.4);
+}
+
+.send-icon {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.faq-section {
+  background: #F8F0E3;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 30rpx;
+  display: block;
+  text-align: center;
+  font-family: "STKaiti", "KaiTi", serif;
+  position: relative;
+  padding-bottom: 15rpx;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100rpx;
+  height: 4rpx;
+  background: #D4A017;
+  border-radius: 2rpx;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.faq-item {
+  background: #F8F0E3;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  border: 2rpx solid #D4A017;
+  transition: all 0.3s ease;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.08);
+}
+
+.faq-item:hover {
+  transform: translateY(-3rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.12);
+  background: #F8F0E3;
+}
+
+.faq-question {
+  font-size: 26rpx;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
+  line-height: 1.5;
+}

@@ -1,0 +1,205 @@
+<!-- pages/cultural-map/cultural-map.wxml -->
+<view class="cultural-map-container">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <view class="header-left" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="header-title">文化研学足迹地图</view>
+    <view class="header-right" bindtap="shareReport">
+      <text class="share-icon">📤</text>
+    </view>
+  </view>
+
+  <!-- 地图区域 -->
+  <view class="map-section">
+    <view class="section-title">
+      <text class="title-icon">🗺️</text>
+      <text class="title-text">我的研学足迹</text>
+    </view>
+    <view class="map-container">
+      <!-- 中国地图 SVG -->
+      <view class="china-map">
+        <!-- 省份地标 -->
+        <view class="landmark" style="top: 20%; left: 25%;" bindtap="showLandmarkDetail" data-landmark="shanxi">
+          <view class="landmark-point active"></view>
+          <text class="landmark-label">山西</text>
+        </view>
+        <view class="landmark" style="top: 30%; left: 60%;" bindtap="showLandmarkDetail" data-landmark="jiangsu">
+          <view class="landmark-point active"></view>
+          <text class="landmark-label">江苏</text>
+        </view>
+        <view class="landmark" style="top: 40%; left: 75%;" bindtap="showLandmarkDetail" data-landmark="zhejiang">
+          <view class="landmark-point"></view>
+          <text class="landmark-label">浙江</text>
+        </view>
+        <view class="landmark" style="top: 45%; left: 40%;" bindtap="showLandmarkDetail" data-landmark="sichuan">
+          <view class="landmark-point active"></view>
+          <text class="landmark-label">四川</text>
+        </view>
+        <view class="landmark" style="top: 35%; left: 50%;" bindtap="showLandmarkDetail" data-landmark="henan">
+          <view class="landmark-point"></view>
+          <text class="landmark-label">河南</text>
+        </view>
+        <view class="landmark" style="top: 25%; left: 45%;" bindtap="showLandmarkDetail" data-landmark="shaanxi">
+          <view class="landmark-point active"></view>
+          <text class="landmark-label">陕西</text>
+        </view>
+        <view class="landmark" style="top: 30%; left: 70%;" bindtap="showLandmarkDetail" data-landmark="fujian">
+          <view class="landmark-point"></view>
+          <text class="landmark-label">福建</text>
+        </view>
+        <view class="landmark" style="top: 45%; left: 65%;" bindtap="showLandmarkDetail" data-landmark="hunan">
+          <view class="landmark-point"></view>
+          <text class="landmark-label">湖南</text>
+        </view>
+        <view class="landmark" style="top: 20%; left: 80%;" bindtap="showLandmarkDetail" data-landmark="guangdong">
+          <view class="landmark-point"></view>
+          <text class="landmark-label">广东</text>
+        </view>
+        <view class="landmark" style="top: 15%; left: 30%;" bindtap="showLandmarkDetail" data-landmark="beijing">
+          <view class="landmark-point active"></view>
+          <text class="landmark-label">北京</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 研学数据 -->
+  <view class="study-data-section">
+    <view class="section-title">
+      <text class="title-icon">📊</text>
+      <text class="title-text">研学数据</text>
+    </view>
+    <view class="data-card">
+      <view class="data-item">
+        <view class="data-number">{{studyData.visitedProvinces}}</view>
+        <view class="data-label">已探索省份</view>
+      </view>
+      <view class="data-divider"></view>
+      <view class="data-item">
+        <view class="data-number">{{studyData.totalSites}}</view>
+        <view class="data-label">学习文化点</view>
+      </view>
+      <view class="data-divider"></view>
+      <view class="data-item">
+        <view class="data-number">{{studyData.completedCourses}}</view>
+        <view class="data-label">完成课程</view>
+      </view>
+      <view class="data-divider"></view>
+      <view class="data-item">
+        <view class="data-number">{{studyData.studyDays}}</view>
+        <view class="data-label">研学天数</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 文化点详情 -->
+  <view class="landmark-detail-section" wx:if="{{selectedLandmark}}">
+    <view class="section-title">
+      <text class="title-icon">📍</text>
+      <text class="title-text">{{landmarkDetails[selectedLandmark].name}}文化点</text>
+    </view>
+    <view class="landmark-detail-card">
+      <view class="landmark-image">
+        <image src="{{landmarkDetails[selectedLandmark].image}}" mode="aspectFill"></image>
+      </view>
+      <view class="landmark-info">
+        <view class="info-item">
+          <text class="info-label">文化类型</text>
+          <text class="info-value">{{landmarkDetails[selectedLandmark].type}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">学习进度</text>
+          <view class="progress-bar">
+            <view class="progress-fill" style="width: {{landmarkDetails[selectedLandmark].progress}}%"></view>
+          </view>
+          <text class="progress-text">{{landmarkDetails[selectedLandmark].progress}}%</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">已学内容</text>
+          <text class="info-value">{{landmarkDetails[selectedLandmark].learned}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">获得成就</text>
+          <text class="info-value">{{landmarkDetails[selectedLandmark].achievement}}</text>
+        </view>
+      </view>
+      <button class="learn-more-btn" bindtap="goToLandmarkContent" data-landmark="{{selectedLandmark}}">
+        继续学习
+      </button>
+    </view>
+  </view>
+
+  <!-- 研学报告 -->
+  <view class="report-section">
+    <view class="section-title">
+      <text class="title-icon">📋</text>
+      <text class="title-text">研学足迹报告</text>
+    </view>
+    <view class="report-card">
+      <view class="report-header">
+        <text class="report-title">我的文化研学之旅</text>
+        <text class="report-date">{{currentDate}}</text>
+      </view>
+      <view class="report-content">
+        <view class="report-item">
+          <text class="report-icon">🎯</text>
+          <text class="report-text">已探索 <text class="highlight">{{studyData.visitedProvinces}}</text> 个省份的文化点</text>
+        </view>
+        <view class="report-item">
+          <text class="report-icon">📚</text>
+          <text class="report-text">学习了 <text class="highlight">{{studyData.totalSites}}</text> 个文化知识点</text>
+        </view>
+        <view class="report-item">
+          <text class="report-icon">🏆</text>
+          <text class="report-text">获得了 <text class="highlight">{{studyData.achievements}}</text> 个文化成就</text>
+        </view>
+        <view class="report-item">
+          <text class="report-icon">⭐</text>
+          <text class="report-text">成为 <text class="highlight">{{studyData.level}}</text> 级文化探索者</text>
+        </view>
+      </view>
+      <button class="share-report-btn" bindtap="shareReport">
+        分享我的研学报告
+      </button>
+    </view>
+  </view>
+
+  <!-- 地标详情弹窗 -->
+  <view class="landmark-modal" wx:if="{{showLandmarkModal}}" bindtap="hideLandmarkModal">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <view class="modal-title">{{landmarkDetails[selectedLandmark].name}}文化点</view>
+        <view class="modal-close" bindtap="hideLandmarkModal">×</view>
+      </view>
+      <view class="modal-body">
+        <image class="modal-image" src="{{landmarkDetails[selectedLandmark].image}}" mode="aspectFill"></image>
+        <view class="modal-info">
+          <view class="modal-info-item">
+            <text class="modal-info-label">文化类型</text>
+            <text class="modal-info-value">{{landmarkDetails[selectedLandmark].type}}</text>
+          </view>
+          <view class="modal-info-item">
+            <text class="modal-info-label">学习进度</text>
+            <view class="modal-progress-bar">
+              <view class="modal-progress-fill" style="width: {{landmarkDetails[selectedLandmark].progress}}%"></view>
+            </view>
+            <text class="modal-progress-text">{{landmarkDetails[selectedLandmark].progress}}%</text>
+          </view>
+          <view class="modal-info-item">
+            <text class="modal-info-label">已学内容</text>
+            <text class="modal-info-value">{{landmarkDetails[selectedLandmark].learned}}</text>
+          </view>
+          <view class="modal-info-item">
+            <text class="modal-info-label">获得成就</text>
+            <text class="modal-info-value">{{landmarkDetails[selectedLandmark].achievement}}</text>
+          </view>
+        </view>
+      </view>
+      <button class="modal-btn" bindtap="goToLandmarkContent" data-landmark="{{selectedLandmark}}">
+        继续学习
+      </button>
+    </view>
+  </view>
+</view>

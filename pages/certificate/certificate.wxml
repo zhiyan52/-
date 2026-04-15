@@ -1,0 +1,162 @@
+<!-- pages/certificate/certificate.wxml -->
+<view class="certificate-container">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <view class="header-left" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="header-title">我的数字证书</view>
+    <view class="header-right" bindtap="shareAll">
+      <text class="share-icon">📤</text>
+    </view>
+  </view>
+
+  <!-- 证书分类标签 -->
+  <view class="category-tabs">
+    <view class="tab-item {{currentTab === 'badge' ? 'active' : ''}}" bindtap="switchTab" data-tab="badge">
+      <text class="tab-icon">🏅</text>
+      <text class="tab-text">数字徽章</text>
+    </view>
+    <view class="tab-item {{currentTab === 'certificate' ? 'active' : ''}}" bindtap="switchTab" data-tab="certificate">
+      <text class="tab-icon">📜</text>
+      <text class="tab-text">学习证书</text>
+    </view>
+  </view>
+
+  <!-- 数字徽章列表 -->
+  <view class="badges-section" wx:if="{{currentTab === 'badge'}}">
+    <view class="badges-grid">
+      <view class="badge-card" wx:for="{{badges}}" wx:key="id" bindtap="viewBadgeDetail" data-id="{{item.id}}">
+        <view class="badge-icon {{item.achieved ? '' : 'locked'}}">
+          <text class="badge-emoji">{{item.icon}}</text>
+        </view>
+        <view class="badge-info">
+          <view class="badge-title">{{item.title}}</view>
+          <view class="badge-desc">{{item.desc}}</view>
+          <view class="badge-status" wx:if="{{item.achieved}}">
+            <text class="achieved-badge">已获得</text>
+          </view>
+          <view class="badge-status locked" wx:else>
+            <text class="locked-badge">未解锁</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 学习证书列表 -->
+  <view class="certificates-section" wx:if="{{currentTab === 'certificate'}}">
+    <view class="certificates-list">
+      <view class="certificate-card" wx:for="{{certificates}}" wx:key="id" bindtap="viewCertificateDetail" data-id="{{item.id}}">
+        <view class="certificate-preview">
+          <view class="certificate-frame">
+            <view class="certificate-header">
+              <text class="certificate-seal">🎭</text>
+            </view>
+            <view class="certificate-title">文化学习证书</view>
+            <view class="certificate-name">{{item.userName}}</view>
+            <view class="certificate-content">{{item.content}}</view>
+            <view class="certificate-date">{{item.date}}</view>
+            <view class="certificate-number">编号：{{item.number}}</view>
+          </view>
+        </view>
+        <view class="certificate-actions">
+          <button class="action-btn view-btn" bindtap="viewCertificateDetail" data-id="{{item.id}}" catchtap="true">
+            <text class="btn-icon">👁️</text>
+            查看详情
+          </button>
+          <button class="action-btn save-btn" bindtap="saveCertificate" data-id="{{item.id}}" catchtap="true">
+            <text class="btn-icon">💾</text>
+            保存证书
+          </button>
+          <button class="action-btn share-btn" bindtap="shareCertificate" data-id="{{item.id}}" catchtap="true">
+            <text class="btn-icon">📤</text>
+            分享证书
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 徽章详情弹窗 -->
+  <view class="badge-modal" wx:if="{{showBadgeModal}}" bindtap="hideBadgeModal">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <view class="modal-title">{{selectedBadge.title}}</view>
+        <view class="modal-close" bindtap="hideBadgeModal">×</view>
+      </view>
+      <view class="modal-body">
+        <view class="badge-detail-icon {{selectedBadge.achieved ? '' : 'locked'}}">
+          <text class="badge-detail-emoji">{{selectedBadge.icon}}</text>
+        </view>
+        <view class="badge-detail-info">
+          <view class="badge-detail-desc">{{selectedBadge.desc}}</view>
+          <view class="badge-detail-requirement" wx:if="{{!selectedBadge.achieved}}">
+            <text class="requirement-text">解锁条件：{{selectedBadge.requirement}}</text>
+          </view>
+          <view class="badge-detail-progress" wx:if="{{selectedBadge.progress < 100}}">
+            <view class="progress-label">完成进度：{{selectedBadge.progress}}%</view>
+            <view class="progress-bar">
+              <view class="progress-fill" style="width: {{selectedBadge.progress}}%"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="modal-footer" wx:if="{{selectedBadge.achieved}}">
+        <button class="modal-btn" bindtap="shareBadge">
+          <text class="btn-icon">📤</text>
+          分享徽章
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 证书详情弹窗 -->
+  <view class="certificate-modal" wx:if="{{showCertificateModal}}" bindtap="hideCertificateModal">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <view class="modal-title">证书详情</view>
+        <view class="modal-close" bindtap="hideCertificateModal">×</view>
+      </view>
+      <view class="modal-body">
+        <view class="certificate-full">
+          <view class="certificate-full-frame">
+            <view class="certificate-full-header">
+              <text class="certificate-full-seal">🎭</text>
+              <view class="certificate-full-pattern"></view>
+            </view>
+            <view class="certificate-full-title">文化学习证书</view>
+            <view class="certificate-full-subtitle">CULTURE LEARNING CERTIFICATE</view>
+            <view class="certificate-full-name">{{selectedCertificate.userName}}</view>
+            <view class="certificate-full-content">
+              <text class="content-text">兹证明</text>
+              <text class="content-highlight">{{selectedCertificate.userName}}</text>
+              <text class="content-text">{{selectedCertificate.content}}</text>
+            </view>
+            <view class="certificate-full-footer">
+              <view class="footer-left">
+                <view class="footer-date">{{selectedCertificate.date}}</view>
+                <view class="footer-number">编号：{{selectedCertificate.number}}</view>
+              </view>
+              <view class="footer-right">
+                <view class="footer-seal">印章</view>
+                <view class="footer-org">文化传承平台</view>
+              </view>
+            </view>
+            <view class="certificate-full-border"></view>
+          </view>
+        </view>
+      </view>
+      <view class="modal-footer">
+        <button class="modal-btn" bindtap="saveCertificate" data-id="{{selectedCertificate.id}}">
+          <text class="btn-icon">💾</text>
+          保存证书
+        </button>
+        <button class="modal-btn share" bindtap="shareCertificate" data-id="{{selectedCertificate.id}}">
+          <text class="btn-icon">📤</text>
+          分享证书
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

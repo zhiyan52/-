@@ -1,7 +1,10 @@
-/* shufa/shufa/pages/calligraphy/collection.wxss */
-.page-container {
-  background: linear-gradient(180deg, #f8f4e9 0%, #ede8d0 100%);
+/* 书画雅集个人中心页面 */
+
+.profile-container {
   min-height: 100vh;
+  background: linear-gradient(180deg, #F5E8E0 0%, #E0D0C0 100%);
+  padding: 30rpx;
+  padding-bottom: 100rpx;
   font-family: "KaiTi", "STKaiti", "PingFang SC", sans-serif;
 }
 
@@ -10,53 +13,627 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 30rpx;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  padding: 20rpx 30rpx;
+  background-color: #1A365D;
+  color: #fff;
   position: sticky;
   top: 0;
   z-index: 100;
+  border-radius: 15rpx;
+  margin-bottom: 30rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
 }
 
-.header-back {
-  width: 60rpx;
-  height: 60rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.header-left, .header-right {
+  width: 80rpx;
+  text-align: center;
 }
 
-.back-btn {
+.back-btn, .settings-btn {
   font-size: 36rpx;
-  color: #333;
+  cursor: pointer;
 }
 
 .header-title {
   font-size: 32rpx;
   font-weight: bold;
-  color: #333;
+  flex: 1;
+  text-align: center;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
-.header-right {
-  width: 60rpx;
-  height: 60rpx;
+/* 用户信息 */
+.user-header {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+}
+
+.user-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 3rpx solid #D4A017;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+  margin-right: 30rpx;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 10rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.user-level {
+  font-size: 28rpx;
+  color: #D4A017;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.user-score {
+  text-align: center;
+}
+
+.score-label {
+  font-size: 24rpx;
+  color: #999;
+  display: block;
+  margin-bottom: 5rpx;
+}
+
+.score-value {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #D4A017;
+}
+
+/* 签到打卡 */
+.checkin-section {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  border-left: none;
+  padding-left: 0;
+}
+
+.title-text {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.checkin-days {
+  font-size: 24rpx;
+  color: #D4A017;
+}
+
+.checkin-btn {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  color: #D4A017;
+  padding: 20rpx;
+  border-radius: 15rpx;
+  border: 2rpx solid #D4A017;
+  transition: all 0.3s ease;
 }
 
-.settings-btn {
+.checkin-btn:hover {
+  transform: translateY(-3rpx);
+  box-shadow: 0 6rpx 20rpx rgba(26, 54, 93, 0.3);
+}
+
+.btn-icon {
   font-size: 32rpx;
+  margin-right: 10rpx;
+}
+
+.btn-text {
+  font-size: 28rpx;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+  margin-right: 10rpx;
+}
+
+.reward-text {
+  font-size: 24rpx;
+  color: #D4A017;
+}
+
+/* 个人数据报告 */
+.data-section {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+}
+
+.more-btn {
+  font-size: 24rpx;
+  color: #D4A017;
+  cursor: pointer;
+}
+
+.data-cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20rpx;
+}
+
+.data-card {
+  width: 48%;
+  background: #F8F0E3;
+  border-radius: 15rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  text-align: center;
+  border: 1rpx solid #D4A017;
+  transition: all 0.3s ease;
+}
+
+.data-card:hover {
+  transform: translateY(-3rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+.data-icon {
+  font-size: 48rpx;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.data-value {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 5rpx;
+}
+
+.data-label {
+  font-size: 24rpx;
   color: #666;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 微信好友排行榜 */
+.ranking-section {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+}
+
+.refresh-btn {
+  font-size: 24rpx;
+  color: #D4A017;
+  cursor: pointer;
+}
+
+.ranking-list {
+  margin-top: 20rpx;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #E8F0F5;
+}
+
+.ranking-item:last-child {
+  border-bottom: none;
+}
+
+.ranking-number {
+  width: 60rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #999;
+  text-align: center;
+  margin-right: 20rpx;
+}
+
+.top-ranking {
+  color: #D4A017;
+}
+
+.ranking-avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.ranking-name {
+  flex: 1;
+  font-size: 28rpx;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.ranking-score {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #D4A017;
+}
+
+.my-ranking {
+  background: #F8F0E3;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  margin-top: 20rpx;
+}
+
+/* 积分体系 */
+.points-section {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+}
+
+.points-rules {
+  margin-top: 20rpx;
+}
+
+.rule-item {
+  display: flex;
+  align-items: center;
+  padding: 15rpx 0;
+  border-bottom: 1rpx solid #E8F0F5;
+}
+
+.rule-item:last-child {
+  border-bottom: none;
+}
+
+.rule-icon {
+  font-size: 32rpx;
+  margin-right: 20rpx;
+}
+
+.rule-text {
+  font-size: 28rpx;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 返回按钮 */
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #1A365D;
+  padding: 20rpx;
+  border-radius: 15rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  margin-bottom: 30rpx;
+}
+
+.back-btn:hover {
+  background: #F5E8E0;
+  transform: translateY(-3rpx);
+  box-shadow: 0 6rpx 20rpx rgba(0,0,0,0.15);
+}
+
+.back-btn .btn-icon {
+  font-size: 32rpx;
+  margin-right: 10rpx;
+}
+
+.back-btn .btn-text {
+  font-size: 28rpx;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 底部Tab */
+.tab-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #fff;
+  border-top: 1rpx solid #e0e0e0;
+  padding: 10rpx 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  border-top: 2rpx solid #D4A017;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10rpx;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-item:hover {
+  color: #1A365D;
+}
+
+.tab-icon {
+  font-size: 36rpx;
+  margin-bottom: 5rpx;
+}
+
+.tab-text {
+  font-size: 20rpx;
+  color: #666;
+}
+
+.tab-active {
+  color: #1A365D;
+}
+
+.tab-active .tab-text {
+  color: #1A365D;
+  font-weight: bold;
+}
+
+.tab-create {
+  position: relative;
+  top: -20rpx;
+}
+
+.tab-create .tab-icon {
+  width: 60rpx;
+  height: 60rpx;
+  background: linear-gradient(135deg, #1A365D, #2C5282);
+  color: #D4A017;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  box-shadow: 0 4rpx 12rpx rgba(26, 54, 93, 0.3);
+  border: 2rpx solid #D4A017;
+}
+
+/* 问答小游戏 */
+.game-section {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin: 30rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+}
+
+.game-cards {
+  margin-top: 20rpx;
+}
+
+.game-card {
+  display: flex;
+  align-items: center;
+  background: #F8F0E3;
+  border-radius: 15rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  border: 1rpx solid #D4A017;
+  transition: all 0.3s ease;
+}
+
+.game-card:last-child {
+  margin-bottom: 0;
+}
+
+.game-card:hover {
+  transform: translateY(-3rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+.game-icon {
+  font-size: 48rpx;
+  margin-right: 20rpx;
+}
+
+.game-info {
+  flex: 1;
+}
+
+.game-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 5rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.game-desc {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 5rpx;
+}
+
+.game-reward {
+  font-size: 24rpx;
+  color: #D4A017;
+  font-weight: bold;
+}
+
+.game-status {
+  padding: 10rpx 20rpx;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  color: #D4A017;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  border: 1rpx solid #D4A017;
+}
+
+.game-status.completed {
+  background: #E0E0E0;
+  color: #999;
+}
+
+/* 积分任务 */
+.task-section {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin: 30rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+}
+
+.task-progress {
+  font-size: 24rpx;
+  color: #D4A017;
+}
+
+.task-list {
+  margin-top: 20rpx;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  background: #F8F0E3;
+  border-radius: 15rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  border: 1rpx solid #D4A017;
+}
+
+.task-item:last-child {
+  margin-bottom: 0;
+}
+
+.task-icon {
+  font-size: 48rpx;
+  margin-right: 20rpx;
+}
+
+.task-info {
+  flex: 1;
+}
+
+.task-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 5rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.task-desc {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.task-progress-bar {
+  width: 100%;
+  height: 8rpx;
+  background: #E0E0E0;
+  border-radius: 4rpx;
+  overflow: hidden;
+  margin-bottom: 5rpx;
+}
+
+.task-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #D4A017 0%, #FFD700 100%);
+  border-radius: 4rpx;
+  transition: width 0.3s ease;
+}
+
+.task-progress-text {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.task-reward {
+  padding: 10rpx 20rpx;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  color: #D4A017;
+  border-radius: 10rpx;
+  text-align: center;
+  border: 1rpx solid #D4A017;
+  min-width: 80rpx;
+}
+
+.task-reward.completed {
+  background: #E0E0E0;
+  color: #999;
+}
+
+.reward-points {
+  font-size: 24rpx;
+  font-weight: bold;
+  display: block;
+}
+
+.reward-status {
+  font-size: 20rpx;
+  display: block;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .data-card {
+    width: 100%;
+  }
+  
+  .user-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .user-avatar {
+    margin-right: 0;
+    margin-bottom: 20rpx;
+  }
+  
+  .user-info {
+    margin-bottom: 20rpx;
+  }
 }
 
 /* 学习统计 */
 .stats-section {
-  margin: 30rpx;
-  background: white;
-  border-radius: 20rpx;
-  padding: 30rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  margin: 30rpx 0;
+  padding: 0 30rpx;
 }
 
 .stats-header {
@@ -101,16 +678,6 @@
   font-size: 20rpx;
   color: #666;
   text-align: center;
-}
-
-/* 通用区块样式 */
-.section-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 20rpx;
-  border-left: 8rpx solid #b22222;
-  padding-left: 15rpx;
 }
 
 /* 学习进度 */
@@ -300,79 +867,4 @@
   font-size: 20rpx;
   color: #666;
   text-align: center;
-}
-
-/* 底部Tab */
-.tab-bar {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background: white;
-  border-top: 1rpx solid #e5e5e5;
-  padding: 15rpx 0;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 99;
-}
-
-.tab-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5rpx;
-  padding: 10rpx;
-  color: #666;
-}
-
-.tab-item.tab-active {
-  color: #b22222;
-}
-
-.tab-icon {
-  font-size: 36rpx;
-}
-
-.tab-text {
-  font-size: 20rpx;
-}
-
-.tab-create {
-  background: linear-gradient(90deg, #b22222, #cd853f);
-  color: white;
-  border-radius: 50%;
-  width: 80rpx;
-  height: 80rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20rpx;
-  box-shadow: 0 4rpx 12rpx rgba(178, 34, 34, 0.3);
-}
-
-.tab-create .tab-icon {
-  font-size: 48rpx;
-  line-height: 1;
-}
-
-.tab-create .tab-text {
-  font-size: 18rpx;
-  margin-top: -5rpx;
-}
-
-/* 响应式设计 */
-@media (max-width: 375px) {
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .creations-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .action-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }

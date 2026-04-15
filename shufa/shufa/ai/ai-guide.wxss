@@ -1,33 +1,90 @@
+/* 智能导览页面 - 传统中国风样式 */
 .guide-container {
   padding: 30rpx;
-  background: linear-gradient(180deg, #f3e5f5 0%, #e1bee7 100%);
+  background-color: #E8F5E8;
   min-height: 100vh;
 }
 
+/* 顶部标题栏 */
 .header {
   text-align: center;
-  margin-bottom: 40rpx;
+  margin: 20rpx 0 40rpx;
+  position: relative;
 }
 
 .title {
-  display: block;
-  font-size: 44rpx;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  padding: 20rpx 60rpx;
+  border-radius: 50rpx;
+  position: relative;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+  display: inline-block;
+  font-size: 48rpx;
   font-weight: bold;
-  color: #6a1b9a;
-  margin-bottom: 10rpx;
+  color: #D4A017;
+  font-family: "STKaiti", "KaiTi", serif;
+  letter-spacing: 8rpx;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.2);
+}
+
+.title::before,
+.title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40rpx;
+  height: 40rpx;
+  background: #D4A017;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #1A365D;
+  font-weight: bold;
+}
+
+.title::before {
+  left: -20rpx;
+  content: '卍';
+}
+
+.title::after {
+  right: -20rpx;
+  content: '卍';
 }
 
 .subtitle {
   font-size: 28rpx;
-  color: #8e24aa;
+  color: #2C5282;
+  font-family: "STKaiti", "KaiTi", serif;
+  margin-top: 20rpx;
+  display: block;
 }
 
 .section-title {
-  display: block;
-  font-size: 32rpx;
+  font-size: 36rpx;
   font-weight: bold;
-  color: #4a148c;
-  margin-bottom: 20rpx;
+  color: #1A365D;
+  margin-bottom: 30rpx;
+  display: block;
+  text-align: center;
+  font-family: "STKaiti", "KaiTi", serif;
+  position: relative;
+  padding-bottom: 15rpx;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100rpx;
+  height: 4rpx;
+  background: #D4A017;
+  border-radius: 2rpx;
 }
 
 .art-list {
@@ -39,16 +96,23 @@
 .art-item {
   display: flex;
   align-items: center;
-  background: #fff;
+  background: #F8F0E3;
   border-radius: 16rpx;
   padding: 20rpx;
   box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
-  border: 3rpx solid transparent;
+  border: 2rpx solid #D4A017;
+  transition: all 0.3s ease;
+}
+
+.art-item:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 20rpx rgba(0,0,0,0.15);
 }
 
 .art-item.active {
-  border-color: #6a1b9a;
-  background: #f3e5f5;
+  border-color: #D4A017;
+  background: #F8F0E3;
+  box-shadow: 0 8rpx 20rpx rgba(0,0,0,0.15);
 }
 
 .art-image {
@@ -56,6 +120,8 @@
   height: 100rpx;
   border-radius: 12rpx;
   margin-right: 20rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
 }
 
 .art-info {
@@ -67,21 +133,29 @@
 .art-name {
   font-size: 30rpx;
   font-weight: bold;
-  color: #333;
+  color: #1A365D;
   margin-bottom: 8rpx;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
 .art-artist {
   font-size: 24rpx;
-  color: #6a1b9a;
+  color: #D4A017;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
 .guide-content {
   margin-top: 40rpx;
-  background: #fff;
-  border-radius: 20rpx;
+  background: #F8F0E3;
+  border-radius: 16rpx;
   padding: 30rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  border: 2rpx solid #D4A017;
+  transition: all 0.3s ease;
+}
+
+.guide-content:hover {
+  box-shadow: 0 8rpx 20rpx rgba(0,0,0,0.15);
 }
 
 .content-header {
@@ -90,34 +164,40 @@
   align-items: center;
   margin-bottom: 30rpx;
   padding-bottom: 20rpx;
-  border-bottom: 2rpx solid #e1bee7;
+  border-bottom: 2rpx solid #D4A017;
 }
 
 .content-title {
   font-size: 36rpx;
   font-weight: bold;
-  color: #4a148c;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
 .guide-tag {
-  background: linear-gradient(135deg, #6a1b9a 0%, #8e24aa 100%);
-  color: #fff;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  color: #D4A017;
   padding: 8rpx 20rpx;
   border-radius: 20rpx;
   font-size: 24rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+  border: 2rpx solid #D4A017;
 }
 
 .loading {
   text-align: center;
   padding: 60rpx 0;
-  color: #6a1b9a;
+  color: #1A365D;
   font-size: 28rpx;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
 .guide-text {
   font-size: 28rpx;
   line-height: 1.8;
   color: #444;
+  font-family: "STKaiti", "KaiTi", serif;
+  text-indent: 2em;
 }
 
 .action-buttons {
@@ -132,13 +212,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #6a1b9a 0%, #8e24aa 100%);
-  color: #fff;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  color: #D4A017;
   padding: 30rpx 20rpx;
   border-radius: 16rpx;
+  border: 2rpx solid #D4A017;
+  transition: all 0.3s ease;
+  box-shadow: 0 4rpx 12rpx rgba(26, 54, 93, 0.3);
+}
+
+.action-btn:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 20rpx rgba(26, 54, 93, 0.4);
 }
 
 .btn-icon {
   font-size: 40rpx;
   margin-bottom: 10rpx;
+}
+
+.action-btn text {
+  font-family: "STKaiti", "KaiTi", serif;
+  font-weight: 500;
 }

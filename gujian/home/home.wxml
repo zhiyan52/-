@@ -9,10 +9,10 @@
         <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/lunbo1.jpg" class="hero-image" />
       </swiper-item>
       <swiper-item>
-        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/taihedian.jpg" class="hero-image" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/lunbo1.jpg" class="hero-image" />
       </swiper-item>
       <swiper-item>
-        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/suzhouuanlin.jpg" class="hero-image" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/lunbo1.jpg" class="hero-image" />
       </swiper-item>
     </swiper>
   </view>
@@ -37,6 +37,12 @@
       <view class="feature-item">
         <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/shoucang.jpg" class="feature-icon" />
         <text>我的收藏</text>
+      </view>
+    </view>
+    <view class="feature-row">
+      <view class="feature-item" bindtap="goToCommunity">
+        <text class="feature-icon-text">💬</text>
+        <text>古建社区</text>
       </view>
     </view>
   </view>
@@ -153,7 +159,7 @@
       <image src="/components/zonglan.png" class="tab-image"></image>
       <text>分类</text>
     </navigator>
-    <navigator url="/profile/profile/profile" class="tab-item {{activeTab === 2 ? 'active' : ''}}">
+    <navigator url="/gujian/home/pages/profile/profile" class="tab-item {{activeTab === 2 ? 'active' : ''}}">
       <image src="/components/yonghu.png" class="tab-image"></image>
       <text>我的</text>
     </navigator>

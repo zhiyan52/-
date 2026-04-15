@@ -1,2 +1,43 @@
-<!--shufa/shufa/ai/ai-recommend.wxml-->
-<text>shufa/shufa/ai/ai-recommend.wxml</text>
+<!-- 书画个性化推荐页面 -->
+<view class="recommend-container">
+  <view class="header">
+    <text class="title">个性化推荐</text>
+    <text class="subtitle">根据你的兴趣推荐书画作品</text>
+  </view>
+  
+  <view class="filter-section">
+    <view class="filter-tabs">
+      <view class="filter-tab {{activeFilter === 'all' ? 'active' : ''}}" bindtap="setFilter" data-filter="all">
+        <text>全部</text>
+      </view>
+      <view class="filter-tab {{activeFilter === 'calligraphy' ? 'active' : ''}}" bindtap="setFilter" data-filter="calligraphy">
+        <text>书法</text>
+      </view>
+      <view class="filter-tab {{activeFilter === 'painting' ? 'active' : ''}}" bindtap="setFilter" data-filter="painting">
+        <text>国画</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="recommend-list">
+    <view class="recommend-item" wx:for="{{recommendList}}" wx:key="id">
+      <image class="recommend-image" src="{{item.image}}" mode="aspectFill" />
+      <view class="recommend-info">
+        <text class="recommend-title">{{item.title}}</text>
+        <text class="recommend-artist">{{item.artist}}</text>
+        <text class="recommend-description">{{item.description}}</text>
+        <view class="recommend-tags">
+          <view class="tag" wx:for="{{item.tags}}" wx:key="index">{{item}}</view>
+        </view>
+        <view class="recommend-actions">
+          <view class="action-btn">查看详情</view>
+          <view class="action-btn secondary">收藏</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="loading" wx:if="{{loading}}">
+    <text>AI正在为你推荐...🔍</text>
+  </view>
+</view>

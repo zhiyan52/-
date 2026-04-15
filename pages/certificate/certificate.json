@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "我的数字证书",
+  "navigationBarBackgroundColor": "#343a40",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#f8f9fa",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {}
+}

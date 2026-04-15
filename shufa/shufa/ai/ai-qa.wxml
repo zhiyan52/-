@@ -1,2 +1,40 @@
-<!--shufa/shufa/ai/ai-qa.wxml-->
-<text>shufa/shufa/ai/ai-qa.wxml</text>
+<!-- 书画文化问答页面 -->
+<view class="qa-container">
+  <view class="header">
+    <text class="title">书画文化问答</text>
+    <text class="subtitle">AI为你解答书画艺术疑问</text>
+  </view>
+  
+  <view class="chat-container">
+    <view class="message-list">
+      <view class="message-item ai-message" wx:for="{{messages}}" wx:key="index">
+        <view class="message-avatar">🤖</view>
+        <view class="message-content">
+          <text>{{item.content}}</text>
+        </view>
+      </view>
+      <view class="message-item user-message" wx:for="{{userMessages}}" wx:key="index">
+        <view class="message-content user-content">
+          <text>{{item.content}}</text>
+        </view>
+        <view class="message-avatar user-avatar">👤</view>
+      </view>
+    </view>
+    
+    <view class="input-section">
+      <input class="input-box" placeholder="请输入你的问题..." bindinput="bindInput" value="{{inputValue}}" />
+      <view class="send-btn" bindtap="sendMessage">
+        <text class="send-icon">➤</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="faq-section">
+    <text class="section-title">常见问题</text>
+    <view class="faq-list">
+      <view class="faq-item" bindtap="selectFaq" wx:for="{{faqList}}" wx:key="index" data-question="{{item.question}}">
+        <text class="faq-question">{{item.question}}</text>
+      </view>
+    </view>
+  </view>
+</view>

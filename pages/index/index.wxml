@@ -4,10 +4,10 @@
   <view class="header">
      <image  class="shangyan" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shouye/shangyan(1).png" ></image>
      
-    <view class="search-bar"> 
-      <input class="search-input" placeholder="搜索文化内容..." />
+    <view class="search-bar" bindtap="goToAIAssistant"> 
+      <input class="search-input" placeholder="AI文化问答，输入你的问题..." disabled /> 
       <icon class="search-icon" type="search" size="30" color="#333"></icon>
- 
+
     </view>
   </view>
 <!-- 五大模块 -->

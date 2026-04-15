@@ -1,0 +1,546 @@
+/* pages/cultural-map/cultural-map.wxss */
+.cultural-map-container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 20rpx;
+}
+
+/* 顶部导航 */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  margin-bottom: 30rpx;
+}
+
+.header-left,
+.header-right {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.header-left:hover,
+.header-right:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+}
+
+.back-icon,
+.share-icon {
+  font-size: 32rpx;
+  color: #495057;
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #343a40;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 地图区域 */
+.map-section {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.title-icon {
+  font-size: 36rpx;
+  margin-right: 15rpx;
+}
+
+.title-text {
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.map-container {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  position: relative;
+  height: 500rpx;
+  overflow: hidden;
+}
+
+.china-map {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border-radius: 15rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.china-map::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=china%20map%20outline%20silhouette%20light%20blue%20background&image_size=landscape_16_9');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+}
+
+.landmark {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.landmark:hover {
+  transform: scale(1.1);
+}
+
+.landmark-point {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background: #6c757d;
+  margin-bottom: 8rpx;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.landmark-point::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  background: rgba(108, 117, 125, 0.3);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.landmark-point.active {
+  background: #D4A574;
+  box-shadow: 0 0 15rpx rgba(212, 165, 116, 0.6);
+}
+
+.landmark-point.active::before {
+  background: rgba(212, 165, 116, 0.4);
+}
+
+.landmark-label {
+  font-size: 20rpx;
+  font-weight: bold;
+  color: #343a40;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 研学数据 */
+.study-data-section {
+  margin-bottom: 30rpx;
+}
+
+.data-card {
+  display: flex;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.data-item {
+  flex: 1;
+  text-align: center;
+}
+
+.data-number {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 10rpx;
+}
+
+.data-label {
+  font-size: 24rpx;
+  color: #6c757d;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.data-divider {
+  width: 1rpx;
+  background: #e9ecef;
+  margin: 0 30rpx;
+}
+
+/* 文化点详情 */
+.landmark-detail-section {
+  margin-bottom: 30rpx;
+}
+
+.landmark-detail-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.landmark-image {
+  width: 100%;
+  height: 200rpx;
+  border-radius: 15rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+
+.landmark-image image {
+  width: 100%;
+  height: 100%;
+}
+
+.landmark-info {
+  margin-bottom: 20rpx;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+  flex-wrap: wrap;
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+}
+
+.info-label {
+  font-size: 24rpx;
+  color: #6c757d;
+  width: 120rpx;
+  flex-shrink: 0;
+}
+
+.info-value {
+  font-size: 24rpx;
+  color: #343a40;
+  font-weight: bold;
+  flex: 1;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 12rpx;
+  background: #e9ecef;
+  border-radius: 6rpx;
+  margin: 0 20rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #D4A574 0%, #C19A6B 100%);
+  border-radius: 6rpx;
+  transition: width 1s ease;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #D4A574;
+  width: 80rpx;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.learn-more-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  color: #fff;
+  padding: 20rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-top: 20rpx;
+  transition: all 0.3s ease;
+}
+
+.learn-more-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+}
+
+/* 研学报告 */
+.report-section {
+  margin-bottom: 30rpx;
+}
+
+.report-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #e9ecef;
+}
+
+.report-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #343a40;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.report-date {
+  font-size: 24rpx;
+  color: #6c757d;
+}
+
+.report-content {
+  margin-bottom: 30rpx;
+}
+
+.report-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.report-item:last-child {
+  margin-bottom: 0;
+}
+
+.report-icon {
+  font-size: 32rpx;
+  margin-right: 15rpx;
+}
+
+.report-text {
+  font-size: 26rpx;
+  color: #343a40;
+  flex: 1;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #D4A574;
+}
+
+.share-report-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+  color: #fff;
+  padding: 20rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.share-report-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4rpx 12rpx rgba(212, 165, 116, 0.3);
+}
+
+/* 地标详情弹窗 */
+.landmark-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 20rpx;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25rpx 30rpx;
+  border-bottom: 1rpx solid #e9ecef;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #343a40;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.modal-close {
+  font-size: 40rpx;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  color: #343a40;
+  transform: rotate(90deg);
+}
+
+.modal-body {
+  padding: 30rpx;
+}
+
+.modal-image {
+  width: 100%;
+  height: 200rpx;
+  border-radius: 15rpx;
+  margin-bottom: 20rpx;
+}
+
+.modal-info {
+  margin-bottom: 20rpx;
+}
+
+.modal-info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+  flex-wrap: wrap;
+}
+
+.modal-info-item:last-child {
+  margin-bottom: 0;
+}
+
+.modal-info-label {
+  font-size: 24rpx;
+  color: #6c757d;
+  width: 120rpx;
+  flex-shrink: 0;
+}
+
+.modal-info-value {
+  font-size: 24rpx;
+  color: #343a40;
+  font-weight: bold;
+  flex: 1;
+}
+
+.modal-progress-bar {
+  flex: 1;
+  height: 12rpx;
+  background: #e9ecef;
+  border-radius: 6rpx;
+  margin: 0 20rpx;
+  overflow: hidden;
+}
+
+.modal-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #D4A574 0%, #C19A6B 100%);
+  border-radius: 6rpx;
+  transition: width 1s ease;
+}
+
+.modal-progress-text {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #D4A574;
+  width: 80rpx;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.modal-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  color: #fff;
+  padding: 20rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-top: 20rpx;
+  transition: all 0.3s ease;
+}
+
+.modal-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+}
+
+/* 动画 */
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50rpx); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .map-container {
+    height: 400rpx;
+  }
+  
+  .data-card {
+    flex-direction: column;
+  }
+  
+  .data-divider {
+    width: 100%;
+    height: 1rpx;
+    margin: 20rpx 0;
+  }
+  
+  .header-title {
+    font-size: 32rpx;
+  }
+  
+  .section-title {
+    font-size: 28rpx;
+  }
+}

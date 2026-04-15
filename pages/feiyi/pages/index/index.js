@@ -120,7 +120,7 @@ Page({
       });
 
       const list = result.list || [];
-      const audioItems = list.filter(h => h.audio?.hasAudio).map(h => h.id);
+      const audioItems = list.filter(h => h.audio && h.audio.hasAudio).map(h => h.id);
 
       this.setData({
         heritageList: reset ? list : [...this.data.heritageList, ...list],
@@ -155,7 +155,7 @@ Page({
   },
 
   onCategoryChange(e) {
-    const { id } = e.currentTarget.dataset || {};
+    const { id } = (e.currentTarget && e.currentTarget.dataset) || {};
     if (!id) return;
 
     const { CategoryMap } = require('../../data/index.js');
@@ -175,7 +175,7 @@ Page({
   },
 
   onSearchInput(e) {
-    this.setData({ searchKeyword: e.detail?.value || '' });
+    this.setData({ searchKeyword: e.detail && e.detail.value || '' });
   },
 
   onSearchConfirm() {
@@ -207,7 +207,7 @@ Page({
   },
 
   changeSort(e) {
-    const { type } = e.currentTarget?.dataset || {};
+    const { type } = (e.currentTarget && e.currentTarget.dataset) || {};
     if (!type) return;
 
     this.setData({
@@ -229,7 +229,7 @@ Page({
   },
 
   goToDetail(e) {
-    const { id } = e.detail || {};
+    const { id } = (e.detail) || {};
     if (!id) return;
 
     wx.navigateTo({
@@ -238,7 +238,7 @@ Page({
   },
 
   goToInheritor(e) {
-    const { id } = e.detail || {};
+    const { id } = (e.detail) || {};
     if (!id) return;
 
     wx.navigateTo({
@@ -247,7 +247,7 @@ Page({
   },
 
   onAudioPlay(e) {
-    const { id } = e.detail || {};
+    const { id } = (e.detail) || {};
     if (!id) return;
 
     this.setData({
@@ -269,7 +269,7 @@ Page({
   },
 
   onAudioChange(e) {
-    const { id } = e.detail || {};
+    const { id } = (e.detail) || {};
     if (!id) return;
 
     this.setData({ currentPlayingId: id });
@@ -278,6 +278,12 @@ Page({
   onAudioClose() {
     this.setData({ showAudioPlayer: false });
     AudioManager.stop();
+  },
+
+  goToCommunity() {
+    wx.navigateTo({
+      url: '/pages/feiyi/pages/community/community'
+    });
   },
 
   _syncAudioStatus() {

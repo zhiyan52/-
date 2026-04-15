@@ -1,82 +1,444 @@
-/* 个人中心页面样式 */
 .profile-container {
   padding: 30rpx;
-  background-color: #f8f9fa;
+  background: linear-gradient(180deg, #E8F0F5 0%, #D0E6F0 100%);
   min-height: 100vh;
 }
 
-.user-info {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 20rpx;
-  padding: 40rpx;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 30rpx;
-  box-shadow: 0 8rpx 24rpx rgba(102, 126, 234, 0.3);
+/* 未登录状态 */
+.login-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
 }
 
-.avatar {
-  width: 150rpx;
-  height: 150rpx;
+.login-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60rpx;
+}
+
+.default-avatar {
+  width: 160rpx;
+  height: 160rpx;
   border-radius: 50%;
-  border: 4rpx solid #fff;
-  margin: 0 auto 20rpx;
-  background-color: #fff;
+  border: 4rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.15);
+  margin-bottom: 30rpx;
+}
+
+.login-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 10rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.login-subtitle {
+  font-size: 28rpx;
+  color: #2C5282;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.login-btn {
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  color: #D4A017;
+  padding: 20rpx 80rpx;
+  border-radius: 50rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(26, 54, 93, 0.3);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-btn::after {
+  border: none;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+.login-btn:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 24rpx rgba(26, 54, 93, 0.4);
+}
+
+.btn-text {
+  font-size: 32rpx;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 已登录状态 */
+.user-section {
+  padding: 20rpx 0;
+}
+
+.user-header {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+}
+
+.user-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 3rpx solid #D4A017;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+  margin-right: 30rpx;
+}
+
+.user-info {
+  flex: 1;
 }
 
 .user-name {
   font-size: 36rpx;
   font-weight: bold;
+  color: #1A365D;
   margin-bottom: 10rpx;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
-.user-id {
-  font-size: 24rpx;
-  opacity: 0.8;
+.user-phone {
+  font-size: 28rpx;
+  color: #D4A017;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
-.menu-list {
-  background-color: #fff;
+.profile-menu {
+  background: #fff;
   border-radius: 20rpx;
-  overflow: hidden;
-  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+  margin-bottom: 30rpx;
 }
 
 .menu-item {
   display: flex;
   align-items: center;
   padding: 30rpx;
-  border-bottom: 1rpx solid #f0f0f0;
+  border-bottom: 1rpx solid #E8F0F5;
+  transition: all 0.3s ease;
 }
 
 .menu-item:last-child {
   border-bottom: none;
 }
 
-.menu-icon {
-  font-size: 40rpx;
-  margin-right: 20rpx;
-  color: #667eea;
+.menu-item:hover {
+  background: #E8F0F5;
 }
 
-.menu-text {
+.menu-icon {
+  font-size: 32rpx;
+  margin-right: 20rpx;
+}
+
+.menu-title {
   flex: 1;
-  font-size: 28rpx;
-  color: #333;
+  font-size: 30rpx;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
 .menu-arrow {
-  font-size: 28rpx;
+  font-size: 24rpx;
   color: #999;
 }
 
-.footer {
-  margin-top: 50rpx;
+.logout-btn {
+  background: #fff;
+  color: #1A365D;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
   text-align: center;
-  font-size: 22rpx;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #E8F0F5;
+  transform: translateY(-3rpx);
+  box-shadow: 0 6rpx 20rpx rgba(0,0,0,0.15);
+}
+
+/* 子页面个人中心入口 */
+.subpage-profile-section {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 20rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.subpage-menu {
+  background: #fff;
+  border-radius: 20rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+}
+
+.subpage-menu .menu-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #E8F0F5;
+  transition: all 0.3s ease;
+}
+
+.subpage-menu .menu-item:last-child {
+  border-bottom: none;
+}
+
+.subpage-menu .menu-item:hover {
+  background: #E8F0F5;
+}
+
+.subpage-menu .menu-icon {
+  font-size: 32rpx;
+  margin-right: 20rpx;
+}
+
+.subpage-menu .menu-title {
+  flex: 1;
+  font-size: 30rpx;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.subpage-menu .menu-arrow {
+  font-size: 24rpx;
   color: #999;
 }
 
-.version {
-  margin-top: 10rpx;
+/* 打卡数据统计 */
+.checkin-stats-section {
+  margin-bottom: 30rpx;
+}
+
+.stats-card {
+  display: flex;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+  margin-bottom: 20rpx;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 10rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #D4A017;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.stat-divider {
+  width: 1rpx;
+  background: #E8F0F5;
+  margin: 0 30rpx;
+}
+
+/* 图表样式 */
+.chart-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.chart-item {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 25rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+}
+
+.chart-title {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 20rpx;
+  text-align: center;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.chart-content {
+  height: 150rpx;
+  position: relative;
+}
+
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 100%;
+  padding-bottom: 20rpx;
+}
+
+.bar {
+  flex: 1;
+  background: linear-gradient(to top, #1A365D, #2C5282);
+  margin: 0 5rpx;
+  border-radius: 5rpx 5rpx 0 0;
+  position: relative;
+}
+
+.bar text {
+  position: absolute;
+  bottom: -20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16rpx;
+  color: #1A365D;
+}
+
+.line-chart {
+  height: 100%;
+  position: relative;
+}
+
+.line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%, transparent 100%),
+              linear-gradient(to right, transparent 0%, transparent 100%);
+  background-size: 25% 20%, 25% 20%;
+  background-position: 0 0, 0 0;
+}
+
+.line::before {
+  content: '';
+  position: absolute;
+  top: 60%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #D4A017 0%, #B8860B 100%);
+  clip-path: polygon(0% 60%, 25% 45%, 50% 70%, 75% 55%, 100% 85%, 100% 100%, 0% 100%);
+  opacity: 0.2;
+}
+
+.chart-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.dot {
+  position: absolute;
+  width: 10rpx;
+  height: 10rpx;
+  background: #D4A017;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 奖励列表 */
+.rewards-list {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+}
+
+.reward-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #E8F0F5;
+  transition: all 0.3s ease;
+}
+
+.reward-item:last-child {
+  border-bottom: none;
+}
+
+.reward-item:hover {
+  background: #E8F0F5;
+  border-radius: 10rpx;
+}
+
+.reward-icon {
+  font-size: 50rpx;
+  margin-right: 20rpx;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.reward-info {
+  flex: 1;
+}
+
+.reward-title {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 5rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.reward-desc {
+  font-size: 22rpx;
+  color: #D4A017;
+}
+
+.reward-status {
+  padding: 8rpx 16rpx;
+  border-radius: 15rpx;
+  font-size: 20rpx;
+  font-weight: bold;
+}
+
+.reward-status.achieved {
+  background: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+}
+
+.reward-status.locked {
+  background: rgba(108, 117, 125, 0.1);
+  color: #6c757d;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }

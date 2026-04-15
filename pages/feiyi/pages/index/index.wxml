@@ -4,13 +4,13 @@
   <view class="hero">
     <swiper class="hero-swiper" indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true">
       <swiper-item>
-        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/5d57897bbb1c3b4426f02150ab4fb7e3.jpg" class="hero-image" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/home/lunbo1.jpg" class="hero-image" />
       </swiper-item>
       <swiper-item>
-        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/art.jpg" class="hero-image" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/home/lunbo2.jpg" class="hero-image" />
       </swiper-item>
       <swiper-item>
-        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/craft.jpg" class="hero-image" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/home/lunbo3.jpg" class="hero-image" />
       </swiper-item>
     </swiper>
   </view>
@@ -100,6 +100,12 @@
           <text>语音讲解</text>
         </view>
       </view>
+      <view class="feature-row">
+        <view class="feature-item" bindtap="goToCommunity">
+          <text class="feature-icon">💬</text>
+          <text>非遗社区</text>
+        </view>
+      </view>
     </view>
   </view>
   
@@ -184,7 +190,7 @@
     <image src="/components/zonglan.png" class="tab-image"></image>
     <text>分类</text>
   </navigator>
-  <navigator url="/profile/profile/profile" class="tab-item {{activeTab === 2 ? 'active' : ''}}">
+  <navigator url="/pages/feiyi/pages/index/profile/profile" class="tab-item {{activeTab === 2 ? 'active' : ''}}">
     <image src="/components/yonghu.png" class="tab-image"></image>
     <text>我的</text>
   </navigator>

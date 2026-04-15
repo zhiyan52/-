@@ -43,6 +43,12 @@
         <text>传统糕饼</text>
       </view>
     </view>
+    <view class="feature-row">
+      <view class="feature-item" bindtap="goToCommunity">
+        <text class="feature-icon">💬</text>
+        <text>民俗社区</text>
+      </view>
+    </view>
   </view>
 
   <!-- 时令食俗推荐区 -->

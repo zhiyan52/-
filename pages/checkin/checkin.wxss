@@ -1,0 +1,641 @@
+/* pages/checkin/checkin.wxss */
+.checkin-container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 20rpx;
+}
+
+/* 顶部导航 */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  margin-bottom: 30rpx;
+}
+
+.header-left,
+.header-right {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.header-left:hover,
+.header-right:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+}
+
+.back-icon,
+.profile-icon {
+  font-size: 32rpx;
+  color: #495057;
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #343a40;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 打卡状态 */
+.checkin-status {
+  margin-bottom: 30rpx;
+}
+
+.status-card {
+  display: flex;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.status-card:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.12);
+}
+
+.status-item {
+  flex: 1;
+  text-align: center;
+}
+
+.status-number {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 10rpx;
+}
+
+.status-label {
+  font-size: 24rpx;
+  color: #6c757d;
+}
+
+.status-divider {
+  width: 1rpx;
+  background: #e9ecef;
+  margin: 0 30rpx;
+}
+
+/* 每日打卡 */
+.daily-checkin {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.title-icon {
+  font-size: 36rpx;
+  margin-right: 15rpx;
+}
+
+.title-text {
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.checkin-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.checkin-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+  border: none;
+  border-radius: 30rpx;
+  padding: 25rpx 60rpx;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(212, 165, 116, 0.3);
+  transition: all 0.3s ease;
+}
+
+.checkin-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6rpx 16rpx rgba(212, 165, 116, 0.4);
+}
+
+.checked-in-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e9ecef;
+  border-radius: 30rpx;
+  padding: 25rpx 60rpx;
+  color: #6c757d;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.seal-icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 15rpx;
+}
+
+.checked-in-text {
+  margin-left: 15rpx;
+}
+
+/* 打卡日历 */
+.calendar-section {
+  margin-bottom: 30rpx;
+}
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.nav-btn {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #e9ecef;
+  margin: 0 10rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #dee2e6;
+  transform: scale(1.1);
+}
+
+.current-month {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.calendar {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.weekday {
+  text-align: center;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #6c757d;
+  padding: 10rpx 0;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10rpx;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10rpx;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.day-content:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.day-content.checked {
+  background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+  color: #fff;
+}
+
+.day-content.unchecked {
+  background: #f8f9fa;
+  color: #343a40;
+}
+
+.day-content.other-month {
+  background: #e9ecef;
+  color: #adb5bd;
+}
+
+.day-number {
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.day-indicator {
+  font-size: 16rpx;
+  margin-top: 4rpx;
+  font-weight: bold;
+}
+
+/* 打卡任务 */
+.tasks-section {
+  margin-bottom: 30rpx;
+}
+
+.tasks-list {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.task-item:hover {
+  background: #f8f9fa;
+  border-radius: 10rpx;
+}
+
+.task-info {
+  flex: 1;
+}
+
+.task-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 5rpx;
+}
+
+.task-reward {
+  font-size: 24rpx;
+  color: #D4A574;
+  font-weight: bold;
+}
+
+.task-status {
+  margin-left: 20rpx;
+}
+
+.status-btn {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  color: #fff;
+  padding: 12rpx 24rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.status-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+}
+
+.status-completed {
+  display: flex;
+  align-items: center;
+  color: #28a745;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.completed-icon {
+  margin-right: 8rpx;
+}
+
+/* 连续打卡奖励 */
+.rewards-section {
+  margin-bottom: 30rpx;
+}
+
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.reward-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.reward-card:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.12);
+}
+
+.reward-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, #D4A574 0%, #C19A6B 100%);
+}
+
+.reward-icon {
+  font-size: 60rpx;
+  margin-bottom: 15rpx;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.reward-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 10rpx;
+}
+
+.reward-desc {
+  font-size: 24rpx;
+  color: #6c757d;
+  margin-bottom: 20rpx;
+}
+
+.reward-status {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 15rpx;
+  font-size: 20rpx;
+  font-weight: bold;
+}
+
+.reward-status.achieved {
+  background: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+}
+
+.reward-status.locked {
+  background: rgba(108, 117, 125, 0.1);
+  color: #6c757d;
+}
+
+/* 数据可视化 */
+.data-section {
+  margin-bottom: 30rpx;
+}
+
+.chart-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.chart-item {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 25rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.chart-title {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.chart-content {
+  height: 200rpx;
+  position: relative;
+}
+
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 100%;
+  padding-bottom: 30rpx;
+}
+
+.bar {
+  flex: 1;
+  background: linear-gradient(to top, #6c757d, #495057);
+  margin: 0 5rpx;
+  border-radius: 5rpx 5rpx 0 0;
+  position: relative;
+  transition: height 1s ease;
+}
+
+.bar text {
+  position: absolute;
+  bottom: -30rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20rpx;
+  color: #6c757d;
+}
+
+.line-chart {
+  height: 100%;
+  position: relative;
+}
+
+.line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%, transparent 100%),
+              linear-gradient(to right, transparent 0%, transparent 100%);
+  background-size: 25% 20%, 25% 20%;
+  background-position: 0 0, 0 0;
+}
+
+.line::before {
+  content: '';
+  position: absolute;
+  top: 60%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+  clip-path: polygon(0% 60%, 25% 45%, 50% 70%, 75% 55%, 100% 85%, 100% 100%, 0% 100%);
+  opacity: 0.2;
+}
+
+.chart-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.dot {
+  position: absolute;
+  width: 12rpx;
+  height: 12rpx;
+  background: #D4A574;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 打卡成功弹窗 */
+.success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.success-content {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 50rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease;
+  min-width: 80%;
+}
+
+.success-icon {
+  font-size: 100rpx;
+  margin-bottom: 30rpx;
+  animation: pulse 1s ease-in-out;
+}
+
+.success-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 20rpx;
+}
+
+.success-desc {
+  font-size: 28rpx;
+  color: #6c757d;
+  margin-bottom: 40rpx;
+}
+
+.success-btn {
+  background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+  color: #fff;
+  padding: 20rpx 60rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.success-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4rpx 12rpx rgba(212, 165, 116, 0.3);
+}
+
+/* 动画 */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50rpx); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .rewards-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .chart-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .status-card {
+    flex-direction: column;
+  }
+  
+  .status-divider {
+    width: 100%;
+    height: 1rpx;
+    margin: 20rpx 0;
+  }
+  
+  .header-title {
+    font-size: 32rpx;
+  }
+  
+  .checkin-btn {
+    font-size: 28rpx;
+    padding: 20rpx 50rpx;
+  }
+}

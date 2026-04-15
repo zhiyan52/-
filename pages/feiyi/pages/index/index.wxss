@@ -15,7 +15,7 @@
 }
 
 .header-title {
-  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  background: linear-gradient(135deg, #000000 0%, #1A1A1A 100%);
   padding: 20rpx 60rpx;
   border-radius: 50rpx;
   position: relative;
@@ -197,13 +197,13 @@
 }
 
 .feature-item.active {
-  background: linear-gradient(135deg, #C53030 0%, #9B2C2C 100%);
-  box-shadow: 0 4rpx 12rpx rgba(197, 48, 48, 0.3);
+  background: linear-gradient(135deg, #FFF9E6 0%, #F8E7A3 100%);
+  box-shadow: 0 4rpx 12rpx rgba(248, 231, 163, 0.3);
   border-color: #D4A017;
 }
 
 .feature-item.active text {
-  color: #F8F0E3;
+  color: #1A365D;
   font-weight: 600;
 }
 

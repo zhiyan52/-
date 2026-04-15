@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "openapi": [
+      "wx.getUserInfo"
+    ],
+    "db": [
+      {
+        "resource": "users",
+        "actions": [
+          "get",
+          "add",
+          "update",
+          "delete"
+        ]
+      }
+    ]
+  }
+}

@@ -40,14 +40,10 @@
     <view class="section-title">笔画顺序</view>
     <view class="stroke-display">
       <view class="stroke-canvas">
-        <view class="stroke-grid" class="{{gridType}}">
+        <view class="stroke-grid {{gridType}}">
           <view class="character-stroke">{{character.char}}</view>
           <view class="stroke-lines">
-            <view class="stroke-line" wx:for="{{strokeOrder}}" wx:key="index"
-                  style="width: {{item.length}}rpx;
-                         left: {{item.x1 * 1.5}}rpx; top: {{item.y1 * 1.5}}rpx;
-                         transform: rotate({{item.rotation}}deg);
-                         opacity: {{index < currentStroke ? 1 : 0}};">
+            <view class="stroke-line" wx:for="{{strokeOrder}}" wx:key="index" style="width: {{item.length}}rpx; left: {{item.x1 * 1.5}}rpx; top: {{item.y1 * 1.5}}rpx; transform: rotate({{item.rotation}}deg); opacity: {{index < currentStroke ? 1 : 0}};">
             </view>
           </view>
         </view>

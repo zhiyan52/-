@@ -103,12 +103,12 @@ class DataLoader {
 
     try {
       const result = await promise;
-      
+
       // 缓存第一页
       if (page === 1 && !keyword) {
         CacheManager.cacheHeritageList(result.list, category);
       }
-      
+
       return result;
     } finally {
       this.loadingQueue.delete(cacheKey);
@@ -125,7 +125,7 @@ class DataLoader {
 
     // 从本地数据获取
     const detail = HeritageDataUtils.getById(id);
-    
+
     if (!detail) {
       throw new Error('非遗项目不存在');
     }
@@ -137,7 +137,7 @@ class DataLoader {
 
     // 缓存
     CacheManager.cacheHeritageDetail(id, detail);
-    
+
     return detail;
   }
 
@@ -150,21 +150,21 @@ class DataLoader {
     if (inheritor) {
       CacheManager.set(`inheritor_${id}`, inheritor, 'inheritor');
     }
-    
+
     return inheritor;
   }
 
   // 搜索
   async search(keyword, options = {}) {
     const { category = 'all', limit = 20 } = options;
-    
+
     if (!keyword || keyword.trim().length === 0) {
       return { list: [], total: 0 };
     }
 
     // 执行搜索
     let results = HeritageDataUtils.search(keyword);
-    
+
     // 分类筛选
     if (category !== 'all') {
       results = results.filter(h => h.categoryId === category);
@@ -205,7 +205,7 @@ class DataLoader {
 
     const stats = HeritageDataUtils.getStats();
     CacheManager.set('statistics', stats, 'category');
-    
+
     return stats;
   }
 
@@ -214,12 +214,12 @@ class DataLoader {
   async _fetchHeritageList({ category, page, pageSize, keyword, sortBy }) {
     try {
       console.log('开始获取非遗列表:', { category, page, pageSize, keyword, sortBy });
-      
+
       // 模拟异步延迟（实际项目中这里是网络请求）
       await new Promise(resolve => setTimeout(resolve, 100));
 
       let list;
-      
+
       if (keyword) {
         // 搜索模式
         console.log('搜索模式:', keyword);
@@ -252,7 +252,7 @@ class DataLoader {
         total: keyword ? list.length : HeritageDataUtils.getByCategory(category).length,
         hasMore: (list || []).length === pageSize
       };
-      
+
       console.log('返回结果:', result);
       return result;
     } catch (err) {
@@ -270,11 +270,11 @@ class DataLoader {
 
   _sortList(list, sortBy) {
     if (!list || !Array.isArray(list)) return [];
-    
+
     const sorters = {
-      sortOrder: (a, b) => (a.display?.sortOrder || 0) - (b.display?.sortOrder || 0),
+      sortOrder: (a, b) => ((a.display && a.display.sortOrder) || 0) - ((b.display && b.display.sortOrder) || 0),
       name: (a, b) => a.name.localeCompare(b.name, 'zh-CN'),
-      year: (a, b) => (b.meta?.year || 0) - (a.meta?.year || 0)
+      year: (a, b) => ((b.meta && b.meta.year) || 0) - ((a.meta && a.meta.year) || 0)
     };
 
     return [...list].sort(sorters[sortBy] || sorters.sortOrder);

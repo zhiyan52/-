@@ -1,0 +1,582 @@
+/* moudules/modules/modules.wxss - 传统中国风样式 */
+.modules-container {
+  min-height: 100vh;
+  background-color: #E8F5E8;
+  padding: 20rpx;
+}
+
+/* 顶部导航 */
+.header {
+  text-align: center;
+  margin: 20rpx 0 40rpx;
+  position: relative;
+}
+
+.header-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20rpx 0 40rpx;
+  position: relative;
+}
+
+.header-title {
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  padding: 30rpx 80rpx;
+  border-radius: 60rpx;
+  position: relative;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.2);
+  display: inline-block;
+  border: 4rpx solid #D4A017;
+}
+
+.header-title::before,
+.header-title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60rpx;
+  height: 60rpx;
+  background: linear-gradient(135deg, #D4A017 0%, #C19A6B 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: #1A365D;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.2);
+}
+
+.header-title::before {
+  left: -30rpx;
+  content: '卍';
+}
+
+.header-title::after {
+  right: -30rpx;
+  content: '卍';
+}
+
+.main-title {
+  font-size: 56rpx;
+  font-weight: bold;
+  color: #D4A017;
+  font-family: "STKaiti", "KaiTi", serif;
+  letter-spacing: 12rpx;
+  text-shadow: 3rpx 3rpx 6rpx rgba(0,0,0,0.3);
+}
+
+.header-subtitle {
+  font-size: 32rpx;
+  color: #1A365D;
+  margin-top: 25rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+  opacity: 0.95;
+  letter-spacing: 4rpx;
+  font-weight: 500;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: center;
+  gap: 25rpx;
+  margin-top: 35rpx;
+}
+
+.cultural-map-entry {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #F8F0E3 0%, #E8D5B9 100%);
+  border: 3rpx solid #D4A017;
+  border-radius: 20rpx;
+  padding: 25rpx 35rpx;
+  transition: all 0.3s;
+  box-shadow: 0 6rpx 16rpx rgba(0,0,0,0.12);
+}
+
+.cultural-map-entry:hover {
+  transform: translateY(-8rpx);
+  box-shadow: 0 12rpx 28rpx rgba(0,0,0,0.2);
+}
+
+.map-icon {
+  font-size: 40rpx;
+  margin-right: 12rpx;
+}
+
+.map-text {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.ai-assistant-entry {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #F8F0E3 0%, #E8D5B9 100%);
+  border: 3rpx solid #D4A017;
+  border-radius: 20rpx;
+  padding: 25rpx 35rpx;
+  transition: all 0.3s;
+  box-shadow: 0 6rpx 16rpx rgba(0,0,0,0.12);
+}
+
+.ai-assistant-entry:hover {
+  transform: translateY(-8rpx);
+  box-shadow: 0 12rpx 28rpx rgba(0,0,0,0.2);
+}
+
+.ai-icon {
+  font-size: 40rpx;
+  margin-right: 12rpx;
+}
+
+.ai-text {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 文化活动Banner */
+.banner-section {
+  margin-bottom: 45rpx;
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 10rpx 30rpx rgba(0,0,0,0.2);
+  border: 5rpx solid #D4A017;
+}
+
+.banner-swiper {
+  height: 380rpx;
+}
+
+.banner-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50rpx;
+  color: #fff;
+}
+
+.banner-content {
+  flex: 1;
+  margin-right: 35rpx;
+}
+
+.banner-title {
+  font-size: 42rpx;
+  font-weight: bold;
+  margin-bottom: 15rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+  text-shadow: 3rpx 3rpx 6rpx rgba(0,0,0,0.4);
+  letter-spacing: 4rpx;
+}
+
+.banner-desc {
+  font-size: 28rpx;
+  margin-bottom: 25rpx;
+  opacity: 0.95;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.banner-btn {
+  display: inline-block;
+  padding: 16rpx 40rpx;
+  background: rgba(212, 160, 23, 0.4);
+  border: 3rpx solid #D4A017;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  font-weight: bold;
+  transition: all 0.3s;
+  color: #D4A017;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.2);
+}
+
+.banner-btn:hover {
+  background: rgba(212, 160, 23, 0.7);
+  transform: translateY(-4rpx);
+  box-shadow: 0 8rpx 20rpx rgba(0,0,0,0.3);
+}
+
+.banner-icon {
+  font-size: 120rpx;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15rpx); }
+}
+
+/* 全站数据统计 */
+.stats-section {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 30rpx;
+  text-align: center;
+  font-family: "STKaiti", "KaiTi", serif;
+  position: relative;
+  padding-bottom: 15rpx;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100rpx;
+  height: 4rpx;
+  background: #D4A017;
+  border-radius: 2rpx;
+}
+
+.title-icon {
+  font-size: 40rpx;
+  margin-right: 15rpx;
+}
+
+.title-text {
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25rpx;
+}
+
+.stat-item {
+  background: linear-gradient(135deg, #F8F0E3 0%, #E8D5B9 100%);
+  border-radius: 24rpx;
+  padding: 35rpx 25rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.15);
+  border: 3rpx solid #D4A017;
+  transition: all 0.3s;
+}
+
+.stat-item:hover {
+  transform: translateY(-8rpx);
+  box-shadow: 0 12rpx 32rpx rgba(0,0,0,0.25);
+}
+
+.stat-icon {
+  font-size: 70rpx;
+  margin-bottom: 20rpx;
+}
+
+.stat-number {
+  font-size: 42rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 8rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.stat-label {
+  font-size: 28rpx;
+  color: #4A4A4A;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-weight: 500;
+}
+
+/* 五大分类概览 */
+.categories-section {
+  margin-bottom: 40rpx;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320rpx, 1fr));
+  gap: 25rpx;
+}
+
+.category-card {
+  background: linear-gradient(135deg, #F8F0E3 0%, #E8D5B9 100%);
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.15);
+  border: 3rpx solid #D4A017;
+  transition: all 0.3s;
+}
+
+.category-card:hover {
+  transform: translateY(-8rpx);
+  box-shadow: 0 12rpx 32rpx rgba(0,0,0,0.25);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  color: #D4A017;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+}
+
+.category-icon {
+  font-size: 48rpx;
+  margin-right: 15rpx;
+}
+
+.category-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.category-stats {
+  padding: 25rpx;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15rpx;
+  font-size: 26rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.stat-row:last-child {
+  margin-bottom: 0;
+}
+
+.stat-label {
+  color: #666;
+}
+
+.stat-value {
+  font-weight: bold;
+  color: #1A365D;
+}
+
+.stat-label.update,
+.stat-value.update {
+  color: #D4A017;
+  font-weight: bold;
+}
+
+/* 数据趋势图表 */
+.chart-section {
+  margin-bottom: 40rpx;
+}
+
+.chart-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25rpx;
+}
+
+.chart-item {
+  background: linear-gradient(135deg, #F8F0E3 0%, #E8D5B9 100%);
+  border-radius: 24rpx;
+  padding: 30rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.15);
+  border: 3rpx solid #D4A017;
+}
+
+.chart-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 25rpx;
+  text-align: center;
+  font-family: "STKaiti", "KaiTi", serif;
+  letter-spacing: 3rpx;
+}
+
+.chart-content {
+  height: 200rpx;
+  position: relative;
+}
+
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 100%;
+  padding-bottom: 30rpx;
+}
+
+.bar {
+  flex: 1;
+  background: linear-gradient(to top, #D4A017, #C19A6B);
+  margin: 0 5rpx;
+  border-radius: 5rpx 5rpx 0 0;
+  position: relative;
+  transition: height 1s ease;
+  border: 1rpx solid #1A365D;
+}
+
+.bar text {
+  position: absolute;
+  bottom: -30rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 22rpx;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.line-chart {
+  height: 100%;
+  position: relative;
+}
+
+.line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%, transparent 100%),
+              linear-gradient(to right, transparent 0%, transparent 100%);
+  background-size: 25% 20%, 25% 20%;
+  background-position: 0 0, 0 0;
+}
+
+.line::before {
+  content: '';
+  position: absolute;
+  top: 60%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #D4A017 0%, #C19A6B 100%);
+  clip-path: polygon(0% 60%, 25% 45%, 50% 70%, 75% 55%, 100% 85%, 100% 100%, 0% 100%);
+  opacity: 0.3;
+}
+
+.chart-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.dot {
+  position: absolute;
+  width: 16rpx;
+  height: 16rpx;
+  background: #1A365D;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 2rpx solid #D4A017;
+}
+
+/* 热门内容推荐 */
+.hot-section {
+  margin-bottom: 40rpx;
+}
+
+.hot-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25rpx;
+}
+
+.hot-item {
+  display: flex;
+  background: linear-gradient(135deg, #F8F0E3 0%, #E8D5B9 100%);
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.15);
+  border: 3rpx solid #D4A017;
+  transition: all 0.3s;
+}
+
+.hot-item:hover {
+  transform: translateY(-8rpx);
+  box-shadow: 0 12rpx 32rpx rgba(0,0,0,0.25);
+}
+
+.hot-image {
+  width: 220rpx;
+  height: 160rpx;
+  flex-shrink: 0;
+  border: 3rpx solid #D4A017;
+}
+
+.hot-info {
+  flex: 1;
+  padding: 25rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hot-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 15rpx;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.hot-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #4A4A4A;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-weight: 500;
+}
+
+.hot-category {
+  background: #E8F5E8;
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+  color: #1A365D;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .chart-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .banner-swiper {
+    height: 300rpx;
+  }
+  
+  .banner-item {
+    padding: 30rpx;
+  }
+  
+  .banner-title {
+    font-size: 32rpx;
+  }
+  
+  .banner-desc {
+    font-size: 24rpx;
+  }
+  
+  .banner-icon {
+    font-size: 80rpx;
+  }
+}

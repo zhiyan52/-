@@ -1,2 +1,258 @@
 <!--moudules/modules/modules.wxml-->
-<text>moudules/modules/modules.wxml</text>
+<view class="modules-container">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <view class="header-title">
+      <text class="main-title">模块总览</text>
+    </view>
+    <view class="header-subtitle">全平台内容聚合与数据统计</view>
+    <view class="header-actions">
+      <view class="ai-assistant-entry" bindtap="goToAIAssistant">
+        <text class="ai-icon">🤖</text>
+        <text class="ai-text">AI文化助手</text>
+      </view>
+      <view class="cultural-map-entry" bindtap="goToCulturalMap">
+        <text class="map-icon">🗺️</text>
+        <text class="map-text">研学足迹</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 文化活动Banner -->
+  <view class="banner-section">
+    <swiper class="banner-swiper" indicator-dots="true" autoplay="true" interval="5000" duration="800" circular="true">
+      <swiper-item>
+        <view class="banner-item" style="background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);">
+          <view class="banner-content">
+            <view class="banner-title">2026非遗文化节</view>
+            <view class="banner-desc">传承千年技艺，感受文化魅力</view>
+            <view class="banner-btn">立即参与</view>
+          </view>
+          <view class="banner-icon">🎭</view>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="banner-item" style="background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);">
+          <view class="banner-content">
+            <view class="banner-title">古建研学活动</view>
+            <view class="banner-desc">探索传统建筑之美</view>
+            <view class="banner-btn">报名参加</view>
+          </view>
+          <view class="banner-icon">🏯</view>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="banner-item" style="background: linear-gradient(135deg, #8B7355 0%, #654321 100%);">
+          <view class="banner-content">
+            <view class="banner-title">典藏文化展</view>
+            <view class="banner-desc">感受千年文脉的魅力</view>
+            <view class="banner-btn">预约参观</view>
+          </view>
+          <view class="banner-icon">📜</view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 全站数据统计 -->
+  <view class="stats-section">
+    <view class="section-title">
+      <text class="title-icon">📊</text>
+      <text class="title-text">全站数据统计</text>
+    </view>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <view class="stat-icon">👥</view>
+        <view class="stat-content">
+          <view class="stat-number">{{totalUsers}}</view>
+          <view class="stat-label">总用户数</view>
+        </view>
+      </view>
+      <view class="stat-item">
+        <view class="stat-icon">📅</view>
+        <view class="stat-content">
+          <view class="stat-number">{{totalCheckins}}</view>
+          <view class="stat-label">累计打卡</view>
+        </view>
+      </view>
+      <view class="stat-item">
+        <view class="stat-icon">👁️</view>
+        <view class="stat-content">
+          <view class="stat-number">{{totalViews}}</view>
+          <view class="stat-label">总浏览量</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 五大分类概览 -->
+  <view class="categories-section">
+    <view class="section-title">
+      <text class="title-icon">📚</text>
+      <text class="title-text">五大分类概览</text>
+    </view>
+    <view class="categories-grid">
+      <view class="category-card" bindtap="goToCategory" data-category="gujian">
+        <view class="category-header">
+          <view class="category-icon">🏯</view>
+          <view class="category-title">古建雅韵</view>
+        </view>
+        <view class="category-stats">
+          <view class="stat-row">
+            <text class="stat-label">内容数量</text>
+            <text class="stat-value">{{categoryStats.gujian.count}}</text>
+          </view>
+          <view class="stat-row">
+            <text class="stat-label">热门排行</text>
+            <text class="stat-value">{{categoryStats.gujian.hot}}</text>
+          </view>
+          <view class="stat-row" wx:if="{{categoryStats.gujian.update}}">
+            <text class="stat-label update">更新提醒</text>
+            <text class="stat-value update">{{categoryStats.gujian.update}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <view class="category-card" bindtap="goToCategory" data-category="feiyi">
+        <view class="category-header">
+          <view class="category-icon">🎭</view>
+          <view class="category-title">非遗匠心</view>
+        </view>
+        <view class="category-stats">
+          <view class="stat-row">
+            <text class="stat-label">内容数量</text>
+            <text class="stat-value">{{categoryStats.feiyi.count}}</text>
+          </view>
+          <view class="stat-row">
+            <text class="stat-label">热门排行</text>
+            <text class="stat-value">{{categoryStats.feiyi.hot}}</text>
+          </view>
+          <view class="stat-row" wx:if="{{categoryStats.feiyi.update}}">
+            <text class="stat-label update">更新提醒</text>
+            <text class="stat-value update">{{categoryStats.feiyi.update}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <view class="category-card" bindtap="goToCategory" data-category="diancang">
+        <view class="category-header">
+          <view class="category-icon">📜</view>
+          <view class="category-title">典藏拾珠</view>
+        </view>
+        <view class="category-stats">
+          <view class="stat-row">
+            <text class="stat-label">内容数量</text>
+            <text class="stat-value">{{categoryStats.diancang.count}}</text>
+          </view>
+          <view class="stat-row">
+            <text class="stat-label">热门排行</text>
+            <text class="stat-value">{{categoryStats.diancang.hot}}</text>
+          </view>
+          <view class="stat-row" wx:if="{{categoryStats.diancang.update}}">
+            <text class="stat-label update">更新提醒</text>
+            <text class="stat-value update">{{categoryStats.diancang.update}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <view class="category-card" bindtap="goToCategory" data-category="mingsu">
+        <view class="category-header">
+          <view class="category-icon">🍲</view>
+          <view class="category-title">民俗百味</view>
+        </view>
+        <view class="category-stats">
+          <view class="stat-row">
+            <text class="stat-label">内容数量</text>
+            <text class="stat-value">{{categoryStats.mingsu.count}}</text>
+          </view>
+          <view class="stat-row">
+            <text class="stat-label">热门排行</text>
+            <text class="stat-value">{{categoryStats.mingsu.hot}}</text>
+          </view>
+          <view class="stat-row" wx:if="{{categoryStats.mingsu.update}}">
+            <text class="stat-label update">更新提醒</text>
+            <text class="stat-value update">{{categoryStats.mingsu.update}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <view class="category-card" bindtap="goToCategory" data-category="shufa">
+        <view class="category-header">
+          <view class="category-icon">✒️</view>
+          <view class="category-title">书画雅集</view>
+        </view>
+        <view class="category-stats">
+          <view class="stat-row">
+            <text class="stat-label">内容数量</text>
+            <text class="stat-value">{{categoryStats.shufa.count}}</text>
+          </view>
+          <view class="stat-row">
+            <text class="stat-label">热门排行</text>
+            <text class="stat-value">{{categoryStats.shufa.hot}}</text>
+          </view>
+          <view class="stat-row" wx:if="{{categoryStats.shufa.update}}">
+            <text class="stat-label update">更新提醒</text>
+            <text class="stat-value update">{{categoryStats.shufa.update}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 数据趋势图表 -->
+  <view class="chart-section">
+    <view class="section-title">
+      <text class="title-icon">📈</text>
+      <text class="title-text">数据趋势</text>
+    </view>
+    <view class="chart-container">
+      <view class="chart-item">
+        <view class="chart-title">用户增长趋势</view>
+        <view class="chart-content">
+          <view class="bar-chart">
+            <view class="bar" style="height: 30%;"><text>1月</text></view>
+            <view class="bar" style="height: 45%;"><text>2月</text></view>
+            <view class="bar" style="height: 60%;"><text>3月</text></view>
+            <view class="bar" style="height: 80%;"><text>4月</text></view>
+            <view class="bar" style="height: 100%;"><text>5月</text></view>
+          </view>
+        </view>
+      </view>
+      <view class="chart-item">
+        <view class="chart-title">内容浏览趋势</view>
+        <view class="chart-content">
+          <view class="line-chart">
+            <view class="line"></view>
+            <view class="chart-dots">
+              <view class="dot" style="left: 0%; top: 60%;"></view>
+              <view class="dot" style="left: 25%; top: 45%;"></view>
+              <view class="dot" style="left: 50%; top: 70%;"></view>
+              <view class="dot" style="left: 75%; top: 55%;"></view>
+              <view class="dot" style="left: 100%; top: 85%;"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 热门内容推荐 -->
+  <view class="hot-section">
+    <view class="section-title">
+      <text class="title-icon">🔥</text>
+      <text class="title-text">热门内容推荐</text>
+    </view>
+    <view class="hot-list">
+      <view class="hot-item" wx:for="{{hotContent}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}" data-category="{{item.category}}">
+        <image class="hot-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="hot-info">
+          <view class="hot-title">{{item.title}}</view>
+          <view class="hot-meta">
+            <text class="hot-category">{{item.categoryName}}</text>
+            <text class="hot-views">{{item.views}}次浏览</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

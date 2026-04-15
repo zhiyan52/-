@@ -1,0 +1,624 @@
+/* pages/certificate/certificate.wxss */
+.certificate-container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 20rpx;
+}
+
+/* 顶部导航 */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  margin-bottom: 30rpx;
+}
+
+.header-left,
+.header-right {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.header-left:hover,
+.header-right:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+}
+
+.back-icon,
+.share-icon {
+  font-size: 32rpx;
+  color: #495057;
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #343a40;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 分类标签 */
+.category-tabs {
+  display: flex;
+  background: #fff;
+  border-radius: 15rpx;
+  padding: 10rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  transition: all 0.3s ease;
+}
+
+.tab-item.active {
+  background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+  color: #fff;
+}
+
+.tab-icon {
+  font-size: 32rpx;
+  margin-right: 10rpx;
+}
+
+.tab-text {
+  font-size: 28rpx;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 数字徽章 */
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.badge-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.badge-card:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.12);
+}
+
+.badge-icon {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(212, 165, 116, 0.3);
+  transition: all 0.3s ease;
+}
+
+.badge-icon.locked {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  box-shadow: 0 4rpx 12rpx rgba(108, 117, 125, 0.3);
+  opacity: 0.5;
+}
+
+.badge-emoji {
+  font-size: 60rpx;
+}
+
+.badge-info {
+  text-align: center;
+}
+
+.badge-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 10rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.badge-desc {
+  font-size: 24rpx;
+  color: #6c757d;
+  margin-bottom: 15rpx;
+}
+
+.badge-status {
+  display: inline-block;
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  font-weight: bold;
+}
+
+.achieved-badge {
+  background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+  color: #fff;
+}
+
+.locked-badge {
+  background: #e9ecef;
+  color: #6c757d;
+}
+
+/* 学习证书 */
+.certificates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+.certificate-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.certificate-card:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.12);
+}
+
+.certificate-preview {
+  margin-bottom: 25rpx;
+}
+
+.certificate-frame {
+  background: linear-gradient(135deg, #fff8f0 0%, #fff5e6 100%);
+  border: 4rpx solid #D4A574;
+  border-radius: 15rpx;
+  padding: 30rpx;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.certificate-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20pattern%20light%20gold%20seamless%20background&image_size=square');
+  background-size: 100rpx;
+  opacity: 0.1;
+}
+
+.certificate-header {
+  margin-bottom: 20rpx;
+}
+
+.certificate-seal {
+  font-size: 50rpx;
+}
+
+.certificate-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #D4A574;
+  margin-bottom: 15rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.certificate-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 15rpx;
+}
+
+.certificate-content {
+  font-size: 24rpx;
+  color: #495057;
+  line-height: 1.6;
+  margin-bottom: 20rpx;
+  padding: 0 20rpx;
+}
+
+.certificate-date,
+.certificate-number {
+  font-size: 22rpx;
+  color: #6c757d;
+}
+
+.certificate-actions {
+  display: flex;
+  gap: 15rpx;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 15rpx;
+  border-radius: 12rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.view-btn {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  color: #fff;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: #fff;
+}
+
+.share-btn {
+  background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+  color: #fff;
+}
+
+.btn-icon {
+  margin-right: 8rpx;
+}
+
+/* 徽章详情弹窗 */
+.badge-modal,
+.certificate-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 20rpx;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25rpx 30rpx;
+  border-bottom: 1rpx solid #e9ecef;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #343a40;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.modal-close {
+  font-size: 40rpx;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  color: #343a40;
+  transform: rotate(90deg);
+}
+
+.modal-body {
+  padding: 30rpx;
+}
+
+.badge-detail-icon {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30rpx;
+  box-shadow: 0 6rpx 20rpx rgba(212, 165, 116, 0.4);
+}
+
+.badge-detail-icon.locked {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  box-shadow: 0 6rpx 20rpx rgba(108, 117, 125, 0.4);
+  opacity: 0.5;
+}
+
+.badge-detail-emoji {
+  font-size: 80rpx;
+}
+
+.badge-detail-info {
+  text-align: center;
+}
+
+.badge-detail-desc {
+  font-size: 28rpx;
+  color: #343a40;
+  margin-bottom: 20rpx;
+  line-height: 1.6;
+}
+
+.badge-detail-requirement {
+  margin-bottom: 20rpx;
+}
+
+.requirement-text {
+  font-size: 24rpx;
+  color: #6c757d;
+}
+
+.badge-detail-progress {
+  margin-top: 20rpx;
+}
+
+.progress-label {
+  font-size: 24rpx;
+  color: #6c757d;
+  margin-bottom: 10rpx;
+}
+
+.progress-bar {
+  height: 16rpx;
+  background: #e9ecef;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #D4A574 0%, #C19A6B 100%);
+  border-radius: 8rpx;
+  transition: width 1s ease;
+}
+
+.modal-footer {
+  padding: 20rpx 30rpx 30rpx;
+  display: flex;
+  gap: 15rpx;
+}
+
+.modal-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+  color: #fff;
+  padding: 20rpx;
+  border-radius: 15rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.modal-btn.share {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+}
+
+.modal-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+}
+
+/* 证书详情弹窗 */
+.certificate-full {
+  background: linear-gradient(135deg, #fff8f0 0%, #fff5e6 100%);
+  border-radius: 15rpx;
+  padding: 40rpx;
+  position: relative;
+}
+
+.certificate-full-frame {
+  border: 6rpx solid #D4A574;
+  border-radius: 10rpx;
+  padding: 40rpx;
+  text-align: center;
+  position: relative;
+  background: #fff;
+}
+
+.certificate-full-frame::before,
+.certificate-full-frame::after {
+  content: '◆';
+  position: absolute;
+  font-size: 30rpx;
+  color: #D4A574;
+}
+
+.certificate-full-frame::before {
+  top: 10rpx;
+  left: 10rpx;
+}
+
+.certificate-full-frame::after {
+  bottom: 10rpx;
+  right: 10rpx;
+}
+
+.certificate-full-header {
+  position: relative;
+  margin-bottom: 30rpx;
+}
+
+.certificate-full-seal {
+  font-size: 60rpx;
+  display: inline-block;
+  margin-bottom: 20rpx;
+}
+
+.certificate-full-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20cloud%20pattern%20gold%20light&image_size=square');
+  background-size: 150rpx;
+  opacity: 0.1;
+}
+
+.certificate-full-title {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #D4A574;
+  margin-bottom: 15rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+  position: relative;
+  z-index: 1;
+}
+
+.certificate-full-subtitle {
+  font-size: 24rpx;
+  color: #8B7355;
+  margin-bottom: 40rpx;
+  letter-spacing: 4rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.certificate-full-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 30rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.certificate-full-content {
+  font-size: 28rpx;
+  color: #495057;
+  line-height: 2;
+  margin-bottom: 40rpx;
+  padding: 0 30rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.content-text {
+  display: inline-block;
+}
+
+.content-highlight {
+  display: inline-block;
+  font-weight: bold;
+  color: #D4A574;
+  padding: 0 10rpx;
+}
+
+.certificate-full-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 30rpx;
+  border-top: 2rpx solid #D4A574;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-left {
+  text-align: left;
+}
+
+.footer-date,
+.footer-number {
+  font-size: 22rpx;
+  color: #6c757d;
+  line-height: 1.8;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+.footer-seal {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #D4A574;
+  margin-bottom: 10rpx;
+}
+
+.footer-org {
+  font-size: 24rpx;
+  color: #343a40;
+  font-weight: bold;
+}
+
+.certificate-full-border {
+  position: absolute;
+  top: 20rpx;
+  left: 20rpx;
+  right: 20rpx;
+  bottom: 20rpx;
+  border: 2rpx dashed #D4A574;
+  pointer-events: none;
+}
+
+/* 动画 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50rpx); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .badges-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .certificate-actions {
+    flex-direction: column;
+  }
+  
+  .action-btn {
+    width: 100%;
+  }
+  
+  .modal-footer {
+    flex-direction: column;
+  }
+  
+  .modal-btn {
+    width: 100%;
+  }
+}

@@ -5,8 +5,11 @@
     "moudules/modules/modules",
     "profile/profile/profile",
     "pages/map/map",
-    "cloudfunctions/getAudio",
-    "pages/image-upload/index"
+    "pages/image-upload/index",
+    "ai-assistant/ai-assistant",
+    "pages/checkin/checkin",
+    "pages/cultural-map/cultural-map",
+    "pages/certificate/certificate"
   ],
   "subpackages": [
     {
@@ -21,6 +24,7 @@
         "pages/calligraphy/social",
         "pages/calligraphy/collection",
         "pages/calligraphy/painting",
+        "pages/community/community",
         "ai/ai-guide",
         "ai/ai-qa",
         "ai/ai-recommend",
@@ -32,7 +36,9 @@
     {
       "root": "gujian/home",
       "pages": [
-        "home"
+        "home",
+        "pages/profile/profile",
+        "pages/community/community"
       ]
     },
     {
@@ -62,6 +68,8 @@
         "pages/index/index",
         "pages/detail/detail",
         "pages/inheritor/inheritor",
+        "pages/index/profile/profile",
+        "pages/community/community",
         "ai/ai-guide",
         "ai/ai-qa",
         "ai/ai-recommend",
@@ -71,7 +79,6 @@
       "name": "feiyi",
       "independent": false
     },
-    
     {
       "root": "diancang/diancang",
       "pages": [
@@ -79,6 +86,8 @@
         "diancang-detail",
         "diancang-list",
         "diancang-reader",
+        "pages/profile/profile",
+        "pages/community/community",
         "ai/ai-guide",
         "ai/ai-qa",
         "ai/ai-recommend",
