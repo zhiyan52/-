@@ -92,7 +92,7 @@ Page({
         ]
       }
     };
-    
+
     // 获取对应ID的藏品数据
     const collection = collections[id] || collections[1];
     this.setData({
@@ -111,7 +111,7 @@ Page({
     this.setData({
       isFavorite: isFavorite
     });
-    
+
     wx.showToast({
       title: isFavorite ? '收藏成功' : '取消收藏',
       icon: 'success'
@@ -122,7 +122,7 @@ Page({
   previewImage: function (e) {
     const index = e.currentTarget.dataset.index;
     const images = this.data.collection.images;
-    
+
     wx.previewImage({
       current: images[index],
       urls: images

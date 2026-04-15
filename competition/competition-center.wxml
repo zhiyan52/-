@@ -1,0 +1,115 @@
+<!-- 竞赛中心页面 -->
+<view class="competition-container">
+  <!-- 顶部信息区 -->
+  <view class="top-section">
+    <view class="user-info">
+      <image class="user-avatar" src="{{userInfo.avatar || '/images/default-avatar.png'}}" mode="aspectFill" />
+      <view class="user-detail">
+        <text class="user-name">{{userInfo.name || '游客'}}</text>
+        <view class="user-stats">
+          <view class="stat-item">
+            <text class="stat-num">{{userInfo.totalScore}}</text>
+            <text class="stat-label">总积分</text>
+          </view>
+          <view class="stat-item">
+            <text class="stat-num">{{userInfo.winCount}}</text>
+            <text class="stat-label">胜场</text>
+          </view>
+          <view class="stat-item">
+            <text class="stat-num">{{userInfo.dailyStreak}}</text>
+            <text class="stat-label">连胜</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能入口卡片 -->
+  <view class="feature-cards">
+    <!-- 每日挑战 -->
+    <view class="feature-card daily-card" bindtap="goToDailyChallenge">
+      <view class="card-icon">📅</view>
+      <view class="card-content">
+        <view class="card-title">每日挑战</view>
+        <view class="card-desc">每日限定题库，挑战自我</view>
+        <view class="card-status" wx:if="{{dailyChallenge.completed}}">
+          <text class="completed-icon">✓</text>
+          <text>今日已完成</text>
+        </view>
+        <view class="card-status" wx:else>
+          <text class="reward-icon">🏆</text>
+          <text>+{{dailyChallenge.reward}}积分</text>
+        </view>
+      </view>
+      <view class="card-arrow">▶</view>
+    </view>
+
+    <!-- 好友对战 -->
+    <view class="feature-card battle-card" bindtap="goToBattle">
+      <view class="card-icon">⚔️</view>
+      <view class="card-content">
+        <view class="card-title">好友对战</view>
+        <view class="card-desc">邀请好友PK，一决高下</view>
+        <view class="card-status">
+          <text class="online-icon">🟢</text>
+          <text>{{onlineCount}}人在线</text>
+        </view>
+      </view>
+      <view class="card-arrow">▶</view>
+    </view>
+  </view>
+
+  <!-- 排行榜 -->
+  <view class="leaderboard-section">
+    <view class="section-header">
+      <text class="section-title">🏆 排行榜</text>
+      <text class="section-more" bindtap="viewMoreLeaderboard">更多 ▶</text>
+    </view>
+    
+    <view class="leaderboard-list">
+      <view class="leaderboard-item podium" wx:for="{{leaderboard}}" wx:key="index" wx:if="{{index < 3}}">
+        <view class="rank-badge rank-{{index + 1}}">{{index + 1}}</view>
+        <image class="rank-avatar" src="{{item.avatar}}" mode="aspectFill" />
+        <view class="rank-info">
+          <text class="rank-name">{{item.name}}</text>
+          <text class="rank-score">{{item.score}}分</text>
+        </view>
+        <view class="rank-badge-icon" wx:if="{{index === 0}}">👑</view>
+      </view>
+      
+      <view class="leaderboard-item" wx:for="{{leaderboard}}" wx:key="index" wx:if="{{index >= 3}}">
+        <view class="rank-badge">{{index + 1}}</view>
+        <image class="rank-avatar" src="{{item.avatar}}" mode="aspectFill" />
+        <view class="rank-info">
+          <text class="rank-name">{{item.name}}</text>
+          <text class="rank-score">{{item.score}}分</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 历史战绩 -->
+  <view class="history-section">
+    <view class="section-header">
+      <text class="section-title">📜 历史战绩</text>
+    </view>
+    
+    <view class="history-list">
+      <view class="history-item" wx:for="{{historyList}}" wx:key="id">
+        <view class="history-type">
+          <text class="type-icon">{{item.type === 'daily' ? '📅' : '⚔️'}}</text>
+          <text class="type-text">{{item.type === 'daily' ? '每日挑战' : '好友对战'}}</text>
+        </view>
+        <view class="history-result">
+          <text class="result-score">{{item.score}}分</text>
+          <view class="result-status {{item.status}}">
+            <text wx:if="{{item.status === 'win'}}">胜利</text>
+            <text wx:elif="{{item.status === 'lose'}}">失败</text>
+            <text wx:else>完成</text>
+          </view>
+        </view>
+        <view class="history-time">{{item.time}}</view>
+      </view>
+    </view>
+  </view>
+</view>

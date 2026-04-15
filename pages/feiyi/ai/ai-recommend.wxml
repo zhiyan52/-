@@ -1,0 +1,68 @@
+<!-- 非遗个性化推荐页面 -->
+<view class="recommend-container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="title">非遗个性化推荐</text>
+    <text class="subtitle">为您推荐感兴趣的非遗项目</text>
+  </view>
+  
+  <!-- 用户兴趣标签 -->
+  <view class="interest-section">
+    <text class="section-title">选择您的兴趣</text>
+    <view class="tag-list">
+      <view class="tag-item {{selectedTags.includes(item.id) ? 'active' : ''}}" wx:for="{{tagList}}" wx:key="id" bindtap="toggleTag" data-id="{{item.id}}">
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 推荐内容 -->
+  <view class="recommend-section">
+    <view class="section-header">
+      <text class="section-title">为您推荐</text>
+      <view class="refresh-btn" bindtap="refreshRecommend">
+        <text>换一批</text>
+      </view>
+    </view>
+    
+    <view class="loading" wx:if="{{loading}}">
+      <text>AI正在为您推荐...</text>
+    </view>
+    
+    <view class="recommend-list" wx:else>
+      <view class="recommend-card" wx:for="{{recommendList}}" wx:key="id">
+        <image class="card-image" src="{{item.image}}" mode="aspectFill" />
+        <view class="card-content">
+          <view class="card-header">
+            <text class="card-title">{{item.name}}</text>
+            <view class="card-tag">{{item.category}}</view>
+          </view>
+          <text class="card-desc">{{item.description}}</text>
+          <view class="card-footer">
+            <view class="card-meta">
+              <text class="meta-icon">🔥</text>
+              <text>{{item.views}}</text>
+            </view>
+            <view class="go-btn" bindtap="goToDetail" data-id="{{item.id}}">
+              <text>查看详情</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 浏览历史 -->
+  <view class="history-section">
+    <text class="section-title">浏览历史</text>
+    <view class="history-list">
+      <view class="history-item" wx:for="{{historyList}}" wx:key="id">
+        <image class="history-image" src="{{item.image}}" mode="aspectFill" />
+        <view class="history-info">
+          <text class="history-name">{{item.name}}</text>
+          <text class="history-time">{{item.time}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

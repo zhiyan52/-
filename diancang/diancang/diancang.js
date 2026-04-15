@@ -173,5 +173,33 @@ Page({
     wx.navigateTo({
       url: '/diancang/diancang-map'
     });
+  },
+
+  // 互动活动相关函数
+  startKnowledgeQuiz: function () {
+    wx.navigateTo({
+      url: '/diancang/diancang-quiz'
+    });
+  },
+
+  startTreasureHunt: function () {
+    wx.showToast({
+      title: '典藏寻宝功能开发中',
+      icon: 'none'
+    });
+  },
+
+  startArtifactRepair: function () {
+    wx.showToast({
+      title: '文物修复功能开发中',
+      icon: 'none'
+    });
+  },
+
+  startPuzzleGame: function () {
+    wx.showToast({
+      title: '典籍拼图功能开发中',
+      icon: 'none'
+    });
   }
 });

@@ -13,7 +13,7 @@ Page({
   // 加载藏品数据
   loadCollections: function () {
     this.setData({ loading: true });
-    
+
     // 模拟藏品数据
     const collections = [
       {
@@ -71,7 +71,7 @@ Page({
         views: 14567
       }
     ];
-    
+
     setTimeout(() => {
       this.setData({
         collections: collections,
@@ -92,7 +92,7 @@ Page({
       selectedFilter: filter,
       page: 1
     });
-    
+
     // 这里可以添加根据筛选条件重新加载数据的逻辑
     console.log('选择筛选条件:', filter);
   },
@@ -118,9 +118,9 @@ Page({
   // 加载更多
   loadMore: function () {
     if (this.data.loading) return;
-    
+
     this.setData({ loading: true });
-    
+
     // 模拟加载更多数据
     setTimeout(() => {
       const moreCollections = [
@@ -143,13 +143,13 @@ Page({
           views: 12345
         }
       ];
-      
+
       this.setData({
         collections: this.data.collections.concat(moreCollections),
         page: this.data.page + 1,
         loading: false
       });
-      
+
       wx.showToast({
         title: '加载成功',
         icon: 'success'

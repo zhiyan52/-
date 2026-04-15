@@ -107,6 +107,42 @@
     </view>
   </view>
 
+  <!-- 互动活动区 -->
+  <view class="activity-section">
+    <view class="section-header">
+      <view class="section-icon">🎯</view>
+      <text class="section-title">互动活动</text>
+      <view class="section-line"></view>
+    </view>
+    
+    <view class="activity-grid">
+      <view class="activity-card" bindtap="startKnowledgeQuiz">
+        <view class="activity-icon">📚</view>
+        <text class="activity-title">知识竞赛</text>
+        <text class="activity-desc">每日挑战，赢取积分</text>
+        <view class="activity-arrow">→</view>
+      </view>
+      <view class="activity-card" bindtap="startTreasureHunt">
+        <view class="activity-icon">🔍</view>
+        <text class="activity-title">典藏寻宝</text>
+        <text class="activity-desc">寻找隐藏的文物</text>
+        <view class="activity-arrow">→</view>
+      </view>
+      <view class="activity-card" bindtap="startArtifactRepair">
+        <view class="activity-icon">🔧</view>
+        <text class="activity-title">文物修复</text>
+        <text class="activity-desc">虚拟修复珍贵文物</text>
+        <view class="activity-arrow">→</view>
+      </view>
+      <view class="activity-card" bindtap="startPuzzleGame">
+        <view class="activity-icon">🧩</view>
+        <text class="activity-title">典籍拼图</text>
+        <text class="activity-desc">拼出名画，赢取奖励</text>
+        <view class="activity-arrow">→</view>
+      </view>
+    </view>
+  </view>
+
   <!-- 典藏分类展示 -->
   <view class="collection-section">
     <view class="section-header">

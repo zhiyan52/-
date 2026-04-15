@@ -25,7 +25,7 @@ Page({
         time: '2024-04-14 09:15'
       }
     ];
-    
+
     this.setData({
       browsingHistory: history
     });
@@ -60,7 +60,7 @@ Page({
         tags: ['防御建筑', '世界遗产', '历史文化']
       }
     ];
-    
+
     this.setData({
       recommendations: recommendations
     });
@@ -72,7 +72,7 @@ Page({
       title: '刷新中...',
       icon: 'loading'
     });
-    
+
     // 模拟刷新推荐
     setTimeout(() => {
       // 重新获取推荐内容
@@ -91,7 +91,7 @@ Page({
       title: '查看' + item.title,
       icon: 'success'
     });
-    
+
     // 这里可以跳转到详情页面
     console.log('查看详情:', item.title);
   }

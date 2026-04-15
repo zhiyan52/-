@@ -40,11 +40,10 @@ class DataLoader {
         console.warn('分类数据为空，使用默认分类');
         // 使用默认分类数据
         const defaultCategories = [
-          { id: 'all', name: '全部', icon: '🏛️', description: '展示所有非遗项目', color: '#8B4513' },
           { id: 'craft', name: '传统技艺', icon: '🔨', description: '传统手工艺制作技术', color: '#A0522D' },
           { id: 'art', name: '传统美术', icon: '🎨', description: '传统绘画、雕塑等艺术形式', color: '#CD853F' },
           { id: 'opera', name: '传统戏曲', icon: '🎭', description: '传统戏剧表演艺术', color: '#D2691E' },
-          { id: 'custom', name: '传统民俗', icon: '🏮', description: '民间传统节日与习俗', color: '#BC8F8F' }
+          { id: 'music', name: '传统音乐', icon: '🎵', description: '传统音乐表演艺术', color: '#F4A460' }
         ];
         CacheManager.cacheCategories(defaultCategories);
         return defaultCategories;

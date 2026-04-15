@@ -1,28 +1,22 @@
-<!--pages/feiyi/pages/index/index.wxml-->
-<view class="container">
-  <!-- 头部 -->
-  <view class="header">
-    <view class="header-content">
-      <text class="main-title">非遗匠心</text>
-      <text class="sub-title">传承千年技艺，守护文化根脉</text>
-      <view class="stats-bar">
-        <view class="stat-item">
-          <text class="stat-num">{{stats.total}}</text>
-          <text class="stat-label">非遗项目</text>
-        </view>
-        <view class="stat-item">
-          <text class="stat-num">{{stats.withAudio}}</text>
-          <text class="stat-label">可聆听</text>
-        </view>
-        <view class="stat-item">
-          <text class="stat-num">{{stats.inheritors}}</text>
-          <text class="stat-label">传承人</text>
-        </view>
-      </view>
-    </view>
-    <view class="header-bg"></view>
+<!-- 非遗匠心 - 传统中国风 -->
+<view class="home-container">
+  <!-- 主视觉区轮播图 -->
+  <view class="hero">
+    <swiper class="hero-swiper" indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true">
+      <swiper-item>
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/5d57897bbb1c3b4426f02150ab4fb7e3.jpg" class="hero-image" />
+      </swiper-item>
+      <swiper-item>
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/art.jpg" class="hero-image" />
+      </swiper-item>
+      <swiper-item>
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/craft.jpg" class="hero-image" />
+      </swiper-item>
+    </swiper>
   </view>
+  
 
+  
   <!-- 搜索栏 -->
   <view class="search-section">
     <view class="search-box">
@@ -40,36 +34,89 @@
       </view>
     </view>
   </view>
-
+  
   <!-- 分类导航 -->
-  <category-nav 
-    categories="{{categories}}" 
-    activeId="{{currentCategory}}"
-    bind:change="onCategoryChange"
-  />
-
-  <!-- 推荐位（仅在全部分类显示） -->
-  <view class="recommend-section" wx:if="{{currentCategory === 'all' && !searchKeyword && hotList.length > 0}}">
-    <view class="section-header">
-      <text class="section-title">🔥 热门推荐</text>
-      <text class="section-more" bindtap="viewAllHot">查看全部</text>
+  <view class="features">
+    <view class="feature-row">
+      <view class="feature-item {{currentCategory === 'art' ? 'active' : ''}}" bindtap="onCategoryChange" data-id="art">
+        <image class="feature-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/art.jpg" mode="aspectFill" />
+        <text>传统美术</text>
+      </view>
+      <view class="feature-item {{currentCategory === 'craft' ? 'active' : ''}}" bindtap="onCategoryChange" data-id="craft">
+        <image class="feature-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/craft.jpg" mode="aspectFill" />
+        <text>传统技艺</text>
+      </view>
     </view>
-    <scroll-view class="hot-scroll" scroll-x="true">
+    <view class="feature-row">
+      <view class="feature-item {{currentCategory === 'opera' ? 'active' : ''}}" bindtap="onCategoryChange" data-id="opera">
+        <image class="feature-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/opera.jpg" mode="aspectFill" />
+        <text>传统戏曲</text>
+      </view>
+      <view class="feature-item {{currentCategory === 'music' ? 'active' : ''}}" bindtap="onCategoryChange" data-id="music">
+        <image class="feature-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/music.jpg" mode="aspectFill" />
+        <text>传统音乐</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 精选推荐 -->
+  <view class="section">
+    <text class="section-title">精选非遗</text>
+    <view class="recommendations">
       <view 
-        class="hot-item" 
+        class="recommend-item" 
         wx:for="{{hotList}}" 
         wx:key="id"
         bindtap="goToDetail"
         data-id="{{item.id}}"
       >
-        <image class="hot-image" src="{{item.images.cover}}" mode="aspectFill"/>
-        <text class="hot-name">{{item.name}}</text>
+        <image class="rec-image" src="{{item.images.cover}}" mode="aspectFill" />
+        <text class="rec-title">{{item.name}}</text>
       </view>
-    </scroll-view>
+    </view>
   </view>
-
-  <!-- 列表内容 -->
-  <view class="list-section">
+  
+  <!-- 智能功能 -->
+  <view class="section">
+    <text class="section-title">智能功能</text>
+    <view class="features">
+      <view class="feature-row">
+        <view class="feature-item" bindtap="navigateToAI">
+          <text class="feature-icon">🧭</text>
+          <text>智能导览</text>
+        </view>
+        <view class="feature-item" bindtap="navigateToQA">
+          <text class="feature-icon">❓</text>
+          <text>文化问答</text>
+        </view>
+      </view>
+      <view class="feature-row">
+        <view class="feature-item" bindtap="navigateToRecommend">
+          <text class="feature-icon">🎯</text>
+          <text>个性化推荐</text>
+        </view>
+        <view class="feature-item" bindtap="navigateToVoice">
+          <text class="feature-icon">🎙️</text>
+          <text>语音讲解</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 竞赛中心 -->
+  <view class="section">
+    <text class="section-title">互动竞赛</text>
+    <view class="competition-card" bindtap="navigateToCompetition">
+      <view class="competition-content">
+        <view class="competition-title">知识竞赛中心</view>
+        <view class="competition-desc">参与每日挑战，与好友PK</view>
+      </view>
+      <view class="competition-icon">🏆</view>
+    </view>
+  </view>
+  
+  <!-- 非遗项目列表 -->
+  <view class="section">
     <view class="list-header">
       <text class="list-title">{{listTitle}}</text>
       <view class="sort-options" wx:if="{{!searchKeyword}}">
@@ -90,7 +137,7 @@
         >年代</text>
       </view>
     </view>
-
+    
     <!-- 非遗卡片列表 -->
     <view class="card-list">
       <heritage-card 
@@ -105,26 +152,42 @@
         bind:audioEnd="onAudioEnd"
       />
     </view>
-
+    
     <!-- 加载状态 -->
     <view class="loading-state" wx:if="{{loading}}">
       <view class="loading-spinner"></view>
       <text>加载中...</text>
     </view>
-
+    
     <view class="no-more" wx:if="{{!hasMore && heritageList.length > 0}}">
       <text>—— 已经到底了 ——</text>
     </view>
-
+    
     <view class="empty-state" wx:if="{{!loading && heritageList.length === 0}}">
       <image class="empty-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/5d57897bbb1c3b4426f02150ab4fb7e3.jpg"/>
       <text>暂无相关内容</text>
       <text class="empty-tip">试试其他分类或关键词</text>
     </view>
   </view>
-
+  
   <!-- 底部间距（为音频播放器留空） -->
   <view class="bottom-space" wx:if="{{showAudioPlayer}}"></view>
+</view>
+
+<!-- 底部导航 -->
+<view class="tab-bar">
+  <view class="tab-item {{activeTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">
+    <image src="/components/shou.png" class="tab-image"></image>
+    <text>首页</text>
+  </view>
+  <navigator url="/pages/feiyi/pages/index/index" class="tab-item {{activeTab === 1 ? 'active' : ''}}">
+    <image src="/components/zonglan.png" class="tab-image"></image>
+    <text>分类</text>
+  </navigator>
+  <navigator url="/profile/profile/profile" class="tab-item {{activeTab === 2 ? 'active' : ''}}">
+    <image src="/components/yonghu.png" class="tab-image"></image>
+    <text>我的</text>
+  </navigator>
 </view>
 
 <!-- 全局音频播放器 -->

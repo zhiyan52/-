@@ -1,173 +1,365 @@
-/* pages/shuhua/shuhua.wxss */
-page {
-  background-color: #f8f5f0; /* 仿古纸底色 */
-  font-family :"PingFang SC", "Helvetica Neue", sans-serif;
+/* 书画雅集 - 传统中国风样式 */
+.home-container {
+  background-color: #E8F5E8;
+  min-height: 100vh;
+  padding: 20rpx 30rpx 160rpx;
 }
 
-.container {
-  padding-bottom: 40rpx;
+/* 搜索区域 */
+.search-section {
+  margin-bottom: 30rpx;
 }
 
-/* 主标题区域 */
-.main-title-bar {
-  padding: 0rpx 60rpx 10rpx;
-  text-align: center;
-  display: block;
-  height: auto ;
-  margin-top: -40rpx;
-}
-.title-img {
-  width: 100%;
-  height: 120rpx;
-  /* 可选：添加文字阴影效果 */
-  filter: drop-shadow(0rpx 2rpx 4rpx rgba(0, 0, 0, 0.1));
-}
-
-/* 总分类容器 */
-.category-list {
+.search-box {
   display: flex;
-  flex-direction: column;
-  gap: 30rpx;
-  padding: 20rpx 30rpx 60rpx;
-}
-
-/* 单个分类项 */
-.category-item {
-  position: relative;
-  width: 100%;
-  height: 360rpx;
-  border-radius: 24rpx;
-  overflow: hidden;
-  box-shadow: 0 12rpx 32rpx rgba(0, 0, 0, 0.15);
-}
-
-/* 分类背景图片 */
-.category-bg-img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0.4;
-}
-
-/* 分类遮罩层 */
-.category-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+  background: #F8F0E3;
+  border-radius: 50rpx;
+  padding: 20rpx 30rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
 }
 
-/* 分类图标 */
-.category-icon {
-  font-size: 80rpx;
-  margin-bottom: 20rpx;
+.search-icon {
+  font-size: 32rpx;
+  margin-right: 16rpx;
+  color: #1A365D;
 }
 
-/* 分类标题 */
-.category-title {
+.search-placeholder {
+  font-size: 28rpx;
+  color: #666;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 主视觉区 */
+.hero {
+  margin-bottom: 30rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.1);
+  border: 4rpx solid #D4A017;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  padding: 60rpx 30rpx;
+  text-align: center;
+}
+
+.hero-content {
+  color: #F8F0E3;
+}
+
+.hero-title {
   font-size: 48rpx;
   font-weight: bold;
-  color: #fff;
-  letter-spacing: 8rpx;
-  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.3);
+  margin-bottom: 20rpx;
+  color: #D4A017;
+  font-family: "STKaiti", "KaiTi", serif;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.3);
 }
 
-/* 分类描述 */
-.category-desc {
+.hero-subtitle {
   font-size: 28rpx;
-  color: rgba(255, 255, 255, 0.85);
-  margin-top: 12rpx;
-  letter-spacing: 2rpx;
+  color: #F8F0E3;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
-/* 作品展示区域通用样式 */
-.works-area {
-  margin: 0 30rpx 60rpx;
-  background-color: #fff;
-  border: 1rpx solid #e0e0e0;
+/* 通用区块样式 */
+.section {
+  margin-bottom: 30rpx;
+  background: #F8F0E3;
   border-radius: 16rpx;
-  padding: 30rpx 20rpx;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  padding: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.1);
+  border: 2rpx solid #D4A017;
 }
 
-/* 分区标题 */
 .section-title {
-  font-size: 42rpx;
+  font-size: 36rpx;
   font-weight: bold;
-  color: #2c2c2c;
+  color: #1A365D;
+  margin-bottom: 20rpx;
+  display: block;
   text-align: center;
-  margin-bottom: 40rpx;
+  font-family: "STKaiti", "KaiTi", serif;
   position: relative;
-  padding-bottom: 20rpx;
+  padding-bottom: 12rpx;
 }
-/* 标题装饰线 */
+
 .section-title::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 120rpx;
-  height: 6rpx;
-  /* 区分书法和国画颜色 */
-  background: linear-gradient(to right, #e6b861, #d4a660); /* 金石色 */
-  border-radius: 3rpx;
+  width: 80rpx;
+  height: 4rpx;
+  background: #D4A017;
+  border-radius: 2rpx;
 }
 
-/* 书法作品区特有的标题装饰 */
-.works-area:nth-child(4) .section-title::after {
-  background: linear-gradient(to right, #a02010, #c04020); /* 朱砂红 */
-}
-
-/* 作品列表网格 */
-.works-list {
+/* 书画分类 */
+.category-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 20rpx;
+  margin-top: 20rpx;
 }
 
-/* 单个作品卡片 */
-.work-item {
-  width: 48%;
-  margin-bottom: 30rpx;
-  background-color: #fafafa;
-  border-radius: 12rpx;
+.category-item {
+  flex: 1;
+  border-radius: 16rpx;
   overflow: hidden;
-  border: 1rpx solid #eee;
-  transition: all 0.3s ease;
-}
-.work-item:active {
-  transform: scale(0.96);
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+  border: 2rpx solid #D4A017;
+  position: relative;
+  transition: all 0.3s;
 }
 
-/* 作品封面图 */
-.work-cover {
+.category-item:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 20rpx rgba(0,0,0,0.15);
+}
+
+.category-bg-img {
   width: 100%;
-  height: 260rpx;
-  border-bottom: 1rpx solid #eee;
+  height: 300rpx;
+  display: block;
 }
 
-/* 作品信息栏 */
-.work-info {
-  padding: 20rpx 16rpx;
+.category-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(26, 54, 93, 0.8));
+  padding: 30rpx 20rpx 20rpx;
   text-align: center;
 }
-.work-name {
-  display: block;
-  font-size: 32rpx;
-  font-weight: 500;
-  color: #333;
-  margin-bottom: 8rpx;
+
+.category-icon {
+  font-size: 48rpx;
+  margin-bottom: 12rpx;
+  color: #D4A017;
 }
-.work-author {
+
+.category-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #D4A017;
+  margin-bottom: 8rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.3);
+}
+
+.category-desc {
   font-size: 24rpx;
-  color: #888;
-  font-style: italic; /* 斜体体现作者 */
+  color: #F8F0E3;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 精选推荐 */
+.recommendations {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 20rpx;
+}
+
+.rec-item {
+  flex: 1;
+  background: #E8F5E8;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  border: 2rpx solid #D4A017;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.rec-item:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 20rpx rgba(0,0,0,0.15);
+}
+
+.rec-image {
+  width: 100%;
+  height: 200rpx;
+  display: block;
+  border-bottom: 2rpx solid #D4A017;
+}
+
+.rec-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #1A365D;
+  padding: 20rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 书画资讯 */
+.news-section {
+  margin-top: 30rpx;
+  padding: 30rpx;
+  background: #F8F0E3;
+  border-radius: 16rpx;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+}
+
+.news-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 20rpx;
+  text-align: center;
+  font-family: "STKaiti", "KaiTi", serif;
+  position: relative;
+  padding-bottom: 12rpx;
+}
+
+.news-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80rpx;
+  height: 4rpx;
+  background: #D4A017;
+  border-radius: 2rpx;
+}
+
+.news-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #D4A017;
+  transition: all 0.3s;
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-item:hover {
+  transform: translateX(10rpx);
+}
+
+.news-icon {
+  font-size: 32rpx;
+  margin-right: 20rpx;
+  color: #D4A017;
+}
+
+.news-content {
+  flex: 1;
+}
+
+.news-item-title {
+  font-size: 28rpx;
+  color: #1A365D;
+  margin-bottom: 5rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.news-item-desc {
+  font-size: 24rpx;
+  color: #666;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 底部信息 */
+.footer {
+  margin-top: 30rpx;
+  padding: 30rpx;
+  text-align: center;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  border-radius: 16rpx 16rpx 0 0;
+  border-top: 4rpx solid #D4A017;
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: #F8F0E3;
+  margin-bottom: 10rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.footer-copyright {
+  font-size: 20rpx;
+  color: rgba(248, 240, 227, 0.8);
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 底部空间 */
+.bottom-space {
+  height: 40rpx;
+}
+
+/* 底部导航 */
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120rpx;
+  background: #F8F0E3;
+  border-top: 2rpx solid #D4A017;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -2rpx 10rpx rgba(0,0,0,0.1);
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 33.333%;
+  height: 100%;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s;
+}
+
+.tab-item:hover {
+  background: rgba(212, 160, 23, 0.1);
+}
+
+.tab-item.active text {
+  color: #1A365D;
+  font-weight: bold;
+}
+
+.tab-image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.tab-item text {
+  font-size: 20rpx;
+  color: #666;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 响应式适配 */
+@media (max-width: 375px) {
+  .hero {
+    padding: 40rpx 20rpx;
+  }
+  
+  .hero-title {
+    font-size: 40rpx;
+  }
+  
+  .category-bg-img {
+    height: 250rpx;
+  }
+  
+  .rec-image {
+    height: 150rpx;
+  }
 }

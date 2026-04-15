@@ -1,32 +1,6 @@
 Page({
   data: {
-    activeTab: 0,
-    interactiveFeatures: [
-      {
-        id: 'culture',
-        title: '建筑文化',
-        desc: '探索传统建筑的文化内涵',
-        icon: '/icons/culture.png'
-      },
-      {
-        id: 'structure',
-        title: '营造技艺',
-        desc: '了解古代建筑的建造工艺',
-        icon: '/icons/structure.png'
-      },
-      {
-        id: 'visit',
-        title: '虚拟游览',
-        desc: '沉浸式体验古建筑魅力',
-        icon: '/icons/visit.png'
-      },
-      {
-        id: 'collection',
-        title: '我的收藏',
-        desc: '保存喜欢的古建筑资料',
-        icon: '/icons/collection.png'
-      }
-    ]
+    activeTab: 0
   },
 
   onLoad: function (options) {
@@ -39,26 +13,25 @@ Page({
 
   switchTab: function (e) {
     const index = e.currentTarget.dataset.index;
+
+    // 先更新UI状态
     this.setData({
       activeTab: index
     });
 
-    // 根据不同标签页跳转到对应页面
-    switch (index) {
-      case 0:
-        // 首页，无需跳转
-        break;
-      case 1:
-        wx.navigateTo({
-          url: '/gujian/category/category'
-        });
-        break;
-      case 2:
-        wx.navigateTo({
-          url: '/profile/profile/profile'
-        });
-        break;
+    // 直接跳转到对应页面，使用wx.navigateTo
+    if (index === 1) {
+      // 跳转到分类页面
+      wx.navigateTo({
+        url: '/gujian/category/category'
+      });
+    } else if (index === 2) {
+      // 跳转到个人中心
+      wx.navigateTo({
+        url: '/profile/profile/profile'
+      });
     }
+    // 首页无需跳转
   },
 
   navigateToFeature: function (e) {
@@ -90,6 +63,13 @@ Page({
   navigateToVoice: function () {
     wx.navigateTo({
       url: '/gujian/ai/ai-voice'
+    });
+  },
+
+  // 跳转到竞赛中心
+  navigateToCompetition: function () {
+    wx.navigateTo({
+      url: '/competition/competition-center'
     });
   }
 });

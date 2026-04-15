@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": " ",
+  "navigationBarTitleText": "古建分类",
+  "navigationBarBackgroundColor": "#2C2621",
+  "navigationBarTextStyle": "white",
   "usingComponents": {}
 }

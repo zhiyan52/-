@@ -1,0 +1,74 @@
+<!-- 答题页面 -->
+<view class="quiz-container">
+  <!-- 顶部进度栏 -->
+  <view class="quiz-header">
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progressPercent}}%"></view>
+    </view>
+    <view class="progress-text">
+      <text>{{currentIndex + 1}}</text>
+      <text>/{{questions.length}}</text>
+    </view>
+    <view class="timer" wx:if="{{showTimer}}">
+      <text class="timer-icon">⏱️</text>
+      <text class="timer-text {{timeLeft <= 5 ? 'warning' : ''}}">{{timeLeft}}s</text>
+    </view>
+  </view>
+
+  <!-- 对战模式双方分数 -->
+  <view class="battle-score" wx:if="{{type === 'battle'}}">
+    <view class="score-item">
+      <image class="score-avatar" src="{{player1.avatar}}" mode="aspectFill" />
+      <text class="score-name">{{player1.name}}</text>
+      <text class="score-num">{{player1.score}}</text>
+    </view>
+    <view class="score-vs">VS</view>
+    <view class="score-item">
+      <image class="score-avatar" src="{{player2.avatar}}" mode="aspectFill" />
+      <text class="score-name">{{player2.name}}</text>
+      <text class="score-num">{{player2.score}}</text>
+    </view>
+  </view>
+
+  <!-- 题目区域 -->
+  <view class="question-section">
+    <view class="question-tag">{{type === 'daily' ? '每日挑战' : '好友对战'}}</view>
+    <text class="question-text">{{currentQuestion.question}}</text>
+  </view>
+
+  <!-- 选项区域 -->
+  <view class="options-section">
+    <view 
+      class="option-item {{selectedOption === index ? 'selected' : ''}} {{showAnswer ? (index === currentQuestion.correctIndex ? 'correct' : (selectedOption === index ? 'wrong' : '')) : ''}}"
+      wx:for="{{currentQuestion.options}}"
+      wx:key="index"
+      bindtap="selectOption"
+      data-index="{{index}}"
+    >
+      <text class="option-letter">{{String.fromCharCode(65 + index)}}</text>
+      <text class="option-text">{{item}}</text>
+      <text class="option-icon" wx:if="{{showAnswer}}">
+        <text wx:if="{{index === currentQuestion.correctIndex}}">✓</text>
+        <text wx:elif="{{selectedOption === index}}">✗</text>
+      </text>
+    </view>
+  </view>
+
+  <!-- 答案解析 -->
+  <view class="explain-section" wx:if="{{showAnswer && currentQuestion.explain}}">
+    <view class="explain-header">
+      <text class="explain-title">📖 答案解析</text>
+    </view>
+    <text class="explain-text">{{currentQuestion.explain}}</text>
+  </view>
+
+  <!-- 下一题/查看结果按钮 -->
+  <view class="action-section" wx:if="{{showAnswer}}">
+    <view class="action-btn" wx:if="{{currentIndex < questions.length - 1}}" bindtap="nextQuestion">
+      <text>下一题</text>
+    </view>
+    <view class="action-btn result-btn" wx:else bindtap="showResult">
+      <text>查看结果</text>
+    </view>
+  </view>
+</view>

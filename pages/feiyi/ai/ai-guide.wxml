@@ -1,0 +1,49 @@
+<!-- 非遗智能导览页面 -->
+<view class="guide-container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="title">非遗智能导览</text>
+    <text class="subtitle">AI带你探索非遗文化</text>
+  </view>
+  
+  <!-- 非遗项目选择 -->
+  <view class="selection-section">
+    <text class="section-title">选择非遗项目</text>
+    <view class="heritage-list">
+      <view class="heritage-item {{selectedHeritage === item.id ? 'active' : ''}}" wx:for="{{heritageList}}" wx:key="id" bindtap="selectHeritage" data-id="{{item.id}}">
+        <image class="heritage-image" src="{{item.image}}" mode="aspectFill" />
+        <view class="heritage-info">
+          <text class="heritage-name">{{item.name}}</text>
+          <text class="heritage-category">{{item.category}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- AI讲解内容 -->
+  <view class="guide-content" wx:if="{{selectedHeritage}}">
+    <view class="content-header">
+      <text class="content-title">{{currentHeritage.name}}</text>
+      <view class="guide-tag">AI讲解</view>
+    </view>
+    
+    <view class="loading" wx:if="{{loading}}">
+      <text>AI正在生成讲解内容...</text>
+    </view>
+    
+    <view class="guide-text" wx:else>
+      <text>{{guideText}}</text>
+    </view>
+    
+    <view class="action-buttons">
+      <view class="action-btn" bindtap="playVoice">
+        <text class="btn-icon">🔊</text>
+        <text>播放语音</text>
+      </view>
+      <view class="action-btn" bindtap="regenerate">
+        <text class="btn-icon">🔄</text>
+        <text>重新生成</text>
+      </view>
+    </view>
+  </view>
+</view>

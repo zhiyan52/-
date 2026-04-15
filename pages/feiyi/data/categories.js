@@ -5,14 +5,6 @@
 
 const CATEGORIES = [
   {
-    id: 'all',
-    name: '全部',
-    icon: '🏛️',
-    description: '展示所有非遗项目',
-    color: '#8B4513',
-    sortOrder: 0
-  },
-  {
     id: 'craft',
     code: 'traditional-craft',
     name: '传统技艺',
@@ -43,23 +35,13 @@ const CATEGORIES = [
     subTypes: ['京剧', '昆曲', '越剧', '黄梅戏', '豫剧']
   },
   {
-    id: 'custom',
-    code: 'traditional-custom',
-    name: '传统民俗',
-    icon: '🏮',
-    description: '民间传统节日与习俗',
-    color: '#BC8F8F',
-    sortOrder: 4,
-    subTypes: ['节庆', '礼仪', '民间信仰', '传统医药']
-  },
-  {
     id: 'music',
     code: 'traditional-music',
     name: '传统音乐',
     icon: '🎵',
     description: '传统器乐与声乐艺术',
     color: '#F4A460',
-    sortOrder: 5,
+    sortOrder: 4,
     subTypes: ['古琴', '古筝', '琵琶', '二胡', '笛子']
   }
 ];
@@ -91,5 +73,5 @@ const CategoryMap = {
 module.exports = {
   CATEGORIES,
   CategoryMap,
-  DEFAULT_CATEGORY: 'all'
+  DEFAULT_CATEGORY: 'craft'
 };

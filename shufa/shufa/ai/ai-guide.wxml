@@ -1,0 +1,46 @@
+<!-- 书画智能导览页面 -->
+<view class="guide-container">
+  <view class="header">
+    <text class="title">书画智能导览</text>
+    <text class="subtitle">AI带你探索书画艺术</text>
+  </view>
+  
+  <view class="selection-section">
+    <text class="section-title">选择书画作品</text>
+    <view class="art-list">
+      <view class="art-item {{selectedArt === item.id ? 'active' : ''}}" wx:for="{{artList}}" wx:key="id" bindtap="selectArt" data-id="{{item.id}}">
+        <image class="art-image" src="{{item.image}}" mode="aspectFill" />
+        <view class="art-info">
+          <text class="art-name">{{item.name}}</text>
+          <text class="art-artist">{{item.artist}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="guide-content" wx:if="{{selectedArt}}">
+    <view class="content-header">
+      <text class="content-title">{{currentArt.name}}</text>
+      <view class="guide-tag">AI讲解</view>
+    </view>
+    
+    <view class="loading" wx:if="{{loading}}">
+      <text>AI正在生成讲解内容...</text>
+    </view>
+    
+    <view class="guide-text" wx:else>
+      <text>{{guideText}}</text>
+    </view>
+    
+    <view class="action-buttons">
+      <view class="action-btn" bindtap="playVoice">
+        <text class="btn-icon">🔊</text>
+        <text>播放语音</text>
+      </view>
+      <view class="action-btn" bindtap="regenerate">
+        <text class="btn-icon">🔄</text>
+        <text>重新生成</text>
+      </view>
+    </view>
+  </view>
+</view>

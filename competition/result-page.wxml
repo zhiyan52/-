@@ -1,0 +1,81 @@
+<!-- 结果页面 -->
+<view class="result-container">
+  <!-- 顶部结果展示 -->
+  <view class="result-header">
+    <view class="result-icon" wx:if="{{resultData.type === 'daily'}}">
+      <text>🎉</text>
+    </view>
+    <view class="result-icon" wx:else>
+      <text wx:if="{{isWin}}">🏆</text>
+      <text wx:else>💪</text>
+    </view>
+    <view class="result-title">
+      <text wx:if="{{resultData.type === 'daily'}}">挑战完成！</text>
+      <text wx:else>
+        <text wx:if="{{isWin}}">恭喜获胜！</text>
+        <text wx:else>再接再厉！</text>
+      </text>
+    </view>
+  </view>
+
+  <!-- 成绩统计 -->
+  <view class="stats-section">
+    <view class="stat-card">
+      <text class="stat-value">{{resultData.correct}}</text>
+      <text class="stat-label">答对题数</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-value">{{resultData.total}}</text>
+      <text class="stat-label">总题数</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-value">{{accuracy}}%</text>
+      <text class="stat-label">正确率</text>
+    </view>
+  </view>
+
+  <!-- 得分展示 -->
+  <view class="score-section">
+    <view class="score-title">获得积分</view>
+    <view class="score-number">
+      <text class="score-value">+{{resultData.score}}</text>
+    </view>
+    <view class="score-detail" wx:if="{{resultData.type === 'daily'}}">
+      <view class="detail-item">
+        <text class="detail-label">基础奖励</text>
+        <text class="detail-value">+{{baseScore}}</text>
+      </view>
+      <view class="detail-item" wx:if="{{hasBonus}}">
+        <text class="detail-label">全对奖励</text>
+        <text class="detail-value">+50</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 每日挑战专属内容 -->
+  <view class="daily-bonus" wx:if="{{resultData.type === 'daily' && hasBonus}}">
+    <view class="bonus-icon">✨</view>
+    <text class="bonus-text">恭喜获得全对奖励！</text>
+  </view>
+
+  <!-- 分享区域 -->
+  <view class="share-section">
+    <view class="share-btn" open-type="share">
+      <text class="share-icon">📤</text>
+      <text class="share-text">分享战绩</text>
+    </view>
+  </view>
+
+  <!-- 底部操作按钮 -->
+  <view class="action-section">
+    <view class="action-btn secondary" bindtap="goBack">
+      <text>返回</text>
+    </view>
+    <view class="action-btn primary" wx:if="{{resultData.type === 'daily'}}" bindtap="goHome">
+      <text>返回首页</text>
+    </view>
+    <view class="action-btn primary" wx:else bindtap="tryAgain">
+      <text>再来一局</text>
+    </view>
+  </view>
+</view>

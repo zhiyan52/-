@@ -38,19 +38,5 @@
     </button>
   </view>
 
-  <!-- 底部导航栏 -->
-  <!--<view class="tabbar">
-  <view class="tabbar-item active" bindtap="switchTab" data-tab="index">
-    <view class="tabbar-icon">🏮</view>
-    <text>首页</text>
-  </view>
-  <view class="tabbar-item" bindtap="switchTab" data-tab="modules">
-    <view class="tabbar-icon">📜</view>
-    <text>模块总览</text>
-  </view>
-  <view class="tabbar-item" bindtap="switchTab" data-tab="profile">
-    <view class="tabbar-icon">🪷</view>
-    <text>个人中心</text>
-  </view>
-</view>-->
+   
 </view>

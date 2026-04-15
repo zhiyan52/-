@@ -1,17 +1,17 @@
  /* pages/diancang/diancang.wxss */
 
-/* 基础变量 */
+/* 基础变量 - 传统中国风 */
 page {
   --primary-color: #7fb8a5;
   --primary-dark: #5a9a85;
-  --accent-color: #8B4513;
-  --accent-light: #A0522D;
-  --bg-color: #e8f4f0;
-  --card-bg: #faf8f3;
-  --text-primary: #2c3e50;
-  --text-secondary: #5d6d7e;
-  --text-light: #95a5a6;
-  --border-color: #d4c5b9;
+  --accent-color: #D4A017;
+  --accent-light: #E6B422;
+  --bg-color: #E8F5E8;
+  --card-bg: #F8F0E3;
+  --text-primary: #1A365D;
+  --text-secondary: #2C5282;
+  --text-light: #4A5568;
+  --border-color: #D4A017;
   --shadow: 0 4rpx 20rpx rgba(0,0,0,0.08);
   --shadow-hover: 0 8rpx 30rpx rgba(0,0,0,0.12);
 }
@@ -680,6 +680,74 @@ page {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* 互动活动区 */
+.activity-section {
+  margin: 40rpx 30rpx;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.activity-card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  border: 2rpx solid var(--border-color);
+}
+
+.activity-card:hover {
+  transform: translateY(-5rpx);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-color);
+}
+
+.activity-icon {
+  font-size: 60rpx;
+  margin-bottom: 20rpx;
+  color: var(--accent-color);
+}
+
+.activity-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 10rpx;
+  font-family: "STKaiti", serif;
+}
+
+.activity-desc {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  margin-bottom: 20rpx;
+  line-height: 1.4;
+}
+
+.activity-arrow {
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+  font-size: 32rpx;
+  color: var(--accent-color);
+  opacity: 0.6;
+  transition: transform 0.3s;
+}
+
+.activity-card:hover .activity-arrow {
+  transform: translateX(10rpx);
+  opacity: 1;
 }
 
 /* 知识卡片 */

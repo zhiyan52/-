@@ -6,27 +6,21 @@ const { HeritageDataUtils, INHERITORS } = require('../../data/index.js');
 Page({
   data: {
     categories: [],
-    currentCategory: 'all',
-    
+    currentCategory: 'craft',
+
     searchKeyword: '',
     isSearching: false,
-    
+
     heritageList: [],
     page: 1,
     pageSize: 10,
     hasMore: true,
     loading: false,
     sortBy: 'sortOrder',
-    listTitle: '全部非遗',
-    
+    listTitle: '传统技艺',
+
     hotList: [],
-    
-    stats: {
-      total: 0,
-      withAudio: 0,
-      inheritors: 0
-    },
-    
+
     currentPlayingId: '',
     showAudioPlayer: false,
     audioPlaylist: []
@@ -87,27 +81,20 @@ Page({
 
   async _initPage() {
     wx.showLoading({ title: '加载中' });
-    
+
     try {
-      const [categories, stats, hotList] = await Promise.all([
+      const [categories, hotList] = await Promise.all([
         DataLoader.getCategories(),
-        DataLoader.getStatistics(),
         DataLoader.getRecommendations('hot', 5)
       ]);
-      
-      const inheritorsCount = Array.isArray(INHERITORS) ? INHERITORS.length : 0;
-      
+
       this.setData({
         categories: categories || [],
-        stats: {
-          ...stats,
-          inheritors: inheritorsCount
-        },
         hotList: hotList || []
       });
-      
+
       await this._loadList();
-      
+
     } catch (err) {
       console.error('初始化失败:', err);
       wx.showToast({ title: '加载失败', icon: 'none' });
@@ -118,11 +105,11 @@ Page({
 
   async _loadList(reset = false) {
     if (this.data.loading) return;
-    
+
     const page = reset ? 1 : this.data.page;
-    
+
     this.setData({ loading: true });
-    
+
     try {
       const result = await DataLoader.getHeritageList({
         category: this.data.currentCategory,
@@ -131,21 +118,21 @@ Page({
         keyword: this.data.searchKeyword,
         sortBy: this.data.sortBy
       });
-      
+
       const list = result.list || [];
       const audioItems = list.filter(h => h.audio?.hasAudio).map(h => h.id);
-      
+
       this.setData({
         heritageList: reset ? list : [...this.data.heritageList, ...list],
         page: page + 1,
         hasMore: result.hasMore || false,
         audioPlaylist: reset ? audioItems : [...this.data.audioPlaylist, ...audioItems]
       });
-      
+
       if (page === 1 && audioItems.length > 0) {
         AudioManager.preload(audioItems.slice(0, 3));
       }
-      
+
     } catch (err) {
       console.error('加载列表失败:', err);
       wx.showToast({ title: '加载失败', icon: 'none' });
@@ -168,12 +155,12 @@ Page({
   },
 
   onCategoryChange(e) {
-    const { id } = e.detail || {};
+    const { id } = e.currentTarget.dataset || {};
     if (!id) return;
-    
+
     const { CategoryMap } = require('../../data/index.js');
     const categoryName = CategoryMap.getName(id) || '其他';
-    
+
     this.setData({
       currentCategory: id,
       listTitle: categoryName + '非遗',
@@ -183,7 +170,7 @@ Page({
       searchKeyword: '',
       isSearching: false
     });
-    
+
     this._loadList(true);
   },
 
@@ -193,7 +180,7 @@ Page({
 
   onSearchConfirm() {
     if (!this.data.searchKeyword.trim()) return;
-    
+
     this.setData({
       isSearching: true,
       listTitle: `搜索：${this.data.searchKeyword}`,
@@ -202,7 +189,7 @@ Page({
       heritageList: [],
       currentCategory: 'all'
     });
-    
+
     this._loadList(true);
   },
 
@@ -215,21 +202,21 @@ Page({
       hasMore: true,
       heritageList: []
     });
-    
+
     this._loadList(true);
   },
 
   changeSort(e) {
     const { type } = e.currentTarget?.dataset || {};
     if (!type) return;
-    
+
     this.setData({
       sortBy: type,
       page: 1,
       hasMore: true,
       heritageList: []
     });
-    
+
     this._loadList(true);
   },
 
@@ -244,7 +231,7 @@ Page({
   goToDetail(e) {
     const { id } = e.detail || {};
     if (!id) return;
-    
+
     wx.navigateTo({
       url: `/pages/feiyi/pages/detail/detail?id=${id}`
     });
@@ -253,7 +240,7 @@ Page({
   goToInheritor(e) {
     const { id } = e.detail || {};
     if (!id) return;
-    
+
     wx.navigateTo({
       url: `/pages/feiyi/pages/inheritor/inheritor?id=${id}`
     });
@@ -262,12 +249,12 @@ Page({
   onAudioPlay(e) {
     const { id } = e.detail || {};
     if (!id) return;
-    
+
     this.setData({
       currentPlayingId: id,
       showAudioPlayer: true
     });
-    
+
     const player = this.selectComponent('#globalPlayer');
     if (player) {
       player.setPlaylist(this.data.audioPlaylist);
@@ -284,7 +271,7 @@ Page({
   onAudioChange(e) {
     const { id } = e.detail || {};
     if (!id) return;
-    
+
     this.setData({ currentPlayingId: id });
   },
 

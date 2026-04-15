@@ -1,0 +1,73 @@
+<!-- 每日挑战页面 -->
+<view class="daily-challenge-container">
+  <!-- 顶部倒计时 -->
+  <view class="countdown-section">
+    <view class="countdown-title">今日挑战倒计时</view>
+    <view class="countdown-timer">
+      <text class="time-item">{{countdown.hours}}<text class="time-unit">时</text></text>
+      <text class="time-separator">:</text>
+      <text class="time-item">{{countdown.minutes}}<text class="time-unit">分</text></text>
+      <text class="time-separator">:</text>
+      <text class="time-item">{{countdown.seconds}}<text class="time-unit">秒</text></text>
+    </view>
+  </view>
+
+  <!-- 挑战规则 -->
+  <view class="rules-section">
+    <view class="rules-header">
+      <text class="rules-title">📖 挑战规则</text>
+    </view>
+    <view class="rules-content">
+      <view class="rule-item">
+        <text class="rule-num">1</text>
+        <text class="rule-text">每日 10 道题目，随机抽取</text>
+      </view>
+      <view class="rule-item">
+        <text class="rule-num">2</text>
+        <text class="rule-text">每题 30 秒答题时间</text>
+      </view>
+      <view class="rule-item">
+        <text class="rule-num">3</text>
+        <text class="rule-text">答对 +5 积分，答错不扣分</text>
+      </view>
+      <view class="rule-item">
+        <text class="rule-num">4</text>
+        <text class="rule-text">全对额外奖励 50 积分</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 今日奖励 -->
+  <view class="reward-section">
+    <view class="reward-header">
+      <text class="reward-title">🎁 今日奖励</text>
+    </view>
+    <view class="reward-items">
+      <view class="reward-item">
+        <view class="reward-icon">💎</view>
+        <view class="reward-info">
+          <text class="reward-value">+100 积分</text>
+          <text class="reward-label">基础奖励</text>
+        </view>
+      </view>
+      <view class="reward-item">
+        <view class="reward-icon">🏆</view>
+        <view class="reward-info">
+          <text class="reward-value">+50 积分</text>
+          <text class="reward-label">全对奖励</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 开始挑战按钮 -->
+  <view class="start-section">
+    <view class="start-btn" bindtap="startChallenge">
+      <text class="start-icon">🚀</text>
+      <text class="start-text">开始挑战</text>
+    </view>
+    <view class="challenge-history" bindtap="viewHistory">
+      <text>查看历史挑战记录</text>
+    </view>
+  </view>
+</view>

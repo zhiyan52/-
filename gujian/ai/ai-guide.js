@@ -31,13 +31,13 @@ Page({
   selectBuilding: function (e) {
     const buildingId = e.currentTarget.dataset.building;
     const building = this.data.buildings[buildingId];
-    
+
     this.setData({
       selectedBuilding: building,
       aiResponse: '',
       loading: true
     });
-    
+
     // 模拟AI生成讲解
     setTimeout(() => {
       this.generateAIResponse(building);
@@ -53,7 +53,7 @@ Page({
       '天坛': '天坛，是明清两代皇帝祭天、祈求五谷丰登的场所，位于北京市东城区。它始建于明永乐十八年（1420年），是中国现存最大的古代祭祀性建筑群。天坛的主要建筑包括圜丘、祈年殿、皇穹宇等，以其独特的建筑风格和深刻的文化内涵闻名于世。',
       '苏州园林': '苏州园林，是中国古典园林的杰出代表，位于江苏省苏州市。苏州园林以精巧的设计和独特的艺术风格闻名于世，素有"园林之城"的美誉。其中，拙政园、留园、网师园、环秀山庄等园林已被联合国教科文组织列为世界文化遗产。'
     };
-    
+
     this.setData({
       aiResponse: responses[building.name] || 'AI正在学习更多关于这座古建筑的知识...',
       loading: false
@@ -69,12 +69,12 @@ Page({
       });
       return;
     }
-    
+
     wx.showToast({
       title: '开始导览',
       icon: 'success'
     });
-    
+
     // 这里可以添加语音播放逻辑
     console.log('开始导览:', this.data.selectedBuilding.name);
   },
@@ -85,7 +85,7 @@ Page({
       title: '停止导览',
       icon: 'success'
     });
-    
+
     // 这里可以添加停止语音播放逻辑
     console.log('停止导览');
   }

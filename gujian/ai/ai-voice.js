@@ -40,7 +40,7 @@ Page({
   selectBuilding: function (e) {
     const buildingId = e.currentTarget.dataset.building;
     const building = this.data.buildings[buildingId];
-    
+
     this.setData({
       selectedBuilding: building,
       isPlaying: false,
@@ -58,18 +58,18 @@ Page({
       });
       return;
     }
-    
+
     const isPlaying = this.data.isPlaying;
     this.setData({
       isPlaying: !isPlaying
     });
-    
+
     if (!isPlaying) {
       wx.showToast({
         title: '开始播放',
         icon: 'success'
       });
-      
+
       // 模拟播放进度
       this.simulatePlayback();
     } else {
@@ -77,7 +77,7 @@ Page({
         title: '暂停播放',
         icon: 'success'
       });
-      
+
       // 停止模拟进度
       if (this.playbackInterval) {
         clearInterval(this.playbackInterval);
@@ -94,18 +94,18 @@ Page({
       });
       return;
     }
-    
+
     this.setData({
       isPlaying: false,
       progress: 0,
       currentTime: '00:00'
     });
-    
+
     wx.showToast({
       title: '停止播放',
       icon: 'success'
     });
-    
+
     // 停止模拟进度
     if (this.playbackInterval) {
       clearInterval(this.playbackInterval);
@@ -121,18 +121,18 @@ Page({
       });
       return;
     }
-    
+
     this.setData({
       progress: 0,
       currentTime: '00:00',
       isPlaying: true
     });
-    
+
     wx.showToast({
       title: '重新播放',
       icon: 'success'
     });
-    
+
     // 模拟播放进度
     this.simulatePlayback();
   },
@@ -143,7 +143,7 @@ Page({
     this.setData({
       progress: value
     });
-    
+
     // 计算当前时间
     const totalMinutes = parseInt(this.data.selectedBuilding.duration.split(':')[0]);
     const totalSeconds = parseInt(this.data.selectedBuilding.duration.split(':')[1]);
@@ -151,7 +151,7 @@ Page({
     const currentTime = Math.floor(totalTime * value / 100);
     const minutes = Math.floor(currentTime / 60).toString().padStart(2, '0');
     const seconds = (currentTime % 60).toString().padStart(2, '0');
-    
+
     this.setData({
       currentTime: `${minutes}:${seconds}`
     });
@@ -162,7 +162,7 @@ Page({
     if (this.playbackInterval) {
       clearInterval(this.playbackInterval);
     }
-    
+
     let progress = 0;
     this.playbackInterval = setInterval(() => {
       progress += 1;
@@ -175,7 +175,7 @@ Page({
         });
         return;
       }
-      
+
       // 计算当前时间
       const totalMinutes = parseInt(this.data.selectedBuilding.duration.split(':')[0]);
       const totalSeconds = parseInt(this.data.selectedBuilding.duration.split(':')[1]);
@@ -183,7 +183,7 @@ Page({
       const currentTime = Math.floor(totalTime * progress / 100);
       const minutes = Math.floor(currentTime / 60).toString().padStart(2, '0');
       const seconds = (currentTime % 60).toString().padStart(2, '0');
-      
+
       this.setData({
         progress: progress,
         currentTime: `${minutes}:${seconds}`

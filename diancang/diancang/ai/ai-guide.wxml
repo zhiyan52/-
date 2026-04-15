@@ -1,0 +1,46 @@
+<!-- 典藏智能导览页面 -->
+<view class="guide-container">
+  <view class="header">
+    <text class="title">典藏智能导览</text>
+    <text class="subtitle">AI带你探索典籍文化</text>
+  </view>
+  
+  <view class="selection-section">
+    <text class="section-title">选择典籍</text>
+    <view class="book-list">
+      <view class="book-item {{selectedBook === item.id ? 'active' : ''}}" wx:for="{{bookList}}" wx:key="id" bindtap="selectBook" data-id="{{item.id}}">
+        <image class="book-cover" src="{{item.image}}" mode="aspectFill" />
+        <view class="book-info">
+          <text class="book-name">{{item.name}}</text>
+          <text class="book-author">{{item.author}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="guide-content" wx:if="{{selectedBook}}">
+    <view class="content-header">
+      <text class="content-title">{{currentBook.name}}</text>
+      <view class="guide-tag">AI讲解</view>
+    </view>
+    
+    <view class="loading" wx:if="{{loading}}">
+      <text>AI正在生成讲解内容...</text>
+    </view>
+    
+    <view class="guide-text" wx:else>
+      <text>{{guideText}}</text>
+    </view>
+    
+    <view class="action-buttons">
+      <view class="action-btn" bindtap="playVoice">
+        <text class="btn-icon">🔊</text>
+        <text>播放语音</text>
+      </view>
+      <view class="action-btn" bindtap="regenerate">
+        <text class="btn-icon">🔄</text>
+        <text>重新生成</text>
+      </view>
+    </view>
+  </view>
+</view>

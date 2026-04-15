@@ -1,35 +1,41 @@
-<!-- 古建雅韵 - 简约版 -->
+<!-- 古建雅韵 - 传统中国风 -->
 <view class="home-container">
-  <!-- 顶部标题区 -->
-  <view class="header">
-    <text class="title">古建雅韵</text>
-    <text class="subtitle">传承东方营造智慧</text>
-  </view>
+
   
-  <!-- 主视觉区 -->
+  <!-- 主视觉区轮播图 -->
   <view class="hero">
-    <image src="/images/hero.jpg" class="hero-image" />
+    <swiper class="hero-swiper" indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true">
+      <swiper-item>
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/lunbo1.jpg" class="hero-image" />
+      </swiper-item>
+      <swiper-item>
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/taihedian.jpg" class="hero-image" />
+      </swiper-item>
+      <swiper-item>
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/suzhouuanlin.jpg" class="hero-image" />
+      </swiper-item>
+    </swiper>
   </view>
   
   <!-- 功能入口 -->
   <view class="features">
     <view class="feature-row">
       <view class="feature-item">
-        <image src="/icons/culture.png" class="feature-icon" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/wenhua.jpg" class="feature-icon" />
         <text>建筑文化</text>
       </view>
       <view class="feature-item">
-        <image src="/icons/structure.png" class="feature-icon" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/zaoyi.jpg" class="feature-icon" />
         <text>营造技艺</text>
       </view>
     </view>
     <view class="feature-row">
       <view class="feature-item">
-        <image src="/icons/visit.png" class="feature-icon" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/xuni.jpg" class="feature-icon" />
         <text>虚拟游览</text>
       </view>
       <view class="feature-item">
-        <image src="/icons/collection.png" class="feature-icon" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/shoucang.jpg" class="feature-icon" />
         <text>我的收藏</text>
       </view>
     </view>
@@ -40,11 +46,11 @@
     <text class="section-title">精选古建</text>
     <view class="recommendations">
       <view class="recommend-item">
-        <image src="/images/recommend1.jpg" class="rec-image" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/taihedian.jpg" class="rec-image" />
         <text class="rec-title">故宫太和殿</text>
       </view>
       <view class="recommend-item">
-        <image src="/images/recommend2.jpg" class="rec-image" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/suzhouuanlin.jpg" class="rec-image" />
         <text class="rec-title">苏州园林</text>
       </view>
     </view>
@@ -53,43 +59,103 @@
   <!-- 智能功能 -->
   <view class="section">
     <text class="section-title">智能功能</text>
-    <view class="features">
-      <view class="feature-row">
-        <view class="feature-item" bindtap="navigateToAI">
-          <image src="/icons/ai-guide.png" class="feature-icon" />
-          <text>智能导览</text>
+    <view class="smart-features">
+      <view class="smart-feature-item" bindtap="navigateToAI">
+        <text class="smart-feature-icon">🧭</text>
+        <view class="smart-feature-content">
+          <text class="smart-feature-title">智能导览</text>
+          <text class="smart-feature-desc">智能路线规划，深度解说</text>
         </view>
-        <view class="feature-item" bindtap="navigateToQA">
-          <image src="/icons/ai-qa.png" class="feature-icon" />
-          <text>文化问答</text>
-        </view>
+        <text class="smart-feature-arrow">→</text>
       </view>
-      <view class="feature-row">
-        <view class="feature-item" bindtap="navigateToRecommend">
-          <image src="/icons/ai-recommend.png" class="feature-icon" />
-          <text>个性化推荐</text>
+      <view class="smart-feature-item" bindtap="navigateToQA">
+        <text class="smart-feature-icon">❓</text>
+        <view class="smart-feature-content">
+          <text class="smart-feature-title">文化问答</text>
+          <text class="smart-feature-desc">解答古建筑相关问题</text>
         </view>
-        <view class="feature-item" bindtap="navigateToVoice">
-          <image src="/icons/ai-voice.png" class="feature-icon" />
-          <text>语音讲解</text>
+        <text class="smart-feature-arrow">→</text>
+      </view>
+      <view class="smart-feature-item" bindtap="navigateToRecommend">
+        <text class="smart-feature-icon">🎯</text>
+        <view class="smart-feature-content">
+          <text class="smart-feature-title">个性化推荐</text>
+          <text class="smart-feature-desc">根据兴趣推荐古建筑</text>
         </view>
+        <text class="smart-feature-arrow">→</text>
+      </view>
+      <view class="smart-feature-item" bindtap="navigateToVoice">
+        <text class="smart-feature-icon">🎙️</text>
+        <view class="smart-feature-content">
+          <text class="smart-feature-title">语音讲解</text>
+          <text class="smart-feature-desc">沉浸式语音导览体验</text>
+        </view>
+        <text class="smart-feature-arrow">→</text>
       </view>
     </view>
   </view>
-</view>
-
-<!-- 底部导航 - 优化 -->
-<view class="tab-bar">
-  <view class="tab-item {{activeTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">
-    <image src="{{activeTab === 0 ? '/images/icon/home_active.png' : '/images/icon/home.png'}}"></image>
-    <text>首页</text>
+  
+  <!-- 竞赛中心 -->
+  <view class="section">
+    <text class="section-title">互动竞赛</text>
+    <view class="competition-card" bindtap="navigateToCompetition">
+      <view class="competition-content">
+        <view class="competition-title">知识竞赛中心</view>
+        <view class="competition-desc">参与每日挑战，与好友PK</view>
+      </view>
+      <view class="competition-icon">🏆</view>
+    </view>
   </view>
-  <view class="tab-item {{activeTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">
-    <image src="{{activeTab === 1 ? '/images/icon/category_active.png' : '/images/icon/category.png'}}"></image>
-    <text>分类</text>
+  
+  <!-- 古建资讯 -->
+  <view class="news-section">
+    <view class="news-title">古建资讯</view>
+    <view class="news-item">
+      <text class="news-icon">📢</text>
+      <view class="news-content">
+        <view class="news-item-title">故宫博物院推出新展览</view>
+        <view class="news-item-desc">展示明清宫廷建筑艺术精品</view>
+      </view>
+    </view>
+    <view class="news-item">
+      <text class="news-icon">🏯</text>
+      <view class="news-content">
+        <view class="news-item-title">苏州园林数字化保护项目启动</view>
+        <view class="news-item-desc">运用AI技术保护古典园林</view>
+      </view>
+    </view>
+    <view class="news-item">
+      <text class="news-icon">🎯</text>
+      <view class="news-content">
+        <view class="news-item-title">古建筑修复技术研讨会召开</view>
+        <view class="news-item-desc">探讨传统与现代修复技术融合</view>
+      </view>
+    </view>
   </view>
-  <view class="tab-item {{activeTab === 2 ? 'active' : ''}}" bindtap="switchTab" data-index="2">
-    <image src="{{activeTab === 2 ? '/images/icon/user_active.png' : '/images/icon/user.png'}}"></image>
-    <text>我的</text>
+  
+  <!-- 底部信息 -->
+  <view class="footer">
+    <view class="footer-text">传承中华建筑文化</view>
+    <view class="footer-text">感受古典建筑之美</view>
+    <view class="footer-copyright">© 2026 古建雅韵</view>
+  </view>
+  
+  <!-- 底部空间 -->
+  <view class="bottom-space"></view>
+  
+  <!-- 底部导航 -->
+  <view class="tab-bar">
+    <view class="tab-item {{activeTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">
+      <image src="/components/shou.png" class="tab-image"></image>
+      <text>首页</text>
+    </view>
+    <navigator url="/gujian/category/category" class="tab-item {{activeTab === 1 ? 'active' : ''}}">
+      <image src="/components/zonglan.png" class="tab-image"></image>
+      <text>分类</text>
+    </navigator>
+    <navigator url="/profile/profile/profile" class="tab-item {{activeTab === 2 ? 'active' : ''}}">
+      <image src="/components/yonghu.png" class="tab-image"></image>
+      <text>我的</text>
+    </navigator>
   </view>
 </view>

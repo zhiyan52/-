@@ -1,0 +1,251 @@
+.battle-container {
+  padding: 30rpx;
+  background: linear-gradient(180deg, #e3f2fd 0%, #bbdefb 100%);
+  min-height: 100vh;
+}
+
+.online-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30rpx;
+}
+
+.online-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background: #4caf50;
+  margin-right: 12rpx;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.online-text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.battle-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.option-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.08);
+}
+
+.option-icon {
+  font-size: 60rpx;
+  margin-right: 25rpx;
+}
+
+.option-content {
+  flex: 1;
+}
+
+.option-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.option-desc {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.option-arrow {
+  font-size: 32rpx;
+  color: #ccc;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-more {
+  font-size: 24rpx;
+  color: #2196f3;
+}
+
+.rooms-section {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.08);
+}
+
+.rooms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.room-item {
+  display: flex;
+  align-items: center;
+  padding: 25rpx;
+  background: #f5f9ff;
+  border-radius: 16rpx;
+}
+
+.room-info {
+  flex: 1;
+}
+
+.room-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 6rpx;
+}
+
+.room-host {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.room-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8rpx;
+}
+
+.room-players {
+  font-size: 24rpx;
+  color: #2196f3;
+  font-weight: bold;
+}
+
+.room-badge {
+  padding: 6rpx 15rpx;
+  border-radius: 12rpx;
+  font-size: 20rpx;
+}
+
+.room-badge.waiting {
+  background: #e8f5e9;
+  color: #4caf50;
+}
+
+.room-badge.playing {
+  background: #fff3e0;
+  color: #ff9800;
+}
+
+.rules-section {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.08);
+}
+
+.rules-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.rule-item {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+}
+
+.rule-icon {
+  font-size: 36rpx;
+  flex-shrink: 0;
+}
+
+.rule-text {
+  flex: 1;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+.friends-section {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.08);
+}
+
+.friends-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.friend-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: #f5f9ff;
+  border-radius: 12rpx;
+}
+
+.friend-rank {
+  width: 50rpx;
+  text-align: center;
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #2196f3;
+  margin-right: 15rpx;
+}
+
+.friend-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-right: 15rpx;
+}
+
+.friend-info {
+  flex: 1;
+}
+
+.friend-name {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 4rpx;
+}
+
+.friend-score {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.friend-action {
+  padding: 12rpx 25rpx;
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  border-radius: 25rpx;
+  font-size: 22rpx;
+  color: #fff;
+}

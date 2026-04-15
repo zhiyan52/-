@@ -6,5 +6,7 @@
   },
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark",
-  "navigationStyle": "custom"
+  "navigationBarTitleText": "非遗匠心",
+  "navigationBarBackgroundColor": "#8B4513",
+  "navigationBarTextStyle": "white"
 }

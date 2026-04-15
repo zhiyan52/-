@@ -20,7 +20,11 @@
         "pages/calligraphy/creation",
         "pages/calligraphy/social",
         "pages/calligraphy/collection",
-        "pages/calligraphy/painting"
+        "pages/calligraphy/painting",
+        "ai/ai-guide",
+        "ai/ai-qa",
+        "ai/ai-recommend",
+        "ai/ai-voice"
       ],
       "name": "shufa",
       "independent": false
@@ -47,22 +51,38 @@
       ]
     },
     {
+      "root": "gujian/quiz",
+      "pages": [
+        "quiz"
+      ]
+    },
+    {
       "root": "pages/feiyi/",
       "pages": [
         "pages/index/index",
         "pages/detail/detail",
-        "pages/inheritor/inheritor"
+        "pages/inheritor/inheritor",
+        "ai/ai-guide",
+        "ai/ai-qa",
+        "ai/ai-recommend",
+        "ai/ai-voice",
+        "quiz/quiz"
       ],
       "name": "feiyi",
       "independent": false
     },
+    
     {
       "root": "diancang/diancang",
       "pages": [
         "diancang",
         "diancang-detail",
         "diancang-list",
-        "diancang-reader"
+        "diancang-reader",
+        "ai/ai-guide",
+        "ai/ai-qa",
+        "ai/ai-recommend",
+        "ai/ai-voice"
       ]
     },
     {
@@ -81,7 +101,11 @@
         "pages/profile/profile",
         "pages/search/search",
         "pages/encyclopedia/encyclopedia",
-        "pages/encyclopedia/course-detail"
+        "pages/encyclopedia/course-detail",
+        "ai/ai-guide",
+        "ai/ai-qa",
+        "ai/ai-recommend",
+        "ai/ai-voice"
       ],
       "name": "mingsu",
       "independent": false
@@ -90,6 +114,17 @@
       "root": "shuhua/shuhua",
       "pages": [
         "shuhua"
+      ]
+    },
+    {
+      "root": "competition",
+      "name": "competition",
+      "pages": [
+        "competition-center",
+        "daily-challenge",
+        "friend-battle",
+        "quiz-page",
+        "result-page"
       ]
     },
     {

@@ -1,28 +1,108 @@
-<!--shuhua/shuhua/shuhua.wxml-->
-<view class="container">
-  <!-- 主标题牌匾 -->
-  <view class="main-title-bar">
-    <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/ad44bcf5e09545bfbedb396f4f7ee88d.jpg" mode="aspectFit" class="title-img"></image>
+<!-- 书画雅集 - 传统中国风 -->
+<view class="home-container">
+  <!-- 搜索区域 -->
+  <view class="search-section">
+    <view class="search-box">
+      <text class="search-icon">🔍</text>
+      <text class="search-placeholder">搜索书画作品、艺术家...</text>
+    </view>
   </view>
 
-  <!-- 两个分类项 -->
-  <view class="category-list">
-    <view 
-      class="category-item" 
-      wx:for="{{categoryList}}" 
-      wx:key="id"
-      bindtap="onCategoryTap"
-      data-id="{{item.id}}"
-      style="background-color: {{item.bgColor}}">
-      <image src="{{item.img}}" class="category-bg-img" mode="aspectFill"></image>
-      <view class="category-overlay">
-        <view class="category-icon">
-          <text wx:if="{{item.id === 1}}">✏️</text>
-          <text wx:else>🖼️</text>
+  <!-- 主视觉区 -->
+  <view class="hero">
+    <view class="hero-content">
+      <view class="hero-title">书画雅集</view>
+      <view class="hero-subtitle">传承千年书画艺术，品味传统美学</view>
+    </view>
+  </view>
+
+  <!-- 书画分类 -->
+  <view class="section">
+    <text class="section-title">书画分类</text>
+    <view class="category-list">
+      <view 
+        class="category-item" 
+        wx:for="{{categoryList}}" 
+        wx:key="id"
+        bindtap="onCategoryTap"
+        data-id="{{item.id}}">
+        <image src="{{item.img}}" class="category-bg-img" mode="aspectFill"></image>
+        <view class="category-overlay">
+          <view class="category-icon">
+            <text wx:if="{{item.id === 1}}">✏️</text>
+            <text wx:else>🖼️</text>
+          </view>
+          <view class="category-title">{{item.name}}</view>
+          <view class="category-desc">{{item.desc}}</view>
         </view>
-        <view class="category-title">{{item.name}}</view>
-        <view class="category-desc">{{item.desc}}</view>
       </view>
+    </view>
+  </view>
+
+  <!-- 精选推荐 -->
+  <view class="section">
+    <text class="section-title">精选推荐</text>
+    <view class="recommendations">
+      <view class="rec-item">
+        <image src="https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/8eea8030d597d75ca17091f7ace26f5d.jpg?sign=b12162b9e3deb072134516573f116905&t=1776175850" class="rec-image" />
+        <text class="rec-title">书法经典作品</text>
+      </view>
+      <view class="rec-item">
+        <image src="https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/9b8d237c51e3b922d16dc3eae5723004.jpg?sign=e74ddbadb70750b501ac085fe694804b&t=1776176161" class="rec-image" />
+        <text class="rec-title">国画精品赏析</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 书画资讯 -->
+  <view class="news-section">
+    <view class="news-title">书画资讯</view>
+    <view class="news-item">
+      <text class="news-icon">📢</text>
+      <view class="news-content">
+        <view class="news-item-title">全国书法大展即将开幕</view>
+        <view class="news-item-desc">展示当代书法艺术成就</view>
+      </view>
+    </view>
+    <view class="news-item">
+      <text class="news-icon">🎨</text>
+      <view class="news-content">
+        <view class="news-item-title">国画名家作品拍卖会</view>
+        <view class="news-item-desc">珍品云集，不容错过</view>
+      </view>
+    </view>
+    <view class="news-item">
+      <text class="news-icon">📚</text>
+      <view class="news-content">
+        <view class="news-item-title">书画艺术鉴赏讲座</view>
+        <view class="news-item-desc">专家解析传统书画技法</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部信息 -->
+  <view class="footer">
+    <view class="footer-text">传承中华书画艺术</view>
+    <view class="footer-text">品味传统美学之美</view>
+    <view class="footer-copyright">© 2026 书画雅集</view>
+  </view>
+  
+  <!-- 底部空间 -->
+  <view class="bottom-space"></view>
+
+  <!-- 底部导航 -->
+  <view class="tab-bar">
+    <view class="tab-item active">
+      <image src="/components/shou.png" class="tab-image"></image>
+      <text>首页</text>
+    </view>
+    <view class="tab-item">
+      <image src="/components/zonglan.png" class="tab-image"></image>
+      <text>分类</text>
+    </view>
+    <view class="tab-item">
+      <image src="/components/yonghu.png" class="tab-image"></image>
+      <text>我的</text>
     </view>
   </view>
 </view>

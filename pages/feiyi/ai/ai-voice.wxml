@@ -1,0 +1,56 @@
+<!-- 非遗语音讲解页面 -->
+<view class="voice-container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="title">非遗语音讲解</text>
+    <text class="subtitle">聆听非遗的声音</text>
+  </view>
+  
+  <!-- 语音讲解列表 -->
+  <view class="voice-list">
+    <view class="voice-item" wx:for="{{voiceList}}" wx:key="id" bindtap="togglePlay" data-id="{{item.id}}">
+      <image class="voice-cover" src="{{item.image}}" mode="aspectFill" />
+      <view class="voice-info">
+        <view class="voice-header">
+          <text class="voice-title">{{item.title}}</text>
+          <view class="voice-duration">{{item.duration}}</view>
+        </view>
+        <text class="voice-desc">{{item.description}}</text>
+        <view class="voice-footer">
+          <view class="play-status">
+            <text wx:if="{{currentPlaying === item.id}}">正在播放...</text>
+          </view>
+          <view class="voice-views">
+            <text class="views-icon">👁</text>
+            <text>{{item.views}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="play-btn {{currentPlaying === item.id ? 'playing' : ''}}">
+        <text wx:if="{{currentPlaying !== item.id}}">▶</text>
+        <text wx:else>⏸</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 播放控制条 -->
+  <view class="player-bar" wx:if="{{currentPlaying}}">
+    <image class="player-cover" src="{{currentVoice.image}}" mode="aspectFill" />
+    <view class="player-info">
+      <text class="player-title">{{currentVoice.title}}</text>
+      <text class="player-desc">{{currentVoice.description}}</text>
+    </view>
+    <view class="player-controls">
+      <view class="control-btn" bindtap="prevVoice">
+        <text>⏮</text>
+      </view>
+      <view class="control-btn main" bindtap="togglePlayMain">
+        <text wx:if="{{isPlaying}}">⏸</text>
+        <text wx:else>▶</text>
+      </view>
+      <view class="control-btn" bindtap="nextVoice">
+        <text>⏭</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,112 @@
+<!-- 好友对战页面 -->
+<view class="battle-container">
+  <!-- 顶部在线状态 -->
+  <view class="online-section">
+    <view class="online-dot"></view>
+    <text class="online-text">{{onlineCount}} 位好友在线</text>
+  </view>
+
+  <!-- 功能选项 -->
+  <view class="battle-options">
+    <!-- 创建房间 -->
+    <view class="option-card create-card" bindtap="createRoom">
+      <view class="option-icon">🏠</view>
+      <view class="option-content">
+        <view class="option-title">创建房间</view>
+        <view class="option-desc">邀请好友对战</view>
+      </view>
+      <view class="option-arrow">▶</view>
+    </view>
+
+    <!-- 加入房间 -->
+    <view class="option-card join-card" bindtap="joinRoom">
+      <view class="option-icon">🎯</view>
+      <view class="option-content">
+        <view class="option-title">加入房间</view>
+        <view class="option-desc">输入房间号加入</view>
+      </view>
+      <view class="option-arrow">▶</view>
+    </view>
+
+    <!-- 快速匹配 -->
+    <view class="option-card match-card" bindtap="quickMatch">
+      <view class="option-icon">⚡</view>
+      <view class="option-content">
+        <view class="option-title">快速匹配</view>
+        <view class="option-desc">随机匹配对手</view>
+      </view>
+      <view class="option-arrow">▶</view>
+    </view>
+  </view>
+
+  <!-- 房间列表 -->
+  <view class="rooms-section" wx:if="{{rooms.length > 0}}">
+    <view class="section-header">
+      <text class="section-title">🏟️ 在线房间</text>
+    </view>
+    
+    <view class="rooms-list">
+      <view class="room-item" wx:for="{{rooms}}" wx:key="id" bindtap="enterRoom" data-id="{{item.id}}">
+        <view class="room-info">
+          <text class="room-name">{{item.name}}</text>
+          <text class="room-host">房主: {{item.host}}</text>
+        </view>
+        <view class="room-status">
+          <text class="room-players">{{item.players}}/2</text>
+          <view class="room-badge {{item.status}}">
+            <text wx:if="{{item.status === 'waiting'}}">等待中</text>
+            <text wx:else>进行中</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 对战规则 -->
+  <view class="rules-section">
+    <view class="section-header">
+      <text class="section-title">📖 对战规则</text>
+    </view>
+    
+    <view class="rules-content">
+      <view class="rule-item">
+        <text class="rule-icon">👥</text>
+        <text class="rule-text">2人对战，每局10题</text>
+      </view>
+      <view class="rule-item">
+        <text class="rule-icon">⏱️</text>
+        <text class="rule-text">每题15秒，超时不得分</text>
+      </view>
+      <view class="rule-item">
+        <text class="rule-icon">🏆</text>
+        <text class="rule-text">先答对得全分，后答对得半分</text>
+      </view>
+      <view class="rule-item">
+        <text class="rule-icon">🎉</text>
+        <text class="rule-text">胜者获得双倍积分奖励</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 好友排行榜 -->
+  <view class="friends-section">
+    <view class="section-header">
+      <text class="section-title">👥 好友排行</text>
+      <text class="section-more" bindtap="viewMoreFriends">更多 ▶</text>
+    </view>
+    
+    <view class="friends-list">
+      <view class="friend-item" wx:for="{{friends}}" wx:key="id">
+        <view class="friend-rank">{{item.rank}}</view>
+        <image class="friend-avatar" src="{{item.avatar}}" mode="aspectFill" />
+        <view class="friend-info">
+          <text class="friend-name">{{item.name}}</text>
+          <text class="friend-score">{{item.score}}分</text>
+        </view>
+        <view class="friend-action" bindtap="challengeFriend" data-id="{{item.id}}">
+          <text>挑战</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

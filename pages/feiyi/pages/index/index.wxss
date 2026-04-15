@@ -1,234 +1,370 @@
-/* pages/feiyi/pages/index/index.wxss */
-.container {
+/* 非遗匠心 - 传统中国风 */
+.home-container {
+  background-color: #E8F5E8;
   min-height: 100vh;
-  background: #f5f0e8;
-  padding-bottom: 40rpx;
+  padding: 20rpx 30rpx 20rpx;
 }
 
-/* 头部 */
-.header {
+/* 顶部标题栏 */
+.header-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20rpx 0 40rpx;
   position: relative;
-  padding: 60rpx 40rpx 40rpx;
-  overflow: hidden;
 }
 
-.header-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%);
-  z-index: 0;
+.header-title {
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  padding: 20rpx 60rpx;
+  border-radius: 50rpx;
+  position: relative;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
 }
 
-.header-bg::after {
+.header-title::before,
+.header-title::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40rpx;
+  height: 40rpx;
+  background: #D4A017;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #1A365D;
+  font-weight: bold;
 }
 
-.header-content {
-  position: relative;
-  z-index: 1;
+.header-title::before {
+  left: -20rpx;
+  content: '卍';
+}
+
+.header-title::after {
+  right: -20rpx;
+  content: '卍';
 }
 
 .main-title {
-  display: block;
-  font-size: 56rpx;
+  font-size: 48rpx;
   font-weight: bold;
-  color: #fff;
+  color: #D4A017;
+  font-family: "STKaiti", "KaiTi", serif;
   letter-spacing: 8rpx;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-  margin-bottom: 16rpx;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.2);
 }
 
-.sub-title {
-  display: block;
-  font-size: 28rpx;
-  color: rgba(255,255,255,0.9);
-  letter-spacing: 4rpx;
+/* 主视觉区 */
+.hero {
   margin-bottom: 30rpx;
-}
-
-/* 统计栏 */
-.stats-bar {
-  display: flex;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10rpx);
   border-radius: 16rpx;
-  padding: 20rpx 0;
-  margin-top: 20rpx;
+  overflow: hidden;
+  position: relative;
+  border: 4rpx solid #D4A017;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.1);
 }
 
-.stat-item {
-  flex: 1;
-  text-align: center;
-  border-right: 1rpx solid rgba(255,255,255,0.2);
+.hero-swiper {
+  width: 100%;
+  height: 400rpx;
 }
 
-.stat-item:last-child {
-  border-right: none;
-}
-
-.stat-num {
+.hero-image {
+  width: 100%;
+  height: 100%;
   display: block;
-  font-size: 40rpx;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 8rpx;
-}
-
-.stat-label {
-  font-size: 24rpx;
-  color: rgba(255,255,255,0.8);
+  border-radius: 16rpx;
 }
 
 /* 搜索栏 */
 .search-section {
-  padding: 20rpx 30rpx;
-  background: #fff;
+  padding: 20rpx 0;
+  background: #F8F0E3;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.1);
+  margin-bottom: 30rpx;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  border: 2rpx solid #D4A017;
 }
 
 .search-box {
   display: flex;
   align-items: center;
-  background: #f5f5f5;
+  background: #E8F5E8;
   border-radius: 40rpx;
   padding: 16rpx 30rpx;
+  border: 2rpx solid #D4A017;
 }
 
 .search-icon {
   font-size: 28rpx;
   margin-right: 16rpx;
-  color: #999;
+  color: #1A365D;
 }
 
 .search-input {
   flex: 1;
   font-size: 28rpx;
-  color: #333;
+  color: #1A365D;
+  background: transparent;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
 .search-clear {
   width: 40rpx;
   height: 40rpx;
-  background: #ddd;
+  background: #D4A017;
   border-radius: 20rpx;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2rpx solid #1A365D;
 }
 
 .search-clear text {
   font-size: 24rpx;
-  color: #fff;
+  color: #1A365D;
+  font-weight: bold;
 }
 
-/* 推荐位 */
-.recommend-section {
-  background: #fff;
-  padding: 30rpx 0;
-  margin-bottom: 20rpx;
+/* 功能入口 */
+.features {
+  margin-bottom: 30rpx;
+  background: #F8F0E3;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.1);
+  border: 2rpx solid #D4A017;
 }
 
-.section-header {
+.feature-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 30rpx;
   margin-bottom: 20rpx;
+}
+
+.feature-row:last-child {
+  margin-bottom: 0;
+}
+
+.feature-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 16rpx;
+  transition: all 0.3s;
+  background: #F8F0E3;
+  margin: 0 10rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.08);
+  overflow: hidden;
+  border: 2rpx solid #D4A017;
+}
+
+.feature-image {
+  width: 100%;
+  height: 160rpx;
+  display: block;
+  border-radius: 16rpx 16rpx 0 0;
+  border-bottom: 2rpx solid #D4A017;
+}
+
+.feature-item text {
+  padding: 20rpx 10rpx;
+  font-size: 28rpx;
+  color: #1A365D;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s;
+  width: 100%;
+  text-align: center;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.feature-item:hover {
+  background: #E8F5E8;
+  transform: translateY(-5rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.15);
+  border-color: #1A365D;
+}
+
+.feature-item.active {
+  background: linear-gradient(135deg, #C53030 0%, #9B2C2C 100%);
+  box-shadow: 0 4rpx 12rpx rgba(197, 48, 48, 0.3);
+  border-color: #D4A017;
+}
+
+.feature-item.active text {
+  color: #F8F0E3;
+  font-weight: 600;
+}
+
+/* 通用区块样式 */
+.section {
+  margin-bottom: 30rpx;
+  background: #F8F0E3;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.1);
+  border: 2rpx solid #D4A017;
 }
 
 .section-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #333;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #1A365D;
+  margin-bottom: 24rpx;
+  display: block;
+  text-align: center;
+  position: relative;
+  padding-bottom: 12rpx;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
-.section-more {
-  font-size: 26rpx;
-  color: #8B4513;
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80rpx;
+  height: 4rpx;
+  background: #D4A017;
+  border-radius: 2rpx;
 }
 
-.hot-scroll {
-  white-space: nowrap;
-  padding: 0 20rpx;
+/* 精选推荐 */
+.recommendations {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
 }
 
-.hot-item {
-  display: inline-block;
-  width: 240rpx;
-  margin-right: 20rpx;
+.recommend-item {
   border-radius: 16rpx;
   overflow: hidden;
   position: relative;
+  background: #E8F5E8;
+  border: 2rpx solid #D4A017;
+  transition: all 0.3s;
 }
 
-.hot-image {
-  width: 240rpx;
-  height: 320rpx;
+.recommend-item:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.15);
+  border-color: #1A365D;
+}
+
+.rec-image {
+  width: 100%;
+  height: 240rpx;
   display: block;
+  border-radius: 16rpx 16rpx 0 0;
+  border-bottom: 2rpx solid #D4A017;
 }
 
-.hot-name {
+.rec-title {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-  color: #fff;
+  background: linear-gradient(to top, rgba(26, 54, 93, 0.8), transparent);
+  color: #D4A017;
+  font-size: 24rpx;
+  padding: 30rpx 16rpx 12rpx;
+  text-align: center;
+  font-weight: 500;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 竞赛中心 */
+.competition-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #C53030 0%, #9B2C2C 100%);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  transition: all 0.3s;
+  border: 2rpx solid #D4A017;
+  box-shadow: 0 8rpx 24rpx rgba(197, 48, 48, 0.3);
+}
+
+.competition-card:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 12rpx 32rpx rgba(197, 48, 48, 0.4);
+}
+
+.competition-content {
+  flex: 1;
+}
+
+.competition-title {
   font-size: 28rpx;
-  padding: 40rpx 16rpx 16rpx;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-weight: 600;
+  color: #F8F0E3;
+  margin-bottom: 8rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.competition-desc {
+  font-size: 22rpx;
+  color: rgba(248, 240, 227, 0.9);
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.competition-icon {
+  font-size: 80rpx;
+  margin-left: 20rpx;
+  color: #D4A017;
 }
 
 /* 列表区 */
-.list-section {
-  padding: 20rpx 30rpx;
-}
-
 .list-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20rpx;
+  padding-bottom: 12rpx;
+  border-bottom: 2rpx solid #D4A017;
 }
 
 .list-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #333;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
 .sort-options {
   display: flex;
-  background: #fff;
+  background: #E8F5E8;
   border-radius: 30rpx;
   padding: 6rpx;
+  border: 2rpx solid #D4A017;
 }
 
 .sort-item {
   font-size: 24rpx;
-  color: #666;
+  color: #1A365D;
   padding: 10rpx 20rpx;
   border-radius: 24rpx;
   transition: all 0.3s;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
 .sort-item.active {
-  background: #8B4513;
-  color: #fff;
+  background: #C53030;
+  color: #F8F0E3;
+  border: 2rpx solid #D4A017;
 }
 
 .card-list {
@@ -241,15 +377,16 @@
   flex-direction: column;
   align-items: center;
   padding: 40rpx;
-  color: #999;
+  color: #1A365D;
   font-size: 26rpx;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
 .loading-spinner {
   width: 40rpx;
   height: 40rpx;
-  border: 4rpx solid #f3f3f3;
-  border-top: 4rpx solid #8B4513;
+  border: 4rpx solid #F8F0E3;
+  border-top: 4rpx solid #D4A017;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 16rpx;
@@ -263,8 +400,9 @@
 .no-more {
   text-align: center;
   padding: 40rpx;
-  color: #999;
+  color: #1A365D;
   font-size: 26rpx;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
 /* 空状态 */
@@ -280,17 +418,77 @@
   height: 200rpx;
   opacity: 0.5;
   margin-bottom: 30rpx;
+  border-radius: 50%;
+  border: 2rpx solid #D4A017;
 }
 
 .empty-state text {
   font-size: 28rpx;
-  color: #999;
+  color: #1A365D;
   margin-bottom: 16rpx;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
 .empty-tip {
   font-size: 24rpx !important;
-  color: #bbb !important;
+  color: #666 !important;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 底部导航 */
+.tab-bar {
+  display: flex;
+  background-color: #F8F0E3;
+  box-shadow: 0 -2rpx 10rpx rgba(0,0,0,0.1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120rpx;
+  z-index: 1000;
+  border-top: 2rpx solid #D4A017;
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.tab-item:hover {
+  background: rgba(212, 160, 23, 0.1);
+}
+
+.tab-image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-bottom: 8rpx;
+}
+
+.tab-item text {
+  font-size: 20rpx;
+  color: #666;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.tab-item.active text {
+  color: #1A365D;
+  font-weight: bold;
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 50%;
+  height: 4rpx;
+  background-color: #D4A017;
+  border-radius: 2rpx;
 }
 
 /* 底部空间 */
