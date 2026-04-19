@@ -14,7 +14,10 @@
         <view class="cake-info">
           <view class="cake-title">{{item.title}}</view>
           <view class="cake-desc">{{item.desc}}</view>
-          <view class="cake-origin">{{item.origin}}</view>
+          <view class="cake-location" wx:if="{{item.origin}}">
+            <text class="location-icon">📍</text>
+            <text class="location-text">{{item.origin}}</text>
+          </view>
         </view>
       </view>
     </view>

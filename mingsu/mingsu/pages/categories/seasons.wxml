@@ -14,7 +14,10 @@
         <view class="seasonal-info">
           <view class="seasonal-title">{{item.title}}</view>
           <view class="seasonal-desc">{{item.desc}}</view>
-          <view class="seasonal-season">{{item.season}}</view>
+          <view class="seasonal-location" wx:if="{{item.location}}">
+            <text class="location-icon">📍</text>
+            <text class="location-text">{{item.location}}</text>
+          </view>
         </view>
       </view>
     </view>

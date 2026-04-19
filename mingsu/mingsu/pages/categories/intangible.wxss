@@ -1,10 +1,15 @@
 /* mingsu/mingsu/pages/categories/intangible.wxss */
 
-/* 顶部导航栏 */
-.top-nav {
+/* 容器 */
+.container {
+  min-height: 100vh;
+  background-color: #f8f4f0;
+}
+
+/* 头部 */
+.header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 20rpx 32rpx;
   background-color: #8B4513;
   color: white;
@@ -13,81 +18,57 @@
   z-index: 100;
 }
 
-.back-btn {
+.header-back {
   font-size: 32rpx;
-  padding: 8rpx;
+  margin-right: 20rpx;
 }
 
-.nav-title {
+.header-title {
   font-size: 32rpx;
   font-weight: bold;
   font-family: '楷体', 'STKaiti', serif;
+  flex: 1;
 }
 
-.placeholder {
-  width: 40rpx;
+/* 内容区 */
+.content {
+  min-height: calc(100vh - 80rpx);
 }
 
 /* 非遗美食列表 */
 .intangible-list {
-  padding: 24rpx 32rpx;
   display: flex;
   flex-direction: column;
-  gap: 24rpx;
+  gap: 0;
   margin-bottom: 40rpx;
 }
 
 .intangible-item {
   background-color: white;
-  border-radius: 16rpx;
   overflow: hidden;
-  border: 1rpx solid #e8ddd1;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  border-bottom: 1rpx solid #e8ddd1;
   transition: all 0.3s ease;
 }
 
 .intangible-item:hover {
-  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
-  transform: translateY(-4rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
 }
 
 .intangible-img {
   width: 100%;
-  height: 240rpx;
+  height: 320rpx;
   object-fit: cover;
 }
 
 .intangible-info {
-  padding: 24rpx;
+  padding: 24rpx 32rpx;
 }
 
-.intangible-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12rpx;
-}
-
-.intangible-name {
+.intangible-title {
   font-size: 32rpx;
   font-weight: bold;
   color: #333;
-  flex: 1;
-}
-
-.intangible-level {
-  padding: 4rpx 16rpx;
-  background-color: #8B4513;
-  color: white;
-  border-radius: 12rpx;
-  font-size: 20rpx;
-  margin-left: 16rpx;
-}
-
-.intangible-region {
-  font-size: 24rpx;
-  color: #666;
-  margin-bottom: 12rpx;
+  margin-bottom: 8rpx;
 }
 
 .intangible-desc {
@@ -97,48 +78,50 @@
   margin-bottom: 16rpx;
 }
 
-.intangible-master {
+.intangible-location {
   display: flex;
-  gap: 12rpx;
+  align-items: center;
+  gap: 8rpx;
+  margin-bottom: 8rpx;
 }
 
-.master-label {
+.location-icon {
   font-size: 24rpx;
-  color: #333;
-  font-weight: bold;
-  flex-shrink: 0;
 }
 
-.master-info {
-  flex: 1;
-}
-
-.master-name {
+.location-text {
   font-size: 24rpx;
-  color: #8B4513;
-  font-weight: bold;
-  margin-bottom: 4rpx;
-}
-
-.master-desc {
-  font-size: 22rpx;
   color: #666;
-  line-height: 1.4;
+}
+
+.intangible-level {
+  padding: 4rpx 16rpx;
+  background-color: #8B4513;
+  color: white;
+  border-radius: 12rpx;
+  font-size: 20rpx;
+  display: inline-block;
 }
 
 /* 响应式适配 */
 @media (max-width: 375px) {
   .intangible-img {
-    height: 200rpx;
+    height: 280rpx;
   }
   
-  .intangible-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8rpx;
+  .intangible-title {
+    font-size: 28rpx;
   }
   
-  .intangible-level {
-    margin-left: 0;
+  .intangible-desc {
+    font-size: 22rpx;
+  }
+  
+  .intangible-location {
+    font-size: 22rpx;
+  }
+  
+  .intangible-info {
+    padding: 20rpx 24rpx;
   }
 }

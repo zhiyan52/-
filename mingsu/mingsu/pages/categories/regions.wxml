@@ -14,7 +14,10 @@
         <view class="region-info">
           <view class="region-title">{{item.title}}</view>
           <view class="region-desc">{{item.desc}}</view>
-          <view class="region-location">{{item.location}}</view>
+          <view class="region-location">
+            <text class="location-icon">📍</text>
+            <text class="location-text">{{item.location}}</text>
+          </view>
         </view>
       </view>
     </view>
