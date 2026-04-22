@@ -118,9 +118,9 @@ Page({
   onARScan() {
     wx.vibrateShort({ type: 'light' });
     wx.navigateTo({
-      url: '/gujianSub/building3D/building3D',
+      url: '/pages/virtual-gallery/virtual-gallery',
       fail: () => {
-        wx.showToast({ title: 'AR页面未找到', icon: 'error' });
+        wx.showToast({ title: '虚拟展厅页面未找到', icon: 'error' });
       }
     });
   },

@@ -1,0 +1,78 @@
+<view class="select-container">
+  <!-- 顶部 -->
+  <view class="select-header">
+    <text class="back-btn" bindtap="goBack">←</text>
+    <text class="select-title">选择图样</text>
+    <text class="level-badge">Lv.{{userLevel}}</text>
+  </view>
+
+  <!-- 分类标签 -->
+  <scroll-view scroll-x class="category-bar">
+    <view class="category-item {{activeCategory === item ? 'active' : ''}}" 
+          wx:for="{{categories}}" 
+          wx:key="*this"
+          bindtap="switchCategory"
+          data-cat="{{item}}">
+      {{item}}
+    </view>
+  </scroll-view>
+
+  <!-- 图样网格 -->
+  <scroll-view scroll-y class="pattern-grid">
+    <view class="pattern-card {{item.unlocked ? '' : 'locked'}}" 
+          wx:for="{{patterns}}" 
+          wx:key="id"
+          bindtap="selectPattern"
+          data-id="{{item.id}}">
+      
+      <!-- 缩略图 -->
+      <view class="pattern-thumb" style="background: {{item.unlocked ? '#c0392b' : '#333'}}">
+        <text class="thumb-icon">{{item.unlocked ? '✂️' : '🔒'}}</text>
+      </view>
+      
+      <view class="pattern-info">
+        <text class="pattern-name">{{item.name}}</text>
+        <text class="pattern-meaning">{{item.meaning}}</text>
+        
+        <view class="pattern-meta">
+          <text class="difficulty">
+            难度: <text wx:for="{{[1, 2, 3, 4, 5]}}" wx:key="*this" wx:if="{{item.difficulty >= index + 1}}">⭐</text>
+          </text>
+          <text class="category-tag">{{item.category}}</text>
+        </view>
+      </view>
+
+      <!-- 锁定遮罩 -->
+      <view class="lock-overlay" wx:if="{{!item.unlocked}}">
+        <text class="lock-reason">
+          {{item.unlockLevel > userLevel ? 'Lv.' + item.unlockLevel + '解锁' : '需' + item.requireStars + '星'}}
+        </text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 折叠方式选择弹窗 -->
+  <view class="fold-modal {{showFoldSelect ? 'show' : ''}}" bindtap="closeFoldSelect">
+    <view class="fold-panel" catchtap="preventBubble">
+      <text class="fold-title">选择折叠方式</text>
+      <text class="fold-subtitle">{{selectedPattern ? selectedPattern.name : ''}}</text>
+      
+      <view class="fold-list">
+        <view class="fold-item {{item.minLevel > userLevel ? 'disabled' : ''}}" 
+              wx:for="{{foldConfigs}}" 
+              wx:key="id"
+              bindtap="selectFold"
+              data-fold="{{item}}">
+          <view class="fold-icon">
+            <view class="fold-diagram {{item.id}}"></view>
+          </view>
+          <view class="fold-info">
+            <text class="fold-name">{{item.name}}</text>
+            <text class="fold-desc">{{item.desc}}</text>
+          </view>
+          <text class="fold-lock" wx:if="{{item.minLevel > userLevel}}">🔒</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

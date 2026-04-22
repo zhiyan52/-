@@ -1,5 +1,5 @@
 <!-- 书画个性化推荐页面 -->
-<view class="recommend-container">
+<view class="ai-recommend-container">
   <view class="header">
     <text class="title">个性化推荐</text>
     <text class="subtitle">根据你的兴趣推荐书画作品</text>
@@ -33,6 +33,21 @@
           <view class="action-btn">查看详情</view>
           <view class="action-btn secondary">收藏</view>
         </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 视觉参考图 -->
+  <view class="visual-section" wx:if="{{visualReferences.length > 0}}">
+    <view class="section-header">
+      <text class="section-title">视觉参考</text>
+      <text class="section-subtitle">AI生成的创作灵感</text>
+    </view>
+    
+    <view class="visual-list">
+      <view class="visual-item" wx:for="{{visualReferences}}" wx:key="index">
+        <image class="visual-image" src="{{item.image}}" mode="aspectFill" />
+        <text class="visual-desc">{{item.description}}</text>
       </view>
     </view>
   </view>

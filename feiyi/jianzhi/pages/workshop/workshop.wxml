@@ -1,0 +1,72 @@
+<view class="workshop-container">
+  <!-- 顶部 -->
+  <view class="workshop-header">
+    <text class="back-btn" bindtap="goBack">←</text>
+    <text class="workshop-title">我的工坊</text>
+  </view>
+
+  <!-- 统计信息 -->
+  <view class="stats-container">
+    <view class="stat-item">
+      <text class="stat-number">{{stats.total}}</text>
+      <text class="stat-label">总作品</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.perfect}}</text>
+      <text class="stat-label">完美作品</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.threeStars}}</text>
+      <text class="stat-label">三星作品</text>
+    </view>
+  </view>
+
+  <!-- 筛选栏 -->
+  <view class="filter-bar">
+    <view class="filter-btn {{filter === 'all' ? 'active' : ''}}" bindtap="switchFilter" data-filter="all">
+      全部
+    </view>
+    <view class="filter-btn {{filter === 'perfect' ? 'active' : ''}}" bindtap="switchFilter" data-filter="perfect">
+      完美作品
+    </view>
+    <view class="filter-btn {{filter === 'recent' ? 'active' : ''}}" bindtap="switchFilter" data-filter="recent">
+      最近作品
+    </view>
+  </view>
+
+  <!-- 作品列表 -->
+  <scroll-view scroll-y class="works-list">
+    <block wx:if="{{works.length > 0}}">
+      <view class="work-item" wx:for="{{works}}" wx:key="id">
+        <view class="work-thumb"></view>
+        <view class="work-info">
+          <text class="work-name">{{item.name}}</text>
+          <view class="work-meta">
+            <text class="work-date">{{item.dateStr}}</text>
+            <text class="work-score">{{item.score}}分</text>
+            <text class="work-stars">
+              <text wx:for="{{[1, 2, 3, 4, 5]}}" wx:key="*this" wx:if="{{item.stars >= index + 1}}">⭐</text>
+            </text>
+          </view>
+        </view>
+        <view class="work-actions">
+          <view class="action-btn" bindtap="viewWork" data-id="{{item.id}}">
+            👁️
+          </view>
+          <view class="action-btn" bindtap="shareWork" data-id="{{item.id}}">
+            📤
+          </view>
+          <view class="action-btn" bindtap="deleteWork" data-id="{{item.id}}">
+            🗑️
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="empty-state">
+        <text class="empty-icon">✂️</text>
+        <text class="empty-text">还没有作品，快去创作吧！</text>
+      </view>
+    </block>
+  </scroll-view>
+</view>

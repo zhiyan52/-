@@ -1,0 +1,180 @@
+/* AI书画意境生图样式 */
+.ai-image-container {
+  background-color: #f5f2e9;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+/* 顶部标题 */
+.header-section {
+  text-align: center;
+  margin-bottom: 30rpx;
+  padding: 30rpx 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 10rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.header-subtitle {
+  font-size: 24rpx;
+  color: #6b5344;
+  display: block;
+}
+
+/* 输入部分 */
+.input-section {
+  margin-bottom: 30rpx;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.section-label {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 20rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.keyword-input {
+  width: 100%;
+  padding: 20rpx;
+  border: 2rpx solid rgba(139, 69, 19, 0.3);
+  border-radius: 15rpx;
+  font-size: 24rpx;
+  color: #6b5344;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 20rpx;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.keyword-input::placeholder {
+  color: #9e8b7c;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 推荐关键词 */
+.recommended-section {
+  margin-top: 20rpx;
+}
+
+.recommended-label {
+  font-size: 24rpx;
+  color: #6b5344;
+  margin-bottom: 15rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.keywords-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx;
+}
+
+.keyword-tag {
+  background-color: rgba(139, 69, 19, 0.1);
+  padding: 10rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  color: #8B4513;
+  transition: all 0.3s ease;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.keyword-tag:hover {
+  background-color: rgba(139, 69, 19, 0.2);
+  transform: translateY(-2rpx);
+}
+
+/* 生成结果 */
+.result-section {
+  margin-bottom: 30rpx;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30rpx;
+}
+
+.generated-image {
+  width: 100%;
+  max-width: 500rpx;
+  height: 500rpx;
+  border-radius: 15rpx;
+  object-fit: contain;
+  background-color: #f8f5ef;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 20rpx;
+  justify-content: center;
+}
+
+/* 操作按钮 */
+.action-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+
+.action-button {
+  background-color: #8B4513;
+  color: #ffffff;
+  border-radius: 30rpx;
+  padding: 20rpx 60rpx;
+  font-size: 28rpx;
+  font-family: '楷体', 'KaiTi', serif;
+  box-shadow: 0 4rpx 12rpx rgba(139, 69, 19, 0.3);
+  transition: all 0.3s ease;
+  flex: 1;
+  max-width: 300rpx;
+}
+
+.action-button.secondary {
+  background-color: #9e8b7c;
+}
+
+.action-button:hover:not([disabled]) {
+  transform: translateY(-3rpx);
+  box-shadow: 0 6rpx 16rpx rgba(139, 69, 19, 0.4);
+}
+
+.action-button[disabled] {
+  background-color: #9e8b7c;
+  box-shadow: none;
+}
+
+.button-text {
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 底部装饰 */
+.footer-section {
+  text-align: center;
+  padding: 20rpx 0;
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: #9e8b7c;
+  font-family: '楷体', 'KaiTi', serif;
+}

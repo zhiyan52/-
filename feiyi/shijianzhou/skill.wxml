@@ -1,0 +1,56 @@
+<view class="container">
+  <!-- 顶部标题栏（匹配首页古风样式） -->
+  <view class="page-header">
+    <view class="header-title">匠心技艺馆</view>
+    <view class="header-subtitle">毫厘之间 皆是匠心</view>
+  </view>
+
+  <!-- 非遗项目切换栏（横向滚动） -->
+  <scroll-view class="skill-tab-scroll" scroll-x>
+    <view class="skill-tab-item {{currentSkill === index ? 'active' : ''}}" 
+          wx:for="{{skillList}}" wx:key="id"
+          bindtap="switchSkill" data-index="{{index}}">
+      {{item.name}}
+    </view>
+  </scroll-view>
+
+  <!-- 工序时间轴（核心交互） -->
+  <view class="timeline-wrapper">
+    <scroll-view class="timeline-scroll" scroll-x 
+                 bindscroll="onTimelineScroll" scroll-with-animation>
+      <view class="timeline">
+        <view class="timeline-step {{currentStep === index ? 'active' : ''}}" 
+              wx:for="{{currentSkillData.steps}}" wx:key="id"
+              data-index="{{index}}" bindtap="selectStep">
+          <view class="step-dot"></view>
+          <view class="step-line"></view>
+          <view class="step-text">{{item.stepName}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 当前工序详情展示区 -->
+  <view class="step-detail-card" animation="{{stepAnimation}}">
+    <view class="detail-title">第{{currentStep + 1}}步：{{currentSkillData.steps[currentStep].stepName}}</view>
+    <view class="detail-img-wrapper">
+      <image class="detail-img" src="{{currentSkillData.steps[currentStep].imgUrl}}" mode="aspectFit"></image>
+    </view>
+    <view class="detail-desc">{{currentSkillData.steps[currentStep].desc}}</view>
+    
+    <!-- 关键工序放大镜按钮 -->
+    <view class="magnifier-btn" wx:if="{{currentSkillData.steps[currentStep].isKeyStep}}" 
+          bindtap="openMagnifier">
+      🔍 查看工艺细节
+    </view>
+  </view>
+
+  <!-- 放大镜弹窗 -->
+  <view class="magnifier-modal" wx:if="{{showMagnifier}}" bindtap="closeMagnifier">
+    <view class="modal-content" catchtap="stopPropagation">
+      <image class="modal-img" src="{{currentSkillData.steps[currentStep].detailImgUrl}}" mode="aspectFit"></image>
+      <view class="modal-desc">{{currentSkillData.steps[currentStep].detailDesc}}</view>
+      <view class="modal-close" bindtap="closeMagnifier">关闭</view>
+    </view>
+  </view>
+</view>

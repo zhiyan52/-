@@ -1,5 +1,5 @@
 <!-- 书画智能导览页面 -->
-<view class="guide-container">
+<view class="ai-guide-container">
   <view class="header">
     <text class="title">书画智能导览</text>
     <text class="subtitle">AI带你探索书画艺术</text>

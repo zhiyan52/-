@@ -1,0 +1,67 @@
+<view class="container">
+  <!-- 顶部信息栏 -->
+  <view class="header">
+    <view class="pattern-info">
+      <text class="pattern-name">{{pattern.name || '团花'}}</text>
+      <text class="fold-badge">{{foldName}}</text>
+    </view>
+    <view class="progress">
+      <text class="progress-text">{{currentCutIndex}}/{{totalCuts}}</text>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{currentCutIndex/totalCuts*100}}"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 主画布区域 -->
+  <view class="canvas-wrapper" style="width: {{canvasWidth}}px; height: {{canvasHeight}}px;">
+    <canvas
+      type="2d"
+      id="cutCanvas"
+      class="cut-canvas"
+      style="width: {{canvasWidth}}px; height: {{canvasHeight}}px;"
+      bindtouchstart="onTouchStart"
+      bindtouchmove="onTouchMove"
+      bindtouchend="onTouchEnd"
+    ></canvas>
+    
+    <!-- 状态遮罩 -->
+    <view class="status-overlay {{status}}" wx:if="{{status === 'checking'}}">
+      <view class="checking-animation">
+        <text class="checking-text">正在展开...</text>
+        <view class="paper-unfold-icon">📜</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作提示 -->
+  <view class="tip-bar {{tipShow ? 'show' : ''}}" bindanimationend="onTipHide">
+    <text class="tip-icon">✂️</text>
+    <text class="tip-text">{{tipText}}</text>
+  </view>
+
+  <!-- 底部工具栏 -->
+  <view class="toolbar">
+    <button class="tool-btn" bindtap="toggleGuide">
+      <text class="tool-icon">{{showGuide ? '👁️' : '🙈'}}</text>
+      <text class="tool-label">{{showGuide ? '隐藏引导' : '显示引导'}}</text>
+    </button>
+    
+    <button class="tool-btn" bindtap="retryCurrent" disabled="{{status !== 'ready'}}">
+      <text class="tool-icon">↩️</text>
+      <text class="tool-label">重试</text>
+    </button>
+    
+    <button class="tool-btn" open-type="share">
+      <text class="tool-icon">📤</text>
+      <text class="tool-label">求助</text>
+    </button>
+  </view>
+
+  <!-- 切割精度实时反馈（可选） -->
+  <view class="accuracy-float" wx:if="{{status === 'cutting'}}">
+    <view class="accuracy-ring" style="--accuracy: {{currentAccuracy || 0}}">
+      <text class="accuracy-num">{{currentAccuracy || '--'}}</text>
+    </view>
+  </view>
+</view>

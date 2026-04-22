@@ -1,39 +1,53 @@
 <!-- 书画文化问答页面 -->
-<view class="qa-container">
+<view class="ai-qa-container">
   <view class="header">
     <text class="title">书画文化问答</text>
     <text class="subtitle">AI为你解答书画艺术疑问</text>
   </view>
   
-  <view class="chat-container">
-    <view class="message-list">
-      <view class="message-item ai-message" wx:for="{{messages}}" wx:key="index">
-        <view class="message-avatar">🤖</view>
-        <view class="message-content">
-          <text>{{item.content}}</text>
-        </view>
+  <view class="qa-section">
+    <text class="section-title">常见问题</text>
+    <view class="faq-list">
+      <view class="faq-item" bindtap="selectFaq" data-question="王羲之的书法风格是什么？">
+        <text class="faq-question">王羲之的书法风格是什么？</text>
       </view>
-      <view class="message-item user-message" wx:for="{{userMessages}}" wx:key="index">
-        <view class="message-content user-content">
-          <text>{{item.content}}</text>
-        </view>
-        <view class="message-avatar user-avatar">👤</view>
+      <view class="faq-item" bindtap="selectFaq" data-question="国画的基本技法有哪些？">
+        <text class="faq-question">国画的基本技法有哪些？</text>
       </view>
-    </view>
-    
-    <view class="input-section">
-      <input class="input-box" placeholder="请输入你的问题..." bindinput="bindInput" value="{{inputValue}}" />
-      <view class="send-btn" bindtap="sendMessage">
-        <text class="send-icon">➤</text>
+      <view class="faq-item" bindtap="selectFaq" data-question="《清明上河图》的作者是谁？">
+        <text class="faq-question">《清明上河图》的作者是谁？</text>
+      </view>
+      <view class="faq-item" bindtap="selectFaq" data-question="书法的五种书体是什么？">
+        <text class="faq-question">书法的五种书体是什么？</text>
       </view>
     </view>
   </view>
   
-  <view class="faq-section">
-    <text class="section-title">常见问题</text>
-    <view class="faq-list">
-      <view class="faq-item" bindtap="selectFaq" wx:for="{{faqList}}" wx:key="index" data-question="{{item.question}}">
-        <text class="faq-question">{{item.question}}</text>
+  <view class="input-section">
+    <text class="section-title">提出问题</text>
+    <view class="input-container">
+      <input 
+        class="input" 
+        placeholder="输入您的问题..."
+        placeholder-class="input-placeholder"
+        bindinput="bindInput"
+        value="{{inputValue}}"
+      />
+      <button class="send-button" bindtap="sendMessage">
+        <text>发送</text>
+      </button>
+    </view>
+  </view>
+  
+  <view class="response-section" wx:if="{{showResponse}}">
+    <text class="response-title">AI回答</text>
+    <view class="response-content">
+      <view class="loading" wx:if="{{loading}}">
+        <text>AI正在思考...</text>
+      </view>
+      <view wx:else>
+        <text class="user-question">Q: {{userQuestion}}</text>
+        <text class="ai-answer">A: {{aiAnswer}}</text>
       </view>
     </view>
   </view>

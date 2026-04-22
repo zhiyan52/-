@@ -1,0 +1,42 @@
+<!-- 作品详情页 -->
+<view class="detail-container">
+  <!-- 作品图片 -->
+  <view class="image-section">
+    <image class="artwork-image" src="{{artwork.image}}"></image>
+  </view>
+  
+  <!-- 作品信息 -->
+  <view class="info-section">
+    <text class="artwork-title">{{artwork.name}}</text>
+    <text class="artwork-author">{{artwork.author}} · {{artwork.period}}</text>
+    <text class="artwork-category">{{artwork.category === 'calligraphy' ? '书法' : '国画'}}</text>
+  </view>
+  
+  <!-- 作品详情 -->
+  <view class="detail-section">
+    <view class="detail-item">
+      <text class="detail-label">创作背景</text>
+      <text class="detail-content">{{artwork.background}}</text>
+    </view>
+    <view class="detail-item">
+      <text class="detail-label">艺术特点</text>
+      <text class="detail-content">{{artwork.features}}</text>
+    </view>
+    <view class="detail-item">
+      <text class="detail-label">历史地位</text>
+      <text class="detail-content">{{artwork.status}}</text>
+    </view>
+  </view>
+  
+  <!-- AI讲解按钮 -->
+  <view class="ai-section">
+    <button class="ai-button" bindtap="getAIExplanation">
+      <text class="ai-button-text">AI智能讲解</text>
+    </button>
+  </view>
+  
+  <!-- 底部装饰 -->
+  <view class="footer-section">
+    <text class="footer-text">传承经典，品味艺术</text>
+  </view>
+</view>

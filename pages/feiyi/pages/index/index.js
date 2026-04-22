@@ -286,6 +286,34 @@ Page({
     });
   },
 
+  // 导航到智能导览
+  navigateToAI() {
+    wx.navigateTo({
+      url: '/feiyi/zhineng/daolan/nfyiyi_guide'
+    });
+  },
+
+  // 导航到文化问答
+  navigateToQA() {
+    wx.navigateTo({
+      url: '/feiyi/zhineng/wenda/qa'
+    });
+  },
+
+  // 导航到个性化推荐
+  navigateToRecommend() {
+    wx.navigateTo({
+      url: '/pages/feiyi/ai/ai-recommend'
+    });
+  },
+
+  // 导航到语音讲解
+  navigateToVoice() {
+    wx.navigateTo({
+      url: '/pages/feiyi/ai/ai-voice'
+    });
+  },
+
   _syncAudioStatus() {
     try {
       const status = AudioManager.getStatus();

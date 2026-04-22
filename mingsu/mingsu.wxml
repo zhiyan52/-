@@ -1,0 +1,47 @@
+<view class="mingsu-container">
+  <!-- 顶部品牌 -->
+  <view class="brand-header">
+    <view class="brand-content">
+      <image class="brand-bg" src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20traditional%20folk%20culture%20background%20with%20ink%20painting%20style%2C%20bamboo%20and%20traditional%20patterns&image_size=landscape_16_9"></image>
+      <view class="brand-title">
+        <text class="main-title">岁时节令</text>
+        <text class="sub-title">民俗风物</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能模块 -->
+  <view class="modules-section">
+    <view class="section-title">
+      <text>民俗功能</text>
+    </view>
+    <view class="modules-grid">
+      <view class="module-card" wx:for="{{modules}}" wx:key="id" bindtap="navigateToModule" data-id="{{item.id}}">
+        <view class="module-icon">{{item.icon}}</view>
+        <text class="module-name">{{item.name}}</text>
+        <text class="module-desc">{{item.desc}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 精选民俗 -->
+  <view class="featured-section">
+    <view class="section-title">
+      <text>精选民俗</text>
+    </view>
+    <view class="featured-grid">
+      <view class="featured-card" wx:for="{{featuredItems}}" wx:key="id" bindtap="viewFeatured" data-id="{{item.id}}">
+        <image class="featured-image" src="{{item.image}}" mode="aspectFill"></image>
+        <text class="featured-name">{{item.name}}</text>
+        <text class="featured-desc">{{item.desc}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="footer-section">
+    <text class="footer-text">传承中华传统文化</text>
+    <text class="footer-subtext">感受民俗风物之美</text>
+    <text class="footer-copyright">© 2026 吴雅文轩</text>
+  </view>
+</view>

@@ -1,0 +1,30 @@
+<view class="gallery-container">
+  <!-- 收集进度 -->
+  <view class="collect-progress">
+    <view class="progress-ring">
+      <text class="progress-percent">{{collectProgress}}%</text>
+    </view>
+    <view class="progress-info">
+      <text class="progress-title">图鉴收集</text>
+      <text class="progress-count">{{collectedCount}}/{{totalCount}}</text>
+    </view>
+  </view>
+
+  <!-- 分类图鉴 -->
+  <view class="gallery-grid">
+    <view class="category-card" wx:for="{{categories}}" wx:key="id">
+      <text class="category-icon">{{item.icon}}</text>
+      <text class="category-name">{{item.name}}</text>
+      <view class="pattern-list">
+        <view class="pattern-dot {{collected[pattern.id] ? 'collected' : ''}}" 
+              wx:for="{{getPatternsByCategory(item.id)}}" 
+              wx:for-item="pattern"
+              wx:key="pattern.id"
+              bindtap="viewDetail"
+              data-id="{{pattern.id}}">
+          <text class="dot-tooltip">{{pattern.name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

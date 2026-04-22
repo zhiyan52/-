@@ -1,0 +1,134 @@
+ <!-- pages/craftsmanship/craftsmanship.wxml -->
+<view class="container">
+  <!-- 顶部标题区 -->
+  <view class="header">
+    <text class="title">匠心技艺馆</text>
+    <text class="subtitle">非遗工序 · 毫厘之间见匠心</text>
+  </view>
+
+  <!-- 非遗项目选择器 -->
+  <scroll-view class="project-selector" scroll-x="true" show-scrollbar="false">
+    <view 
+      wx:for="{{projects}}" 
+      wx:key="id"
+      class="project-tab {{currentProject.id === item.id ? 'active' : ''}}"
+      bindtap="switchProject"
+      data-id="{{item.id}}"
+    >
+      <image class="tab-icon" src="{{item.icon}}" mode="aspectFit"/>
+      <text class="tab-name">{{item.name}}</text>
+    </view>
+  </scroll-view>
+
+  <!-- 项目简介卡片 -->
+  <view class="intro-card">
+    <image class="intro-bg" src="{{currentProject.cover}}" mode="aspectFill"/>
+    <view class="intro-mask">
+      <text class="intro-title">{{currentProject.name}}</text>
+      <text class="intro-desc">{{currentProject.description}}</text>
+    </view>
+  </view>
+
+  <!-- 时间轴滑动区域 -->
+  <view class="timeline-section">
+    <view class="section-title">
+      <text class="title-text">工序时间轴</text>
+      <text class="step-counter">{{currentStepIndex + 1}} / {{currentProject.steps.length}}</text>
+    </view>
+    
+    <!-- 时间轴进度条 -->
+    <view class="timeline-track">
+      <view class="timeline-progress" style="width: {{progressPercent}}"></view>
+      <view class="timeline-dots">
+        <view 
+          wx:for="{{currentProject.steps}}" 
+          wx:key="index"
+          class="dot {{index <= currentStepIndex ? 'active' : ''}} {{index === currentStepIndex ? 'current' : ''}}"
+          bindtap="jumpToStep"
+          data-index="{{index}}"
+        ></view>
+      </view>
+    </view>
+
+    <!-- 滑动容器 -->
+    <swiper 
+      class="step-swiper" 
+      current="{{currentStepIndex}}"
+      bindchange="onSwiperChange"
+      duration="500"
+      circular="false"
+    >
+      <swiper-item wx:for="{{currentProject.steps}}" wx:key="index">
+        <view class="step-card">
+          <!-- 步骤编号与标题 -->
+          <view class="step-header">
+            <view class="step-number">步骤 {{index + 1}}</view>
+            <text class="step-name">{{item.name}}</text>
+          </view>
+
+          <!-- 动画演示区 -->
+          <view class="animation-area">
+            <image 
+              class="step-image {{isAnimating ? 'animate-slow' : ''}}"
+              src="{{item.image}}"
+              mode="aspectFit"
+              bindtap="toggleAnimation"
+            />
+            <view class="play-hint" wx:if="{{!isAnimating}}">
+              <text class="hint-text">点击播放慢动作</text>
+            </view>
+          </view>
+
+          <!-- 步骤描述 -->
+          <view class="step-description">
+            <text>{{item.description}}</text>
+          </view>
+
+          <!-- 关键工序标记 -->
+          <view class="key-step-badge" wx:if="{{item.isKeyStep}}">
+            <text class="badge-text">关键工序</text>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 细节放大镜区域 -->
+  <view class="magnifier-section" wx:if="{{currentStep.isKeyStep}}">
+    <view class="section-title">
+      <text class="title-text">细节放大镜</text>
+      <text class="subtitle-text">{{currentStep.detailTitle}}</text>
+    </view>
+    
+    <view class="detail-gallery">
+      <scroll-view scroll-x="true" class="detail-scroll" show-scrollbar="false">
+        <view 
+          wx:for="{{currentStep.detailImages}}" 
+          wx:key="index"
+          class="detail-item"
+          bindtap="previewDetailImage"
+          data-src="{{item}}"
+        >
+          <image class="detail-image" src="{{item}}" mode="aspectFill"/>
+          <view class="detail-overlay">
+            <text class="detail-hint">点击查看高清细节</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    
+    <view class="detail-desc">
+      <text>{{currentStep.detailDescription}}</text>
+    </view>
+  </view>
+
+  <!-- 底部导航 -->
+  <view class="bottom-nav">
+    <view class="nav-btn prev {{currentStepIndex === 0 ? 'disabled' : ''}}" bindtap="prevStep">
+      <text>上一步</text>
+    </view>
+    <view class="nav-btn next {{currentStepIndex === currentProject.steps.length - 1 ? 'disabled' : ''}}" bindtap="nextStep">
+      <text>下一步</text>
+    </view>
+  </view>
+</view>

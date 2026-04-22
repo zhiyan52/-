@@ -1,0 +1,181 @@
+/* AI书画智能讲解样式 */
+.ai-lecture-container {
+  background-color: #f5f2e9;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+/* 顶部标题 */
+.header-section {
+  text-align: center;
+  margin-bottom: 30rpx;
+  padding: 30rpx 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 10rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.header-subtitle {
+  font-size: 24rpx;
+  color: #6b5344;
+  display: block;
+}
+
+/* 作品选择 */
+.selection-section {
+  margin-bottom: 30rpx;
+}
+
+.section-label {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 20rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.work-card {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15rpx;
+  padding: 15rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+  border: 3rpx solid transparent;
+}
+
+.work-card:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.15);
+}
+
+.work-card.selected {
+  border-color: #8B4513;
+  box-shadow: 0 4rpx 12rpx rgba(139, 69, 19, 0.3);
+  background-color: rgba(255, 248, 235, 0.9);
+}
+
+.work-image {
+  width: 100%;
+  height: 150rpx;
+  border-radius: 10rpx;
+  object-fit: cover;
+  margin-bottom: 10rpx;
+}
+
+.work-name {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 5rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.work-author {
+  font-size: 20rpx;
+  color: #6b5344;
+  display: block;
+}
+
+/* 讲解内容 */
+.explanation-section {
+  margin-bottom: 30rpx;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.explanation-content {
+  max-height: 400rpx;
+  overflow-y: auto;
+}
+
+.explanation-text {
+  font-size: 24rpx;
+  color: #6b5344;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* 操作按钮 */
+.action-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+
+.action-button {
+  background-color: #8B4513;
+  color: #ffffff;
+  border-radius: 30rpx;
+  padding: 20rpx 60rpx;
+  font-size: 28rpx;
+  font-family: '楷体', 'KaiTi', serif;
+  box-shadow: 0 4rpx 12rpx rgba(139, 69, 19, 0.3);
+  transition: all 0.3s ease;
+}
+
+.action-button:hover:not([disabled]) {
+  background-color: #6b3410;
+  transform: translateY(-3rpx);
+  box-shadow: 0 6rpx 16rpx rgba(139, 69, 19, 0.4);
+}
+
+.action-button[disabled] {
+  background-color: #9e8b7c;
+  box-shadow: none;
+}
+
+.button-text {
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 底部装饰 */
+.footer-section {
+  text-align: center;
+  padding: 20rpx 0;
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: #9e8b7c;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 4rpx;
+  height: 4rpx;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(139, 69, 19, 0.1);
+  border-radius: 2rpx;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 69, 19, 0.3);
+  border-radius: 2rpx;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 69, 19, 0.5);
+}

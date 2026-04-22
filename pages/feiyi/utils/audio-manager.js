@@ -9,6 +9,7 @@ class AudioManager {
     this.currentHeritageId = '';
     this.playlist = [];
     this.isPlaying = false;
+    this.events = {};
   }
 
   static getInstance() {
@@ -18,8 +19,32 @@ class AudioManager {
     return AudioManager.instance;
   }
 
+  // 绑定事件
+  on(event, callback) {
+    if (!this.events[event]) {
+      this.events[event] = [];
+    }
+    this.events[event].push(callback);
+  }
+
+  // 解绑事件
+  off(event, callback) {
+    if (this.events[event]) {
+      this.events[event] = this.events[event].filter(cb => cb !== callback);
+    }
+  }
+
+  // 触发事件
+  emit(event, data) {
+    if (this.events[event]) {
+      this.events[event].forEach(callback => {
+        callback(data);
+      });
+    }
+  }
+
   // 播放音频
-  play(audioUrl, heritageId) {
+  play(heritageId, audioUrl) {
     if (this.currentAudio) {
       this.currentAudio.stop();
     }
@@ -30,14 +55,27 @@ class AudioManager {
     this.isPlaying = true;
 
     this.currentAudio.play();
+    this.emit('onPlay', { heritageId: this.currentHeritageId, src: audioUrl });
 
     this.currentAudio.onEnded(() => {
       this.isPlaying = false;
+      this.emit('onEnded', { heritageId: this.currentHeritageId });
     });
 
     this.currentAudio.onError((err) => {
       console.error('音频播放失败:', err);
       this.isPlaying = false;
+    });
+
+    // 监听进度
+    this.currentAudio.onTimeUpdate(() => {
+      if (this.currentAudio && this.isPlaying) {
+        this.emit('onProgress', {
+          heritageId: this.currentHeritageId,
+          progress: this.currentAudio.currentTime,
+          duration: this.currentAudio.duration
+        });
+      }
     });
   }
 
@@ -46,6 +84,7 @@ class AudioManager {
     if (this.currentAudio) {
       this.currentAudio.pause();
       this.isPlaying = false;
+      this.emit('onPause', { heritageId: this.currentHeritageId });
     }
   }
 

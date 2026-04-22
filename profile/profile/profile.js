@@ -63,11 +63,15 @@ Page({
    */
   checkLoginStatus() {
     const userInfo = wx.getStorageSync('userInfo');
+    console.log('Check login status:', userInfo);
     if (userInfo) {
       this.setData({
         isLoggedIn: true,
         userInfo: userInfo
       });
+      console.log('User logged in');
+    } else {
+      console.log('User not logged in');
     }
   },
 
@@ -192,11 +196,24 @@ Page({
    * 查看我的收藏
    */
   viewCollection() {
+    console.log('viewCollection called');
     if (!this.data.isLoggedIn) {
+      console.log('Not logged in');
       wx.showToast({ title: '请先登录', icon: 'none' });
       return;
     }
-    wx.showToast({ title: '查看收藏', icon: 'none' });
+    // 跳转到收藏页面
+    console.log('Navigating to collection page');
+    wx.navigateTo({
+      url: '/pages/collection/collection',
+      success: () => {
+        console.log('Navigation success');
+      },
+      fail: (err) => {
+        console.error('跳转失败:', err);
+        wx.showToast({ title: '页面加载失败', icon: 'error' });
+      }
+    });
   },
 
   /**

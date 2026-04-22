@@ -1,2 +1,36 @@
-<!--diancang/diancang/ai/ai-recommend.wxml-->
-<text>diancang/diancang/ai/ai-recommend.wxml</text>
+<!-- 典藏智能推荐页面 -->
+<view class="recommend-container">
+  <view class="header">
+    <text class="title">典藏智能推荐</text>
+    <text class="subtitle">文心先生为您精选</text>
+  </view>
+  
+  <view class="preference-section">
+    <text class="section-title">选择您的兴趣</text>
+    <view class="interest-tags">
+      <view class="tag {{selectedInterests.includes(tag) ? 'active' : ''}}" wx:for="{{interestTags}}" wx:key="index" bindtap="toggleInterest" data-tag="{{tag}}">
+        <text>{{tag}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="recommend-section" wx:if="{{recommendations.length > 0}}">
+    <text class="section-title">为您推荐</text>
+    <view class="recommend-list">
+      <view class="recommend-item" wx:for="{{recommendations}}" wx:key="id">
+        <image class="item-image" src="{{item.image}}" mode="aspectFill" />
+        <view class="item-info">
+          <text class="item-title">{{item.title}}</text>
+          <text class="item-author">{{item.author}}</text>
+          <text class="item-desc">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="action-buttons">
+    <view class="action-btn primary" bindtap="generateRecommendations">
+      <text>生成推荐</text>
+    </view>
+  </view>
+</view>

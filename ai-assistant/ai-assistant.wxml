@@ -1,121 +1,22 @@
-<!-- ai-assistant/ai-assistant.wxml -->
-<view class="ai-assistant-container">
-  <!-- 顶部导航 -->
-  <view class="header">
-    <view class="header-left" bindtap="goBack">
-      <text class="back-icon">←</text>
-    </view>
-    <view class="header-title">AI文化助手</view>
-    <view class="header-right" bindtap="showSettings">
-      <text class="settings-icon">⚙️</text>
-    </view>
+<view class="container">
+  <view class="title">古建展厅AI助手</view>
+  
+  <!-- 输入框 -->
+  <view class="input-area">
+    <textarea 
+      placeholder="请输入你想了解的古建筑问题..." 
+      value="{{userInput}}" 
+      bindinput="onInput"
+      disabled="{{loading}}"
+    />
+    <button bindtap="sendQuestion" disabled="{{loading}}">
+      {{loading ? "AI思考中..." : "发送问题"}}
+    </button>
   </view>
 
-  <!-- 聊天区域 -->
-  <scroll-view class="chat-container" scroll-y="true" scroll-into-view="{{scrollToView}}" enable-back-to-top>
-    <!-- 欢迎消息 -->
-    <view class="message-item ai-message" id="msg-0">
-      <view class="message-avatar">🤖</view>
-      <view class="message-content">
-        <view class="message-text">
-          <text>你好！我是AI文化助手，有什么可以帮你的吗？
-
-我可以：
-• 解答古建、非遗、民俗等文化问题
-• 智能推荐你感兴趣的文化内容
-• 生成文化学习计划
-• 解读古籍名句
-
-随时可以向我提问，也可以使用语音输入哦！</text>
-        </view>
-      </view>
-    </view>
-
-    <!-- 聊天消息 -->
-    <view class="message-item user-message" wx:for="{{messages}}" wx:key="id" id="msg-{{item.id}}">
-      <view class="message-content user-content">
-        <view class="message-text">{{item.content}}</view>
-      </view>
-      <view class="message-avatar user-avatar">{{item.avatar}}</view>
-    </view>
-
-    <view class="message-item ai-message" wx:for="{{aiResponses}}" wx:key="id" id="msg-{{item.id}}">
-      <view class="message-avatar">🤖</view>
-      <view class="message-content">
-        <view class="message-text">{{item.content}}</view>
-        <view class="message-actions" wx:if="{{item.actions && item.actions.length > 0}}">
-          <view class="action-item" wx:for="{{item.actions}}" wx:key="index" bindtap="handleAction" data-action="{{item}}">
-            {{item.text}}
-          </view>
-        </view>
-      </view>
-    </view>
-
-    <!-- 加载中 -->
-    <view class="message-item ai-message" wx:if="{{loading}}">
-      <view class="message-avatar">🤖</view>
-      <view class="message-content">
-        <view class="loading-indicator">
-          <view class="loading-dot"></view>
-          <view class="loading-dot"></view>
-          <view class="loading-dot"></view>
-        </view>
-      </view>
-    </view>
-  </scroll-view>
-
-  <!-- 输入区域 -->
-  <view class="input-container">
-    <view class="input-wrapper">
-      <input 
-        class="message-input" 
-        placeholder="输入你的问题..." 
-        value="{{inputValue}}"
-        bindinput="onInput"
-        bindconfirm="sendMessage"
-      />
-      <view class="input-actions">
-        <view class="action-btn" bindtap="toggleVoiceInput">
-          <text class="action-icon">{{isVoiceInput ? '📝' : '🎤'}}</text>
-        </view>
-        <view class="action-btn" bindtap="clearInput">
-          <text class="action-icon">✕</text>
-        </view>
-      </view>
-    </view>
-    <view class="send-btn" bindtap="sendMessage" wx:if="{{inputValue}}">
-      <text class="send-icon">➤</text>
-    </view>
-  </view>
-
-  <!-- 快捷问题 -->
-  <view class="quick-questions" wx:if="{{showQuickQuestions}}">
-    <view class="quick-question" wx:for="{{quickQuestions}}" wx:key="index" bindtap="selectQuickQuestion" data-question="{{item}}">
-      {{item}}
-    </view>
-  </view>
-
-  <!-- 设置弹窗 -->
-  <view class="settings-modal" wx:if="{{showSettingsModal}}" bindtap="hideSettings">
-    <view class="settings-content" catchtap="stopPropagation">
-      <view class="settings-header">
-        <view class="settings-title">设置</view>
-        <view class="settings-close" bindtap="hideSettings">×</view>
-      </view>
-      <view class="settings-body">
-        <view class="setting-item">
-          <text class="setting-label">语音输入</text>
-          <switch checked="{{settings.voiceInput}}" bindchange="toggleSetting" data-key="voiceInput"></switch>
-        </view>
-        <view class="setting-item">
-          <text class="setting-label">智能推荐</text>
-          <switch checked="{{settings.smartRecommend}}" bindchange="toggleSetting" data-key="smartRecommend"></switch>
-        </view>
-        <view class="setting-item">
-          <text class="setting-label">学习计划</text>
-          <switch checked="{{settings.studyPlan}}" bindchange="toggleSetting" data-key="studyPlan"></switch>
-        </view>
-      </view>
-    </view>
+  <!-- AI回答区域 -->
+  <view class="answer-area" wx:if="{{answer}}">
+    <view class="answer-title">AI回答：</view>
+    <view class="answer-content">{{answer}}</view>
   </view>
 </view>

@@ -1,0 +1,36 @@
+<view class="masters-container">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="header-title">书画名家图鉴</text>
+    <text class="header-subtitle">了解历代书画名家的艺术成就</text>
+  </view>
+  
+  <!-- 分类标签 -->
+  <view class="tab-container">
+    <view class="tab-item {{activeTab === 'calligraphy' ? 'active' : ''}}" bindtap="switchTab" data-tab="calligraphy">
+      <text class="tab-text">书法名家</text>
+    </view>
+    <view class="tab-item {{activeTab === 'painting' ? 'active' : ''}}" bindtap="switchTab" data-tab="painting">
+      <text class="tab-text">国画名家</text>
+    </view>
+  </view>
+  
+  <!-- 名家列表 -->
+  <view class="masters-list">
+    <view class="master-item" wx:for="{{mastersList}}" wx:key="id" bindtap="viewMasterDetail" data-id="{{item.id}}">
+      <image class="master-image" src="{{item.image}}"></image>
+      <view class="master-info">
+        <text class="master-name">{{item.name}}</text>
+        <text class="master-dynasty">{{item.dynasty}}</text>
+        <text class="master-desc">{{item.desc}}</text>
+      </view>
+      <text class="master-arrow">→</text>
+    </view>
+  </view>
+  
+  <!-- 底部装饰 -->
+  <view class="footer-section">
+    <text class="footer-text">传承中华书画艺术</text>
+    <text class="footer-subtext">品味传统美学之美</text>
+  </view>
+</view>

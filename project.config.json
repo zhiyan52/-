@@ -1,6 +1,7 @@
 {
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
   "cloudfunctionRoot": "cloudfunctions/",
+  "cloudEnvId": "cloud1-8glc9jqob91870fc",
   "appid": "wx8d92e6f590c3804b",
   "setting": {
     "es6": false,
@@ -17,7 +18,7 @@
     "localPlugins": false,
     "disableUseStrict": false,
     "useCompilerPlugins": false,
-    "condition": false,
+    "condition": true,
     "swc": false,
     "disableSWC": true,
     "babelSetting": {
@@ -27,10 +28,13 @@
     }
   },
   "compileType": "miniprogram",
-  "simulatorPluginLibVersion": {},
+  "simulatorPluginLibVersion": {
+    "wxext14566970e7e9f62": "2.27.3"
+  },
   "packOptions": {
     "ignore": [],
     "include": []
   },
-  "editorSetting": {}
+  "editorSetting": {},
+  "projectArchitecture": "multiPlatform"
 }

@@ -52,6 +52,21 @@
     </view>
   </view>
   
+  <!-- 视觉参考图 -->
+  <view class="visual-section" wx:if="{{visualReferences.length > 0}}">
+    <view class="section-header">
+      <text class="section-title">视觉参考</text>
+      <text class="section-subtitle">AI生成的创作灵感</text>
+    </view>
+    
+    <view class="visual-list">
+      <view class="visual-item" wx:for="{{visualReferences}}" wx:key="index">
+        <image class="visual-image" src="{{item.image}}" mode="aspectFill" />
+        <text class="visual-desc">{{item.description}}</text>
+      </view>
+    </view>
+  </view>
+  
   <!-- 浏览历史 -->
   <view class="history-section">
     <text class="section-title">浏览历史</text>

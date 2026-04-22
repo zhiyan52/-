@@ -2,7 +2,7 @@
 <view class="guide-container">
   <view class="header">
     <text class="title">典藏智能导览</text>
-    <text class="subtitle">AI带你探索典籍文化</text>
+    <text class="subtitle">文心先生带您探文脉</text>
   </view>
   
   <view class="selection-section">
@@ -21,11 +21,11 @@
   <view class="guide-content" wx:if="{{selectedBook}}">
     <view class="content-header">
       <text class="content-title">{{currentBook.name}}</text>
-      <view class="guide-tag">AI讲解</view>
+      <view class="guide-tag">文心讲解</view>
     </view>
     
     <view class="loading" wx:if="{{loading}}">
-      <text>AI正在生成讲解内容...</text>
+      <text>文心先生正在思考中...</text>
     </view>
     
     <view class="guide-text" wx:else>

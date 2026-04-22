@@ -1,0 +1,29 @@
+<view class="container">
+  <!-- 360°全景图区域 -->
+  <view 
+    class="pano-box" 
+    bindtouchstart="onTouchStart"
+    bindtouchmove="onTouchMove"
+  >
+    <image src="{{panoList[current]}}" class="pano-img" mode="aspectFill"></image>
+
+    <!-- 热点：用 data-index 传参 -->
+    <view class="spot" style="left:25%;top:40%" data-index="0" bindtap="openInfo">●</view>
+    <view class="spot" style="left:50%;top:22%" data-index="1" bindtap="openInfo">●</view>
+    <view class="spot" style="left:70%;top:55%" data-index="2" bindtap="openInfo">●</view>
+    <view class="spot" style="left:40%;top:70%" data-index="3" bindtap="openInfo">●</view>
+    <view class="spot" style="left:60%;top:15%" data-index="4" bindtap="openInfo">●</view>
+  </view>
+
+  <!-- 知识弹窗 -->
+  <view class="modal" wx:if="{{showModal}}">
+    <view class="card">
+      <view class="card-title">{{currentItem.name}}</view>
+      <view class="card-desc">{{currentItem.desc}}</view>
+      <view class="btns">
+        <button class="btn ai-btn" bindtap="generateStruct">AI生成结构图</button>
+        <button class="btn close-btn" bindtap="closeModal">关闭</button>
+      </view>
+    </view>
+  </view>
+</view>

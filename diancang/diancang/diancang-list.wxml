@@ -8,6 +8,7 @@
     </view>
     <text class="nav-center">典藏列表</text>
     <view class="nav-right">
+      <text class="filter-icon" bindtap="togglePinyin">拼音</text>
       <text class="filter-icon" bindtap="showFilter">🔍</text>
     </view>
   </view>
@@ -34,12 +35,16 @@
       <image class="item-image" src="{{item.image}}" mode="aspectFill" />
       <view class="item-info">
         <text class="item-title">{{item.title}}</text>
+        <text wx:if="{{showPinyin && item.pinyin}}" class="item-pinyin">{{item.pinyin}}</text>
         <text class="item-desc">{{item.desc}}</text>
         <view class="item-meta">
           <view class="meta-tag">{{item.category}}</view>
           <text class="meta-era">{{item.era}}</text>
           <text class="meta-views">{{item.views}}次浏览</text>
         </view>
+      </view>
+      <view class="favorite-btn" bindtap="toggleFavorite" data-id="{{item.id}}">
+        <text class="favorite-icon">{{favorites.includes(item.id) ? '❤️' : '🤍'}}</text>
       </view>
     </view>
   </view>

@@ -1,5 +1,5 @@
 /* 智能导览页面 - 传统中国风样式 */
-.guide-container {
+.ai-guide-container {
   padding: 30rpx;
   background-color: #E8F5E8;
   min-height: 100vh;

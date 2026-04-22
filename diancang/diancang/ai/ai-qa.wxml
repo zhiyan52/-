@@ -1,21 +1,21 @@
 <!-- 典藏文化问答页面 -->
 <view class="qa-container">
   <view class="header">
-    <text class="title">典藏文化问答</text>
-    <text class="subtitle">有问题，问AI</text>
+    <text class="title">AI文心先生</text>
+    <text class="subtitle">君子有酒，嘉宾式燕以敖。今日与君论何典？</text>
   </view>
   
   <view class="chat-area">
     <view class="chat-bubble ai" wx:if="{{showResponse}}">
-      <view class="avatar ai-avatar">AI</view>
-      <view class="message">您好！我是典籍文化小助手，您可以问我任何关于古籍典籍的问题哦！</view>
+      <view class="avatar ai-avatar">文心</view>
+      <view class="message">欢迎来到古雅文轩，愿与君共探文脉。您有何疑问，尽管问我。</view>
     </view>
     <view class="chat-bubble user" wx:if="{{userQuestion}}">
       <view class="avatar user-avatar">我</view>
       <view class="message">{{userQuestion}}</view>
     </view>
     <view class="chat-bubble ai" wx:if="{{aiAnswer}}">
-      <view class="avatar ai-avatar">AI</view>
+      <view class="avatar ai-avatar">文心</view>
       <view class="message">
         <text wx:if="{{loading}}">正在思考中...</text>
         <text wx:else>{{aiAnswer}}</text>

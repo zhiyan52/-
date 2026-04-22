@@ -113,10 +113,10 @@ Page({
         url = '/diancang/diancang/diancang';
         break;
       case 'mingsu':
-        url = '/mingsu/mingsu/mingsu';
+        url = '/mingsu/mingsu';
         break;
       case 'shufa':
-        url = '/shufa/shufa/shufa';
+        url = '/shuhua/shuhua/shuhua';
         break;
       default:
         url = '/pages/index/index';

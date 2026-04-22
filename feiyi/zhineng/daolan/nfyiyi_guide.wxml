@@ -1,0 +1,30 @@
+<view class="container">
+  <picker mode="selector" range="{{categories}}" bindchange="onCategoryChange">
+    <view class="picker">选择非遗品类：{{currentCategory}}</view>
+  </picker>
+
+  <view wx:if="{{isLoading}}">
+    <view class="loading">正在生成智能导览...</view>
+  </view>
+
+  <view wx:if="{{!isLoading && guideData}}">
+    <view class="guide-card">
+      <view class="step-title">文化背景</view>
+      <text class="step-content">文化背景内容</text>
+
+      <view class="step-title">核心工序</view>
+      <text class="step-content">核心工序内容</text>
+
+      <view class="image-container">
+        <image src="{{imageUrl}}" mode="widthFix" class="step-image"></image>
+        <view class="image-desc">AI生成工序示意图</view>
+      </view>
+
+      <view class="step-title">经典案例</view>
+      <text class="step-content">经典案例内容</text>
+
+      <view class="step-title">创作灵感</view>
+      <text class="step-content">创作灵感内容</text>
+    </view>
+  </view>
+</view>

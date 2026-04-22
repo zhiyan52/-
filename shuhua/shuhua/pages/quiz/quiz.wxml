@@ -1,0 +1,70 @@
+<!-- 书画知识轻答题 -->
+<view class="quiz-container">
+  <!-- 顶部标题 -->
+  <view class="header-section">
+    <text class="header-title">书画知识答题</text>
+    <text class="header-subtitle">测试你的书画知识储备</text>
+  </view>
+  
+  <!-- 答题区域 -->
+  <view class="quiz-section" wx:if="{{!showResult}}">
+    <!-- 题目信息 -->
+    <view class="question-info">
+      <text class="question-number">第 {{currentQuestion + 1}} 题 / 共 {{questions.length}} 题</text>
+      <text class="score">得分：{{score}}</text>
+    </view>
+    
+    <!-- 题目内容 -->
+    <view class="question-content">
+      <text class="question-text">{{currentQuestionData.question}}</text>
+    </view>
+    
+    <!-- 选项 -->
+    <view class="options-list">
+      <view class="option-item" wx:for="{{currentQuestionData.options}}" wx:key="*this"
+            class="{{selectedOption === index ? 'selected' : ''}} {{answered && index === currentQuestionData.correctIndex ? 'correct' : ''}} {{answered && selectedOption === index && selectedOption !== currentQuestionData.correctIndex ? 'wrong' : ''}}"
+            bindtap="selectOption" data-index="{{index}}"
+            wx:if="{{!answered}}">
+        <text class="option-letter">{{String.fromCharCode(65 + index)}}</text>
+        <text class="option-text">{{item}}</text>
+      </view>
+      <view class="option-item" wx:for="{{currentQuestionData.options}}" wx:key="*this"
+            class="{{index === currentQuestionData.correctIndex ? 'correct' : ''}} {{selectedOption === index && selectedOption !== currentQuestionData.correctIndex ? 'wrong' : ''}}"
+            wx:else>
+        <text class="option-letter">{{String.fromCharCode(65 + index)}}</text>
+        <text class="option-text">{{item}}</text>
+      </view>
+    </view>
+    
+    <!-- 答题反馈 -->
+    <view class="feedback" wx:if="{{answered}}">
+      <text class="feedback-text">{{isCorrect ? '回答正确！' : '回答错误！'}}</text>
+      <text class="feedback-explanation">{{currentQuestionData.explanation}}</text>
+    </view>
+    
+    <!-- 操作按钮 -->
+    <view class="action-buttons">
+      <button class="action-button" bindtap="nextQuestion" wx:if="{{answered && currentQuestion < questions.length - 1}}">
+        <text class="button-text">下一题</text>
+      </button>
+      <button class="action-button" bindtap="showFinalResult" wx:if="{{answered && currentQuestion === questions.length - 1}}">
+        <text class="button-text">查看结果</text>
+      </button>
+    </view>
+  </view>
+  
+  <!-- 结果页面 -->
+  <view class="result-section" wx:if="{{showResult}}">
+    <text class="result-title">答题完成</text>
+    <text class="result-score">你的得分：{{score}} / {{questions.length * 10}}</text>
+    <text class="result-text">{{getResultText()}}</text>
+    <button class="action-button" bindtap="restartQuiz">
+      <text class="button-text">重新答题</text>
+    </button>
+  </view>
+  
+  <!-- 底部装饰 -->
+  <view class="footer-section">
+    <text class="footer-text">以文会友，以书修身</text>
+  </view>
+</view>

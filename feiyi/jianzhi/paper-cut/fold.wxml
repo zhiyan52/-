@@ -1,0 +1,38 @@
+<view class="fold-container">
+  <!-- 进度指示 -->
+  <view class="fold-progress">
+    <view class="progress-dot {{index <= currentStep ? 'active' : ''}}" 
+          wx:for="{{totalSteps}}" 
+          wx:key="index"></view>
+  </view>
+
+  <!-- 折叠演示区 -->
+  <view class="fold-stage">
+    <view class="paper-demo {{animating ? 'animating' : ''}} {{'fold-' + foldType + '-' + currentStep}}">
+      <view class="paper-sheet"></view>
+      <view class="fold-line" wx:if="{{currentStep > 0}}"></view>
+    </view>
+    
+    <!-- 手势提示 -->
+    <view class="gesture-hint" wx:if="{{currentStep === 0}}">
+      <text class="hint-text">👆 点击下一步查看折叠</text>
+    </view>
+  </view>
+
+  <!-- 步骤说明 -->
+  <view class="step-info">
+    <text class="step-num">步骤 {{currentStep + 1}}/{{totalSteps}}</text>
+    <text class="step-desc">{{stepDesc}}</text>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="fold-actions">
+    <button class="btn-prev" bindtap="prevStep" disabled="{{currentStep === 0}}">上一步</button>
+    
+    <button class="btn-skip" bindtap="skipTutorial" wx:if="{{canSkip}}">跳过</button>
+    
+    <button class="btn-next primary" bindtap="nextStep">
+      {{currentStep < totalSteps - 1 ? '下一步' : '开始剪纸'}}
+    </button>
+  </view>
+</view>

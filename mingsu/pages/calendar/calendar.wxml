@@ -1,0 +1,68 @@
+<view class="calendar-container">
+  <!-- 顶部标签切换 -->
+  <view class="tab-container">
+    <view class="tab-item {{activeTab === 'festival' ? 'active' : ''}}" bindtap="switchTab" data-tab="festival">
+      <text class="tab-text">传统节日</text>
+    </view>
+    <view class="tab-item {{activeTab === 'solar' ? 'active' : ''}}" bindtap="switchTab" data-tab="solar">
+      <text class="tab-text">二十四节气</text>
+    </view>
+  </view>
+
+  <!-- 节日列表 -->
+  <view class="list-container" wx:if="{{activeTab === 'festival'}}">
+    <view class="festival-item" wx:for="{{festivals}}" wx:key="id" bindtap="selectItem" data-item="{{item}}">
+      <image class="item-image" src="{{item.image}}" mode="aspectFill"></image>
+      <view class="item-content">
+        <text class="item-name">{{item.name}}</text>
+        <text class="item-date">{{item.date}}</text>
+        <text class="item-desc">{{item.meaning}}</text>
+      </view>
+      <view class="item-arrow">›</view>
+    </view>
+  </view>
+
+  <!-- 节气列表 -->
+  <view class="list-container" wx:if="{{activeTab === 'solar'}}">
+    <view class="festival-item" wx:for="{{solarTerms}}" wx:key="id" bindtap="selectItem" data-item="{{item}}">
+      <image class="item-image" src="{{item.image}}" mode="aspectFill"></image>
+      <view class="item-content">
+        <text class="item-name">{{item.name}}</text>
+        <text class="item-date">{{item.date}}</text>
+        <text class="item-desc">{{item.meaning}}</text>
+      </view>
+      <view class="item-arrow">›</view>
+    </view>
+  </view>
+
+  <!-- 详情弹窗 -->
+  <view class="detail-modal" wx:if="{{selectedItem}}">
+    <view class="detail-content">
+      <view class="detail-header">
+        <text class="detail-title">{{selectedItem.name}}</text>
+        <view class="detail-close" bindtap="closeDetail">×</view>
+      </view>
+      <image class="detail-image" src="{{selectedItem.image}}" mode="aspectFill"></image>
+      <view class="detail-info">
+        <view class="info-item">
+          <text class="info-label">时间：</text>
+          <text class="info-value">{{selectedItem.date}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">来历：</text>
+          <text class="info-value">{{selectedItem.origin}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">民俗活动：</text>
+          <view class="activities-list">
+            <text class="activity-tag" wx:for="{{selectedItem.activities}}" wx:key="*this">{{item}}</text>
+          </view>
+        </view>
+        <view class="info-item">
+          <text class="info-label">文化寓意：</text>
+          <text class="info-value">{{selectedItem.meaning}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

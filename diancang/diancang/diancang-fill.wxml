@@ -1,0 +1,63 @@
+<!-- 古文填空练习页面 -->
+<view class="fill-container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text>←</text>
+    </view>
+    <text class="title">古文填空练习</text>
+    <view class="placeholder"></view>
+  </view>
+  
+  <!-- 题目区域 -->
+  <view class="question-section">
+    <view class="question-header">
+      <text class="question-number">第 {{currentQuestionIndex + 1}} 题</text>
+      <text class="question-source">{{currentQuestion.source}}</text>
+    </view>
+    
+    <view class="question-content">
+      <text wx:for="{{currentQuestion.content}}" wx:key="index" class="content-item">
+        <text wx:if="{{item.type === 'text'}}">{{item.text}}</text>
+        <view wx:else class="blank" data-index="{{item.index}}">
+          <text wx:if="{{!showAnswer && !selectedOptions[item.index]}}" class="blank-placeholder">_____</text>
+          <text wx:else class="blank-answer">{{selectedOptions[item.index] || item.correct}}</text>
+        </view>
+      </text>
+    </view>
+  </view>
+  
+  <!-- 选项区域 -->
+  <view class="options-section" wx:if="{{!showAnswer}}">
+    <text class="options-title">选择正确答案</text>
+    <view class="options-list">
+      <view class="option-item" wx:for="{{currentQuestion.options}}" wx:key="index" bindtap="selectOption" data-index="{{index}}">
+        <text class="option-letter">{{String.fromCharCode(65 + index)}}</text>
+        <text class="option-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 答案解析区域 -->
+  <view class="answer-section" wx:if="{{showAnswer}}">
+    <view class="answer-header">
+      <text class="answer-title">答案解析</text>
+      <text class="result {{isCorrect ? 'correct' : 'wrong'}}">{{isCorrect ? '✅ 回答正确' : '❌ 回答错误'}}</text>
+    </view>
+    <text class="answer-explanation">{{currentQuestion.explanation}}</text>
+  </view>
+  
+  <!-- 操作按钮 -->
+  <view class="action-buttons">
+    <button wx:if="{{!showAnswer}}" bindtap="submitAnswer" class="submit-btn">提交答案</button>
+    <button wx:else bindtap="nextQuestion" class="next-btn">下一题</button>
+  </view>
+  
+  <!-- 进度条 -->
+  <view class="progress-section">
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{(currentQuestionIndex + 1) / questions.length * 100}}%"></view>
+    </view>
+    <text class="progress-text">{{currentQuestionIndex + 1}} / {{questions.length}}</text>
+  </view>
+</view>

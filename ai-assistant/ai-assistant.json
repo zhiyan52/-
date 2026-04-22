@@ -5,5 +5,11 @@
   "backgroundColor": "#f8f9fa",
   "enablePullDownRefresh": false,
   "backgroundTextStyle": "dark",
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarButtons": [
+    {
+      "text": "⚙️",
+      "tap": "showSettings"
+    }
+  ]
 }

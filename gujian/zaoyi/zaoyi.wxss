@@ -1,0 +1,82 @@
+.container { 
+   padding: 30rpx; 
+   background-color: #f8f4e9; 
+   min-height: 100vh; 
+ } 
+
+ .title { 
+   font-size: 34rpx; 
+   font-weight: 600; 
+   text-align: center; 
+   margin-bottom: 30rpx; 
+   color: #8B4513; 
+ } 
+
+ .select-group { 
+   display: flex; 
+   justify-content: space-between; 
+   margin-bottom: 20rpx; 
+ } 
+
+ .picker { 
+   width: 45%; 
+   padding: 20rpx; 
+   background: #fff; 
+   border-radius: 12rpx; 
+   border: 1rpx solid #ddd; 
+   text-align: center; 
+   font-size: 28rpx; 
+ } 
+
+ .input-box { 
+   background: #fff; 
+   border-radius: 12rpx; 
+   padding: 20rpx; 
+   margin: 20rpx 0; 
+ } 
+
+ .generate-btn { 
+   background: #8B4513; 
+   color: #fff; 
+   border-radius: 12rpx; 
+   padding: 20rpx; 
+   font-size: 30rpx; 
+   margin: 20rpx 0; 
+ } 
+
+ .result-area { 
+   margin-top: 40rpx; 
+ } 
+
+ .component-image { 
+   width: 100%; 
+   border-radius: 12rpx; 
+ } 
+
+ .knowledge-card { 
+   background: #fff; 
+   border-radius: 12rpx; 
+   padding: 20rpx; 
+   margin-top: 20rpx; 
+ } 
+
+ .card-title { 
+   font-size: 30rpx; 
+   font-weight: bold; 
+   color: #8B4513; 
+   margin-bottom: 10rpx; 
+ } 
+
+ .card-content { 
+   font-size: 26rpx; 
+   line-height: 1.6; 
+   margin-bottom: 20rpx; 
+ } 
+
+ .save-btn { 
+   background: #f0e6d6; 
+   color: #8B4513; 
+   border-radius: 8rpx; 
+   padding: 10rpx; 
+   font-size: 26rpx; 
+ }

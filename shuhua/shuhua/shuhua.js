@@ -10,56 +10,72 @@ Page({
         image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/home/lunbo2.jpg'
       }
     ],
-    categoryList: [
+    // 功能模块数据
+    modules: [
+      { id: 'masters', name: '书画名家图鉴', icon: '👨‍🎨', desc: '了解历代书画名家' },
+      { id: 'artworks', name: '传世书画赏析', icon: '🖼️', desc: '欣赏经典传世作品' },
+      { id: 'ai-lecture', name: 'AI智能讲解', icon: '🎓', desc: 'AI解析书画艺术' },
+      { id: 'ai-image', name: 'AI意境生图', icon: '🎨', desc: '生成书画风格作品' },
+      { id: 'calligraphy', name: '书法字体科普', icon: '✍️', desc: '五大书体知识' },
+      { id: 'quiz', name: '书画知识答题', icon: '❓', desc: '测试书画知识' },
+      { id: 'cards', name: '书画佳句卡片', icon: '🎴', desc: '生成可保存卡片' },
+      { id: 'blind-box', name: '书画盲盒', icon: '🎁', desc: '每日一赏' }
+    ],
+    // 精选书画数据
+    featuredArtworks: [
       {
         id: 1,
-        name: '书法',
-        desc: '篆隶楷行草，临帖创作',
-        img: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/8eea8030d597d75ca17091f7ace26f5d.jpg?sign=b12162b9e3deb072134516573f116905&t=1776175850',
-        bgColor: '#2d3748'
+        name: '富春山居图',
+        author: '黄公望 · 元代',
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/fuchun.jpg'
       },
       {
         id: 2,
-        name: '国画',
-        desc: '山水花鸟人物，名家名作',
-        img: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/9b8d237c51e3b922d16dc3eae5723004.jpg?sign=e74ddbadb70750b501ac085fe694804b&t=1776176161',
-        bgColor: '#8B4513'
-      },
+        name: '千里江山图',
+        author: '王希孟 · 北宋',
+        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/qianli.jpg'
+      }
     ]
   },
 
-  goBack() {
-    wx.navigateBack();
+  onLoad() {
+    wx.setNavigationBarTitle({ title: '书画雅韵' });
   },
-  onCategoryTap(e) {
-    const id = parseInt(e.currentTarget.dataset.id); // 确保 id 是数字类型
 
-    // 核心：分包路径映射（直接用分包根目录，不包含pages）
-    const subPackagePageMap = {
-      1: '/shuhuaSub/shufa/shufa',   // 分包根目录/宫殿页面路径
-      2: '/shuhuaSub/guohua/guohua',     // 分包根目录/园林页面路径
+  // 导航到功能模块
+  navigateToModule(e) {
+    const { id } = e.currentTarget.dataset;
+
+    // 模块路径映射
+    const modulePathMap = {
+      'masters': '/shuhua/shuhua/pages/masters/masters',
+      'artworks': '/shuhua/shuhua/pages/artworks/artworks',
+      'ai-lecture': '/shuhua/shuhua/pages/ai-lecture/ai-lecture',
+      'ai-image': '/shuhua/shuhua/pages/ai-image/ai-image',
+      'calligraphy': '/shuhua/shuhua/pages/calligraphy/calligraphy',
+      'quiz': '/shuhua/shuhua/pages/quiz/quiz',
+      'cards': '/shuhua/shuhua/pages/cards/cards',
+      'blind-box': '/shuhua/shuhua/pages/blind-box/blind-box'
     };
 
-    // 获取目标路径并跳转
-    const targetUrl = subPackagePageMap[id];
+    const targetUrl = modulePathMap[id];
     if (targetUrl) {
-      // 先显示提示
-      const categoryItem = this.data.categoryList.find(item => item.id === id);
-      if (categoryItem) {
-        wx.showToast({
-          title: `点击了${categoryItem.name}`,
-          icon: 'none'
-        });
-      }
-      // 执行跳转
       wx.navigateTo({
         url: targetUrl
       });
     } else {
       wx.showToast({
-        title: '暂无该分类',
-        icon: 'error'
+        title: '该功能暂未开放',
+        icon: 'none'
       });
     }
   },
+
+  // 查看精选书画详情
+  viewArtworkDetail(e) {
+    const { id } = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `/shuhua/shuhua/pages/artwork-detail/artwork-detail?id=${id}`
+    });
+  }
 });

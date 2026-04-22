@@ -1,0 +1,160 @@
+/* 传世书画赏析库样式 */
+.artworks-container {
+  background-color: #f5f2e9;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+/* 顶部标题 */
+.header-section {
+  text-align: center;
+  margin-bottom: 30rpx;
+  padding: 30rpx 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.header-subtitle {
+  font-size: 24rpx;
+  color: #6b5344;
+  display: block;
+}
+
+/* 分类标签 */
+.category-tabs {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-bottom: 30rpx;
+  padding-bottom: 10rpx;
+}
+
+.tab {
+  padding: 15rpx 30rpx;
+  margin-right: 20rpx;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  color: #6b5344;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  background-color: #8B4513;
+  color: #ffffff;
+  box-shadow: 0 4rpx 12rpx rgba(139, 69, 19, 0.3);
+}
+
+.tab-text {
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 作品列表 */
+.artworks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.artwork-card {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  gap: 20rpx;
+}
+
+.artwork-card:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.15);
+}
+
+.artwork-image {
+  width: 200rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.artwork-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.artwork-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 8rpx;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.artwork-author {
+  font-size: 24rpx;
+  color: #6b5344;
+  margin-bottom: 4rpx;
+}
+
+.artwork-period {
+  font-size: 20rpx;
+  color: #9e8b7c;
+  margin-bottom: 8rpx;
+}
+
+.artwork-desc {
+  font-size: 22rpx;
+  color: #6b5344;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 底部装饰 */
+.footer-section {
+  margin-top: 40rpx;
+  text-align: center;
+  padding: 20rpx 0;
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: #9e8b7c;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 4rpx;
+  height: 4rpx;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(139, 69, 19, 0.1);
+  border-radius: 2rpx;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 69, 19, 0.3);
+  border-radius: 2rpx;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 69, 19, 0.5);
+}

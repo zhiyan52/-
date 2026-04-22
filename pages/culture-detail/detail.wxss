@@ -1,0 +1,253 @@
+/* 文化详情页面样式 */
+.detail-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f0e1 0%, #e8ddc3 100%);
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+/* 顶部导航 */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80rpx;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10rpx);
+  border-bottom: 1rpx solid #e8ddc3;
+  padding: 0 30rpx;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-left {
+  width: 60rpx;
+}
+
+.back-icon {
+  font-size: 40rpx;
+  color: #8b4513;
+  font-weight: bold;
+}
+
+.nav-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #8b4513;
+  text-align: center;
+  flex: 1;
+}
+
+.nav-right {
+  width: 60rpx;
+}
+
+/* 主图片 */
+.main-image-container {
+  position: relative;
+  width: 100%;
+  height: 400rpx;
+  margin-bottom: 30rpx;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  padding: 30rpx;
+  color: white;
+}
+
+.overlay-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.overlay-subtitle {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+/* 基本信息 */
+.basic-info {
+  margin: 0 30rpx 30rpx;
+}
+
+.info-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-shadow: 0 5rpx 15rpx rgba(0, 0, 0, 0.05);
+}
+
+.info-item {
+  display: flex;
+  margin-bottom: 16rpx;
+  align-items: center;
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+}
+
+.info-label {
+  font-size: 28rpx;
+  color: #666;
+  width: 120rpx;
+}
+
+.info-value {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #8b4513;
+  flex: 1;
+}
+
+/* 详细介绍 */
+.description-section,
+.history-section,
+.value-section {
+  margin: 0 30rpx 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #8b4513;
+  margin-bottom: 20rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 2rpx solid #e8ddc3;
+}
+
+.description-content,
+.history-content,
+.value-content {
+  background: white;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-shadow: 0 5rpx 15rpx rgba(0, 0, 0, 0.05);
+  line-height: 1.6;
+  font-size: 28rpx;
+  color: #333;
+}
+
+/* 相关图片 */
+.gallery-section {
+  margin: 0 30rpx 30rpx;
+}
+
+.image-gallery {
+  display: flex;
+  gap: 20rpx;
+  padding-bottom: 10rpx;
+}
+
+.gallery-item {
+  width: 200rpx;
+  height: 150rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-shadow: 0 5rpx 15rpx rgba(0, 0, 0, 0.1);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-image:active {
+  transform: scale(0.95);
+}
+
+/* 底部操作 */
+.bottom-actions {
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  padding: 20rpx 0;
+  border-top: 1rpx solid #e8ddc3;
+  position: sticky;
+  bottom: 0;
+  z-index: 90;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+  padding: 10rpx;
+  border-radius: 12rpx;
+  transition: background 0.3s ease;
+}
+
+.action-btn:active {
+  background: #f5f0e1;
+}
+
+.action-icon {
+  font-size: 36rpx;
+}
+
+.action-text {
+  font-size: 24rpx;
+  color: #8b4513;
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+  .main-image-container {
+    height: 300rpx;
+  }
+  
+  .gallery-item {
+    width: 160rpx;
+    height: 120rpx;
+  }
+}
+
+/* 加载动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detail-container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6rpx;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3rpx;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8b4513;
+  border-radius: 3rpx;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0522d;
+}

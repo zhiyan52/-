@@ -1,265 +1,160 @@
-<view class="container">
-
-  <!-- 轮播图 -->
-  <view class="banner-section">
-    <swiper class="banner-swiper" indicator-dots="true" autoplay="true" interval="4000" duration="600" circular="true" indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#D4A017">
-      <swiper-item wx:for="{{bannerList}}" wx:key="index">
-        <image class="banner-image" src="{{item.image}}" mode="aspectFill" />
+<!-- 典藏拾珠 - 古雅文轩风格 -->
+<view class="home-container">
+  
+  <!-- 主视觉区轮播图 -->
+  <view class="hero">
+    <swiper class="hero-swiper" indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true">
+      <swiper-item>
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/lunbo1.png" class="hero-image" />
+      </swiper-item>
+      <swiper-item>
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/lunbo1.png" class="hero-image" />
+      </swiper-item>
+      <swiper-item>
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/lunbo1.png" class="hero-image" />
       </swiper-item>
     </swiper>
   </view>
-
-  <!-- 搜索栏 -->
-  <view class="search-bar">
-    <view class="search-input-wrapper">
-      <view class="search-icon-simple">
-        <view class="icon-circle"></view>
-        <view class="icon-handle"></view>
+  
+  <!-- 功能入口 -->
+  <view class="features">
+    <view class="feature-row">
+      <navigator url="/diancang/diancang/diancang-list" class="feature-item">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/classics.png" class="feature-icon" />
+        <text>典籍文库</text>
+      </navigator>
+      <navigator url="/diancang/diancang/diancang-treasure-hunt" class="feature-item">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/treasure.png" class="feature-icon" />
+        <text>典藏寻宝</text>
+      </navigator>
+    </view>
+    <view class="feature-row">
+      <navigator url="/diancang/diancang/ai/ai-qa" class="feature-item">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/ai.png" class="feature-icon" />
+        <text>AI文心先生</text>
+      </navigator>
+      <navigator url="/diancang/diancang/pages/community/community" class="feature-item">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/community.png" class="feature-icon" />
+        <text>典藏社区</text>
+      </navigator>
+    </view>
+    <view class="feature-row">
+      <navigator url="/diancang/diancang/diancang-fill" class="feature-item">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/fill.png" class="feature-icon" />
+        <text>古文填空</text>
+      </navigator>
+      <navigator url="/diancang/diancang/diancang-card" class="feature-item">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/card.png" class="feature-icon" />
+        <text>名句卡片</text>
+      </navigator>
+    </view>
+  </view>
+  
+  <!-- 精选推荐 -->
+  <view class="section">
+    <text class="section-title">精选典藏</text>
+    <view class="recommendations">
+      <view class="recommend-item">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/books/shijing.jpg" class="rec-image" />
+        <text class="rec-title">《诗经》</text>
+        <text class="rec-era">西周至春秋</text>
       </view>
-      <input class="search-input" placeholder="搜索典籍、文物、历史人物..." placeholder-class="placeholder-style" />
-    </view>
-  </view>
-
-  <!-- 分类标签 -->
-  <view class="category-grid">
-    <view class="category-grid-item {{currentCategory === 'all' ? 'active' : ''}}" data-category="all" bindtap="switchCategory">
-      <text class="category-icon">📚</text>
-      <text class="category-name">全部</text>
-    </view>
-    <view class="category-grid-item {{currentCategory === 'classics' ? 'active' : ''}}" data-category="classics" bindtap="switchCategory">
-      <text class="category-icon">📜</text>
-      <text class="category-name">经史子集</text>
-    </view>
-    <view class="category-grid-item {{currentCategory === 'artifacts' ? 'active' : ''}}" data-category="artifacts" bindtap="switchCategory">
-      <text class="category-icon">🏺</text>
-      <text class="category-name">珍贵文物</text>
-    </view>
-    <view class="category-grid-item {{currentCategory === 'calligraphy' ? 'active' : ''}}" data-category="calligraphy" bindtap="switchCategory">
-      <text class="category-icon">✍️</text>
-      <text class="category-name">书法碑帖</text>
-    </view>
-    <view class="category-grid-item {{currentCategory === 'paintings' ? 'active' : ''}}" data-category="paintings" bindtap="switchCategory">
-      <text class="category-icon">🖼️</text>
-      <text class="category-name">传世名画</text>
-    </view>
-    <view class="category-grid-item {{currentCategory === 'bamboo' ? 'active' : ''}}" data-category="bamboo" bindtap="switchCategory">
-      <text class="category-icon">📖</text>
-      <text class="category-name">简帛文献</text>
-    </view>
-  </view>
-
-  <!-- 轮播推荐 -->
-  <view class="featured-section">
-    <swiper class="featured-swiper" indicator-dots="true" autoplay="true" interval="5000" duration="800" circular="true" indicator-color="rgba(255,255,255,0.6)" indicator-active-color="#8B4513">
-      <swiper-item wx:for="{{featuredList}}" wx:key="id">
-        <view class="featured-card" bindtap="goToDetail" data-id="{{item.id}}">
-          <image class="featured-image" src="{{item.image}}" mode="aspectFill" />
-          <view class="featured-overlay">
-            <view class="featured-tag">{{item.tag}}</view>
-            <text class="featured-title">{{item.title}}</text>
-            <text class="featured-desc">{{item.description}}</text>
-          </view>
-          <view class="featured-corner top-left"></view>
-          <view class="featured-corner top-right"></view>
-          <view class="featured-corner bottom-left"></view>
-          <view class="featured-corner bottom-right"></view>
-        </view>
-      </swiper-item>
-    </swiper>
-  </view>
-
-  <!-- 今日典籍推荐 -->
-  <view class="daily-section">
-    <view class="section-header">
-      <view class="section-icon">📜</view>
-      <text class="section-title">今日典籍</text>
-      <view class="section-line"></view>
-      <text class="section-date">{{todayDate}}</text>
-    </view>
-    
-    <view class="daily-card" bindtap="goToDetail" data-id="{{dailyBook.id}}">
-      <view class="daily-book-cover">
-        <image src="{{dailyBook.cover}}" mode="aspectFill" />
-        <view class="book-spine"></view>
-        <view class="seal-mark">珍藏</view>
+      <view class="recommend-item">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/books/shiji.jpg" class="rec-image" />
+        <text class="rec-title">《史记》</text>
+        <text class="rec-era">西汉</text>
       </view>
-      <view class="daily-book-info">
-        <view class="book-header">
-          <text class="book-name">{{dailyBook.name}}</text>
-          <view class="dynasty-tag">{{dailyBook.dynasty}}</view>
+    </view>
+  </view>
+  
+  <!-- AI文心先生功能 -->
+  <view class="section">
+    <text class="section-title">AI文心先生</text>
+    <view class="ai-features">
+      <view class="ai-feature-grid">
+        <view class="ai-feature-card" bindtap="navigateToFeature" data-url="/diancang/diancang/ai/ai-qa">
+          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/ai-qa.png" class="ai-feature-icon" />
+          <text class="ai-feature-title">AI问答</text>
+          <text class="ai-feature-desc">文心先生为您解答文化疑问</text>
         </view>
-        <text class="book-author">{{dailyBook.author}}</text>
-        <text class="book-summary">{{dailyBook.summary}}</text>
-        <view class="book-meta">
-          <view class="meta-item">
-            <text class="meta-icon">👁</text>
-            <text>{{dailyBook.views}}次浏览</text>
-          </view>
-          <view class="meta-item">
-            <text class="meta-icon">⭐</text>
-            <text>{{dailyBook.favorites}}人收藏</text>
-          </view>
+        <view class="ai-feature-card" bindtap="navigateToFeature" data-url="/diancang/diancang/ai/ai-guide">
+          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/ai-guide.png" class="ai-feature-icon" />
+          <text class="ai-feature-title">智能导览</text>
+          <text class="ai-feature-desc">文心先生带您探文脉</text>
         </view>
-        <view class="read-btn">
-          <text>立即品读</text>
-          <view class="btn-arrow">→</view>
+        <view class="ai-feature-card" bindtap="navigateToFeature" data-url="/diancang/diancang/ai/ai-recommend">
+          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/ai-recommend.png" class="ai-feature-icon" />
+          <text class="ai-feature-title">智能推荐</text>
+          <text class="ai-feature-desc">文心先生为您精选典籍</text>
+        </view>
+        <view class="ai-feature-card" bindtap="navigateToFeature" data-url="/diancang/diancang/ai/ai-voice">
+          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/ai-voice.png" class="ai-feature-icon" />
+          <text class="ai-feature-title">智能语音</text>
+          <text class="ai-feature-desc">与文心先生语音交流</text>
         </view>
       </view>
     </view>
   </view>
-
-  <!-- 互动活动区 -->
-  <view class="activity-section">
-    <view class="section-header">
-      <view class="section-icon">🎯</view>
-      <text class="section-title">互动活动</text>
-      <view class="section-line"></view>
+  
+  <!-- 互动竞赛 -->
+  <view class="section">
+    <text class="section-title">互动竞赛</text>
+    <view class="competition-card" bindtap="startKnowledgeQuiz">
+      <view class="competition-content">
+        <view class="competition-title">知识竞赛中心</view>
+        <view class="competition-desc">参与每日挑战，与好友PK</view>
+      </view>
+      <view class="competition-icon">🏆</view>
     </view>
-    
-    <view class="activity-grid">
-      <view class="activity-card" bindtap="startKnowledgeQuiz">
-        <view class="activity-icon">📚</view>
-        <text class="activity-title">知识竞赛</text>
-        <text class="activity-desc">每日挑战，赢取积分</text>
-        <view class="activity-arrow">→</view>
+  </view>
+  
+  <!-- 典藏资讯 -->
+  <view class="news-section">
+    <view class="news-title">典藏资讯</view>
+    <view class="news-item">
+      <text class="news-icon">📚</text>
+      <view class="news-content">
+        <view class="news-item-title">国家图书馆推出古籍数字化新成果</view>
+        <view class="news-item-desc">包含1000部珍稀古籍的数字化版本</view>
       </view>
-      <view class="activity-card" bindtap="startTreasureHunt">
-        <view class="activity-icon">🔍</view>
-        <text class="activity-title">典藏寻宝</text>
-        <text class="activity-desc">寻找隐藏的文物</text>
-        <view class="activity-arrow">→</view>
+    </view>
+    <view class="news-item">
+      <text class="news-icon">🏺</text>
+      <view class="news-content">
+        <view class="news-item-title">故宫博物院文物修复技术取得新突破</view>
+        <view class="news-item-desc">运用AI技术辅助修复古代书画</view>
       </view>
-      <view class="activity-card" bindtap="startArtifactRepair">
-        <view class="activity-icon">🔧</view>
-        <text class="activity-title">文物修复</text>
-        <text class="activity-desc">虚拟修复珍贵文物</text>
-        <view class="activity-arrow">→</view>
-      </view>
-      <view class="activity-card" bindtap="startPuzzleGame">
-        <view class="activity-icon">🧩</view>
-        <text class="activity-title">典籍拼图</text>
-        <text class="activity-desc">拼出名画，赢取奖励</text>
-        <view class="activity-arrow">→</view>
-      </view>
-      <view class="activity-card" bindtap="goToCommunity">
-        <view class="activity-icon">💬</view>
-        <text class="activity-title">典藏社区</text>
-        <text class="activity-desc">分享交流，共同鉴赏</text>
-        <view class="activity-arrow">→</view>
+    </view>
+    <view class="news-item">
+      <text class="news-icon">📜</text>
+      <view class="news-content">
+        <view class="news-item-title">《永乐大典》残卷数字化工程启动</view>
+        <view class="news-item-desc">计划三年内完成全部残卷的数字化</view>
       </view>
     </view>
   </view>
-
-  <!-- 典藏分类展示 -->
-  <view class="collection-section">
-    <view class="section-header">
-      <view class="section-icon">🏛️</view>
-      <text class="section-title">稀世珍藏</text>
-      <view class="section-line"></view>
-      <text class="view-more" bindtap="viewMore">查看更多 ></text>
-    </view>
-
-    <view class="collection-grid">
-      <view class="collection-card {{item.size === 'large' ? 'large' : ''}}" wx:for="{{collectionList}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
-        <view class="card-frame">
-          <image class="collection-image" src="{{item.image}}" mode="aspectFill" />
-          <view class="collection-overlay">
-            <view class="collection-category">{{item.category}}</view>
-            <text class="collection-name">{{item.name}}</text>
-            <view class="collection-era">
-              <text class="era-icon">◈</text>
-              <text>{{item.era}}</text>
-            </view>
-          </view>
-          <view class="card-border top"></view>
-          <view class="card-border right"></view>
-          <view class="card-border bottom"></view>
-          <view class="card-border left"></view>
-          <view class="corner-mark top-left">◆</view>
-          <view class="corner-mark top-right">◆</view>
-          <view class="corner-mark bottom-left">◆</view>
-          <view class="corner-mark bottom-right">◆</view>
-        </view>
-      </view>
-    </view>
+  
+  <!-- 底部信息 -->
+  <view class="footer">
+    <view class="footer-text">传承中华文脉</view>
+    <view class="footer-text">感受典藏之美</view>
+    <view class="footer-copyright">© 2026 典藏拾珠</view>
   </view>
-
-  <!-- 名家手迹 -->
-  <view class="calligraphy-section">
-    <view class="section-header">
-      <view class="section-icon">✒️</view>
-      <text class="section-title">名家手迹</text>
-      <view class="section-line"></view>
-    </view>
-    
-    <scroll-view class="calligraphy-scroll" scroll-x="true" show-scrollbar="false">
-      <view class="calligraphy-list">
-        <view class="calligraphy-item" wx:for="{{calligraphyList}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
-          <view class="scroll-frame">
-            <image src="{{item.image}}" mode="aspectFill" />
-            <view class="scroll-overlay">
-              <text class="calligrapher">{{item.calligrapher}}</text>
-              <text class="script-type">{{item.scriptType}}</text>
-            </view>
-            <view class="scroll-ends top"></view>
-            <view class="scroll-ends bottom"></view>
-          </view>
-          <text class="calligraphy-title">{{item.title}}</text>
-        </view>
-      </view>
-    </scroll-view>
-  </view>
-
-  <!-- 典籍知识卡片 -->
-  <view class="knowledge-section">
-    <view class="section-header">
-      <view class="section-icon">💡</view>
-      <text class="section-title">典藏小知识</text>
-      <view class="section-line"></view>
-    </view>
-    
-    <view class="knowledge-card">
-      <view class="knowledge-icon">❝</view>
-      <text class="knowledge-content">{{knowledgeContent}}</text>
-      <view class="knowledge-source">—— {{knowledgeSource}}</view>
-      <view class="knowledge-decoration">
-        <view class="deco-circle"></view>
-        <view class="deco-line"></view>
-        <view class="deco-circle"></view>
-      </view>
-    </view>
-  </view>
-
-  <!-- 底部功能按钮 -->
-  <view class="action-bar">
-    <view class="action-btn primary" bindtap="openAR">
-      <view class="btn-icon">📷</view>
-      <text>AR识典</text>
-    </view>
-    <view class="action-btn secondary" bindtap="startQuiz">
-      <view class="btn-icon">❓</view>
-      <text>典籍问答</text>
-    </view>
-    <view class="action-btn secondary" bindtap="viewMap">
-      <view class="btn-icon">🗺️</view>
-      <text>藏馆地图</text>
-    </view>
-  </view>
-
-  <!-- 底部留白 -->
+  
+  <!-- 底部空间 -->
   <view class="bottom-space"></view>
-
+  
   <!-- 底部导航 -->
   <view class="tab-bar">
-    <navigator url="/pages/index/index" class="tab-item {{activeTab === 0 ? 'active' : ''}}">
+    <navigator url="/pages/index/index" class="tab-item">
       <image src="/components/shou.png" class="tab-image"></image>
       <text>首页</text>
     </navigator>
-    <view class="tab-item {{activeTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">
+    <view class="tab-item active">
       <image src="/components/zonglan.png" class="tab-image"></image>
       <text>分类</text>
     </view>
-    <navigator url="/diancang/diancang/pages/profile/profile" class="tab-item {{activeTab === 2 ? 'active' : ''}}">
+    <navigator url="/diancang/diancang/pages/profile/profile" class="tab-item">
       <image src="/components/yonghu.png" class="tab-image"></image>
       <text>我的</text>
     </navigator>

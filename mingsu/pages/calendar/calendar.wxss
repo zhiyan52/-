@@ -1,0 +1,206 @@
+.calendar-container {
+  min-height: 100vh;
+  background: #f5f1e8;
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.tab-container {
+  display: flex;
+  background: white;
+  margin: 20rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  border: 2rpx solid #d4a76a;
+}
+
+.tab-item {
+  flex: 1;
+  padding: 24rpx 0;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tab-item.active {
+  background: #d4a76a;
+}
+
+.tab-text {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.tab-item.active .tab-text {
+  color: white;
+}
+
+.list-container {
+  padding: 0 20rpx 20rpx;
+}
+
+.festival-item {
+  background: white;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 2rpx solid #d4a76a;
+}
+
+.festival-item:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.item-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+  margin-right: 20rpx;
+  object-fit: cover;
+  border: 1rpx solid #d4a76a;
+}
+
+.item-content {
+  flex: 1;
+}
+
+.item-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.item-date {
+  font-size: 22rpx;
+  color: #999;
+  margin-bottom: 8rpx;
+}
+
+.item-desc {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.4;
+}
+
+.item-arrow {
+  font-size: 32rpx;
+  color: #999;
+  margin-left: 16rpx;
+}
+
+/* 详情弹窗 */
+.detail-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.detail-content {
+  background: white;
+  border-radius: 24rpx;
+  width: 85%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.2);
+  border: 2rpx solid #d4a76a;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx;
+  border-bottom: 1rpx solid #f0e6d2;
+  background: #f0e6d2;
+}
+
+.detail-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.detail-close {
+  font-size: 40rpx;
+  color: #999;
+  line-height: 1;
+  padding: 8rpx;
+}
+
+.detail-image {
+  width: 100%;
+  height: 300rpx;
+  border-radius: 24rpx 24rpx 0 0;
+  margin-top: -24rpx;
+  object-fit: cover;
+}
+
+.detail-info {
+  padding: 24rpx;
+}
+
+.info-item {
+  margin-bottom: 24rpx;
+}
+
+.info-label {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+  display: block;
+  border-left: 4rpx solid #d4a76a;
+  padding-left: 12rpx;
+}
+
+.info-value {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+.activities-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 8rpx;
+}
+
+.activity-tag {
+  background: #f0e6d2;
+  color: #8B4513;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  border: 1rpx solid #d4a76a;
+}
+
+/* 响应式调整 */
+@media (max-width: 375px) {
+  .festival-item {
+    padding: 16rpx;
+  }
+  
+  .item-image {
+    width: 100rpx;
+    height: 100rpx;
+  }
+  
+  .detail-content {
+    width: 95%;
+  }
+}

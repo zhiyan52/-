@@ -7,34 +7,41 @@ Page({
     bookList: [
       {
         id: 1,
-        name: '《论语》',
-        author: '孔子及弟子',
-        image: 'https://picsum.photos/120/160?random=501'
+        name: '《诗经选注》',
+        author: '孔子',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/books/shijing.png'
       },
       {
         id: 2,
         name: '《史记》',
         author: '司马迁',
-        image: 'https://picsum.photos/120/160?random=502'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/books/shiji.png'
       },
       {
         id: 3,
-        name: '《道德经》',
-        author: '老子',
-        image: 'https://picsum.photos/120/160?random=503'
+        name: '《兰亭集序》',
+        author: '王羲之',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/books/lanting.png'
       },
       {
         id: 4,
-        name: '《红楼梦》',
-        author: '曹雪芹',
-        image: 'https://picsum.photos/120/160?random=504'
+        name: '《牡丹亭》',
+        author: '汤显祖',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/books/mudan.png'
+      },
+      {
+        id: 5,
+        name: '《论语》',
+        author: '孔子及其弟子',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/books/lunyu.png'
       }
     ],
     guideTexts: {
-      1: '《论语》是儒家学派的经典著作之一，由孔子的弟子及其再传弟子编撰而成。它以语录体和对话文体为主，记录了孔子及其弟子言行，集中体现了孔子的政治主张、伦理思想、道德观念及教育原则等。',
-      2: '《史记》是西汉史学家司马迁撰写的纪传体史书，是中国历史上第一部纪传体通史，记载了上至上古传说中的黄帝时代，下至汉武帝太初四年间共3000多年的历史。',
-      3: '《道德经》又称《老子》，是中国古代先秦诸子分家前的一部著作，传说是春秋时期的老子李耳所撰写，是道家哲学思想的重要来源。',
-      4: '《红楼梦》是中国古代章回体长篇小说，中国古典四大名著之首，一般认为是清代作家曹雪芹所著。小说以贾、史、王、薛四大家族的兴衰为背景，以富贵公子贾宝玉为视角，描绘了一批举止见识出于须眉之上的闺阁佳人的人生百态。'
+      1: '《诗经》者，中国第一部诗歌总集也。收录西周至春秋时期诗歌三百有五篇，分为风、雅、颂三部分。风者，民间歌谣；雅者，朝廷乐歌；颂者，宗庙祭祀之歌。孔子曾言："诗三百，一言以蔽之，曰：思无邪。"其语言凝练，意境深远，为后世诗歌之滥觞。',
+      2: '太史公司马迁所著《史记》，中国第一部纪传体通史也。上起黄帝，下迄汉武帝，记载三千余年历史。其体例严谨，文笔生动，被鲁迅誉为"史家之绝唱，无韵之离骚"。司马迁忍辱负重，发愤著书，终成此千古巨著，为后世史学之典范。',
+      3: '王羲之《兰亭集序》，被誉为"天下第一行书"。永和九年，王羲之与友人会于兰亭，修禊事也。群贤毕至，少长咸集，虽无丝竹管弦之盛，一觞一咏，亦足以畅叙幽情。其书法飘若浮云，矫若惊龙，笔法精妙，为后世书家所宗。',
+      4: '汤显祖《牡丹亭》，明代传奇之巅峰也。讲述杜丽娘与柳梦梅之爱情故事，情节离奇，文辞华美。"良辰美景奈何天，赏心乐事谁家院"，此等佳句，脍炙人口。其主题突破封建礼教束缚，歌颂真挚爱情，影响深远。',
+      5: '《论语》者，孔子及其弟子言行之语录也。由孔子弟子及再传弟子编撰而成，记录孔子之政治主张、伦理思想、道德观念及教育原则。"仁"为其核心思想，"己所不欲，勿施于人"为其重要准则。此书为儒家经典，对中国传统文化影响至深。'
     }
   },
 
@@ -53,7 +60,7 @@ Page({
     });
 
     setTimeout(() => {
-      const guideText = this.data.guideTexts[id] || '这是一部中国古典文学经典著作，具有重要的历史和文化价值。';
+      const guideText = this.data.guideTexts[id] || '此乃中国古典文学之经典，蕴含深厚历史文化底蕴。文心先生愿与君共赏其精妙之处。';
       this.setData({
         guideText: guideText,
         loading: false
@@ -63,7 +70,7 @@ Page({
 
   playVoice: function () {
     wx.showToast({
-      title: '语音播放功能开发中',
+      title: '文心先生正在练习诵读，敬请期待',
       icon: 'none'
     });
   },
@@ -74,7 +81,7 @@ Page({
       guideText: ''
     });
     setTimeout(() => {
-      const guideText = this.data.guideTexts[this.data.selectedBook] || '这是一部中国古典文学经典著作，具有重要的历史和文化价值。';
+      const guideText = this.data.guideTexts[this.data.selectedBook] || '此乃中国古典文学之经典，蕴含深厚历史文化底蕴。文心先生愿与君共赏其精妙之处。';
       this.setData({
         guideText: guideText,
         loading: false

@@ -1,119 +1,66 @@
 // mingsu/mingsu/pages/checkin/checkin.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    checkinList: [
-      {
-        id: 1,
-        date: '2026-04-01',
-        food: '清明青团',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/1.jpg',
-        location: '江南地区',
-        notes: '第一次尝试做青团，味道不错！'
-      },
-      {
-        id: 2,
-        date: '2026-03-28',
-        food: '北京烤鸭',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/2.jpg',
-        location: '北京',
-        notes: '正宗的北京烤鸭，皮脆肉嫩！'
-      }
-    ],
-    streak: 3,
-    totalCheckins: 12,
-    showCheckinForm: false,
-    newCheckin: {
-      food: '',
-      image: '',
-      location: '',
-      notes: ''
-    }
+
   },
 
-  onLoad() {
-    this.loadCheckinData();
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+
   },
 
-  loadCheckinData() {
-    console.log('加载打卡数据');
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
   },
 
-  showCheckinForm() {
-    this.setData({ showCheckinForm: true });
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
   },
 
-  closeCheckinForm() {
-    this.setData({ showCheckinForm: false });
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
   },
 
-  handleInput(e) {
-    const { field } = e.currentTarget.dataset;
-    this.setData({ [`newCheckin.${field}`]: e.detail.value });
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
   },
 
-  chooseImage() {
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['compressed'],
-      sourceType: ['album', 'camera'],
-      success: (res) => {
-        this.setData({ 'newCheckin.image': res.tempFilePaths[0] });
-      }
-    });
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
   },
 
-  submitCheckin() {
-    const { food, location } = this.data.newCheckin;
-    if (!food || !location) {
-      wx.showToast({ title: '请填写完整信息', icon: 'error' });
-      return;
-    }
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
 
-    const newCheckin = {
-      id: Date.now(),
-      date: new Date().toISOString().split('T')[0],
-      ...this.data.newCheckin
-    };
-
-    this.setData({
-      checkinList: [newCheckin, ...this.data.checkinList],
-      totalCheckins: this.data.totalCheckins + 1,
-      streak: this.data.streak + 1,
-      showCheckinForm: false,
-      newCheckin: {
-        food: '',
-        image: '',
-        location: '',
-        notes: ''
-      }
-    });
-
-    wx.showToast({ title: '打卡成功', icon: 'success' });
   },
 
-  deleteCheckin(e) {
-    const id = e.currentTarget.dataset.id;
-    wx.showModal({
-      title: '确认删除',
-      content: '确定要删除这条打卡记录吗？',
-      success: (res) => {
-        if (res.confirm) {
-          const updatedList = this.data.checkinList.filter(item => item.id !== id);
-          this.setData({
-            checkinList: updatedList,
-            totalCheckins: this.data.totalCheckins - 1
-          });
-          wx.showToast({ title: '删除成功', icon: 'success' });
-        }
-      }
-    });
-  },
-
+  /**
+   * 用户点击右上角分享
+   */
   onShareAppMessage() {
-    return {
-      title: '民俗百味打卡 | 记录我的美食之旅',
-      path: '/mingsu/mingsu/pages/checkin/checkin',
-      imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20food%20checkin%20culture&image_size=landscape_16_9'
-    };
+
   }
-});
+})

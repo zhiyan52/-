@@ -1,0 +1,221 @@
+/* 书法字体科普样式 */
+.calligraphy-container {
+  background-color: #f5f2e9;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+/* 顶部标题 */
+.header-section {
+  text-align: center;
+  margin-bottom: 30rpx;
+  padding: 30rpx 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 10rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.header-subtitle {
+  font-size: 24rpx;
+  color: #6b5344;
+  display: block;
+}
+
+/* 书体选择 */
+.font-tabs {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-bottom: 30rpx;
+  padding-bottom: 10rpx;
+}
+
+.tab {
+  padding: 15rpx 30rpx;
+  margin-right: 20rpx;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  color: #6b5344;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  background-color: #8B4513;
+  color: #ffffff;
+  box-shadow: 0 4rpx 12rpx rgba(139, 69, 19, 0.3);
+}
+
+.tab-text {
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 书体详情 */
+.font-detail {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 30rpx;
+}
+
+.font-header {
+  text-align: center;
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid rgba(139, 69, 19, 0.3);
+}
+
+.font-name {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 10rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.font-period {
+  font-size: 24rpx;
+  color: #6b5344;
+  display: block;
+}
+
+/* 字体示例 */
+.font-example {
+  text-align: center;
+  margin-bottom: 30rpx;
+  padding: 30rpx;
+  background-color: rgba(245, 242, 233, 0.8);
+  border-radius: 15rpx;
+}
+
+.example-title {
+  font-size: 26rpx;
+  color: #8B4513;
+  margin-bottom: 20rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.example-text {
+  font-size: 60rpx;
+  font-weight: bold;
+  color: #8B4513;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 特点对比 */
+.font-features {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 15rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+  border-bottom: 2rpx solid rgba(139, 69, 19, 0.3);
+  padding-bottom: 8rpx;
+}
+
+.feature-text {
+  font-size: 24rpx;
+  color: #6b5344;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* 起源与发展 */
+.font-origin {
+  margin-bottom: 30rpx;
+}
+
+.origin-text {
+  font-size: 24rpx;
+  color: #6b5344;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* 代表人物与作品 */
+.font-masters {
+  margin-bottom: 30rpx;
+}
+
+.masters-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx;
+}
+
+.master-item {
+  background-color: rgba(139, 69, 19, 0.1);
+  padding: 10rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  color: #8B4513;
+  font-family: '楷体', 'KaiTi', serif;
+  transition: all 0.3s ease;
+}
+
+.master-item:hover {
+  background-color: rgba(139, 69, 19, 0.2);
+  transform: translateY(-2rpx);
+}
+
+/* 简单辨识技巧 */
+.font-tips {
+  margin-bottom: 20rpx;
+}
+
+.tips-text {
+  font-size: 24rpx;
+  color: #6b5344;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* 底部装饰 */
+.footer-section {
+  text-align: center;
+  padding: 20rpx 0;
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: #9e8b7c;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 4rpx;
+  height: 4rpx;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(139, 69, 19, 0.1);
+  border-radius: 2rpx;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 69, 19, 0.3);
+  border-radius: 2rpx;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 69, 19, 0.5);
+}

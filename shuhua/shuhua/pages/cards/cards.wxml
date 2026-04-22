@@ -1,0 +1,42 @@
+<!-- 书画佳句卡片生成 -->
+<view class="cards-container">
+  <!-- 顶部标题 -->
+  <view class="header-section">
+    <text class="header-title">书画佳句卡片</text>
+    <text class="header-subtitle">生成可保存的书画佳句卡片</text>
+  </view>
+  
+  <!-- 卡片预览 -->
+  <view class="card-preview">
+    <view class="card" style="background-image: url({{cardBackground}});">
+      <text class="card-text">{{currentQuote.text}}</text>
+      <text class="card-author">{{currentQuote.author}}</text>
+    </view>
+  </view>
+  
+  <!-- 操作按钮 -->
+  <view class="action-buttons">
+    <button class="action-button" bindtap="generateCard">
+      <text class="button-text">随机生成</text>
+    </button>
+    <button class="action-button secondary" bindtap="saveCard">
+      <text class="button-text">保存卡片</text>
+    </button>
+  </view>
+  
+  <!-- 佳句列表 -->
+  <view class="quotes-section">
+    <text class="section-title">佳句列表</text>
+    <view class="quotes-list">
+      <view class="quote-item" wx:for="{{quotes}}" wx:key="index" bindtap="selectQuote" data-index="{{index}}">
+        <text class="quote-text">{{item.text}}</text>
+        <text class="quote-author">{{item.author}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部装饰 -->
+  <view class="footer-section">
+    <text class="footer-text">诗书传家远，书画继世长</text>
+  </view>
+</view>

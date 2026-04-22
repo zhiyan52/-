@@ -1,0 +1,42 @@
+<!-- 名家详情页 -->
+<view class="master-detail-container">
+  <!-- 名家信息 -->
+  <view class="master-info-section">
+    <image class="master-image" src="{{master.image}}"></image>
+    <text class="master-name">{{master.name}}</text>
+    <text class="master-dynasty">{{master.dynasty}}</text>
+  </view>
+  
+  <!-- 详细介绍 -->
+  <view class="detail-section">
+    <text class="section-title">名家简介</text>
+    <text class="detail-content">{{master.detail}}</text>
+  </view>
+  
+  <!-- 代表作品 -->
+  <view class="works-section" wx:if="{{master.works && master.works.length > 0}}">
+    <text class="section-title">代表作品</text>
+    <view class="works-list">
+      <view class="work-item" wx:for="{{master.works}}" wx:key="*this">
+        <text class="work-name">{{item}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 艺术风格 -->
+  <view class="style-section" wx:if="{{master.style}}">
+    <text class="section-title">艺术风格</text>
+    <text class="style-content">{{master.style}}</text>
+  </view>
+  
+  <!-- 文化地位 -->
+  <view class="status-section" wx:if="{{master.status}}">
+    <text class="section-title">文化地位与影响</text>
+    <text class="status-content">{{master.status}}</text>
+  </view>
+  
+  <!-- 底部装饰 -->
+  <view class="footer-section">
+    <text class="footer-text">传承书画艺术，弘扬传统文化</text>
+  </view>
+</view>

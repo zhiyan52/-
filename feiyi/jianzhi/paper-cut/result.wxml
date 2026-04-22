@@ -1,0 +1,32 @@
+<view class="result-container">
+  <!-- 展开动画层 -->
+  <view class="unfold-stage" wx:if="{{!showFinal}}">
+    <view class="paper-stack" style="transform: rotate({{unfoldProgress * 360}}deg) scale({{1 + unfoldProgress * 0.5}})">
+      <view class="paper-layer" wx:for="{{foldCount}}" wx:key="index" 
+            style="opacity: {{1 - unfoldProgress}}; transform: rotate({{index * (360/foldCount)}}deg)">
+      </view>
+    </view>
+  </view>
+
+  <!-- 最终作品 -->
+  <view class="final-artwork {{showFinal ? 'show' : ''}}">
+    <canvas id="resultCanvas" type="2d" style="width: 600rpx; height: 600rpx;"></canvas>
+    
+    <!-- 作品信息浮层 -->
+    <view class="artwork-info">
+      <text class="artwork-name">{{pattern.name}}</text>
+      <view class="stars">
+        <text wx:for="{{3}}" wx:key="index" class="star {{index < stars ? 'lit' : ''}}">⭐</text>
+      </view>
+      <text class="score-text">刀工评分 {{score}}分</text>
+      <text class="meaning">{{pattern.meaning}}</text>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-bar">
+    <button class="btn-primary" bindtap="saveWork">保存作品</button>
+    <button class="btn-secondary" bindtap="replay">再剪一幅</button>
+    <button class="btn-share" open-type="share">分享给好友</button>
+  </view>
+</view>

@@ -1,0 +1,113 @@
+<!-- 典藏寻宝页面 -->
+<view class="treasure-hunt-container">
+  <!-- 顶部导航 -->
+  <view class="nav-bar">
+    <view class="nav-left" bindtap="goBack">
+      <text class="back-icon">←</text>
+      <text class="nav-title">返回</text>
+    </view>
+    <text class="nav-center">典藏寻宝</text>
+    <view class="nav-right">
+      <text class="hint-btn" bindtap="showHint">提示</text>
+    </view>
+  </view>
+
+  <!-- 游戏状态 -->
+  <view class="game-status">
+    <view class="status-item">
+      <text class="status-label">剩余时间</text>
+      <text class="status-value">{{timeLeft}}秒</text>
+    </view>
+    <view class="status-item">
+      <text class="status-label">已找到</text>
+      <text class="status-value">{{foundTreasures}}/{{totalTreasures}}</text>
+    </view>
+    <view class="status-item">
+      <text class="status-label">积分奖励</text>
+      <text class="status-value">+{{totalReward}}积分</text>
+    </view>
+  </view>
+
+  <!-- 寻宝区域 -->
+  <view class="treasure-area">
+    <view class="scene-image" bindtap="onSceneTap" data-scene="{{currentScene.id}}">
+      <image src="{{currentScene.image}}" mode="aspectFit" class="scene-bg" />
+      
+      <!-- 隐藏的文物 -->
+      <view 
+        wx:for="{{currentScene.treasures}}" 
+        wx:key="id"
+        class="treasure {{treasure.found ? 'found' : ''}}"
+        style="left:{{treasure.x}}%; top:{{treasure.y}}%"
+        bindtap="onTreasureFound"
+        data-id="{{treasure.id}}"
+      >
+        <view class="treasure-icon {{treasure.found ? 'found' : ''}}">
+          {{treasure.icon}}
+        </view>
+        <view class="treasure-name">{{treasure.name}}</view>
+      </view>
+      
+      <!-- 场景切换提示 -->
+      <view class="scene-hint">
+        <text>点击屏幕寻找隐藏的文物</text>
+      </view>
+      
+      <!-- 场景名称 -->
+      <view class="scene-name-overlay">
+        <text class="scene-name-text">{{currentScene.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 场景选择 -->
+  <view class="scene-selector">
+    <text class="selector-title">选择场景</text>
+    <scroll-view scroll-x="true" class="scene-list">
+      <view 
+        wx:for="{{scenes}}" 
+        wx:key="id"
+        class="scene-item {{currentScene.id === item.id ? 'active' : ''}}"
+        bindtap="switchScene"
+        data-id="{{item.id}}"
+      >
+        <image src="{{item.thumbnail}}" mode="aspectFill" class="scene-thumb" />
+        <text class="scene-name">{{item.name}}</text>
+        <view class="scene-progress">
+          <text>{{item.foundCount}}/{{item.totalCount}} 已找到</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 寻宝提示 -->
+  <view class="hint-section">
+    <view class="hint-card">
+      <view class="hint-icon">💡</view>
+      <view class="hint-content">
+        <text class="hint-title">寻宝提示</text>
+        <text class="hint-text">1. 仔细观察场景中的细节</text>
+        <text class="hint-text">2. 点击可疑的地方</text>
+        <text class="hint-text">3. 每个场景都有多个隐藏文物</text>
+        <text class="hint-text">4. 完成所有场景可获得额外奖励</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 游戏结束弹窗 -->
+  <view class="game-over-modal" wx:if="{{gameOver}}">
+    <view class="modal-content">
+      <view class="modal-icon">🏆</view>
+      <text class="modal-title">寻宝完成！</text>
+      <text class="modal-desc">你找到了 {{foundTreasures}} 个文物</text>
+      <text class="modal-reward">获得 {{totalReward}} 积分奖励</text>
+      <view class="modal-buttons">
+        <view class="modal-btn primary" bindtap="playAgain">再玩一次</view>
+        <view class="modal-btn secondary" bindtap="goBack">返回首页</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部留白 -->
+  <view class="bottom-space"></view>
+</view>

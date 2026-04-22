@@ -1,0 +1,230 @@
+.select-container {
+  min-height: 100vh;
+  background: #2c1810;
+}
+
+.select-header {
+  display: flex;
+  align-items: center;
+  padding: 32rpx;
+}
+
+.back-btn {
+  font-size: 40rpx;
+  color: #f5f0e8;
+  margin-right: 24rpx;
+}
+
+.select-title {
+  flex: 1;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #f5f0e8;
+}
+
+.level-badge {
+  font-size: 24rpx;
+  color: #f1c40f;
+  background: rgba(241, 196, 15, 0.1);
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+}
+
+.category-bar {
+  white-space: nowrap;
+  padding: 0 32rpx 24rpx;
+}
+
+.category-item {
+  display: inline-block;
+  font-size: 28rpx;
+  color: #999;
+  padding: 12rpx 28rpx;
+  margin-right: 16rpx;
+  border-radius: 28rpx;
+}
+
+.category-item.active {
+  color: #f5f0e8;
+  background: #c0392b;
+}
+
+.pattern-grid {
+  padding: 0 32rpx;
+  height: calc(100vh - 200rpx);
+}
+
+.pattern-card {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 24rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+  position: relative;
+}
+
+.pattern-card.locked {
+  opacity: 0.5;
+}
+
+.pattern-thumb {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+
+.thumb-icon {
+  font-size: 48rpx;
+}
+
+.pattern-info {
+  flex: 1;
+}
+
+.pattern-name {
+  display: block;
+  font-size: 32rpx;
+  color: #f5f0e8;
+  font-weight: bold;
+}
+
+.pattern-meaning {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.pattern-meta {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 12rpx;
+}
+
+.difficulty {
+  font-size: 22rpx;
+  color: #f1c40f;
+}
+
+.category-tag {
+  font-size: 22rpx;
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+}
+
+.lock-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lock-reason {
+  font-size: 28rpx;
+  color: #f5f0e8;
+}
+
+/* 折叠弹窗 */
+.fold-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: flex-end;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.fold-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.fold-panel {
+  width: 100%;
+  background: #2c1810;
+  border-radius: 32rpx 32rpx 0 0;
+  padding: 40rpx;
+}
+
+.fold-title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #f5f0e8;
+  text-align: center;
+}
+
+.fold-subtitle {
+  display: block;
+  font-size: 26rpx;
+  color: #999;
+  text-align: center;
+  margin-top: 8rpx;
+}
+
+.fold-list {
+  margin-top: 32rpx;
+}
+
+.fold-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.fold-item.disabled {
+  opacity: 0.4;
+}
+
+.fold-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 24rpx;
+}
+
+.fold-diagram {
+  width: 100%;
+  height: 100%;
+  border: 2rpx solid #c0392b;
+  border-radius: 8rpx;
+}
+
+.fold-diagram.half {
+  border-right-width: 4rpx;
+}
+
+.fold-diagram.quarter {
+  border-right-width: 4rpx;
+  border-bottom-width: 4rpx;
+}
+
+.fold-info {
+  flex: 1;
+}
+
+.fold-name {
+  display: block;
+  font-size: 30rpx;
+  color: #f5f0e8;
+}
+
+.fold-desc {
+  font-size: 24rpx;
+  color: #999;
+}

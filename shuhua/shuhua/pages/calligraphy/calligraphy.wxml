@@ -1,0 +1,66 @@
+<!-- 书法字体科普 -->
+<view class="calligraphy-container">
+  <!-- 顶部标题 -->
+  <view class="header-section">
+    <text class="header-title">书法字体科普</text>
+    <text class="header-subtitle">了解中国五大书体的特点与发展</text>
+  </view>
+  
+  <!-- 书体选择 -->
+  <view class="font-tabs">
+    <view class="tab" wx:for="{{fonts}}" wx:key="id"
+          class="{{activeFont === item.id ? 'active' : ''}}"
+          bindtap="switchFont" data-id="{{item.id}}">
+      <text class="tab-text">{{item.name}}</text>
+    </view>
+  </view>
+  
+  <!-- 书体详情 -->
+  <view class="font-detail" wx:if="{{selectedFont}}">
+    <view class="font-header">
+      <text class="font-name">{{selectedFont.name}}</text>
+      <text class="font-period">{{selectedFont.period}}</text>
+    </view>
+    
+    <view class="font-content">
+      <!-- 字体示例 -->
+      <view class="font-example">
+        <text class="example-title">字体示例</text>
+        <text class="example-text">{{selectedFont.example}}</text>
+      </view>
+      
+      <!-- 特点对比 -->
+      <view class="font-features">
+        <text class="section-title">特点对比</text>
+        <text class="feature-text">{{selectedFont.features}}</text>
+      </view>
+      
+      <!-- 起源与发展 -->
+      <view class="font-origin">
+        <text class="section-title">起源与发展</text>
+        <text class="origin-text">{{selectedFont.origin}}</text>
+      </view>
+      
+      <!-- 代表人物与作品 -->
+      <view class="font-masters">
+        <text class="section-title">代表人物与作品</text>
+        <view class="masters-list">
+          <view class="master-item" wx:for="{{selectedFont.masters}}" wx:key="*this">
+            <text class="master-name">{{item}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 简单辨识技巧 -->
+      <view class="font-tips">
+        <text class="section-title">简单辨识技巧</text>
+        <text class="tips-text">{{selectedFont.tips}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部装饰 -->
+  <view class="footer-section">
+    <text class="footer-text">传承书法艺术，品味汉字之美</text>
+  </view>
+</view>

@@ -1,22 +1,2 @@
-<!-- mingsu/mingsu/pages/categories/seasons.wxml -->
-<view class="container">
-  <view class="header">
-    <view class="header-back" bindtap="goBack">
-      <text class="back-icon">←</text>
-    </view>
-    <view class="header-title">时令食俗</view>
-  </view>
-  
-  <view class="content">
-    <view class="seasonal-list">
-      <view class="seasonal-item" wx:for="{{seasonalList}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
-        <image class="seasonal-img" src="{{item.imageUrl}}" mode="aspectFill" alt="{{item.title}}"></image>
-        <view class="seasonal-info">
-          <view class="seasonal-title">{{item.title}}</view>
-          <view class="seasonal-desc">{{item.desc}}</view>
-          <view class="seasonal-season">{{item.season}}</view>
-        </view>
-      </view>
-    </view>
-  </view>
-</view>
+<!--mingsu/mingsu/pages/categories/seasons.wxml-->
+<text>mingsu/mingsu/pages/categories/seasons.wxml</text>

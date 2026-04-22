@@ -1,0 +1,235 @@
+/* 书画知识轻答题样式 */
+.quiz-container {
+  background-color: #f5f2e9;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+/* 顶部标题 */
+.header-section {
+  text-align: center;
+  margin-bottom: 30rpx;
+  padding: 30rpx 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 10rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.header-subtitle {
+  font-size: 24rpx;
+  color: #6b5344;
+  display: block;
+}
+
+/* 答题区域 */
+.quiz-section {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 30rpx;
+}
+
+/* 题目信息 */
+.question-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+  padding-bottom: 15rpx;
+  border-bottom: 2rpx solid rgba(139, 69, 19, 0.3);
+}
+
+.question-number {
+  font-size: 24rpx;
+  color: #6b5344;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.score {
+  font-size: 24rpx;
+  color: #8B4513;
+  font-weight: bold;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 题目内容 */
+.question-content {
+  margin-bottom: 30rpx;
+}
+
+.question-text {
+  font-size: 28rpx;
+  color: #6b5344;
+  line-height: 1.6;
+  text-align: justify;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 选项 */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+  margin-bottom: 30rpx;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background-color: rgba(245, 242, 233, 0.8);
+  border-radius: 15rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.option-item:hover {
+  background-color: rgba(245, 242, 233, 1);
+  transform: translateY(-2rpx);
+}
+
+.option-item.selected {
+  border-color: #8B4513;
+  background-color: rgba(139, 69, 19, 0.1);
+}
+
+.option-item.correct {
+  border-color: #4CAF50;
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.option-item.wrong {
+  border-color: #F44336;
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.option-letter {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #8B4513;
+  color: #ffffff;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.option-text {
+  flex: 1;
+  font-size: 24rpx;
+  color: #6b5344;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 答题反馈 */
+.feedback {
+  margin-bottom: 30rpx;
+  padding: 20rpx;
+  background-color: rgba(139, 69, 19, 0.1);
+  border-radius: 15rpx;
+  border-left: 4rpx solid #8B4513;
+}
+
+.feedback-text {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 10rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.feedback-explanation {
+  font-size: 22rpx;
+  color: #6b5344;
+  line-height: 1.4;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.action-button {
+  background-color: #8B4513;
+  color: #ffffff;
+  border-radius: 30rpx;
+  padding: 20rpx 60rpx;
+  font-size: 28rpx;
+  font-family: '楷体', 'KaiTi', serif;
+  box-shadow: 0 4rpx 12rpx rgba(139, 69, 19, 0.3);
+  transition: all 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #6b3410;
+  transform: translateY(-3rpx);
+  box-shadow: 0 6rpx 16rpx rgba(139, 69, 19, 0.4);
+}
+
+.button-text {
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 结果页面 */
+.result-section {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.result-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 20rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.result-score {
+  font-size: 32rpx;
+  color: #6b5344;
+  margin-bottom: 30rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.result-text {
+  font-size: 28rpx;
+  color: #8B4513;
+  margin-bottom: 40rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 底部装饰 */
+.footer-section {
+  text-align: center;
+  padding: 20rpx 0;
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: #9e8b7c;
+  font-family: '楷体', 'KaiTi', serif;
+}

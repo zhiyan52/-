@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "营造技艺",
+  "navigationBarBackgroundColor": "#343a40",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#f5f5f5",
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {}
+}

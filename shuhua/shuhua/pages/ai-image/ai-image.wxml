@@ -1,0 +1,52 @@
+<!-- AI书画意境生图 -->
+<view class="ai-image-container">
+  <!-- 顶部标题 -->
+  <view class="header-section">
+    <text class="header-title">AI书画意境生图</text>
+    <text class="header-subtitle">生成水墨国画风格的艺术作品</text>
+  </view>
+  
+  <!-- 关键词输入 -->
+  <view class="input-section">
+    <text class="section-label">输入意境关键词</text>
+    <input class="keyword-input" placeholder="例如：兰亭集序意境、水墨竹石图" value="{{keyword}}" bindinput="inputKeyword"></input>
+    
+    <!-- 推荐关键词 -->
+    <view class="recommended-section">
+      <text class="recommended-label">推荐关键词</text>
+      <view class="keywords-grid">
+        <view class="keyword-tag" wx:for="{{recommendedKeywords}}" wx:key="*this" bindtap="selectKeyword" data-keyword="{{item}}">
+          <text class="keyword-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 生成结果 -->
+  <view class="result-section" wx:if="{{generatedImage}}">
+    <text class="section-label">生成结果</text>
+    <view class="image-container">
+      <image class="generated-image" src="{{generatedImage}}"></image>
+    </view>
+    <view class="action-buttons">
+      <button class="action-button" bindtap="saveImage">
+        <text class="button-text">保存图片</text>
+      </button>
+      <button class="action-button secondary" bindtap="generateImage">
+        <text class="button-text">重新生成</text>
+      </button>
+    </view>
+  </view>
+  
+  <!-- 操作按钮 -->
+  <view class="action-section" wx:if="{{!generatedImage}}">
+    <button class="action-button" bindtap="generateImage" disabled="{{!keyword || isGenerating}}">
+      <text class="button-text">{{isGenerating ? '生成中...' : '生成意境图'}}</text>
+    </button>
+  </view>
+  
+  <!-- 底部装饰 -->
+  <view class="footer-section">
+    <text class="footer-text">AI创造，艺术无限</text>
+  </view>
+</view>

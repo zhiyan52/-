@@ -1,0 +1,36 @@
+<!-- 传世书画赏析库 -->
+<view class="artworks-container">
+  <!-- 顶部标题 -->
+  <view class="header-section">
+    <text class="header-title">传世书画赏析</text>
+    <text class="header-subtitle">欣赏经典传世作品，感受艺术魅力</text>
+  </view>
+  
+  <!-- 分类标签 -->
+  <view class="category-tabs">
+    <view class="tab" wx:for="{{categories}}" wx:key="id"
+          class="{{activeCategory === item.id ? 'active' : ''}}"
+          bindtap="switchCategory" data-id="{{item.id}}">
+      <text class="tab-text">{{item.name}}</text>
+    </view>
+  </view>
+  
+  <!-- 作品列表 -->
+  <view class="artworks-list">
+    <view class="artwork-card" wx:for="{{filteredArtworks}}" wx:key="id"
+          bindtap="viewArtworkDetail" data-id="{{item.id}}">
+      <image class="artwork-image" src="{{item.image}}"></image>
+      <view class="artwork-info">
+        <text class="artwork-title">{{item.name}}</text>
+        <text class="artwork-author">{{item.author}}</text>
+        <text class="artwork-period">{{item.period}}</text>
+        <text class="artwork-desc">{{item.description}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部装饰 -->
+  <view class="footer-section">
+    <text class="footer-text">传承经典，品味艺术</text>
+  </view>
+</view>

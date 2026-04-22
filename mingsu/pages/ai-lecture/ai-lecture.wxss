@@ -1,0 +1,167 @@
+.ai-lecture-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f4e9 0%, #e8e0d0 100%);
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  padding: 32rpx;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 48rpx;
+}
+
+.header-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+  display: block;
+}
+
+.header-subtitle {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+}
+
+.topic-section {
+  margin-bottom: 48rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 24rpx;
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80rpx;
+  height: 4rpx;
+  background: #d4a76a;
+  border-radius: 2rpx;
+}
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16rpx;
+}
+
+.topic-item {
+  background: white;
+  border: 2rpx solid #d4a76a;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.topic-item:active {
+  transform: scale(0.98);
+  box-shadow: 0 1rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.topic-item.selected {
+  background: #d4a76a;
+  color: white;
+}
+
+.topic-name {
+  font-size: 24rpx;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.topic-item.selected .topic-name {
+  color: white;
+}
+
+.action-section {
+  margin-bottom: 48rpx;
+}
+
+.get-lecture-btn {
+  background: #d4a76a;
+  color: white;
+  border: none;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  width: 100%;
+  box-shadow: 0 4rpx 12rpx rgba(212, 167, 106, 0.3);
+  transition: all 0.3s ease;
+}
+
+.get-lecture-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 8rpx rgba(212, 167, 106, 0.4);
+}
+
+.content-section {
+  margin-top: 32rpx;
+}
+
+.content-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 24rpx;
+  text-align: center;
+}
+
+.content-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.content-item {
+  margin-bottom: 24rpx;
+}
+
+.content-label {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.content-text {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+.content-text.poem {
+  font-style: italic;
+  color: #8B4513;
+  padding-left: 24rpx;
+  border-left: 4rpx solid #d4a76a;
+}
+
+/* 响应式调整 */
+@media (max-width: 375px) {
+  .topic-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .ai-lecture-container {
+    padding: 20rpx;
+  }
+  
+  .content-card {
+    padding: 24rpx;
+  }
+}

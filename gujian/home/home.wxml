@@ -24,17 +24,17 @@
         <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/wenhua.jpg" class="feature-icon" />
         <text>建筑文化</text>
       </view>
-      <view class="feature-item">
+      <navigator url="/gujian/zaoyi/zaoyi" class="feature-item">
         <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/zaoyi.jpg" class="feature-icon" />
         <text>营造技艺</text>
-      </view>
+      </navigator>
     </view>
     <view class="feature-row">
-      <view class="feature-item">
+      <view class="feature-item" bindtap="goToVirtualTour">
         <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/xuni.jpg" class="feature-icon" />
         <text>虚拟游览</text>
       </view>
-      <view class="feature-item">
+      <view class="feature-item" bindtap="goToCollection">
         <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/home/shoucang.jpg" class="feature-icon" />
         <text>我的收藏</text>
       </view>

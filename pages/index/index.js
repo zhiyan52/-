@@ -1,6 +1,7 @@
 // index.js
 Page({
   data: {
+    backgroundImage: '',
     modules: [
       {
         id: 1,
@@ -24,13 +25,13 @@ Page({
         id: 4,
         title: "民俗百味",
         image: "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shouye/mingsu(1)(1).png",
-        url: "/mingsu/mingsu/mingsu"
+        url: "/mingsu/mingsu"
       },
       {
         id: 5,
         title: "书画雅集",
         image: "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shouye/shuhua(1).png",
-        url: "/shufa/shufa/shufa"
+        url: "/shuhua/shuhua/shuhua"
       }
     ],
     knowledgeContent: "今日小知识：中国古建筑中的斗拱，不仅是承重结构，更是等级与美学的象征。"
@@ -45,6 +46,9 @@ Page({
         traceUser: true
       });
     }
+
+    // 获取背景图片临时链接
+    this.loadBackgroundImage();
 
     // 获取用户openid
     this.getUserOpenId().then(() => {
@@ -134,6 +138,25 @@ Page({
           resolve();
         }
       });
+    });
+  },
+
+  // 获取背景图片临时链接
+  loadBackgroundImage() {
+    const fileID = 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/zhuye/beijing.jpg';
+
+    wx.cloud.getTempFileURL({
+      fileList: [fileID],
+      success: (res) => {
+        if (res.fileList[0] && res.fileList[0].tempFileURL) {
+          this.setData({
+            backgroundImage: res.fileList[0].tempFileURL
+          });
+        }
+      },
+      fail: (err) => {
+        console.error('获取背景图片失败：', err);
+      }
     });
   },
   // 从云数据库加载每日文化小知识

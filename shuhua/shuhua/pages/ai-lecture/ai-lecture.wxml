@@ -1,0 +1,42 @@
+<!-- AI书画智能讲解 -->
+<view class="ai-lecture-container">
+  <!-- 顶部标题 -->
+  <view class="header-section">
+    <text class="header-title">AI书画智能讲解</text>
+    <text class="header-subtitle">AI深度解析书画艺术内涵</text>
+  </view>
+  
+  <!-- 作品选择 -->
+  <view class="selection-section">
+    <text class="section-label">选择作品</text>
+    <view class="works-grid">
+      <view class="work-card" wx:for="{{works}}" wx:key="id"
+            class="{{selectedWork === item.id ? 'selected' : ''}}"
+            bindtap="selectWork" data-id="{{item.id}}">
+        <image class="work-image" src="{{item.image}}"></image>
+        <text class="work-name">{{item.name}}</text>
+        <text class="work-author">{{item.author}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 讲解内容 -->
+  <view class="explanation-section" wx:if="{{explanation}}">
+    <text class="section-label">AI讲解</text>
+    <view class="explanation-content">
+      <text class="explanation-text">{{explanation}}</text>
+    </view>
+  </view>
+  
+  <!-- 操作按钮 -->
+  <view class="action-section">
+    <button class="action-button" bindtap="getExplanation" disabled="{{!selectedWork || isLoading}}">
+      <text class="button-text">{{isLoading ? '生成中...' : '获取AI讲解'}}</text>
+    </button>
+  </view>
+  
+  <!-- 底部装饰 -->
+  <view class="footer-section">
+    <text class="footer-text">AI助力，深入理解书画艺术</text>
+  </view>
+</view>

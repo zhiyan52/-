@@ -78,5 +78,26 @@ Page({
     wx.navigateTo({
       url: '/gujian/home/pages/community/community'
     });
+  },
+
+  // 跳转到我的收藏
+  goToCollection: function () {
+    wx.navigateTo({
+      url: '/pages/collection/collection'
+    });
+  },
+
+  // 跳转到虚拟游览（360度全景）
+  goToVirtualTour: function () {
+    wx.navigateTo({
+      url: '/pages/virtual-gallery/virtual-gallery'
+    });
+  },
+
+  // 跳转到营造技艺
+  goToZaoyi: function () {
+    wx.navigateTo({
+      url: '/gujian/zaoyi/zaoyi'
+    });
   }
 });

@@ -1,0 +1,92 @@
+<!-- 文化详情页面 -->
+<view class="detail-container">
+  <!-- 顶部导航 -->
+  <view class="nav-bar">
+    <view class="nav-left" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="nav-title">{{exhibit.name}}</view>
+    <view class="nav-right"></view>
+  </view>
+
+  <!-- 主图片 -->
+  <view class="main-image-container">
+    <image src="{{exhibit.image}}" mode="aspectFill" class="main-image"/>
+    <view class="image-overlay">
+      <text class="overlay-title">{{exhibit.name}}</text>
+      <text class="overlay-subtitle">{{exhibit.category}}</text>
+    </view>
+  </view>
+
+  <!-- 基本信息 -->
+  <view class="basic-info">
+    <view class="info-card">
+      <view class="info-item">
+        <text class="info-label">名称：</text>
+        <text class="info-value">{{exhibit.name}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">类别：</text>
+        <text class="info-value">{{exhibit.category}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">年代：</text>
+        <text class="info-value">{{exhibit.era}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">地点：</text>
+        <text class="info-value">{{exhibit.location}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 详细介绍 -->
+  <view class="description-section">
+    <text class="section-title">详细介绍</text>
+    <view class="description-content">
+      <text>{{exhibit.description}}</text>
+    </view>
+  </view>
+
+  <!-- 历史背景 -->
+  <view class="history-section">
+    <text class="section-title">历史背景</text>
+    <view class="history-content">
+      <text>{{exhibit.history}}</text>
+    </view>
+  </view>
+
+  <!-- 文化价值 -->
+  <view class="value-section">
+    <text class="section-title">文化价值</text>
+    <view class="value-content">
+      <text>{{exhibit.value}}</text>
+    </view>
+  </view>
+
+  <!-- 相关图片 -->
+  <view class="gallery-section">
+    <text class="section-title">相关图片</text>
+    <scroll-view scroll-x="true" class="image-gallery">
+      <view wx:for="{{exhibit.gallery}}" wx:key="index" class="gallery-item">
+        <image src="{{item}}" mode="aspectFill" class="gallery-image" bindtap="previewImage" data-index="{{index}}"/>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 底部操作 -->
+  <view class="bottom-actions">
+    <view class="action-btn" bindtap="shareExhibit">
+      <text class="action-icon">🔗</text>
+      <text class="action-text">分享</text>
+    </view>
+    <view class="action-btn" bindtap="addCollection">
+      <text class="action-icon">❤️</text>
+      <text class="action-text">收藏</text>
+    </view>
+    <view class="action-btn" bindtap="viewMap">
+      <text class="action-icon">📍</text>
+      <text class="action-text">查看地图</text>
+    </view>
+  </view>
+</view>

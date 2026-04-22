@@ -1,0 +1,244 @@
+/* 书画盲盒·每日一赏样式 */
+.blind-box-container {
+  background-color: #f5f2e9;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+/* 顶部标题 */
+.header-section {
+  text-align: center;
+  margin-bottom: 30rpx;
+  padding: 30rpx 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 10rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.header-subtitle {
+  font-size: 24rpx;
+  color: #6b5344;
+  display: block;
+}
+
+/* 盲盒区域 */
+.blind-box-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.blind-box {
+  width: 300rpx;
+  height: 300rpx;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20rpx;
+}
+
+.blind-box:hover {
+  transform: scale(1.05);
+}
+
+.box-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.15);
+}
+
+.box-text {
+  position: absolute;
+  bottom: 20rpx;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 24rpx;
+  color: #8B4513;
+  font-weight: bold;
+  font-family: '楷体', 'KaiTi', serif;
+  text-shadow: 2rpx 2rpx 4rpx rgba(255, 255, 255, 0.8);
+}
+
+.hint-text {
+  font-size: 20rpx;
+  color: #9e8b7c;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 内容区域 */
+.content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+/* 作品展示 */
+.artwork-card {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.artwork-image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 15rpx;
+  object-fit: cover;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.artwork-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 10rpx;
+  display: block;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.artwork-author {
+  font-size: 24rpx;
+  color: #6b5344;
+  display: block;
+}
+
+/* 语录卡片 */
+.quote-card {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: flex-start;
+  gap: 20rpx;
+}
+
+.quote-icon {
+  font-size: 40rpx;
+  flex-shrink: 0;
+  margin-top: -10rpx;
+}
+
+.quote-text {
+  flex: 1;
+  font-size: 24rpx;
+  color: #6b5344;
+  line-height: 1.6;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 冷知识卡片 */
+.fact-card {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.fact-icon {
+  font-size: 32rpx;
+  align-self: flex-start;
+}
+
+.fact-title {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #8B4513;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.fact-text {
+  font-size: 22rpx;
+  color: #6b5344;
+  line-height: 1.5;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 技法科普卡片 */
+.technique-card {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.technique-icon {
+  font-size: 32rpx;
+  align-self: flex-start;
+}
+
+.technique-title {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #8B4513;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+.technique-text {
+  font-size: 22rpx;
+  color: #6b5344;
+  line-height: 1.5;
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+
+.action-button {
+  background-color: #8B4513;
+  color: #ffffff;
+  border-radius: 30rpx;
+  padding: 20rpx 60rpx;
+  font-size: 28rpx;
+  font-family: '楷体', 'KaiTi', serif;
+  box-shadow: 0 4rpx 12rpx rgba(139, 69, 19, 0.3);
+  transition: all 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #6b3410;
+  transform: translateY(-3rpx);
+  box-shadow: 0 6rpx 16rpx rgba(139, 69, 19, 0.4);
+}
+
+.button-text {
+  font-family: '楷体', 'KaiTi', serif;
+}
+
+/* 底部装饰 */
+.footer-section {
+  text-align: center;
+  padding: 20rpx 0;
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: #9e8b7c;
+  font-family: '楷体', 'KaiTi', serif;
+}

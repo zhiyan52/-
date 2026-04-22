@@ -1,0 +1,153 @@
+.workshop-container {
+  min-height: 100vh;
+  background: #2c1810;
+}
+
+.workshop-header {
+  padding: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.workshop-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #f5f0e8;
+}
+
+.stats-container {
+  display: flex;
+  gap: 32rpx;
+  padding: 0 32rpx 24rpx;
+}
+
+.stat-item {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #c0392b;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.filter-bar {
+  display: flex;
+  padding: 0 32rpx 24rpx;
+  gap: 16rpx;
+}
+
+.filter-btn {
+  flex: 1;
+  font-size: 28rpx;
+  color: #999;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 28rpx;
+  padding: 12rpx;
+  text-align: center;
+}
+
+.filter-btn.active {
+  color: #f5f0e8;
+  background: #c0392b;
+}
+
+.works-list {
+  padding: 0 32rpx;
+  height: calc(100vh - 300rpx);
+}
+
+.work-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 24rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+  display: flex;
+  align-items: center;
+}
+
+.work-thumb {
+  width: 120rpx;
+  height: 120rpx;
+  background: #c0392b;
+  border-radius: 16rpx;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+
+.work-info {
+  flex: 1;
+}
+
+.work-name {
+  font-size: 32rpx;
+  color: #f5f0e8;
+  font-weight: bold;
+}
+
+.work-meta {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-top: 8rpx;
+}
+
+.work-date {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.work-score {
+  font-size: 24rpx;
+  color: #f1c40f;
+  font-weight: bold;
+}
+
+.work-stars {
+  font-size: 24rpx;
+  color: #f1c40f;
+}
+
+.work-actions {
+  display: flex;
+  gap: 16rpx;
+}
+
+.action-btn {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  color: #999;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 24rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+}

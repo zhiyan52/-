@@ -1,0 +1,59 @@
+<!-- 书画盲盒·每日一赏 -->
+<view class="blind-box-container">
+  <!-- 顶部标题 -->
+  <view class="header-section">
+    <text class="header-title">书画盲盒</text>
+    <text class="header-subtitle">每日一赏，发现书画之美</text>
+  </view>
+  
+  <!-- 盲盒区域 -->
+  <view class="blind-box-section" wx:if="{{!showContent}}">
+    <view class="blind-box" bindtap="openBlindBox">
+      <image class="box-image" src="https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/box.png"></image>
+      <text class="box-text">点击打开盲盒</text>
+    </view>
+    <text class="hint-text">每天打开一次，发现不同的书画惊喜</text>
+  </view>
+  
+  <!-- 盲盒内容 -->
+  <view class="content-section" wx:if="{{showContent}}">
+    <!-- 作品展示 -->
+    <view class="artwork-card">
+      <image class="artwork-image" src="{{blindBoxContent.artwork.image}}"></image>
+      <text class="artwork-name">{{blindBoxContent.artwork.name}}</text>
+      <text class="artwork-author">{{blindBoxContent.artwork.author}}</text>
+    </view>
+    
+    <!-- 语录 -->
+    <view class="quote-card">
+      <text class="quote-icon">📜</text>
+      <text class="quote-text">{{blindBoxContent.quote}}</text>
+    </view>
+    
+    <!-- 冷知识 -->
+    <view class="fact-card">
+      <text class="fact-icon">💡</text>
+      <text class="fact-title">书画冷知识</text>
+      <text class="fact-text">{{blindBoxContent.fact}}</text>
+    </view>
+    
+    <!-- 技法科普 -->
+    <view class="technique-card">
+      <text class="technique-icon">✍️</text>
+      <text class="technique-title">笔墨技法小科普</text>
+      <text class="technique-text">{{blindBoxContent.technique}}</text>
+    </view>
+    
+    <!-- 操作按钮 -->
+    <view class="action-buttons">
+      <button class="action-button" bindtap="openBlindBox">
+        <text class="button-text">再开一次</text>
+      </button>
+    </view>
+  </view>
+  
+  <!-- 底部装饰 -->
+  <view class="footer-section">
+    <text class="footer-text">每日一赏，品味书画之美</text>
+  </view>
+</view>

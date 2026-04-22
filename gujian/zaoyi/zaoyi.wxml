@@ -1,0 +1,42 @@
+<view class="container"> 
+   <view class="title">🏮 古建营造技艺工坊</view> 
+
+   <!-- 1. 构件选择区 --> 
+   <view class="select-group"> 
+     <picker mode="selector" range="{{components}}" bindchange="onComponentChange"> 
+       <view class="picker">构件：{{selectedComponent || '请选择构件'}}</view> 
+     </picker> 
+
+     <picker mode="selector" range="{{dynasties}}" bindchange="onDynastyChange"> 
+       <view class="picker">朝代：{{selectedDynasty || '请选择朝代'}}</view> 
+     </picker> 
+   </view> 
+
+   <!-- 2. 自定义描述 --> 
+   <view class="input-box"> 
+     <input 
+       placeholder="补充细节（如：官式建筑、江南民居等）" 
+       value="{{detail}}" 
+       bindinput="onDetailInput" 
+     /> 
+   </view> 
+
+   <!-- 3. 生成按钮 --> 
+   <button 
+     class="generate-btn" 
+     bindtap="generate" 
+     disabled="{{loading}}" 
+   > 
+     {{loading ? '🎨 生成中...' : '✨ 生成构件图解'}} 
+   </button> 
+
+   <!-- 4. 生成结果 --> 
+   <view class="result-area" wx:if="{{imageUrl}}"> 
+     <image src="{{imageUrl}}" mode="widthFix" class="component-image" /> 
+     <view class="knowledge-card"> 
+       <view class="card-title">{{selectedDynasty}}{{selectedComponent}}</view> 
+       <view class="card-content">{{knowledgeText}}</view> 
+       <button class="save-btn" bindtap="saveToWorkshop">💾 保存到我的工坊</button> 
+     </view> 
+   </view> 
+ </view>

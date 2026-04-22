@@ -1,0 +1,61 @@
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="page-title">非遗文化</view>
+  
+  <!-- 一、非遗知识答题模块 -->
+  <view class="qa-section">
+    <view class="section-title">非遗知识答题</view>
+    
+    <!-- 题目 -->
+    <view class="question-box">{{currentQuestion.question}}</view>
+    
+    <!-- 选项列表 -->
+    <view class="options-list">
+      <!-- 答题模式 -->
+      <view wx:for="{{currentQuestion.options}}" wx:key="index" class="option-item" bindtap="chooseAnswer" data-index="{{index}}" wx:if="{{!resultShow}}">
+        {{item}}
+      </view>
+      
+      <!-- 结果展示模式 -->
+      <view wx:for="{{currentQuestion.options}}" wx:key="index" class="option-item {{answerIndex===index?(index==currentQuestion.answer?'correct':'error'):''}}" wx:if="{{resultShow}}">
+        {{item}}
+      </view>
+    </view>
+    
+    <!-- 答题结果 -->
+    <view class="result-tip" wx:if="{{resultShow}}">
+      <text class="{{isCorrect ? 'right-text' : 'wrong-text'}}">{{isCorrect ? '✅ 回答正确' : '❌ 回答错误'}}</text>
+    </view>
+    
+    <!-- 操作按钮 -->
+    <view class="qa-btns" wx:if="{{resultShow}}">
+      <button bindtap="nextQuestion" class="mini-btn next-btn">下一题</button>
+      <button bindtap="getQuestionExplain" class="mini-btn ai-btn">AI讲解本题</button>
+      <button bindtap="getQuestionImage" class="mini-btn img-btn">生成参考图</button>
+    </view>
+  </view>
+  
+  <!-- 二、AI非遗智能指导模块 -->
+  <view class="ai-section">
+    <view class="section-title">🤖 AI非遗技艺指导</view>
+    <view class="input-box">
+      <textarea placeholder="请输入非遗工序疑问/技法问题/描述你的练习作品" value="{{userInput}}" bindinput="handleInput"></textarea>
+      <view class="ai-btns">
+        <button bindtap="getAIAdvice" loading="{{isLoading}}" class="action-btn primary-btn">AI解答/改进建议</button>
+        <button bindtap="getReferenceImage" loading="{{imgLoading}}" class="action-btn second-btn">生成参考图</button>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 三、AI解答结果展示 -->
+  <view class="result-section" wx:if="{{aiResult}}">
+    <view class="section-title">📄 AI解答结果</view>
+    <view class="ai-result-content">{{aiResult}}</view>
+  </view>
+  
+  <!-- 四、参考示意图展示 -->
+  <view class="image-section" wx:if="{{referenceImage}}">
+    <view class="section-title">🖼️ 非遗技艺参考图</view>
+    <image src="{{referenceImage}}" mode="widthFix" class="result-img"></image>
+  </view>
+</view>

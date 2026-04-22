@@ -1,5 +1,5 @@
  <!--index.wxml-->
-<view class="container">
+<view class="container" style="background-image: url('{{backgroundImage}}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
   <!-- 顶部导航栏 -->
   <view class="header">
      <image  class="shangyan" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shouye/shangyan(1).png" ></image>

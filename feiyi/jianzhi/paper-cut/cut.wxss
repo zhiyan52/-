@@ -1,0 +1,214 @@
+/* mingsu/jianzhi/paper-cut-cut.wxss */.container {
+  min-height: 100vh;
+  background: #2c1810;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+/* 顶部信息栏 */
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  margin-bottom: 20rpx;
+}
+
+.pattern-info {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.pattern-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #f5f0e8;
+}
+
+.fold-badge {
+  font-size: 22rpx;
+  color: #c0392b;
+  background: #f5f0e8;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.progress-text {
+  font-size: 28rpx;
+  color: #f5f0e8;
+}
+
+.progress-bar {
+  width: 120rpx;
+  height: 8rpx;
+  background: rgba(245, 240, 232, 0.2);
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #e74c3c;
+  border-radius: 4rpx;
+  transition: width 0.3s ease;
+}
+
+/* 画布区域 */
+.canvas-wrapper {
+  position: relative;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.3);
+}
+
+.cut-canvas {
+  display: block;
+}
+
+/* 状态遮罩 */
+.status-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(44, 24, 16, 0.9);
+}
+
+.checking-animation {
+  text-align: center;
+}
+
+.checking-text {
+  display: block;
+  font-size: 32rpx;
+  color: #f5f0e8;
+  margin-bottom: 20rpx;
+  animation: pulse 1s infinite;
+}
+
+.paper-unfold-icon {
+  font-size: 80rpx;
+  animation: unfold 2s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes unfold {
+  0% { transform: scale(0.5) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(180deg); }
+  100% { transform: scale(1) rotate(360deg); }
+}
+
+/* 提示栏 */
+.tip-bar {
+  position: fixed;
+  top: 200rpx;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100rpx);
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 16rpx 32rpx;
+  border-radius: 40rpx;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.tip-bar.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.tip-icon {
+  font-size: 32rpx;
+}
+
+.tip-text {
+  font-size: 28rpx;
+  color: #fff;
+}
+
+/* 底部工具栏 */
+.toolbar {
+  position: fixed;
+  bottom: 40rpx;
+  display: flex;
+  gap: 40rpx;
+  padding: 20rpx 40rpx;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 48rpx;
+  backdrop-filter: blur(10rpx);
+}
+
+.tool-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+.tool-btn::after {
+  display: none;
+}
+
+.tool-icon {
+  font-size: 40rpx;
+}
+
+.tool-label {
+  font-size: 22rpx;
+  color: #f5f0e8;
+}
+
+.tool-btn[disabled] {
+  opacity: 0.4;
+}
+
+/* 精度浮动指示 */
+.accuracy-float {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.accuracy-ring {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 6rpx solid;
+  border-color: hsl(calc(var(--accuracy) * 1.2), 70%, 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.accuracy-num {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+}

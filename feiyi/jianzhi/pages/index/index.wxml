@@ -1,0 +1,74 @@
+<view class="home-container">
+  <!-- 顶部品牌 -->
+  <view class="brand-header">
+    <text class="brand-name">古雅文轩</text>
+    <text class="sub-brand">指尖非遗 · 剪纸</text>
+  </view>
+
+  <!-- 用户状态卡 -->
+  <view class="user-card">
+    <view class="user-stats">
+      <view class="stat-item">
+        <text class="stat-num">{{totalWorks}}</text>
+        <text class="stat-label">作品</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num">{{totalStars}}</text>
+        <text class="stat-label">星数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num">{{unlockedPatterns.length}}</text>
+        <text class="stat-label">图样</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 季节性主题 -->
+  <view class="seasonal-banner" wx:if="{{seasonalTheme}}" bindtap="startSeasonal">
+    <text class="seasonal-icon">{{seasonalTheme.icon}}</text>
+    <view class="seasonal-info">
+      <text class="seasonal-name">{{seasonalTheme.name}}限定</text>
+      <text class="seasonal-desc">限时解锁「{{seasonalTheme.pattern}}」图样</text>
+    </view>
+    <text class="seasonal-arrow">→</text>
+  </view>
+
+  <!-- 主操作区 -->
+  <view class="main-actions">
+    <view class="action-btn primary" bindtap="startPaperCut">
+      <text class="btn-icon">✂️</text>
+      <text class="btn-text">开始剪纸</text>
+      <text class="btn-desc">选择图样，体验传统技艺</text>
+    </view>
+    
+    <view class="action-row">
+      <view class="action-btn secondary" bindtap="goToWorkshop">
+        <text class="btn-icon">🏛️</text>
+        <text class="btn-text">我的工坊</text>
+      </view>
+      <view class="action-btn secondary" bindtap="goToGallery">
+        <text class="btn-icon">📖</text>
+        <text class="btn-text">图鉴收藏</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 最近作品 -->
+  <view class="recent-section" wx:if="{{recentWorks.length > 0}}">
+    <text class="section-title">最近作品</text>
+    <scroll-view scroll-x class="recent-scroll">
+      <view class="recent-item" wx:for="{{recentWorks}}" wx:key="id" bindtap="viewRecentWork" data-id="{{item.id}}">
+        <image class="recent-thumb" src="{{item.thumb}}" mode="aspectFill"/>
+        <view class="recent-stars">
+          <text wx:for="{{[1, 2, 3, 4, 5]}}" wx:key="*this" wx:if="{{item.stars >= index + 1}}">⭐</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 每日知识 -->
+  <view class="daily-tip">
+    <text class="tip-label">匠人心语</text>
+    <text class="tip-content">{{dailyTip}}</text>
+  </view>
+</view>

@@ -1,90 +1,66 @@
 // mingsu/mingsu/pages/encyclopedia/encyclopedia.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    courses: [
-      {
-        id: 1,
-        title: '中国饮食文化概述',
-        cover: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20food%20culture%20overview&image_size=landscape_16_9',
-        duration: '20分钟',
-        level: '入门',
-        views: 12580
-      },
-      {
-        id: 2,
-        title: '二十四节气与饮食',
-        cover: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20solar%20terms%20food%20culture&image_size=landscape_16_9',
-        duration: '25分钟',
-        level: '中级',
-        views: 9876
-      },
-      {
-        id: 3,
-        title: '中国传统节日美食',
-        cover: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20festival%20food%20culture&image_size=landscape_16_9',
-        duration: '30分钟',
-        level: '中级',
-        views: 15432
-      },
-      {
-        id: 4,
-        title: '中国菜系的形成与发展',
-        cover: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20cuisine%20history&image_size=landscape_16_9',
-        duration: '40分钟',
-        level: '高级',
-        views: 8765
-      }
-    ],
-    articles: [
-      {
-        id: 1,
-        title: '筷子的文化意义',
-        summary: '筷子不仅是进食工具，更是中国文化的重要象征',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20chopsticks%20culture&image_size=square',
-        date: '2026-03-20'
-      },
-      {
-        id: 2,
-        title: '茶文化与中国社会',
-        summary: '茶不仅是饮品，更是中国人的生活方式和社交媒介',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20tea%20culture&image_size=square',
-        date: '2026-03-15'
-      }
-    ]
+
   },
 
-  onLoad() {
-    this.loadCourses();
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+
   },
 
-  loadCourses() {
-    console.log('加载食文化小课堂数据');
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
   },
 
-  goToCourseDetail(e) {
-    const id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: `/mingsu/mingsu/pages/encyclopedia/course-detail?id=${id}`,
-      fail: (err) => {
-        console.error('跳转失败:', err);
-        wx.showToast({ title: '页面加载失败', icon: 'error' });
-      }
-    });
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
   },
 
-  goToArticle(e) {
-    const id = e.currentTarget.dataset.id;
-    wx.showToast({
-      title: '文章详情页开发中',
-      icon: 'none'
-    });
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
   },
 
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
   onShareAppMessage() {
-    return {
-      title: '食文化小课堂 | 探索中华饮食文化',
-      path: '/mingsu/mingsu/pages/encyclopedia/encyclopedia',
-      imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20food%20culture%20classroom&image_size=landscape_16_9'
-    };
+
   }
-});
+})

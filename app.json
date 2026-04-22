@@ -9,7 +9,33 @@
     "ai-assistant/ai-assistant",
     "pages/checkin/checkin",
     "pages/cultural-map/cultural-map",
-    "pages/certificate/certificate"
+    "pages/certificate/certificate",
+    "pages/virtual-gallery/virtual-gallery",
+    "pages/culture-detail/detail",
+    "pages/collection/collection",
+    "pages/test/test",
+    "gujian/monijianzhi",
+    "mingsu/jianzhi",
+    "mingsu/jianzhi/jianzhi",
+    "mingsu/cixiu/cixiu",
+    "mingsu/craftsmanship/craftsmanship",
+    "mingsu/jianzhi/paper-cut/cut",
+    "mingsu/jianzhi/paper-cut/result",
+    "mingsu/jianzhi/pages/index/index",
+    "mingsu/jianzhi/paper-cut/select",
+    "mingsu/jianzhi/paper-cut/fold",
+    "mingsu/jianzhi/pages/workshop/workshop",
+    "mingsu/jianzhi/pages/gallery/gallery",
+    "mingsu/mingsu",
+    "mingsu/pages/calendar/calendar",
+    "mingsu/pages/ai-lecture/ai-lecture",
+    "mingsu/pages/ai-image/ai-image",
+    "mingsu/pages/quiz/quiz",
+    "mingsu/pages/card/card",
+    "mingsu/pages/blind-box/blind-box",
+    "feiyi/shijianzhou/skill",
+    "feiyi/zhineng/daolan/nfyiyi_guide",
+    "feiyi/zhineng/wenda/qa"
   ],
   "subpackages": [
     {
@@ -63,6 +89,12 @@
       ]
     },
     {
+      "root": "gujian/zaoyi",
+      "pages": [
+        "zaoyi"
+      ]
+    },
+    {
       "root": "pages/feiyi/",
       "pages": [
         "pages/index/index",
@@ -86,6 +118,7 @@
         "diancang-detail",
         "diancang-list",
         "diancang-reader",
+        "diancang-treasure-hunt",
         "pages/profile/profile",
         "pages/community/community",
         "ai/ai-guide",
@@ -123,6 +156,12 @@
       "root": "shuhua/shuhua",
       "pages": [
         "shuhua"
+      ]
+    },
+    {
+      "root": "feiyi/feiyi",
+      "pages": [
+        "feiyi"
       ]
     },
     {
