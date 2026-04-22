@@ -1,0 +1,65 @@
+<!-- shuhuayayun/pages/ai-generate/ai-generate.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="title">AI书画意境生图</view>
+    <view class="subtitle">输入描述，生成水墨国画风格作品</view>
+  </view>
+  
+  <!-- 输入区域 -->
+  <view class="input-section">
+    <textarea 
+      class="input-prompt"
+      placeholder="请输入描述，例如：兰亭集序意境、水墨竹石图、工笔牡丹"
+      value="{{prompt}}"
+      bindinput="inputPrompt"
+    ></textarea>
+    
+    <!-- 示例提示 -->
+    <view class="examples-section">
+      <view class="examples-title">示例：</view>
+      <view class="examples-list">
+        <view 
+          wx:for="{{examples}}" 
+          wx:key="index"
+          class="example-item"
+          bindtap="selectExample"
+          data-example="{{item}}"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 生成按钮 -->
+  <view class="button-section">
+    <button 
+      class="generate-btn"
+      bindtap="generateImage"
+      disabled="{{!prompt || loading}}"
+    >
+      {{loading ? '生成中...' : '生成图片'}}
+    </button>
+  </view>
+  
+  <!-- 生成结果 -->
+  <view wx:if="{{generatedImage}}" class="result-section">
+    <view class="section-title">生成结果</view>
+    <view class="image-container">
+      <image src="{{generatedImage}}" mode="aspectFit"></image>
+    </view>
+    <view class="save-section">
+      <button 
+        class="save-btn"
+        bindtap="saveImage"
+      >
+        保存到相册
+      </button>
+    </view>
+  </view>
+  
+  <!-- 错误提示 -->
+  <view wx:if="{{error}}" class="error-section">
+    <view class="error-message">{{error}}</view>
+  </view>
+</view>

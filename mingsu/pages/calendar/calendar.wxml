@@ -1,4 +1,7 @@
 <view class="calendar-container">
+  <!-- 顶部装饰 -->
+  <view class="decoration-top"></view>
+  
   <!-- 顶部标签切换 -->
   <view class="tab-container">
     <view class="tab-item {{activeTab === 'festival' ? 'active' : ''}}" bindtap="switchTab" data-tab="festival">

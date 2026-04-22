@@ -5,42 +5,42 @@ Page({
       {
         id: 'calendar',
         name: '节气图鉴',
-        icon: '📅',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/1.jpg',
         desc: '了解二十四节气与传统节日',
         color: '#8B4513'
       },
       {
         id: 'ai-lecture',
         name: 'AI民俗讲堂',
-        icon: '🎓',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/icons/ai-lecture.png',
         desc: 'AI解读民俗文化内涵',
         color: '#2E8B57'
       },
       {
         id: 'ai-image',
         name: '意境生图',
-        icon: '🖼️',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/icons/ai-image.png',
         desc: 'AI生成民俗主题水墨插画',
         color: '#4169E1'
       },
       {
         id: 'quiz',
         name: '知识答题',
-        icon: '❓',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/icons/quiz.png',
         desc: '民俗知识小测试',
         color: '#DAA520'
       },
       {
         id: 'card',
         name: '卡片生成',
-        icon: '🎴',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/icons/card.png',
         desc: '生成可保存的民俗卡片',
         color: '#CD5C5C'
       },
       {
         id: 'blind-box',
         name: '风物盲盒',
-        icon: '🎁',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/icons/blind-box.png',
         desc: '每日随机获得民俗知识',
         color: '#9370DB'
       }
@@ -50,7 +50,7 @@ Page({
         id: 'spring-festival',
         name: '春节',
         desc: '团圆喜庆，辞旧迎新',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20Spring%20Festival%20traditional%20scene%20with%20red%20lanterns%20and%20firecrackers%2C%20ink%20painting%20style&image_size=square_hd'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/2.jpg'
       },
       {
         id: 'mid-autumn',

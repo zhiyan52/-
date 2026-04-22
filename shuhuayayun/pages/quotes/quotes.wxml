@@ -1,0 +1,42 @@
+<!-- shuhuayayun/pages/quotes/quotes.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="title">书画佳句卡片</view>
+    <view class="subtitle">生成水墨风格的书画名句卡片</view>
+  </view>
+  
+  <!-- 卡片展示 -->
+  <view class="card-section">
+    <view class="card-container">
+      <view class="card-background">
+        <image src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=中国水墨画 背景 宣纸 水墨纹理&image_size=portrait_4_3" mode="aspectFill"></image>
+        <view class="card-content">
+          <view wx:if="{{!currentQuote}}" class="loading">
+            生成中...
+          </view>
+          <view wx:else class="quote-text">
+            {{currentQuote}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 操作按钮 -->
+  <view class="button-section">
+    <button 
+      class="generate-btn"
+      bindtap="generateQuote"
+      disabled="{{generating}}"
+    >
+      {{generating ? '生成中...' : '生成新卡片'}}
+    </button>
+    <button 
+      class="save-btn"
+      bindtap="saveCard"
+      disabled="{{!currentQuote}}"
+    >
+      保存卡片
+    </button>
+  </view>
+</view>

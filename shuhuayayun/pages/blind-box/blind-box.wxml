@@ -1,0 +1,79 @@
+<!-- shuhuayayun/pages/blind-box/blind-box.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="title">书画盲盒·每日一赏</view>
+    <view class="subtitle">打开盲盒，发现书画世界的惊喜</view>
+  </view>
+  
+  <!-- 未开启状态 -->
+  <view wx:if="{{!opened}}" class="box-section">
+    <view class="blind-box">
+      <view class="box-image">
+        <image src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=中国传统盲盒 水墨风格 书法 国画&image_size=square" mode="aspectFit"></image>
+      </view>
+      <view class="box-info">
+        <view class="box-text">点击开启盲盒</view>
+        <view class="box-hint">随机获得一幅名家作品、一句美学语录、一个冷知识和一段技法科普</view>
+      </view>
+    </view>
+    
+    <view class="button-section">
+      <button 
+        class="open-btn"
+        bindtap="openBlindBox"
+        disabled="{{loading}}"
+      >
+        {{loading ? '开启中...' : '开启盲盒'}}
+      </button>
+    </view>
+  </view>
+  
+  <!-- 已开启状态 -->
+  <view wx:if="{{opened && blindBox}}" class="result-section">
+    <!-- 作品展示 -->
+    <view class="result-item">
+      <view class="item-title">名家作品</view>
+      <view class="work-container">
+        <image src="{{blindBox.work.image}}" mode="aspectFit"></image>
+        <view class="work-info">
+          <view class="work-name">{{blindBox.work.name}}</view>
+          <view class="work-author">{{blindBox.work.author}}</view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 美学语录 -->
+    <view class="result-item">
+      <view class="item-title">美学语录</view>
+      <view class="quote-container">
+        <view class="quote-text">{{blindBox.quote}}</view>
+      </view>
+    </view>
+    
+    <!-- 冷知识 -->
+    <view class="result-item">
+      <view class="item-title">书画冷知识</view>
+      <view class="fact-container">
+        <view class="fact-text">{{blindBox.fact}}</view>
+      </view>
+    </view>
+    
+    <!-- 技法科普 -->
+    <view class="result-item">
+      <view class="item-title">笔墨技法</view>
+      <view class="technique-container">
+        <view class="technique-text">{{blindBox.technique}}</view>
+      </view>
+    </view>
+    
+    <!-- 再来一次按钮 -->
+    <view class="button-section">
+      <button 
+        class="again-btn"
+        bindtap="openAgain"
+      >
+        再来一次
+      </button>
+    </view>
+  </view>
+</view>

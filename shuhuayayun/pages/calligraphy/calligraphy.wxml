@@ -1,0 +1,78 @@
+<!-- shuhuayayun/pages/calligraphy/calligraphy.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="title">书法字体科普</view>
+    <view class="subtitle">了解中国五大书体的起源与特点</view>
+  </view>
+  
+  <!-- 书体选择 -->
+  <view class="script-selector">
+    <view 
+      wx:for="{{scripts}}" 
+      wx:key="id"
+      class="script-item {{activeScript && activeScript.id === item.id ? 'active' : ''}}"
+      bindtap="selectScript"
+      data-script="{{item}}"
+    >
+      {{item.name}}
+    </view>
+  </view>
+  
+  <!-- 书体详情 -->
+  <view wx:if="{{activeScript}}" class="script-detail">
+    <view class="detail-header">
+      <view class="script-name">{{activeScript.name}}</view>
+    </view>
+    
+    <view class="detail-content">
+      <!-- 书体图片 -->
+      <view class="script-image">
+        <image src="{{activeScript.image}}" mode="aspectFill"></image>
+      </view>
+      
+      <!-- 起源与发展 -->
+      <view class="detail-section">
+        <view class="section-title">起源与发展</view>
+        <view class="section-content">
+          <view class="content-item">
+            <view class="item-label">起源：</view>
+            <view class="item-text">{{activeScript.origin}}</view>
+          </view>
+          <view class="content-item">
+            <view class="item-label">发展：</view>
+            <view class="item-text">{{activeScript.development}}</view>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 艺术特点 -->
+      <view class="detail-section">
+        <view class="section-title">艺术特点</view>
+        <view class="section-content">
+          <view class="item-text">{{activeScript.features}}</view>
+        </view>
+      </view>
+      
+      <!-- 代表人物与作品 -->
+      <view class="detail-section">
+        <view class="section-title">代表人物与作品</view>
+        <view class="section-content">
+          <view wx:for="{{activeScript.representatives}}" wx:key="index" class="representative-item">
+            <view class="rep-name">{{item.name}}</view>
+            <view class="rep-works">
+              <view wx:for="{{item.works}}" wx:key="workIndex" class="work-tag">{{item}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 辨识技巧 -->
+      <view class="detail-section">
+        <view class="section-title">辨识技巧</view>
+        <view class="section-content">
+          <view class="item-text">{{activeScript.recognition}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

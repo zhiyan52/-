@@ -1,0 +1,82 @@
+<!-- shuhuayayun/pages/masters/masters.wxml -->
+<view class="container">
+  <!-- 标签切换 -->
+  <view class="tab-container">
+    <view 
+      class="tab-item {{activeTab === 'calligraphy' ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-tab="calligraphy"
+    >
+      书法名家
+    </view>
+    <view 
+      class="tab-item {{activeTab === 'painting' ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-tab="painting"
+    >
+      国画名家
+    </view>
+  </view>
+  
+  <!-- 书法名家列表 -->
+  <view wx:if="{{activeTab === 'calligraphy'}}" class="master-list">
+    <view 
+      wx:for="{{calligraphyMasters}}" 
+      wx:key="id"
+      class="master-card"
+      bindtap="viewMasterDetail"
+      data-master="{{item}}"
+    >
+      <view class="master-header">
+        <view class="master-name">{{item.name}}</view>
+        <view class="master-dynasty">{{item.dynasty}}</view>
+      </view>
+      <view class="master-intro">{{item.introduction}}</view>
+      <view class="master-works">
+        <view class="works-title">代表作品：</view>
+        <view class="works-list">
+          <text wx:for="{{item.works}}" wx:key="index" class="work-item">{{item}}</text>
+        </view>
+      </view>
+      <view class="master-style">
+        <view class="style-label">艺术风格：</view>
+        <view class="style-content">{{item.style}}</view>
+      </view>
+      <view class="master-influence">
+        <view class="influence-label">文化地位与影响：</view>
+        <view class="influence-content">{{item.influence}}</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 国画名家列表 -->
+  <view wx:if="{{activeTab === 'painting'}}" class="master-list">
+    <view 
+      wx:for="{{paintingMasters}}" 
+      wx:key="id"
+      class="master-card"
+      bindtap="viewMasterDetail"
+      data-master="{{item}}"
+    >
+      <view class="master-header">
+        <view class="master-name">{{item.name}}</view>
+        <view class="master-dynasty">{{item.dynasty}}</view>
+      </view>
+      <view class="master-intro">{{item.introduction}}</view>
+      <view class="master-works">
+        <view class="works-title">代表作品：</view>
+        <view class="works-list">
+          <text wx:for="{{item.works}}" wx:key="index" class="work-item">{{item}}</text>
+        </view>
+      </view>
+      <view class="master-style">
+        <view class="style-label">艺术风格：</view>
+        <view class="style-content">{{item.style}}</view>
+      </view>
+      <view class="master-influence">
+        <view class="influence-label">文化地位与影响：</view>
+        <view class="influence-content">{{item.influence}}</view>
+      </view>
+    </view>
+  </view>
+</view>

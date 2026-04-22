@@ -1,0 +1,185 @@
+/* shuhuayayun/pages/masters/masters.wxss */
+
+.container {
+  background-color: #F5F2E9;
+  min-height: 100vh;
+  padding: 30rpx;
+  font-family: '楷体', 'STKaiti', serif;
+}
+
+.tab-container {
+  display: flex;
+  background-color: #FFFFFF;
+  border-radius: 12rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  border: 1rpx solid #E8E4D8;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 0;
+  font-size: 32rpx;
+  color: #666;
+  transition: all 0.3s ease;
+  border-radius: 12rpx;
+}
+
+.tab-item.active {
+  background-color: #8B4513;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.master-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+.master-card {
+  background-color: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 6rpx 24rpx rgba(0,0,0,0.08);
+  border: 1rpx solid #E8E4D8;
+  transition: all 0.3s ease;
+}
+
+.master-card:hover {
+  transform: translateY(-4rpx);
+  box-shadow: 0 12rpx 32rpx rgba(0,0,0,0.12);
+}
+
+.master-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #E8E4D8;
+}
+
+.master-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.master-dynasty {
+  font-size: 28rpx;
+  color: #8B4513;
+  background-color: #F5F2E9;
+  padding: 8rpx 16rpx;
+  border-radius: 16rpx;
+}
+
+.master-intro {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 24rpx;
+}
+
+.master-works {
+  margin-bottom: 20rpx;
+}
+
+.works-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.works-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.work-item {
+  background-color: #F5F2E9;
+  color: #8B4513;
+  padding: 8rpx 16rpx;
+  border-radius: 16rpx;
+  font-size: 24rpx;
+  border: 1rpx solid #E8E4D8;
+}
+
+.master-style {
+  margin-bottom: 20rpx;
+}
+
+.style-label {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.style-content {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.master-influence {
+}
+
+.influence-label {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.influence-content {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+  .container {
+    padding: 20rpx;
+  }
+  
+  .tab-item {
+    font-size: 28rpx;
+    padding: 20rpx 0;
+  }
+  
+  .master-card {
+    padding: 24rpx;
+  }
+  
+  .master-name {
+    font-size: 32rpx;
+  }
+  
+  .master-dynasty {
+    font-size: 24rpx;
+  }
+  
+  .master-intro {
+    font-size: 26rpx;
+  }
+  
+  .works-title,
+  .style-label,
+  .influence-label {
+    font-size: 26rpx;
+  }
+  
+  .work-item {
+    font-size: 22rpx;
+  }
+  
+  .style-content,
+  .influence-content {
+    font-size: 24rpx;
+  }
+}
