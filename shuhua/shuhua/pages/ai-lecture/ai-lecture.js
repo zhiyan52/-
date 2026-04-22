@@ -63,7 +63,7 @@ Page({
       try {
         const selectedWork = this.data.works.find(work => work.id === this.data.selectedWork);
         const { name, author } = selectedWork;
-        
+
         // 创建模型实例
         const model = wx.cloud.extend.AI.createModel("hunyuan-exp");
 

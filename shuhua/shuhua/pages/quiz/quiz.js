@@ -70,10 +70,10 @@ Page({
   // 选择选项
   selectOption(e) {
     if (this.data.answered) return;
-    
+
     const index = e.currentTarget.dataset.index;
     this.setData({ selectedOption: index, answered: true });
-    
+
     // 判断是否正确
     const isCorrect = index === this.data.currentQuestionData.correctIndex;
     if (isCorrect) {
@@ -119,7 +119,7 @@ Page({
     const score = this.data.score;
     const total = this.data.questions.length * 10;
     const percentage = (score / total) * 100;
-    
+
     if (percentage >= 90) {
       return '太棒了！你是书画知识专家！';
     } else if (percentage >= 70) {

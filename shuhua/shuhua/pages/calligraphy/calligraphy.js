@@ -69,7 +69,7 @@ Page({
   switchFont(e) {
     const fontId = e.currentTarget.dataset.id;
     this.setData({ activeFont: fontId });
-    
+
     const selectedFont = this.data.fonts.find(font => font.id === fontId);
     if (selectedFont) {
       this.setData({ selectedFont });

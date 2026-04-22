@@ -179,6 +179,59 @@
   line-height: 1.4;
 }
 
+/* 智能功能 */
+.smart-section {
+  padding: 0 20rpx;
+  margin-bottom: 50rpx;
+}
+
+.smart-feature-item {
+  background: white;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  border: 2rpx solid #d4a76a;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.smart-feature-item:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.smart-feature-icon {
+  font-size: 48rpx;
+  margin-right: 20rpx;
+  color: #1A365D;
+}
+
+.smart-feature-content {
+  flex: 1;
+}
+
+.smart-feature-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 5rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.smart-feature-desc {
+  font-size: 24rpx;
+  color: #666;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.smart-feature-arrow {
+  font-size: 32rpx;
+  color: #D4A017;
+  margin-left: 16rpx;
+}
+
 /* 底部装饰 */
 .footer-section {
   text-align: center;

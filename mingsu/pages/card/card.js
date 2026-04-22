@@ -73,21 +73,21 @@ Page({
 
           // 使用canvas生成图片
           const canvas = wx.createCanvasContext('cardCanvas');
-          
+
           // 绘制背景
           canvas.drawImage(this.data.currentCard.background, 0, 0, width, height);
-          
+
           // 绘制诗句
           canvas.setFontSize(28);
           canvas.setFillStyle(this.data.currentCard.textColor);
           canvas.setTextAlign('center');
           canvas.setTextBaseline('middle');
-          
+
           // 处理换行
           const lines = this.wrapText(this.data.currentCard.quote, 28, width - 80);
           const lineHeight = 40;
           const startY = height / 2 - (lines.length - 1) * lineHeight / 2;
-          
+
           lines.forEach((line, index) => {
             canvas.fillText(line, width / 2, startY + index * lineHeight);
           });
@@ -135,7 +135,7 @@ Page({
   wrapText(text, fontsize, maxWidth) {
     const lines = [];
     let currentLine = '';
-    
+
     for (let i = 0; i < text.length; i++) {
       currentLine += text[i];
       if (currentLine.length > 7) { // 简单的换行判断
@@ -143,11 +143,11 @@ Page({
         currentLine = '';
       }
     }
-    
+
     if (currentLine) {
       lines.push(currentLine);
     }
-    
+
     return lines;
   },
 

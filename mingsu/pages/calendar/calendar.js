@@ -101,7 +101,7 @@ Page({
 
   onLoad(options) {
     wx.setNavigationBarTitle({ title: '节气图鉴' });
-    
+
     // 如果从首页精选跳转，直接显示对应内容
     if (options.featured) {
       this.setData({ activeTab: 'festival' });

@@ -1,22 +1,88 @@
-<view class="container">
-  <view class="title">古建展厅AI助手</view>
-  
-  <!-- 输入框 -->
-  <view class="input-area">
-    <textarea 
-      placeholder="请输入你想了解的古建筑问题..." 
-      value="{{userInput}}" 
-      bindinput="onInput"
-      disabled="{{loading}}"
-    />
-    <button bindtap="sendQuestion" disabled="{{loading}}">
-      {{loading ? "AI思考中..." : "发送问题"}}
-    </button>
+<view class="ai-container">
+  <!-- 顶部装饰 -->
+  <view class="header-decoration">
+    <view class="decoration-line"></view>
+    <view class="header-content">
+      <text class="header-icon">📜</text>
+      <text class="header-title">文心先生</text>
+      <text class="header-subtitle">AI文化助手</text>
+    </view>
+    <view class="decoration-line"></view>
   </view>
 
-  <!-- AI回答区域 -->
-  <view class="answer-area" wx:if="{{answer}}">
-    <view class="answer-title">AI回答：</view>
-    <view class="answer-content">{{answer}}</view>
+  <!-- 欢迎语 -->
+  <view class="welcome-card">
+    <view class="welcome-icon">🤖</view>
+    <view class="welcome-content">
+      <text class="welcome-title">欢迎来到古雅文轩</text>
+      <text class="welcome-desc">我是文心先生，博学儒雅的数字文人</text>
+      <text class="welcome-tip">可询问诗词赏析、历史典故、文化知识等问题</text>
+    </view>
+  </view>
+
+  <!-- 对话区域 -->
+  <scroll-view class="chat-area" scroll-y enhanced show-scrollbar="{{false}}">
+    <!-- 用户输入展示 -->
+    <view class="chat-section" wx:if="{{userInput}}">
+      <view class="chat-header user-header">
+        <text class="chat-label">您</text>
+      </view>
+      <view class="chat-bubble user-bubble">
+        <text class="chat-text">{{userInput}}</text>
+      </view>
+    </view>
+
+    <!-- AI回答展示 -->
+    <view class="chat-section" wx:if="{{answer}}">
+      <view class="chat-header ai-header">
+        <text class="chat-label">文心先生</text>
+      </view>
+      <view class="chat-bubble ai-bubble">
+        <text class="chat-text">{{answer}}</text>
+      </view>
+    </view>
+
+    <!-- 加载中提示 -->
+    <view class="loading-section" wx:if="{{loading}}">
+      <view class="loading-dots">
+        <view class="dot"></view>
+        <view class="dot"></view>
+        <view class="dot"></view>
+      </view>
+      <text class="loading-text">文心先生正在思考...</text>
+    </view>
+  </scroll-view>
+
+  <!-- 输入区域 -->
+  <view class="input-section">
+    <view class="input-decoration-left"></view>
+    <view class="input-box">
+      <textarea 
+        class="input-textarea" 
+        placeholder="请输入您的文化疑问..." 
+        value="{{userInput}}" 
+        bindinput="onInput"
+        disabled="{{loading}}"
+        maxlength="500"
+        show-confirm-bar="{{false}}"
+      />
+      <view class="input-actions">
+        <text class="char-count">{{userInput.length}}/500</text>
+        <button 
+          class="send-btn {{userInput ? 'active' : ''}}" 
+          bindtap="sendQuestion" 
+          disabled="{{loading || !userInput}}"
+        >
+          <text class="send-icon">📝</text>
+          <text class="send-text">{{loading ? '思索中' : '询问'}}</text>
+        </button>
+      </view>
+    </view>
+    <view class="input-decoration-right"></view>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="footer-decoration">
+    <text class="footer-quote">"学而时习之，不亦说乎？" —《论语》</text>
   </view>
 </view>

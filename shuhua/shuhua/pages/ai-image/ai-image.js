@@ -10,7 +10,7 @@ Page({
       '书法卷轴',
       '山水画意境',
       '花鸟画',
-      '人物画'  
+      '人物画'
     ],
     keyword: '',
     generatedImage: null,
@@ -44,7 +44,7 @@ Page({
     (async () => {
       try {
         const keyword = this.data.keyword;
-        
+
         // 创建模型实例
         const model = wx.cloud.extend.AI.createModel("hunyuan-exp");
 

@@ -1,42 +1,117 @@
-<view class="container"> 
-   <view class="title">🏮 古建营造技艺工坊</view> 
+<view class="zaoyi-container">
+  <!-- 顶部装饰区域 -->
+  <view class="header-section">
+    <view class="decoration-top">
+      <view class="decoration-line"></view>
+      <text class="decoration-icon">🏮</text>
+      <view class="decoration-line"></view>
+    </view>
+    <view class="title-box">
+      <text class="main-title">古建营造技艺工坊</text>
+      <text class="sub-title">探索传统建筑智慧 · 传承千年营造技艺</text>
+    </view>
+  </view>
 
-   <!-- 1. 构件选择区 --> 
-   <view class="select-group"> 
-     <picker mode="selector" range="{{components}}" bindchange="onComponentChange"> 
-       <view class="picker">构件：{{selectedComponent || '请选择构件'}}</view> 
-     </picker> 
+  <!-- 选择区域卡片 -->
+  <view class="selection-card">
+    <view class="card-header">
+      <text class="card-icon">📐</text>
+      <text class="card-label">构件参数配置</text>
+    </view>
+    
+    <!-- 构件选择 -->
+    <view class="select-item">
+      <view class="select-label">
+        <text class="label-icon">🔨</text>
+        <text class="label-text">选择构件</text>
+      </view>
+      <picker mode="selector" range="{{components}}" bindchange="onComponentChange">
+        <view class="picker-box">
+          <text class="picker-value">{{selectedComponent || '请选择构件类型'}}</text>
+          <text class="picker-arrow">▼</text>
+        </view>
+      </picker>
+    </view>
 
-     <picker mode="selector" range="{{dynasties}}" bindchange="onDynastyChange"> 
-       <view class="picker">朝代：{{selectedDynasty || '请选择朝代'}}</view> 
-     </picker> 
-   </view> 
+    <!-- 朝代选择 -->
+    <view class="select-item">
+      <view class="select-label">
+        <text class="label-icon">📜</text>
+        <text class="label-text">选择朝代</text>
+      </view>
+      <picker mode="selector" range="{{dynasties}}" bindchange="onDynastyChange">
+        <view class="picker-box">
+          <text class="picker-value">{{selectedDynasty || '请选择历史朝代'}}</text>
+          <text class="picker-arrow">▼</text>
+        </view>
+      </picker>
+    </view>
 
-   <!-- 2. 自定义描述 --> 
-   <view class="input-box"> 
-     <input 
-       placeholder="补充细节（如：官式建筑、江南民居等）" 
-       value="{{detail}}" 
-       bindinput="onDetailInput" 
-     /> 
-   </view> 
+    <!-- 细节补充 -->
+    <view class="detail-section">
+      <view class="select-label">
+        <text class="label-icon">✏️</text>
+        <text class="label-text">补充细节</text>
+      </view>
+      <view class="detail-input-box">
+        <textarea 
+          class="detail-input" 
+          placeholder="如：官式建筑、江南民居、园林建筑等特色描述..." 
+          value="{{detail}}" 
+          bindinput="onDetailInput"
+          maxlength="100"
+          show-confirm-bar="{{false}}"
+        />
+        <text class="char-counter">{{detail.length}}/100</text>
+      </view>
+    </view>
+  </view>
 
-   <!-- 3. 生成按钮 --> 
-   <button 
-     class="generate-btn" 
-     bindtap="generate" 
-     disabled="{{loading}}" 
-   > 
-     {{loading ? '🎨 生成中...' : '✨ 生成构件图解'}} 
-   </button> 
+  <!-- 生成按钮区域 -->
+  <view class="generate-section">
+    <view class="btn-decoration-left"></view>
+    <button class="generate-btn" bindtap="generate" disabled="{{loading}}">
+      <text class="btn-icon">{{loading ? '🎨' : '✨'}}</text>
+      <text class="btn-text">{{loading ? '生成构件图解中...' : '生成构件图解'}}</text>
+    </button>
+    <view class="btn-decoration-right"></view>
+  </view>
 
-   <!-- 4. 生成结果 --> 
-   <view class="result-area" wx:if="{{imageUrl}}"> 
-     <image src="{{imageUrl}}" mode="widthFix" class="component-image" /> 
-     <view class="knowledge-card"> 
-       <view class="card-title">{{selectedDynasty}}{{selectedComponent}}</view> 
-       <view class="card-content">{{knowledgeText}}</view> 
-       <button class="save-btn" bindtap="saveToWorkshop">💾 保存到我的工坊</button> 
-     </view> 
-   </view> 
- </view>
+  <!-- 结果展示区域 -->
+  <view class="result-section" wx:if="{{imageUrl}}">
+    <!-- 装饰分隔线 -->
+    <view class="result-divider">
+      <view class="divider-line"></view>
+      <text class="divider-text">🎯 生成结果</text>
+      <view class="divider-line"></view>
+    </view>
+
+    <!-- 构件图解展示 -->
+    <view class="image-card">
+      <image src="{{imageUrl}}" mode="widthFix" class="result-image" />
+      <view class="image-shadow"></view>
+    </view>
+
+    <!-- 知识卡片 -->
+    <view class="knowledge-card">
+      <view class="knowledge-header">
+        <text class="knowledge-icon">📚</text>
+        <text class="knowledge-title">{{selectedDynasty}} · {{selectedComponent}}</text>
+      </view>
+      <view class="knowledge-content">
+        <text class="knowledge-text">{{knowledgeText}}</text>
+      </view>
+      <view class="knowledge-footer">
+        <button class="save-btn" bindtap="saveToWorkshop">
+          <text class="save-icon">💾</text>
+          <text class="save-text">保存到我的工坊</text>
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="footer-decoration">
+    <text class="footer-quote">"雕梁画栋 · 匠心独运" — 传统营造技艺</text>
+  </view>
+</view>

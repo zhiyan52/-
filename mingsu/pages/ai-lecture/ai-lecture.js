@@ -39,30 +39,52 @@ Page({
       try {
         const topic = this.data.selectedTopic.name;
 
-        // 创建模型实例
-        const model = wx.cloud.extend.AI.createModel("hunyuan-exp");
+        // DeepSeek API配置
+        const apiKey = "sk-db4358439d684158895f40d0a4612c4a";
+        const apiUrl = "https://api.deepseek.com/v1/chat/completions";
 
         // 发送请求
-        const res = await model.generateText({
-          model: "hunyuan-turbos-latest",
-          messages: [
-            {
-              role: "system",
-              content: "你是一位民俗文化专家，回答要简洁易懂，语言贴合古风，内容围绕中国传统节日和节气的文化内涵展开。请分别从来历与起源、传统习俗、相关古诗词、文化意义四个方面进行回答。"
-            },
-            {
-              role: "user",
-              content: `请详细介绍${topic}的文化内涵，包括：1. 来历与起源 2. 传统习俗 3. 相关古诗词 4. 文化意义`
-            }
-          ]
+        const res = await wx.request({
+          url: apiUrl,
+          method: 'POST',
+          header: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+          },
+          data: {
+            model: "deepseek-chat",
+            messages: [
+              {
+                role: "system",
+                content: "你是一位民俗文化专家，回答要简洁易懂，语言贴合古风，内容围绕中国传统节日和节气的文化内涵展开。请分别从来历与起源、传统习俗、相关古诗词、文化意义四个方面进行回答。"
+              },
+              {
+                role: "user",
+                content: `请详细介绍${topic}的文化内涵，包括：1. 来历与起源 2. 传统习俗 3. 相关古诗词 4. 文化意义`
+              }
+            ],
+            temperature: 0.7,
+            max_tokens: 1000
+          },
+          success: (res) => {
+            console.log("DeepSeek API调用成功：", res);
+          },
+          fail: (err) => {
+            console.error("DeepSeek API调用失败：", err);
+          }
         });
 
-        const answer = res.choices[0].message.content;
+        // 处理响应
+        if (res.statusCode === 200 && res.data && res.data.choices && res.data.choices.length > 0) {
+          const answer = res.data.choices[0].message.content;
 
-        // 解析AI返回的内容，提取四个部分
-        const content = this.parseLectureContent(answer, topic);
+          // 解析AI返回的内容，提取四个部分
+          const content = this.parseLectureContent(answer, topic);
 
-        this.setData({ lectureContent: content });
+          this.setData({ lectureContent: content });
+        } else {
+          throw new Error('API返回格式错误');
+        }
 
       } catch (err) {
         console.error("AI调用失败：", err);

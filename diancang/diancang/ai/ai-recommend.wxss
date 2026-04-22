@@ -1,31 +1,42 @@
 /* diancang/diancang/ai/ai-recommend.wxss */
 
 /* 页面容器 */
-.container {
-  background-color: #E8F5E8;
+.recommend-container {
+  background-color: #F5F5DC;
   min-height: 100vh;
-  padding: 20rpx 30rpx;
+  padding: 0rpx 30rpx 30rpx;
 }
 
-/* 头部区域 */
-.header {
-  text-align: center;
-  margin-bottom: 40rpx;
-  padding-top: 20rpx;
+/* 顶部导航 */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0;
+  border-bottom: 2rpx solid #E5E5E5;
+  margin-bottom: 30rpx;
 }
 
-.title {
+.back-btn {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  color: #8B4513;
+  cursor: pointer;
+}
+
+.nav-title {
   font-size: 36rpx;
   font-weight: bold;
-  color: #1A365D;
-  margin-bottom: 10rpx;
+  color: #8B4513;
   font-family: "STKaiti", "KaiTi", serif;
 }
 
-.subtitle {
-  font-size: 24rpx;
-  color: #4A5568;
-  font-family: "STKaiti", "KaiTi", serif;
+.placeholder {
+  width: 60rpx;
 }
 
 /* 兴趣选择区域 */
@@ -36,7 +47,7 @@
 .section-title {
   font-size: 30rpx;
   font-weight: bold;
-  color: #1A365D;
+  color: #8B4513;
   margin-bottom: 20rpx;
   font-family: "STKaiti", "KaiTi", serif;
 }
@@ -50,93 +61,99 @@
 .tag {
   padding: 15rpx 25rpx;
   background-color: #FFFFFF;
-  border: 2rpx solid #A3D9A5;
+  border: 2rpx solid #D2B48C;
   border-radius: 40rpx;
   font-size: 24rpx;
-  color: #4A5568;
+  color: #5D4037;
   font-family: "STKaiti", "KaiTi", serif;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .tag.active {
-  background-color: #48BB78;
+  background-color: #8B4513;
   color: #FFFFFF;
-  border-color: #48BB78;
+  border-color: #8B4513;
 }
 
-/* 按钮区域 */
-.button-section {
-  display: flex;
-  gap: 20rpx;
+/* 学习进度 */
+.progress-section {
   margin-bottom: 40rpx;
 }
 
-.recommend-btn {
-  flex: 1;
-  padding: 20rpx;
-  background-color: #48BB78;
-  color: #FFFFFF;
-  border-radius: 10rpx;
-  text-align: center;
-  font-size: 28rpx;
-  font-weight: bold;
-  font-family: "STKaiti", "KaiTi", serif;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.recommend-btn:hover {
-  background-color: #38A169;
-}
-
-.reset-btn {
-  flex: 1;
-  padding: 20rpx;
+.progress-card {
   background-color: #FFFFFF;
-  color: #4A5568;
-  border: 2rpx solid #A3D9A5;
-  border-radius: 10rpx;
-  text-align: center;
-  font-size: 28rpx;
-  font-family: "STKaiti", "KaiTi", serif;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  border-radius: 15rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
 }
 
-.reset-btn:hover {
-  background-color: #F7FAFC;
-}
-
-/* 加载状态 */
-.loading {
-  text-align: center;
-  padding: 40rpx;
-  font-size: 24rpx;
-  color: #4A5568;
-  font-family: "STKaiti", "KaiTi", serif;
-}
-
-/* 推荐结果区域 */
-.recommendations {
-  margin-top: 40rpx;
-}
-
-.recommendations-title {
-  font-size: 30rpx;
-  font-weight: bold;
-  color: #1A365D;
+.progress-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+
+.progress-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.progress-label {
+  font-size: 24rpx;
+  color: #5D4037;
   font-family: "STKaiti", "KaiTi", serif;
 }
 
-.books-grid {
+.progress-value {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #8B4513;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* AI推荐 */
+.ai-recommend-section {
+  margin-bottom: 40rpx;
+}
+
+.ai-info {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  background-color: #FFFFFF;
+  border-radius: 15rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.ai-icon {
+  font-size: 48rpx;
+}
+
+.ai-text {
+  font-size: 24rpx;
+  color: #5D4037;
+  font-family: "STKaiti", "KaiTi", serif;
+  flex: 1;
+}
+
+/* 推荐结果 */
+.recommend-section {
+  margin-bottom: 40rpx;
+}
+
+.recommend-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20rpx;
 }
 
-.book-card {
+.recommend-item {
   background-color: #FFFFFF;
   border-radius: 15rpx;
   padding: 20rpx;
@@ -145,38 +162,191 @@
   cursor: pointer;
 }
 
-.book-card:hover {
+.recommend-item:hover {
   transform: translateY(-5rpx);
   box-shadow: 0 5rpx 15rpx rgba(0, 0, 0, 0.15);
 }
 
-.book-cover {
+.item-image {
   width: 100%;
-  height: 240rpx;
+  height: 200rpx;
   border-radius: 10rpx;
   margin-bottom: 15rpx;
   object-fit: cover;
 }
 
-.book-title {
+.item-info {
+  flex: 1;
+}
+
+.item-title {
   font-size: 26rpx;
   font-weight: bold;
-  color: #1A365D;
+  color: #8B4513;
   margin-bottom: 5rpx;
   font-family: "STKaiti", "KaiTi", serif;
 }
 
-.book-author {
+.item-author {
   font-size: 22rpx;
-  color: #718096;
+  color: #795548;
   margin-bottom: 10rpx;
   font-family: "STKaiti", "KaiTi", serif;
 }
 
-.book-description {
+.item-desc {
   font-size: 20rpx;
-  color: #4A5568;
+  color: #5D4037;
   line-height: 1.4;
+  margin-bottom: 15rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.item-tags {
+  display: flex;
+  gap: 10rpx;
+  flex-wrap: wrap;
+}
+
+.item-tag {
+  padding: 5rpx 15rpx;
+  background-color: #F5F5DC;
+  border: 1rpx solid #D2B48C;
+  border-radius: 20rpx;
+  font-size: 18rpx;
+  color: #8B4513;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 视觉参考 */
+.visual-section {
+  margin-bottom: 40rpx;
+}
+
+.visual-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.visual-item {
+  background-color: #FFFFFF;
+  border-radius: 15rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.visual-image {
+  width: 100%;
+  height: 180rpx;
+  border-radius: 10rpx;
+  margin-bottom: 10rpx;
+  object-fit: cover;
+}
+
+.visual-desc {
+  font-size: 20rpx;
+  color: #5D4037;
+  text-align: center;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-btn.primary {
+  background-color: #8B4513;
+  color: #FFFFFF;
+}
+
+.action-btn.primary:hover {
+  background-color: #6D4C41;
+}
+
+.action-btn.secondary {
+  background-color: #FFFFFF;
+  color: #8B4513;
+  border: 2rpx solid #D2B48C;
+}
+
+.action-btn.secondary:hover {
+  background-color: #F5F5DC;
+}
+
+.action-btn.loading {
+  background-color: #D2B48C;
+  color: #FFFFFF;
+  cursor: not-allowed;
+}
+
+/* 浏览历史 */
+.history-section {
+  margin-bottom: 40rpx;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.history-item {
+  display: flex;
+  gap: 20rpx;
+  background-color: #FFFFFF;
+  border-radius: 15rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+
+.history-image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+  object-fit: cover;
+}
+
+.history-info {
+  flex: 1;
+}
+
+.history-title {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 5rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.history-time {
+  font-size: 20rpx;
+  color: #795548;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 加载状态 */
+.loading {
+  text-align: center;
+  padding: 40rpx;
+  font-size: 24rpx;
+  color: #5D4037;
   font-family: "STKaiti", "KaiTi", serif;
 }
 
@@ -185,6 +355,6 @@
   text-align: center;
   padding: 60rpx;
   font-size: 24rpx;
-  color: #718096;
+  color: #795548;
   font-family: "STKaiti", "KaiTi", serif;
 }

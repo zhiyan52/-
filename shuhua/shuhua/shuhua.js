@@ -77,5 +77,33 @@ Page({
     wx.navigateTo({
       url: `/shuhua/shuhua/pages/artwork-detail/artwork-detail?id=${id}`
     });
+  },
+
+  // 导航到智能导览
+  navigateToAI() {
+    wx.navigateTo({
+      url: '/shuhua/shuhua/ai/ai-guide'
+    });
+  },
+
+  // 导航到文化问答
+  navigateToQA() {
+    wx.navigateTo({
+      url: '/shuhua/shuhua/ai/ai-qa'
+    });
+  },
+
+  // 导航到个性化推荐
+  navigateToRecommend() {
+    wx.navigateTo({
+      url: '/shuhua/shuhua/ai/ai-recommend'
+    });
+  },
+
+  // 导航到语音讲解
+  navigateToVoice() {
+    wx.navigateTo({
+      url: '/shuhua/shuhua/ai/ai-voice'
+    });
   }
 });

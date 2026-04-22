@@ -1,2 +1,84 @@
-<!--diancang/diancang/ai/ai-voice.wxml-->
-<text>diancang/diancang/ai/ai-voice.wxml</text>
+<!-- 典藏语音讲解页面 -->
+<view class="voice-container">
+  <!-- 顶部导航 -->
+  <view class="nav-bar">
+    <view class="back-btn" bindtap="goBack">
+      <text>←</text>
+    </view>
+    <text class="nav-title">典藏语音讲解</text>
+    <view class="placeholder"></view>
+  </view>
+  
+  <!-- 语音讲解标题 -->
+  <view class="voice-header">
+    <text class="voice-title">文心先生为您讲解</text>
+    <text class="voice-subtitle">AI智能语音讲解，带您领略传统文化之美</text>
+  </view>
+  
+  <!-- 内容选择 -->
+  <view class="content-section">
+    <text class="section-title">选择讲解内容</text>
+    <view class="content-list">
+      <view class="content-item {{selectedContent === item.id ? 'active' : ''}}" wx:for="{{contentList}}" wx:key="id" bindtap="selectContent" data-id="{{item.id}}">
+        <text class="content-title">{{item.title}}</text>
+        <text class="content-desc">{{item.description}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 播放器 -->
+  <view class="player-section" wx:if="{{selectedContent > 0}}">
+    <view class="player-card">
+      <view class="player-info">
+        <text class="player-title">{{currentContent.title}}</text>
+        <text class="player-desc">{{currentContent.description}}</text>
+      </view>
+      <view class="player-controls">
+        <view class="play-btn {{isPlaying ? 'playing' : ''}}" bindtap="togglePlay">
+          <text wx:if="{{!isPlaying}}">▶</text>
+          <text wx:else>⏸</text>
+        </view>
+        <view class="progress-container">
+          <text class="time">{{currentTime}}</text>
+          <view class="progress-bar">
+            <view class="progress-fill" style="width: {{progress}}%"></view>
+          </view>
+          <text class="time">{{duration}}</text>
+        </view>
+        <view class="volume-control">
+          <text class="volume-icon">🔊</text>
+          <view class="volume-bar">
+            <view class="volume-fill" style="width: {{volume}}%"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- AI讲解生成 -->
+  <view class="ai-section" wx:if="{{selectedContent > 0}}">
+    <text class="section-title">AI讲解内容</text>
+    <view class="ai-content">
+      <text class="ai-text">{{aiExplanation}}</text>
+    </view>
+  </view>
+  
+  <!-- 使用提示 -->
+  <view class="tips-section">
+    <text class="section-title">使用提示</text>
+    <view class="tips-list">
+      <view class="tip-item">
+        <text class="tip-icon">💡</text>
+        <text class="tip-text">选择您感兴趣的内容，点击播放按钮开始聆听</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-icon">🎵</text>
+        <text class="tip-text">AI语音讲解由文心先生生成，内容专业准确</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-icon">📚</text>
+        <text class="tip-text">讲解内容涵盖诗词、历史、书画等多个文化领域</text>
+      </view>
+    </view>
+  </view>
+</view>

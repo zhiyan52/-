@@ -1,65 +1,26 @@
-/* 文化问答页面 - 传统中国风样式 */
+/* 文化问答页面样式 */
 .ai-qa-container {
-  padding: 30rpx;
-  background-color: #E8F5E8;
+  background-color: #ffffff;
   min-height: 100vh;
+  padding: 20rpx 30rpx;
 }
 
-/* 顶部标题栏 */
 .header {
   text-align: center;
-  margin: 20rpx 0 40rpx;
-  position: relative;
+  padding: 40rpx 0 30rpx;
 }
 
 .title {
-  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
-  padding: 20rpx 60rpx;
-  border-radius: 50rpx;
-  position: relative;
-  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
-  display: inline-block;
   font-size: 48rpx;
-  font-weight: bold;
-  color: #D4A017;
-  font-family: "STKaiti", "KaiTi", serif;
-  letter-spacing: 8rpx;
-  text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.2);
-}
-
-.title::before,
-.title::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40rpx;
-  height: 40rpx;
-  background: #D4A017;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24rpx;
-  color: #1A365D;
-  font-weight: bold;
-}
-
-.title::before {
-  left: -20rpx;
-  content: '卍';
-}
-
-.title::after {
-  right: -20rpx;
-  content: '卍';
+  font-weight: 500;
+  color: #333;
+  letter-spacing: 2rpx;
 }
 
 .subtitle {
   font-size: 28rpx;
-  color: #2C5282;
-  font-family: "STKaiti", "KaiTi", serif;
-  margin-top: 20rpx;
+  color: #888;
+  margin-top: 10rpx;
   display: block;
 }
 
@@ -69,60 +30,34 @@
 
 .section-title {
   font-size: 36rpx;
-  font-weight: bold;
-  color: #1A365D;
+  font-weight: 500;
+  color: #333;
   margin-bottom: 30rpx;
   display: block;
-  text-align: center;
-  font-family: "STKaiti", "KaiTi", serif;
-  position: relative;
-  padding-bottom: 15rpx;
-}
-
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100rpx;
-  height: 4rpx;
-  background: #D4A017;
-  border-radius: 2rpx;
 }
 
 .faq-list {
-  background: #F8F0E3;
+  background: #f8f9fa;
   border-radius: 16rpx;
   padding: 20rpx;
-  border: 2rpx solid #D4A017;
-  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
 }
 
 .faq-item {
-  background: #F8F0E3;
-  border-radius: 16rpx;
+  background: #fff;
+  border-radius: 12rpx;
   padding: 25rpx;
   margin-bottom: 15rpx;
-  border: 2rpx solid #D4A017;
-  transition: all 0.3s ease;
-  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.08);
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
 }
 
 .faq-item:last-child {
   margin-bottom: 0;
 }
 
-.faq-item:hover {
-  transform: translateY(-3rpx);
-  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.12);
-  background: #F8F0E3;
-}
-
 .faq-question {
   font-size: 28rpx;
-  color: #1A365D;
-  font-family: "STKaiti", "KaiTi", serif;
+  color: #444;
   line-height: 1.4;
 }
 
@@ -134,24 +69,21 @@
   display: flex;
   gap: 20rpx;
   align-items: center;
-  background: #F8F0E3;
+  background: #f8f9fa;
   border-radius: 16rpx;
   padding: 20rpx;
-  border: 2rpx solid #D4A017;
-  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
 }
 
 .input {
   flex: 1;
   height: 80rpx;
   line-height: 80rpx;
-  background: #F8F0E3;
+  background: #fff;
   border-radius: 40rpx;
   padding: 0 30rpx;
   font-size: 28rpx;
-  color: #1A365D;
-  font-family: "STKaiti", "KaiTi", serif;
-  border: 2rpx solid #D4A017;
+  color: #333;
 }
 
 .input-placeholder {
@@ -162,83 +94,51 @@
   width: 120rpx;
   height: 80rpx;
   line-height: 80rpx;
-  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
-  color: #D4A017;
+  background: #333;
+  color: #fff;
   border-radius: 40rpx;
   font-size: 28rpx;
-  font-weight: bold;
-  font-family: "STKaiti", "KaiTi", serif;
-  border: 2rpx solid #D4A017;
-  box-shadow: 0 4rpx 12rpx rgba(26, 54, 93, 0.3);
-  transition: all 0.3s ease;
-}
-
-.send-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4rpx 12rpx rgba(26, 54, 93, 0.4);
+  font-weight: 500;
 }
 
 .response-section {
   margin-top: 50rpx;
-  background: #F8F0E3;
+  background: #f8f9fa;
   border-radius: 16rpx;
   padding: 30rpx;
-  border: 2rpx solid #D4A017;
-  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
 }
 
 .response-title {
   font-size: 32rpx;
-  font-weight: bold;
-  color: #1A365D;
+  font-weight: 500;
+  color: #333;
   margin-bottom: 20rpx;
   display: block;
-  text-align: center;
-  font-family: "STKaiti", "KaiTi", serif;
-  position: relative;
-  padding-bottom: 15rpx;
-}
-
-.response-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100rpx;
-  height: 4rpx;
-  background: #D4A017;
-  border-radius: 2rpx;
 }
 
 .response-content {
-  background: #F8F0E3;
-  border-radius: 16rpx;
+  background: #fff;
+  border-radius: 12rpx;
   padding: 25rpx;
   min-height: 200rpx;
-  border: 2rpx solid #D4A017;
-  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.08);
 }
 
 .loading {
   text-align: center;
-  color: #2C5282;
+  color: #888;
   padding: 40rpx 0;
-  font-family: "STKaiti", "KaiTi", serif;
-  font-size: 28rpx;
 }
 
 .user-question {
   font-size: 28rpx;
-  color: #2C5282;
+  color: #666;
   margin-bottom: 20rpx;
   display: block;
-  font-family: "STKaiti", "KaiTi", serif;
 }
 
 .ai-answer {
   font-size: 28rpx;
-  color: #1A365D;
+  color: #444;
   line-height: 1.5;
-  font-family: "STKaiti", "KaiTi", serif;
 }

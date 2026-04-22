@@ -35,7 +35,7 @@ Page({
   generateCard() {
     const randomQuote = this.data.quotes[Math.floor(Math.random() * this.data.quotes.length)];
     const randomBackground = this.data.backgrounds[Math.floor(Math.random() * this.data.backgrounds.length)];
-    
+
     this.setData({
       currentQuote: randomQuote,
       cardBackground: randomBackground
@@ -47,7 +47,7 @@ Page({
     const index = e.currentTarget.dataset.index;
     const quote = this.data.quotes[index];
     const randomBackground = this.data.backgrounds[Math.floor(Math.random() * this.data.backgrounds.length)];
-    
+
     this.setData({
       currentQuote: quote,
       cardBackground: randomBackground
@@ -57,40 +57,40 @@ Page({
   // 保存卡片
   saveCard() {
     wx.showLoading({ title: '保存中...' });
-    
+
     // 创建画布
     const canvas = wx.createCanvasContext('cardCanvas');
-    
+
     // 绘制背景
     const image = wx.createImage();
     image.src = this.data.cardBackground;
-    
+
     image.onload = () => {
       // 绘制背景
       canvas.drawImage(image, 0, 0, this.data.canvasWidth, this.data.canvasHeight);
-      
+
       // 添加半透明遮罩
       canvas.setFillStyle('rgba(0, 0, 0, 0.3)');
       canvas.fillRect(0, 0, this.data.canvasWidth, this.data.canvasHeight);
-      
+
       // 绘制文字
       canvas.setFillStyle('#ffffff');
       canvas.setFontSize(32);
       canvas.setTextAlign('center');
       canvas.setTextBaseline('middle');
-      
+
       // 绘制佳句
       const lines = this.wrapText(this.data.currentQuote.text, 32, this.data.canvasWidth - 80);
       const startY = this.data.canvasHeight / 2 - (lines.length - 1) * 20;
-      
+
       lines.forEach((line, i) => {
         canvas.fillText(line, this.data.canvasWidth / 2, startY + i * 40);
       });
-      
+
       // 绘制作者
       canvas.setFontSize(24);
       canvas.fillText(this.data.currentQuote.author, this.data.canvasWidth / 2, startY + lines.length * 40 + 30);
-      
+
       // 绘制完成
       canvas.draw(false, () => {
         // 保存图片
@@ -124,21 +124,21 @@ Page({
   wrapText(text, fontsize, maxWidth) {
     const lines = [];
     let currentLine = '';
-    
+
     for (let i = 0; i < text.length; i++) {
       currentLine += text[i];
       const width = this.measureText(currentLine, fontsize);
-      
+
       if (width > maxWidth) {
         lines.push(currentLine.substring(0, currentLine.length - 1));
         currentLine = text[i];
       }
     }
-    
+
     if (currentLine) {
       lines.push(currentLine);
     }
-    
+
     return lines;
   },
 

@@ -140,7 +140,7 @@ Page({
     this.setData({
       loading: true
     });
-    
+
     // 获取用户选择的兴趣标签
     const selectedTagNames = this.data.selectedTags.map(tagId => {
       const tag = this.data.tagList.find(t => t.id === tagId);
@@ -177,20 +177,20 @@ Page({
         let filteredData = this.data.heritageData;
         if (interests.length > 0) {
           filteredData = this.data.heritageData.filter(item => {
-            return interests.some(interest => 
+            return interests.some(interest =>
               item.name.includes(interest) || item.category.includes(interest)
             );
           });
         }
-        
+
         // 如果过滤后数据不足，补充其他数据
         if (filteredData.length < 4) {
-          const remainingData = this.data.heritageData.filter(item => 
+          const remainingData = this.data.heritageData.filter(item =>
             !filteredData.includes(item)
           );
           filteredData = [...filteredData, ...remainingData].slice(0, 4);
         }
-        
+
         resolve(filteredData);
       }, 1000);
     });
@@ -201,7 +201,7 @@ Page({
     this.setData({
       imgLoading: true
     });
-    
+
     // 模拟混元图像生成API调用
     setTimeout(() => {
       const visualReferences = this.data.recommendList.slice(0, 3).map(item => {
@@ -210,7 +210,7 @@ Page({
           description: `${item.name}创作参考图`
         };
       });
-      
+
       this.setData({
         visualReferences: visualReferences,
         imgLoading: false

@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<!--mingsu/mingsu/pages/categories/regions.wxml-->
-<text>mingsu/mingsu/pages/categories/regions.wxml</text>
-=======
 <!-- mingsu/mingsu/pages/categories/regions.wxml -->
 <view class="container">
   <view class="header">
@@ -27,4 +23,3 @@
     </view>
   </view>
 </view>
->>>>>>> b7e86b529139b4665fb4cf45c29617cee3484dc4

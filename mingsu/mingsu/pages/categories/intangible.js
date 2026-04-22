@@ -5,9 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-<<<<<<< HEAD
-
-=======
     intangibleList: [
       {
         id: 6,
@@ -42,7 +39,6 @@ Page({
         imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/9.jpg'
       }
     ]
->>>>>>> b7e86b529139b4665fb4cf45c29617cee3484dc4
   },
 
   /**

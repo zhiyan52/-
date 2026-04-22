@@ -1,30 +1,73 @@
 <!-- 典藏文化问答页面 -->
 <view class="qa-container">
-  <view class="header">
-    <text class="title">AI文心先生</text>
-    <text class="subtitle">君子有酒，嘉宾式燕以敖。今日与君论何典？</text>
+  <!-- 顶部导航 -->
+  <view class="nav-bar">
+    <view class="back-btn" bindtap="goBack">
+      <text>←</text>
+    </view>
+    <text class="nav-title">典藏文化问答</text>
+    <view class="placeholder"></view>
   </view>
   
-  <view class="chat-area">
-    <view class="chat-bubble ai" wx:if="{{showResponse}}">
-      <view class="avatar ai-avatar">文心</view>
-      <view class="message">欢迎来到古雅文轩，愿与君共探文脉。您有何疑问，尽管问我。</view>
+  <!-- 进度条 -->
+  <view class="progress-section">
+    <view class="progress-info">
+      <text class="progress-text">第 {{currentQuestionIndex + 1}} 题</text>
+      <text class="score-text">{{score}} 分</text>
     </view>
-    <view class="chat-bubble user" wx:if="{{userQuestion}}">
-      <view class="avatar user-avatar">我</view>
-      <view class="message">{{userQuestion}}</view>
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{((currentQuestionIndex % questions.length) + 1) / questions.length * 100}}%"></view>
     </view>
-    <view class="chat-bubble ai" wx:if="{{aiAnswer}}">
-      <view class="avatar ai-avatar">文心</view>
-      <view class="message">
-        <text wx:if="{{loading}}">正在思考中...</text>
-        <text wx:else>{{aiAnswer}}</text>
+  </view>
+  
+  <!-- 问答区域 -->
+  <view class="question-section">
+    <text class="section-title">文化知识问答</text>
+    <text class="section-subtitle">传承经典文化 · 提升文化素养</text>
+    
+    <!-- 计时器 -->
+    <view class="timer">
+      <view class="timer-circle">
+        <text class="timer-text">{{timer}}</text>
+      </view>
+    </view>
+    
+    <!-- 题目 -->
+    <view class="question-content">
+      <text class="question-text">{{currentQuestion.question}}</text>
+    </view>
+    
+    <!-- 选项 -->
+    <view class="options-list">
+      <view class="option-item" wx:for="{{currentQuestion.options}}" wx:key="index" bindtap="selectOption" data-index="{{index}}">
+        <text class="option-letter">{{String.fromCharCode(65 + index)}}</text>
+        <text class="option-text">{{item}}</text>
       </view>
     </view>
   </view>
   
-  <view class="faq-section" wx:if="{{!showResponse}}">
-    <text class="section-title">常见问题</text>
+  <!-- 答案解析区域 -->
+  <view class="answer-section" wx:if="{{showAnswer}}">
+    <view class="answer-header">
+      <text class="answer-title">答案解析</text>
+      <text class="result {{isCorrect ? 'correct' : 'wrong'}}">{{isCorrect ? '✅ 回答正确' : '❌ 回答错误'}}</text>
+    </view>
+    <text class="answer-explanation">{{currentQuestion.explanation}}</text>
+    <view class="ai-analysis" wx:if="{{aiAnalysis}}">
+      <text class="ai-analysis-title">AI深度解析</text>
+      <text class="ai-analysis-content">{{aiAnalysis}}</text>
+    </view>
+  </view>
+  
+  <!-- 操作按钮 -->
+  <view class="action-buttons">
+    <button wx:if="{{!showAnswer}}" bindtap="submitAnswer" class="submit-btn">提交答案</button>
+    <button wx:else bindtap="nextQuestion" class="next-btn">下一题</button>
+  </view>
+  
+  <!-- 常见问题 -->
+  <view class="faq-section" wx:if="{{!showAnswer && !currentQuestion}}">
+    <text class="faq-title">常见问题</text>
     <view class="faq-list">
       <view class="faq-item" wx:for="{{faqList}}" wx:key="index" bindtap="selectFAQ" data-question="{{item}}">
         <text class="faq-icon">💬</text>
@@ -33,7 +76,8 @@
     </view>
   </view>
   
-  <view class="input-area">
+  <!-- 输入区域 -->
+  <view class="input-area" wx:if="{{!showAnswer && !currentQuestion}}">
     <input class="question-input" placeholder="输入您的问题..." value="{{userQuestion}}" bindinput="inputChange" />
     <view class="send-btn" bindtap="sendQuestion">
       <text>发送</text>

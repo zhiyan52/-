@@ -60,14 +60,14 @@ Page({
     const randomQuote = this.data.quotes[Math.floor(Math.random() * this.data.quotes.length)];
     const randomFact = this.data.facts[Math.floor(Math.random() * this.data.facts.length)];
     const randomTechnique = this.data.techniques[Math.floor(Math.random() * this.data.techniques.length)];
-    
+
     const blindBoxContent = {
       artwork: randomArtwork,
       quote: randomQuote,
       fact: randomFact,
       technique: randomTechnique
     };
-    
+
     this.setData({
       blindBoxContent,
       showContent: true

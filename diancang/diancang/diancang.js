@@ -92,5 +92,33 @@ Page({
     wx.navigateTo({
       url: '/diancang/diancang/diancang-treasure-hunt'
     });
+  },
+
+  // 导航到智能导览
+  navigateToAI() {
+    wx.navigateTo({
+      url: '/diancang/diancang/ai/ai-guide'
+    });
+  },
+
+  // 导航到文化问答
+  navigateToQA() {
+    wx.navigateTo({
+      url: '/diancang/diancang/ai/ai-qa'
+    });
+  },
+
+  // 导航到个性化推荐
+  navigateToRecommend() {
+    wx.navigateTo({
+      url: '/diancang/diancang/ai/ai-recommend'
+    });
+  },
+
+  // 导航到语音讲解
+  navigateToVoice() {
+    wx.navigateTo({
+      url: '/diancang/diancang/ai/ai-voice'
+    });
   }
 });

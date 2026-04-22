@@ -1,10 +1,15 @@
 <!-- 典藏智能推荐页面 -->
 <view class="recommend-container">
-  <view class="header">
-    <text class="title">典藏智能推荐</text>
-    <text class="subtitle">文心先生为您精选</text>
+  <!-- 顶部导航 -->
+  <view class="nav-bar">
+    <view class="back-btn" bindtap="goBack">
+      <text>←</text>
+    </view>
+    <text class="nav-title">典藏智能推荐</text>
+    <view class="placeholder"></view>
   </view>
   
+  <!-- 兴趣选择 -->
   <view class="preference-section">
     <text class="section-title">选择您的兴趣</text>
     <view class="interest-tags">
@@ -14,23 +19,88 @@
     </view>
   </view>
   
-  <view class="recommend-section" wx:if="{{recommendations.length > 0}}">
+  <!-- 学习进度 -->
+  <view class="progress-section">
+    <text class="section-title">学习进度</text>
+    <view class="progress-card">
+      <view class="progress-item">
+        <text class="progress-label">已学习书籍</text>
+        <text class="progress-value">{{learningProgress.booksRead}} / {{learningProgress.totalBooks}}</text>
+      </view>
+      <view class="progress-item">
+        <text class="progress-label">已完成练习</text>
+        <text class="progress-value">{{learningProgress.exercisesCompleted}} / {{learningProgress.totalExercises}}</text>
+      </view>
+      <view class="progress-item">
+        <text class="progress-label">学习时间</text>
+        <text class="progress-value">{{learningProgress.learningTime}} 分钟</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- AI推荐 -->
+  <view class="ai-recommend-section">
+    <text class="section-title">AI个性化推荐</text>
+    <view class="ai-info">
+      <text class="ai-icon">🤖</text>
+      <text class="ai-text">文心先生正在为您分析兴趣和学习进度...</text>
+    </view>
+  </view>
+  
+  <!-- 推荐结果 -->
+  <view class="recommend-section" wx:if="{{recommendedBooks.length > 0}}">
     <text class="section-title">为您推荐</text>
     <view class="recommend-list">
-      <view class="recommend-item" wx:for="{{recommendations}}" wx:key="id">
-        <image class="item-image" src="{{item.image}}" mode="aspectFill" />
+      <view class="recommend-item" wx:for="{{recommendedBooks}}" wx:key="id" bindtap="viewBookDetail" data-id="{{item.id}}">
+        <image class="item-image" src="{{item.cover}}" mode="aspectFill" />
         <view class="item-info">
           <text class="item-title">{{item.title}}</text>
           <text class="item-author">{{item.author}}</text>
           <text class="item-desc">{{item.description}}</text>
+          <view class="item-tags">
+            <view class="item-tag">{{item.category}}</view>
+            <view class="item-tag">推荐指数: {{item.recommendScore}}</view>
+          </view>
         </view>
       </view>
     </view>
   </view>
   
+  <!-- 生成的视觉参考图 -->
+  <view class="visual-section" wx:if="{{visualReferences.length > 0}}">
+    <text class="section-title">视觉参考</text>
+    <view class="visual-grid">
+      <view class="visual-item" wx:for="{{visualReferences}}" wx:key="index">
+        <image class="visual-image" src="{{item.image}}" mode="aspectFill" />
+        <text class="visual-desc">{{item.description}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 操作按钮 -->
   <view class="action-buttons">
-    <view class="action-btn primary" bindtap="generateRecommendations">
+    <view class="action-btn primary" bindtap="getRecommendations" wx:if="{{!loading}}">
       <text>生成推荐</text>
+    </view>
+    <view class="action-btn loading" wx:if="{{loading}}">
+      <text>生成中...</text>
+    </view>
+    <view class="action-btn secondary" bindtap="resetSelection">
+      <text>重新选择</text>
+    </view>
+  </view>
+  
+  <!-- 浏览历史 -->
+  <view class="history-section" wx:if="{{browsingHistory.length > 0}}">
+    <text class="section-title">浏览历史</text>
+    <view class="history-list">
+      <view class="history-item" wx:for="{{browsingHistory}}" wx:key="id">
+        <image class="history-image" src="{{item.cover}}" mode="aspectFill" />
+        <view class="history-info">
+          <text class="history-title">{{item.title}}</text>
+          <text class="history-time">{{item.viewTime}}</text>
+        </view>
+      </view>
     </view>
   </view>
 </view>

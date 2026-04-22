@@ -1,46 +1,45 @@
-<!-- 书画智能导览页面 -->
+<!-- 智能导览页面 -->
 <view class="ai-guide-container">
   <view class="header">
-    <text class="title">书画智能导览</text>
-    <text class="subtitle">AI带你探索书画艺术</text>
+    <text class="title">智能导览</text>
+    <text class="subtitle">AI为您讲解书画作品</text>
   </view>
   
-  <view class="selection-section">
+  <view class="building-list">
     <text class="section-title">选择书画作品</text>
-    <view class="art-list">
-      <view class="art-item {{selectedArt === item.id ? 'active' : ''}}" wx:for="{{artList}}" wx:key="id" bindtap="selectArt" data-id="{{item.id}}">
-        <image class="art-image" src="{{item.image}}" mode="aspectFill" />
-        <view class="art-info">
-          <text class="art-name">{{item.name}}</text>
-          <text class="art-artist">{{item.artist}}</text>
-        </view>
+    <view class="building-items">
+      <view class="building-item" bindtap="selectBuilding" data-building="forbidden-city">
+        <image src="/images/forbidden-city.jpg" class="building-image" />
+        <text class="building-name">故宫</text>
+      </view>
+      <view class="building-item" bindtap="selectBuilding" data-building="summer-palace">
+        <image src="/images/summer-palace.jpg" class="building-image" />
+        <text class="building-name">颐和园</text>
+      </view>
+      <view class="building-item" bindtap="selectBuilding" data-building="temple-of-heaven">
+        <image src="/images/temple-of-heaven.jpg" class="building-image" />
+        <text class="building-name">天坛</text>
+      </view>
+      <view class="building-item" bindtap="selectBuilding" data-building="suzhou-garden">
+        <image src="/images/suzhou-garden.jpg" class="building-image" />
+        <text class="building-name">苏州园林</text>
       </view>
     </view>
   </view>
   
-  <view class="guide-content" wx:if="{{selectedArt}}">
-    <view class="content-header">
-      <text class="content-title">{{currentArt.name}}</text>
-      <view class="guide-tag">AI讲解</view>
-    </view>
-    
-    <view class="loading" wx:if="{{loading}}">
-      <text>AI正在生成讲解内容...</text>
-    </view>
-    
-    <view class="guide-text" wx:else>
-      <text>{{guideText}}</text>
-    </view>
-    
-    <view class="action-buttons">
-      <view class="action-btn" bindtap="playVoice">
-        <text class="btn-icon">🔊</text>
-        <text>播放语音</text>
+  <view class="ai-content" wx:if="{{selectedBuilding}}">
+    <text class="content-title">{{selectedBuilding.name}}导览</text>
+    <view class="ai-response">
+      <view class="loading" wx:if="{{loading}}">
+        <text>AI正在生成讲解...</text>
       </view>
-      <view class="action-btn" bindtap="regenerate">
-        <text class="btn-icon">🔄</text>
-        <text>重新生成</text>
+      <view class="ai-text" wx:else>
+        {{aiContent}}
       </view>
+    </view>
+    <view class="control-buttons">
+      <view class="button" bindtap="playVoice">播放语音</view>
+      <view class="button" bindtap="regenerate">重新生成</view>
     </view>
   </view>
 </view>

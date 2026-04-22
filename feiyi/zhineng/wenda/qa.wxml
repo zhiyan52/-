@@ -39,7 +39,7 @@
   <view class="ai-section">
     <view class="section-title">🤖 AI非遗技艺指导</view>
     <view class="input-box">
-      <textarea placeholder="请输入非遗工序疑问/技法问题/描述你的练习作品" value="{{userInput}}" bindinput="handleInput"></textarea>
+      <textarea class="input-area" placeholder="请输入非遗工序疑问/技法问题/描述你的练习作品" value="{{userInput}}" bindinput="handleInput"></textarea>
       <view class="ai-btns">
         <button bindtap="getAIAdvice" loading="{{isLoading}}" class="action-btn primary-btn">AI解答/改进建议</button>
         <button bindtap="getReferenceImage" loading="{{imgLoading}}" class="action-btn second-btn">生成参考图</button>

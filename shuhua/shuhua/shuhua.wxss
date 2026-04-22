@@ -194,7 +194,7 @@
   margin-bottom: 50rpx;
 }
 
-.smart-card {
+.smart-feature-item {
   background: white;
   border-radius: 20rpx;
   padding: 24rpx;
@@ -206,45 +206,38 @@
   transition: all 0.3s ease;
 }
 
-.smart-card:active {
+.smart-feature-item:active {
   transform: scale(0.98);
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
 }
 
-.smart-icon {
-  width: 60rpx;
-  height: 60rpx;
-  border-radius: 50%;
-  background: #f5f1e8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32rpx;
+.smart-feature-icon {
+  font-size: 48rpx;
   margin-right: 20rpx;
-  border: 1rpx solid #d4a76a;
+  color: #1A365D;
 }
 
-.smart-content {
+.smart-feature-content {
   flex: 1;
 }
 
-.smart-title {
-  font-size: 28rpx;
+.smart-feature-title {
+  font-size: 32rpx;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 4rpx;
+  color: #1A365D;
+  margin-bottom: 5rpx;
   font-family: "STKaiti", "KaiTi", serif;
 }
 
-.smart-desc {
-  font-size: 22rpx;
+.smart-feature-desc {
+  font-size: 24rpx;
   color: #666;
   font-family: "STKaiti", "KaiTi", serif;
 }
 
-.smart-arrow {
+.smart-feature-arrow {
   font-size: 32rpx;
-  color: #999;
+  color: #D4A017;
   margin-left: 16rpx;
 }
 

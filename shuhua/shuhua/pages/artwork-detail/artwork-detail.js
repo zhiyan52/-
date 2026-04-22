@@ -8,7 +8,7 @@ Page({
 
   onLoad() {
     wx.setNavigationBarTitle({ title: '作品详情' });
-    
+
     // 接收从列表页传递的作品数据
     const eventChannel = this.getOpenerEventChannel();
     if (eventChannel) {
@@ -21,14 +21,14 @@ Page({
   // 获取AI讲解
   getAIExplanation() {
     if (!this.data.artwork.name) return;
-    
+
     this.setData({ isLoading: true });
-    
+
     (async () => {
       try {
         const artworkName = this.data.artwork.name;
         const author = this.data.artwork.author;
-        
+
         // 创建模型实例
         const model = wx.cloud.extend.AI.createModel("hunyuan-exp");
 
@@ -49,7 +49,7 @@ Page({
 
         const explanation = res.choices[0].message.content;
         this.setData({ aiExplanation: explanation });
-        
+
         // 显示AI讲解
         wx.showModal({
           title: 'AI智能讲解',

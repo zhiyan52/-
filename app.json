@@ -249,7 +249,8 @@
     "navigationBarTitleText": "中国十大宫殿",
     "navigationBarBackgroundColor": "#2C2621",
     "navigationBarTextStyle": "white",
-    "backgroundTextStyle": "dark"
+    "backgroundTextStyle": "dark",
+    "disableScroll": true
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2",

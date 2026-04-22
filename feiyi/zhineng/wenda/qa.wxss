@@ -2,7 +2,9 @@
 .container {
   padding: 30rpx;
   background-color: #f8f5f0;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .page-title {
   font-size: 38rpx;

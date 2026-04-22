@@ -29,16 +29,6 @@
       </navigator>
     </view>
     <view class="feature-row">
-      <navigator url="/diancang/diancang/ai/ai-qa" class="feature-item">
-        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/ai.png" class="feature-icon" />
-        <text>AI文心先生</text>
-      </navigator>
-      <navigator url="/diancang/diancang/pages/community/community" class="feature-item">
-        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/community.png" class="feature-icon" />
-        <text>典藏社区</text>
-      </navigator>
-    </view>
-    <view class="feature-row">
       <navigator url="/diancang/diancang/diancang-fill" class="feature-item">
         <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/fill.png" class="feature-icon" />
         <text>古文填空</text>
@@ -67,32 +57,40 @@
     </view>
   </view>
   
-  <!-- AI文心先生功能 -->
-  <view class="section">
-    <text class="section-title">AI文心先生</text>
-    <view class="ai-features">
-      <view class="ai-feature-grid">
-        <view class="ai-feature-card" bindtap="navigateToFeature" data-url="/diancang/diancang/ai/ai-qa">
-          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/ai-qa.png" class="ai-feature-icon" />
-          <text class="ai-feature-title">AI问答</text>
-          <text class="ai-feature-desc">文心先生为您解答文化疑问</text>
-        </view>
-        <view class="ai-feature-card" bindtap="navigateToFeature" data-url="/diancang/diancang/ai/ai-guide">
-          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/ai-guide.png" class="ai-feature-icon" />
-          <text class="ai-feature-title">智能导览</text>
-          <text class="ai-feature-desc">文心先生带您探文脉</text>
-        </view>
-        <view class="ai-feature-card" bindtap="navigateToFeature" data-url="/diancang/diancang/ai/ai-recommend">
-          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/ai-recommend.png" class="ai-feature-icon" />
-          <text class="ai-feature-title">智能推荐</text>
-          <text class="ai-feature-desc">文心先生为您精选典籍</text>
-        </view>
-        <view class="ai-feature-card" bindtap="navigateToFeature" data-url="/diancang/diancang/ai/ai-voice">
-          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/ai-voice.png" class="ai-feature-icon" />
-          <text class="ai-feature-title">智能语音</text>
-          <text class="ai-feature-desc">与文心先生语音交流</text>
-        </view>
+  <!-- 智能功能 -->
+  <view class="smart-section">
+    <text class="section-title">智能功能</text>
+    <view class="smart-feature-item" bindtap="navigateToAI">
+      <text class="smart-feature-icon">🧭</text>
+      <view class="smart-feature-content">
+        <text class="smart-feature-title">智能导览</text>
+        <text class="smart-feature-desc">智能路线规划，深度解说</text>
       </view>
+      <text class="smart-feature-arrow">→</text>
+    </view>
+    <view class="smart-feature-item" bindtap="navigateToQA">
+      <text class="smart-feature-icon">❓</text>
+      <view class="smart-feature-content">
+        <text class="smart-feature-title">文化问答</text>
+        <text class="smart-feature-desc">解答典藏相关问题</text>
+      </view>
+      <text class="smart-feature-arrow">→</text>
+    </view>
+    <view class="smart-feature-item" bindtap="navigateToRecommend">
+      <text class="smart-feature-icon">🎯</text>
+      <view class="smart-feature-content">
+        <text class="smart-feature-title">个性化推荐</text>
+        <text class="smart-feature-desc">根据兴趣推荐典藏内容</text>
+      </view>
+      <text class="smart-feature-arrow">→</text>
+    </view>
+    <view class="smart-feature-item" bindtap="navigateToVoice">
+      <text class="smart-feature-icon">🎙️</text>
+      <view class="smart-feature-content">
+        <text class="smart-feature-title">语音讲解</text>
+        <text class="smart-feature-desc">沉浸式语音导览体验</text>
+      </view>
+      <text class="smart-feature-arrow">→</text>
     </view>
   </view>
   

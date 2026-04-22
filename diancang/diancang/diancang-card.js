@@ -55,7 +55,7 @@ Page({
     const randomIndex = Math.floor(Math.random() * this.data.quotes.length);
     const randomQuote = this.data.quotes[randomIndex];
     this.setData({ currentQuote: randomQuote });
-    
+
     // 保存到历史记录
     const historyQuotes = [randomQuote, ...this.data.historyQuotes].slice(0, 5);
     this.setData({ historyQuotes: historyQuotes });
@@ -64,7 +64,7 @@ Page({
 
   saveCard: function () {
     wx.showLoading({ title: '保存中...' });
-    
+
     // 模拟保存功能
     setTimeout(() => {
       wx.hideLoading();

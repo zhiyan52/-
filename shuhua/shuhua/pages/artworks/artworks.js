@@ -124,7 +124,7 @@ Page({
   switchCategory(e) {
     const categoryId = e.currentTarget.dataset.id;
     this.setData({ activeCategory: categoryId });
-    
+
     if (categoryId === 'all') {
       this.setData({ filteredArtworks: this.data.artworks });
     } else {
@@ -137,7 +137,7 @@ Page({
   viewArtworkDetail(e) {
     const artworkId = e.currentTarget.dataset.id;
     const artwork = this.data.artworks.find(item => item.id === artworkId);
-    
+
     if (artwork) {
       // 跳转到作品详情页
       wx.navigateTo({

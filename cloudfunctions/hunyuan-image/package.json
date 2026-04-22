@@ -1,0 +1,13 @@
+{
+  "name": "hunyuan-image",
+  "version": "1.0.0",
+  "description": "混元Image生成云函数 - 支持腾讯混元API + 本地后备库",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  },
+  "env": {
+    "TENCENT_SECRET_ID": "",
+    "TENCENT_SECRET_KEY": ""
+  }
+}

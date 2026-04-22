@@ -90,5 +90,33 @@ Page({
       title: '吴雅文轩 · 岁时节令民俗风物',
       path: '/mingsu/mingsu'
     };
+  },
+
+  // 导航到智能导览
+  navigateToAI() {
+    wx.navigateTo({
+      url: '/mingsu/mingsu/ai/ai-guide'
+    });
+  },
+
+  // 导航到文化问答
+  navigateToQA() {
+    wx.navigateTo({
+      url: '/mingsu/mingsu/ai/ai-qa'
+    });
+  },
+
+  // 导航到个性化推荐
+  navigateToRecommend() {
+    wx.navigateTo({
+      url: '/mingsu/mingsu/ai/ai-recommend'
+    });
+  },
+
+  // 导航到语音讲解
+  navigateToVoice() {
+    wx.navigateTo({
+      url: '/mingsu/mingsu/ai/ai-voice'
+    });
   }
 });

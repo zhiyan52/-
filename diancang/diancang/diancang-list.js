@@ -192,7 +192,7 @@ Page({
     const id = e.currentTarget.dataset.id;
     let favorites = [...this.data.favorites];
     const index = favorites.indexOf(id);
-    
+
     if (index > -1) {
       // 取消收藏
       favorites.splice(index, 1);
@@ -208,7 +208,7 @@ Page({
         icon: 'success'
       });
     }
-    
+
     this.setData({ favorites: favorites });
     wx.setStorageSync('diancang_favorites', favorites);
   },
