@@ -1,0 +1,175 @@
+/* shuhuayayun/pages/quotes/quotes.wxss */
+
+.container {
+  background-color: #F5F2E9;
+  min-height: 100vh;
+  padding: 30rpx;
+  font-family: '楷体', 'STKaiti', serif;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40rpx;
+  padding: 30rpx 0;
+  background: linear-gradient(135deg, #F5F2E9 0%, #E8E4D8 100%);
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.08);
+  border: 1rpx solid #D7D3C8;
+}
+
+.title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.subtitle {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.card-section {
+  margin-bottom: 40rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.card-container {
+  width: 90%;
+  max-width: 500rpx;
+}
+
+.card-background {
+  position: relative;
+  width: 100%;
+  height: 500rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 32rpx rgba(0,0,0,0.15);
+  border: 2rpx solid #D7D3C8;
+}
+
+.card-background image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.card-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60rpx;
+  background-color: rgba(245, 242, 233, 0.8);
+}
+
+.loading {
+  font-size: 32rpx;
+  color: #8B4513;
+  font-weight: bold;
+  animation: pulse 1.5s infinite;
+}
+
+.quote-text {
+  font-size: 36rpx;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.6;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.1);
+}
+
+.button-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  align-items: center;
+}
+
+.generate-btn,
+.save-btn {
+  width: 80%;
+  padding: 24rpx 0;
+  border-radius: 24rpx;
+  border: none;
+  font-size: 32rpx;
+  font-weight: bold;
+  font-family: '楷体', 'STKaiti', serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 6rpx 24rpx rgba(0,0,0,0.15);
+}
+
+.generate-btn {
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+  color: #FFFFFF;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: #FFFFFF;
+}
+
+.generate-btn:hover,
+.save-btn:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 32rpx rgba(0,0,0,0.2);
+}
+
+.generate-btn:disabled,
+.save-btn:disabled {
+  background: #D7D3C8;
+  color: #999;
+  box-shadow: none;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+  .container {
+    padding: 20rpx;
+  }
+  
+  .card-container {
+    width: 95%;
+  }
+  
+  .card-background {
+    height: 400rpx;
+  }
+  
+  .card-content {
+    padding: 40rpx;
+  }
+  
+  .quote-text {
+    font-size: 32rpx;
+  }
+  
+  .generate-btn,
+  .save-btn {
+    width: 90%;
+    font-size: 28rpx;
+    padding: 20rpx 0;
+  }
+}

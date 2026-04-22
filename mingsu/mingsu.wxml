@@ -2,11 +2,8 @@
   <!-- 顶部品牌 -->
   <view class="brand-header">
     <view class="brand-content">
-      <image class="brand-bg" src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20traditional%20folk%20culture%20background%20with%20ink%20painting%20style%2C%20bamboo%20and%20traditional%20patterns&image_size=landscape_16_9"></image>
-      <view class="brand-title">
-        <text class="main-title">岁时节令</text>
-        <text class="sub-title">民俗风物</text>
-      </view>
+      <image class="brand-bg" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/zhou.jpg"></image>
+      
     </view>
   </view>
 
@@ -17,7 +14,7 @@
     </view>
     <view class="modules-grid">
       <view class="module-card" wx:for="{{modules}}" wx:key="id" bindtap="navigateToModule" data-id="{{item.id}}">
-        <view class="module-icon">{{item.icon}}</view>
+        <image class="module-icon" src="{{item.image}}" mode="aspectFit"></image>
         <text class="module-name">{{item.name}}</text>
         <text class="module-desc">{{item.desc}}</text>
       </view>

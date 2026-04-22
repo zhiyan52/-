@@ -1,0 +1,63 @@
+<!-- shuhuayayun/pages/ai-explain/ai-explain.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="title">AI书画智能讲解</view>
+    <view class="subtitle">选择一幅作品，AI为您深度解析</view>
+  </view>
+  
+  <!-- 作品选择 -->
+  <view class="work-section">
+    <view class="section-title">选择作品</view>
+    <view class="work-grid">
+      <view 
+        wx:for="{{works}}" 
+        wx:key="id"
+        class="work-item {{selectedWork && selectedWork.id === item.id ? 'selected' : ''}}"
+        bindtap="selectWork"
+        data-work="{{item}}"
+      >
+        <view class="work-name">{{item.name}}</view>
+        <view class="work-author">{{item.author}}</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 生成讲解按钮 -->
+  <view class="button-section">
+    <button 
+      class="generate-btn"
+      bindtap="generateExplanation"
+      disabled="{{!selectedWork || loading}}"
+    >
+      {{loading ? '生成中...' : '生成AI讲解'}}
+    </button>
+  </view>
+  
+  <!-- 讲解结果 -->
+  <view wx:if="{{explanation}}" class="explanation-section">
+    <view class="section-title">AI讲解</view>
+    <view class="explanation-card">
+      <view class="explanation-item">
+        <view class="item-title">作品背景与作者介绍</view>
+        <view class="item-content">{{explanation.background}}</view>
+      </view>
+      <view class="explanation-item">
+        <view class="item-title">笔墨技法、章法布局解析</view>
+        <view class="item-content">{{explanation.techniques}}</view>
+      </view>
+      <view class="explanation-item">
+        <view class="item-title">艺术风格与文化内涵</view>
+        <view class="item-content">{{explanation.style}}</view>
+      </view>
+      <view class="explanation-item">
+        <view class="item-title">后世影响与地位</view>
+        <view class="item-content">{{explanation.influence}}</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 错误提示 -->
+  <view wx:if="{{error}}" class="error-section">
+    <view class="error-message">{{error}}</view>
+  </view>
+</view>

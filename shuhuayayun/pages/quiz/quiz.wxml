@@ -1,0 +1,65 @@
+<!-- shuhuayayun/pages/quiz/quiz.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="title">书画知识答题</view>
+    <view class="subtitle">测试你的书画知识水平</view>
+  </view>
+  
+  <!-- 答题区域 -->
+  <view class="quiz-section">
+    <view class="question-info">
+      <view class="question-number">第 {{currentQuestionIndex + 1}} / {{questions.length}} 题</view>
+      <view class="score-info">答对 {{correctCount}} / {{answeredCount}} 题</view>
+    </view>
+    
+    <view class="question-card">
+      <view class="question-text">{{questions[currentQuestionIndex].question}}</view>
+      
+      <view class="options-list">
+        <view 
+          wx:for="{{questions[currentQuestionIndex].options}}" 
+          wx:key="index"
+          class="option-item {{selectedAnswer === index ? 'selected' : ''}}"
+          bindtap="selectAnswer"
+          data-index="{{index}}"
+        >
+          <view class="option-letter">{{String.fromCharCode(65 + index)}}</view>
+          <view class="option-text">{{item}}</view>
+        </view>
+      </view>
+      
+      <!-- 结果展示 -->
+      <view wx:if="{{showResult}}" class="result-display">
+        <view class="result-icon {{isCorrect ? 'correct' : 'wrong'}}">
+          {{isCorrect ? '✓' : '✗'}}
+        </view>
+        <view class="result-text">
+          <text wx:if="{{isCorrect}}">回答正确！</text>
+          <text wx:else>回答错误！</text>
+        </view>
+        <view class="correct-answer">
+          正确答案：{{questions[currentQuestionIndex].options[questions[currentQuestionIndex].answer]}}
+        </view>
+      </view>
+    </view>
+    
+    <view class="button-section">
+      <button 
+        wx:if="{{!showResult}}"
+        class="submit-btn"
+        bindtap="submitAnswer"
+        disabled="{{selectedAnswer === null}}"
+      >
+        提交答案
+      </button>
+      <button 
+        wx:else
+        class="next-btn"
+        bindtap="nextQuestion"
+      >
+        <text wx:if="{{currentQuestionIndex < questions.length - 1}}">下一题</text>
+        <text wx:else>查看结果</text>
+      </button>
+    </view>
+  </view>
+</view>

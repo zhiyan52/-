@@ -1,0 +1,70 @@
+<!-- shuhuayayun/pages/works/works.wxml -->
+<view class="container">
+  <!-- 标签切换 -->
+  <view class="tab-container">
+    <view 
+      class="tab-item {{activeTab === 'calligraphy' ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-tab="calligraphy"
+    >
+      书法作品
+    </view>
+    <view 
+      class="tab-item {{activeTab === 'painting' ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-tab="painting"
+    >
+      国画作品
+    </view>
+  </view>
+  
+  <!-- 书法作品列表 -->
+  <view wx:if="{{activeTab === 'calligraphy'}}" class="work-list">
+    <view 
+      wx:for="{{calligraphyWorks}}" 
+      wx:key="id"
+      class="work-card"
+      bindtap="viewWorkDetail"
+      data-work="{{item}}"
+    >
+      <view class="work-image">
+        <image src="{{item.image}}" mode="aspectFill"></image>
+      </view>
+      <view class="work-info">
+        <view class="work-header">
+          <view class="work-name">{{item.name}}</view>
+          <view class="work-year">{{item.year}}</view>
+        </view>
+        <view class="work-author">作者：{{item.author}}（{{item.dynasty}}）</view>
+        <view class="work-background">{{item.background}}</view>
+        <view class="work-features">艺术特点：{{item.features}}</view>
+        <view class="work-status">收藏状态：{{item.status}}</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 国画作品列表 -->
+  <view wx:if="{{activeTab === 'painting'}}" class="work-list">
+    <view 
+      wx:for="{{paintingWorks}}" 
+      wx:key="id"
+      class="work-card"
+      bindtap="viewWorkDetail"
+      data-work="{{item}}"
+    >
+      <view class="work-image">
+        <image src="{{item.image}}" mode="aspectFill"></image>
+      </view>
+      <view class="work-info">
+        <view class="work-header">
+          <view class="work-name">{{item.name}}</view>
+          <view class="work-year">{{item.year}}</view>
+        </view>
+        <view class="work-author">作者：{{item.author}}（{{item.dynasty}}）</view>
+        <view class="work-background">{{item.background}}</view>
+        <view class="work-features">艺术特点：{{item.features}}</view>
+        <view class="work-status">收藏状态：{{item.status}}</view>
+      </view>
+    </view>
+  </view>
+</view>

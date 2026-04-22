@@ -10,7 +10,7 @@ Page({
         origin: '春节起源于殷商时期年头岁尾的祭神祭祖活动，是中国最隆重的传统节日。',
         activities: ['贴春联', '放鞭炮', '吃年夜饭', '拜年', '发压岁钱'],
         meaning: '团圆、辞旧迎新、祈福纳祥',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20Spring%20Festival%20traditional%20scene%20with%20red%20lanterns%20and%20firecrackers%2C%20ink%20painting%20style&image_size=square_hd'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/2.jpg'
       },
       {
         id: 'lantern-festival',
@@ -19,7 +19,7 @@ Page({
         origin: '元宵节起源于汉代，是春节之后的第一个重要节日。',
         activities: ['赏花灯', '吃元宵', '猜灯谜', '舞龙舞狮'],
         meaning: '团圆、光明、希望',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Lantern%20Festival%20with%20colorful%20lanterns%2C%20traditional%20Chinese%20style&image_size=square_hd'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/微3.jpg'
       },
       {
         id: 'dragon-boat-festival',
@@ -28,7 +28,7 @@ Page({
         origin: '端午节是为了纪念战国时期楚国诗人屈原。',
         activities: ['赛龙舟', '吃粽子', '挂艾草', '饮雄黄酒'],
         meaning: '爱国、驱邪避毒',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Dragon%20Boat%20Festival%20race%2C%20traditional%20Chinese%20style&image_size=square_hd'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/4.jpg'
       },
       {
         id: 'mid-autumn',
@@ -37,7 +37,7 @@ Page({
         origin: '中秋节起源于古代帝王的祭月活动，后来逐渐成为民间的团圆节日。',
         activities: ['赏月', '吃月饼', '赏桂花', '燃灯'],
         meaning: '团圆、美满、思念',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Mid-Autumn%20Festival%20moon%20viewing%20scene%20with%20mooncakes%2C%20ink%20painting%20style&image_size=square_hd'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/5.jpg'
       },
       {
         id: 'double-ninth',
@@ -46,7 +46,7 @@ Page({
         origin: '重阳节起源于汉代，是为了避邪祈福。',
         activities: ['登高', '插茱萸', '赏菊花', '饮菊花酒'],
         meaning: '敬老、祈福、健康',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Double%20Ninth%20Festival%20mountain%20climbing%20scene%2C%20traditional%20Chinese%20style&image_size=square_hd'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/6.jpg'
       }
     ],
     solarTerms: [

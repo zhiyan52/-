@@ -1,0 +1,61 @@
+<!-- shuhuayayun/shuhuayayun.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="title">书画雅韵</view>
+    <view class="subtitle">中国书法 · 国画艺术</view>
+  </view>
+  
+  <view class="function-section">
+    <view class="section-title">书画功能</view>
+    <view class="function-grid">
+      <!-- 书画名家图鉴 -->
+      <view class="function-card" bindtap="navigateToMasters">
+        <view class="card-icon">🎨</view>
+        <view class="card-title">书画名家图鉴</view>
+        <view class="card-desc">了解历代书画名家</view>
+      </view>
+      <!-- 传世书画赏析 -->
+      <view class="function-card" bindtap="navigateToWorks">
+        <view class="card-icon">🖼️</view>
+        <view class="card-title">传世书画赏析</view>
+        <view class="card-desc">欣赏经典传世作品</view>
+      </view>
+      <!-- AI智能讲解 -->
+      <view class="function-card" bindtap="navigateToAiExplain">
+        <view class="card-icon">🤖</view>
+        <view class="card-title">AI智能讲解</view>
+        <view class="card-desc">AI解析书画艺术</view>
+      </view>
+      <!-- AI意境生图 -->
+      <view class="function-card" bindtap="navigateToAiGenerate">
+        <view class="card-icon">✨</view>
+        <view class="card-title">AI意境生图</view>
+        <view class="card-desc">生成书画风格作品</view>
+      </view>
+      <!-- 书法字体科普 -->
+      <view class="function-card" bindtap="navigateToCalligraphy">
+        <view class="card-icon">✍️</view>
+        <view class="card-title">书法字体科普</view>
+        <view class="card-desc">五大书体知识</view>
+      </view>
+      <!-- 书画知识答题 -->
+      <view class="function-card" bindtap="navigateToQuiz">
+        <view class="card-icon">❓</view>
+        <view class="card-title">书画知识答题</view>
+        <view class="card-desc">测试书画知识</view>
+      </view>
+      <!-- 书画佳句卡片 -->
+      <view class="function-card" bindtap="navigateToQuotes">
+        <view class="card-icon">📝</view>
+        <view class="card-title">书画佳句卡片</view>
+        <view class="card-desc">生成可读卡片</view>
+      </view>
+      <!-- 书画盲盒 -->
+      <view class="function-card" bindtap="navigateToBlindBox">
+        <view class="card-icon">🎁</view>
+        <view class="card-title">书画盲盒</view>
+        <view class="card-desc">每日一赏</view>
+      </view>
+    </view>
+  </view>
+</view>
