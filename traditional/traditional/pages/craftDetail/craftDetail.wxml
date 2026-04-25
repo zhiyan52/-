@@ -1,0 +1,67 @@
+<view class="page-container">
+  <!-- 工艺信息区域 -->
+  <view class="craft-info">
+    <view class="craft-header">
+      <image class="craft-image" src="{{craft.coverImage}}" mode="aspectFill"/>
+      <view class="craft-title-section">
+        <text class="craft-title">{{craft.name}}</text>
+        <text class="craft-description">📍 {{craft.origin}} | 共 {{craft.totalSteps}} 道工序</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 进度区域 -->
+  <view class="progress-section">
+    <view class="progress-header">
+      <text class="progress-title">工艺进度</text>
+      <text class="progress-percent">{{progressPercent}}%</text>
+    </view>
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progressPercent}}"></view>
+    </view>
+    <view class="progress-info">
+      <text>已完成 {{completedSteps}} 道工序</text>
+      <text>共 {{craft.totalSteps}} 道工序</text>
+    </view>
+  </view>
+  
+  <!-- 阶段环形图 -->
+  <view class="phase-ring-section">
+    <text class="phase-ring-title">工艺阶段</text>
+    <view class="phase-ring">
+      <canvas canvas-id="phaseRing" class="ring-canvas"></canvas>
+    </view>
+    <view class="phase-legend">
+      <view class="phase-legend-item" wx:for="{{phases}}" wx:key="id">
+        <view class="phase-color" style="background: {{item.color}}"></view>
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 阶段列表 -->
+  <view class="phases-section">
+    <text class="phases-title">阶段详情</text>
+    <view 
+      class="phase-item {{phase.unlocked ? 'unlocked' : 'locked'}}" 
+      wx:for="{{phases}}" 
+      wx:key="id"
+      bindtap="onPhaseTap"
+      data-id="{{phase.id}}"
+    >
+      <view class="phase-icon" style="background: {{phase.color}}">
+        <text>{{phase.icon}}</text>
+      </view>
+      <view class="phase-info">
+        <text class="phase-name">{{phase.name}}</text>
+        <text class="phase-steps">{{phase.completed}}/{{phase.stepCount}} 完成</text>
+      </view>
+      <text class="phase-status {{phase.unlocked ? (phase.completed === phase.stepCount ? 'status-completed' : 'status-in-progress') : 'status-locked'}}">
+        {{phase.unlocked ? (phase.completed === phase.stepCount ? '已完成' : '进行中') : '未解锁'}}
+      </text>
+    </view>
+  </view>
+  
+  <!-- 底部空间 -->
+  <view class="bottom-space"></view>
+</view>

@@ -65,11 +65,12 @@
 .function-card {
   background-color: #FFFFFF;
   border-radius: 20rpx;
-  padding: 40rpx 20rpx;
+  padding: 20rpx;
   text-align: center;
   box-shadow: 0 6rpx 24rpx rgba(0,0,0,0.08);
   border: 1rpx solid #E8E4D8;
   transition: all 0.3s ease;
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFF5D6 100%);
 }
 
 .function-card:hover {
@@ -77,22 +78,21 @@
   box-shadow: 0 12rpx 32rpx rgba(0,0,0,0.12);
 }
 
-.card-icon {
-  font-size: 64rpx;
-  margin-bottom: 24rpx;
+.card-image {
+  width: 100%;
+  height: 200rpx;
+  border-radius: 12rpx;
+  margin-bottom: 16rpx;
+  object-fit: cover;
+  border: 1rpx solid #E8E4D8;
 }
 
 .card-title {
-  font-size: 32rpx;
+  font-size: 28rpx;
   font-weight: bold;
   color: #333;
-  margin-bottom: 12rpx;
-}
-
-.card-desc {
-  font-size: 24rpx;
-  color: #666;
-  line-height: 1.4;
+  margin-bottom: 8rpx;
+  font-family: '楷体', 'STKaiti', serif;
 }
 
 /* 响应式设计 */
@@ -115,18 +115,14 @@
   }
   
   .function-card {
-    padding: 30rpx 20rpx;
+    padding: 16rpx;
   }
   
-  .card-icon {
-    font-size: 56rpx;
+  .card-image {
+    height: 180rpx;
   }
   
   .card-title {
-    font-size: 28rpx;
-  }
-  
-  .card-desc {
-    font-size: 22rpx;
+    font-size: 26rpx;
   }
 }

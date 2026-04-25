@@ -1,0 +1,211 @@
+/* 匠人详情页面样式 */
+.page-container {
+  background-color: #f7f5f0;
+  min-height: 100vh;
+}
+
+/* 头部区 */
+.header-section {
+  position: relative;
+  height: 400rpx;
+  overflow: hidden;
+}
+
+.header-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40rpx;
+  color: #fff;
+}
+
+.craftsman-name {
+  font-size: 48rpx;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+  margin-bottom: 10rpx;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.5);
+}
+
+.craftsman-title {
+  font-size: 28rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+  margin-bottom: 10rpx;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.5);
+}
+
+.craftsman-meta {
+  font-size: 24rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.5);
+}
+
+/* 内容区 */
+.content-section {
+  padding: 30rpx 20rpx;
+  margin-top: -30rpx;
+  background: #f7f5f0;
+  border-radius: 30rpx 30rpx 0 0;
+  position: relative;
+  z-index: 10;
+}
+
+/* 基本信息 */
+.info-section {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  margin-bottom: 30rpx;
+  border: 2rpx solid #D4A017;
+}
+
+.section-subtitle {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
+  margin-bottom: 20rpx;
+  position: relative;
+  padding-left: 20rpx;
+}
+
+.section-subtitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10rpx;
+  height: 30rpx;
+  background: #D4A017;
+  border-radius: 5rpx;
+}
+
+.info-content {
+  font-size: 24rpx;
+  color: #333;
+  font-family: "STKaiti", "KaiTi", serif;
+  line-height: 1.6;
+  margin-bottom: 20rpx;
+}
+
+/* 代表作品 */
+.works-section {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  margin-bottom: 30rpx;
+  border: 2rpx solid #D4A017;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16rpx;
+}
+
+.work-item {
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.08);
+  border: 1rpx solid #f0f0f0;
+}
+
+.work-image {
+  width: 100%;
+  height: 200rpx;
+  object-fit: cover;
+}
+
+.work-title {
+  padding: 12rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+  color: #333;
+  font-family: "STKaiti", "KaiTi", serif;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+/* 匠人故事 */
+.story-section {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  margin-bottom: 30rpx;
+  border: 2rpx solid #D4A017;
+}
+
+.story-content {
+  font-size: 24rpx;
+  color: #333;
+  font-family: "STKaiti", "KaiTi", serif;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* 底部空间 */
+.bottom-space {
+  height: 40rpx;
+}
+
+/* 响应式调整 */
+@media (max-width: 375px) {
+  .header-section {
+    height: 300rpx;
+  }
+  
+  .craftsman-name {
+    font-size: 40rpx;
+  }
+  
+  .craftsman-title {
+    font-size: 24rpx;
+  }
+  
+  .craftsman-meta {
+    font-size: 20rpx;
+  }
+  
+  .content-section {
+    padding: 20rpx 16rpx;
+  }
+  
+  .info-section,
+  .works-section,
+  .story-section {
+    padding: 20rpx;
+  }
+  
+  .section-subtitle {
+    font-size: 28rpx;
+  }
+  
+  .info-content,
+  .story-content {
+    font-size: 22rpx;
+  }
+  
+  .work-image {
+    height: 160rpx;
+  }
+  
+  .work-title {
+    font-size: 20rpx;
+  }
+}

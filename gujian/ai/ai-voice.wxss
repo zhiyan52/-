@@ -1,6 +1,6 @@
 /* 语音讲解页面样式 */
 .ai-voice-container {
-  background-color: #63d8c6;
+  background-color: #fafffe;
   min-height: 100vh;
   padding: 20rpx 30rpx;
 }

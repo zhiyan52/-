@@ -16,12 +16,12 @@ Page({
     const history = [
       {
         title: '故宫太和殿',
-        image: '/images/recommend1.jpg',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/gongdian1.jpg',
         time: '2024-04-14 10:30'
       },
       {
         title: '苏州园林',
-        image: '/images/recommend2.jpg',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/zhineng/yuanlin.jpg',
         time: '2024-04-14 09:15'
       }
     ];
@@ -37,25 +37,25 @@ Page({
     const recommendations = [
       {
         title: '天坛祈年殿',
-        image: '/images/temple-of-heaven.jpg',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/zhineng/tiantan.jpg',
         desc: '明清两代皇帝祭天的场所，建筑精美，历史悠久。',
         tags: ['皇家建筑', '宗教建筑', '历史文化']
       },
       {
         title: '颐和园',
-        image: '/images/summer-palace.jpg',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/zhineng/yinhe.jpg',
         desc: '中国古典园林的杰出代表，融合了自然与人文景观。',
         tags: ['园林建筑', '皇家园林', '世界遗产']
       },
       {
         title: '拙政园',
-        image: '/images/suzhou-garden.jpg',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/zhuozhengyuan.jpg',
         desc: '苏州园林的代表作，以水为中心，布局精巧。',
         tags: ['园林建筑', '江南园林', '世界遗产']
       },
       {
         title: '长城',
-        image: '/images/great-wall.jpg',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/zhineng/changchen.jpg',
         desc: '中国古代伟大的防御工程，象征着中华民族的坚韧不拔。',
         tags: ['防御建筑', '世界遗产', '历史文化']
       }

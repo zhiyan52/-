@@ -1,4 +1,4 @@
-// AI书画意境生图页面逻辑
+// AI书画意境生图页面逻辑 - 使用hunyuan-image云函数
 Page({
   data: {
     // 推荐关键词
@@ -14,7 +14,8 @@ Page({
     ],
     keyword: '',
     generatedImage: null,
-    isGenerating: false
+    isGenerating: false,
+    imageSource: ''
   },
 
   onLoad() {
@@ -29,7 +30,7 @@ Page({
   // 选择推荐关键词
   selectKeyword(e) {
     const keyword = e.currentTarget.dataset.keyword;
-    this.setData({ keyword });
+    this.setData({ keyword, imageSource: '' });
   },
 
   // 生成图片
@@ -39,32 +40,42 @@ Page({
       return;
     }
 
-    this.setData({ isGenerating: true, generatedImage: null });
+    this.setData({ isGenerating: true, generatedImage: null, imageSource: '' });
 
-    (async () => {
-      try {
-        const keyword = this.data.keyword;
+    wx.cloud.callFunction({
+      name: 'hunyuan-image',
+      data: {
+        keyword: this.data.keyword,
+        prompt: `${this.data.keyword} 中国传统书画风格，水墨国画，古风，细腻典雅，文化底蕴深厚`
+      },
+      success: (res) => {
+        if (res.result && res.result.success) {
+          this.setData({
+            generatedImage: res.result.imageUrl,
+            imageSource: res.result.source || 'unknown'
+          });
 
-        // 创建模型实例
-        const model = wx.cloud.extend.AI.createModel("hunyuan-exp");
-
-        // 发送请求
-        const res = await model.generateImage({
-          model: "hunyuan-image-plus",
-          prompt: `${keyword} 中国传统书画风格，水墨国画，古风，细腻典雅，文化底蕴深厚`,
-          size: "1024x1024"
-        });
-
-        const imageUrl = res.data.url;
-        this.setData({ generatedImage: imageUrl });
-
-      } catch (err) {
-        console.error("AI生图失败：", err);
-        wx.showToast({ title: "AI生图失败，请重试", icon: "none" });
-      } finally {
+          if (res.result.source === 'local_backup') {
+            wx.showToast({
+              title: '已使用本地图片',
+              icon: 'none',
+              duration: 2000
+            });
+          } else {
+            wx.showToast({ title: '生成成功！', icon: 'success' });
+          }
+        } else {
+          wx.showToast({ title: res.result.error || '生成失败', icon: 'none' });
+        }
+      },
+      fail: (err) => {
+        console.error('AI生图失败：', err);
+        wx.showToast({ title: '生成失败，请重试', icon: 'none' });
+      },
+      complete: () => {
         this.setData({ isGenerating: false });
       }
-    })();
+    });
   },
 
   // 保存图片

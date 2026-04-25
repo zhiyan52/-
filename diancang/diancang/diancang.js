@@ -2,6 +2,7 @@ Page({
   data: {
     activeTab: 1,
     todayDate: '',
+    iconErrors: [false, false, false, false],
     featureList: [
       {
         id: 1,
@@ -119,6 +120,16 @@ Page({
   navigateToVoice() {
     wx.navigateTo({
       url: '/diancang/diancang/ai/ai-voice'
+    });
+  },
+
+  // 处理图片加载错误
+  handleImageError(e) {
+    const index = e.currentTarget.dataset.index;
+    const iconErrors = [...this.data.iconErrors];
+    iconErrors[index] = true;
+    this.setData({
+      iconErrors: iconErrors
     });
   }
 });

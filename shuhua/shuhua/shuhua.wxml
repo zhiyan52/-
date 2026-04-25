@@ -3,10 +3,8 @@
   <!-- 顶部品牌 -->
   <view class="brand-header">
     <view class="brand-content">
-      <image class="brand-bg" src="https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/lunbo1.jpg"></image>
+      <image class="brand-bg" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/lunbo1.jpg"></image>
       <view class="brand-title">
-        <text class="main-title">书画雅韵</text>
-        <text class="sub-title">中国书法 · 国画艺术</text>
       </view>
     </view>
   </view>
@@ -15,45 +13,10 @@
   <view class="modules-section">
     <view class="section-title"><text>书画功能</text></view>
     <view class="modules-grid">
-      <view class="module-card" bindtap="navigateToModule" data-id="masters">
-        <view class="module-icon">👨‍🎨</view>
-        <text class="module-name">书画名家图鉴</text>
-        <text class="module-desc">了解历代书画名家</text>
-      </view>
-      <view class="module-card" bindtap="navigateToModule" data-id="artworks">
-        <view class="module-icon">🖼️</view>
-        <text class="module-name">传世书画赏析</text>
-        <text class="module-desc">欣赏经典传世作品</text>
-      </view>
-      <view class="module-card" bindtap="navigateToModule" data-id="ai-lecture">
-        <view class="module-icon">🎓</view>
-        <text class="module-name">AI智能讲解</text>
-        <text class="module-desc">AI解析书画艺术</text>
-      </view>
-      <view class="module-card" bindtap="navigateToModule" data-id="ai-image">
-        <view class="module-icon">🎨</view>
-        <text class="module-name">AI意境生图</text>
-        <text class="module-desc">生成书画风格作品</text>
-      </view>
-      <view class="module-card" bindtap="navigateToModule" data-id="calligraphy">
-        <view class="module-icon">✍️</view>
-        <text class="module-name">书法字体科普</text>
-        <text class="module-desc">五大书体知识</text>
-      </view>
-      <view class="module-card" bindtap="navigateToModule" data-id="quiz">
-        <view class="module-icon">❓</view>
-        <text class="module-name">书画知识答题</text>
-        <text class="module-desc">测试书画知识</text>
-      </view>
-      <view class="module-card" bindtap="navigateToModule" data-id="cards">
-        <view class="module-icon">🎴</view>
-        <text class="module-name">书画佳句卡片</text>
-        <text class="module-desc">生成可保存卡片</text>
-      </view>
-      <view class="module-card" bindtap="navigateToModule" data-id="blind-box">
-        <view class="module-icon">🎁</view>
-        <text class="module-name">书画盲盒</text>
-        <text class="module-desc">每日一赏</text>
+      <view class="module-card" wx:for="{{modules}}" wx:key="id" bindtap="navigateToModule" data-id="{{item.id}}">
+        <image class="module-icon" src="{{item.icon}}" mode="aspectFit"></image>
+        <text class="module-name">{{item.name}}</text>
+        <text class="module-desc">{{item.desc}}</text>
       </view>
     </view>
   </view>
@@ -62,15 +25,10 @@
   <view class="featured-section">
     <view class="section-title"><text>精选书画</text></view>
     <view class="featured-grid">
-      <view class="featured-card">
-        <image class="featured-image" src="https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/fuchun.jpg"></image>
-        <text class="featured-name">富春山居图</text>
-        <text class="featured-desc">黄公望 · 元代</text>
-      </view>
-      <view class="featured-card">
-        <image class="featured-image" src="https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/qianli.jpg"></image>
-        <text class="featured-name">千里江山图</text>
-        <text class="featured-desc">王希孟 · 北宋</text>
+      <view class="featured-card" wx:for="{{featuredArtworks}}" wx:key="id">
+        <image class="featured-image" src="{{item.image}}" mode="aspectFill"></image>
+        <text class="featured-name">{{item.name}}</text>
+        <text class="featured-desc">{{item.author}}</text>
       </view>
     </view>
   </view>
@@ -79,7 +37,7 @@
   <view class="smart-section">
     <view class="section-title"><text>智能功能</text></view>
     <view class="smart-feature-item" bindtap="navigateToAI">
-      <text class="smart-feature-icon">🧭</text>
+      <image class="smart-feature-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/icons/navigator.png" mode="aspectFit"></image>
       <view class="smart-feature-content">
         <text class="smart-feature-title">智能导览</text>
         <text class="smart-feature-desc">智能路线规划，深度解说</text>
@@ -87,7 +45,7 @@
       <text class="smart-feature-arrow">→</text>
     </view>
     <view class="smart-feature-item" bindtap="navigateToQA">
-      <text class="smart-feature-icon">❓</text>
+      <image class="smart-feature-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/icons/qa.png" mode="aspectFit"></image>
       <view class="smart-feature-content">
         <text class="smart-feature-title">文化问答</text>
         <text class="smart-feature-desc">解答书画相关问题</text>
@@ -95,7 +53,7 @@
       <text class="smart-feature-arrow">→</text>
     </view>
     <view class="smart-feature-item" bindtap="navigateToRecommend">
-      <text class="smart-feature-icon">🎯</text>
+      <image class="smart-feature-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/icons/recommend.png" mode="aspectFit"></image>
       <view class="smart-feature-content">
         <text class="smart-feature-title">个性化推荐</text>
         <text class="smart-feature-desc">根据兴趣推荐书画作品</text>
@@ -103,7 +61,7 @@
       <text class="smart-feature-arrow">→</text>
     </view>
     <view class="smart-feature-item" bindtap="navigateToVoice">
-      <text class="smart-feature-icon">🎙️</text>
+      <image class="smart-feature-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/icons/voice.png" mode="aspectFit"></image>
       <view class="smart-feature-content">
         <text class="smart-feature-title">语音讲解</text>
         <text class="smart-feature-desc">沉浸式语音导览体验</text>

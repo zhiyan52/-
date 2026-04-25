@@ -1,0 +1,52 @@
+<!-- 语音讲解页面 -->
+<view class="ai-voice-container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="header-title">语音讲解</text>
+    <text class="header-subtitle">沉浸式书画艺术体验</text>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading-container">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">正在生成讲解内容...</text>
+  </view>
+
+  <!-- 错误状态 -->
+  <view wx:if="{{error}}" class="error-container">
+    <text class="error-icon">⚠️</text>
+    <text class="error-text">{{error}}</text>
+    <button class="refresh-btn" bindtap="refreshVoiceContent">重新生成</button>
+  </view>
+
+  <!-- 语音内容 -->
+  <view wx:if="{{voiceContent && !loading && !error}}" class="voice-content">
+    <text class="voice-title">{{voiceContent.title}}</text>
+    
+    <!-- 播放控制 -->
+    <view class="play-control">
+      <button class="play-btn" bindtap="togglePlay">
+        <text class="play-icon">{{isPlaying ? '⏸️' : '▶️'}}</text>
+        <text class="play-text">{{isPlaying ? '暂停' : '播放'}}</text>
+      </button>
+    </view>
+    
+    <!-- 讲解列表 -->
+    <view class="section-list">
+      <view wx:for="{{voiceContent.sections}}" wx:key="id" class="section-item">
+        <view class="section-header">
+          <text class="section-title">{{item.title}}</text>
+          <text class="section-duration">{{item.duration}}</text>
+        </view>
+        <text class="section-content">{{item.content}}</text>
+      </view>
+    </view>
+
+    <button class="refresh-btn" bindtap="refreshVoiceContent">换一批讲解</button>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="footer">
+    <text class="footer-text">由文心先生为您讲解</text>
+  </view>
+</view>

@@ -1,0 +1,149 @@
+<!--traditional/stepDetail/stepDetail.wxml-->
+ <!-- pages/stepDetail/stepDetail.wxml -->
+<view class="step-container">
+  <!-- 顶部导航 -->
+  <view class="step-nav">
+    <text bindtap="goBack">← 返回</text>
+    <text>{{step.name}} ({{step.globalIndex}}/{{craft.totalSteps}})</text>
+    <text bindtap="showHelp">?</text>
+  </view>
+  
+  <!-- 基础信息卡片 -->
+  <view class="basics-card">
+    <view class="basics-row">
+      <text class="label">⏱ 时长</text>
+      <text class="value">{{step.basics.duration}}</text>
+    </view>
+    <view class="basics-row">
+      <text class="label">📦 材料</text>
+      <text class="value">{{step.basics.materials.join('、')}}</text>
+    </view>
+    <view class="basics-row">
+      <text class="label">🎯 目的</text>
+      <text class="value">{{step.basics.purpose}}</text>
+    </view>
+  </view>
+  
+  <!-- 视频演示 -->
+  <view class="video-section">
+    <video 
+      id="stepVideo"
+      src="{{step.media.video}}" 
+      poster="{{step.media.poster}}"
+      duration="{{step.media.videoDuration}}"
+      controls
+      bindended="onVideoEnd"
+    ></video>
+    <text class="video-tip">▶ 观看师傅演示，注意手势细节</text>
+  </view>
+  
+  <!-- 图文详解（可展开） -->
+  <view class="description-section">
+    <view class="section-title" bindtap="toggleDesc">
+      📖 为什么这样做？
+      <text>{{showDesc ? '▼' : '▶'}}</text>
+    </view>
+    <view class="desc-content" wx:if="{{showDesc}}">
+      <text class="desc-why">{{step.description.why}}</text>
+      <text class="desc-long">{{step.description.long}}</text>
+      <text class="desc-history">{{step.description.history}}</text>
+    </view>
+  </view>
+  
+  <!-- 关键判断（核心互动） -->
+  <view class="judgment-section" wx:if="{{!judgmentCompleted}}">
+    <view class="judgment-title">
+      🔍 关键判断：{{step.judgment.question}}
+    </view>
+    <text class="judgment-tip">{{step.judgment.tip}}</text>
+    
+    <view class="options">
+      <view 
+        class="option-card {{selectedOption === option.id ? 'selected' : ''}} {{showResult && option.correct ? 'correct' : ''}} {{showResult && selectedOption === option.id && !option.correct ? 'wrong' : ''}}"
+        wx:for="{{step.judgment.options}}"
+        wx:key="id"
+        wx:for-item="option"
+        bindtap="selectOption"
+        data-id="{{option.id}}"
+      >
+        <image class="option-img" src="{{option.image}}" mode="aspectFill"/>
+        <text class="option-label">{{option.label}}</text>
+        <text class="option-desc">{{option.description}}</text>
+      </view>
+    </view>
+    
+    <button 
+      class="submit-btn {{selectedOption ? 'active' : ''}}" 
+      bindtap="submitJudgment"
+      disabled="{{!selectedOption || showResult}}"
+    >
+      {{showResult ? '已判断' : '确认判断'}}
+    </button>
+    
+    <!-- 结果反馈 -->
+    <view class="result-box" wx:if="{{showResult}}">
+      <text class="result-icon">{{isCorrect ? '✅' : '❌'}}</text>
+      <text class="result-title">{{isCorrect ? '判断正确！' : '还需观察'}}</text>
+      <text class="result-feedback">{{feedbackText}}</text>
+      
+      <!-- 解锁下一工序 -->
+      <button class="next-btn" bindtap="unlockNext" wx:if="{{isCorrect}}">
+        解锁下一工序 →
+      </button>
+      <button class="retry-btn" bindtap="retryJudgment" wx:else>
+        重新观察
+      </button>
+    </view>
+  </view>
+  
+  <!-- 师傅语录 -->
+  <view class="quote-section" wx:if="{{judgmentCompleted}}">
+    <view class="quote-card">
+      <text class="quote-text">"{{step.masterQuote.text}}"</text>
+      <view class="quote-author">
+        <text class="author-name">—— {{step.masterQuote.author}}</text>
+        <text class="author-title">{{step.masterQuote.title}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 【AI】提问入口（低频触发） -->
+  <view class="ai-section" wx:if="{{judgmentCompleted}}">
+    <view class="ai-header">
+      <text>🤖 还有疑问？问AI学伴</text>
+      <text class="ai-hint">已预存 {{preAnswerCount}} 个常见问题</text>
+    </view>
+    
+    <!-- 预存常见问题 -->
+    <view class="pre-questions">
+      <text 
+        class="pre-q {{selectedQuestion === q ? 'active' : ''}}"
+        wx:for="{{step.aiExtension.commonQuestions}}"
+        wx:key="*this"
+        bindtap="selectQuestion"
+        data-q="{{item}}"
+      >{{item}}</text>
+    </view>
+    
+    <!-- 预存答案展示 -->
+    <view class="pre-answer" wx:if="{{showPreAnswer}}">
+      <text>{{preAnswerText}}</text>
+    </view>
+    
+    <!-- 自定义提问 -->
+    <view class="custom-ask" wx:if="{{!showPreAnswer}}">
+      <input 
+        placeholder="输入你的问题..." 
+        bindinput="onQuestionInput"
+        value="{{customQuestion}}"
+      />
+      <button bindtap="askAI" disabled="{{!customQuestion}}">提问</button>
+    </view>
+    
+    <!-- AI回答（极少触发） -->
+    <view class="ai-answer" wx:if="{{aiAnswer}}">
+      <text class="ai-tag">AI学伴</text>
+      <text>{{aiAnswer}}</text>
+    </view>
+  </view>
+</view>

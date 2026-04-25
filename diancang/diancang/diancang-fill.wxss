@@ -1,82 +1,157 @@
+/* 古文填空练习页面 - 古风设计 */
 .fill-container {
   padding: 30rpx;
-  background: #E8F5E8;
+  background: linear-gradient(180deg, #f7f5f0 0%, #f0ede5 100%);
   min-height: 100vh;
   font-family: "STKaiti", "KaiTi", serif;
+  position: relative;
 }
 
-.header {
+/* 顶部装饰 */
+.decorative-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
   margin-bottom: 40rpx;
+  position: relative;
 }
 
-.back-btn {
+.decorative-corner {
   width: 60rpx;
   height: 60rpx;
-  background: #fff;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
-  border: 2rpx solid #A3D9A5;
+  position: relative;
 }
 
-.back-btn text {
-  font-size: 36rpx;
-  color: #48BB78;
+.decorative-corner.left::before,
+.decorative-corner.right::before {
+  content: '';
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  border: 3rpx solid #D4A017;
 }
 
-.title {
-  font-size: 36rpx;
+.decorative-corner.left::before {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.decorative-corner.right::before {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+
+.decorative-title {
+  font-size: 48rpx;
   font-weight: bold;
   color: #1A365D;
-  font-family: "STKaiti", "KaiTi", serif;
+  padding: 0 30rpx;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.1);
+  letter-spacing: 8rpx;
 }
 
-.placeholder {
-  width: 60rpx;
-}
-
-.question-section {
-  background: #fff;
-  border-radius: 20rpx;
-  padding: 30rpx;
+/* 进度区域 */
+.progress-section {
   margin-bottom: 30rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
-  border: 2rpx solid #A3D9A5;
+}
+
+.progress-container {
+  background: #fff;
+  border-radius: 30rpx;
+  padding: 20rpx 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  border: 2rpx solid #e8e4dc;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12rpx;
+  background: #e8e4dc;
+  border-radius: 6rpx;
+  overflow: hidden;
+  margin-bottom: 12rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #D4A017 0%, #B8860B 100%);
+  border-radius: 6rpx;
+  transition: width 0.5s ease;
+}
+
+.progress-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+}
+
+.progress-text,
+.progress-total {
+  font-size: 24rpx;
+  color: #1A365D;
+  font-weight: 500;
+}
+
+.progress-divider {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 题目区域 - 古风卷轴 */
+.scroll-section {
+  margin-bottom: 30rpx;
+}
+
+.scroll-top,
+.scroll-bottom {
+  height: 20rpx;
+  background: linear-gradient(90deg, #8B4513 0%, #A0522D 50%, #8B4513 100%);
+  border-radius: 10rpx 10rpx 0 0;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.2);
+}
+
+.scroll-bottom {
+  border-radius: 0 0 10rpx 10rpx;
+  box-shadow: 0 -2rpx 8rpx rgba(0,0,0,0.2);
+}
+
+.scroll-content {
+  background: linear-gradient(180deg, #fff9e6 0%, #fff5d6 100%);
+  padding: 40rpx 30rpx;
+  border-left: 4rpx solid #D4A017;
+  border-right: 4rpx solid #D4A017;
+  box-shadow: inset 0 0 30rpx rgba(212, 160, 23, 0.1);
 }
 
 .question-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20rpx;
+  justify-content: center;
+  margin-bottom: 30rpx;
 }
 
-.question-number {
-  font-size: 28rpx;
-  font-weight: bold;
-  color: #1A365D;
-  font-family: "STKaiti", "KaiTi", serif;
+.source-badge {
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  padding: 10rpx 30rpx;
+  border-radius: 25rpx;
+  border: 2rpx solid #D4A017;
 }
 
-.question-source {
+.source-text {
   font-size: 24rpx;
-  color: #48BB78;
-  background: #E8F5E8;
-  padding: 6rpx 15rpx;
-  border-radius: 15rpx;
-  font-family: "STKaiti", "KaiTi", serif;
-  border: 1rpx solid #A3D9A5;
+  color: #D4A017;
+  font-weight: bold;
+  letter-spacing: 4rpx;
 }
 
 .question-content {
-  font-size: 32rpx;
-  line-height: 1.8;
-  color: #333;
+  font-size: 36rpx;
+  line-height: 2;
+  color: #3e2723;
   text-align: justify;
   font-family: "STKaiti", "KaiTi", serif;
 }
@@ -85,189 +160,586 @@
   display: inline;
 }
 
+.text-item {
+  vertical-align: middle;
+}
+
 .blank {
   display: inline-block;
-  margin: 0 10rpx;
-  padding: 10rpx 20rpx;
-  background: #E8F5E8;
+  margin: 0 8rpx;
+  padding: 12rpx 24rpx;
+  background: rgba(212, 160, 23, 0.15);
+  border: 2rpx dashed #D4A017;
   border-radius: 8rpx;
   min-width: 120rpx;
   text-align: center;
-  border: 2rpx solid #A3D9A5;
+  vertical-align: middle;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.blank.filled {
+  background: rgba(212, 160, 23, 0.25);
+  border-style: solid;
+}
+
+.blank.correct {
+  background: rgba(72, 187, 120, 0.2);
+  border: 2rpx solid #48BB78;
+}
+
+.blank.wrong {
+  background: rgba(229, 62, 62, 0.2);
+  border: 2rpx solid #E53E3E;
 }
 
 .blank-placeholder {
-  color: #999;
+  color: #B8860B;
   font-style: italic;
   font-family: "STKaiti", "KaiTi", serif;
+  letter-spacing: 2rpx;
 }
 
 .blank-answer {
+  color: #8B4513;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.blank.correct .blank-answer {
   color: #48BB78;
-  font-weight: bold;
-  font-family: "STKaiti", "KaiTi", serif;
 }
 
-.options-section {
-  background: #fff;
-  border-radius: 20rpx;
-  padding: 30rpx;
-  margin-bottom: 30rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
-  border: 2rpx solid #A3D9A5;
+.blank.wrong .blank-answer {
+  color: #E53E3E;
 }
 
-.options-title {
-  font-size: 28rpx;
-  font-weight: bold;
-  color: #1A365D;
-  margin-bottom: 20rpx;
-  font-family: "STKaiti", "KaiTi", serif;
-}
-
-.options-list {
+/* 区域标题 */
+.section-title {
   display: flex;
-  flex-direction: column;
-  gap: 15rpx;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24rpx;
+}
+
+.title-line {
+  flex: 1;
+  height: 2rpx;
+  background: linear-gradient(90deg, transparent 0%, #D4A017 50%, transparent 100%);
+}
+
+.title-text {
+  font-size: 28rpx;
+  color: #1A365D;
+  padding: 0 20rpx;
+  font-weight: bold;
+  letter-spacing: 4rpx;
+}
+
+/* 选项区域 */
+.options-section {
+  margin-bottom: 30rpx;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16rpx;
 }
 
 .option-item {
   display: flex;
   align-items: center;
-  padding: 20rpx;
-  background: #f9f9f9;
-  border-radius: 12rpx;
-  border: 2rpx solid #A3D9A5;
-  transition: all 0.3s;
+  padding: 24rpx 20rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  border: 2rpx solid #e8e4dc;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.06);
 }
 
-.option-item:hover {
-  background: #E8F5E8;
-  border-color: #48BB78;
+.option-item:active {
+  transform: scale(0.98);
 }
 
-.option-letter {
-  width: 40rpx;
-  height: 40rpx;
-  background: #48BB78;
-  color: #fff;
+.option-item.selected {
+  background: rgba(212, 160, 23, 0.15);
+  border-color: #D4A017;
+  box-shadow: 0 4rpx 12rpx rgba(212, 160, 23, 0.2);
+}
+
+.option-index {
+  width: 48rpx;
+  height: 48rpx;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  color: #D4A017;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 20rpx;
-  font-size: 24rpx;
+  margin-right: 16rpx;
+  font-size: 22rpx;
   font-weight: bold;
   font-family: "STKaiti", "KaiTi", serif;
+  flex-shrink: 0;
+}
+
+.option-item.selected .option-index {
+  background: linear-gradient(135deg, #D4A017 0%, #B8860B 100%);
+  color: #1A365D;
 }
 
 .option-text {
   font-size: 26rpx;
   color: #333;
   font-family: "STKaiti", "KaiTi", serif;
+  line-height: 1.5;
 }
 
+.option-item.selected .option-text {
+  color: #8B4513;
+  font-weight: 500;
+}
+
+/* 答案解析区域 */
 .answer-section {
+  margin-bottom: 30rpx;
+}
+
+.answer-card {
   background: #fff;
   border-radius: 20rpx;
   padding: 30rpx;
-  margin-bottom: 30rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
-  border: 2rpx solid #A3D9A5;
+  border: 2rpx solid #e8e4dc;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.08);
 }
 
-.answer-header {
+.answer-result {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 20rpx;
+  justify-content: center;
+  gap: 12rpx;
+  padding: 16rpx;
+  border-radius: 16rpx;
+  margin-bottom: 24rpx;
 }
 
-.answer-title {
+.answer-result.correct {
+  background: rgba(72, 187, 120, 0.15);
+  border: 2rpx solid #48BB78;
+}
+
+.answer-result.wrong {
+  background: rgba(229, 62, 62, 0.15);
+  border: 2rpx solid #E53E3E;
+}
+
+.result-icon {
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.answer-result.correct .result-icon {
+  color: #48BB78;
+}
+
+.answer-result.wrong .result-icon {
+  color: #E53E3E;
+}
+
+.result-text {
   font-size: 28rpx;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.answer-result.correct .result-text {
+  color: #48BB78;
+}
+
+.answer-result.wrong .result-text {
+  color: #E53E3E;
+}
+
+.explanation-content {
+  background: rgba(26, 54, 93, 0.05);
+  padding: 24rpx;
+  border-radius: 12rpx;
+  border-left: 4rpx solid #D4A017;
+  margin-bottom: 24rpx;
+}
+
+.explanation-text {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.8;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 查看完整句子释义按钮 */
+.meaning-btn {
+  width: 100%;
+  height: 80rpx;
+  background: linear-gradient(135deg, #D4A017 0%, #B8860B 100%);
+  color: #1A365D;
+  border: none;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 4rpx 12rpx rgba(212, 160, 23, 0.2);
+}
+
+.meaning-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 8rpx rgba(212, 160, 23, 0.15);
+}
+
+/* 词语释义弹窗 */
+.meaning-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 40rpx 30rpx;
+  width: 85%;
+  max-width: 600rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0,0,0,0.2);
+  border: 2rpx solid #D4A017;
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid #e8e4dc;
+}
+
+.popup-title {
+  font-size: 32rpx;
   font-weight: bold;
   color: #1A365D;
   font-family: "STKaiti", "KaiTi", serif;
+  letter-spacing: 4rpx;
 }
 
-.result {
-  font-size: 24rpx;
-  padding: 6rpx 15rpx;
-  border-radius: 15rpx;
+.popup-close {
+  font-size: 40rpx;
+  color: #999;
+  cursor: pointer;
+  padding: 8rpx;
+}
+
+.popup-body {
+  line-height: 1.8;
+}
+
+.word-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 20rpx;
+  display: block;
   font-family: "STKaiti", "KaiTi", serif;
+  text-align: center;
 }
 
-.result.correct {
-  background: #E8F5E8;
-  color: #48BB78;
-  border: 1rpx solid #A3D9A5;
-}
-
-.result.wrong {
-  background: #ffebee;
-  color: #c62828;
-  border: 1rpx solid #ffcdd2;
-}
-
-.answer-explanation {
-  font-size: 24rpx;
-  color: #666;
+.sentence-text {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #3e2723;
+  margin-bottom: 20rpx;
+  display: block;
+  font-family: "STKaiti", "KaiTi", serif;
   line-height: 1.6;
-  font-family: "STKaiti", "KaiTi", serif;
 }
 
+.meaning-text {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.8;
+  font-family: "STKaiti", "KaiTi", serif;
+  text-align: justify;
+}
+
+/* 可点击文本样式 */
+.text-item {
+  vertical-align: middle;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.text-item:active {
+  color: #D4A017;
+}
+
+.blank-answer {
+  color: #8B4513;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.blank-answer:active {
+  color: #D4A017;
+}
+
+/* 操作按钮 */
 .action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
   margin-bottom: 30rpx;
 }
 
-.submit-btn,
-.next-btn {
-  width: 100%;
-  height: 80rpx;
-  background: linear-gradient(135deg, #48BB78 0%, #38A169 100%);
-  color: #fff;
+.action-btn {
+  height: 88rpx;
+  border: none;
+  border-radius: 44rpx;
   font-size: 30rpx;
   font-weight: bold;
-  border-radius: 40rpx;
-  border: none;
+  font-family: "STKaiti", "KaiTi", serif;
+  transition: all 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "STKaiti", "KaiTi", serif;
-  box-shadow: 0 4rpx 12rpx rgba(72, 187, 120, 0.3);
-  transition: all 0.3s;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
 }
 
-.submit-btn:hover,
-.next-btn:hover {
-  transform: translateY(-2rpx);
-  box-shadow: 0 6rpx 16rpx rgba(72, 187, 120, 0.4);
+.action-btn:active {
+  transform: scale(0.98);
 }
 
-.progress-section {
+.submit-btn {
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  color: #D4A017;
+  border: 2rpx solid #D4A017;
+}
+
+.submit-btn:active {
+  background: linear-gradient(135deg, #2C5282 0%, #1A365D 100%);
+}
+
+.submit-btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.next-btn {
+  background: linear-gradient(135deg, #D4A017 0%, #B8860B 100%);
+  color: #1A365D;
+  border: 2rpx solid #1A365D;
+}
+
+.next-btn:active {
+  background: linear-gradient(135deg, #B8860B 0%, #D4A017 100%);
+}
+
+.reset-btn {
+  background: #fff;
+  color: #666;
+  border: 2rpx solid #e8e4dc;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.06);
+}
+
+.reset-btn:active {
+  background: #f5f5f5;
+}
+
+/* 返回按钮 */
+.back-btn {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 10rpx;
+  justify-content: center;
+  gap: 8rpx;
+  background: rgba(255,255,255,0.9);
+  padding: 16rpx 32rpx;
+  border-radius: 30rpx;
+  border: 2rpx solid #e8e4dc;
+  position: fixed;
+  bottom: 40rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+  cursor: pointer;
+  z-index: 10;
 }
 
-.progress-bar {
-  width: 100%;
-  height: 10rpx;
-  background: #A3D9A5;
-  border-radius: 5rpx;
-  overflow: hidden;
+.back-icon {
+  font-size: 28rpx;
+  color: #1A365D;
 }
 
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #48BB78 0%, #38A169 100%);
-  transition: width 0.5s;
-}
-
-.progress-text {
+.back-text {
   font-size: 24rpx;
   color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* AI生成区域 */
+.ai-section {
+  margin-bottom: 30rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.ai-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  padding: 20rpx 40rpx;
+  background: linear-gradient(135deg, #6B46C1 0%, #805AD5 50%, #9F7AEA 100%);
+  border: none;
+  border-radius: 50rpx;
+  box-shadow: 0 4rpx 16rpx rgba(107, 70, 193, 0.3);
+  transition: all 0.3s ease;
+}
+
+.ai-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 8rpx rgba(107, 70, 193, 0.2);
+}
+
+.ai-btn.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.ai-icon {
+  font-size: 32rpx;
+  color: #fff;
+}
+
+.ai-btn.loading .ai-icon {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.ai-text {
+  font-size: 28rpx;
+  color: #fff;
   font-weight: bold;
   font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* AI题目预览 */
+.ai-preview {
+  background: linear-gradient(135deg, #FAF5FF 0%, #F3E8FF 100%);
+  border-radius: 24rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  border: 2rpx solid #E9D8FD;
+  box-shadow: 0 4rpx 16rpx rgba(107, 70, 193, 0.15);
+}
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 2rpx solid #E9D8FD;
+}
+
+.preview-title {
+  font-size: 28rpx;
+  color: #6B46C1;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.preview-title::before {
+  content: '✦';
+  color: #9F7AEA;
+}
+
+.preview-actions {
+  display: flex;
+  gap: 16rpx;
+}
+
+.preview-btn {
+  padding: 12rpx 24rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.preview-btn:active {
+  transform: scale(0.96);
+}
+
+.use-btn {
+  background: linear-gradient(135deg, #48BB78 0%, #38A169 100%);
+  color: #fff;
+  box-shadow: 0 2rpx 8rpx rgba(72, 187, 120, 0.3);
+}
+
+.discard-btn {
+  background: #fff;
+  color: #999;
+  border: 2rpx solid #e8e4dc;
+}
+
+.preview-content {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  border: 2rpx solid #E9D8FD;
+}
+
+.preview-source {
+  display: inline-block;
+  font-size: 22rpx;
+  color: #9F7AEA;
+  background: rgba(159, 122, 234, 0.1);
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  margin-bottom: 16rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.preview-text {
+  font-size: 32rpx;
+  line-height: 1.8;
+  color: #3e2723;
+  font-family: "STKaiti", "KaiTi", serif;
+  text-align: justify;
+}
+
+.preview-blank {
+  display: inline-block;
+  margin: 0 8rpx;
+  padding: 8rpx 20rpx;
+  background: rgba(159, 122, 234, 0.15);
+  border: 2rpx dashed #9F7AEA;
+  border-radius: 8rpx;
+  color: #6B46C1;
+  font-weight: bold;
 }

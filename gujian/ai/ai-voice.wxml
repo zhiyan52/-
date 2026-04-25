@@ -9,19 +9,19 @@
     <text class="section-title">选择古建筑</text>
     <view class="building-list">
       <view class="building-item" bindtap="selectBuilding" data-building="forbidden-city">
-        <image src="/images/forbidden-city.jpg" class="building-image" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/gongdian1.jpg" class="building-image" />
         <text class="building-name">故宫</text>
       </view>
       <view class="building-item" bindtap="selectBuilding" data-building="summer-palace">
-        <image src="/images/summer-palace.jpg" class="building-image" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/zhineng/yinhe.jpg" class="building-image" />
         <text class="building-name">颐和园</text>
       </view>
       <view class="building-item" bindtap="selectBuilding" data-building="temple-of-heaven">
-        <image src="/images/temple-of-heaven.jpg" class="building-image" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/zhineng/tiantan.jpg" class="building-image" />
         <text class="building-name">天坛</text>
       </view>
       <view class="building-item" bindtap="selectBuilding" data-building="suzhou-garden">
-        <image src="/images/suzhou-garden.jpg" class="building-image" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/zhineng/yuanlin.jpg" class="building-image" />
         <text class="building-name">苏州园林</text>
       </view>
     </view>

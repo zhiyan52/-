@@ -25,7 +25,7 @@ Page({
         id: 4,
         title: "民俗百味",
         image: "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shouye/mingsu(1)(1).png",
-        url: "/mingsu/mingsu"
+        url: "/mingsu/mingsu/mingsu"
       },
       {
         id: 5,

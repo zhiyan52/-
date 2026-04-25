@@ -1,0 +1,101 @@
+<!-- 传统美术 - 非遗匠心页面 -->
+<view class="page-container">
+  
+  <!-- 顶部标题栏 -->
+  <view class="header-section">
+    <view class="header-title">
+      <text class="main-title">非遗匠心</text>
+    </view>
+  </view>
+  
+  <!-- 子分类标签栏 -->
+  <view class="subcategory-bar">
+    <view class="subcategory-item active" data-category="all">全部</view>
+    <view class="subcategory-item" data-category="paper-cut">剪纸</view>
+    <view class="subcategory-item" data-category="embroidery">刺绣</view>
+    <view class="subcategory-item" data-category="shadow-play">皮影戏</view>
+    <view class="subcategory-item" data-category="wood-carving">木雕</view>
+    <view class="subcategory-item" data-category="lacquerware">漆器</view>
+    <view class="subcategory-item" data-category="bamboo-weaving">竹编</view>
+  </view>
+  
+  <!-- 非遗品类宫格 -->
+  <view class="categories-grid">
+    <view class="category-card category-paper-cut" data-category="paper-cut" data-name="剪纸" bindtap="navigateToCategory">
+      <image class="category-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/paper-cut.png" mode="aspectFill" />
+      <text class="category-name">剪纸</text>
+      <text class="category-desc">中国传统民间艺术，以剪刀或刻刀在纸上剪刻花纹</text>
+    </view>
+    <view class="category-card category-embroidery" data-category="embroidery" data-name="刺绣" bindtap="navigateToCategory">
+      <image class="category-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/embroidery.png" mode="aspectFill" />
+      <text class="category-name">刺绣</text>
+      <text class="category-desc">用针将丝线或其他纤维在绣料上穿刺，以缝迹构成花纹</text>
+    </view>
+    <view class="category-card category-shadow-play" data-category="shadow-play" data-name="皮影戏" bindtap="navigateToCategory">
+      <image class="category-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/shadow-play.png" mode="aspectFill" />
+      <text class="category-name">皮影戏</text>
+      <text class="category-desc">用兽皮或纸板做成的人物剪影表演故事的民间戏剧</text>
+    </view>
+    <view class="category-card category-wood-carving" data-category="wood-carving" data-name="木雕" bindtap="navigateToCategory">
+      <image class="category-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/wood-carving.png" mode="aspectFill" />
+      <text class="category-name">木雕</text>
+      <text class="category-desc">在木材上进行雕刻的工艺，历史悠久，技法丰富</text>
+    </view>
+    <view class="category-card category-lacquerware" data-category="lacquerware" data-name="漆器" bindtap="navigateToCategory">
+      <image class="category-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/lacquerware.png" mode="aspectFill" />
+      <text class="category-name">漆器</text>
+      <text class="category-desc">用生漆涂在各种器物的表面所制成的日常器具及工艺品</text>
+    </view>
+    <view class="category-card category-bamboo-weaving" data-category="bamboo-weaving" data-name="竹编" bindtap="navigateToCategory">
+      <image class="category-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/bamboo-weaving.png" mode="aspectFill" />
+      <text class="category-name">竹编</text>
+      <text class="category-desc">以竹子为原料，编织成各种实用品和工艺品的传统技艺</text>
+    </view>
+  </view>
+  
+  <!-- 热门非遗推荐 -->
+  <text class="section-title">热门非遗推荐</text>
+  <view class="recommendation-list">
+    <view class="recommendation-item" data-id="1" bindtap="navigateToDetail">
+      <image class="recommendation-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/recommend1.png" mode="aspectFill" />
+      <view class="recommendation-info">
+        <text class="recommendation-name">蔚县剪纸</text>
+        <text class="recommendation-desc">河北蔚县的传统民间艺术，以刀刻为主，色彩艳丽，构图饱满</text>
+        <view class="recommendation-meta">
+          <text class="recommendation-craftsman">匠人：王老艺人</text>
+        </view>
+      </view>
+    </view>
+    <view class="recommendation-item" data-id="2" bindtap="navigateToDetail">
+      <image class="recommendation-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/recommend2.png" mode="aspectFill" />
+      <view class="recommendation-info">
+        <text class="recommendation-name">苏绣</text>
+        <text class="recommendation-desc">苏州地区的传统刺绣工艺，以精细、雅洁著称，被誉为"东方明珠"
+</text>
+        <view class="recommendation-meta">
+          <text class="recommendation-craftsman">匠人：张大师</text>
+        </view>
+      </view>
+    </view>
+    <view class="recommendation-item" data-id="3" bindtap="navigateToDetail">
+      <image class="recommendation-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/recommend3.png" mode="aspectFill" />
+      <view class="recommendation-info">
+        <text class="recommendation-name">潮州木雕</text>
+        <text class="recommendation-desc">广东潮州的传统木雕工艺，以多层镂空雕刻为特色，刀法细腻</text>
+        <view class="recommendation-meta">
+          <text class="recommendation-craftsman">匠人：李师傅</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 匠人故事入口 -->
+  <view class="craftsman-entry" bindtap="navigateToCraftsmanStories">
+    <text class="craftsman-title">匠人故事</text>
+    <text class="craftsman-desc">聆听非遗传承人的匠心故事，感受传统文化的魅力</text>
+    <text class="craftsman-btn">了解更多</text>
+  </view>
+  
+  <!-- 底部空间 -->
+  <view class="bottom-space"></view>
+</view>

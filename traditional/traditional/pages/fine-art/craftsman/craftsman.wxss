@@ -1,0 +1,190 @@
+/* 匠人故事页面样式 */
+.page-container {
+  background-color: #f7f5f0;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+/* 顶部标题栏 */
+.header-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20rpx 0 40rpx;
+  position: relative;
+}
+
+.header-title {
+  background: linear-gradient(135deg, #000000 0%, #1A1A1A 100%);
+  padding: 20rpx 60rpx;
+  border-radius: 50rpx;
+  position: relative;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+.header-title::before,
+.header-title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40rpx;
+  height: 40rpx;
+  background: #D4A017;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #1A365D;
+  font-weight: bold;
+}
+
+.header-title::before {
+  left: -20rpx;
+  content: '卍';
+}
+
+.header-title::after {
+  right: -20rpx;
+  content: '卍';
+}
+
+.main-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #D4A017;
+  font-family: "STKaiti", "KaiTi", serif;
+  letter-spacing: 8rpx;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.2);
+}
+
+/* 匠人故事列表 */
+.craftsman-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+  margin-bottom: 40rpx;
+}
+
+.craftsman-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  border: 2rpx solid #D4A017;
+  transition: all 0.3s ease;
+  display: flex;
+  gap: 24rpx;
+}
+
+.craftsman-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.craftsman-avatar {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3rpx solid #D4A017;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+
+.craftsman-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.craftsman-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
+  margin-bottom: 8rpx;
+}
+
+.craftsman-title {
+  font-size: 24rpx;
+  color: #8B4513;
+  font-family: "STKaiti", "KaiTi", serif;
+  margin-bottom: 12rpx;
+  background: #F8F0E3;
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+  align-self: flex-start;
+}
+
+.craftsman-desc {
+  font-size: 22rpx;
+  color: #666;
+  font-family: "STKaiti", "KaiTi", serif;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 12rpx;
+}
+
+.craftsman-meta {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+  flex-wrap: wrap;
+}
+
+.craftsman-age {
+  font-size: 20rpx;
+  color: #999;
+  font-family: "STKaiti", "KaiTi", serif;
+  background: #f0f0f0;
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+}
+
+.craftsman-experience {
+  font-size: 20rpx;
+  color: #999;
+  font-family: "STKaiti", "KaiTi", serif;
+  background: #f0f0f0;
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+}
+
+/* 底部空间 */
+.bottom-space {
+  height: 40rpx;
+}
+
+/* 响应式调整 */
+@media (max-width: 375px) {
+  .main-title {
+    font-size: 40rpx;
+  }
+  
+  .craftsman-avatar {
+    width: 120rpx;
+    height: 120rpx;
+  }
+  
+  .craftsman-name {
+    font-size: 28rpx;
+  }
+  
+  .craftsman-title {
+    font-size: 22rpx;
+  }
+  
+  .craftsman-desc {
+    font-size: 20rpx;
+  }
+  
+  .craftsman-card {
+    padding: 20rpx;
+  }
+}

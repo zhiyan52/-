@@ -1,0 +1,91 @@
+<!-- 非遗地图页面 -->
+<view class="page-container">
+  <!-- 头部区域 -->
+  <view class="header-section">
+    <view class="header-title">非遗地图</view>
+    <view class="header-subtitle">地理文化学习</view>
+  </view>
+  
+  <!-- 地图容器 -->
+  <view class="map-container">
+    <view class="map-header">
+      <view class="map-title">中国非遗分布</view>
+      <view class="map-controls">
+        <view class="control-btn {{selectedRegion === 'all' ? 'active' : ''}}" bindtap="selectRegion" data-region="all">全国</view>
+        <view class="control-btn {{selectedRegion === 'north' ? 'active' : ''}}" bindtap="selectRegion" data-region="north">北方</view>
+        <view class="control-btn {{selectedRegion === 'south' ? 'active' : ''}}" bindtap="selectRegion" data-region="south">南方</view>
+      </view>
+    </view>
+    
+    <!-- 地图画布 -->
+    <view class="map-canvas">
+      <image class="map-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/map/china_map.png" mode="aspectFill" />
+      
+      <!-- 地图标记点 -->
+      <view class="map-marker" style="top: 30%; left: 45%;" bindtap="selectHeritage" data-id="jingdezhen_ceramic"></view>
+      <view class="map-marker" style="top: 40%; left: 65%;" bindtap="selectHeritage" data-id="su_embroidery"></view>
+      <view class="map-marker" style="top: 35%; left: 55%;" bindtap="selectHeritage" data-id="shadow_puppet"></view>
+      <view class="map-marker" style="top: 25%; left: 35%;" bindtap="selectHeritage" data-id="wood_carving"></view>
+      <view class="map-marker" style="top: 45%; left: 70%;" bindtap="selectHeritage" data-id="lacquerware"></view>
+      <view class="map-marker" style="top: 50%; left: 60%;" bindtap="selectHeritage" data-id="bamboo_weaving"></view>
+    </view>
+  </view>
+  
+  <!-- 非遗项目列表 -->
+  <view class="heritage-list">
+    <view class="list-header">
+      <view class="list-title">非遗项目</view>
+      <view class="filter-btn" bindtap="showFilter">筛选</view>
+    </view>
+    
+    <view class="heritage-item" wx:for="{{heritageList}}" wx:key="id" bindtap="selectHeritage" data-id="{{item.id}}">
+      <view class="heritage-info">
+        <view class="heritage-name">{{item.name}}</view>
+        <view class="heritage-meta">{{item.level}} | {{item.category}}</view>
+        <view class="heritage-desc">{{item.desc}}</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 非遗详情卡片 -->
+  <view class="detail-card" wx:if="selectedHeritage">
+    <view class="detail-title">{{selectedHeritage.name}}</view>
+    
+    <view class="detail-section">
+      <view class="section-label">项目级别</view>
+      <view class="section-content">{{selectedHeritage.level}}</view>
+    </view>
+    
+    <view class="detail-section">
+      <view class="section-label">项目类别</view>
+      <view class="section-content">{{selectedHeritage.category}}</view>
+    </view>
+    
+    <view class="detail-section">
+      <view class="section-label">地理关联</view>
+      <view class="section-content">
+        <view wx:if="selectedHeritage.geoContext.whyHere">• 为何在此：{{selectedHeritage.geoContext.whyHere}}</view>
+        <view wx:if="selectedHeritage.geoContext.water">• 水源：{{selectedHeritage.geoContext.water}}</view>
+        <view wx:if="selectedHeritage.geoContext.fire">• 燃料：{{selectedHeritage.geoContext.fire}}</view>
+        <view wx:if="selectedHeritage.geoContext.history">• 历史：{{selectedHeritage.geoContext.history}}</view>
+      </view>
+    </view>
+    
+    <view class="detail-section">
+      <view class="section-label">当代状态</view>
+      <view class="section-content">{{selectedHeritage.currentStatus}}</view>
+    </view>
+  </view>
+  
+  <!-- AI 辅助功能 -->
+  <view class="ai-assist">
+    <view class="ai-title">AI 文化解读</view>
+    <view class="ai-btn" bindtap="getAIInsight" data-id="{{selectedHeritage.id}}">获取深度解读</view>
+  </view>
+  
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="loading">
+    <view class="loading-spinner"></view>
+    <text>加载中...</text>
+  </view>
+</view>

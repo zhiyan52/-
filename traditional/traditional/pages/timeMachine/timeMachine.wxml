@@ -1,0 +1,103 @@
+<view class="page-container">
+ <!-- 选择非遗 -->
+<view class="heritage-select" wx:if="{{step === 'select'}}">
+  <text class="title">选择一项非遗技艺</text>
+  <scroll-view scroll-y class="heritage-list">
+    <view 
+      wx:for="{{heritageList}}" 
+      wx:key="_id"
+      class="heritage-card"
+      bindtap="onSelectHeritage"
+      data-id="{{item._id}}"
+    >
+      <view class="card-image"></view>
+      <text class="name">{{item.name}}</text>
+      <text class="category">传统工艺</text>
+    </view>
+  </scroll-view>
+</view>
+
+<!-- 时间轴 -->
+<view class="era-timeline" wx:if="{{step === 'timeline'}}">
+  <text class="subtitle">{{currentHeritage.name}}的千年演变</text>
+  <view class="timeline">
+    <view 
+      wx:for="{{currentHeritage.eras}}" 
+      wx:key="*this"
+      class="era-node {{unlockedEras.includes(index) ? 'active' : ''}}"
+      bindtap="onSelectEra"
+      data-era="{{item}}"
+      data-index="{{index}}"
+    >
+      <view class="dot"></view>
+      <text>{{item}}</text>
+    </view>
+  </view>
+</view>
+
+<!-- 场景决策 -->
+<view class="scene-container" wx:if="{{step === 'scene'}}">
+  <view class="role-badge">
+    <text>你是一位{{currentScene.role}}</text>
+  </view>
+  
+  <view class="scene-card">
+    <text class="era-tag">{{currentEra}}</text>
+    <text class="scene-text">{{currentScene.scene}}</text>
+  </view>
+  
+  <view class="options">
+    <button 
+      wx:for="{{currentScene.options}}" 
+      wx:key="id"
+      class="option-btn"
+      bindtap="onMakeChoice"
+      data-id="{{item.id}}"
+    >
+      {{item.text}}
+    </button>
+  </view>
+</view>
+
+<!-- 结果展示 -->
+<view class="result-container" wx:if="{{step === 'result'}}">
+  <view class="result-source {{result.source}}">
+    <text>{{sourceText[result.source]}}</text>
+  </view>
+  
+  <!-- 叙事动画 -->
+  <view class="narrative-box" animation="{{fadeIn}}">
+    <text class="label">当时...</text>
+    <text class="content">{{result.ai && result.ai.narrative ? result.ai.narrative : (result.content && result.content.narrative ? result.content.narrative : '')}}</text>
+  </view>
+  
+  <view class="consequence-box" animation="{{fadeInDelay1}}">
+    <text class="label">后来...</text>
+    <text class="content">{{result.ai && result.ai.consequence ? result.ai.consequence : (result.content && result.content.consequence ? result.content.consequence : '')}}</text>
+  </view>
+  
+  <view class="reference-box" animation="{{fadeInDelay2}}">
+    <text class="label">史实对照</text>
+    <text class="content">{{result.ai && result.ai.realReference ? result.ai.realReference : (result.content && result.content.realReference ? result.content.realReference : '')}}</text>
+  </view>
+  
+  <view class="reflection-box" animation="{{fadeInDelay3}}">
+    <text class="label">思考</text>
+    <text class="content">{{result.ai && result.ai.reflection ? result.ai.reflection : (result.content && result.content.reflection ? result.content.reflection : '')}}</text>
+  </view>
+  
+  <!-- 操作 -->
+  <view class="actions">
+    <button bindtap="continueNext">继续探索</button>
+    <button bindtap="shareResult" open-type="share">分享手账</button>
+  </view>
+  
+  <!-- Token消耗提示（调试用，上线可隐藏） -->
+  <text class="token-hint" wx:if="{{result.tokenCost > 0}}">
+    AI生成消耗 {{result.tokenCost}} Token
+  </text>
+  <text class="token-hint cache" wx:else>
+    来自知识库/缓存
+  </text>
+</view>
+</view>

@@ -22,15 +22,8 @@
     <!-- 选项 -->
     <view class="options-list">
       <view class="option-item" wx:for="{{currentQuestionData.options}}" wx:key="*this"
-            class="{{selectedOption === index ? 'selected' : ''}} {{answered && index === currentQuestionData.correctIndex ? 'correct' : ''}} {{answered && selectedOption === index && selectedOption !== currentQuestionData.correctIndex ? 'wrong' : ''}}"
-            bindtap="selectOption" data-index="{{index}}"
-            wx:if="{{!answered}}">
-        <text class="option-letter">{{String.fromCharCode(65 + index)}}</text>
-        <text class="option-text">{{item}}</text>
-      </view>
-      <view class="option-item" wx:for="{{currentQuestionData.options}}" wx:key="*this"
-            class="{{index === currentQuestionData.correctIndex ? 'correct' : ''}} {{selectedOption === index && selectedOption !== currentQuestionData.correctIndex ? 'wrong' : ''}}"
-            wx:else>
+            class="{{!answered ? (selectedOption === index ? 'selected' : '') : (index === currentQuestionData.correctIndex ? 'correct' : '')}} {{answered && selectedOption === index && selectedOption !== currentQuestionData.correctIndex ? 'wrong' : ''}}"
+            bindtap="selectOption" data-index="{{index}}">
         <text class="option-letter">{{String.fromCharCode(65 + index)}}</text>
         <text class="option-text">{{item}}</text>
       </view>

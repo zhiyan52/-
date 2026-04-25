@@ -1,63 +1,130 @@
-<!-- 古文填空练习页面 -->
+<!-- 古文填空练习页面 - 古风设计 -->
 <view class="fill-container">
-  <!-- 顶部标题 -->
-  <view class="header">
-    <view class="back-btn" bindtap="goBack">
-      <text>←</text>
-    </view>
-    <text class="title">古文填空练习</text>
-    <view class="placeholder"></view>
+  <!-- 顶部装饰 -->
+  <view class="decorative-header">
+    <view class="decorative-corner left"></view>
+    <view class="decorative-title">古文填空</view>
+    <view class="decorative-corner right"></view>
   </view>
-  
-  <!-- 题目区域 -->
-  <view class="question-section">
-    <view class="question-header">
-      <text class="question-number">第 {{currentQuestionIndex + 1}} 题</text>
-      <text class="question-source">{{currentQuestion.source}}</text>
+
+  <!-- 进度区域 -->
+  <view class="progress-section">
+    <view class="progress-container">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{(currentQuestionIndex + 1) / questions.length * 100}}%"></view>
+      </view>
+      <view class="progress-info">
+        <text class="progress-text">第 {{currentQuestionIndex + 1}} 题</text>
+        <text class="progress-divider">/</text>
+        <text class="progress-total">共 {{questions.length}} 题</text>
+      </view>
     </view>
-    
-    <view class="question-content">
-      <text wx:for="{{currentQuestion.content}}" wx:key="index" class="content-item">
-        <text wx:if="{{item.type === 'text'}}">{{item.text}}</text>
-        <view wx:else class="blank" data-index="{{item.index}}">
-          <text wx:if="{{!showAnswer && !selectedOptions[item.index]}}" class="blank-placeholder">_____</text>
-          <text wx:else class="blank-answer">{{selectedOptions[item.index] || item.correct}}</text>
+  </view>
+
+  <!-- 题目区域 - 古风卷轴 -->
+  <view class="scroll-section">
+    <view class="scroll-top"></view>
+    <view class="scroll-content">
+      <view class="question-header">
+        <view class="source-badge">
+          <text class="source-text">{{currentQuestion.source}}</text>
         </view>
-      </text>
+      </view>
+
+      <view class="question-content">
+        <text wx:for="{{currentQuestion.content}}" wx:key="index" class="content-item">
+          <text wx:if="{{item.type === 'text'}}" class="text-item" bindtap="showWordMeaning" data-word="{{item.text}}">{{item.text}}</text>
+          <view wx:else class="blank {{selectedOptions[item.index] ? 'filled' : ''}} {{showAnswer ? (selectedOptions[item.index] === item.correct ? 'correct' : 'wrong') : ''}}" data-index="{{item.index}}" bindtap="selectBlank">
+            <text wx:if="{{!showAnswer && !selectedOptions[item.index]}}" class="blank-placeholder">{{'_____'}}</text>
+            <text wx:else class="blank-answer" bindtap="showWordMeaning" data-word="{{selectedOptions[item.index] || item.correct}}">{{selectedOptions[item.index] || item.correct}}</text>
+          </view>
+        </text>
+      </view>
     </view>
+    <view class="scroll-bottom"></view>
   </view>
-  
+
   <!-- 选项区域 -->
   <view class="options-section" wx:if="{{!showAnswer}}">
-    <text class="options-title">选择正确答案</text>
-    <view class="options-list">
-      <view class="option-item" wx:for="{{currentQuestion.options}}" wx:key="index" bindtap="selectOption" data-index="{{index}}">
-        <text class="option-letter">{{String.fromCharCode(65 + index)}}</text>
+    <view class="section-title">
+      <view class="title-line"></view>
+      <text class="title-text">选择答案</text>
+      <view class="title-line"></view>
+    </view>
+    <view class="options-grid">
+      <view
+        class="option-item {{isOptionSelected(item) ? 'selected' : ''}}"
+        wx:for="{{currentQuestion.options}}"
+        wx:key="index"
+        bindtap="selectOption"
+        data-index="{{index}}"
+        data-option="{{item}}"
+      >
+        <text class="option-index">{{String.fromCharCode(65 + index)}}</text>
         <text class="option-text">{{item}}</text>
       </view>
     </view>
   </view>
-  
+
   <!-- 答案解析区域 -->
   <view class="answer-section" wx:if="{{showAnswer}}">
-    <view class="answer-header">
-      <text class="answer-title">答案解析</text>
-      <text class="result {{isCorrect ? 'correct' : 'wrong'}}">{{isCorrect ? '✅ 回答正确' : '❌ 回答错误'}}</text>
+    <view class="section-title">
+      <view class="title-line"></view>
+      <text class="title-text">答案解析</text>
+      <view class="title-line"></view>
     </view>
-    <text class="answer-explanation">{{currentQuestion.explanation}}</text>
+    <view class="answer-card">
+      <view class="answer-result {{isCorrect ? 'correct' : 'wrong'}}">
+        <text class="result-icon">{{isCorrect ? '✓' : '✗'}}</text>
+        <text class="result-text">{{isCorrect ? '回答正确' : '回答错误'}}</text>
+      </view>
+      <view class="explanation-content">
+        <text class="explanation-text">{{currentQuestion.explanation}}</text>
+      </view>
+      <button class="meaning-btn" bindtap="showFullSentenceMeaning">查看完整句子释义</button>
+    </view>
   </view>
-  
+
   <!-- 操作按钮 -->
   <view class="action-buttons">
-    <button wx:if="{{!showAnswer}}" bindtap="submitAnswer" class="submit-btn">提交答案</button>
-    <button wx:else bindtap="nextQuestion" class="next-btn">下一题</button>
+    <button wx:if="{{!showAnswer}}" bindtap="submitAnswer" class="action-btn submit-btn" disabled="{{!canSubmit}}">提交答案</button>
+    <button wx:else bindtap="nextQuestion" class="action-btn next-btn">
+      {{currentQuestionIndex < questions.length - 1 ? '下一题' : '完成练习'}}
+    </button>
+    <button wx:if="{{!showAnswer}}" bindtap="resetQuestion" class="action-btn reset-btn">重置题目</button>
   </view>
-  
-  <!-- 进度条 -->
-  <view class="progress-section">
-    <view class="progress-bar">
-      <view class="progress-fill" style="width: {{(currentQuestionIndex + 1) / questions.length * 100}}"></view>
+
+  <!-- 词语释义弹窗 -->
+  <view class="meaning-popup" wx:if="{{showWordMeaningPopup}}">
+    <view class="popup-content">
+      <view class="popup-header">
+        <text class="popup-title">词语释义</text>
+        <text class="popup-close" bindtap="closeWordMeaningPopup">×</text>
+      </view>
+      <view class="popup-body">
+        <text class="word-text">{{selectedWord}}</text>
+        <text class="meaning-text">{{wordMeaning}}</text>
+      </view>
     </view>
-    <text class="progress-text">{{currentQuestionIndex + 1}} / {{questions.length}}</text>
+  </view>
+
+  <!-- 完整句子释义弹窗 -->
+  <view class="meaning-popup" wx:if="{{showSentenceMeaningPopup}}">
+    <view class="popup-content">
+      <view class="popup-header">
+        <text class="popup-title">句子释义</text>
+        <text class="popup-close" bindtap="closeSentenceMeaningPopup">×</text>
+      </view>
+      <view class="popup-body">
+        <text class="sentence-text">{{fullSentence}}</text>
+        <text class="meaning-text">{{sentenceMeaning}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 返回按钮 -->
+  <view class="back-btn" bindtap="goBack">
+    <text class="back-icon">←</text>
+    <text class="back-text">返回</text>
   </view>
 </view>

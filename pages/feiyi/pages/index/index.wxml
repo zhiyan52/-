@@ -37,27 +37,36 @@
   
   <!-- 分类导航 -->
   <view class="features">
+    <text class="section-title">精彩功能</text>
     <view class="feature-row">
-      <navigator url="/feiyi/jianzhi/pages/index/index" class="feature-item {{currentCategory === 'art' ? 'active' : ''}}">
-        <image class="feature-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/home/jiyi.jpg" mode="aspectFill" />
-        <text>剪韵国风</text>
+      <navigator url="/traditional/traditional/pages/fine-art/fine-art" class="feature-item {{currentCategory === 'art' ? 'active' : ''}}">
+        <image class="feature-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/music.jpg" mode="aspectFill" />
+        <text>知识图鉴</text>
       </navigator>
-      <navigator url="/feiyi/cixiu/cixiu" class="feature-item {{currentCategory === 'craft' ? 'active' : ''}}">
+      <navigator url="/feiyi/shijianzhou/skill" class="feature-item {{currentCategory === 'craft' ? 'active' : ''}}">
         <image class="feature-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/craft.jpg" mode="aspectFill" />
-        <text>传统技艺</text>
+        <text>匠心工坊</text>
       </navigator>
     </view>
     <view class="feature-row">
-      <navigator url="/feiyi/shijianzhou/skill" class="feature-item {{currentCategory === 'opera' ? 'active' : ''}}">
+      <navigator url="/traditional/traditional/pages/timeMachine/timeMachine" class="feature-item {{currentCategory === 'opera' ? 'active' : ''}}">
         <image class="feature-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/opera.jpg" mode="aspectFill" />
-        <text>传统戏曲</text>
+        <text>非遗掌间</text>
       </navigator>
-      <view class="feature-item {{currentCategory === 'music' ? 'active' : ''}}" bindtap="onCategoryChange" data-id="music">
-        <image class="feature-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/music.jpg" mode="aspectFill" />
-        <text>传统音乐</text>
-      </view>
+      <navigator url="/traditional/traditional/pages/craftDetail/craftDetail" class="feature-item {{currentCategory === 'art' ? 'active' : ''}}">
+        <image class="feature-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/jiyi.jpg" mode="aspectFill" />
+        <text>非遗地图</text>
+      </navigator> 
+    </view>
+    <view class="feature-row">
+       
+    </view>
+    <view class="feature-row">
+       
+       
     </view>
   </view>
+   
   
   <!-- 精选推荐 -->
   <view class="section">
@@ -100,12 +109,7 @@
           <text>语音讲解</text>
         </view>
       </view>
-      <view class="feature-row">
-        <view class="feature-item" bindtap="goToCommunity">
-          <text class="feature-icon">💬</text>
-          <text>非遗社区</text>
-        </view>
-      </view>
+       
     </view>
   </view>
   

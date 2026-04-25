@@ -18,13 +18,13 @@
   <!-- 名家列表 -->
   <view class="masters-list">
     <view class="master-item" wx:for="{{mastersList}}" wx:key="id" bindtap="viewMasterDetail" data-id="{{item.id}}">
-      <image class="master-image" src="{{item.image}}"></image>
+      <image class="master-image" src="{{item.image}}" mode="aspectFill"></image>
       <view class="master-info">
         <text class="master-name">{{item.name}}</text>
         <text class="master-dynasty">{{item.dynasty}}</text>
         <text class="master-desc">{{item.desc}}</text>
       </view>
-      <text class="master-arrow">→</text>
+      <text class="master-arrow">›</text>
     </view>
   </view>
   

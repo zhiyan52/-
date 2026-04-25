@@ -1,0 +1,55 @@
+<!-- 匠人故事页面 -->
+<view class="page-container">
+  
+  <!-- 顶部标题栏 -->
+  <view class="header-section">
+    <view class="header-title">
+      <text class="main-title">匠人故事</text>
+    </view>
+  </view>
+  
+  <!-- 匠人故事列表 -->
+  <view class="craftsman-list">
+    <view class="craftsman-card" data-id="1" bindtap="navigateToCraftsmanDetail">
+      <image class="craftsman-avatar" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/craftsman1.png" mode="aspectFill" />
+      <view class="craftsman-info">
+        <text class="craftsman-name">王老艺人</text>
+        <text class="craftsman-title">剪纸大师</text>
+        <text class="craftsman-desc">王老艺人是河北蔚县的剪纸传承人，从事剪纸艺术60余年，作品多次在国内外展览中获奖。他的剪纸作品色彩艳丽，构图饱满，题材广泛，深受人们喜爱。</text>
+        <view class="craftsman-meta">
+          <text class="craftsman-age">78岁</text>
+          <text class="craftsman-experience">60年经验</text>
+        </view>
+      </view>
+    </view>
+    
+    <view class="craftsman-card" data-id="2" bindtap="navigateToCraftsmanDetail">
+      <image class="craftsman-avatar" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/craftsman2.png" mode="aspectFill" />
+      <view class="craftsman-info">
+        <text class="craftsman-name">张大师</text>
+        <text class="craftsman-title">苏绣传人</text>
+        <text class="craftsman-desc">张大师是苏州苏绣的代表性传承人，从事刺绣艺术40余年，作品精细雅洁，技艺精湛。她的刺绣作品多次被作为国礼赠送外宾，为弘扬中国传统工艺做出了重要贡献。</text>
+        <view class="craftsman-meta">
+          <text class="craftsman-age">65岁</text>
+          <text class="craftsman-experience">40年经验</text>
+        </view>
+      </view>
+    </view>
+    
+    <view class="craftsman-card" data-id="3" bindtap="navigateToCraftsmanDetail">
+      <image class="craftsman-avatar" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/craftsman3.png" mode="aspectFill" />
+      <view class="craftsman-info">
+        <text class="craftsman-name">李师傅</text>
+        <text class="craftsman-title">木雕艺术家</text>
+        <text class="craftsman-desc">李师傅是广东潮州木雕的传承人，从事木雕艺术30余年，作品刀法细腻，题材丰富。他的木雕作品不仅具有实用价值，更是精美的艺术品，深受收藏家和艺术爱好者的青睐。</text>
+        <view class="craftsman-meta">
+          <text class="craftsman-age">55岁</text>
+          <text class="craftsman-experience">30年经验</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部空间 -->
+  <view class="bottom-space"></view>
+</view>

@@ -1,0 +1,44 @@
+<!-- 个性化推荐页面 -->
+<view class="ai-recommend-container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="header-title">个性化推荐</text>
+    <text class="header-subtitle">为您精选书画作品</text>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading-container">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">正在生成推荐内容...</text>
+  </view>
+
+  <!-- 错误状态 -->
+  <view wx:if="{{error}}" class="error-container">
+    <text class="error-icon">⚠️</text>
+    <text class="error-text">{{error}}</text>
+    <button class="refresh-btn" bindtap="refreshRecommendations">重新生成</button>
+  </view>
+
+  <!-- 推荐内容 -->
+  <view wx:if="{{recommendations && !loading && !error}}" class="recommend-content">
+    <text class="recommend-title">{{recommendations.title}}</text>
+    
+    <view class="recommend-list">
+      <view wx:for="{{recommendations.items}}" wx:key="id" class="recommend-item">
+        <image class="recommend-image" src="{{item.image}}"></image>
+        <view class="recommend-info">
+          <text class="recommend-type">{{item.type}}</text>
+          <text class="recommend-title-item">{{item.title}}</text>
+          <text class="recommend-description">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+
+    <button class="refresh-btn" bindtap="refreshRecommendations">换一批推荐</button>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="footer">
+    <text class="footer-text">由文心先生为您推荐</text>
+  </view>
+</view>

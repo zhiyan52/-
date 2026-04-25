@@ -1,0 +1,74 @@
+<!-- 非遗详情页面 -->
+<view class="page-container">
+  
+  <!-- 头部区 -->
+  <view class="header-section">
+    <image class="header-image" src="{{artwork.image}}" mode="aspectFill" />
+    <view class="header-overlay">
+      <text class="artwork-title">{{artwork.title}}</text>
+      <text class="artwork-craftsman">匠人：{{artwork.craftsman}}</text>
+      <text class="artwork-meta">{{artwork.era}} · {{artwork.category}}</text>
+    </view>
+  </view>
+  
+  <!-- 内容区 -->
+  <view class="content-section">
+    
+    <!-- 知识科普区 - 技艺起源与历史 -->
+    <view class="knowledge-section">
+      <text class="section-subtitle">技艺起源与历史</text>
+      <text class="knowledge-content">{{artwork.history}}</text>
+    </view>
+    
+    <!-- 工艺流程 -->
+    <view class="process-section">
+      <text class="section-subtitle">工艺流程</text>
+      <view class="process-steps">
+        <view class="process-step" wx:for="{{artwork.process}}" wx:key="index">
+          <view class="process-step-number">{{index + 1}}</view>
+          <view class="process-step-content">
+            <text class="process-step-title">{{item.step}}</text>
+            <text class="process-step-desc">{{item.desc}}</text>
+            <image class="process-step-image" src="{{item.image}}" mode="aspectFill" />
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 文化价值与现状 -->
+    <view class="value-section">
+      <text class="section-subtitle">文化价值与现状</text>
+      <text class="knowledge-content">{{artwork.value}}</text>
+    </view>
+    
+    <!-- AI一键讲解 -->
+    <view class="ai-section">
+      <text class="ai-title">AI一键讲解</text>
+      <view class="ai-content">
+        <text class="ai-text">{{aiExplanation}}</text>
+      </view>
+      <view class="ai-btn" bindtap="generateAIExplanation">
+        <text>生成通俗解读</text>
+      </view>
+    </view>
+    
+    <!-- 分享按钮 -->
+    <view class="share-section">
+      <text class="share-title">分享</text>
+      <view class="share-buttons">
+        <view class="share-btn" bindtap="shareToWechat">
+          <view class="share-icon">👤</view>
+          <text class="share-text">微信好友</text>
+        </view>
+        <view class="share-btn" bindtap="shareToMoments">
+          <view class="share-icon">🌍</view>
+          <text class="share-text">朋友圈</text>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+  
+  <!-- 底部空间 -->
+  <view class="bottom-space"></view>
+</view>

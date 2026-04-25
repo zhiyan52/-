@@ -1,0 +1,45 @@
+<!-- AI问答页面 -->
+<view class="ai-qa-container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="header-title">文化问答</text>
+    <text class="header-subtitle">与文心先生对话</text>
+  </view>
+
+  <!-- 聊天容器 -->
+  <view class="chat-container">
+    <view id="message-list" class="message-list">
+      <view wx:for="{{messages}}" wx:key="timestamp" class="message-item {{item.type}}">
+        <view class="message-bubble">
+          <text class="message-content">{{item.content}}</text>
+        </view>
+        <text class="message-time">{{item.timestamp | formatTime}}</text>
+      </view>
+      
+      <!-- 加载状态 -->
+      <view wx:if="{{loading}}" class="loading-message">
+        <view class="loading-spinner"></view>
+        <text class="loading-text">文心先生正在思考...</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 输入框 -->
+  <view class="input-container">
+    <input 
+      class="input-field" 
+      placeholder="请输入您的问题..." 
+      value="{{inputValue}}" 
+      bindinput="handleInput"
+      bindconfirm="sendMessage"
+    />
+    <button class="send-btn" bindtap="sendMessage" disabled="{{loading}}">
+      <text class="send-icon">📤</text>
+    </button>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="footer">
+    <text class="footer-text">文心先生：博学儒雅的数字文人</text>
+  </view>
+</view>

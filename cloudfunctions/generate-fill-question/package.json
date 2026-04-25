@@ -1,0 +1,10 @@
+{
+  "name": "generate-fill-question",
+  "version": "1.0.0",
+  "description": "AI生成古文填空题目",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3",
+    "tcb-router": "^1.1.2"
+  }
+}

@@ -1,0 +1,44 @@
+<!-- 匠人详情页面 -->
+<view class="page-container">
+  
+  <!-- 头部区 -->
+  <view class="header-section">
+    <image class="header-image" src="{{craftsman.avatar}}" mode="aspectFill" />
+    <view class="header-overlay">
+      <text class="craftsman-name">{{craftsman.name}}</text>
+      <text class="craftsman-title">{{craftsman.title}}</text>
+      <text class="craftsman-meta">{{craftsman.age}}岁 · {{craftsman.experience}}年经验</text>
+    </view>
+  </view>
+  
+  <!-- 内容区 -->
+  <view class="content-section">
+    
+    <!-- 基本信息 -->
+    <view class="info-section">
+      <text class="section-subtitle">基本信息</text>
+      <text class="info-content">{{craftsman.info}}</text>
+    </view>
+    
+    <!-- 代表作品 -->
+    <view class="works-section">
+      <text class="section-subtitle">代表作品</text>
+      <view class="works-grid">
+        <view class="work-item" wx:for="{{craftsman.works}}" wx:key="index">
+          <image class="work-image" src="{{item.image}}" mode="aspectFill" />
+          <text class="work-title">{{item.title}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 匠人故事 -->
+    <view class="story-section">
+      <text class="section-subtitle">匠人故事</text>
+      <text class="story-content">{{craftsman.story}}</text>
+    </view>
+    
+  </view>
+  
+  <!-- 底部空间 -->
+  <view class="bottom-space"></view>
+</view>

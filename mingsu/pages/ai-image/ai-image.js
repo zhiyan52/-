@@ -1,117 +1,66 @@
 // mingsu/pages/ai-image/ai-image.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    keywords: [
-      '清明踏青',
-      '中秋赏月',
-      '春节贴春联',
-      '端午龙舟',
-      '重阳登高',
-      '立春迎春',
-      '立夏尝新',
-      '立秋贴秋膘',
-      '立冬补冬'
-    ],
-    selectedKeyword: '',
-    isGenerating: false,
-    generatedImage: null
+
   },
 
-  onLoad() {
-    wx.setNavigationBarTitle({ title: 'AI民俗意境生图' });
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+
   },
 
-  selectKeyword(e) {
-    const { keyword } = e.currentTarget.dataset;
-    this.setData({ selectedKeyword: keyword, generatedImage: null });
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
   },
 
-  generateImage() {
-    if (!this.data.selectedKeyword) {
-      wx.showToast({ title: '请选择一个关键词', icon: 'none' });
-      return;
-    }
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
 
-    this.setData({ isGenerating: true, generatedImage: null });
-
-    (async () => {
-      try {
-        const keyword = this.data.selectedKeyword;
-
-        // 创建模型实例
-        const model = wx.cloud.extend.AI.createModel("hunyuan-exp");
-
-        // 发送请求
-        const res = await model.generateImage({
-          model: "hunyuan-image-plus",
-          prompt: `${keyword} 中国传统民俗场景，水墨风格，古风，细腻典雅，文化底蕴深厚`,
-          size: "1024x1024"
-        });
-
-        const imageUrl = res.data.url;
-        this.setData({ generatedImage: imageUrl });
-
-      } catch (err) {
-        console.error("AI生图失败：", err);
-        wx.showToast({ title: "AI生图失败，请重试", icon: "none" });
-
-        // 失败时使用备用方案
-        this.useBackupImage(this.data.selectedKeyword);
-      } finally {
-        this.setData({ isGenerating: false });
-      }
-    })();
   },
 
-  useBackupImage(keyword) {
-    // 备用图片方案，使用原有的API
-    const prompt = `${keyword} Chinese traditional folk scene, ink painting style, ancient Chinese style`;
-    const encodedPrompt = encodeURIComponent(prompt);
-    const imageUrl = `https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=${encodedPrompt}&image_size=square_hd`;
-    this.setData({ generatedImage: imageUrl });
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
   },
 
-  saveImage() {
-    if (!this.data.generatedImage) {
-      wx.showToast({ title: '请先生成图片', icon: 'none' });
-      return;
-    }
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
 
-    wx.showLoading({ title: '保存中...' });
-
-    wx.downloadFile({
-      url: this.data.generatedImage,
-      success: (res) => {
-        if (res.statusCode === 200) {
-          wx.saveImageToPhotosAlbum({
-            filePath: res.tempFilePath,
-            success: () => {
-              wx.hideLoading();
-              wx.showToast({ title: '保存成功', icon: 'success' });
-            },
-            fail: (err) => {
-              wx.hideLoading();
-              wx.showToast({ title: '保存失败，请重试', icon: 'none' });
-              console.error('保存图片失败:', err);
-            }
-          });
-        } else {
-          wx.hideLoading();
-          wx.showToast({ title: '下载图片失败', icon: 'none' });
-        }
-      },
-      fail: (err) => {
-        wx.hideLoading();
-        wx.showToast({ title: '下载图片失败', icon: 'none' });
-        console.error('下载图片失败:', err);
-      }
-    });
   },
 
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
   onShareAppMessage() {
-    return {
-      title: '吴雅文轩 · AI民俗意境生图',
-      path: '/mingsu/pages/ai-image/ai-image'
-    };
+
   }
-});
+})

@@ -9,14 +9,14 @@
 .main-title-bar {
   position: relative;
   top: -150rpx;
-  width: 780rpx;
+  width: 980rpx;
   height: 190rpx;
   margin-top: 0;
 }
 
 .title-img {
   width: 780rpx;
-  max-width: 90%;
+  max-width: 100%;
   display: block;
   margin: 0 auto;
   filter: drop-shadow(0 4rpx 8rpx rgba(0,0,0,0.15));
@@ -35,6 +35,7 @@
 .category-item {
   position: relative;
   height: 175rpx;
+  
   display: flex;
   flex-direction: column;
   align-items: center;

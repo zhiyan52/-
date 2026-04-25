@@ -1,0 +1,48 @@
+<!--traditional/traditional/pages/phaseDetail/phaseDetail.wxml-->
+
+<view class="phase-container">
+  <!-- 阶段标题 -->
+  <view class="phase-header" style="background: {{phase.color}}20">
+    <text class="phase-icon">{{phase.icon}}</text>
+    <text class="phase-name">{{phase.name}}</text>
+    <text class="phase-summary">{{phase.summary}}</text>
+  </view>
+  
+  <!-- 横向时间轴 -->
+  <scroll-view scroll-x class="timeline-scroll">
+    <view class="timeline">
+      <view 
+        class="step-node {{step.status}}" 
+        wx:for="{{steps}}" 
+        wx:key="id"
+        wx:for-item="step"
+        bindtap="onStepTap"
+        data-id="{{step.id}}"
+      >
+        <!-- 连接线 -->
+        <view class="connector {{index < steps.length - 1 ? step.nextStatus : ''}}"></view>
+        
+        <!-- 节点 -->
+        <view class="node-circle">
+          <text wx:if="{{step.status === 'completed'}}">✓</text>
+          <text wx:elif="{{step.status === 'unlocked'}}">{{index + 1}}</text>
+          <text wx:else>🔒</text>
+        </view>
+        
+        <!-- 标签 -->
+        <text class="node-label">{{step.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+  
+  <!-- 当前选中工序预览 -->
+  <view class="current-preview" wx:if="{{selectedStep}}">
+    <image class="preview-img" src="{{selectedStep.poster}}" mode="aspectFill"/>
+    <view class="preview-info">
+      <text class="preview-name">{{selectedStep.name}}</text>
+      <text class="preview-duration">⏱ {{selectedStep.duration}}</text>
+      <text class="preview-purpose">{{selectedStep.purpose}}</text>
+    </view>
+    <button class="enter-btn" bindtap="enterStep">进入学习</button>
+  </view>
+</view>

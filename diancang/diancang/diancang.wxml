@@ -20,21 +20,33 @@
   <view class="features">
     <view class="feature-row">
       <navigator url="/diancang/diancang/diancang-list" class="feature-item">
-        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/classics.png" class="feature-icon" />
+        <view class="feature-icon-container">
+          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/classics.png" class="feature-icon" binderror="handleImageError" data-index="0" />
+          <image wx:if="{{iconErrors[0]}}" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/default.png" class="feature-icon fallback-icon" />
+        </view>
         <text>典籍文库</text>
       </navigator>
-      <navigator url="/diancang/diancang/diancang-treasure-hunt" class="feature-item">
-        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/treasure.png" class="feature-icon" />
+      <navigator url="/diancang/pages/heritage/heritage" class="feature-item">
+        <view class="feature-icon-container">
+          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/treasure.png" class="feature-icon" binderror="handleImageError" data-index="1" />
+          <image wx:if="{{iconErrors[1]}}" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/default.png" class="feature-icon fallback-icon" />
+        </view>
         <text>典藏寻宝</text>
       </navigator>
     </view>
     <view class="feature-row">
       <navigator url="/diancang/diancang/diancang-fill" class="feature-item">
-        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/fill.png" class="feature-icon" />
+        <view class="feature-icon-container">
+          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/fill.png" class="feature-icon" binderror="handleImageError" data-index="2" />
+          <image wx:if="{{iconErrors[2]}}" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/default.png" class="feature-icon fallback-icon" />
+        </view>
         <text>古文填空</text>
       </navigator>
       <navigator url="/diancang/diancang/diancang-card" class="feature-item">
-        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/card.png" class="feature-icon" />
+        <view class="feature-icon-container">
+          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/card.png" class="feature-icon" binderror="handleImageError" data-index="3" />
+          <image wx:if="{{iconErrors[3]}}" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/default.png" class="feature-icon fallback-icon" />
+        </view>
         <text>名句卡片</text>
       </navigator>
     </view>
@@ -50,7 +62,7 @@
         <text class="rec-era">西周至春秋</text>
       </view>
       <view class="recommend-item">
-        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/books/shiji.jpg" class="rec-image" />
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/books/shiji.png" class="rec-image" />
         <text class="rec-title">《史记》</text>
         <text class="rec-era">西汉</text>
       </view>
@@ -61,7 +73,7 @@
   <view class="smart-section">
     <text class="section-title">智能功能</text>
     <view class="smart-feature-item" bindtap="navigateToAI">
-      <text class="smart-feature-icon">🧭</text>
+      <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/ai-guide.png" class="smart-feature-icon" />
       <view class="smart-feature-content">
         <text class="smart-feature-title">智能导览</text>
         <text class="smart-feature-desc">智能路线规划，深度解说</text>
@@ -69,7 +81,7 @@
       <text class="smart-feature-arrow">→</text>
     </view>
     <view class="smart-feature-item" bindtap="navigateToQA">
-      <text class="smart-feature-icon">❓</text>
+      <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/ai-qa.png" class="smart-feature-icon" />
       <view class="smart-feature-content">
         <text class="smart-feature-title">文化问答</text>
         <text class="smart-feature-desc">解答典藏相关问题</text>
@@ -77,7 +89,7 @@
       <text class="smart-feature-arrow">→</text>
     </view>
     <view class="smart-feature-item" bindtap="navigateToRecommend">
-      <text class="smart-feature-icon">🎯</text>
+      <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/ai-recommend.png" class="smart-feature-icon" />
       <view class="smart-feature-content">
         <text class="smart-feature-title">个性化推荐</text>
         <text class="smart-feature-desc">根据兴趣推荐典藏内容</text>
@@ -85,7 +97,7 @@
       <text class="smart-feature-arrow">→</text>
     </view>
     <view class="smart-feature-item" bindtap="navigateToVoice">
-      <text class="smart-feature-icon">🎙️</text>
+      <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/ai-voice.png" class="smart-feature-icon" />
       <view class="smart-feature-content">
         <text class="smart-feature-title">语音讲解</text>
         <text class="smart-feature-desc">沉浸式语音导览体验</text>
@@ -102,7 +114,7 @@
         <view class="competition-title">知识竞赛中心</view>
         <view class="competition-desc">参与每日挑战，与好友PK</view>
       </view>
-      <view class="competition-icon">🏆</view>
+      <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/trophy.png" class="competition-icon" />
     </view>
   </view>
   

@@ -35,16 +35,16 @@
   <!-- 底部按钮区 -->
   <view class="footer-buttons">
     <view class="btn primary" bindtap="onARScan">
-      <text class="btn-icon">📷</text>
-      <text class="btn-text">AR扫描</text>
+       
+      <text class="btn-text">虚拟浏览</text>
     </view>
     <view class="btn secondary" bindtap="onTest">
-      <text class="btn-icon">❓</text>
+       
       <text class="btn-text">趣味问答</text>
     </view>
     <view class="btn secondary" bindtap="onMap">
-      <text class="btn-icon">📍</text>
-      <text class="btn-text">打卡地图</text>
+       
+      <text class="btn-text">古建巧拼</text>
     </view>
   </view>
 </view>

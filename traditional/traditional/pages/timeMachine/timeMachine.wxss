@@ -1,0 +1,319 @@
+/* traditional/traditional/pages/timeMachine/timeMachine.wxss */
+/* 页面容器 */
+.page-container {
+  background: linear-gradient(135deg, #f7f5f0 0%, #f0ede5 100%);
+  min-height: 100vh;
+  padding: 20rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 选择非遗页面 */
+.heritage-select {
+  padding: 40rpx 20rpx;
+}
+
+.heritage-select .title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #1A365D;
+  text-align: center;
+  margin-bottom: 60rpx;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.1);
+}
+
+.heritage-list {
+  height: 70vh;
+}
+
+.heritage-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+  border: 2rpx solid #D4A017;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heritage-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.card-image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D4A017 0%, #B8860B 100%);
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image::before {
+  content: '艺';
+  font-size: 64rpx;
+  color: #fff;
+  font-weight: bold;
+}
+
+.heritage-card .name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 8rpx;
+}
+
+.heritage-card .category {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 时间轴页面 */
+.era-timeline {
+  padding: 40rpx 20rpx;
+}
+
+.era-timeline .subtitle {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1A365D;
+  text-align: center;
+  margin-bottom: 60rpx;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4rpx;
+  background: linear-gradient(180deg, #D4A017 0%, #B8860B 100%);
+  transform: translateX(-50%);
+}
+
+.era-node {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40rpx;
+  position: relative;
+  z-index: 1;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.era-node.active {
+  opacity: 1;
+}
+
+.era-node .dot {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  background: #fff;
+  border: 4rpx solid #D4A017;
+  margin-right: 20rpx;
+  transition: all 0.3s ease;
+}
+
+.era-node.active .dot {
+  background: #D4A017;
+  transform: scale(1.2);
+}
+
+.era-node text {
+  font-size: 28rpx;
+  color: #333;
+  background: #fff;
+  padding: 12rpx 24rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+/* 场景决策页面 */
+.scene-container {
+  padding: 40rpx 20rpx;
+}
+
+.role-badge {
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  color: #D4A017;
+  font-size: 28rpx;
+  padding: 16rpx 32rpx;
+  border-radius: 30rpx;
+  text-align: center;
+  margin-bottom: 40rpx;
+  box-shadow: 0 4rpx 12rpx rgba(26, 54, 93, 0.3);
+}
+
+.scene-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+  border: 2rpx solid #D4A017;
+}
+
+.era-tag {
+  display: inline-block;
+  background: #D4A017;
+  color: #1A365D;
+  font-size: 20rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 15rpx;
+  margin-bottom: 16rpx;
+  font-weight: bold;
+}
+
+.scene-text {
+  font-size: 32rpx;
+  line-height: 1.6;
+  color: #333;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.option-btn {
+  background: #fff;
+  border: 2rpx solid #1A365D;
+  border-radius: 15rpx;
+  padding: 24rpx;
+  font-size: 28rpx;
+  color: #1A365D;
+  transition: all 0.3s ease;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.option-btn:active {
+  background: #1A365D;
+  color: #fff;
+  transform: translateY(2rpx);
+}
+
+/* 结果页面 */
+.result-container {
+  padding: 40rpx 20rpx;
+}
+
+.result-source {
+  display: inline-block;
+  padding: 8rpx 20rpx;
+  border-radius: 25rpx;
+  font-size: 24rpx;
+  margin-bottom: 30rpx;
+  font-weight: 500;
+}
+
+.result-source.cache {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.result-source.template {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.result-source.ai {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+/* 叙事卡片 */
+.narrative-box, .consequence-box, .reference-box, .reflection-box {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
+  border: 2rpx solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.narrative-box:hover, .consequence-box:hover, .reference-box:hover, .reflection-box:hover {
+  box-shadow: 0 6rpx 20rpx rgba(0,0,0,0.15);
+}
+
+.narrative-box .label, .consequence-box .label, .reference-box .label, .reflection-box .label {
+  color: #8d6e63;
+  font-size: 28rpx;
+  display: block;
+  margin-bottom: 16rpx;
+  font-weight: 500;
+}
+
+.narrative-box .content, .consequence-box .content, .reference-box .content, .reflection-box .content {
+  font-size: 30rpx;
+  line-height: 1.6;
+  color: #3e2723;
+}
+
+/* 操作按钮 */
+.actions {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 40rpx;
+}
+
+.actions button {
+  flex: 1;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  color: #D4A017;
+  border: none;
+  border-radius: 15rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+  transition: all 0.3s ease;
+}
+
+.actions button:active {
+  transform: scale(0.98);
+  background: linear-gradient(135deg, #2C5282 0%, #1A365D 100%);
+}
+
+/* Token提示 */
+.token-hint {
+  font-size: 20rpx;
+  color: #9e9e9e;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.token-hint.cache {
+  color: #4caf50;
+}
+
+/* 加载状态 */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.loading-text {
+  font-size: 32rpx;
+  color: #1A365D;
+  margin-top: 20rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}

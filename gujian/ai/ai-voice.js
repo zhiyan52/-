@@ -7,25 +7,25 @@ Page({
     buildings: {
       'forbidden-city': {
         name: '故宫',
-        image: '/images/forbidden-city.jpg',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/gongdian1.jpg',
         desc: '中国明清两代的皇家宫殿，世界上现存规模最大、保存最为完整的木质结构古建筑之一。',
         duration: '03:45'
       },
       'summer-palace': {
         name: '颐和园',
-        image: '/images/summer-palace.jpg',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/zhineng/yinhe.jpg',
         desc: '中国古典园林，是保存最完整的一座皇家行宫御苑，被誉为皇家园林博物馆。',
         duration: '04:20'
       },
       'temple-of-heaven': {
         name: '天坛',
-        image: '/images/temple-of-heaven.jpg',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/zhineng/taintan.jpg',
         desc: '明清两代皇帝祭天、祈求五谷丰登的场所，是中国现存最大的古代祭祀性建筑群。',
         duration: '03:15'
       },
       'suzhou-garden': {
         name: '苏州园林',
-        image: '/images/suzhou-garden.jpg',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/zhineng/yuanlin.jpg',
         desc: '中国古典园林的杰出代表，以精巧的设计和独特的艺术风格闻名于世。',
         duration: '02:50'
       }

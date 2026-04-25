@@ -26,7 +26,6 @@
     "mingsu/jianzhi/paper-cut/fold",
     "mingsu/jianzhi/pages/workshop/workshop",
     "mingsu/jianzhi/pages/gallery/gallery",
-    "mingsu/mingsu",
     "mingsu/pages/calendar/calendar",
     "mingsu/pages/ai-lecture/ai-lecture",
     "mingsu/pages/ai-image/ai-image",
@@ -36,15 +35,9 @@
     "feiyi/shijianzhou/skill",
     "feiyi/zhineng/daolan/nfyiyi_guide",
     "feiyi/zhineng/wenda/qa",
-    "shuhuayayun/shuhuayayun",
-    "shuhuayayun/pages/masters/masters",
-    "shuhuayayun/pages/works/works",
-    "shuhuayayun/pages/ai-explain/ai-explain",
-    "shuhuayayun/pages/ai-generate/ai-generate",
-    "shuhuayayun/pages/calligraphy/calligraphy",
-    "shuhuayayun/pages/quiz/quiz",
-    "shuhuayayun/pages/quotes/quotes",
-    "shuhuayayun/pages/blind-box/blind-box"
+    "cloudfunctions/heritage_base/ai_cache",
+    "traditional/stepDetail/stepDetail",
+    "diancang/pages/heritage/heritage"
   ],
   "subpackages": [
     {
@@ -122,18 +115,23 @@
     },
     {
       "root": "diancang/diancang",
+      "name": "diancang",
       "pages": [
         "diancang",
         "diancang-detail",
         "diancang-list",
         "diancang-reader",
         "diancang-treasure-hunt",
+        "diancang-fill",
+        "diancang-card",
         "pages/profile/profile",
         "pages/community/community",
         "ai/ai-guide",
         "ai/ai-qa",
         "ai/ai-recommend",
-        "ai/ai-voice"
+        "ai/ai-voice",
+        "pages/heritage",
+        "heritage"
       ]
     },
     {
@@ -146,13 +144,13 @@
         "pages/categories/intangible",
         "pages/categories/cakes",
         "pages/detail/detail",
-        "pages/3d-model/3d-model",
+        "pages/encyclopedia/encyclopedia",
+        "pages/encyclopedia/course-detail",
         "pages/checkin/checkin",
         "pages/community/community",
         "pages/profile/profile",
         "pages/search/search",
-        "pages/encyclopedia/encyclopedia",
-        "pages/encyclopedia/course-detail",
+        "pages/3d-model/3d-model",
         "ai/ai-guide",
         "ai/ai-qa",
         "ai/ai-recommend",
@@ -163,76 +161,57 @@
     },
     {
       "root": "shuhua/shuhua",
+      "name": "shuhua",
       "pages": [
-        "shuhua"
-      ]
-    },
-    {
-      "root": "feiyi/feiyi",
-      "pages": [
-        "feiyi"
-      ]
-    },
-    {
-      "root": "competition",
-      "name": "competition",
-      "pages": [
-        "competition-center",
-        "daily-challenge",
-        "friend-battle",
-        "quiz-page",
-        "result-page"
-      ]
-    },
-    {
-      "root": "gujianSub",
-      "name": "gujianPackage",
-      "pages": [
-        "gujianSub",
-        "discover/discover",
-        "search/search",
-        "checkinMap/checkinMap",
-        "gongdian/gongdian",
-        "gongdian/detail",
-        "gongdian/placemap",
-        "yuanlin/yuanlin",
-        "yuanlin/detail",
-        "yuanlin/placemap",
-        "minju/minju",
-        "minju/detail",
-        "minju/placemap",
-        "tage/tage",
-        "tage/detail",
-        "tage/placemap",
-        "qiaoliang/qiaoliang",
-        "qiaoliang/detail",
-        "qiaoliang/placemap",
-        "wenda1/wenda1",
-        "wenda2/wenda2",
-        "building3D/building3D"
+        "shuhua",
+        "pages/masters/masters",
+        "pages/artworks/artworks",
+        "pages/ai-lecture/ai-lecture",
+        "pages/ai-image/ai-image",
+        "pages/calligraphy/calligraphy",
+        "pages/quiz/quiz",
+        "pages/cards/cards",
+        "pages/blind-box/blind-box",
+        "pages/artwork-detail/artwork-detail",
+        "ai/ai-guide",
+        "ai/ai-qa",
+        "ai/ai-recommend",
+        "ai/ai-voice"
       ],
-      "preloadRule": {
-        "pages/index/index": {
-          "network": "all",
-          "packages": [
-            "feiyi",
-            "diancang",
-            "mingsu"
-          ]
-        }
-      },
-      "permission": {
-        "scope.userLocation": {
-          "desc": "你的位置信息将用于民居位置导航"
-        }
-      },
-      "requiredPrivateInfos": [
-        "getLocation",
-        "openLocation"
-      ]
+      "independent": false
+    },
+    {
+      "root": "traditional/traditional",
+      "name": "traditional",
+      "pages": [
+        "traditional",
+        "pages/fine-art/fine-art",
+        "pages/fine-art/category-list/category-list",
+        "pages/fine-art/detail/detail",
+        "pages/fine-art/craftsman/craftsman",
+        "pages/fine-art/craftsman-detail/craftsman-detail",
+        "pages/opera/opera",
+        "pages/music/music",
+        "pages/craft/craft",
+        "pages/timeMachine/timeMachine",
+        "pages/craftDetail/craftDetail",
+        "pages/phaseDetail/phaseDetail",
+        "stepDetail/stepDetail"
+      ],
+      "independent": false
     }
   ],
+  "window": {
+    "navigationBarTitleText": "中国十大宫殿",
+    "navigationBarBackgroundColor": "#2C2621",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "dark"
+  },
   "tabBar": {
+    "color": "#666",
+    "selectedColor": "#1A365D",
+    "backgroundColor": "#F8F0E3",
+    "borderStyle": "black",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -242,24 +221,29 @@
       },
       {
         "pagePath": "moudules/modules/modules",
-        "text": "模块总览",
+        "text": "分类",
         "iconPath": "/components/zonglan.png",
         "selectedIconPath": "/components/zonglan.png"
       },
       {
         "pagePath": "profile/profile/profile",
-        "text": "个人中心",
+        "text": "我的",
         "iconPath": "/components/yonghu.png",
         "selectedIconPath": "/components/yonghu.png"
       }
     ]
   },
-  "window": {
-    "navigationBarTitleText": "中国十大宫殿",
-    "navigationBarBackgroundColor": "#2C2621",
-    "navigationBarTextStyle": "white",
-    "backgroundTextStyle": "dark",
-    "disableScroll": true
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": [
+        "feiyi",
+        "diancang",
+        "mingsu",
+        "shuhua",
+        "traditional"
+      ]
+    }
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2",

@@ -1,25 +1,2 @@
-<!-- mingsu/mingsu/pages/categories/regions.wxml -->
-<view class="container">
-  <view class="header">
-    <view class="header-back" bindtap="goBack">
-      <text class="back-icon">←</text>
-    </view>
-    <view class="header-title">地域珍味</view>
-  </view>
-  
-  <view class="content">
-    <view class="region-list">
-      <view class="region-item" wx:for="{{regionList}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
-        <image class="region-img" src="{{item.imageUrl}}" mode="aspectFill" alt="{{item.title}}"></image>
-        <view class="region-info">
-          <view class="region-title">{{item.title}}</view>
-          <view class="region-desc">{{item.desc}}</view>
-          <view class="region-location">
-            <text class="location-icon">📍</text>
-            <text class="location-text">{{item.location}}</text>
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
-</view>
+<!--mingsu/mingsu/pages/categories/regions.wxml-->
+<text>mingsu/mingsu/pages/categories/regions.wxml</text>
