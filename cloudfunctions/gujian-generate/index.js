@@ -9,14 +9,14 @@ cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV })
 // 本地图片后备库 - 古建筑构件
 // ============================================
 const localImageLibrary = {
-  "斗拱": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/components/dougong.jpg",
-  "飞檐": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/components/feiyan.jpg",
-  "榫卯": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/components/sunmao.jpg",
-  "瓦当": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/components/wadang.jpg",
-  "藻井": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/components/zaojing.jpg",
-  "马头墙": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/components/matouqiang.jpg",
-  "雀替": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/components/queti.jpg",
-  "柱础": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/components/zhuchu.jpg",
+  "斗拱": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/f755ddffe515f9da438580307fab6855.jpg",
+  "飞檐": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/9c4146c7c9686c90bc29fa58611d7f6b.jpg",
+  "榫卯": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/23dadae4b6bbe13cda330381bf72cb56.jpg",
+  "瓦当": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/4360808c464d73e08a468d2fd1a274f1.jpg",
+  "藻井": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/d76b5ad9e8519d90cf861091384b2027.jpg",
+  "马头墙": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/7f88d2cba24ffb822706ea0df8c3a29a.jpg",
+  "雀替": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/3a3bf09c166dd5637d8330660a3190bb.jpg",
+  "柱础": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/5808894a5b74681599fc8c81f97e62fb.jpg",
   "default": "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/components/default.jpg"
 }
 
