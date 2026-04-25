@@ -1,100 +1,161 @@
 /* traditional/traditional/pages/timeMachine/timeMachine.wxss */
-/* 页面容器 */
-.page-container {
+page {
   background: linear-gradient(135deg, #f7f5f0 0%, #f0ede5 100%);
-  min-height: 100vh;
-  padding: 20rpx;
   font-family: "STKaiti", "KaiTi", serif;
 }
 
-/* 选择非遗页面 */
-.heritage-select {
-  padding: 40rpx 20rpx;
+.page-container {
+  min-height: 100vh;
+  padding: 30rpx;
+  position: relative;
 }
 
-.heritage-select .title {
-  font-size: 48rpx;
+/* 页面标题 */
+.page-header {
+  text-align: center;
+  padding: 40rpx 0;
+}
+
+.page-title {
+  display: block;
+  font-size: 52rpx;
   font-weight: bold;
   color: #1A365D;
-  text-align: center;
-  margin-bottom: 60rpx;
+  margin-bottom: 12rpx;
   text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.1);
 }
 
+.page-subtitle {
+  display: block;
+  font-size: 26rpx;
+  color: #8B7355;
+}
+
+/* 步骤指示器 */
+.step-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50rpx;
+}
+
+.step-dot {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  background: #e0e0e0;
+  border: 4rpx solid #fff;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.step-dot.active {
+  background: #D4A017;
+  transform: scale(1.2);
+}
+
+.step-line {
+  width: 80rpx;
+  height: 4rpx;
+  background: #e0e0e0;
+  margin: 0 10rpx;
+  transition: all 0.3s ease;
+}
+
+.step-line.active {
+  background: #D4A017;
+}
+
+/* 区块标题 */
+.section-header {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  display: block;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 12rpx;
+}
+
+.section-desc {
+  display: block;
+  font-size: 26rpx;
+  color: #8B7355;
+}
+
+/* 非遗列表 */
 .heritage-list {
-  height: 70vh;
+  height: 65vh;
 }
 
 .heritage-card {
+  display: flex;
+  align-items: center;
   background: #fff;
   border-radius: 20rpx;
   padding: 30rpx;
   margin-bottom: 24rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
-  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.08);
+  border: 2rpx solid #f0f0f0;
   transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .heritage-card:active {
   transform: scale(0.98);
   box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+  border-color: #D4A017;
 }
 
-.card-image {
-  width: 160rpx;
-  height: 160rpx;
+.heritage-icon {
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
-  background: linear-gradient(135deg, #D4A017 0%, #B8860B 100%);
-  margin-bottom: 20rpx;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 24rpx;
 }
 
-.card-image::before {
-  content: '艺';
-  font-size: 64rpx;
+.heritage-icon text {
+  font-size: 48rpx;
   color: #fff;
-  font-weight: bold;
 }
 
-.heritage-card .name {
+.heritage-info {
+  flex: 1;
+}
+
+.heritage-name {
+  display: block;
   font-size: 32rpx;
   font-weight: bold;
   color: #1A365D;
   margin-bottom: 8rpx;
 }
 
-.heritage-card .category {
+.heritage-desc {
+  display: block;
   font-size: 24rpx;
-  color: #666;
+  color: #8B7355;
 }
 
-/* 时间轴页面 */
-.era-timeline {
-  padding: 40rpx 20rpx;
-}
-
-.era-timeline .subtitle {
-  font-size: 36rpx;
+.heritage-arrow {
+  font-size: 48rpx;
+  color: #D4A017;
   font-weight: bold;
-  color: #1A365D;
-  text-align: center;
-  margin-bottom: 60rpx;
 }
 
-.timeline {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* 时间轴 */
+.timeline-container {
   position: relative;
+  padding: 20rpx 0;
+  margin-bottom: 40rpx;
 }
 
-.timeline::before {
-  content: '';
+.timeline-line {
   position: absolute;
   left: 50%;
   top: 0;
@@ -104,216 +165,584 @@
   transform: translateX(-50%);
 }
 
-.era-node {
+.timeline-item {
   display: flex;
-  align-items: center;
-  margin-bottom: 40rpx;
+  align-items: flex-start;
+  margin-bottom: 50rpx;
   position: relative;
   z-index: 1;
-  opacity: 0.5;
-  transition: all 0.3s ease;
 }
 
-.era-node.active {
+.timeline-item.unlocked {
   opacity: 1;
 }
 
-.era-node .dot {
-  width: 30rpx;
-  height: 30rpx;
+.timeline-item.locked {
+  opacity: 0.5;
+}
+
+.timeline-dot {
+  width: 40rpx;
+  height: 40rpx;
   border-radius: 50%;
   background: #fff;
   border: 4rpx solid #D4A017;
-  margin-right: 20rpx;
-  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 30rpx;
+  flex-shrink: 0;
 }
 
-.era-node.active .dot {
+.timeline-item.locked .timeline-dot {
+  border-color: #ccc;
+}
+
+.dot-inner {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
   background: #D4A017;
-  transform: scale(1.2);
 }
 
-.era-node text {
-  font-size: 28rpx;
-  color: #333;
+.timeline-content {
+  flex: 1;
   background: #fff;
-  padding: 12rpx 24rpx;
-  border-radius: 20rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  margin-right: 60rpx;
 }
 
-/* 场景决策页面 */
-.scene-container {
-  padding: 40rpx 20rpx;
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
 }
 
-.role-badge {
-  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+.timeline-item:nth-child(even) .timeline-content {
+  margin-right: 0;
+  margin-left: 60rpx;
+}
+
+.era-name {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 8rpx;
+}
+
+.era-year {
+  display: block;
+  font-size: 22rpx;
   color: #D4A017;
+  margin-bottom: 12rpx;
+}
+
+.era-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.era-tag {
+  font-size: 20rpx;
+  color: #8B7355;
+  background: #f5f0e8;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+/* 返回按钮 */
+.back-btn {
+  width: 100%;
+  background: #fff;
+  border: 2rpx solid #1A365D;
+  border-radius: 16rpx;
+  color: #1A365D;
   font-size: 28rpx;
-  padding: 16rpx 32rpx;
-  border-radius: 30rpx;
-  text-align: center;
+  font-family: "STKaiti", "KaiTi", serif;
+  padding: 24rpx;
+  margin-top: 20rpx;
+}
+
+/* 时光穿越动画 */
+.time-travel-animation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
+.time-vortex {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  background: conic-gradient(#D4A017, #B8860B, #1A365D, #2C5282, #D4A017);
+  animation: vortex 2s linear infinite;
   margin-bottom: 40rpx;
-  box-shadow: 0 4rpx 12rpx rgba(26, 54, 93, 0.3);
+}
+
+@keyframes vortex {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.travel-text {
+  font-size: 32rpx;
+  color: #1A365D;
+  margin-bottom: 16rpx;
+}
+
+.travel-era {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #D4A017;
+}
+
+/* 场景内容 */
+.scene-content {
+  padding: 20rpx 0;
+}
+
+.scene-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.era-badge {
+  background: linear-gradient(135deg, #D4A017 0%, #B8860B 100%);
+  color: #fff;
+  padding: 12rpx 28rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.scene-progress {
+  font-size: 24rpx;
+  color: #8B7355;
 }
 
 .scene-card {
   background: #fff;
   border-radius: 20rpx;
   padding: 30rpx;
-  margin-bottom: 40rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
-  border: 2rpx solid #D4A017;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.08);
+  border: 2rpx solid #f0f0f0;
 }
 
-.era-tag {
+.scene-role {
   display: inline-block;
-  background: #D4A017;
-  color: #1A365D;
-  font-size: 20rpx;
-  padding: 6rpx 16rpx;
-  border-radius: 15rpx;
-  margin-bottom: 16rpx;
-  font-weight: bold;
-}
-
-.scene-text {
-  font-size: 32rpx;
-  line-height: 1.6;
-  color: #333;
-}
-
-.options {
-  display: flex;
-  flex-direction: column;
-  gap: 20rpx;
-}
-
-.option-btn {
-  background: #fff;
-  border: 2rpx solid #1A365D;
-  border-radius: 15rpx;
-  padding: 24rpx;
-  font-size: 28rpx;
-  color: #1A365D;
-  transition: all 0.3s ease;
-  font-family: "STKaiti", "KaiTi", serif;
-}
-
-.option-btn:active {
-  background: #1A365D;
-  color: #fff;
-  transform: translateY(2rpx);
-}
-
-/* 结果页面 */
-.result-container {
-  padding: 40rpx 20rpx;
-}
-
-.result-source {
-  display: inline-block;
-  padding: 8rpx 20rpx;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  color: #D4A017;
+  padding: 10rpx 24rpx;
   border-radius: 25rpx;
   font-size: 24rpx;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.scene-description {
+  display: block;
+  font-size: 30rpx;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 20rpx;
+}
+
+.scene-question {
+  background: #f9f7f3;
+  border-left: 6rpx solid #D4A017;
+  padding: 20rpx;
+  border-radius: 0 12rpx 12rpx 0;
+}
+
+.scene-question text {
+  font-size: 28rpx;
+  color: #1A365D;
   font-weight: 500;
 }
 
-.result-source.cache {
+/* 选项容器 */
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.option-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 28rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.06);
+  border: 3rpx solid transparent;
+  transition: all 0.3s ease;
+}
+
+.option-card.selected {
+  border-color: #D4A017;
+  background: #fef9f3;
+}
+
+.option-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24rpx;
+  font-size: 40rpx;
+}
+
+.option-text {
+  flex: 1;
+}
+
+.option-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #1A365D;
+  margin-bottom: 8rpx;
+}
+
+.option-desc {
+  display: block;
+  font-size: 24rpx;
+  color: #8B7355;
+}
+
+/* 确认按钮 */
+.confirm-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  color: #D4A017;
+  border: none;
+  border-radius: 16rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+  padding: 28rpx;
+  transition: all 0.3s ease;
+}
+
+.confirm-btn[disabled] {
+  background: #ccc;
+  color: #fff;
+}
+
+/* 结果展示 */
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.result-era {
+  background: linear-gradient(135deg, #D4A017 0%, #B8860B 100%);
+  color: #fff;
+  padding: 14rpx 32rpx;
+  border-radius: 30rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.result-badge {
+  padding: 10rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+}
+
+.result-badge.cache {
   background: #e8f5e9;
   color: #2e7d32;
 }
 
-.result-source.template {
+.result-badge.local {
   background: #e3f2fd;
   color: #1565c0;
 }
 
-.result-source.ai {
+.result-badge.ai {
   background: #fff3e0;
   color: #ef6c00;
 }
 
-/* 叙事卡片 */
-.narrative-box, .consequence-box, .reference-box, .reflection-box {
+.result-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  margin-bottom: 30rpx;
+}
+
+.result-card {
   background: #fff;
   border-radius: 20rpx;
-  padding: 30rpx;
-  margin-bottom: 24rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1);
-  border: 2rpx solid #f0f0f0;
-  transition: all 0.3s ease;
+  padding: 28rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.08);
+  border-left: 8rpx solid;
 }
 
-.narrative-box:hover, .consequence-box:hover, .reference-box:hover, .reflection-box:hover {
-  box-shadow: 0 6rpx 20rpx rgba(0,0,0,0.15);
+.result-card.narrative {
+  border-left-color: #D4A017;
 }
 
-.narrative-box .label, .consequence-box .label, .reference-box .label, .reflection-box .label {
-  color: #8d6e63;
-  font-size: 28rpx;
-  display: block;
+.result-card.consequence {
+  border-left-color: #1A365D;
+}
+
+.result-card.reference {
+  border-left-color: #2C5282;
+}
+
+.result-card.insight {
+  border-left-color: #8B7355;
+}
+
+.card-label {
+  display: inline-block;
+  font-size: 24rpx;
+  color: #fff;
+  background: #D4A017;
+  padding: 6rpx 20rpx;
+  border-radius: 20rpx;
   margin-bottom: 16rpx;
-  font-weight: 500;
 }
 
-.narrative-box .content, .consequence-box .content, .reference-box .content, .reflection-box .content {
-  font-size: 30rpx;
+.result-card.narrative .card-label { background: #D4A017; }
+.result-card.consequence .card-label { background: #1A365D; }
+.result-card.reference .card-label { background: #2C5282; }
+.result-card.insight .card-label { background: #8B7355; }
+
+.card-content {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
   line-height: 1.6;
-  color: #3e2723;
 }
 
-/* 操作按钮 */
-.actions {
+/* 结果操作 */
+.result-actions {
   display: flex;
   gap: 20rpx;
-  margin-top: 40rpx;
+  margin-bottom: 40rpx;
 }
 
-.actions button {
+.action-btn {
   flex: 1;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+  padding: 24rpx;
+}
+
+.action-btn.primary {
   background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
   color: #D4A017;
   border: none;
-  border-radius: 15rpx;
-  padding: 20rpx;
-  font-size: 28rpx;
+}
+
+.action-btn.secondary {
+  background: #fff;
+  color: #1A365D;
+  border: 2rpx solid #1A365D;
+}
+
+/* 文心先生咨询面板 */
+.wenxin-panel {
+  background: #fff;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.1);
+  overflow: hidden;
+  border: 2rpx solid #D4A017;
+}
+
+.wenxin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 30rpx;
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+}
+
+.wenxin-title-row {
+  display: flex;
+  align-items: center;
+}
+
+.wenxin-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D4A017 0%, #B8860B 100%);
+  color: #fff;
+  font-size: 36rpx;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+
+.wenxin-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.wenxin-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #fff;
+}
+
+.wenxin-status {
+  font-size: 22rpx;
+  color: rgba(255,255,255,0.7);
+}
+
+.wenxin-toggle {
+  font-size: 36rpx;
+  color: #D4A017;
+}
+
+.wenxin-body {
+  padding: 24rpx 30rpx;
+}
+
+.wenxin-messages {
+  height: 300rpx;
+  margin-bottom: 20rpx;
+}
+
+.wenxin-welcome {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  padding: 20rpx;
+  background: #f9f7f3;
+  border-radius: 16rpx;
+}
+
+.wenxin-welcome text {
+  font-size: 26rpx;
+  color: #1A365D;
+  line-height: 1.5;
+}
+
+.wenxin-message {
+  padding: 20rpx;
+  border-radius: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.wenxin-message.user {
+  background: #e3f2fd;
+  margin-left: 40rpx;
+}
+
+.wenxin-message.ai {
+  background: #fef9f3;
+  margin-right: 40rpx;
+  border-left: 4rpx solid #D4A017;
+}
+
+.message-content {
+  font-size: 26rpx;
+  color: #333;
+  line-height: 1.5;
+}
+
+.wenxin-input-row {
+  display: flex;
+  gap: 16rpx;
+  align-items: center;
+}
+
+.wenxin-input {
+  flex: 1;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  font-size: 26rpx;
   font-family: "STKaiti", "KaiTi", serif;
-  transition: all 0.3s ease;
 }
 
-.actions button:active {
-  transform: scale(0.98);
-  background: linear-gradient(135deg, #2C5282 0%, #1A365D 100%);
+.wenxin-send {
+  background: linear-gradient(135deg, #D4A017 0%, #B8860B 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12rpx;
+  padding: 20rpx 32rpx;
+  font-size: 26rpx;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
-/* Token提示 */
-.token-hint {
-  font-size: 20rpx;
-  color: #9e9e9e;
-  text-align: center;
-  margin-top: 30rpx;
+.wenxin-suggestions {
+  margin-top: 20rpx;
 }
 
-.token-hint.cache {
-  color: #4caf50;
+.suggestion-title {
+  font-size: 24rpx;
+  color: #8B7355;
+  margin-bottom: 12rpx;
+  display: block;
+}
+
+.suggestion-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.suggestion-tag {
+  font-size: 22rpx;
+  color: #1A365D;
+  background: #f5f0e8;
+  padding: 10rpx 20rpx;
+  border-radius: 20rpx;
+  border: 1rpx solid #D4A017;
 }
 
 /* 加载状态 */
-.loading-container {
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  z-index: 999;
+}
+
+.loading-spinner {
+  width: 80rpx;
+  height: 80rpx;
+  border: 6rpx solid #fff;
+  border-top-color: #D4A017;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20rpx;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .loading-text {
-  font-size: 32rpx;
-  color: #1A365D;
-  margin-top: 20rpx;
-  font-family: "STKaiti", "KaiTi", serif;
+  font-size: 28rpx;
+  color: #fff;
 }

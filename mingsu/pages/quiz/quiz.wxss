@@ -1,0 +1,343 @@
+/* mingsu/pages/quiz/quiz.wxss */
+.quiz-container {
+  background: linear-gradient(to bottom, #f8f0e3, #f5e6d3);
+  min-height: 100vh;
+  padding: 20rpx;
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.decoration-top {
+  height: 20rpx;
+  background-image: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=traditional%20chinese%20pattern%20decoration%2C%20ink%20painting%20style&image_size=square_hd');
+  background-size: contain;
+  background-repeat: repeat-x;
+  margin-bottom: 30rpx;
+}
+
+.decoration-bottom {
+  height: 20rpx;
+  background-image: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=traditional%20chinese%20pattern%20decoration%2C%20ink%20painting%20style&image_size=square_hd');
+  background-size: contain;
+  background-repeat: repeat-x;
+  margin-top: 30rpx;
+  transform: rotate(180deg);
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 10rpx;
+}
+
+.page-title text {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+.page-subtitle {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.page-subtitle text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.start-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 600rpx;
+}
+
+.start-content {
+  background: white;
+  border: 2rpx solid #d4a76a;
+  border-radius: 20rpx;
+  padding: 50rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.start-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.start-desc {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 40rpx;
+  display: block;
+}
+
+.start-btn {
+  background: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 20rpx;
+  padding: 20rpx 50rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.start-btn:hover {
+  background: #6B3410;
+  transform: translateY(-2rpx);
+}
+
+.quiz-content {
+  margin-bottom: 30rpx;
+}
+
+.progress-section {
+  margin-bottom: 30rpx;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20rpx;
+  background: white;
+  border-radius: 10rpx;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+  height: 100%;
+  background: #8B4513;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  text-align: right;
+  font-size: 20rpx;
+  color: #666;
+}
+
+.question-section {
+  background: white;
+  border: 2rpx solid #d4a76a;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.question-text {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.5;
+}
+
+.options-section {
+  margin-bottom: 30rpx;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 2rpx solid #d4a76a;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.option-item:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.15);
+}
+
+.option-radio {
+  width: 30rpx;
+  height: 30rpx;
+  border: 2rpx solid #d4a76a;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.option-radio.selected {
+  border-color: #8B4513;
+  background: #8B4513;
+}
+
+.radio-inner {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background: white;
+}
+
+.option-text {
+  flex: 1;
+  font-size: 24rpx;
+  color: #333;
+  line-height: 1.4;
+}
+
+.action-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.action-btn {
+  flex: 1;
+  background: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  background: #6B3410;
+  transform: translateY(-2rpx);
+}
+
+.action-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-text {
+  color: white;
+}
+
+.result-container {
+  background: white;
+  border: 2rpx solid #d4a76a;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 30rpx;
+}
+
+.result-content {
+  text-align: center;
+}
+
+.result-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.result-score {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.result-accuracy {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.analysis-section {
+  margin-top: 30rpx;
+  text-align: left;
+}
+
+.section-title {
+  text-align: center;
+  margin: 30rpx 0;
+}
+
+.section-title text {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #8B4513;
+  padding: 0 20rpx;
+  background: linear-gradient(to right, transparent, #8B4513, transparent);
+  background-size: 100% 2rpx;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  padding-bottom: 10rpx;
+}
+
+.analysis-list {
+  margin-top: 20rpx;
+}
+
+.analysis-item {
+  background: #f8f0e3;
+  border-radius: 15rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.analysis-question {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.analysis-your-answer {
+  font-size: 22rpx;
+  color: #666;
+  margin-bottom: 5rpx;
+  display: block;
+}
+
+.analysis-correct-answer {
+  font-size: 22rpx;
+  color: #2E8B57;
+  margin-bottom: 5rpx;
+  display: block;
+}
+
+.analysis-explanation {
+  font-size: 22rpx;
+  color: #666;
+  line-height: 1.4;
+  display: block;
+}
+
+@media (max-width: 750rpx) {
+  .action-section {
+    flex-direction: column;
+  }
+  
+  .start-content {
+    padding: 30rpx;
+  }
+  
+  .question-section {
+    padding: 20rpx;
+  }
+  
+  .option-item {
+    padding: 15rpx;
+  }
+  
+  .analysis-item {
+    padding: 15rpx;
+  }
+}

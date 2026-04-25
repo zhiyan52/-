@@ -1,2 +1,76 @@
-<!--mingsu/pages/ai-lecture/ai-lecture.wxml-->
-<text>mingsu/pages/ai-lecture/ai-lecture.wxml</text>
+<!-- mingsu/pages/ai-lecture/ai-lecture.wxml -->
+<view class="ai-lecture-container">
+  <!-- 顶部装饰 -->
+  <view class="decoration-top"></view>
+
+  <!-- 页面标题 -->
+  <view class="page-title">
+    <text>AI民俗讲堂</text>
+  </view>
+  <view class="page-subtitle">
+    <text>AI解读民俗文化内涵</text>
+  </view>
+
+  <!-- 主题选择区 -->
+  <view class="theme-section">
+    <view class="section-title">
+      <text>选择民俗主题</text>
+    </view>
+    <view class="theme-grid">
+      <view class="theme-item" wx:for="{{themes}}" wx:key="id" bindtap="selectTheme" data-theme="{{item.id}}">
+        <view class="theme-icon">{{item.icon}}</view>
+        <text class="theme-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 讲解内容区 -->
+  <view class="content-section">
+    <view class="section-title">
+      <text>AI讲解</text>
+    </view>
+    <view class="content-container">
+      <view wx:if="{{!content}}" class="empty-state">
+        <text class="empty-text">请选择一个民俗主题开始讲解</text>
+      </view>
+      <view wx:else class="content-wrapper">
+        <!-- 加载状态 -->
+        <view wx:if="{{loading}}" class="loading-state">
+          <text class="loading-text">AI正在生成讲解内容...</text>
+        </view>
+        <!-- 讲解内容 -->
+        <view wx:else class="lecture-content">
+          <view class="content-item">
+            <text class="content-title">起源与历史</text>
+            <text class="content-text">{{content.origin}}</text>
+          </view>
+          <view class="content-item">
+            <text class="content-title">传统习俗</text>
+            <text class="content-text">{{content.customs}}</text>
+          </view>
+          <view class="content-item">
+            <text class="content-title">诗词文化</text>
+            <text class="content-text">{{content.poetry}}</text>
+          </view>
+          <view class="content-item">
+            <text class="content-title">文化意义</text>
+            <text class="content-text">{{content.meaning}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 交互控制区 -->
+  <view class="control-section">
+    <button class="control-btn" bindtap="refreshContent" disabled="{{!selectedTheme || loading}}">
+      <text class="btn-text">刷新讲解</text>
+    </button>
+    <button class="control-btn" bindtap="playVoice" disabled="{{!content || loading}}">
+      <text class="btn-text">语音讲解</text>
+    </button>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="decoration-bottom"></view>
+</view>

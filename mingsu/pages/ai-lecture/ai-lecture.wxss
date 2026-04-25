@@ -1,0 +1,205 @@
+/* mingsu/pages/ai-lecture/ai-lecture.wxss */
+.ai-lecture-container {
+  background: linear-gradient(to bottom, #f8f0e3, #f5e6d3);
+  min-height: 100vh;
+  padding: 20rpx;
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.decoration-top {
+  height: 20rpx;
+  background-image: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=traditional%20chinese%20pattern%20decoration%2C%20ink%20painting%20style&image_size=square_hd');
+  background-size: contain;
+  background-repeat: repeat-x;
+  margin-bottom: 30rpx;
+}
+
+.decoration-bottom {
+  height: 20rpx;
+  background-image: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=traditional%20chinese%20pattern%20decoration%2C%20ink%20painting%20style&image_size=square_hd');
+  background-size: contain;
+  background-repeat: repeat-x;
+  margin-top: 30rpx;
+  transform: rotate(180deg);
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 10rpx;
+}
+
+.page-title text {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+.page-subtitle {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.page-subtitle text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.section-title {
+  text-align: center;
+  margin: 30rpx 0;
+}
+
+.section-title text {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #8B4513;
+  padding: 0 20rpx;
+  background: linear-gradient(to right, transparent, #8B4513, transparent);
+  background-size: 100% 2rpx;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  padding-bottom: 10rpx;
+}
+
+.theme-section {
+  margin-bottom: 40rpx;
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+}
+
+.theme-item {
+  background: white;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.theme-item:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.15);
+}
+
+.theme-item.selected {
+  background: #8B4513;
+  color: white;
+}
+
+.theme-icon {
+  font-size: 60rpx;
+  margin-bottom: 15rpx;
+}
+
+.theme-name {
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.content-section {
+  margin-bottom: 40rpx;
+}
+
+.content-container {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  min-height: 400rpx;
+}
+
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300rpx;
+}
+
+.empty-text {
+  font-size: 26rpx;
+  color: #999;
+  text-align: center;
+}
+
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300rpx;
+}
+
+.loading-text {
+  font-size: 26rpx;
+  color: #8B4513;
+  text-align: center;
+}
+
+.lecture-content {
+  line-height: 1.6;
+}
+
+.content-item {
+  margin-bottom: 30rpx;
+}
+
+.content-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.content-text {
+  font-size: 24rpx;
+  color: #333;
+  line-height: 1.5;
+}
+
+.control-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.control-btn {
+  flex: 1;
+  background: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+  background: #6B3410;
+  transform: translateY(-2rpx);
+}
+
+.control-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-text {
+  color: white;
+}
+
+@media (max-width: 750rpx) {
+  .theme-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .control-section {
+    flex-direction: column;
+  }
+}

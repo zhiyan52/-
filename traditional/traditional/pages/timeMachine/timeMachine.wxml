@@ -1,103 +1,259 @@
+<!-- traditional/traditional/pages/timeMachine/timeMachine.wxml -->
 <view class="page-container">
- <!-- 选择非遗 -->
-<view class="heritage-select" wx:if="{{step === 'select'}}">
-  <text class="title">选择一项非遗技艺</text>
-  <scroll-view scroll-y class="heritage-list">
-    <view 
-      wx:for="{{heritageList}}" 
-      wx:key="_id"
-      class="heritage-card"
-      bindtap="onSelectHeritage"
-      data-id="{{item._id}}"
-    >
-      <view class="card-image"></view>
-      <text class="name">{{item.name}}</text>
-      <text class="category">传统工艺</text>
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="page-title">非遗时光机</text>
+    <text class="page-subtitle">穿越历史，见证非遗演变</text>
+  </view>
+
+  <!-- 步骤1: 选择非遗技艺 -->
+  <view class="step-container" wx:if="{{step === 'select'}}">
+    <view class="step-indicator">
+      <view class="step-dot active"></view>
+      <view class="step-line"></view>
+      <view class="step-dot"></view>
+      <view class="step-line"></view>
+      <view class="step-dot"></view>
     </view>
-  </scroll-view>
-</view>
 
-<!-- 时间轴 -->
-<view class="era-timeline" wx:if="{{step === 'timeline'}}">
-  <text class="subtitle">{{currentHeritage.name}}的千年演变</text>
-  <view class="timeline">
-    <view 
-      wx:for="{{currentHeritage.eras}}" 
-      wx:key="*this"
-      class="era-node {{unlockedEras.includes(index) ? 'active' : ''}}"
-      bindtap="onSelectEra"
-      data-era="{{item}}"
-      data-index="{{index}}"
-    >
-      <view class="dot"></view>
-      <text>{{item}}</text>
+    <view class="section-header">
+      <text class="section-title">选择一项非遗技艺</text>
+      <text class="section-desc">穿越时光，探索非遗的历史变迁</text>
+    </view>
+
+    <scroll-view scroll-y class="heritage-list">
+      <view
+        wx:for="{{heritageList}}"
+        wx:key="_id"
+        class="heritage-card"
+        bindtap="onSelectHeritage"
+        data-id="{{item._id}}"
+      >
+        <view class="heritage-icon" style="background: {{item.color}}">
+          <text>{{item.icon}}</text>
+        </view>
+        <view class="heritage-info">
+          <text class="heritage-name">{{item.name}}</text>
+          <text class="heritage-desc">{{item.brief}}</text>
+        </view>
+        <view class="heritage-arrow">›</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 步骤2: 选择历史时期 -->
+  <view class="step-container" wx:if="{{step === 'timeline'}}">
+    <view class="step-indicator">
+      <view class="step-dot active"></view>
+      <view class="step-line active"></view>
+      <view class="step-dot active"></view>
+      <view class="step-line"></view>
+      <view class="step-dot"></view>
+    </view>
+
+    <view class="section-header">
+      <text class="section-title">{{currentHeritage.name}}的千年演变</text>
+      <text class="section-desc">选择一个时代，开始你的穿越之旅</text>
+    </view>
+
+    <view class="timeline-container">
+      <view class="timeline-line"></view>
+      <view
+        wx:for="{{currentHeritage.eras}}"
+        wx:key="index"
+        class="timeline-item {{unlockedEras.includes(index) ? 'unlocked' : 'locked'}}"
+        bindtap="onSelectEra"
+        data-era="{{item.name}}"
+        data-index="{{index}}"
+      >
+        <view class="timeline-dot">
+          <view class="dot-inner" wx:if="{{unlockedEras.includes(index)}}"></view>
+        </view>
+        <view class="timeline-content">
+          <text class="era-name">{{item.name}}</text>
+          <text class="era-year">{{item.year}}</text>
+          <view class="era-tags">
+            <text class="era-tag" wx:for="{{item.features}}" wx:key="*this">{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <button class="back-btn" bindtap="goBack">重新选择</button>
+  </view>
+
+  <!-- 步骤3: 场景穿越与决策 -->
+  <view class="step-container" wx:if="{{step === 'scene'}}">
+    <view class="step-indicator">
+      <view class="step-dot active"></view>
+      <view class="step-line active"></view>
+      <view class="step-dot active"></view>
+      <view class="step-line active"></view>
+      <view class="step-dot active"></view>
+    </view>
+
+    <!-- 穿越动画 -->
+    <view class="time-travel-animation" wx:if="{{isTimeTraveling}}">
+      <view class="time-vortex"></view>
+      <text class="travel-text">时光流转中...</text>
+      <text class="travel-era">{{targetEra}}</text>
+    </view>
+
+    <!-- 场景内容 -->
+    <view class="scene-content" wx:else>
+      <view class="scene-header">
+        <view class="era-badge">
+          <text>{{currentEra}}</text>
+        </view>
+        <view class="scene-progress">
+          <text>决策 {{currentDecision + 1}}/{{totalDecisions}}</text>
+        </view>
+      </view>
+
+      <view class="scene-card">
+        <view class="scene-role">
+          <text>你是一位{{currentScene.role}}</text>
+        </view>
+        <text class="scene-description">{{currentScene.description}}</text>
+        <view class="scene-question">
+          <text>{{currentScene.question}}</text>
+        </view>
+      </view>
+
+      <view class="options-container">
+        <view
+          wx:for="{{currentScene.options}}"
+          wx:key="id"
+          class="option-card {{selectedOptionId === item.id ? 'selected' : ''}}"
+          bindtap="onSelectOption"
+          data-id="{{item.id}}"
+        >
+          <view class="option-icon">{{item.icon}}</view>
+          <view class="option-text">
+            <text class="option-title">{{item.title}}</text>
+            <text class="option-desc">{{item.description}}</text>
+          </view>
+        </view>
+      </view>
+
+      <button
+        class="confirm-btn"
+        bindtap="onConfirmChoice"
+        disabled="{{!selectedOptionId}}"
+      >
+        确认选择
+      </button>
     </view>
   </view>
-</view>
 
-<!-- 场景决策 -->
-<view class="scene-container" wx:if="{{step === 'scene'}}">
-  <view class="role-badge">
-    <text>你是一位{{currentScene.role}}</text>
-  </view>
-  
-  <view class="scene-card">
-    <text class="era-tag">{{currentEra}}</text>
-    <text class="scene-text">{{currentScene.scene}}</text>
-  </view>
-  
-  <view class="options">
-    <button 
-      wx:for="{{currentScene.options}}" 
-      wx:key="id"
-      class="option-btn"
-      bindtap="onMakeChoice"
-      data-id="{{item.id}}"
-    >
-      {{item.text}}
-    </button>
-  </view>
-</view>
+  <!-- 步骤4: 结果展示 -->
+  <view class="step-container" wx:if="{{step === 'result'}}">
+    <view class="step-indicator">
+      <view class="step-dot active"></view>
+      <view class="step-line active"></view>
+      <view class="step-dot active"></view>
+      <view class="step-line active"></view>
+      <view class="step-dot active"></view>
+    </view>
 
-<!-- 结果展示 -->
-<view class="result-container" wx:if="{{step === 'result'}}">
-  <view class="result-source {{result.source}}">
-    <text>{{sourceText[result.source]}}</text>
+    <view class="result-header">
+      <view class="result-era">
+        <text>{{result.era}}</text>
+      </view>
+      <view class="result-badge {{result.source}}">
+        <text>{{sourceText[result.source]}}</text>
+      </view>
+    </view>
+
+    <view class="result-cards">
+      <view class="result-card narrative">
+        <view class="card-label">当时</view>
+        <text class="card-content">{{result.narrative}}</text>
+      </view>
+
+      <view class="result-card consequence">
+        <view class="card-label">后来</view>
+        <text class="card-content">{{result.consequence}}</text>
+      </view>
+
+      <view class="result-card reference">
+        <view class="card-label">史实</view>
+        <text class="card-content">{{result.reference}}</text>
+      </view>
+
+      <view class="result-card insight">
+        <view class="card-label">思考</view>
+        <text class="card-content">{{result.insight}}</text>
+      </view>
+    </view>
+
+    <view class="result-actions">
+      <button class="action-btn secondary" bindtap="continueJourney">
+        {{hasMoreContent ? '继续探索' : '完成旅程'}}
+      </button>
+      <button class="action-btn primary" bindtap="shareJourney" open-type="share">
+        分享旅程
+      </button>
+    </view>
+
+    <!-- 文心先生咨询窗口 -->
+    <view class="wenxin-panel">
+      <view class="wenxin-header" bindtap="toggleWenxinPanel">
+        <view class="wenxin-title-row">
+          <text class="wenxin-avatar">文</text>
+          <view class="wenxin-info">
+            <text class="wenxin-name">文心先生</text>
+            <text class="wenxin-status">{{wenxinPanelOpen ? '点击收起' : '随时为您解答'}}</text>
+          </view>
+        </view>
+        <text class="wenxin-toggle">{{wenxinPanelOpen ? '∧' : '∨'}}</text>
+      </view>
+
+      <view class="wenxin-body" wx:if="{{wenxinPanelOpen}}">
+        <scroll-view scroll-y class="wenxin-messages">
+          <view wx:if="{{wenxinMessages.length === 0}}" class="wenxin-welcome">
+            <text>欢迎来到非遗时光机！</text>
+            <text>我是文心先生，任何关于非遗的问题，都可以向我咨询哦~</text>
+          </view>
+          <view
+            wx:for="{{wenxinMessages}}"
+            wx:key="index"
+            class="wenxin-message {{item.type}}"
+          >
+            <text class="message-content">{{item.content}}</text>
+          </view>
+        </scroll-view>
+
+        <view class="wenxin-input-row">
+          <input
+            type="text"
+            class="wenxin-input"
+            placeholder="输入问题..."
+            bindinput="onWenxinInput"
+            value="{{wenxinInput}}"
+          />
+          <button class="wenxin-send" bindtap="sendWenxinMessage">发送</button>
+        </view>
+
+        <view class="wenxin-suggestions" wx:if="{{wenxinMessages.length === 0}}">
+          <text class="suggestion-title">常见问题：</text>
+          <view class="suggestion-tags">
+            <text
+              wx:for="{{suggestionQuestions}}"
+              wx:key="*this"
+              class="suggestion-tag"
+              bindtap="askSuggestion"
+              data-question="{{item}}"
+            >{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
-  
-  <!-- 叙事动画 -->
-  <view class="narrative-box" animation="{{fadeIn}}">
-    <text class="label">当时...</text>
-    <text class="content">{{result.ai && result.ai.narrative ? result.ai.narrative : (result.content && result.content.narrative ? result.content.narrative : '')}}</text>
+
+  <!-- 加载状态 -->
+  <view class="loading-overlay" wx:if="{{isLoading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">{{loadingText}}</text>
   </view>
-  
-  <view class="consequence-box" animation="{{fadeInDelay1}}">
-    <text class="label">后来...</text>
-    <text class="content">{{result.ai && result.ai.consequence ? result.ai.consequence : (result.content && result.content.consequence ? result.content.consequence : '')}}</text>
-  </view>
-  
-  <view class="reference-box" animation="{{fadeInDelay2}}">
-    <text class="label">史实对照</text>
-    <text class="content">{{result.ai && result.ai.realReference ? result.ai.realReference : (result.content && result.content.realReference ? result.content.realReference : '')}}</text>
-  </view>
-  
-  <view class="reflection-box" animation="{{fadeInDelay3}}">
-    <text class="label">思考</text>
-    <text class="content">{{result.ai && result.ai.reflection ? result.ai.reflection : (result.content && result.content.reflection ? result.content.reflection : '')}}</text>
-  </view>
-  
-  <!-- 操作 -->
-  <view class="actions">
-    <button bindtap="continueNext">继续探索</button>
-    <button bindtap="shareResult" open-type="share">分享手账</button>
-  </view>
-  
-  <!-- Token消耗提示（调试用，上线可隐藏） -->
-  <text class="token-hint" wx:if="{{result.tokenCost > 0}}">
-    AI生成消耗 {{result.tokenCost}} Token
-  </text>
-  <text class="token-hint cache" wx:else>
-    来自知识库/缓存
-  </text>
-</view>
 </view>

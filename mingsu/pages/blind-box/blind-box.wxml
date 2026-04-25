@@ -1,2 +1,69 @@
-<!--mingsu/pages/blind-box/blind-box.wxml-->
-<text>mingsu/pages/blind-box/blind-box.wxml</text>
+<!-- mingsu/pages/blind-box/blind-box.wxml -->
+<view class="blind-box-container">
+  <!-- 顶部装饰 -->
+  <view class="decoration-top"></view>
+
+  <!-- 页面标题 -->
+  <view class="page-title">
+    <text>风物盲盒</text>
+  </view>
+  <view class="page-subtitle">
+    <text>每日随机获得民俗知识</text>
+  </view>
+
+  <!-- 盲盒展示区 -->
+  <view class="blind-box-section">
+    <view class="section-title">
+      <text>今日盲盒</text>
+    </view>
+    <view class="blind-box-container">
+      <view wx:if="{{!hasOpenedToday}}" class="blind-box" bindtap="openBlindBox">
+        <image class="blind-box-image" src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20traditional%20blind%20box%2C%20ink%20painting%20style&image_size=square_hd" mode="aspectFit"></image>
+        <text class="blind-box-text">点击打开盲盒</text>
+      </view>
+      <view wx:else class="blind-box-opened">
+        <text class="blind-box-opened-text">今日盲盒已打开</text>
+        <text class="blind-box-tomorrow-text">明天再来哦～</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 详情区 -->
+  <view wx:if="{{selectedItem}}" class="detail-section">
+    <view class="section-title">
+      <text>民俗知识详情</text>
+    </view>
+    <view class="detail-content">
+      <text class="detail-title">{{selectedItem.title}}</text>
+      <text class="detail-description">{{selectedItem.description}}</text>
+      <text class="detail-meaning">{{selectedItem.meaning}}</text>
+    </view>
+    <view class="detail-actions">
+      <button class="action-btn" bindtap="collectItem">
+        <text class="btn-text">{{selectedItem.collected ? '已收藏' : '收藏'}}</text>
+      </button>
+      <button class="action-btn" bindtap="shareItem">
+        <text class="btn-text">分享</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 历史记录区 -->
+  <view class="history-section">
+    <view class="section-title">
+      <text>历史记录</text>
+    </view>
+    <view class="history-list">
+      <view wx:for="{{historyList}}" wx:key="id" class="history-item" bindtap="selectHistoryItem" data-item="{{item}}">
+        <text class="history-title">{{item.title}}</text>
+        <text class="history-date">{{item.date}}</text>
+      </view>
+      <view wx:if="{{historyList.length === 0}}" class="empty-history">
+        <text class="empty-text">暂无历史记录</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="decoration-bottom"></view>
+</view>

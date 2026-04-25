@@ -1,2 +1,80 @@
-<!--mingsu/pages/card/card.wxml-->
-<text>mingsu/pages/card/card.wxml</text>
+<!-- mingsu/pages/card/card.wxml -->
+<view class="card-container">
+  <!-- 顶部装饰 -->
+  <view class="decoration-top"></view>
+
+  <!-- 页面标题 -->
+  <view class="page-title">
+    <text>卡片生成</text>
+  </view>
+  <view class="page-subtitle">
+    <text>生成可保存的民俗卡片</text>
+  </view>
+
+  <!-- 模板选择区 -->
+  <view class="template-section">
+    <view class="section-title">
+      <text>选择模板</text>
+    </view>
+    <view class="template-grid">
+      <view class="template-item" wx:for="{{templates}}" wx:key="id" bindtap="selectTemplate" data-template="{{item.id}}">
+        <image class="template-image" src="{{item.preview}}" mode="aspectFill"></image>
+        <text class="template-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 内容编辑区 -->
+  <view class="edit-section">
+    <view class="section-title">
+      <text>编辑内容</text>
+    </view>
+    <view class="edit-container">
+      <view class="edit-item">
+        <text class="edit-label">标题</text>
+        <input class="edit-input" placeholder="请输入卡片标题" bindinput="bindTitleInput" value="{{cardTitle}}"></input>
+      </view>
+      <view class="edit-item">
+        <text class="edit-label">内容</text>
+        <textarea class="edit-textarea" placeholder="请输入卡片内容" bindinput="bindContentInput" value="{{cardContent}}"></textarea>
+      </view>
+      <view class="edit-item">
+        <text class="edit-label">主题</text>
+        <picker class="edit-picker" bindchange="bindThemeChange" value="{{themeIndex}}" range="{{themes}}">
+          <view class="picker-text">{{themes[themeIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <!-- 预览区 -->
+  <view class="preview-section">
+    <view class="section-title">
+      <text>预览效果</text>
+    </view>
+    <view class="preview-container">
+      <view wx:if="{{!selectedTemplate}}" class="empty-state">
+        <text class="empty-text">请选择模板并编辑内容</text>
+      </view>
+      <view wx:else class="card-preview">
+        <image class="preview-image" src="{{cardPreview}}" mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作区 -->
+  <view class="action-section">
+    <button class="action-btn" bindtap="generateCard" disabled="{{!selectedTemplate || !cardTitle || !cardContent}}">
+      <text class="btn-text">生成卡片</text>
+    </button>
+    <button class="action-btn" bindtap="saveCard" disabled="{{!cardPreview}}">
+      <text class="btn-text">保存到相册</text>
+    </button>
+    <button class="action-btn" bindtap="shareCard" disabled="{{!cardPreview}}">
+      <text class="btn-text">分享卡片</text>
+    </button>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="decoration-bottom"></view>
+</view>

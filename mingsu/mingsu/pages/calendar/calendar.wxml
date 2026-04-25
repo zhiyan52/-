@@ -1,0 +1,152 @@
+<view class="calendar-container">
+  <!-- 顶部装饰 -->
+  <view class="decoration-top"></view>
+  
+  <!-- 页面标题 -->
+  <view class="page-title">
+    <text class="title-text">二十四节气与中华传统文化</text>
+    <text class="subtitle-text">探索中国传统智慧的时间密码</text>
+  </view>
+
+  <!-- 顶部标签切换 -->
+  <view class="tab-container">
+    <view class="tab-item {{activeTab === 'solar' ? 'active' : ''}}" bindtap="switchTab" data-tab="solar">
+      <text class="tab-text">二十四节气</text>
+    </view>
+    <view class="tab-item {{activeTab === 'festival' ? 'active' : ''}}" bindtap="switchTab" data-tab="festival">
+      <text class="tab-text">传统节日</text>
+    </view>
+    <view class="tab-item {{activeTab === 'culture' ? 'active' : ''}}" bindtap="switchTab" data-tab="culture">
+      <text class="tab-text">文化科普</text>
+    </view>
+  </view>
+
+  <!-- 节气列表 -->
+  <view class="list-container" wx:if="{{activeTab === 'solar'}}">
+    <!-- 节气分类 -->
+    <view class="season-tabs">
+      <view class="season-tab {{activeSeason === 'spring' ? 'active' : ''}}" bindtap="switchSeason" data-season="spring">
+        <text class="season-text">春季</text>
+      </view>
+      <view class="season-tab {{activeSeason === 'summer' ? 'active' : ''}}" bindtap="switchSeason" data-season="summer">
+        <text class="season-text">夏季</text>
+      </view>
+      <view class="season-tab {{activeSeason === 'autumn' ? 'active' : ''}}" bindtap="switchSeason" data-season="autumn">
+        <text class="season-text">秋季</text>
+      </view>
+      <view class="season-tab {{activeSeason === 'winter' ? 'active' : ''}}" bindtap="switchSeason" data-season="winter">
+        <text class="season-text">冬季</text>
+      </view>
+    </view>
+
+    <!-- 节气卡片 -->
+    <view class="solar-grid">
+      <view class="solar-card" wx:for="{{filteredSolarTerms}}" wx:key="id" bindtap="showDetail" data-type="solar" data-id="{{item.id}}">
+        <view class="solar-card-header">
+          <text class="solar-card-name">{{item.name}}</text>
+          <text class="solar-card-date">{{item.date}}</text>
+        </view>
+        <image class="solar-card-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="solar-card-footer">
+          <text class="solar-card-desc">{{item.meaning}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 传统节日 -->
+  <view class="list-container" wx:if="{{activeTab === 'festival'}}">
+    <view class="festival-item" wx:for="{{festivals}}" wx:key="id" bindtap="showDetail" data-type="festival" data-id="{{item.id}}">
+      <image class="festival-image" src="{{item.image}}" mode="aspectFill"></image>
+      <view class="festival-content">
+        <text class="festival-name">{{item.name}}</text>
+        <text class="festival-date">{{item.date}}</text>
+        <text class="festival-desc">{{item.meaning}}</text>
+        <view class="festival-tags">
+          <text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 文化科普 -->
+  <view class="list-container" wx:if="{{activeTab === 'culture'}}">
+    <view class="culture-section">
+      <text class="section-title">节气文化</text>
+      <view class="culture-card" bindtap="showCultureDetail" data-type="solar-culture">
+        <view class="culture-card-header">
+          <text class="culture-card-title">二十四节气的起源</text>
+        </view>
+        <text class="culture-card-desc">了解二十四节气的历史渊源和科学价值</text>
+      </view>
+      <view class="culture-card" bindtap="showCultureDetail" data-type="solar-system">
+        <view class="culture-card-header">
+          <text class="culture-card-title">节气与农业生产</text>
+        </view>
+        <text class="culture-card-desc">探索节气对中国传统农业的指导作用</text>
+      </view>
+    </view>
+
+    <view class="culture-section">
+      <text class="section-title">传统智慧</text>
+      <view class="culture-card" bindtap="showCultureDetail" data-type="traditional-medicine">
+        <view class="culture-card-header">
+          <text class="culture-card-title">节气与中医养生</text>
+        </view>
+        <text class="culture-card-desc">了解节气变化与人体健康的关系</text>
+      </view>
+      <view class="culture-card" bindtap="showCultureDetail" data-type="traditional-philosophy">
+        <view class="culture-card-header">
+          <text class="culture-card-title">节气与传统文化</text>
+        </view>
+        <text class="culture-card-desc">探索节气在诗词、绘画等文化领域的体现</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 详情弹窗 -->
+  <view class="detail-modal" wx:if="{{showDetailModal}}">
+    <view class="detail-content">
+      <view class="detail-header">
+        <text class="detail-title">{{detailData.name || detailData.title}}</text>
+        <view class="detail-close" bindtap="closeDetail">×</view>
+      </view>
+      <image class="detail-image" wx:if="{{detailData.image}}" src="{{detailData.image}}" mode="aspectFill"></image>
+      <view class="detail-info">
+        <view class="info-item" wx:if="{{detailData.date}}">
+          <text class="info-label">时间：</text>
+          <text class="info-value">{{detailData.date}}</text>
+        </view>
+        <view class="info-item" wx:if="{{detailData.origin}}">
+          <text class="info-label">起源：</text>
+          <text class="info-value">{{detailData.origin}}</text>
+        </view>
+        <view class="info-item" wx:if="{{detailData.climate}}">
+          <text class="info-label">气候特点：</text>
+          <text class="info-value">{{detailData.climate}}</text>
+        </view>
+        <view class="info-item" wx:if="{{detailData.customs}}">
+          <text class="info-label">传统习俗：</text>
+          <text class="info-value">{{detailData.customs}}</text>
+        </view>
+        <view class="info-item" wx:if="{{detailData.activities}}">
+          <text class="info-label">民俗活动：</text>
+          <view class="activities-list">
+            <text class="activity-tag" wx:for="{{detailData.activities}}" wx:key="*this">{{item}}</text>
+          </view>
+        </view>
+        <view class="info-item" wx:if="{{detailData.meaning}}">
+          <text class="info-label">文化寓意：</text>
+          <text class="info-value">{{detailData.meaning}}</text>
+        </view>
+        <view class="info-item" wx:if="{{detailData.content}}">
+          <text class="info-value">{{detailData.content}}</text>
+        </view>
+        <view class="info-item" wx:if="{{detailData.poetry}}">
+          <text class="info-label">相关诗词：</text>
+          <text class="info-value poetry">{{detailData.poetry}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

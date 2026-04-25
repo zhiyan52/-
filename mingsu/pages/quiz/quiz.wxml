@@ -1,2 +1,94 @@
-<!--mingsu/pages/quiz/quiz.wxml-->
-<text>mingsu/pages/quiz/quiz.wxml</text>
+<!-- mingsu/pages/quiz/quiz.wxml -->
+<view class="quiz-container">
+  <!-- 顶部装饰 -->
+  <view class="decoration-top"></view>
+
+  <!-- 页面标题 -->
+  <view class="page-title">
+    <text>知识答题</text>
+  </view>
+  <view class="page-subtitle">
+    <text>民俗知识小测试</text>
+  </view>
+
+  <!-- 开始界面 -->
+  <view wx:if="{{!started}}" class="start-container">
+    <view class="start-content">
+      <text class="start-title">民俗知识小测试</text>
+      <text class="start-desc">测试你对中国传统民俗文化的了解程度</text>
+      <button class="start-btn" bindtap="startQuiz">
+        <text class="btn-text">开始答题</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 答题界面 -->
+  <view wx:elif="{{!completed}}" class="quiz-content">
+    <!-- 进度条 -->
+    <view class="progress-section">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{(currentQuestionIndex + 1) / questions.length * 100}}%"></view>
+      </view>
+      <text class="progress-text">{{currentQuestionIndex + 1}} / {{questions.length}}</text>
+    </view>
+
+    <!-- 题目 -->
+    <view class="question-section">
+      <text class="question-text">{{questions[currentQuestionIndex].question}}</text>
+    </view>
+
+    <!-- 选项 -->
+    <view class="options-section">
+      <view class="option-item" wx:for="{{questions[currentQuestionIndex].options}}" wx:key="index" bindtap="selectOption" data-index="{{index}}" data-option="{{item}}">
+        <view class="option-radio {{selectedOption === index ? 'selected' : ''}}">
+          <view wx:if="{{selectedOption === index}}" class="radio-inner"></view>
+        </view>
+        <text class="option-text">{{item}}</text>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-section">
+      <button class="action-btn" bindtap="nextQuestion" disabled="{{selectedOption === null}}">
+        <text class="btn-text">{{currentQuestionIndex === questions.length - 1 ? '提交答案' : '下一题'}}</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 结果界面 -->
+  <view wx:else class="result-container">
+    <view class="result-content">
+      <text class="result-title">答题完成</text>
+      <text class="result-score">得分：{{score}} / {{questions.length * 10}}</text>
+      <text class="result-accuracy">正确率：{{Math.round((score / (questions.length * 10)) * 100)}}%</text>
+      
+      <!-- 答题解析 -->
+      <view class="analysis-section">
+        <view class="section-title">
+          <text>答题解析</text>
+        </view>
+        <view class="analysis-list">
+          <view class="analysis-item" wx:for="{{questions}}" wx:key="{{item.id}}">
+            <text class="analysis-question">{{index + 1}}. {{item.question}}</text>
+            <text class="analysis-your-answer">你的答案：{{item.userAnswer || '未作答'}}</text>
+            <text class="analysis-correct-answer">正确答案：{{item.options[item.correctIndex]}}</text>
+            <text class="analysis-explanation">解析：{{item.explanation}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="action-section">
+        <button class="action-btn" bindtap="restartQuiz">
+          <text class="btn-text">重新答题</text>
+        </button>
+        <button class="action-btn" bindtap="backHome">
+          <text class="btn-text">返回首页</text>
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="decoration-bottom"></view>
+</view>

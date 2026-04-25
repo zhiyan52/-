@@ -1,2 +1,80 @@
-<!--mingsu/pages/ai-image/ai-image.wxml-->
-<text>mingsu/pages/ai-image/ai-image.wxml</text>
+<!-- mingsu/pages/ai-image/ai-image.wxml -->
+<view class="ai-image-container">
+  <!-- 顶部装饰 -->
+  <view class="decoration-top"></view>
+
+  <!-- 页面标题 -->
+  <view class="page-title">
+    <text>意境生图</text>
+  </view>
+  <view class="page-subtitle">
+    <text>AI生成民俗主题水墨插画</text>
+  </view>
+
+  <!-- 主题输入区 -->
+  <view class="input-section">
+    <view class="section-title">
+      <text>输入主题</text>
+    </view>
+    <view class="input-container">
+      <input class="theme-input" placeholder="请输入民俗主题，如：春节、中秋、清明等" bindinput="bindThemeInput" value="{{theme}}"></input>
+      <button class="generate-btn" bindtap="generateImage" disabled="{{!theme || loading}}">
+        <text class="btn-text">生成图片</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 参数调整区 -->
+  <view class="params-section">
+    <view class="section-title">
+      <text>风格调整</text>
+    </view>
+    <view class="params-grid">
+      <view class="param-item">
+        <text class="param-label">风格</text>
+        <picker class="param-picker" bindchange="bindStyleChange" value="{{styleIndex}}" range="{{styles}}">
+          <view class="picker-text">{{styles[styleIndex]}}</view>
+        </picker>
+      </view>
+      <view class="param-item">
+        <text class="param-label">色调</text>
+        <picker class="param-picker" bindchange="bindColorChange" value="{{colorIndex}}" range="{{colors}}">
+          <view class="picker-text">{{colors[colorIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <!-- 结果展示区 -->
+  <view class="result-section">
+    <view class="section-title">
+      <text>生成结果</text>
+    </view>
+    <view class="result-container">
+      <view wx:if="{{!imageUrl}}" class="empty-state">
+        <text class="empty-text">请输入主题并点击生成按钮</text>
+      </view>
+      <view wx:else class="image-container">
+        <!-- 加载状态 -->
+        <view wx:if="{{loading}}" class="loading-state">
+          <text class="loading-text">AI正在生成图片...</text>
+        </view>
+        <!-- 生成的图片 -->
+        <image wx:else class="generated-image" src="{{imageUrl}}" mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作区 -->
+  <view class="action-section">
+    <button class="action-btn" bindtap="saveImage" disabled="{{!imageUrl || loading}}">
+      <text class="btn-text">保存到相册</text>
+    </button>
+    <button class="action-btn" bindtap="shareImage" disabled="{{!imageUrl || loading}}">
+      <text class="btn-text">分享图片</text>
+    </button>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="decoration-bottom"></view>
+</view>

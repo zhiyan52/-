@@ -1,0 +1,252 @@
+/* mingsu/pages/blind-box/blind-box.wxss */
+.blind-box-container {
+  background: linear-gradient(to bottom, #f8f0e3, #f5e6d3);
+  min-height: 100vh;
+  padding: 20rpx;
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.decoration-top {
+  height: 20rpx;
+  background-image: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=traditional%20chinese%20pattern%20decoration%2C%20ink%20painting%20style&image_size=square_hd');
+  background-size: contain;
+  background-repeat: repeat-x;
+  margin-bottom: 30rpx;
+}
+
+.decoration-bottom {
+  height: 20rpx;
+  background-image: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=traditional%20chinese%20pattern%20decoration%2C%20ink%20painting%20style&image_size=square_hd');
+  background-size: contain;
+  background-repeat: repeat-x;
+  margin-top: 30rpx;
+  transform: rotate(180deg);
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 10rpx;
+}
+
+.page-title text {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+.page-subtitle {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.page-subtitle text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.section-title {
+  text-align: center;
+  margin: 30rpx 0;
+}
+
+.section-title text {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #8B4513;
+  padding: 0 20rpx;
+  background: linear-gradient(to right, transparent, #8B4513, transparent);
+  background-size: 100% 2rpx;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  padding-bottom: 10rpx;
+}
+
+.blind-box-section {
+  margin-bottom: 40rpx;
+}
+
+.blind-box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.blind-box {
+  background: white;
+  border: 2rpx solid #d4a76a;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.blind-box:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 10rpx 20rpx rgba(0, 0, 0, 0.15);
+}
+
+.blind-box-image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+}
+
+.blind-box-text {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+.blind-box-opened {
+  background: white;
+  border: 2rpx solid #d4a76a;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.blind-box-opened-text {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.blind-box-tomorrow-text {
+  font-size: 20rpx;
+  color: #666;
+}
+
+.detail-section {
+  margin-bottom: 40rpx;
+}
+
+.detail-content {
+  background: white;
+  border: 2rpx solid #d4a76a;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 20rpx;
+}
+
+.detail-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.detail-description {
+  font-size: 22rpx;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.detail-meaning {
+  font-size: 22rpx;
+  color: #666;
+  line-height: 1.5;
+  display: block;
+}
+
+.detail-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.action-btn {
+  flex: 1;
+  background: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  background: #6B3410;
+  transform: translateY(-2rpx);
+}
+
+.btn-text {
+  color: white;
+}
+
+.history-section {
+  margin-bottom: 30rpx;
+}
+
+.history-list {
+  background: white;
+  border: 2rpx solid #d4a76a;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.history-item {
+  padding: 20rpx;
+  border-bottom: 1rpx solid #f0e6d2;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.history-item:hover {
+  background: #f8f0e3;
+  border-radius: 10rpx;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-title {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 5rpx;
+  display: block;
+}
+
+.history-date {
+  font-size: 18rpx;
+  color: #999;
+}
+
+.empty-history {
+  text-align: center;
+  padding: 40rpx;
+}
+
+.empty-text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+@media (max-width: 750rpx) {
+  .blind-box-image {
+    width: 150rpx;
+    height: 150rpx;
+  }
+  
+  .detail-actions {
+    flex-direction: column;
+  }
+  
+  .history-item {
+    padding: 15rpx;
+  }
+}
