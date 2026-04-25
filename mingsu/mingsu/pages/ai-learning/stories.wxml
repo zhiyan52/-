@@ -1,0 +1,57 @@
+<!-- mingsu/mingsu/pages/ai-learning/stories.wxml -->
+<view class="stories-container">
+  <!-- 顶部标题 -->
+  <view class="stories-header">
+    <text class="stories-title">民俗故事汇</text>
+    <text class="stories-subtitle">AI为你讲述生动有趣的民俗传说与故事</text>
+  </view>
+
+  <!-- 故事分类 -->
+  <view class="story-categories">
+    <text class="section-title">故事分类</text>
+    <view class="categories-tabs">
+      <view 
+        wx:for="{{categories}}" 
+        wx:key="id" 
+        class="category-tab {{activeCategory === item.id ? 'active' : ''}}"
+        bindtap="switchCategory" 
+        data-id="{{item.id}}"
+      >
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 故事列表 -->
+  <view class="stories-list">
+    <text class="section-title">推荐故事</text>
+    <view class="stories-grid">
+      <view wx:for="{{stories}}" wx:key="id" class="story-card" bindtap="viewStory" data-id="{{item.id}}">
+        <view class="story-icon">{{item.icon}}</view>
+        <text class="story-title">{{item.title}}</text>
+        <text class="story-desc">{{item.desc}}</text>
+        <view class="story-meta">
+          <text class="story-length">{{item.length}}分钟</text>
+          <text class="story-age">{{item.age}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- AI故事生成 -->
+  <view class="ai-story-generator">
+    <text class="section-title">AI故事生成</text>
+    <view class="generator-card">
+      <text class="generator-desc">告诉AI你想了解的民俗主题，它会为你生成独特的故事</text>
+      <input 
+        class="generator-input" 
+        placeholder="输入民俗主题，如：春节、中秋、龙舟节..."
+        value="{{storyTopic}}"
+        bindinput="onStoryTopicChange"
+      />
+      <button class="generate-btn" bindtap="generateStory" disabled="{{!storyTopic.trim() || generating}}">
+        {{generating ? '生成中...' : '生成故事'}}
+      </button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,114 @@
+<!-- mingsu/mingsu/pages/annual-ring/annual-ring.wxml -->
+<view class="annual-page">
+
+  <!--年份选择-->
+  <view class="year-selector">
+    <text class="year-btn" bindtap="changeYear" data-delta="-1">◀</text>
+    <text class="year-text">{{year}}年</text>
+    <text class="year-btn" bindtap="changeYear" data-delta="1">▶</text>
+  </view>
+
+  <!--年轮画布-->
+  <view class="ring-container">
+    <canvas 
+      type="2d" 
+      id="ring-canvas" 
+      class="ring-canvas" 
+      style="width: {{canvasSize}}rpx; height: {{canvasSize}}rpx;" 
+      bindtap="onRingTap"
+    />
+    
+    <!--图例-->
+    <view class="ring-legend">
+      <view class="legend-item">
+        <view class="legend-color" style="background: #8B4513"/>
+        <text>春</text>
+      </view>
+      <view class="legend-item">
+        <view class="legend-color" style="background: #228B22"/>
+        <text>夏</text>
+      </view>
+      <view class="legend-item">
+        <view class="legend-color" style="background: #DAA520"/>
+        <text>秋</text>
+      </view>
+      <view class="legend-item">
+        <view class="legend-color" style="background: #4682B4"/>
+        <text>冬</text>
+      </view>
+      <view class="legend-item">
+        <view class="legend-dot" style="border-color: #FF6B6B"/>
+        <text>有照片</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- AI年度总结-->
+  <view class="summary-card" wx:if="{{summary}}">
+    <text class="summary-label">岁语</text>
+    <text class="summary-text">{{summary}}</text>
+    <text class="summary-ai" wx:if="{{summary.length > 50}}">— DeepSeek</text>
+  </view>
+
+  <!--数据统计-->
+  <view class="stats-grid">
+    <view class="stat-item">
+      <text class="stat-num">{{stats.totalTerms || 0}}</text>
+      <text class="stat-label">节气参与</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-num">{{stats.totalCustoms || 0}}</text>
+      <text class="stat-label">习俗完成</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-num">{{stats.totalObservations || 0}}</text>
+      <text class="stat-label">物候观察</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-num">{{stats.totalPhotos || 0}}</text>
+      <text class="stat-label">瞬间记录</text>
+    </view>
+    <view class="stat-item wide">
+      <text class="stat-num">{{stats.avgIntensity ? Math.round(stats.avgIntensity * 100) : 0}}%</text>
+      <text class="stat-label">平均参与度</text>
+    </view>
+    <view class="stat-item wide">
+      <text class="stat-text">{{stats.favoriteTerm || '-'}}</text>
+      <text class="stat-label">最热衷节气</text>
+    </view>
+  </view>
+
+  <!--节气列表-->
+  <view class="term-list">
+    <text class="list-title">二十四节气详情</text>
+    <view wx:for="{{ringData}}" wx:key="id" 
+      class="term-item {{item.intensity > 0 ? 'active' : ''}}" 
+      bindtap="goToDetail" 
+      data-id="{{item.id}}"
+    >
+      <view class="term-ring-preview" style="opacity: {{0.2 + item.intensity * 0.8}}">
+        <view class="mini-ring" style="background: {{item.intensity > 0 ? '#8B4513' : '#ddd'}}"/>
+      </view>
+      <view class="term-info">
+        <text class="term-name">{{item.name}}</text>
+        <text class="term-meta">
+          {{item.customsDone ? item.customsDone.length : 0}}/{{item.customs ? item.customs.length : 0}}习俗·
+          {{item.pentadsObserved ? item.pentadsObserved.length : 0}}/3观察
+        </text>
+      </view>
+      <text class="term-intensity">{{Math.round(item.intensity * 100)}}%</text>
+    </view>
+  </view>
+
+  <!--导出按钮-->
+  <button class="btn-export" bindtap="exportRingImage">
+    <text>保存年轮长图</text>
+  </button>
+
+  <!--隐藏的海报canvas -->
+  <canvas 
+    type="2d" 
+    id="poster-canvas" 
+    class="hidden-canvas"
+  />
+</view>

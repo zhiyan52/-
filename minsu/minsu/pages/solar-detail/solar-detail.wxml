@@ -1,0 +1,138 @@
+ <!-- minsu/minsu/pages/solar-detail/solar-detail.wxml -->
+
+<view class="solar-page">
+  
+  <!-- 节气头部 -->
+  <view class="term-header" style="background: {{termColor}}">
+    <text class="term-name">{{term.name}}</text>
+    <text class="term-alias">{{term.alias}}</text>
+    <text class="term-date">{{term.date}}</text>
+    
+    <!-- 三候进度 -->
+    <view class="pentad-progress">
+      <view wx:for="{{term.pentads}}" wx:key="day" 
+        class="pentad-dot {{currentDay>=item.day?'active':''}} {{observedPentads.includes(item.day)?'done':''}}"
+        data-day="{{item.day}}"
+        bindtap="observePentad"
+      >
+        <text>{{item.day}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 标签切换 -->
+  <view class="tab-bar">
+    <view class="tab {{activeTab==='pentad'?'active':''}}" bindtap="switchTab" data-tab="pentad">
+      三候观察
+    </view>
+    <view class="tab {{activeTab==='custom'?'active':''}}" bindtap="switchTab" data-tab="custom">
+      节气习俗
+    </view>
+    <view class="tab {{activeTab==='pheno'?'active':''}}" bindtap="switchTab" data-tab="pheno">
+      物候农事
+    </view>
+  </view>
+
+  <!-- 三候观察 -->
+  <view class="tab-content" wx:if="{{activeTab==='pentad'}}">
+    <view wx:for="{{term.pentads}}" wx:key="day" 
+      class="pentad-card {{currentDay>=item.day?'available':'locked'}} {{observedPentads.includes(item.day)?'observed':''}}"
+    >
+      <image src="{{item.image}}" mode="aspectFill" class="pentad-img"/>
+      <view class="pentad-info">
+        <text class="pentad-name">第{{item.day}}候 · {{item.name}}</text>
+        <text class="pentad-desc">{{item.desc}}</text>
+        <text class="pentad-observe" wx:if="{{currentDay>=item.day}}">
+          🔍 {{item.observe}}
+        </text>
+        <button wx:if="{{currentDay>=item.day && !observedPentads.includes(item.day)}}" 
+          class="btn-observe" bindtap="observePentad" data-day="{{item.day}}">
+          我观察到了
+        </button>
+        <text wx:if="{{observedPentads.includes(item.day)}}" class="observed-badge">✓ 已记录</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 节气习俗 -->
+  <view class="tab-content" wx:if="{{activeTab==='custom'}}">
+    <view wx:for="{{term.customs}}" wx:key="id" 
+      class="custom-card {{item.extinct?'extinct':''}} {{doneCustoms.includes(item.id)?'done':''}}"
+    >
+      <view class="custom-header">
+        <text class="custom-icon">{{item.icon}}</text>
+        <view class="custom-title">
+          <text class="custom-name">{{item.name}}</text>
+          <text class="custom-cat">{{item.category}}</text>
+          <text wx:if="{{item.extinct}}" class="extinct-badge">已消逝·可复原</text>
+        </view>
+        <switch checked="{{doneCustoms.includes(item.id)}}" bindchange="toggleCustom" data-custom-id="{{item.id}}"/>
+      </view>
+      
+      <view class="custom-body">
+        <text class="material-label">所需材料：</text>
+        <text class="material-text">{{item.material}}</text>
+        
+        <view class="steps">
+          <view wx:for="{{item.steps}}" wx:for-index="idx" wx:key="idx" class="step">
+            <text class="step-num">{{idx+1}}</text>
+            <text class="step-text">{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 地域食谱 -->
+    <view class="region-section">
+      <text class="section-title">地域风味</text>
+      <scroll-view scroll-x class="region-tabs">
+        <text wx:for="{{term.regions}}" wx:key="name" 
+          class="region-tab {{selectedRegion===index?'active':''}}"
+          data-index="{{index}}"
+          bindtap="selectRegion"
+        >{{item.name}}</text>
+      </scroll-view>
+      
+      <view class="region-detail">
+        <text class="region-feature">{{term.regions[selectedRegion].feature}}</text>
+        <text class="region-recipe">{{term.regions[selectedRegion].recipe}}</text>
+        <button class="btn-modern" bindtap="getModernRecipe">AI改良版</button>
+        <text wx:if="{{modernRecipe}}" class="modern-recipe">{{modernRecipe}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 物候农事 -->
+  <view class="tab-content" wx:if="{{activeTab==='pheno'}}">
+    <view class="pheno-section">
+      <text class="pheno-title">🌸 植物</text>
+      <view class="pheno-tags">
+        <text wx:for="{{term.phenology.plants}}" wx:key="*this" class="pheno-tag">{{item}}</text>
+      </view>
+    </view>
+    
+    <view class="pheno-section">
+      <text class="pheno-title">🐦 动物</text>
+      <view class="pheno-tags">
+        <text wx:for="{{term.phenology.animals}}" wx:key="*this" class="pheno-tag">{{item}}</text>
+      </view>
+    </view>
+    
+    <view class="pheno-section">
+      <text class="pheno-title">🌾 农事</text>
+      <text class="farming-text">{{term.phenology.farming}}</text>
+    </view>
+  </view>
+
+  <!-- 个人记录浮层 -->
+  <view class="personal-float" wx:if="{{myPhoto || myNote}}">
+    <image wx:if="{{myPhoto}}" src="{{myPhoto}}" mode="aspectFill" class="float-photo"/>
+    <text wx:if="{{myNote}}" class="float-note">{{myNote}}</text>
+  </view>
+
+  <!-- 底部操作 -->
+  <view class="bottom-bar">
+    <button class="btn-note" bindtap="editNote">写笔记</button>
+    <button class="btn-ring" bindtap="addToAnnualRing">记入年轮</button>
+  </view>
+</view>

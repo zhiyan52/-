@@ -1,0 +1,56 @@
+<!-- mingsu/mingsu/pages/ai-learning/exploration.wxml -->
+<view class="exploration-container">
+  <!-- 顶部标题 -->
+  <view class="exploration-header">
+    <text class="exploration-title">民俗知识探索</text>
+    <text class="exploration-subtitle">AI引导你深入了解民俗文化的起源与发展</text>
+  </view>
+
+  <!-- 探索主题 -->
+  <view class="exploration-themes">
+    <text class="section-title">探索主题</text>
+    <view class="themes-grid">
+      <view wx:for="{{themes}}" wx:key="id" class="theme-card" bindtap="selectTheme" data-id="{{item.id}}">
+        <view class="theme-icon">{{item.icon}}</view>
+        <text class="theme-name">{{item.name}}</text>
+        <text class="theme-desc">{{item.desc}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 学习路径 -->
+  <view class="learning-path">
+    <text class="section-title">学习路径</text>
+    <view class="path-steps">
+      <view wx:for="{{learningSteps}}" wx:key="id" class="path-step {{currentStep >= item.id ? 'completed' : ''}}">
+        <view class="step-number">{{item.id}}</view>
+        <view class="step-content">
+          <text class="step-title">{{item.title}}</text>
+          <text class="step-desc">{{item.desc}}</text>
+        </view>
+        <text class="step-arrow" wx:if="{{item.id < learningSteps.length}}">→</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- AI探索助手 -->
+  <view class="ai-exploration">
+    <text class="section-title">AI探索助手</text>
+    <view class="ai-assistant-card">
+      <view class="ai-avatar">🤖</view>
+      <view class="ai-content">
+        <text class="ai-greeting">你好！我是你的民俗探索助手。</text>
+        <text class="ai-suggestion">{{aiSuggestion}}</text>
+        <button class="ai-explore-btn" bindtap="startAIExploration">开始AI探索</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 探索进度 -->
+  <view class="exploration-progress">
+    <text class="progress-text">探索进度: {{explorationProgress}}%</text>
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{explorationProgress}}%"></view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,106 @@
+<!-- mingsu/mingsu/pages/ai-learning/ai-learning.wxml -->
+<view class="learning-container">
+  <!-- 顶部标题 -->
+  <view class="learning-header">
+    <text class="learning-title">AI民俗深度学习</text>
+    <text class="learning-subtitle">探索中华传统民俗文化的奥秘</text>
+  </view>
+
+  <!-- 学习模块 -->
+  <view class="learning-modules">
+    <!-- 模块1：民俗知识探索 -->
+    <view class="module-card" bindtap="startExploration">
+      <view class="module-icon">🔍</view>
+      <view class="module-content">
+        <text class="module-title">民俗知识探索</text>
+        <text class="module-desc">AI引导你深入了解民俗文化的起源与发展</text>
+      </view>
+      <text class="module-arrow">→</text>
+    </view>
+
+    <!-- 模块2：互动问答 -->
+    <view class="module-card" bindtap="startQnA">
+      <view class="module-icon">💬</view>
+      <view class="module-content">
+        <text class="module-title">AI互动问答</text>
+        <text class="module-desc">随时向AI提问，解答你对民俗的疑惑</text>
+      </view>
+      <text class="module-arrow">→</text>
+    </view>
+
+    <!-- 模块3：民俗故事 -->
+    <view class="module-card" bindtap="startStories">
+      <view class="module-icon">📚</view>
+      <view class="module-content">
+        <text class="module-title">民俗故事汇</text>
+        <text class="module-desc">AI为你讲述生动有趣的民俗传说与故事</text>
+      </view>
+      <text class="module-arrow">→</text>
+    </view>
+
+    <!-- 模块4：知识测验 -->
+    <view class="module-card" bindtap="startQuiz">
+      <view class="module-icon">📝</view>
+      <view class="module-content">
+        <text class="module-title">民俗知识测验</text>
+        <text class="module-desc">测试你的民俗知识，AI给出详细解析</text>
+      </view>
+      <text class="module-arrow">→</text>
+    </view>
+  </view>
+
+  <!-- 学习进度 -->
+  <view class="progress-section">
+    <text class="progress-title">学习进度</text>
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{learningProgress}}%"></view>
+    </view>
+    <text class="progress-text">{{learningProgress}}% 已完成</text>
+  </view>
+
+  <!-- 推荐学习内容 -->
+  <view class="recommended-section">
+    <text class="recommended-title">推荐学习</text>
+    <view class="recommended-list">
+      <view wx:for="{{recommendedTopics}}" wx:key="id" class="recommended-item" bindtap="learnTopic" data-id="{{item.id}}">
+        <view class="recommended-icon">{{item.icon}}</view>
+        <view class="recommended-content">
+          <text class="recommended-name">{{item.name}}</text>
+          <text class="recommended-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- AI助手 -->
+  <view class="ai-assistant" bindtap="showAIAssistant">
+    <view class="ai-assistant-icon">🤖</view>
+    <text class="ai-assistant-text">AI助手</text>
+  </view>
+
+  <!-- AI助手弹窗 -->
+  <view wx:if="showAIModal" class="ai-modal">
+    <view class="ai-modal-content">
+      <view class="ai-modal-header">
+        <text class="ai-modal-title">AI民俗助手</text>
+        <text class="ai-modal-close" bindtap="hideAIAssistant">×</text>
+      </view>
+      <view class="ai-modal-body">
+        <view class="ai-chat-container">
+          <view wx:for="{{aiChatMessages}}" wx:key="id" class="chat-message {{item.type === 'ai' ? 'ai-message' : 'user-message'}}">
+            <view class="message-content">{{item.content}}</view>
+          </view>
+        </view>
+        <view class="ai-input-container">
+          <input 
+            class="ai-input" 
+            placeholder="输入你的问题..." 
+            value="{{aiInput}}" 
+            bindinput="onAIInputChange"
+          />
+          <button class="ai-send-btn" bindtap="sendAIQuestion">发送</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

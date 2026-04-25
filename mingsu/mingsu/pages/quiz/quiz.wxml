@@ -1,0 +1,44 @@
+<view class="quiz-container">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="header-title">民俗知识小答题</text>
+    <text class="header-subtitle">测试你对传统民俗的了解</text>
+  </view>
+
+  <!-- 答题区域 -->
+  <view class="quiz-section" wx:if="{{!showResult}}">
+    <view class="question-info">
+      <text class="question-number">第 {{currentQuestionIndex + 1}} 题 / 共 {{questions.length}} 题</text>
+    </view>
+    <view class="question-card">
+      <text class="question-text">{{questions[currentQuestionIndex].question}}</text>
+      <view class="options-list">
+        <view class="option-item {{selectedAnswer === index ? 'selected' : ''}} {{isAnswered && index === questions[currentQuestionIndex].correctAnswer ? 'correct' : ''}} {{isAnswered && selectedAnswer !== null && selectedAnswer !== questions[currentQuestionIndex].correctAnswer && selectedAnswer === index ? 'incorrect' : ''}}" wx:for="{{questions[currentQuestionIndex].options}}" wx:key="index" bindtap="selectAnswer" data-index="{{index}}">
+          <text class="option-letter">{{String.fromCharCode(65 + index)}}</text>
+          <text class="option-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="action-buttons">
+      <button class="submit-btn" bindtap="submitAnswer" disabled="{{isAnswered || selectedAnswer === null}}">
+        提交答案
+      </button>
+      <button class="next-btn" bindtap="nextQuestion" disabled="{{!isAnswered}}">
+        下一题
+      </button>
+    </view>
+  </view>
+
+  <!-- 结果页面 -->
+  <view class="result-section" wx:if="{{showResult}}">
+    <view class="result-card">
+      <text class="result-title">答题完成</text>
+      <view class="score-container">
+        <text class="score-number">{{score}}</text>
+        <text class="score-total">/{{questions.length}}</text>
+      </view>
+      <text class="score-desc">{{getScoreDescription()}}</text>
+      <button class="restart-btn" bindtap="restartQuiz">重新答题</button>
+    </view>
+  </view>
+</view>

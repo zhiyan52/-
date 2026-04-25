@@ -1,0 +1,51 @@
+<!-- mingsu/mingsu/pages/ai-learning/qna.wxml -->
+<view class="qna-container">
+  <!-- 顶部标题 -->
+  <view class="qna-header">
+    <text class="qna-title">AI互动问答</text>
+    <text class="qna-subtitle">随时向AI提问，解答你对民俗的疑惑</text>
+  </view>
+
+  <!-- 热门问题 -->
+  <view class="popular-questions">
+    <text class="section-title">热门问题</text>
+    <view class="questions-list">
+      <view wx:for="{{popularQuestions}}" wx:key="id" class="question-item" bindtap="askQuestion" data-question="{{item.question}}">
+        <text class="question-icon">❓</text>
+        <text class="question-text">{{item.question}}</text>
+        <text class="question-arrow">→</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 问答区域 -->
+  <view class="chat-area">
+    <text class="section-title">对话区域</text>
+    <view class="chat-container">
+      <view wx:for="{{chatMessages}}" wx:key="id" class="chat-message {{item.type === 'ai' ? 'ai-message' : 'user-message'}}">
+        <view class="message-avatar">{{item.type === 'ai' ? '🤖' : '👤'}}</view>
+        <view class="message-content">
+          <text class="message-text">{{item.content}}</text>
+          <text class="message-time">{{item.time}}</text>
+        </view>
+      </view>
+      <view wx:if="loading" class="loading-message">
+        <view class="loading-spinner"></view>
+        <text class="loading-text">AI正在思考...</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 输入区域 -->
+  <view class="input-area">
+    <input 
+      class="qna-input" 
+      placeholder="输入你的问题..." 
+      value="{{userInput}}" 
+      bindinput="onInputChange"
+    />
+    <button class="send-btn" bindtap="sendQuestion" disabled="{{!userInput.trim() || loading}}">
+      发送
+    </button>
+  </view>
+</view>

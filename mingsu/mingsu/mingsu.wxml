@@ -14,9 +14,11 @@
     </view>
     <view class="modules-grid">
       <view class="module-card" wx:for="{{modules}}" wx:key="id" bindtap="navigateToModule" data-id="{{item.id}}">
-        <image class="module-icon" src="{{item.image}}" mode="aspectFit"></image>
-        <text class="module-name">{{item.name}}</text>
-        <text class="module-desc">{{item.desc}}</text>
+        <image class="module-icon" src="{{item.image}}" mode="aspectFill" bindtap="navigateToModule" data-id="{{item.id}}"></image>
+        <view class="module-content">
+          <text class="module-name">{{item.name}}</text>
+          <text class="module-desc">{{item.desc}}</text>
+        </view>
       </view>
     </view>
   </view>
@@ -28,7 +30,7 @@
     </view>
     <view class="featured-grid">
       <view class="featured-card" wx:for="{{featuredItems}}" wx:key="id" bindtap="viewFeatured" data-id="{{item.id}}">
-        <image class="featured-image" src="{{item.image}}" mode="aspectFill"></image>
+        <image class="featured-image" src="{{item.image}}" mode="aspectFill" bindtap="viewFeatured" data-id="{{item.id}}"></image>
         <text class="featured-name">{{item.name}}</text>
         <text class="featured-desc">{{item.desc}}</text>
       </view>
@@ -45,6 +47,14 @@
       <view class="smart-feature-content">
         <text class="smart-feature-title">智能导览</text>
         <text class="smart-feature-desc">智能路线规划，深度解说</text>
+      </view>
+      <text class="smart-feature-arrow">→</text>
+    </view>
+    <view class="smart-feature-item" bindtap="navigateToLearning">
+      <text class="smart-feature-icon">🎓</text>
+      <view class="smart-feature-content">
+        <text class="smart-feature-title">AI深度学习</text>
+        <text class="smart-feature-desc">AI引导，深入学习民俗文化</text>
       </view>
       <text class="smart-feature-arrow">→</text>
     </view>

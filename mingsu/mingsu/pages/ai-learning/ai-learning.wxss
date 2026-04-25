@@ -1,0 +1,363 @@
+/* mingsu/mingsu/pages/ai-learning/ai-learning.wxss */
+
+.learning-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f6f0 0%, #e8e0d0 100%);
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  padding-bottom: 100rpx;
+}
+
+/* 顶部标题 */
+.learning-header {
+  padding: 40rpx;
+  text-align: center;
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+  color: #fff;
+  box-shadow: 0 4rpx 16rpx rgba(139, 69, 19, 0.3);
+  margin-bottom: 32rpx;
+}
+
+.learning-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.3);
+  letter-spacing: 4rpx;
+  display: block;
+  margin-bottom: 12rpx;
+}
+
+.learning-subtitle {
+  font-size: 24rpx;
+  opacity: 0.9;
+  display: block;
+}
+
+/* 学习模块 */
+.learning-modules {
+  padding: 0 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.module-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
+  border: 2rpx solid #D4A017;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.module-card:hover {
+  transform: translateY(-4rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+}
+
+.module-icon {
+  font-size: 64rpx;
+  margin-right: 24rpx;
+  width: 80rpx;
+  text-align: center;
+}
+
+.module-content {
+  flex: 1;
+}
+
+.module-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.module-desc {
+  font-size: 22rpx;
+  color: #666;
+  line-height: 1.4;
+}
+
+.module-arrow {
+  font-size: 32rpx;
+  color: #D4A017;
+  font-weight: bold;
+}
+
+/* 学习进度 */
+.progress-section {
+  padding: 0 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.progress-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 16rpx;
+  display: block;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20rpx;
+  background: #f0f0f0;
+  border-radius: 10rpx;
+  overflow: hidden;
+  margin-bottom: 12rpx;
+  border: 2rpx solid #D4A017;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #D4A017 0%, #E6C997 100%);
+  border-radius: 8rpx;
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  font-size: 20rpx;
+  color: #666;
+  text-align: right;
+}
+
+/* 推荐学习内容 */
+.recommended-section {
+  padding: 0 40rpx;
+}
+
+.recommended-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #8B4513;
+  margin-bottom: 24rpx;
+  display: block;
+}
+
+.recommended-list {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
+  border: 2rpx solid #D4A017;
+}
+
+.recommended-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.recommended-item:last-child {
+  border-bottom: none;
+}
+
+.recommended-item:hover {
+  transform: translateX(8rpx);
+}
+
+.recommended-icon {
+  font-size: 48rpx;
+  margin-right: 20rpx;
+  width: 64rpx;
+  text-align: center;
+}
+
+.recommended-content {
+  flex: 1;
+}
+
+.recommended-name {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 4rpx;
+  display: block;
+}
+
+.recommended-desc {
+  font-size: 20rpx;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* AI助手 */
+.ai-assistant {
+  position: fixed;
+  bottom: 40rpx;
+  right: 40rpx;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D4A017 0%, #E6C997 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 20rpx rgba(212, 160, 23, 0.4);
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 100;
+}
+
+.ai-assistant:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6rpx 24rpx rgba(212, 160, 23, 0.6);
+}
+
+.ai-assistant-icon {
+  font-size: 48rpx;
+  margin-bottom: 8rpx;
+}
+
+.ai-assistant-text {
+  font-size: 20rpx;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+/* AI助手弹窗 */
+.ai-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.ai-modal-content {
+  background: #fff;
+  border-radius: 16rpx;
+  width: 80%;
+  max-width: 600rpx;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.3);
+  border: 4rpx solid #D4A017;
+}
+
+.ai-modal-header {
+  padding: 24rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+  color: #fff;
+  border-top-left-radius: 12rpx;
+  border-top-right-radius: 12rpx;
+}
+
+.ai-modal-title {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.ai-modal-close {
+  font-size: 32rpx;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.ai-modal-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24rpx;
+}
+
+.ai-chat-container {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 24rpx;
+  max-height: 400rpx;
+}
+
+.chat-message {
+  margin-bottom: 16rpx;
+  max-width: 80%;
+}
+
+.ai-message {
+  align-self: flex-start;
+}
+
+.user-message {
+  align-self: flex-end;
+  background: #f0f7ff;
+  border-radius: 16rpx 16rpx 0 16rpx;
+  padding: 12rpx 16rpx;
+}
+
+.ai-message .message-content {
+  background: #f8f6f0;
+  border-radius: 16rpx 16rpx 16rpx 0;
+  padding: 12rpx 16rpx;
+  border-left: 4rpx solid #D4A017;
+}
+
+.message-content {
+  font-size: 22rpx;
+  line-height: 1.4;
+  color: #333;
+}
+
+.ai-input-container {
+  display: flex;
+  gap: 16rpx;
+  align-items: center;
+}
+
+.ai-input {
+  flex: 1;
+  border: 2rpx solid #D4A017;
+  border-radius: 50rpx;
+  padding: 16rpx 24rpx;
+  font-size: 22rpx;
+  background: #faf8f3;
+}
+
+.ai-send-btn {
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50rpx;
+  padding: 16rpx 32rpx;
+  font-size: 22rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(139, 69, 19, 0.3);
+  transition: all 0.3s;
+}
+
+.ai-send-btn:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 6rpx 16rpx rgba(139, 69, 19, 0.4);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .learning-modules {
+    padding: 0 24rpx;
+  }
+  
+  .progress-section,
+  .recommended-section {
+    padding: 0 24rpx;
+  }
+  
+  .ai-modal-content {
+    width: 90%;
+  }
+}

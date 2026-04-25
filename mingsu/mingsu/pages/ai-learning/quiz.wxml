@@ -1,0 +1,63 @@
+<!-- mingsu/mingsu/pages/ai-learning/quiz.wxml -->
+<view class="quiz-container">
+  <!-- 顶部标题 -->
+  <view class="quiz-header">
+    <text class="quiz-title">民俗知识测验</text>
+    <text class="quiz-subtitle">测试你的民俗知识，AI给出详细解析</text>
+  </view>
+
+  <!-- 测验信息 -->
+  <view class="quiz-info">
+    <view class="info-item">
+      <text class="info-label">当前题目</text>
+      <text class="info-value">{{currentQuestion + 1}}/{{totalQuestions}}</text>
+    </view>
+    <view class="info-item">
+      <text class="info-label">得分</text>
+      <text class="info-value">{{score}}</text>
+    </view>
+    <view class="info-item">
+      <text class="info-label">时间</text>
+      <text class="info-value">{{timeLeft}}秒</text>
+    </view>
+  </view>
+
+  <!-- 题目区域 -->
+  <view wx:if="!quizEnd" class="question-section">
+    <text class="question-text">{{currentQuiz.question}}</text>
+    <view class="options-list">
+      <view 
+        wx:for="{{currentQuiz.options}}" 
+        wx:key="index" 
+        class="option-item {{selectedOption === index ? 'selected' : ''}} {{answered && index === currentQuiz.correctAnswer ? 'correct' : ''}} {{answered && selectedOption !== currentQuiz.correctAnswer && selectedOption === index ? 'incorrect' : ''}}"
+        bindtap="selectOption" 
+        data-index="{{index}}"
+      >
+        <text class="option-letter">{{String.fromCharCode(65 + index)}}</text>
+        <text class="option-text">{{item}}</text>
+      </view>
+    </view>
+    <button wx:if="!answered" class="submit-btn" bindtap="submitAnswer">提交答案</button>
+    <button wx:else class="next-btn" bindtap="nextQuestion">下一题</button>
+  </view>
+
+  <!-- 解析区域 -->
+  <view wx:if="answered && !quizEnd" class="explanation-section">
+    <text class="explanation-title">AI解析</text>
+    <text class="explanation-text">{{currentQuiz.explanation}}</text>
+  </view>
+
+  <!-- 测验结束 -->
+  <view wx:if="quizEnd" class="result-section">
+    <text class="result-title">测验完成！</text>
+    <text class="result-score">你的得分：{{score}}/{{totalQuestions * 10}}</text>
+    <text class="result-rank">{{getRank(score)}}</text>
+    <button class="restart-btn" bindtap="restartQuiz">重新测验</button>
+    <button class="review-btn" bindtap="reviewAnswers">查看解析</button>
+  </view>
+
+  <!-- 进度条 -->
+  <view class="progress-bar">
+    <view class="progress-fill" style="width: {{(currentQuestion / totalQuestions) * 100}}%"></view>
+  </view>
+</view>

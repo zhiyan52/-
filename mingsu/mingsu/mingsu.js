@@ -1,4 +1,4 @@
- // mingsu/mingsu.js
+// mingsu/mingsu.js
 Page({
   data: {
     modules: [
@@ -12,35 +12,35 @@ Page({
       {
         id: 'ai-lecture',
         name: 'AI民俗讲堂',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/icons/ai-lecture.png',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/2.jpg',
         desc: 'AI解读民俗文化内涵',
         color: '#2E8B57'
       },
       {
         id: 'ai-image',
         name: '意境生图',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/icons/ai-image.png',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/3.jpg',
         desc: 'AI生成民俗主题水墨插画',
         color: '#4169E1'
       },
       {
         id: 'quiz',
         name: '知识答题',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/icons/quiz.png',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/4.jpg',
         desc: '民俗知识小测试',
         color: '#DAA520'
       },
       {
         id: 'card',
         name: '卡片生成',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/icons/card.png',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/3.jpg',
         desc: '生成可保存的民俗卡片',
         color: '#CD5C5C'
       },
       {
         id: 'blind-box',
         name: '风物盲盒',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/icons/blind-box.png',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/6.jpg',
         desc: '每日随机获得民俗知识',
         color: '#9370DB'
       }
@@ -56,7 +56,7 @@ Page({
         id: 'mid-autumn',
         name: '中秋',
         desc: '赏月吃饼，团圆美满',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Mid-Autumn%20Festival%20moon%20viewing%20scene%20with%20mooncakes%2C%20ink%20painting%20style&image_size=square_hd'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/5.jpg'
       },
       {
         id: 'qingming',
@@ -73,15 +73,21 @@ Page({
 
   navigateToModule(e) {
     const { id } = e.currentTarget.dataset;
-    wx.navigateTo({
-      url: `/mingsu/pages/${id}/${id}`
-    });
+    if (id === 'calendar') {
+      wx.navigateTo({
+        url: `/mingsu/mingsu/pages/calendar/calendar`
+      });
+    } else {
+      wx.navigateTo({
+        url: `/mingsu/pages/${id}/${id}`
+      });
+    }
   },
 
   viewFeatured(e) {
     const { id } = e.currentTarget.dataset;
     wx.navigateTo({
-      url: `/mingsu/pages/calendar/calendar?featured=${id}`
+      url: `/mingsu/mingsu/pages/calendar/calendar?featured=${id}`
     });
   },
 
