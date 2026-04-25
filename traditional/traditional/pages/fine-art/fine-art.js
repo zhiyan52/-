@@ -7,13 +7,26 @@ Page({
     wx.setNavigationBarTitle({ title: '传统美术' });
   },
 
-  // 切换分类
-  switchCategory(e) {
+  // 子分类标签点击处理
+  onCategoryTap(e) {
     const category = e.currentTarget.dataset.category;
+    const categoryName = e.currentTarget.dataset.name;
+    
+    // 更新选中状态
     this.setData({
       activeCategory: category
     });
-    // 这里可以添加根据分类筛选内容的逻辑
+    
+    // 如果不是"全部"，则跳转到对应分类页面
+    if (category !== 'all') {
+      wx.navigateTo({
+        url: `/traditional/traditional/pages/fine-art/category-list/category-list?category=${category}&name=${encodeURIComponent(categoryName)}`,
+        fail: (err) => {
+          console.error('跳转失败:', err);
+          wx.showToast({ title: '页面加载失败', icon: 'error' });
+        }
+      });
+    }
   },
 
   // 导航到品类列表页

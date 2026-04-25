@@ -1,17 +1,18 @@
-/* 传统美术页面样式 - 高端极简风格 */
+/* 传统美术页面样式 - 传统温暖风格 */
 .page-container {
-  background-color: #f8f9fa;
+  background-color: #f5f0e6;
   min-height: 100vh;
   padding: 0 24rpx;
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'KaiTi', 'STKaiti', 'PingFang SC', sans-serif;
 }
 
 /* 顶部标题栏 */
 .header-section {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 40rpx 0 60rpx;
+  margin: 40rpx 0 40rpx;
   position: relative;
 }
 
@@ -21,46 +22,60 @@
   border-radius: 56rpx;
   position: relative;
   box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.08);
-  border: 1rpx solid #eaeaea;
+  border: 2rpx solid #d4af37;
 }
 
 .main-title {
   font-size: 40rpx;
   font-weight: 600;
-  color: #2c3e50;
-  letter-spacing: 4rpx;
+  color: #5c3a21;
+  letter-spacing: 8rpx;
   text-align: center;
+}
+
+.header-title::after {
+  content: '';
+  position: absolute;
+  bottom: -20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120rpx;
+  height: 4rpx;
+  background: linear-gradient(90deg, #d4af37, #b8860b, #d4af37);
+  border-radius: 2rpx;
 }
 
 /* 子分类标签栏 */
 .subcategory-bar {
   display: flex;
-  gap: 12rpx;
-  padding: 16rpx;
-  background: #ffffff;
+  gap: 16rpx;
+  padding: 20rpx;
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 16rpx;
-  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.06);
   margin-bottom: 40rpx;
   overflow-x: auto;
   white-space: nowrap;
-  border: 1rpx solid #f0f0f0;
+  border: 2rpx solid #d4af37;
 }
 
 .subcategory-item {
-  padding: 12rpx 24rpx;
-  border-radius: 24rpx;
-  background: #f5f7fa;
-  font-size: 24rpx;
-  color: #64748b;
+  padding: 14rpx 28rpx;
+  border-radius: 28rpx;
+  background: #faf8f5;
+  font-size: 26rpx;
+  color: #6b4423;
   transition: all 0.3s ease;
   flex-shrink: 0;
   font-weight: 500;
+  border: 1rpx solid #e8dcc8;
 }
 
 .subcategory-item.active {
-  background: #2c3e50;
+  background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
   color: #ffffff;
-  box-shadow: 0 2rpx 8rpx rgba(44, 62, 80, 0.3);
+  box-shadow: 0 2rpx 8rpx rgba(212, 175, 55, 0.4);
+  border: none;
 }
 
 .subcategory-item:active {
@@ -77,10 +92,10 @@
 
 .category-card {
   background: #ffffff;
-  border-radius: 20rpx;
-  padding: 40rpx 24rpx;
-  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
-  border: 1rpx solid #f0f0f0;
+  border-radius: 24rpx;
+  padding: 0;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.08);
+  border: 2rpx solid #d4af37;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -90,70 +105,52 @@
   overflow: hidden;
 }
 
-.category-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4rpx;
-  background: linear-gradient(90deg, #a8b8c8, #64748b);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
 .category-card:active {
   transform: translateY(4rpx);
-  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.08);
-}
-
-.category-card:hover::before {
-  opacity: 1;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.1);
 }
 
 .category-icon {
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 50%;
-  border: 1rpx solid #eaeaea;
-  margin-bottom: 24rpx;
+  width: 100%;
+  height: 180rpx;
+  margin-bottom: 0;
   object-fit: cover;
-  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
   transition: transform 0.3s ease;
 }
 
 .category-card:active .category-icon {
-  transform: scale(0.96);
+  transform: scale(0.98);
 }
 
 .category-name {
   font-size: 28rpx;
   font-weight: 600;
-  color: #2c3e50;
+  color: #5c3a21;
   text-align: center;
-  margin-bottom: 12rpx;
-  letter-spacing: 1rpx;
+  margin: 20rpx 0 8rpx;
+  letter-spacing: 4rpx;
 }
 
 .category-desc {
   font-size: 20rpx;
-  color: #64748b;
+  color: #8b7355;
   text-align: center;
   line-height: 1.5;
-  opacity: 0.8;
+  opacity: 0.9;
+  padding: 0 16rpx 24rpx;
 }
 
 /* 热门推荐 */
 .section-title {
-  font-size: 32rpx;
+  font-size: 34rpx;
   font-weight: 600;
-  color: #2c3e50;
-  margin: 60rpx 0 32rpx;
+  color: #5c3a21;
+  margin: 60rpx 0 40rpx;
   display: block;
   text-align: center;
   position: relative;
-  padding-bottom: 16rpx;
-  letter-spacing: 2rpx;
+  padding-bottom: 20rpx;
+  letter-spacing: 4rpx;
 }
 
 .section-title::after {
@@ -162,26 +159,26 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 80rpx;
-  height: 3rpx;
-  background: #a8b8c8;
+  width: 100rpx;
+  height: 4rpx;
+  background: linear-gradient(90deg, #d4af37, #b8860b, #d4af37);
   border-radius: 2rpx;
 }
 
 .recommendation-list {
-  background: #ffffff;
-  border-radius: 20rpx;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 24rpx;
   padding: 24rpx;
   box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
   margin-bottom: 40rpx;
-  border: 1rpx solid #f0f0f0;
+  border: 2rpx solid #d4af37;
 }
 
 .recommendation-item {
   display: flex;
-  gap: 20rpx;
+  gap: 24rpx;
   padding: 24rpx 0;
-  border-bottom: 1rpx solid #f5f7fa;
+  border-bottom: 1rpx solid #e8dcc8;
   transition: all 0.3s ease;
   align-items: center;
 }
@@ -196,7 +193,7 @@
 }
 
 .recommendation-item:active {
-  background: #f8f9fa;
+  background: #faf8f5;
   border-radius: 12rpx;
   margin: 0 -24rpx;
   padding-left: 24rpx;
@@ -204,11 +201,11 @@
 }
 
 .recommendation-image {
-  width: 140rpx;
-  height: 140rpx;
-  border-radius: 12rpx;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 16rpx;
   object-fit: cover;
-  border: 1rpx solid #f0f0f0;
+  border: 2rpx solid #d4af37;
   box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
   flex-shrink: 0;
 }
@@ -219,23 +216,24 @@
 }
 
 .recommendation-name {
-  font-size: 26rpx;
+  font-size: 28rpx;
   font-weight: 600;
-  color: #2c3e50;
+  color: #5c3a21;
   line-height: 1.3;
-  margin-bottom: 8rpx;
+  margin-bottom: 10rpx;
+  letter-spacing: 2rpx;
 }
 
 .recommendation-desc {
-  font-size: 20rpx;
-  color: #64748b;
+  font-size: 22rpx;
+  color: #8b7355;
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-bottom: 12rpx;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .recommendation-meta {
@@ -245,18 +243,18 @@
 }
 
 .recommendation-craftsman {
-  font-size: 18rpx;
-  color: #94a3b8;
+  font-size: 20rpx;
+  color: #a08060;
 }
 
 /* 匠人故事入口 */
 .craftsman-entry {
-  background: #ffffff;
-  border-radius: 20rpx;
-  padding: 40rpx;
-  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 24rpx;
+  padding: 48rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1rpx solid #f0f0f0;
+  border: 2rpx solid #d4af37;
   margin-bottom: 60rpx;
   text-align: center;
   position: relative;
@@ -270,45 +268,46 @@
   left: 0;
   right: 0;
   height: 4rpx;
-  background: linear-gradient(90deg, #a8b8c8, #64748b);
+  background: linear-gradient(90deg, #d4af37, #b8860b, #d4af37);
 }
 
 .craftsman-entry:active {
   transform: translateY(4rpx);
-  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.08);
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.1);
 }
 
 .craftsman-title {
-  font-size: 28rpx;
+  font-size: 30rpx;
   font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 12rpx;
-  letter-spacing: 2rpx;
+  color: #5c3a21;
+  margin-bottom: 16rpx;
+  letter-spacing: 4rpx;
 }
 
 .craftsman-desc {
-  font-size: 20rpx;
-  color: #64748b;
-  margin-bottom: 24rpx;
-  line-height: 1.5;
-  opacity: 0.8;
+  font-size: 22rpx;
+  color: #8b7355;
+  margin-bottom: 28rpx;
+  line-height: 1.6;
+  opacity: 0.9;
 }
 
 .craftsman-btn {
   display: inline-block;
-  background: #2c3e50;
+  background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
   color: #ffffff;
-  padding: 14rpx 40rpx;
-  border-radius: 28rpx;
-  font-size: 22rpx;
+  padding: 16rpx 48rpx;
+  border-radius: 32rpx;
+  font-size: 24rpx;
   font-weight: 500;
   transition: all 0.3s ease;
-  letter-spacing: 1rpx;
+  letter-spacing: 2rpx;
+  box-shadow: 0 2rpx 8rpx rgba(212, 175, 55, 0.4);
 }
 
 .craftsman-btn:active {
   transform: scale(0.96);
-  background: #1e293b;
+  background: linear-gradient(135deg, #b8860b 0%, #a07000 100%);
 }
 
 /* 底部空间 */

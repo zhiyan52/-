@@ -10,44 +10,72 @@
   
   <!-- 子分类标签栏 -->
   <view class="subcategory-bar">
-    <view class="subcategory-item active" data-category="all">全部</view>
-    <view class="subcategory-item" data-category="paper-cut">剪纸</view>
-    <view class="subcategory-item" data-category="embroidery">刺绣</view>
-    <view class="subcategory-item" data-category="shadow-play">皮影戏</view>
-    <view class="subcategory-item" data-category="wood-carving">木雕</view>
-    <view class="subcategory-item" data-category="lacquerware">漆器</view>
-    <view class="subcategory-item" data-category="bamboo-weaving">竹编</view>
+    <view 
+      class="subcategory-item {{activeCategory === 'all' ? 'active' : ''}}" 
+      data-category="all" 
+      data-name="全部"
+      bindtap="onCategoryTap">全部</view>
+    <view 
+      class="subcategory-item {{activeCategory === 'paper-cut' ? 'active' : ''}}" 
+      data-category="paper-cut" 
+      data-name="剪纸"
+      bindtap="onCategoryTap">剪纸</view>
+    <view 
+      class="subcategory-item {{activeCategory === 'embroidery' ? 'active' : ''}}" 
+      data-category="embroidery" 
+      data-name="刺绣"
+      bindtap="onCategoryTap">刺绣</view>
+    <view 
+      class="subcategory-item {{activeCategory === 'shadow-play' ? 'active' : ''}}" 
+      data-category="shadow-play" 
+      data-name="皮影戏"
+      bindtap="onCategoryTap">皮影戏</view>
+    <view 
+      class="subcategory-item {{activeCategory === 'wood-carving' ? 'active' : ''}}" 
+      data-category="wood-carving" 
+      data-name="木雕"
+      bindtap="onCategoryTap">木雕</view>
+    <view 
+      class="subcategory-item {{activeCategory === 'lacquerware' ? 'active' : ''}}" 
+      data-category="lacquerware" 
+      data-name="漆器"
+      bindtap="onCategoryTap">漆器</view>
+    <view 
+      class="subcategory-item {{activeCategory === 'bamboo-weaving' ? 'active' : ''}}" 
+      data-category="bamboo-weaving" 
+      data-name="竹编"
+      bindtap="onCategoryTap">竹编</view>
   </view>
   
   <!-- 非遗品类宫格 -->
   <view class="categories-grid">
-    <view class="category-card category-paper-cut" data-category="paper-cut" data-name="剪纸" bindtap="navigateToCategory">
-      <image class="category-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/paper-cut.png" mode="aspectFill" />
+    <view class="category-card" data-category="paper-cut" data-name="剪纸" bindtap="navigateToCategory">
+      <image class="category-icon" src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20paper%20cutting%20art%20traditional%20red%20festive&image_size=landscape_4_3" mode="aspectFill" />
       <text class="category-name">剪纸</text>
       <text class="category-desc">中国传统民间艺术，以剪刀或刻刀在纸上剪刻花纹</text>
     </view>
-    <view class="category-card category-embroidery" data-category="embroidery" data-name="刺绣" bindtap="navigateToCategory">
-      <image class="category-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/embroidery.png" mode="aspectFill" />
+    <view class="category-card" data-category="embroidery" data-name="刺绣" bindtap="navigateToCategory">
+      <image class="category-icon" src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20embroidery%20art%20beautiful%20silk%20traditional&image_size=landscape_4_3" mode="aspectFill" />
       <text class="category-name">刺绣</text>
       <text class="category-desc">用针将丝线或其他纤维在绣料上穿刺，以缝迹构成花纹</text>
     </view>
-    <view class="category-card category-shadow-play" data-category="shadow-play" data-name="皮影戏" bindtap="navigateToCategory">
-      <image class="category-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/shadow-play.png" mode="aspectFill" />
+    <view class="category-card" data-category="shadow-play" data-name="皮影戏" bindtap="navigateToCategory">
+      <image class="category-icon" src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20shadow%20puppet%20theater%20traditional%20art&image_size=landscape_4_3" mode="aspectFill" />
       <text class="category-name">皮影戏</text>
       <text class="category-desc">用兽皮或纸板做成的人物剪影表演故事的民间戏剧</text>
     </view>
-    <view class="category-card category-wood-carving" data-category="wood-carving" data-name="木雕" bindtap="navigateToCategory">
-      <image class="category-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/wood-carving.png" mode="aspectFill" />
+    <view class="category-card" data-category="wood-carving" data-name="木雕" bindtap="navigateToCategory">
+      <image class="category-icon" src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20wood%20carving%20art%20traditional%20craft&image_size=landscape_4_3" mode="aspectFill" />
       <text class="category-name">木雕</text>
       <text class="category-desc">在木材上进行雕刻的工艺，历史悠久，技法丰富</text>
     </view>
-    <view class="category-card category-lacquerware" data-category="lacquerware" data-name="漆器" bindtap="navigateToCategory">
-      <image class="category-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/lacquerware.png" mode="aspectFill" />
+    <view class="category-card" data-category="lacquerware" data-name="漆器" bindtap="navigateToCategory">
+      <image class="category-icon" src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20lacquerware%20traditional%20art%20beautiful&image_size=landscape_4_3" mode="aspectFill" />
       <text class="category-name">漆器</text>
       <text class="category-desc">用生漆涂在各种器物的表面所制成的日常器具及工艺品</text>
     </view>
-    <view class="category-card category-bamboo-weaving" data-category="bamboo-weaving" data-name="竹编" bindtap="navigateToCategory">
-      <image class="category-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/traditional/fine-art/bamboo-weaving.png" mode="aspectFill" />
+    <view class="category-card" data-category="bamboo-weaving" data-name="竹编" bindtap="navigateToCategory">
+      <image class="category-icon" src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20bamboo%20weaving%20traditional%20craft%20art&image_size=landscape_4_3" mode="aspectFill" />
       <text class="category-name">竹编</text>
       <text class="category-desc">以竹子为原料，编织成各种实用品和工艺品的传统技艺</text>
     </view>
