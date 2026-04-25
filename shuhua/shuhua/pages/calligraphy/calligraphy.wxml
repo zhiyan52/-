@@ -8,8 +8,8 @@
   
   <!-- 书体选择 -->
   <view class="font-tabs">
-    <view class="tab" wx:for="{{fonts}}" wx:key="id"
-          class="{{activeFont === item.id ? 'active' : ''}}"
+    <view wx:for="{{fonts}}" wx:key="id"
+          class="tab {{activeFont === item.id ? 'active' : ''}}"
           bindtap="switchFont" data-id="{{item.id}}">
       <text class="tab-text">{{item.name}}</text>
     </view>
@@ -24,10 +24,10 @@
     
     <view class="font-content">
       <!-- 字体示例 -->
-      <view class="font-example">
-        <text class="example-title">字体示例</text>
-        <text class="example-text">{{selectedFont.example}}</text>
-      </view>
+        <view class="font-example">
+          <text class="example-title">字体示例</text>
+          <image class="example-image" src="{{selectedFont.exampleImage}}" mode="aspectFill" />
+        </view>
       
       <!-- 特点对比 -->
       <view class="font-features">

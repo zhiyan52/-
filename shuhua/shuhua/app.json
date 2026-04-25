@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "shuhua",
+    "pages/masters/masters",
+    "pages/master-detail/master-detail",
+    "pages/artworks/artworks",
+    "pages/artwork-detail/artwork-detail",
+    "pages/calligraphy/calligraphy",
+    "pages/lintie/lintie",
+    "pages/quiz/quiz",
+    "pages/cards/cards",
+    "pages/blind-box/blind-box",
+    "pages/ai-image/ai-image",
+    "ai/ai-guide",
+    "ai/ai-qa",
+    "ai/ai-recommend",
+    "ai/ai-voice"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "书画雅韵",
+    "navigationBarBackgroundColor": "#F8F0E3",
+    "backgroundColor": "#E8F5E8"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

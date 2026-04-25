@@ -14,12 +14,14 @@ Page({
       { text: '意在笔先，神在笔后', author: '张彦远' },
       { text: '书画同源，心手相应', author: '赵孟頫' }
     ],
-    // 背景图片
+    // 背景图片（云存储路径）
     backgrounds: [
-      'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/bg1.jpg',
-      'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/bg2.jpg',
-      'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/bg3.jpg'
+      'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/13772bd1a1123fa20a8d1c0d634a37ef.jpg',
+      'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/604559700bde2b88bb89071100cca5c0.jpg',
+      'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/56d50d43ad4c0bfe9615f7d61bc1c12f.jpg'
     ],
+    // 背景图片临时URL
+    backgroundUrls: [],
     currentQuote: null,
     cardBackground: '',
     canvasWidth: 600,
@@ -28,13 +30,47 @@ Page({
 
   onLoad() {
     wx.setNavigationBarTitle({ title: '书画佳句卡片' });
-    this.generateCard();
+    // 初始化云开发并加载图片
+    this.initCloudAndLoadImages();
+  },
+
+  // 初始化云开发并加载图片
+  initCloudAndLoadImages() {
+    if (!wx.cloud) {
+      console.error('云开发未初始化');
+      // 如果云开发不可用，使用默认图片
+      this.generateCard();
+      return;
+    }
+
+    wx.cloud.init({
+      env: 'cloud1-8glc9jqob91870fc',
+      traceUser: true
+    });
+
+    // 获取背景图片临时URL
+    wx.cloud.getTempFileURL({
+      fileList: this.data.backgrounds,
+      success: (res) => {
+        const tempUrls = res.fileList.map(file => file.tempFileURL || '');
+        this.setData({ backgroundUrls: tempUrls });
+        this.generateCard();
+      },
+      fail: (err) => {
+        console.error('获取背景图片失败:', err);
+        // 如果获取失败，使用默认图片
+        this.generateCard();
+      }
+    });
   },
 
   // 随机生成卡片
   generateCard() {
     const randomQuote = this.data.quotes[Math.floor(Math.random() * this.data.quotes.length)];
-    const randomBackground = this.data.backgrounds[Math.floor(Math.random() * this.data.backgrounds.length)];
+    
+    // 使用临时URL，如果没有则使用原始路径
+    const backgrounds = this.data.backgroundUrls.length > 0 ? this.data.backgroundUrls : this.data.backgrounds;
+    const randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
 
     this.setData({
       currentQuote: randomQuote,
@@ -46,7 +82,10 @@ Page({
   selectQuote(e) {
     const index = e.currentTarget.dataset.index;
     const quote = this.data.quotes[index];
-    const randomBackground = this.data.backgrounds[Math.floor(Math.random() * this.data.backgrounds.length)];
+    
+    // 使用临时URL，如果没有则使用原始路径
+    const backgrounds = this.data.backgroundUrls.length > 0 ? this.data.backgroundUrls : this.data.backgrounds;
+    const randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
 
     this.setData({
       currentQuote: quote,

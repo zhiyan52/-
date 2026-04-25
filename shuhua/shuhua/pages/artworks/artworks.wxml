@@ -8,8 +8,8 @@
   
   <!-- 分类标签 -->
   <view class="category-tabs">
-    <view class="tab" wx:for="{{categories}}" wx:key="id"
-          class="{{activeCategory === item.id ? 'active' : ''}}"
+    <view wx:for="{{categories}}" wx:key="id"
+          class="tab {{activeCategory === item.id ? 'active' : ''}}"
           bindtap="switchCategory" data-id="{{item.id}}">
       <text class="tab-text">{{item.name}}</text>
     </view>

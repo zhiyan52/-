@@ -8,28 +8,28 @@ Page({
         name: '兰亭集序',
         author: '王羲之',
         category: 'calligraphy',
-        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/lanting.jpg'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/a36cf1e13b99529317da1fd145ed6e9c.jpg'
       },
       {
         id: 2,
         name: '祭侄文稿',
         author: '颜真卿',
         category: 'calligraphy',
-        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/jizhi.jpg'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/4a098e160e5ab5333cd7157c547e3026.jpg'
       },
       {
         id: 3,
         name: '千里江山图',
         author: '王希孟',
         category: 'painting',
-        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/qianli.jpg'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/d7827934cc3206ee4198aac41ea76210.jpg'
       },
       {
         id: 4,
         name: '富春山居图',
         author: '黄公望',
         category: 'painting',
-        image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/fuchun.jpg'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/8ed7f2d71f9023183b8ecca26a6e2e6b.png'
       }
     ],
     selectedWork: null,

@@ -33,31 +33,44 @@
 /* 书体选择 */
 .font-tabs {
   display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
+  justify-content: space-between;
   margin-bottom: 30rpx;
-  padding-bottom: 10rpx;
+  padding: 20rpx;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  border: 2rpx solid #D4A017;
 }
 
 .tab {
-  padding: 15rpx 30rpx;
-  margin-right: 20rpx;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 30rpx;
+  flex: 1;
+  padding: 16rpx 10rpx;
+  margin: 0 5rpx;
+  background-color: #F8F0E3;
+  border-radius: 20rpx;
   font-size: 26rpx;
-  color: #6b5344;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  color: #8b7355;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+  border: 2rpx solid #d4a76a;
   transition: all 0.3s ease;
+  text-align: center;
+}
+
+.tab:active {
+  background: linear-gradient(135deg, #f4c430 0%, #d4a76a 100%);
+  transform: scale(0.95);
 }
 
 .tab.active {
-  background-color: #8B4513;
-  color: #ffffff;
-  box-shadow: 0 4rpx 12rpx rgba(139, 69, 19, 0.3);
+  background: linear-gradient(135deg, #d4a76a 0%, #b8956a 100%);
+  color: white;
+  border-color: #d4a76a;
+  box-shadow: 0 4rpx 12rpx rgba(212, 167, 106, 0.3);
 }
 
 .tab-text {
   font-family: '楷体', 'KaiTi', serif;
+  font-weight: 500;
 }
 
 /* 书体详情 */
@@ -95,24 +108,26 @@
 .font-example {
   text-align: center;
   margin-bottom: 30rpx;
-  padding: 30rpx;
+  padding: 20rpx;
   background-color: rgba(245, 242, 233, 0.8);
   border-radius: 15rpx;
+  border: 2rpx solid #D4A017;
 }
 
 .example-title {
   font-size: 26rpx;
-  color: #8B4513;
-  margin-bottom: 20rpx;
+  color: #1A365D;
+  margin-bottom: 15rpx;
   display: block;
   font-family: '楷体', 'KaiTi', serif;
+  font-weight: 500;
 }
 
-.example-text {
-  font-size: 60rpx;
-  font-weight: bold;
-  color: #8B4513;
-  font-family: '楷体', 'KaiTi', serif;
+.example-image {
+  width: 100%;
+  height: 280rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
 }
 
 /* 特点对比 */
