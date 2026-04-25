@@ -16,7 +16,7 @@
       <text class="score-text">{{score}} 分</text>
     </view>
     <view class="progress-bar">
-      <view class="progress-fill" style="width: {{((currentQuestionIndex % questions.length) + 1) / questions.length * 100}}%"></view>
+      <view class="progress-fill" style="width: {{((currentQuestionIndex % questions.length) + 1) / questions.length * 100}}"></view>
     </view>
   </view>
   

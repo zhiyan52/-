@@ -1,146 +1,305 @@
 /* 名家详情页样式 */
 .master-detail-container {
-  background-color: #f5f2e9;
+  background-color: #f8f6f0;
   min-height: 100vh;
-  padding: 20rpx;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
-/* 名家信息 */
-.master-info-section {
-  text-align: center;
-  margin-bottom: 30rpx;
-  padding: 30rpx;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 20rpx;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+/* 顶部背景 */
+.header-bg {
+  position: relative;
+  height: 400rpx;
+  overflow: hidden;
 }
 
-.master-image {
-  width: 200rpx;
-  height: 200rpx;
-  border-radius: 50%;
+.bg-image {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  margin-bottom: 20rpx;
-  border: 4rpx solid #8B4513;
+}
+
+.bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+}
+
+.header-content {
+  position: absolute;
+  bottom: 40rpx;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #fff;
 }
 
 .master-name {
-  font-size: 40rpx;
+  font-size: 48rpx;
   font-weight: bold;
-  color: #8B4513;
   margin-bottom: 10rpx;
-  display: block;
-  font-family: '楷体', 'KaiTi', serif;
+  text-shadow: 0 2rpx 4rpx rgba(0,0,0,0.5);
 }
 
 .master-dynasty {
   font-size: 28rpx;
-  color: #6b5344;
-  display: block;
-  background-color: rgba(139, 69, 19, 0.1);
-  padding: 8rpx 20rpx;
-  border-radius: 20rpx;
-  inline-size: fit-content;
-  margin: 0 auto;
+  opacity: 0.9;
+  text-shadow: 0 1rpx 2rpx rgba(0,0,0,0.5);
 }
 
-/* 详细介绍 */
-.detail-section {
+/* 名家头像 */
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -100rpx;
   margin-bottom: 30rpx;
-  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.master-avatar {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  border: 8rpx solid #f8f6f0;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+/* 详细内容 */
+.content-section {
+  padding: 0 30rpx 30rpx;
+}
+
+/* 信息卡片 */
+.info-card {
+  background: #fff;
   border-radius: 20rpx;
   padding: 30rpx;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+  border: 1rpx solid #e8e4d8;
 }
 
-.section-title {
-  font-size: 30rpx;
-  font-weight: bold;
-  color: #8B4513;
+.card-header {
+  display: flex;
+  align-items: center;
   margin-bottom: 20rpx;
-  display: block;
-  font-family: '楷体', 'KaiTi', serif;
-  border-bottom: 2rpx solid rgba(139, 69, 19, 0.3);
-  padding-bottom: 10rpx;
 }
 
-.detail-content {
-  font-size: 24rpx;
-  color: #6b5344;
+.card-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1a365d;
+  margin-right: 16rpx;
+}
+
+.card-decoration {
+  flex: 1;
+  height: 2rpx;
+  background: linear-gradient(to right, #d4a017, transparent);
+}
+
+/* 卡片内容 */
+.card-content {
+  color: #4a4a4a;
   line-height: 1.6;
+}
+
+.detail-text,
+.style-text,
+.status-text,
+.evaluation-text,
+.appreciation-text {
+  font-size: 28rpx;
   text-align: justify;
 }
 
 /* 代表作品 */
-.works-section {
-  margin-bottom: 30rpx;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 20rpx;
-  padding: 30rpx;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
-}
-
-.works-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15rpx;
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16rpx;
+  margin-top: 10rpx;
 }
 
 .work-item {
-  background-color: rgba(139, 69, 19, 0.1);
-  padding: 15rpx 25rpx;
-  border-radius: 25rpx;
-  font-size: 24rpx;
-  color: #8B4513;
-  font-family: '楷体', 'KaiTi', serif;
+  display: flex;
+  justify-content: center;
+}
+
+.work-card {
+  background: #f8f6f0;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  text-align: center;
+  border: 1rpx solid #e8e4d8;
+  width: 100%;
   transition: all 0.3s ease;
 }
 
-.work-item:hover {
-  background-color: rgba(139, 69, 19, 0.2);
+.work-card:hover {
   transform: translateY(-2rpx);
+  box-shadow: 0 4rpx 8rpx rgba(0,0,0,0.05);
 }
 
-/* 艺术风格 */
-.style-section {
-  margin-bottom: 30rpx;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 20rpx;
-  padding: 30rpx;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+.work-name {
+  font-size: 26rpx;
+  color: #1a365d;
+  font-weight: 500;
 }
 
-.style-content {
-  font-size: 24rpx;
-  color: #6b5344;
-  line-height: 1.6;
+/* 相关故事 */
+.story-item {
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #f0ece2;
+}
+
+.story-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.story-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #1a365d;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.story-content {
+  font-size: 26rpx;
+  color: #4a4a4a;
   text-align: justify;
+  line-height: 1.5;
 }
 
-/* 文化地位 */
-.status-section {
-  margin-bottom: 30rpx;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 20rpx;
-  padding: 30rpx;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+/* AI辅助讲解 */
+.ai-section {
+  display: flex;
+  margin-bottom: 20rpx;
 }
 
-.status-content {
-  font-size: 24rpx;
-  color: #6b5344;
-  line-height: 1.6;
+.ai-input {
+  flex: 1;
+  height: 80rpx;
+  border: 2rpx solid #e8e4d8;
+  border-radius: 40rpx 0 0 40rpx;
+  padding: 0 30rpx;
+  font-size: 26rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+  background: #faf9f6;
+}
+
+.ai-btn {
+  width: 160rpx;
+  height: 80rpx;
+  background: linear-gradient(135deg, #D4A017 0%, #B8860B 100%);
+  color: #1A365D;
+  border: none;
+  border-radius: 0 40rpx 40rpx 0;
+  font-size: 28rpx;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 4rpx 12rpx rgba(212, 160, 23, 0.2);
+}
+
+.ai-btn:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 6rpx 16rpx rgba(212, 160, 23, 0.3);
+}
+
+.ai-result {
+  background: #f8f6f0;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  border: 1rpx solid #e8e4d8;
+}
+
+.ai-answer {
+  font-size: 26rpx;
+  color: #4a4a4a;
+  line-height: 1.5;
   text-align: justify;
 }
 
 /* 底部装饰 */
 .footer-section {
+  background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+  padding: 40rpx 30rpx;
   text-align: center;
-  padding: 20rpx 0;
+  margin-top: 40rpx;
 }
 
 .footer-text {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #D4A017;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.footer-subtext {
   font-size: 24rpx;
-  color: #9e8b7c;
-  font-family: '楷体', 'KaiTi', serif;
+  color: rgba(255,255,255,0.8);
+  display: block;
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+  .header-bg {
+    height: 350rpx;
+  }
+  
+  .master-name {
+    font-size: 40rpx;
+  }
+  
+  .master-dynasty {
+    font-size: 24rpx;
+  }
+  
+  .info-card {
+    padding: 24rpx;
+  }
+  
+  .card-title {
+    font-size: 28rpx;
+  }
+  
+  .detail-text,
+  .style-text,
+  .status-text,
+  .evaluation-text,
+  .appreciation-text {
+    font-size: 24rpx;
+  }
+  
+  .work-name {
+    font-size: 24rpx;
+  }
+  
+  .story-title {
+    font-size: 26rpx;
+  }
+  
+  .story-content {
+    font-size: 24rpx;
+  }
+  
+  .ai-input {
+    font-size: 24rpx;
+  }
+  
+  .ai-btn {
+    font-size: 26rpx;
+    width: 140rpx;
+  }
+  
+  .ai-answer {
+    font-size: 24rpx;
+  }
 }

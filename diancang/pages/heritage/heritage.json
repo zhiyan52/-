@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "典藏拾珠",
+  "navigationBarBackgroundColor": "#1A365D",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#f8f6f0",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

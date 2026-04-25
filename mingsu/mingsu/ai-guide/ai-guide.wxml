@@ -1,0 +1,204 @@
+<!--mingsu/mingsu/ai-guide/ai-guide.wxml-->
+<view class="folklore-page">
+
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="folklore-name">{{venueName}}</text>
+    <text class="subtitle">民俗导览地图 · {{spots.length}}个点位</text>
+  </view>
+
+  <!-- 分区导航 -->
+  <view class="nav-tabs">
+    <view class="tab {{activeZone==='all'?'active':''}}" bindtap="switchZone" data-zone="all">
+      <text class="icon">🏮</text>
+      <text>全部区域</text>
+    </view>
+    <view class="tab {{activeZone==='festival'?'active':''}}" bindtap="switchZone" data-zone="festival">
+      <text class="icon">🎊</text>
+      <text>节庆习俗</text>
+    </view>
+    <view class="tab {{activeZone==='wedding'?'active':''}}" bindtap="switchZone" data-zone="wedding">
+      <text class="icon">💒</text>
+      <text>婚嫁礼仪</text>
+    </view>
+    <view class="tab {{activeZone==='market'?'active':''}}" bindtap="switchZone" data-zone="market">
+      <text class="icon">🏪</text>
+      <text>非遗市集</text>
+    </view>
+    <view class="tab {{activeZone==='architecture'?'active':''}}" bindtap="switchZone" data-zone="architecture">
+      <text class="icon">🏯</text>
+      <text>传统建筑</text>
+    </view>
+  </view>
+
+  <!-- 游览路线选择 -->
+  <view class="route-selector">
+    <text class="route-label">游览路线：</text>
+    <view class="route-options">
+      <view class="route-option {{selectedRoute==='recommended'?'active':''}} {{routeLoading?'loading':''}}" bindtap="selectRoute" data-route="recommended">
+        <text>{{routeLoading && selectedRoute==='recommended'?'生成中...':'推荐路线'}}</text>
+      </view>
+      <view class="route-option {{selectedRoute==='family'?'active':''}} {{routeLoading?'loading':''}}" bindtap="selectRoute" data-route="family">
+        <text>{{routeLoading && selectedRoute==='family'?'生成中...':'亲子民俗'}}</text>
+      </view>
+      <view class="route-option {{selectedRoute==='intangible'?'active':''}} {{routeLoading?'loading':''}}" bindtap="selectRoute" data-route="intangible">
+        <text>{{routeLoading && selectedRoute==='intangible'?'生成中...':'非遗体验'}}</text>
+      </view>
+      <view class="route-option {{selectedRoute==='festival'?'active':''}} {{routeLoading?'loading':''}}" bindtap="selectRoute" data-route="festival">
+        <text>{{routeLoading && selectedRoute==='festival'?'生成中...':'节庆打卡'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 路线信息 -->
+  <view wx:if="showRoute" class="route-info">
+    <view class="info-item">
+      <text class="info-label">路线类型：</text>
+      <text class="info-value">{{routeInfo.type}}</text>
+    </view>
+    <view class="info-item">
+      <text class="info-label">预计时间：</text>
+      <text class="info-value">{{routeInfo.duration}}</text>
+    </view>
+    <view class="info-item">
+      <text class="info-label">点位数量：</text>
+      <text class="info-value">{{routeInfo.spotCount}}个</text>
+    </view>
+  </view>
+
+  <!-- 平面图上传 -->
+  <view class="map-upload-section">
+    <view class="upload-container">
+      <text class="upload-title">平面图管理</text>
+      <button class="upload-btn" bindtap="uploadMap">
+        <text>上传平面图</text>
+      </button>
+      <text class="upload-hint">支持JPG、PNG格式，建议尺寸1200x800</text>
+    </view>
+  </view>
+
+  <!-- 热区编辑 -->
+  <view class="hotspot-edit-section">
+    <view class="edit-container">
+      <text class="edit-title">热区编辑</text>
+      <button class="edit-btn" bindtap="toggleEditMode">
+        <text>{{editMode ? '退出编辑' : '进入编辑模式'}}</text>
+      </button>
+      <text class="edit-hint">进入编辑模式后，可点击地图添加或调整热区位置</text>
+    </view>
+  </view>
+
+  <!-- 民俗场馆地图 -->
+  <view class="venue-map-container" bindtap="handleMapTap" bindtouchmove="dragHotspot" bindtouchend="endDrag">
+    <!-- 平面图背景 -->
+    <image class="venue-map" src="{{venueMapUrl}}" mode="aspectFit"/>
+
+    <!-- 热区层 -->
+    <view class="hotspots-layer" style="transform: scale({{mapScale}}); transform-origin: {{mapCenter.x}}px {{mapCenter.y}}px;">
+      <!-- 民俗点位热区 -->
+      <view
+        wx:for="{{filteredSpots}}"
+        wx:key="id"
+        class="hotspot {{activeSpotId===item.id?'active':''}} {{editMode?'edit-mode':''}}"
+        style="left: {{item.position.x}}rpx; top: {{item.position.y}}rpx; width: {{item.position.width}}rpx; height: {{item.position.height}}rpx;"
+        data-id="{{item.id}}"
+        bindtap="{{editMode ? 'startDrag' : 'selectSpot'}}
+      >
+        <view class="hotspot-marker">
+          <text class="hotspot-number">{{item.number}}</text>
+        </view>
+        <text class="hotspot-label">{{item.name}}</text>
+      </view>
+
+      <!-- 路线轨迹 -->
+      <view wx:if="showRoute" class="route-path">
+        <canvas canvas-id="routeCanvas" class="route-canvas"/>
+      </view>
+    </view>
+
+    <!-- 地图控制 -->
+    <view class="map-controls">
+      <button class="map-btn" bindtap="resetMap">复位</button>
+      <button class="map-btn" bindtap="toggleLabels">标签</button>
+      <button class="map-btn" bindtap="toggleRoute">路线</button>
+    </view>
+  </view>
+
+  <!-- 民俗点位详情面板 -->
+  <view class="spot-detail {{showDetail?'show':''}}">
+    <view class="detail-header" bindtap="closeDetail">
+      <text class="detail-title">{{selectedSpot.name}}</text>
+      <text class="close">✕</text>
+    </view>
+
+    <scroll-view class="detail-body" scroll-y>
+      <!-- 点位图片 -->
+      <image wx:if="{{selectedSpot.image}}" src="{{selectedSpot.image}}" mode="aspectFill" class="spot-image"/>
+
+      <!-- 点位信息 -->
+      <view class="spot-info">
+        <text class="info-label">点位编号：</text>
+        <text class="info-value">{{selectedSpot.number}}</text>
+      </view>
+      <view class="spot-info">
+        <text class="info-label">所属区域：</text>
+        <text class="info-value">{{selectedSpot.zoneName}}</text>
+      </view>
+      <view class="spot-info">
+        <text class="info-label">民俗类型：</text>
+        <text class="info-value">{{selectedSpot.type}}</text>
+      </view>
+
+      <!-- 民俗描述 -->
+      <view class="description-section">
+        <text class="section-title">民俗描述</text>
+        <text class="description-text">{{selectedSpot.description}}</text>
+      </view>
+
+      <!-- 背景故事 -->
+      <view class="story-section" wx:if="{{selectedSpot.story}}">
+        <text class="section-title">背景故事</text>
+        <text class="story-text">{{selectedSpot.story}}</text>
+      </view>
+
+      <!-- AI 讲解入口 -->
+      <view class="ai-section">
+        <button class="ai-btn" bindtap="showAiExplanation">
+          <text class="ai-icon">🤖</text>
+          <text>AI智能讲解</text>
+        </button>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- AI 讲解弹窗 -->
+  <view class="ai-modal {{showAiModal?'show':''}}">
+    <view class="modal-mask" bindtap="hideAiModal"></view>
+    <view class="modal-content">
+      <text class="modal-title">AI智能讲解</text>
+      <text class="modal-subtitle">{{selectedSpot.name}}</text>
+
+      <!-- 讲解内容 -->
+      <view class="ai-content" wx:if="{{aiExplanation}}">
+        <text class="ai-text">{{aiExplanation}}</text>
+      </view>
+      <view class="ai-loading" wx:else>
+        <text class="loading-text">AI正在生成讲解...</text>
+      </view>
+
+      <button class="modal-btn" bindtap="hideAiModal">
+        <text>关闭</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 底部操作 -->
+  <view class="bottom-bar">
+    <button class="action-btn" open-type="share">
+      <text>分享</text>
+    </button>
+    <button class="action-btn" bindtap="showFullMap">
+      <text>全屏地图</text>
+    </button>
+  </view>
+</view>

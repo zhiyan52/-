@@ -1,4 +1,8 @@
 {
   "navigationBarTitleText": "名家详情",
-  "usingComponents": {}
+  "navigationBarBackgroundColor": "#1A365D",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#f8f6f0",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }

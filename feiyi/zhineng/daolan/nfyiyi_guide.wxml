@@ -1,30 +1,70 @@
 <view class="container">
-  <picker mode="selector" range="{{categories}}" bindchange="onCategoryChange">
-    <view class="picker">选择非遗品类：{{currentCategory}}</view>
-  </picker>
-
-  <view wx:if="{{isLoading}}">
-    <view class="loading">正在生成智能导览...</view>
+  <view class="header-section">
+    <view class="header-title">智能导览</view>
+    <view class="header-subtitle">非遗技艺全流程学习</view>
+  </view>
+  
+  <view class="category-selector">
+    <picker mode="selector" range="{{categories}}" bindchange="onCategoryChange">
+      <view class="picker">选择非遗品类：{{currentCategory}}</view>
+    </picker>
   </view>
 
-  <view wx:if="{{!isLoading && guideData}}">
-    <view class="guide-card">
-      <view class="step-title">文化背景</view>
-      <text class="step-content">文化背景内容</text>
-
-      <view class="step-title">核心工序</view>
-      <text class="step-content">核心工序内容</text>
-
-      <view class="image-container">
-        <image src="{{imageUrl}}" mode="widthFix" class="step-image"></image>
-        <view class="image-desc">AI生成工序示意图</view>
+  <!-- 本地工序流程展示 -->
+  <view class="process-container" wx:if="{{processData}}">
+    <view class="section-title">工序流程</view>
+    
+    <view class="process-steps">
+      <view class="step-card" wx:for="{{processData.steps}}" wx:key="{{index}}">
+        <view class="step-number">{{index + 1}}</view>
+        <view class="step-content">
+          <view class="step-title">{{item.title}}</view>
+          <view class="step-description">{{item.description}}</view>
+          <view class="step-tips" wx:if="{{item.tips}}">
+            <view class="tips-label">操作要点：</view>
+            <view class="tips-content">{{item.tips}}</view>
+          </view>
+        </view>
       </view>
-
-      <view class="step-title">经典案例</view>
-      <text class="step-content">经典案例内容</text>
-
-      <view class="step-title">创作灵感</view>
-      <text class="step-content">创作灵感内容</text>
     </view>
+    
+    <view class="info-section">
+      <view class="info-card">
+        <view class="info-title">历史渊源</view>
+        <view class="info-content">{{processData.history}}</view>
+      </view>
+      
+      <view class="info-card">
+        <view class="info-title">匠人语录</view>
+        <view class="info-content">{{processData.quote}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- AI 辅助讲解 -->
+  <view class="ai-section" wx:if="{{processData}}">
+    <view class="section-title">AI 辅助讲解</view>
+    <view class="ai-input-section">
+      <input 
+        class="ai-input" 
+        placeholder="输入您的问题，获取更多细节..." 
+        value="{{aiQuestion}}"
+        bindinput="onAIQuestionInput"
+      />
+      <view class="ai-btn" bindtap="getAIInsight">
+        <text>获取讲解</text>
+      </view>
+    </view>
+    
+    <view class="ai-response" wx:if="{{aiResponse}}">
+      <view class="ai-response-title">AI 讲解</view>
+      <view class="ai-response-content">{{aiResponse}}</view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{isLoading}}">
+    <view class="loading-spinner"></view>
+    <text>加载中...</text>
   </view>
 </view>

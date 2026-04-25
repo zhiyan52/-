@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "openapi": [
+      "wx.cloud.callFunction"
+    ],
+    "db": [
+      {
+        "collection": "collection_core",
+        "doc": "*",
+        "read": true
+      },
+      {
+        "collection": "ai_whatifs",
+        "doc": "*",
+        "write": true
+      }
+    ]
+  },
+  "runtime": "Node.js 16"
+}

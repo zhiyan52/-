@@ -1,42 +1,129 @@
 <!-- 名家详情页 -->
 <view class="master-detail-container">
-  <!-- 名家信息 -->
-  <view class="master-info-section">
-    <image class="master-image" src="{{master.image}}"></image>
-    <text class="master-name">{{master.name}}</text>
-    <text class="master-dynasty">{{master.dynasty}}</text>
-  </view>
-  
-  <!-- 详细介绍 -->
-  <view class="detail-section">
-    <text class="section-title">名家简介</text>
-    <text class="detail-content">{{master.detail}}</text>
-  </view>
-  
-  <!-- 代表作品 -->
-  <view class="works-section" wx:if="{{master.works && master.works.length > 0}}">
-    <text class="section-title">代表作品</text>
-    <view class="works-list">
-      <view class="work-item" wx:for="{{master.works}}" wx:key="*this">
-        <text class="work-name">{{item}}</text>
-      </view>
+  <!-- 顶部背景 -->
+  <view class="header-bg">
+    <image class="bg-image" src="{{master.image}}" mode="aspectFill"></image>
+    <view class="bg-overlay"></view>
+    <view class="header-content">
+      <text class="master-name">{{master.name}}</text>
+      <text class="master-dynasty">{{master.dynasty}}</text>
     </view>
   </view>
   
-  <!-- 艺术风格 -->
-  <view class="style-section" wx:if="{{master.style}}">
-    <text class="section-title">艺术风格</text>
-    <text class="style-content">{{master.style}}</text>
+  <!-- 名家头像 -->
+  <view class="avatar-container">
+    <image class="master-avatar" src="{{master.image}}" mode="aspectFill"></image>
   </view>
   
-  <!-- 文化地位 -->
-  <view class="status-section" wx:if="{{master.status}}">
-    <text class="section-title">文化地位与影响</text>
-    <text class="status-content">{{master.status}}</text>
+  <!-- 详细内容 -->
+  <view class="content-section">
+    <!-- 名家简介 -->
+    <view class="info-card">
+      <view class="card-header">
+        <text class="card-title">名家简介</text>
+        <view class="card-decoration"></view>
+      </view>
+      <view class="card-content">
+        <text class="detail-text">{{master.detail}}</text>
+      </view>
+    </view>
+    
+    <!-- 艺术风格 -->
+    <view class="info-card" wx:if="{{master.style}}">
+      <view class="card-header">
+        <text class="card-title">艺术风格</text>
+        <view class="card-decoration"></view>
+      </view>
+      <view class="card-content">
+        <text class="style-text">{{master.style}}</text>
+      </view>
+    </view>
+    
+    <!-- 代表作品 -->
+    <view class="info-card" wx:if="{{master.works && master.works.length > 0}}">
+      <view class="card-header">
+        <text class="card-title">代表作品</text>
+        <view class="card-decoration"></view>
+      </view>
+      <view class="card-content">
+        <view class="works-grid">
+          <view class="work-item" wx:for="{{master.works}}" wx:key="*this">
+            <view class="work-card">
+              <text class="work-name">{{item}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 文化地位 -->
+    <view class="info-card" wx:if="{{master.status}}">
+      <view class="card-header">
+        <text class="card-title">文化地位与影响</text>
+        <view class="card-decoration"></view>
+      </view>
+      <view class="card-content">
+        <text class="status-text">{{master.status}}</text>
+      </view>
+    </view>
+    
+    <!-- 历史评价 -->
+    <view class="info-card" wx:if="{{master.evaluation}}">
+      <view class="card-header">
+        <text class="card-title">历史评价</text>
+        <view class="card-decoration"></view>
+      </view>
+      <view class="card-content">
+        <text class="evaluation-text">{{master.evaluation}}</text>
+      </view>
+    </view>
+    
+    <!-- 相关故事 -->
+    <view class="info-card" wx:if="{{master.stories && master.stories.length > 0}}">
+      <view class="card-header">
+        <text class="card-title">相关故事</text>
+        <view class="card-decoration"></view>
+      </view>
+      <view class="card-content">
+        <view class="story-item" wx:for="{{master.stories}}" wx:key="index">
+          <text class="story-title">{{item.title}}</text>
+          <text class="story-content">{{item.content}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 作品赏析 -->
+    <view class="info-card" wx:if="{{master.appreciation}}">
+      <view class="card-header">
+        <text class="card-title">作品赏析</text>
+        <view class="card-decoration"></view>
+      </view>
+      <view class="card-content">
+        <text class="appreciation-text">{{master.appreciation}}</text>
+      </view>
+    </view>
+    
+    <!-- AI辅助讲解 -->
+    <view class="info-card">
+      <view class="card-header">
+        <text class="card-title">AI辅助讲解</text>
+        <view class="card-decoration"></view>
+      </view>
+      <view class="card-content">
+        <view class="ai-section">
+          <input class="ai-input" placeholder="输入您的问题，如：{{master.name}}的书法特点是什么？" bindinput="inputQuestion" value="{{aiQuestion}}" />
+          <button class="ai-btn" bindtap="getAIExplanation">AI解答</button>
+        </view>
+        <view class="ai-result" wx:if="{{aiAnswer}}">
+          <text class="ai-answer">{{aiAnswer}}</text>
+        </view>
+      </view>
+    </view>
   </view>
   
   <!-- 底部装饰 -->
   <view class="footer-section">
     <text class="footer-text">传承书画艺术，弘扬传统文化</text>
+    <text class="footer-subtext">了解更多名家故事，感受艺术魅力</text>
   </view>
 </view>

@@ -1,0 +1,35 @@
+<view class="card-container">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="header-title">民俗节气卡片</text>
+    <text class="header-subtitle">生成可保存的民俗主题卡片</text>
+  </view>
+
+  <!-- 卡片展示区域 -->
+  <view class="card-display">
+    <view class="card-wrapper">
+      <image class="card-background" src="{{currentCard.background}}" mode="aspectFill"></image>
+      <view class="card-content">
+        <text class="card-quote" style="color: {{currentCard.textColor}}">{{currentCard.quote}}</text>
+      </view>
+    </view>
+    <!-- 隐藏的canvas用于生成图片 -->
+    <canvas canvas-id="cardCanvas" style="width: 300px; height: 300px; position: absolute; left: -9999px;"></canvas>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-buttons">
+    <button class="generate-btn" bindtap="generateCard" loading="{{isGenerating}}">
+      {{isGenerating ? '生成中...' : '换一张'}}
+    </button>
+    <button class="save-btn" bindtap="saveCard">
+      保存卡片
+    </button>
+  </view>
+
+  <!-- 说明文字 -->
+  <view class="info-section">
+    <text class="info-text">随机生成民俗节气卡片，包含传统诗句和古风背景</text>
+    <text class="info-text">点击"保存卡片"可将卡片保存到相册</text>
+  </view>
+</view>

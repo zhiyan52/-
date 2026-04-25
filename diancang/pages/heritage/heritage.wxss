@@ -1,0 +1,734 @@
+/* diancang/pages/heritage/heritage.wxss */
+
+/* ===== 页面基础 ===== */
+.heritage-page {
+  min-height: 100vh;
+  background: #f8f6f0;
+  padding-bottom: 120rpx;
+}
+
+.header {
+  padding: 40rpx;
+  text-align: center;
+  background: linear-gradient(to bottom, #1a365d, #2d4a6f);
+}
+
+.treasure-name {
+  display: block;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 12rpx;
+}
+
+.subtitle {
+  font-size: 24rpx;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ===== 分区导航 ===== */
+.nav-tabs {
+  display: flex;
+  background: #fff;
+  border-bottom: 1rpx solid #e8e8e8;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx 0;
+  font-size: 24rpx;
+  color: #666;
+  transition: all 0.3s;
+  min-width: 180rpx;
+}
+
+.tab.active {
+  color: #c9a96e;
+  font-weight: bold;
+  border-bottom: 4rpx solid #c9a96e;
+}
+
+.tab .icon {
+  font-size: 36rpx;
+  margin-bottom: 8rpx;
+}
+
+/* ===== 游览路线选择 ===== */
+.route-selector {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 40rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #e8e8e8;
+}
+
+.route-label {
+  font-size: 24rpx;
+  color: #666;
+  margin-right: 20rpx;
+}
+
+.route-options {
+  display: flex;
+  gap: 16rpx;
+}
+
+.route-option {
+  padding: 12rpx 24rpx;
+  background: #fdf6ed;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  color: #8b6914;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.route-option.active {
+  background: #c9a96e;
+  color: #fff;
+}
+
+.route-option.loading {
+  background: #e0e0e0;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* ===== 路线信息 ===== */
+.route-info {
+  padding: 20rpx 40rpx;
+  background: #fdf6ed;
+  border-bottom: 1rpx solid #e8e8e8;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.info-label {
+  font-size: 22rpx;
+  color: #8b6914;
+  font-weight: bold;
+}
+
+.info-value {
+  font-size: 22rpx;
+  color: #333;
+}
+
+/* ===== 平面图上传 ===== */
+.map-upload-section {
+  padding: 32rpx 40rpx;
+  background: #fff;
+  margin: 20rpx 40rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.upload-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #1a365d;
+}
+
+.upload-btn {
+  padding: 20rpx 40rpx;
+  background: linear-gradient(135deg, #1a365d 0%, #2d4a6f 100%);
+  border: none;
+  border-radius: 12rpx;
+  color: #fff;
+  font-size: 24rpx;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.upload-btn:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 4rpx 12rpx rgba(26, 54, 93, 0.4);
+}
+
+.upload-hint {
+  font-size: 20rpx;
+  color: #999;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ===== 热区编辑 ===== */
+.hotspot-edit-section {
+  padding: 32rpx 40rpx;
+  background: #fff;
+  margin: 0 40rpx 20rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.edit-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #1a365d;
+}
+
+.edit-btn {
+  padding: 20rpx 40rpx;
+  background: linear-gradient(135deg, #c9a96e 0%, #e6c997 100%);
+  border: none;
+  border-radius: 12rpx;
+  color: #8b6914;
+  font-size: 24rpx;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.edit-btn:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 4rpx 12rpx rgba(201, 169, 110, 0.4);
+}
+
+.edit-hint {
+  font-size: 20rpx;
+  color: #999;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* 编辑模式下的热区样式 */
+.hotspot.edit-mode {
+  border: 2rpx dashed #ff6b35;
+}
+
+.hotspot.edit-mode .hotspot-marker {
+  background: rgba(255, 107, 53, 0.8);
+  box-shadow: 0 0 16rpx rgba(255, 107, 53, 0.6);
+}
+
+/* ===== 典藏馆地图 ===== */
+.gallery-map-container {
+  position: relative;
+  height: 600rpx;
+  margin: 40rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+  background: #f0f7ff;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+.gallery-map {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hotspots-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hotspot {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hotspot-marker {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: rgba(201, 169, 110, 0.8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(201, 169, 110, 0.6);
+  transition: all 0.3s;
+  z-index: 2;
+}
+
+.hotspot.active .hotspot-marker {
+  transform: scale(1.2);
+  background: rgba(90, 143, 123, 0.9);
+  box-shadow: 0 0 20rpx rgba(90, 143, 123, 0.8);
+}
+
+.hotspot-number {
+  line-height: 1;
+}
+
+.hotspot-label {
+  position: absolute;
+  top: 70rpx;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  padding: 8rpx 16rpx;
+  border-radius: 16rpx;
+  font-size: 20rpx;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(10rpx);
+  transition: all 0.3s;
+  z-index: 1;
+}
+
+.hotspot:hover .hotspot-label,
+.hotspot.active .hotspot-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.route-path {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.route-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.map-controls {
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  z-index: 10;
+}
+
+.map-btn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  font-size: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.map-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.3);
+}
+
+/* ===== 文物详情面板 ===== */
+.exhibit-detail {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 32rpx 32rpx 0 0;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  max-height: 70vh;
+  z-index: 100;
+}
+
+.exhibit-detail.show {
+  transform: translateY(0);
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx 40rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  cursor: pointer;
+}
+
+.detail-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #c9a96e;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.close {
+  font-size: 32rpx;
+  color: #999;
+  padding: 8rpx 16rpx;
+}
+
+.detail-body {
+  padding: 32rpx 40rpx;
+  max-height: calc(70vh - 100rpx);
+}
+
+.exhibit-image {
+  width: 100%;
+  height: 300rpx;
+  border-radius: 16rpx;
+  margin-bottom: 32rpx;
+  object-fit: cover;
+}
+
+.exhibit-info {
+  display: flex;
+  margin-bottom: 16rpx;
+  align-items: flex-start;
+}
+
+.info-label {
+  font-size: 22rpx;
+  font-weight: bold;
+  color: #c9a96e;
+  min-width: 120rpx;
+}
+
+.info-value {
+  font-size: 22rpx;
+  color: #333;
+  flex: 1;
+  line-height: 1.4;
+}
+
+.description-section {
+  margin-top: 32rpx;
+  margin-bottom: 32rpx;
+}
+
+.section-title {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #1a365d;
+  margin-bottom: 16rpx;
+  display: block;
+}
+
+.description-text {
+  font-size: 22rpx;
+  color: #333;
+  line-height: 1.6;
+}
+
+.value-section {
+  margin-top: 32rpx;
+}
+
+.value-text {
+  font-size: 22rpx;
+  color: #333;
+  line-height: 1.6;
+}
+
+.ai-section {
+  margin-top: 32rpx;
+  padding-top: 32rpx;
+  border-top: 2rpx dashed #e0e0e0;
+}
+
+.ai-btn {
+  width: 100%;
+  padding: 20rpx;
+  background: linear-gradient(135deg, #fdf6ed 0%, #f5f0e8 100%);
+  border: 2rpx solid #c9a96e;
+  border-radius: 12rpx;
+  color: #8b6914;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ai-btn:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 4rpx 12rpx rgba(201, 169, 110, 0.4);
+}
+
+.ai-icon {
+  font-size: 28rpx;
+}
+
+/* ===== AI 讲解弹窗 ===== */
+.ai-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.ai-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  width: 80%;
+  max-width: 600rpx;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1a365d;
+  text-align: center;
+  margin-bottom: 8rpx;
+}
+
+.modal-subtitle {
+  display: block;
+  font-size: 20rpx;
+  color: #666;
+  text-align: center;
+  margin-bottom: 32rpx;
+}
+
+.ai-content {
+  background: #fdf6ed;
+  padding: 24rpx;
+  border-radius: 12rpx;
+  margin-bottom: 32rpx;
+  border-left: 4rpx solid #c9a96e;
+}
+
+.ai-text {
+  font-size: 22rpx;
+  color: #333;
+  line-height: 1.6;
+}
+
+.ai-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40rpx;
+}
+
+.loading-text {
+  font-size: 22rpx;
+  color: #666;
+}
+
+.modal-btn {
+  width: 100%;
+  padding: 20rpx;
+  background: #c9a96e;
+  border: none;
+  border-radius: 12rpx;
+  color: #fff;
+  font-size: 24rpx;
+  cursor: pointer;
+}
+
+/* ===== 底部操作 ===== */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1rpx solid #e8e8e8;
+  display: flex;
+  padding: 20rpx 40rpx;
+  gap: 20rpx;
+  z-index: 50;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 20rpx;
+  background: #f8f6f0;
+  border: 2rpx solid #e8e4d8;
+  border-radius: 12rpx;
+  color: #1a365d;
+  font-size: 22rpx;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.action-btn:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 4rpx 12rpx rgba(26, 54, 93, 0.3);
+}
+
+.action-btn:nth-child(2) {
+  background: #fdf6ed;
+  border-color: #c9a96e;
+  color: #8b6914;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 750rpx) {
+  .exhibit-detail {
+    max-height: 80vh;
+  }
+  
+  .detail-body {
+    max-height: 60vh;
+  }
+  
+  .nav-tabs {
+    overflow-x: auto;
+  }
+  
+  .tab {
+    min-width: 150rpx;
+  }
+  
+  .gallery-map-container {
+    height: 500rpx;
+    margin: 20rpx;
+  }
+  
+  .route-selector {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16rpx;
+  }
+  
+  .route-options {
+    flex-wrap: wrap;
+  }
+  
+  .map-upload-section,
+  .hotspot-edit-section {
+    margin: 16rpx 20rpx;
+    padding: 24rpx 32rpx;
+  }
+  
+  .route-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8rpx;
+  }
+  
+  .info-item {
+    width: 100%;
+  }
+  
+  .bottom-bar {
+    padding: 16rpx 20rpx;
+  }
+  
+  .action-btn {
+    padding: 16rpx;
+    font-size: 20rpx;
+  }
+}
+
+/* 小屏设备 */
+@media (max-width: 480rpx) {
+  .gallery-map-container {
+    height: 400rpx;
+  }
+  
+  .hotspot-marker {
+    width: 50rpx;
+    height: 50rpx;
+    font-size: 20rpx;
+  }
+  
+  .hotspot-label {
+    font-size: 18rpx;
+    padding: 6rpx 12rpx;
+  }
+  
+  .detail-title {
+    font-size: 28rpx;
+  }
+  
+  .exhibit-image {
+    height: 250rpx;
+  }
+  
+  .modal-content {
+    width: 90%;
+    padding: 32rpx;
+  }
+}
+
+/* ===== 动画 ===== */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(201, 169, 110, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10rpx rgba(201, 169, 110, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(201, 169, 110, 0);
+  }
+}
+
+.hotspot-marker.pulse {
+  animation: pulse 2s infinite;
+}
