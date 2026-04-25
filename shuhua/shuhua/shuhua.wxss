@@ -1,78 +1,92 @@
+/* 书画雅韵 - 传统中国风样式 */
 .shuhua-container {
+  background-color: #E8F5E8;
   min-height: 100vh;
-  background: #E8F5E8;
-  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  padding: 20rpx 30rpx;
+  padding-bottom: 140rpx;
 }
 
-/* 顶部品牌 */
-.brand-header {
-  margin: 20rpx;
-  border-radius: 24rpx;
+/* 主视觉区 */
+.hero {
+  margin: 20rpx 0 40rpx;
+  border-radius: 16rpx;
   overflow: hidden;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
-  border: 2rpx solid #D4A017;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.1);
+  border: 4rpx solid #D4A017;
 }
 
-.brand-content {
-  position: relative;
+.hero-swiper {
+  width: 100%;
   height: 400rpx;
 }
 
-.brand-bg {
+.hero-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  display: block;
 }
 
-.brand-title {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+/* 功能入口 */
+.features {
+  margin: 40rpx 0;
+}
+
+.feature-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+
+.feature-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: transparent;
-  color: #D4A017;
+  width: 48%;
+  background: #F8F0E3;
+  border-radius: 16rpx;
+  padding: 30rpx 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  border: 2rpx solid #D4A017;
+  transition: all 0.3s;
 }
 
-.main-title {
-  font-size: 48rpx;
-  font-weight: bold;
-  margin-bottom: 8rpx;
-  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.5);
-  font-family: "STKaiti", "KaiTi", serif;
-  letter-spacing: 8rpx;
+.feature-item:active {
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 20rpx rgba(0,0,0,0.15);
 }
 
-.sub-title {
-  font-size: 32rpx;
-  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.5);
+.feature-icon {
+  width: 180rpx;
+  height: 180rpx;
+  margin-bottom: 20rpx;
+  border-radius: 50%;
+  border: 2rpx solid #D4A017;
+}
+
+.feature-item text {
+  font-size: 28rpx;
+  color: #1A365D;
+  font-weight: 500;
   font-family: "STKaiti", "KaiTi", serif;
 }
 
 /* 通用标题样式 */
 .section-title {
-  text-align: center;
-  margin: 40rpx 0 30rpx;
-  position: relative;
-}
-
-.section-title text {
   font-size: 36rpx;
   font-weight: bold;
   color: #1A365D;
-  position: relative;
-  padding: 0 40rpx;
+  margin-bottom: 30rpx;
+  display: block;
+  text-align: center;
   font-family: "STKaiti", "KaiTi", serif;
+  position: relative;
+  padding-bottom: 15rpx;
 }
 
 .section-title::after {
   content: '';
   position: absolute;
-  bottom: -10rpx;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 100rpx;
@@ -81,140 +95,84 @@
   border-radius: 2rpx;
 }
 
-/* 功能模块 */
-.modules-section {
-  padding: 0 20rpx;
-  margin-bottom: 50rpx;
+/* 精选推荐 */
+.section {
+  margin-top: 50rpx;
 }
 
-.modules-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24rpx;
-}
-
-.module-card {
-  background: #F8F0E3;
-  border-radius: 24rpx;
-  padding: 32rpx;
+.recommendations {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 2rpx solid #D4A017;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  justify-content: space-between;
 }
 
-.module-card:active {
-  transform: scale(0.98);
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
-}
-
-.module-icon {
-  width: 80rpx;
-  height: 80rpx;
-  border-radius: 50%;
+.recommend-item {
+  width: 48%;
   background: #F8F0E3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16rpx;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
   border: 2rpx solid #D4A017;
+  transition: all 0.3s;
 }
 
-.module-name {
-  font-size: 28rpx;
-  font-weight: bold;
-  color: #1A365D;
-  margin-bottom: 8rpx;
-  text-align: center;
-  font-family: "STKaiti", "KaiTi", serif;
+.recommend-item:active {
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 20rpx rgba(0,0,0,0.15);
 }
 
-.module-desc {
-  font-size: 20rpx;
-  color: #666;
-  text-align: center;
-  line-height: 1.4;
-  font-family: "STKaiti", "KaiTi", serif;
-}
-
-/* 精选书画 */
-.featured-section {
-  padding: 0 20rpx;
-  margin-bottom: 50rpx;
-}
-
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20rpx;
-}
-
-.featured-card {
-  background: #F8F0E3;
-  border-radius: 20rpx;
-  overflow: hidden;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
-  border: 2rpx solid #D4A017;
-  transition: all 0.3s ease;
-}
-
-.featured-card:active {
-  transform: scale(0.98);
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
-}
-
-.featured-image {
+.rec-image {
   width: 100%;
-  height: 200rpx;
-  object-fit: cover;
-  border-bottom: 2rpx solid #D4A017;
+  height: 240rpx;
+  border-radius: 8rpx;
+  margin-bottom: 15rpx;
+  border: 2rpx solid #D4A017;
 }
 
-.featured-name {
-  font-size: 24rpx;
-  font-weight: bold;
+.rec-title {
+  font-size: 28rpx;
   color: #1A365D;
-  padding: 16rpx 16rpx 8rpx;
+  text-align: center;
   font-family: "STKaiti", "KaiTi", serif;
+  font-weight: 500;
+  display: block;
 }
 
-.featured-desc {
-  font-size: 18rpx;
+.rec-desc {
+  font-size: 24rpx;
   color: #666;
-  padding: 0 16rpx 16rpx;
-  line-height: 1.4;
+  text-align: center;
   font-family: "STKaiti", "KaiTi", serif;
+  display: block;
+  margin-top: 10rpx;
 }
 
-/* 智能功能 */
-.smart-section {
-  padding: 0 20rpx;
-  margin-bottom: 50rpx;
+/* 智能功能按钮 */
+.smart-features {
+  margin: 40rpx 0;
 }
 
 .smart-feature-item {
-  background: #F8F0E3;
-  border-radius: 20rpx;
-  padding: 24rpx;
-  margin-bottom: 20rpx;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  background: #F8F0E3;
+  border-radius: 16rpx;
+  padding: 25rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
   border: 2rpx solid #D4A017;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  transition: all 0.3s;
 }
 
 .smart-feature-item:active {
-  transform: scale(0.98);
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 20rpx rgba(0,0,0,0.15);
 }
 
 .smart-feature-icon {
-  width: 60rpx;
-  height: 60rpx;
+  font-size: 48rpx;
   margin-right: 20rpx;
+  color: #1A365D;
 }
 
 .smart-feature-content {
@@ -238,58 +196,32 @@
 .smart-feature-arrow {
   font-size: 32rpx;
   color: #D4A017;
-  margin-left: 16rpx;
 }
 
-/* 底部装饰 */
-.footer-section {
+/* 底部信息 */
+.footer {
+  margin-top: 50rpx;
+  padding: 30rpx;
   text-align: center;
-  padding: 40rpx 0;
-  margin-top: 60rpx;
   background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
-  border-top: 2rpx solid #D4A017;
+  border-radius: 16rpx 16rpx 0 0;
+  border-top: 4rpx solid #D4A017;
 }
 
 .footer-text {
   font-size: 24rpx;
-  font-weight: bold;
-  color: #D4A017;
-  margin-bottom: 8rpx;
-  font-family: "STKaiti", "KaiTi", serif;
-}
-
-.footer-subtext {
-  font-size: 20rpx;
   color: #F8F0E3;
-  margin-bottom: 16rpx;
+  margin-bottom: 10rpx;
   font-family: "STKaiti", "KaiTi", serif;
 }
 
 .footer-copyright {
-  font-size: 18rpx;
+  font-size: 20rpx;
   color: rgba(248, 240, 227, 0.8);
   font-family: "STKaiti", "KaiTi", serif;
 }
 
-/* 响应式调整 */
-@media (max-width: 375px) {
-  .modules-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .featured-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .brand-content {
-    height: 300rpx;
-  }
-  
-  .main-title {
-    font-size: 40rpx;
-  }
-  
-  .sub-title {
-    font-size: 28rpx;
-  }
+/* 底部空间 */
+.bottom-space {
+  height: 40rpx;
 }

@@ -32,31 +32,45 @@
 /* 分类标签 */
 .category-tabs {
   display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  margin-bottom: 30rpx;
-  padding-bottom: 10rpx;
+  justify-content: center;
+  gap: 40rpx;
+  margin: 0 40rpx 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid #e8dfd0;
 }
 
 .tab {
-  padding: 15rpx 30rpx;
-  margin-right: 20rpx;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 30rpx;
-  font-size: 26rpx;
-  color: #6b5344;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  padding: 12rpx 32rpx;
+  border-radius: 40rpx;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2rpx solid #d4a76a;
   transition: all 0.3s ease;
 }
 
 .tab.active {
-  background-color: #8B4513;
-  color: #ffffff;
-  box-shadow: 0 4rpx 12rpx rgba(139, 69, 19, 0.3);
+  background: linear-gradient(135deg, #d4a76a 0%, #b8956a 100%);
+  box-shadow: 0 4rpx 12rpx rgba(212, 167, 106, 0.3);
+  border: 2rpx solid #d4a76a;
 }
 
 .tab-text {
-  font-family: '楷体', 'KaiTi', serif;
+  font-size: 26rpx;
+  color: #8b7355;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-weight: 500;
+}
+
+.tab.active .tab-text {
+  color: white;
+  font-weight: bold;
+}
+
+/* 点击按下效果 - 覆盖所有状态 */
+.category-tabs .tab:active {
+  background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%) !important;
+  border: none !important;
+  transform: scale(0.95);
+  box-shadow: 0 4rpx 16rpx rgba(255, 215, 0, 0.5) !important;
 }
 
 /* 作品列表 */

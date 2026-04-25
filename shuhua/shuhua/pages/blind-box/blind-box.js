@@ -5,11 +5,11 @@ Page({
     blindBoxContent: {},
     // 盲盒数据
     artworks: [
-      { name: '兰亭集序', author: '王羲之', image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/lanting.jpg' },
-      { name: '祭侄文稿', author: '颜真卿', image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/jizhi.jpg' },
-      { name: '千里江山图', author: '王希孟', image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/qianli.jpg' },
-      { name: '富春山居图', author: '黄公望', image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/fuchun.jpg' },
-      { name: '清明上河图', author: '张择端', image: 'https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/qingming.jpg' }
+      { name: '兰亭集序', author: '王羲之', image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/a36cf1e13b99529317da1fd145ed6e9c.jpg' },
+      { name: '祭侄文稿', author: '颜真卿', image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/4a098e160e5ab5333cd7157c547e3026.jpg' },
+      { name: '千里江山图', author: '王希孟', image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/d7827934cc3206ee4198aac41ea76210.jpg' },
+      { name: '富春山居图', author: '黄公望', image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/8ed7f2d71f9023183b8ecca26a6e2e6b.png' },
+      { name: '清明上河图', author: '张择端', image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/02c50c9ea27b43171c5bc926a5a42b7d.jpg' }
     ],
     quotes: [
       '书为心画，画为心声',

@@ -8,8 +8,8 @@
   <!-- 作品信息 -->
   <view class="info-section">
     <text class="artwork-title">{{artwork.name}}</text>
-    <text class="artwork-author">{{artwork.author}} · {{artwork.period}}</text>
-    <text class="artwork-category">{{artwork.category === 'calligraphy' ? '书法' : '国画'}}</text>
+    <text class="artwork-author">{{artwork.author}}</text>
+    <text class="artwork-category">{{artwork.type}}</text>
   </view>
   
   <!-- 作品详情 -->

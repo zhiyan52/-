@@ -37,6 +37,7 @@ page {
   padding: 20rpx 30rpx;
   background: #fff;
   border-bottom: 2rpx solid #e8e0d0;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
 }
 
 .project-tab {
@@ -47,11 +48,19 @@ page {
   margin-right: 20rpx;
   border-radius: 16rpx;
   transition: all 0.3s;
+  cursor: pointer;
+}
+
+.project-tab:hover {
+  transform: translateY(-4rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
 }
 
 .project-tab.active {
   background: #f5ebe0;
   border: 2rpx solid #d4a574;
+  box-shadow: 0 4rpx 12rpx rgba(212, 165, 116, 0.3);
+  transform: translateY(-2rpx);
 }
 
 .tab-icon {
@@ -59,17 +68,28 @@ page {
   height: 80rpx;
   border-radius: 50%;
   background: #f5f0e8;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-tab.active .tab-icon {
+  background: #d4a574;
+  transform: scale(1.1);
 }
 
 .tab-name {
   font-size: 24rpx;
   color: #666;
   margin-top: 10rpx;
+  transition: all 0.3s;
 }
 
 .project-tab.active .tab-name {
   color: #8b4513;
   font-weight: bold;
+  transform: scale(1.05);
 }
 
 /* 简介卡片 */
@@ -155,6 +175,7 @@ page {
   background: #d4a574;
   transform: translateY(-50%);
   transition: width 0.5s ease;
+  box-shadow: 0 0 8rpx rgba(212, 165, 116, 0.5);
 }
 
 .timeline-track::before {
@@ -182,15 +203,43 @@ page {
   background: #e8e0d0;
   border: 4rpx solid #fff;
   transition: all 0.3s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.dot:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 8rpx rgba(0,0,0,0.2);
 }
 
 .dot.active {
   background: #d4a574;
+  box-shadow: 0 0 8rpx rgba(212, 165, 116, 0.5);
 }
 
 .dot.current {
   transform: scale(1.5);
-  box-shadow: 0 0 10rpx rgba(212, 165, 116, 0.5);
+  box-shadow: 0 0 12rpx rgba(212, 165, 116, 0.8);
+  background: #8b4513;
+  border-color: #d4a574;
+}
+
+.dot.current::after {
+  content: '';
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: rgba(212, 165, 116, 0.2);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
 }
 
 /* 滑动卡片 */

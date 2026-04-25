@@ -1,79 +1,123 @@
 <!-- 书画雅韵 - 传统中国风 -->
 <view class="shuhua-container">
-  <!-- 顶部品牌 -->
-  <view class="brand-header">
-    <view class="brand-content">
-      <image class="brand-bg" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/lunbo1.jpg"></image>
-      <view class="brand-title">
-      </view>
-    </view>
+  
+  <!-- 主视觉区轮播图 -->
+  <view class="hero">
+    <swiper class="hero-swiper" indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true">
+      <swiper-item wx:for="{{bannerList}}" wx:key="index">
+        <image src="{{item.image}}" class="hero-image" />
+      </swiper-item>
+    </swiper>
   </view>
   
-  <!-- 功能模块 -->
-  <view class="modules-section">
-    <view class="section-title"><text>书画功能</text></view>
-    <view class="modules-grid">
-      <view class="module-card" wx:for="{{modules}}" wx:key="id" bindtap="navigateToModule" data-id="{{item.id}}">
-        <image class="module-icon" src="{{item.icon}}" mode="aspectFit"></image>
-        <text class="module-name">{{item.name}}</text>
-        <text class="module-desc">{{item.desc}}</text>
+  <!-- 功能入口 -->
+  <view class="features">
+    <text class="section-title">书画功能</text>
+    <!-- 第一行 -->
+    <view class="feature-row">
+      <view class="feature-item" bindtap="navigateToModule" data-id="masters">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/0095abda144e4d70c82b0fbd33bd0160.jpg" class="feature-icon" mode="aspectFill" />
+        <text>书画名家图鉴</text>
+      </view>
+      <view class="feature-item" bindtap="navigateToModule" data-id="artworks">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/32f1f49b961898f2093d78154be83528.jpg" class="feature-icon" mode="aspectFill" />
+        <text>传世书画赏析</text>
+      </view>
+    </view>
+    <!-- 第二行 -->
+    <view class="feature-row">
+      <view class="feature-item" bindtap="navigateToModule" data-id="calligraphy">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/bfd2b8721affd67f4eccac7f70515c10.jpg" class="feature-icon" mode="aspectFill" />
+        <text>书法字体科普</text>
+      </view>
+      <view class="feature-item" bindtap="navigateToModule" data-id="lintie">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/327db69d2014124f069a1050dac69d8f.jpg" class="feature-icon" mode="aspectFill" />
+        <text>AI临帖</text>
+      </view>
+    </view>
+    <!-- 第三行 -->
+    <view class="feature-row">
+      <view class="feature-item" bindtap="navigateToModule" data-id="quiz">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/719187bed0b32806e59e52ad009b3e64.jpg" class="feature-icon" mode="aspectFill" />
+        <text>书画知识答题</text>
+      </view>
+      <view class="feature-item" bindtap="navigateToModule" data-id="cards">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/569b659699fc0411e9850f402663f85d.jpg" class="feature-icon" mode="aspectFill" />
+        <text>书画佳句卡片</text>
+      </view>
+    </view>
+    <!-- 第四行 -->
+    <view class="feature-row">
+      <view class="feature-item" bindtap="navigateToModule" data-id="blind-box">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/f8d98a95c45daff61694504e41f2f1c8.jpg" class="feature-icon" mode="aspectFill" />
+        <text>书画盲盒</text>
+      </view>
+      <view class="feature-item" bindtap="navigateToModule" data-id="ai-image">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/e1eb8e81b9df81ccca6d060dd0cf1e5c.jpg" class="feature-icon" mode="aspectFill" />
+        <text>AI意境生图</text>
       </view>
     </view>
   </view>
   
   <!-- 精选书画 -->
-  <view class="featured-section">
-    <view class="section-title"><text>精选书画</text></view>
-    <view class="featured-grid">
-      <view class="featured-card" wx:for="{{featuredArtworks}}" wx:key="id">
-        <image class="featured-image" src="{{item.image}}" mode="aspectFill"></image>
-        <text class="featured-name">{{item.name}}</text>
-        <text class="featured-desc">{{item.author}}</text>
+  <view class="section">
+    <text class="section-title">精选书画</text>
+    <view class="recommendations">
+      <view wx:for="{{featuredArtworks}}" wx:key="id" class="recommend-item" bindtap="viewArtworkDetail" data-id="{{item.id}}">
+        <image src="{{item.image}}" class="rec-image" mode="aspectFill" binderror="onImageError" data-id="{{item.id}}" />
+        <text class="rec-title">{{item.name}}</text>
+        <text class="rec-desc">{{item.author}}</text>
       </view>
     </view>
   </view>
   
   <!-- 智能功能 -->
-  <view class="smart-section">
-    <view class="section-title"><text>智能功能</text></view>
-    <view class="smart-feature-item" bindtap="navigateToAI">
-      <image class="smart-feature-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/icons/navigator.png" mode="aspectFit"></image>
-      <view class="smart-feature-content">
-        <text class="smart-feature-title">智能导览</text>
-        <text class="smart-feature-desc">智能路线规划，深度解说</text>
+  <view class="section">
+    <text class="section-title">智能功能</text>
+    <view class="smart-features">
+      <view class="smart-feature-item" bindtap="navigateToAI">
+        <text class="smart-feature-icon">🧭</text>
+        <view class="smart-feature-content">
+          <text class="smart-feature-title">智能导览</text>
+          <text class="smart-feature-desc">智能路线规划，深度解说</text>
+        </view>
+        <text class="smart-feature-arrow">→</text>
       </view>
-      <text class="smart-feature-arrow">→</text>
-    </view>
-    <view class="smart-feature-item" bindtap="navigateToQA">
-      <image class="smart-feature-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/icons/qa.png" mode="aspectFit"></image>
-      <view class="smart-feature-content">
-        <text class="smart-feature-title">文化问答</text>
-        <text class="smart-feature-desc">解答书画相关问题</text>
+      <view class="smart-feature-item" bindtap="navigateToQA">
+        <text class="smart-feature-icon">❓</text>
+        <view class="smart-feature-content">
+          <text class="smart-feature-title">文化问答</text>
+          <text class="smart-feature-desc">解答书画相关问题</text>
+        </view>
+        <text class="smart-feature-arrow">→</text>
       </view>
-      <text class="smart-feature-arrow">→</text>
-    </view>
-    <view class="smart-feature-item" bindtap="navigateToRecommend">
-      <image class="smart-feature-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/icons/recommend.png" mode="aspectFit"></image>
-      <view class="smart-feature-content">
-        <text class="smart-feature-title">个性化推荐</text>
-        <text class="smart-feature-desc">根据兴趣推荐书画作品</text>
+      <view class="smart-feature-item" bindtap="navigateToRecommend">
+        <text class="smart-feature-icon">🎯</text>
+        <view class="smart-feature-content">
+          <text class="smart-feature-title">个性化推荐</text>
+          <text class="smart-feature-desc">根据兴趣推荐书画作品</text>
+        </view>
+        <text class="smart-feature-arrow">→</text>
       </view>
-      <text class="smart-feature-arrow">→</text>
-    </view>
-    <view class="smart-feature-item" bindtap="navigateToVoice">
-      <image class="smart-feature-icon" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/icons/voice.png" mode="aspectFit"></image>
-      <view class="smart-feature-content">
-        <text class="smart-feature-title">语音讲解</text>
-        <text class="smart-feature-desc">沉浸式语音导览体验</text>
+      <view class="smart-feature-item" bindtap="navigateToVoice">
+        <text class="smart-feature-icon">🎙️</text>
+        <view class="smart-feature-content">
+          <text class="smart-feature-title">语音讲解</text>
+          <text class="smart-feature-desc">沉浸式语音导览体验</text>
+        </view>
+        <text class="smart-feature-arrow">→</text>
       </view>
-      <text class="smart-feature-arrow">→</text>
     </view>
   </view>
   
-  <!-- 底部装饰 -->
-  <view class="footer-section">
-    <text class="footer-text">传承中华书画艺术</text>
-    <text class="footer-subtext">品味传统美学之美</text>
-    <text class="footer-copyright">© 2026 书画雅韵</text>
+  <!-- 底部信息 -->
+  <view class="footer">
+    <view class="footer-text">传承中华书画艺术</view>
+    <view class="footer-text">品味传统美学之美</view>
+    <view class="footer-copyright">© 2026 书画雅韵</view>
   </view>
+  
+  <!-- 底部空间 -->
+  <view class="bottom-space"></view>
+  
 </view>

@@ -11,8 +11,8 @@ Page({
       {
         id: 'paper-cutting',
         name: '剪纸',
-        icon: '/images/craft/paper-cutting-icon.png',
-        cover: '/images/craft/paper-cutting-cover.jpg',
+        icon: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/c525d9d61dd465b5323d35873167ad30.jpg',
+        cover: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/c525d9d61dd465b5323d35873167ad30.jpg',
         description: '中国剪纸是一种用剪刀或刻刀在纸上剪刻花纹，用于装点生活或配合其他民俗活动的民间艺术。',
         steps: [
           {
@@ -24,7 +24,7 @@ Page({
           {
             name: '起稿构图',
             description: '在纸上轻轻勾勒出图案轮廓，确定对称轴线。传统剪纸讲究"图必有意，意必吉祥"，常见题材有花鸟鱼虫、福禄寿喜。',
-            image: '/images/craft/paper-cutting/step2.jpg',
+            image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/cf420fe5b33cb0acc15d944d9a667b93.jpg',
             isKeyStep: false
           },
           {
@@ -36,7 +36,7 @@ Page({
           {
             name: '起刀下剪',
             description: '剪刀从图案中心或边缘开始，先剪内部镂空部分，再剪外轮廓。起刀要稳，刀尖先刺入纸面，再顺势推进。',
-            image: '/images/craft/paper-cutting/step4.jpg',
+            image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/ebf4ae521d7adfab45befadb34e2257b.jpg',
             isKeyStep: true,
             detailTitle: '起刀细节：毫厘之间的精准',
             detailImages: [
@@ -49,7 +49,7 @@ Page({
           {
             name: '镂空剪刻',
             description: '用剪刀尖在图案内部剪出月牙纹、锯齿纹、水滴纹等装饰纹样。这是剪纸最具特色的技法，需要极强的手眼协调能力。',
-            image: '/images/craft/paper-cutting/step5.jpg',
+            image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/56b5dfc1f31f2a4801f9c331bbf36956.jpg',
             isKeyStep: true,
             detailTitle: '镂空技法：锯齿纹的剪法',
             detailImages: [

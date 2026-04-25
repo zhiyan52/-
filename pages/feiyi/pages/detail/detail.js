@@ -159,8 +159,21 @@ Page({
 
   goToInheritor() {
     if (this.data.inheritor) {
+      // 建立非遗传承人与匠人故事中匠人的映射关系
+      const inheritorNameMap = {
+        '周淑英': 1, // 剪纸大师
+        '姚建萍': 2, // 苏绣传人
+        '辜柳希': 3, // 木雕艺术家
+        '汪天稳': 4, // 皮影戏大师
+        '郑益坤': 5, // 漆器艺术家
+        '陈云华': 6  // 竹编艺术家
+      };
+      
+      const inheritorName = this.data.inheritor.name;
+      const craftsmanId = inheritorNameMap[inheritorName] || 1;
+      
       wx.navigateTo({
-        url: `/pages/feiyi/pages/inheritor/inheritor?id=${this.data.inheritor.id}`
+        url: `/traditional/traditional/pages/fine-art/craftsman-detail/craftsman-detail?id=${craftsmanId}`
       });
     }
   },
