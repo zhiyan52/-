@@ -12,11 +12,11 @@
   <!-- 卡片生成区域 -->
   <view class="card-section">
     <view class="card-preview" id="cardCanvas">
-      <view class="card-bg">
-        <view class="card-content">
-          <text class="card-quote">{{currentQuote.quote}}</text>
-          <text class="card-source">{{currentQuote.source}}</text>
-        </view>
+      <view class="card">
+        <image class="card-bg-image" src="{{cardBgImage}}" mode="aspectFill" />
+        <view class="card-overlay"></view>
+        <text class="card-text">{{currentQuote.quote}}</text>
+        <text class="card-author">{{currentQuote.source}}</text>
       </view>
     </view>
   </view>

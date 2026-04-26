@@ -58,8 +58,8 @@
 
 .feature-icon-container {
   position: relative;
-  width: 140rpx;
-  height: 140rpx;
+  width: 180rpx;
+  height: 180rpx;
   margin-bottom: 20rpx;
   border-radius: 50%;
   border: 2rpx solid #A3D9A5;
@@ -281,6 +281,19 @@
   font-family: "STKaiti", "KaiTi", serif;
 }
 
+.competition-icon-wrapper {
+  width: 100rpx;
+  height: 100rpx;
+  margin-left: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.competition-icon-text {
+  font-size: 56rpx;
+}
+
 .competition-icon {
   width: 80rpx;
   height: 80rpx;
@@ -414,6 +427,23 @@
   transform: translateY(-5rpx);
   box-shadow: 0 8rpx 20rpx rgba(0,0,0,0.15);
   border-color: #48BB78;
+}
+
+.smart-feature-icon-wrapper {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E8F5E8 0%, #C8E6C9 100%);
+  border: 3rpx solid #48BB78;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(72, 187, 120, 0.2);
+}
+
+.smart-feature-icon-text {
+  font-size: 36rpx;
 }
 
 .smart-feature-icon {

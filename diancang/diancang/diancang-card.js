@@ -43,12 +43,48 @@ Page({
       }
     ],
     currentQuote: {},
-    historyQuotes: []
+    historyQuotes: [],
+    cardBgImage: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/zhinengdaolan/925bee7e5917c2715d9c7c933757ac75.jpg'
   },
 
   onLoad: function (options) {
+    this.initCloud();
     this.generateCard();
     this.loadHistory();
+  },
+
+  initCloud: function() {
+    if (!wx.cloud) {
+      console.error('云开发未初始化');
+      return;
+    }
+    
+    wx.cloud.init({
+      env: 'cloud1-8glc9jqob91870fc',
+      traceUser: true
+    });
+    
+    // 获取背景图临时URL
+    this.loadCardBgImage();
+  },
+
+  loadCardBgImage: function() {
+    const cloudPath = 'diancang/card-bg.jpg';
+    
+    wx.cloud.getTempFileURL({
+      fileList: [cloudPath],
+      success: (res) => {
+        if (res.fileList.length > 0 && res.fileList[0].tempFileURL) {
+          this.setData({
+            cardBgImage: res.fileList[0].tempFileURL
+          });
+        }
+      },
+      fail: (err) => {
+        console.error('获取临时URL失败:', err);
+        // 如果获取失败，使用默认背景色
+      }
+    });
   },
 
   generateCard: function () {
