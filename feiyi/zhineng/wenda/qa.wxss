@@ -29,6 +29,9 @@
   border-radius: 20rpx;
   margin-bottom: 40rpx;
   border: 2rpx solid #d9c7a8;
+  max-height: 600rpx;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .question-box {
   font-size: 32rpx;
@@ -103,6 +106,9 @@
   border-radius: 20rpx;
   margin-bottom: 30rpx;
   border: 2rpx solid #d9c7a8;
+  max-height: 500rpx;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .input-box {
   width: 100%;
@@ -146,6 +152,9 @@
   border-radius: 20rpx;
   margin-bottom: 30rpx;
   border: 2rpx solid #d9c7a8;
+  max-height: 400rpx;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .ai-result-content {
   font-size: 28rpx;
