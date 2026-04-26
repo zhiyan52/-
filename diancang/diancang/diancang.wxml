@@ -21,14 +21,14 @@
     <view class="feature-row">
       <navigator url="/diancang/diancang/diancang-list" class="feature-item">
         <view class="feature-icon-container">
-          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/classics.png" class="feature-icon" binderror="handleImageError" data-index="0" />
+          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/1 (1).jpg" class="feature-icon" binderror="handleImageError" data-index="0" />
           <image wx:if="{{iconErrors[0]}}" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/default.png" class="feature-icon fallback-icon" />
         </view>
         <text>典籍文库</text>
       </navigator>
       <navigator url="/diancang/pages/heritage/heritage" class="feature-item">
         <view class="feature-icon-container">
-          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/treasure.png" class="feature-icon" binderror="handleImageError" data-index="1" />
+          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/1 (2).jpg" class="feature-icon" binderror="handleImageError" data-index="1" />
           <image wx:if="{{iconErrors[1]}}" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/default.png" class="feature-icon fallback-icon" />
         </view>
         <text>典藏寻宝</text>
@@ -37,14 +37,14 @@
     <view class="feature-row">
       <navigator url="/diancang/diancang/diancang-fill" class="feature-item">
         <view class="feature-icon-container">
-          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/fill.png" class="feature-icon" binderror="handleImageError" data-index="2" />
+          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/3.jpg" binderror="handleImageError" data-index="2" />
           <image wx:if="{{iconErrors[2]}}" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/default.png" class="feature-icon fallback-icon" />
         </view>
         <text>古文填空</text>
       </navigator>
       <navigator url="/diancang/diancang/diancang-card" class="feature-item">
         <view class="feature-icon-container">
-          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/card.png" class="feature-icon" binderror="handleImageError" data-index="3" />
+          <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/4.jpg" class="feature-icon" binderror="handleImageError" data-index="3" />
           <image wx:if="{{iconErrors[3]}}" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/icons/default.png" class="feature-icon fallback-icon" />
         </view>
         <text>名句卡片</text>
