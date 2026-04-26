@@ -31,8 +31,8 @@ Page({
     this.setData({
       step: result.step,
       craft: result.craft,
-      judgmentCompleted: result.userProgress?.completedSteps?.includes(stepId),
-      preAnswerCount: Object.keys(result.step.aiExtension?.preAnswers || {}).length
+      judgmentCompleted: result.userProgress && result.userProgress.completedSteps && result.userProgress.completedSteps.includes(stepId),
+      preAnswerCount: result.step.aiExtension && result.step.aiExtension.preAnswers ? Object.keys(result.step.aiExtension.preAnswers).length : 0
     });
   },
   

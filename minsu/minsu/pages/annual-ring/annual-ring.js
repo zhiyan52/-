@@ -55,7 +55,7 @@ Page({
       totalObservations: ringData.reduce((s, t) => s + (t.pentadsObserved ? t.pentadsObserved.length : 0), 0),
       totalPhotos: ringData.filter(t => t.hasPhoto).length,
       avgIntensity: ringData.reduce((s, t) => s + t.intensity, 0) / 24,
-      favoriteTerm: ringData.sort((a, b) => b.intensity - a.intensity)[0]?.name || '-'
+      favoriteTerm: ringData.sort((a, b) => b.intensity - a.intensity)[0] && ringData.sort((a, b) => b.intensity - a.intensity)[0].name ? ringData.sort((a, b) => b.intensity - a.intensity)[0].name : '-'
     };
 
     this.setData({ ringData, stats });

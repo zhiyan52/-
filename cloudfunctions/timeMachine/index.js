@@ -12,33 +12,33 @@ function hashQuery(heritageId, era, choices) {
 exports.main = async (event, context) => {
   const { heritageId, era, userChoice, choiceHistory = [] } = event;
   const fullHistory = [...choiceHistory, userChoice];
-  
+
   try {
     // ========== 第一层：查本地知识库 ==========
     const baseInfo = await db.collection('heritage_base')
       .doc(heritageId)
       .get();
-    
+
     const eraData = baseInfo.data.eraFacts[era];
     const currentDecision = eraData.decisions[fullHistory.length - 1];
-    
+
     // 找到用户选择的选项
     const selectedOption = currentDecision.options.find(
       opt => opt.id === userChoice
     );
-    
+
     // ========== 第二层：查AI缓存 ==========
     const queryHash = hashQuery(heritageId, era, fullHistory);
     const cacheHit = await db.collection('ai_cache')
       .where({ queryHash })
       .get();
-    
+
     if (cacheHit.data.length > 0) {
       // 缓存命中，更新使用计数
       await db.collection('ai_cache').doc(cacheHit.data[0]._id).update({
         data: { useCount: db.command.inc(1) }
       });
-      
+
       return {
         source: 'cache',
         base: {
@@ -51,12 +51,12 @@ exports.main = async (event, context) => {
         tokenCost: 0
       };
     }
-    
+
     // ========== 第三层：调用DeepSeek（控制触发条件）==========
-    
+
     // 触发策略：只有"复杂路径"才调用AI
     const shouldCallAI = checkAITrigger(fullHistory, selectedOption);
-    
+
     if (!shouldCallAI) {
       // 使用预存模板
       const templateResult = fillTemplate(
@@ -64,7 +64,7 @@ exports.main = async (event, context) => {
         selectedOption,
         eraData
       );
-      
+
       return {
         source: 'template',
         base: {
@@ -77,7 +77,7 @@ exports.main = async (event, context) => {
         tokenCost: 0
       };
     }
-    
+
     // 调用腾讯云内置 deepseek
     const prompt = buildPrompt({
       heritageName: baseInfo.data.name,
@@ -89,7 +89,7 @@ exports.main = async (event, context) => {
       isCorrect: selectedOption.correct,
       history: fullHistory
     });
-    
+
     const aiResult = await cloud.callAI({
       model: 'deepseek',
       messages: [
@@ -99,10 +99,10 @@ exports.main = async (event, context) => {
       max_tokens: 350,
       temperature: 0.6  // 降低随机性，保证史实准确
     });
-    
+
     // 解析AI输出
     const parsed = parseAIOutput(aiResult.result);
-    
+
     // 写入缓存
     await db.collection('ai_cache').add({
       data: {
@@ -113,10 +113,10 @@ exports.main = async (event, context) => {
         aiContent: parsed,
         createTime: db.serverDate(),
         useCount: 1,
-        tokenCost: aiResult.usage?.total_tokens || 0
+        tokenCost: aiResult.usage && aiResult.usage.total_tokens ? aiResult.usage.total_tokens : 0
       }
     });
-    
+
     return {
       source: 'ai',
       base: {
@@ -126,9 +126,9 @@ exports.main = async (event, context) => {
         optionText: selectedOption.text
       },
       ai: parsed,
-      tokenCost: aiResult.usage?.total_tokens || 0
+      tokenCost: aiResult.usage && aiResult.usage.total_tokens ? aiResult.usage.total_tokens : 0
     };
-    
+
   } catch (err) {
     return { error: err.message };
   }
@@ -139,18 +139,18 @@ function checkAITrigger(history, selectedOption) {
   // 策略1：用户连续2次错误，需要AI生成鼓励性解释
   const recentWrong = history.slice(-2).filter((h, i) => {
     // 简化判断，实际需查数据库
-    return false; 
+    return false;
   }).length;
-  
+
   // 策略2：第3个及以上决策点，路径组合多，无预存
   if (history.length >= 3) return true;
-  
+
   // 策略3：特定关键决策（如"转型/坚守"类选择）
   const keyDecisions = ['转型', '坚守', '创新', '放弃'];
-  const isKeyDecision = keyDecisions.some(k => 
+  const isKeyDecision = keyDecisions.some(k =>
     selectedOption.text.includes(k)
   );
-  
+
   return isKeyDecision || recentWrong >= 2;
 }
 

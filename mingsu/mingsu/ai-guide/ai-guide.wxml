@@ -102,7 +102,7 @@
         class="hotspot {{activeSpotId===item.id?'active':''}} {{editMode?'edit-mode':''}}"
         style="left: {{item.position.x}}rpx; top: {{item.position.y}}rpx; width: {{item.position.width}}rpx; height: {{item.position.height}}rpx;"
         data-id="{{item.id}}"
-        bindtap="{{editMode ? 'startDrag' : 'selectSpot'}}
+        bindtap="{{editMode ? 'startDrag' : 'selectSpot'}}"
       >
         <view class="hotspot-marker">
           <text class="hotspot-number">{{item.number}}</text>

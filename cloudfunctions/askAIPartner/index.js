@@ -58,5 +58,5 @@ exports.main = async (event) => {
     }
   });
   
-  return { answer, source: 'ai', tokenCost: aiResult.usage?.total_tokens || 0 };
+  return { answer, source: 'ai', tokenCost: aiResult.usage && aiResult.usage.total_tokens ? aiResult.usage.total_tokens : 0 };
 };
