@@ -1,0 +1,119 @@
+<!-- traditional/pages/craftDetail/craftDetail.wxml -->
+<view class="intangible-heritage-map-container">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <view class="header-left" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="header-title">非遗地图</view>
+    <view class="header-right" bindtap="shareReport">
+      <text class="share-icon">📤</text>
+    </view>
+  </view>
+
+  <!-- 地图区域 -->
+  <view class="map-section">
+    <view class="section-title">
+      <text class="title-icon">🗺️</text>
+      <text class="title-text">中国非遗项目分布</text>
+    </view>
+    <view class="map-container">
+      <!-- 中国地图 SVG -->
+      <view class="china-map">
+        <!-- 省份地标 -->
+        <view class="landmark" style="top: 40%; left: 45%;" bindtap="showRegionDetail" data-region="jiangxi">
+          <view class="landmark-point active"></view>
+          <text class="landmark-label">江西</text>
+        </view>
+        <view class="landmark" style="top: 30%; left: 60%;" bindtap="showRegionDetail" data-region="jiangsu">
+          <view class="landmark-point active"></view>
+          <text class="landmark-label">江苏</text>
+        </view>
+        <view class="landmark" style="top: 45%; left: 40%;" bindtap="showRegionDetail" data-region="sichuan">
+          <view class="landmark-point active"></view>
+          <text class="landmark-label">四川</text>
+        </view>
+        <view class="landmark" style="top: 20%; left: 80%;" bindtap="showRegionDetail" data-region="guangdong">
+          <view class="landmark-point active"></view>
+          <text class="landmark-label">广东</text>
+        </view>
+        <view class="landmark" style="top: 20%; left: 25%;" bindtap="showRegionDetail" data-region="shanxi">
+          <view class="landmark-point active"></view>
+          <text class="landmark-label">山西</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 非遗项目详情 -->
+  <view class="heritage-detail-section" wx:if="{{selectedRegion}}">
+    <view class="section-title">
+      <text class="title-icon">📍</text>
+      <text class="title-text">{{intangibleHeritageData[selectedRegion].name}}非遗项目</text>
+    </view>
+    <view class="heritage-detail-card">
+      <view class="region-image">
+        <image src="{{intangibleHeritageData[selectedRegion].image}}" mode="aspectFill"></image>
+      </view>
+      <view class="heritage-list">
+        <view wx:for="{{intangibleHeritageData[selectedRegion].items}}" wx:key="{{item.id}}" class="heritage-item">
+          <view class="heritage-header">
+            <text class="heritage-name">{{item.name}}</text>
+          </view>
+          <view class="heritage-description">
+            {{item.description}}
+          </view>
+          <view class="geo-background-section">
+            <view class="geo-background-title">地理背景</view>
+            <view class="geo-background-items">
+              <view class="geo-background-item">
+                <text class="geo-label">原料：</text>
+                <text class="geo-value">{{item.geoBackground.rawMaterials}}</text>
+              </view>
+              <view class="geo-background-item">
+                <text class="geo-label">水源：</text>
+                <text class="geo-value">{{item.geoBackground.waterSource}}</text>
+              </view>
+              <view class="geo-background-item">
+                <text class="geo-label">燃料：</text>
+                <text class="geo-value">{{item.geoBackground.fuel}}</text>
+              </view>
+              <view class="geo-background-item">
+                <text class="geo-label">历史：</text>
+                <text class="geo-value">{{item.geoBackground.history}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="heritage-image">
+            <image src="{{item.image}}" mode="aspectFill"></image>
+          </view>
+          <button class="learn-more-btn" bindtap="goToHeritageDetail" data-region="{{selectedRegion}}" data-heritage-id="{{item.id}}">
+            了解更多
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 区域详情弹窗 -->
+  <view class="region-modal" wx:if="{{showRegionModal}}" bindtap="hideRegionModal">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <view class="modal-title">{{intangibleHeritageData[selectedRegion].name}}非遗项目</view>
+        <view class="modal-close" bindtap="hideRegionModal">×</view>
+      </view>
+      <view class="modal-body">
+        <image class="modal-image" src="{{intangibleHeritageData[selectedRegion].image}}" mode="aspectFill"></image>
+        <view class="modal-heritage-list">
+          <view wx:for="{{intangibleHeritageData[selectedRegion].items}}" wx:key="{{item.id}}" class="modal-heritage-item">
+            <text class="modal-heritage-name">{{item.name}}</text>
+            <text class="modal-heritage-description">{{item.description}}</text>
+            <button class="modal-learn-more-btn" bindtap="goToHeritageDetail" data-region="{{selectedRegion}}" data-heritage-id="{{item.id}}">
+              了解更多
+            </button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
