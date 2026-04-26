@@ -9,7 +9,7 @@
   <!-- 盲盒区域 -->
   <view class="blind-box-section" wx:if="{{!showContent}}">
     <view class="blind-box" bindtap="openBlindBox">
-      <image class="box-image" src="https://636c-cloud1-8glc9jqob91870fc-1401141450.tcb.qcloud.la/shuhua/box.png"></image>
+      <image class="box-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/jieqi/b0bce45bd20cd233a39d39a0900c58c3.jpg"></image>
       <text class="box-text">点击打开盲盒</text>
     </view>
     <text class="hint-text">每天打开一次，发现不同的书画惊喜</text>
