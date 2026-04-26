@@ -234,46 +234,57 @@
   border-radius: 20rpx;
 }
 
-.culture-section {
-  margin-bottom: 40rpx;
+.culture-list {
+  padding: 0 10rpx;
 }
 
-.section-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #8B4513;
-  margin-bottom: 24rpx;
-  padding-left: 20rpx;
-  border-left: 6rpx solid #D4A017;
-}
-
-.culture-card {
+.culture-item {
+  display: flex;
   background: white;
   border-radius: 20rpx;
-  padding: 30rpx;
-  margin-bottom: 20rpx;
+  overflow: hidden;
+  margin-bottom: 24rpx;
   box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
 
-.culture-card:active {
+.culture-item:active {
   transform: scale(0.98);
 }
 
-.culture-card-header {
-  margin-bottom: 15rpx;
+.culture-image {
+  width: 200rpx;
+  height: 200rpx;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
-.culture-card-title {
-  font-size: 30rpx;
+.culture-content {
+  flex: 1;
+  padding: 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.culture-name {
+  font-size: 32rpx;
   font-weight: bold;
-  color: #333;
+  color: #8B4513;
+  margin-bottom: 8rpx;
 }
 
-.culture-card-desc {
+.culture-desc {
   font-size: 26rpx;
   color: #666;
-  line-height: 1.6;
+  line-height: 1.5;
+  margin-bottom: 12rpx;
+}
+
+.culture-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
 }
 
 .detail-modal {
