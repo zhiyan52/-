@@ -5,22 +5,22 @@ Page({
       {
         id: 'spring',
         name: '春节模板',
-        preview: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20Spring%20Festival%20card%20template%2C%20traditional%20style&image_size=square_hd'
+        preview: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/b80e6e778f86f666dc015dd6b0e8c172.jpg'
       },
       {
         id: 'mid-autumn',
         name: '中秋模板',
-        preview: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Mid-Autumn%20Festival%20card%20template%2C%20traditional%20style&image_size=square_hd'
+        preview: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/f5076cee18260215e1bae0f20cdd7d05.jpg'
       },
       {
         id: 'qingming',
         name: '清明模板',
-        preview: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Qingming%20Festival%20card%20template%2C%20traditional%20style&image_size=square_hd'
+        preview: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/652a4820d90e38b53aeabacdd41c2eaf.jpg'
       },
       {
         id: 'dragon-boat',
         name: '端午模板',
-        preview: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Dragon%20Boat%20Festival%20card%20template%2C%20traditional%20style&image_size=square_hd'
+        preview: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/3c24d8c95f056a32dfabac0d8ae44b95.jpg'
       }
     ],
     themes: ['春节', '中秋', '清明', '端午', '重阳', '元宵'],

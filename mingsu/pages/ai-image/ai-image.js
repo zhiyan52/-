@@ -7,7 +7,17 @@ Page({
     colors: ['淡雅', '浓郁', '明亮', '古朴'],
     colorIndex: 0,
     imageUrl: '',
-    loading: false
+    loading: false,
+    
+    // 主题图片映射 - 云存储路径
+    themeImages: {
+      '春节': 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/cee5695f868e1956e82db81adcc3d904.jpg',
+      '中秋节': 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/a5490a3fb124dd1e215da7b726342292.jpg',
+      '清明节': 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/a10ab82af33a1004a5bec07fb618897e.jpg',
+      '端午节': 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/01672d84ba0db0681a805a6115ca3146.jpg',
+      '重阳节': 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/61ee46eff4670ddf2a8bc778c47a7a3b.jpg',
+      '元宵节': 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/6e3cee75b7be5f0de3c5738eb0f65fd0.jpg'
+    }
   },
 
   onLoad() {
@@ -41,17 +51,30 @@ Page({
 
     this.setData({ loading: true });
 
-    // 模拟AI生成图片的延迟
-    setTimeout(() => {
-      const { theme, styles, styleIndex, colors, colorIndex } = this.data;
+    // 优先从本地映射获取图片
+    const { theme, themeImages, styles, styleIndex, colors, colorIndex } = this.data;
+    let imageUrl = themeImages[theme];
+    
+    if (imageUrl) {
+      // 成功从本地映射获取图片
+      setTimeout(() => {
+        this.setData({ imageUrl, loading: false });
+        wx.showToast({ title: "生成成功！", icon: "success" });
+      }, 500);
+    } else {
+      // 如果本地映射没有，调用AI生成
       const style = styles[styleIndex];
       const color = colors[colorIndex];
-
+      
       // 生成图片URL（模拟）
-      const imageUrl = `https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=${encodeURIComponent(`${theme} ${style} ${color} style, traditional Chinese ink painting`)}&image_size=square_hd`;
-
-      this.setData({ imageUrl, loading: false });
-    }, 2000);
+      imageUrl = `https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=${encodeURIComponent(`${theme} ${style} ${color} style, traditional Chinese ink painting`)}&image_size=square_hd`;
+      
+      // 模拟AI生成图片的延迟
+      setTimeout(() => {
+        this.setData({ imageUrl, loading: false });
+        wx.showToast({ title: "生成成功！", icon: "success" });
+      }, 2000);
+    }
   },
 
   // 保存图片到相册

@@ -12,14 +12,14 @@ Page({
       {
         id: 'ai-lecture',
         name: 'AI民俗讲堂',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/2.jpg',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/8e18badc87308b9ace990bf9530ff3cf.jpg',
         desc: 'AI解读民俗文化内涵',
         color: '#2E8B57'
       },
       {
         id: 'ai-image',
         name: '意境生图',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/3.jpg',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/45c13c5e256c7317163db937414d160f.jpg',
         desc: 'AI生成民俗主题水墨插画',
         color: '#4169E1'
       },
@@ -33,14 +33,14 @@ Page({
       {
         id: 'card',
         name: '卡片生成',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/3.jpg',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/ef77e602cc04247c0713ff5b9987338c.jpg',
         desc: '生成可保存的民俗卡片',
         color: '#CD5C5C'
       },
       {
         id: 'blind-box',
         name: '风物盲盒',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/new/6.jpg',
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/c78272dee4c139edf2eef934cbcb43e5.jpg',
         desc: '每日随机获得民俗知识',
         color: '#9370DB'
       }
@@ -62,7 +62,7 @@ Page({
         id: 'qingming',
         name: '清明',
         desc: '扫墓祭祖，踏青赏春',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Qingming%20Festival%20spring%20outing%20scene%2C%20ink%20painting%20style&image_size=square_hd'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/15a8219d43bbf6532c1e4609f6bc44d5.jpg'
       }
     ]
   },
