@@ -21,43 +21,43 @@
       <!-- 中国地图 SVG -->
       <view class="china-map">
         <!-- 省份地标 -->
-        <view class="landmark" style="top: 20%; left: 25%;" bindtap="showLandmarkDetail" data-landmark="shanxi">
+        <view class="landmark" style="top: 25%; left: 65%;" bindtap="showLandmarkDetail" data-landmark="shanxi">
           <view class="landmark-point active"></view>
           <text class="landmark-label">山西</text>
         </view>
-        <view class="landmark" style="top: 30%; left: 60%;" bindtap="showLandmarkDetail" data-landmark="jiangsu">
+        <view class="landmark" style="top: 35%; left: 35%;" bindtap="showLandmarkDetail" data-landmark="jiangsu">
           <view class="landmark-point active"></view>
           <text class="landmark-label">江苏</text>
         </view>
-        <view class="landmark" style="top: 40%; left: 75%;" bindtap="showLandmarkDetail" data-landmark="zhejiang">
+        <view class="landmark" style="top: 38%; left: 28%;" bindtap="showLandmarkDetail" data-landmark="zhejiang">
           <view class="landmark-point"></view>
           <text class="landmark-label">浙江</text>
         </view>
-        <view class="landmark" style="top: 45%; left: 40%;" bindtap="showLandmarkDetail" data-landmark="sichuan">
+        <view class="landmark" style="top: 50%; left: 65%;" bindtap="showLandmarkDetail" data-landmark="sichuan">
           <view class="landmark-point active"></view>
           <text class="landmark-label">四川</text>
         </view>
-        <view class="landmark" style="top: 35%; left: 50%;" bindtap="showLandmarkDetail" data-landmark="henan">
+        <view class="landmark" style="top: 38%; left: 45%;" bindtap="showLandmarkDetail" data-landmark="henan">
           <view class="landmark-point"></view>
           <text class="landmark-label">河南</text>
         </view>
-        <view class="landmark" style="top: 25%; left: 45%;" bindtap="showLandmarkDetail" data-landmark="shaanxi">
+        <view class="landmark" style="top: 30%; left: 55%;" bindtap="showLandmarkDetail" data-landmark="shaanxi">
           <view class="landmark-point active"></view>
           <text class="landmark-label">陕西</text>
         </view>
-        <view class="landmark" style="top: 30%; left: 70%;" bindtap="showLandmarkDetail" data-landmark="fujian">
+        <view class="landmark" style="top: 42%; left: 25%;" bindtap="showLandmarkDetail" data-landmark="fujian">
           <view class="landmark-point"></view>
           <text class="landmark-label">福建</text>
         </view>
-        <view class="landmark" style="top: 45%; left: 65%;" bindtap="showLandmarkDetail" data-landmark="hunan">
+        <view class="landmark" style="top: 48%; left: 32%;" bindtap="showLandmarkDetail" data-landmark="hunan">
           <view class="landmark-point"></view>
           <text class="landmark-label">湖南</text>
         </view>
-        <view class="landmark" style="top: 20%; left: 80%;" bindtap="showLandmarkDetail" data-landmark="guangdong">
+        <view class="landmark" style="top: 55%; left: 20%;" bindtap="showLandmarkDetail" data-landmark="guangdong">
           <view class="landmark-point"></view>
           <text class="landmark-label">广东</text>
         </view>
-        <view class="landmark" style="top: 15%; left: 30%;" bindtap="showLandmarkDetail" data-landmark="beijing">
+        <view class="landmark" style="top: 20%; left: 60%;" bindtap="showLandmarkDetail" data-landmark="beijing">
           <view class="landmark-point active"></view>
           <text class="landmark-label">北京</text>
         </view>
@@ -112,7 +112,7 @@
         <view class="info-item">
           <text class="info-label">学习进度</text>
           <view class="progress-bar">
-            <view class="progress-fill" style="width: {{landmarkDetails[selectedLandmark].progress}}%"></view>
+            <view class="progress-fill" style="width: {{landmarkDetails[selectedLandmark].progress}}"></view>
           </view>
           <text class="progress-text">{{landmarkDetails[selectedLandmark].progress}}%</text>
         </view>
@@ -183,7 +183,7 @@
           <view class="modal-info-item">
             <text class="modal-info-label">学习进度</text>
             <view class="modal-progress-bar">
-              <view class="modal-progress-fill" style="width: {{landmarkDetails[selectedLandmark].progress}}%"></view>
+              <view class="modal-progress-fill" style="width: {{landmarkDetails[selectedLandmark].progress}}"></view>
             </view>
             <text class="modal-progress-text">{{landmarkDetails[selectedLandmark].progress}}%</text>
           </view>

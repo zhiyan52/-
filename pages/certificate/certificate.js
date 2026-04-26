@@ -204,14 +204,14 @@ Page({
     return {
       title: '我的数字证书 - 文化学习成就',
       path: '/pages/certificate/certificate',
-      imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20culture%20certificate%20badge%20achievement&image_size=landscape_16_9'
+      imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/68ca81a781ac6cf19f853938913b8fb6.jpg'
     };
   },
 
   onShareTimeline() {
     return {
       title: '我的数字证书 - 文化学习成就',
-      imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20traditional%20culture%20certificate%20badge%20achievement&image_size=landscape_16_9'
+      imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/68ca81a781ac6cf19f853938913b8fb6.jpg'
     };
   }
 });

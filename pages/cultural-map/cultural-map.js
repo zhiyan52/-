@@ -19,7 +19,7 @@ Page({
         progress: 85,
         learned: '五台山、平遥古城、云冈石窟',
         achievement: '古建探索者',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=shanxi%20ancient%20architecture%20wutai%20mountain%20pingyao%20ancient%20city&image_size=landscape_16_9'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/云冈石窟.jpg'
       },
       jiangsu: {
         name: '江苏',
@@ -27,7 +27,7 @@ Page({
         progress: 70,
         learned: '苏绣、昆曲、南京云锦',
         achievement: '非遗传承者',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=jiangsu%20suzhou%20embroidery%20kunqu%20opera%20cultural%20heritage&image_size=landscape_16_9'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/昆剧.jpg'
       },
       sichuan: {
         name: '四川',
@@ -35,7 +35,7 @@ Page({
         progress: 60,
         learned: '川菜、变脸、大熊猫文化',
         achievement: '民俗探索者',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=sichuan%20food%20face%20changing%20panda%20folk%20culture&image_size=landscape_16_9'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/熊猫.jpg'
       },
       shaanxi: {
         name: '陕西',
@@ -43,7 +43,7 @@ Page({
         progress: 90,
         learned: '兵马俑、西安古城墙、黄帝陵',
         achievement: '历史文化学者',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=shaanxi%20terracotta%20warriors%20xian%20ancient%20city%20wall&image_size=landscape_16_9'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/兵马俑.jpg'
       },
       beijing: {
         name: '北京',
@@ -51,7 +51,7 @@ Page({
         progress: 95,
         learned: '故宫、长城、颐和园',
         achievement: '皇家文化专家',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=beijing%20forbidden%20city%20great%20wall%20summer%20palace&image_size=landscape_16_9'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/故宫.jpg'
       },
       zhejiang: {
         name: '浙江',
@@ -59,7 +59,7 @@ Page({
         progress: 40,
         learned: '西湖、乌镇、龙井茶',
         achievement: '江南文化爱好者',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=zhejiang%20west%20lake%20wuzhen%20longjing%20tea%20jiangnan%20culture&image_size=landscape_16_9'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/乌镇.jpg'
       },
       henan: {
         name: '河南',
@@ -67,7 +67,7 @@ Page({
         progress: 30,
         learned: '龙门石窟、少林寺',
         achievement: '中原文化初学者',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=henan%20longmen%20grottoes%20shaolin%20temple%20central%20plain%20culture&image_size=landscape_16_9'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/少林寺.jpg'
       },
       fujian: {
         name: '福建',
@@ -75,7 +75,7 @@ Page({
         progress: 20,
         learned: '土楼、妈祖文化',
         achievement: '海洋文化探索者',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=fujian%20tulou%20mazu%20culture%20ocean%20culture&image_size=landscape_16_9'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/妈祖.jpg'
       },
       hunan: {
         name: '湖南',
@@ -83,7 +83,7 @@ Page({
         progress: 15,
         learned: '岳阳楼、张家界',
         achievement: '湖湘文化初学者',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=hunan%20yueyang%20tower%20zhangjiajie%20huxiang%20culture&image_size=landscape_16_9'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/张家界.jpg'
       },
       guangdong: {
         name: '广东',
@@ -91,7 +91,7 @@ Page({
         progress: 10,
         learned: '粤菜、醒狮',
         achievement: '岭南文化初学者',
-        image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=guangdong%20cantonese%20food%20lion%20dance%20lingnan%20culture&image_size=landscape_16_9'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/舞狮.jpg'
       }
     }
   },

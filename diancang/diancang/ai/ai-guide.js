@@ -9,31 +9,31 @@ Page({
         id: 1,
         name: '《诗经选注》',
         author: '孔子',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/books/shijing.png'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/zhinengdaolan/c28ba5942a4f35d62e6abd2e3946d09c.jpg'
       },
       {
         id: 2,
         name: '《史记》',
         author: '司马迁',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/books/shiji.png'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/zhinengdaolan/0852dc875be1e85ff844fe70f6a75e81.jpg'
       },
       {
         id: 3,
         name: '《兰亭集序》',
         author: '王羲之',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/books/lanting.png'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/a36cf1e13b99529317da1fd145ed6e9c.jpg'
       },
       {
         id: 4,
         name: '《牡丹亭》',
         author: '汤显祖',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/books/mudan.png'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/zhinengdaolan/6c42fdca51c14f99bcaa13d32d8631d3.jpg'
       },
       {
         id: 5,
         name: '《论语》',
         author: '孔子及其弟子',
-        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/books/lunyu.png'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/diancang/zhinengdaolan/3fc130e4e7e6b63bfa61ec9f9148ab31.jpg'
       }
     ],
     guideTexts: {
