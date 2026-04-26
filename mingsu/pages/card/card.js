@@ -5,24 +5,30 @@ Page({
       {
         id: 'spring',
         name: '春节模板',
-        preview: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20Spring%20Festival%20card%20template%2C%20traditional%20style&image_size=square_hd'
+        preview: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/b80e6e778f86f666dc015dd6b0e8c172.jpg',
+        localImage: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/b80e6e778f86f666dc015dd6b0e8c172.jpg'
       },
       {
         id: 'mid-autumn',
         name: '中秋模板',
-        preview: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Mid-Autumn%20Festival%20card%20template%2C%20traditional%20style&image_size=square_hd'
+        preview: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/f5076cee18260215e1bae0f20cdd7d05.jpg',
+        localImage: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/f5076cee18260215e1bae0f20cdd7d05.jpg'
       },
       {
         id: 'qingming',
         name: '清明模板',
-        preview: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Qingming%20Festival%20card%20template%2C%20traditional%20style&image_size=square_hd'
+        preview: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/652a4820d90e38b53aeabacdd41c2eaf.jpg',
+        localImage: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/652a4820d90e38b53aeabacdd41c2eaf.jpg'
       },
       {
         id: 'dragon-boat',
         name: '端午模板',
-        preview: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Dragon%20Boat%20Festival%20card%20template%2C%20traditional%20style&image_size=square_hd'
+        preview: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/3c24d8c95f056a32dfabac0d8ae44b95.jpg',
+        localImage: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/3c24d8c95f056a32dfabac0d8ae44b95.jpg'
       }
     ],
+    // 模板图片临时URL
+    templateUrls: [],
     themes: ['春节', '中秋', '清明', '端午', '重阳', '元宵'],
     selectedTemplate: null,
     themeIndex: 0,
@@ -33,6 +39,44 @@ Page({
 
   onLoad() {
     wx.setNavigationBarTitle({ title: '卡片生成' });
+    // 初始化云开发并加载图片
+    this.initCloudAndLoadImages();
+  },
+
+  // 初始化云开发并加载图片
+  initCloudAndLoadImages() {
+    if (!wx.cloud) {
+      console.error('云开发未初始化');
+      // 如果云开发不可用，使用本地图片路径
+      return;
+    }
+
+    wx.cloud.init({
+      env: 'cloud1-8glc9jqob91870fc',
+      traceUser: true
+    });
+
+    // 获取模板图片临时URL
+    const fileList = this.data.templates.map(template => template.localImage);
+    wx.cloud.getTempFileURL({
+      fileList: fileList,
+      success: (res) => {
+        const tempUrls = res.fileList.map(file => file.tempFileURL || '');
+        this.setData({ templateUrls: tempUrls });
+        // 更新模板的preview为临时URL
+        const updatedTemplates = this.data.templates.map((template, index) => {
+          return {
+            ...template,
+            preview: tempUrls[index] || template.localImage
+          };
+        });
+        this.setData({ templates: updatedTemplates });
+      },
+      fail: (err) => {
+        console.error('获取模板图片失败:', err);
+        // 如果获取失败，使用本地路径
+      }
+    });
   },
 
   // 选择模板
@@ -70,11 +114,19 @@ Page({
 
     // 模拟生成卡片的延迟
     setTimeout(() => {
-      const { cardTitle, cardContent, themes, themeIndex } = this.data;
+      const { cardTitle, cardContent, themes, themeIndex, templates, selectedTemplate } = this.data;
       const theme = themes[themeIndex];
 
-      // 生成卡片预览图（模拟）
-      const cardPreview = `https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=${encodeURIComponent(`${theme} ${cardTitle} ${cardContent} Chinese traditional card design`)}&image_size=square_hd`;
+      // 尝试AI生成图片
+      const aiImageUrl = `https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=${encodeURIComponent(`${theme} ${cardTitle} ${cardContent} Chinese traditional card design`)}&image_size=square_hd`;
+
+      // 查找选中模板的本地图片
+      const selectedTemplateData = templates.find(t => t.id === selectedTemplate);
+      const localImageUrl = selectedTemplateData ? selectedTemplateData.localImage : templates[0].localImage;
+
+      // 模拟AI生成失败，直接使用本地图片
+      // 实际项目中可以通过网络请求状态判断是否使用本地备用图片
+      const cardPreview = localImageUrl;
 
       this.setData({ cardPreview });
       wx.hideLoading();

@@ -5,32 +5,32 @@ Page({
       {
         id: 'spring-festival',
         name: '春节',
-        icon: '🎊'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/0b8ac92e8cbd6a0ddb507cf4c1c217d2.jpg'
       },
       {
         id: 'mid-autumn',
         name: '中秋节',
-        icon: '🌕'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/c07a44a606e9fc0cce599de1e6de61f3.jpg'
       },
       {
         id: 'qingming',
         name: '清明节',
-        icon: '🌿'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/6959b06128e61e9a1644a8bdf7809fd5.jpg'
       },
       {
         id: 'dragon-boat',
         name: '端午节',
-        icon: '龙舟'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/2d397c7beb45321f17fb8ba070770eea.jpg'
       },
       {
         id: 'double-ninth',
         name: '重阳节',
-        icon: '🎋'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/f00d1fdf83f284e0aa85017f9cf4191c.jpg'
       },
       {
         id: 'lantern',
         name: '元宵节',
-        icon: '🏮'
+        image: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/d5441b143254d1f50698ca08c06f9998.jpg'
       }
     ],
     selectedTheme: null,

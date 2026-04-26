@@ -18,7 +18,7 @@
     </view>
     <view class="theme-grid">
       <view class="theme-item" wx:for="{{themes}}" wx:key="id" bindtap="selectTheme" data-theme="{{item.id}}">
-        <view class="theme-icon">{{item.icon}}</view>
+        <image class="theme-image" src="{{item.image}}" mode="aspectFill" />
         <text class="theme-name">{{item.name}}</text>
       </view>
     </view>

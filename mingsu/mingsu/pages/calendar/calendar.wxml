@@ -71,35 +71,54 @@
 
   <!-- 文化科普 -->
   <view class="list-container" wx:if="{{activeTab === 'culture'}}">
-    <view class="culture-section">
-      <text class="section-title">节气文化</text>
-      <view class="culture-card" bindtap="showCultureDetail" data-type="solar-culture">
-        <view class="culture-card-header">
-          <text class="culture-card-title">二十四节气的起源</text>
+    <view class="culture-list">
+      <view class="culture-item" bindtap="showCultureDetail" data-type="solar-culture">
+        <image class="culture-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/jieqi/35f1e8fbcec7475dde388ce6dcf156b3.jpg" mode="aspectFill"></image>
+        <view class="culture-content">
+          <text class="culture-name">二十四节气的起源</text>
+          <text class="culture-desc">了解二十四节气的历史渊源和科学价值</text>
+          <view class="culture-tags">
+            <text class="tag">起源</text>
+            <text class="tag">历史</text>
+            <text class="tag">科学</text>
+          </view>
         </view>
-        <text class="culture-card-desc">了解二十四节气的历史渊源和科学价值</text>
       </view>
-      <view class="culture-card" bindtap="showCultureDetail" data-type="solar-system">
-        <view class="culture-card-header">
-          <text class="culture-card-title">节气与农业生产</text>
+      <view class="culture-item" bindtap="showCultureDetail" data-type="solar-system">
+        <image class="culture-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/jieqi/2fa1e18080ddbea771c3b2d8bbbc636f.jpg" mode="aspectFill"></image>
+        <view class="culture-content">
+          <text class="culture-name">节气与农业生产</text>
+          <text class="culture-desc">探索节气对中国传统农业的指导作用</text>
+          <view class="culture-tags">
+            <text class="tag">农业</text>
+            <text class="tag">生产</text>
+            <text class="tag">指导</text>
+          </view>
         </view>
-        <text class="culture-card-desc">探索节气对中国传统农业的指导作用</text>
       </view>
-    </view>
-
-    <view class="culture-section">
-      <text class="section-title">传统智慧</text>
-      <view class="culture-card" bindtap="showCultureDetail" data-type="traditional-medicine">
-        <view class="culture-card-header">
-          <text class="culture-card-title">节气与中医养生</text>
+      <view class="culture-item" bindtap="showCultureDetail" data-type="traditional-medicine">
+        <image class="culture-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/jieqi/4dc36b7e59567dfacd4c7b289cc4729b.jpg" mode="aspectFill"></image>
+        <view class="culture-content">
+          <text class="culture-name">节气与中医养生</text>
+          <text class="culture-desc">了解节气变化与人体健康的关系</text>
+          <view class="culture-tags">
+            <text class="tag">中医</text>
+            <text class="tag">养生</text>
+            <text class="tag">健康</text>
+          </view>
         </view>
-        <text class="culture-card-desc">了解节气变化与人体健康的关系</text>
       </view>
-      <view class="culture-card" bindtap="showCultureDetail" data-type="traditional-philosophy">
-        <view class="culture-card-header">
-          <text class="culture-card-title">节气与传统文化</text>
+      <view class="culture-item" bindtap="showCultureDetail" data-type="traditional-philosophy">
+        <image class="culture-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/jieqi/a33fab4a3857cf9e4da1b9e741267fd7.jpg" mode="aspectFill"></image>
+        <view class="culture-content">
+          <text class="culture-name">节气与传统文化</text>
+          <text class="culture-desc">探索节气在诗词、绘画等文化领域的体现</text>
+          <view class="culture-tags">
+            <text class="tag">诗词</text>
+            <text class="tag">绘画</text>
+            <text class="tag">文化</text>
+          </view>
         </view>
-        <text class="culture-card-desc">探索节气在诗词、绘画等文化领域的体现</text>
       </view>
     </view>
   </view>

@@ -273,11 +273,11 @@
 /* 响应式调整 */
 @media (max-width: 375px) {
   .modules-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .featured-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .brand-content {
