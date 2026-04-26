@@ -97,7 +97,7 @@
           <view class="badge-detail-progress" wx:if="{{selectedBadge.progress < 100}}">
             <view class="progress-label">完成进度：{{selectedBadge.progress}}%</view>
             <view class="progress-bar">
-              <view class="progress-fill" style="width: {{selectedBadge.progress}}%"></view>
+              <view class="progress-fill" style="width: {{selectedBadge.progress + '%'}}"></view>
             </view>
           </view>
         </view>
