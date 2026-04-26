@@ -6,9 +6,22 @@
     <text class="page-subtitle">智能书法练习助手</text>
   </view>
   
+  <!-- 自定义文字输入 -->
+  <view class="text-input-section">
+    <view class="section-title">自定义文字</view>
+    <textarea 
+      class="text-input" 
+      placeholder="请输入最多20个汉字，支持简体中文" 
+      maxlength="20" 
+      value="{{customText}}" 
+      bindinput="onTextInput"
+    ></textarea>
+    <text class="text-count">{{customText.length}}/20</text>
+  </view>
+  
   <!-- 选择书体 -->
   <view class="font-section">
-    <view class="section-title">选择书体</view>
+    <view class="section-title">选择字体</view>
     <view class="font-grid">
       <view class="font-item {{selectedFont === 'regular' ? 'active' : ''}}" bindtap="selectFont" data-font="regular">
         <text class="font-name">楷书</text>
@@ -18,54 +31,51 @@
         <text class="font-name">行书</text>
         <text class="font-sample">行书示例</text>
       </view>
-      <view class="font-item {{selectedFont === 'cursive' ? 'active' : ''}}" bindtap="selectFont" data-font="cursive">
-        <text class="font-name">草书</text>
-        <text class="font-sample">草书示例</text>
-      </view>
-      <view class="font-item {{selectedFont === 'official' ? 'active' : ''}}" bindtap="selectFont" data-font="official">
-        <text class="font-name">隶书</text>
-        <text class="font-sample">隶书示例</text>
+      <view class="font-item {{selectedFont === 'song' ? 'active' : ''}}" bindtap="selectFont" data-font="song">
+        <text class="font-name">仿宋</text>
+        <text class="font-sample">仿宋示例</text>
       </view>
     </view>
   </view>
   
-  <!-- 选择字帖 -->
-  <view class="copybook-section">
-    <view class="section-title">选择字帖</view>
-    <view class="copybook-list">
-      <view class="copybook-item {{selectedCopybook === item.id ? 'active' : ''}}" wx:for="{{copybooks}}" wx:key="id" bindtap="selectCopybook" data-id="{{item.id}}">
-        <image class="copybook-image" src="{{item.image}}" mode="aspectFit"></image>
-        <text class="copybook-name">{{item.name}}</text>
-        <text class="copybook-author">{{item.author}}</text>
+  <!-- 每行字数设置 -->
+  <view class="layout-section">
+    <view class="section-title">每行字数</view>
+    <view class="layout-options">
+      <view class="layout-item {{selectedLayout === '2' ? 'active' : ''}}" bindtap="selectLayout" data-layout="2">
+        <text>2字/行</text>
+      </view>
+      <view class="layout-item {{selectedLayout === '3' ? 'active' : ''}}" bindtap="selectLayout" data-layout="3">
+        <text>3字/行</text>
+      </view>
+      <view class="layout-item {{selectedLayout === '4' ? 'active' : ''}}" bindtap="selectLayout" data-layout="4">
+        <text>4字/行</text>
       </view>
     </view>
   </view>
   
-  <!-- 临帖区域 -->
-  <view class="practice-section">
-    <view class="section-title">临帖练习</view>
-    <view class="practice-area">
-      <view class="original-section">
-        <text class="section-label">原帖</text>
-        <image class="original-image" src="{{currentCopybook?.image}}" mode="aspectFit"></image>
-      </view>
-      <view class="practice-section">
-        <text class="section-label">临帖</text>
-        <canvas class="practice-canvas" canvas-id="practiceCanvas" bindtouchstart="startDrawing" bindtouchmove="draw" bindtouchend="endDrawing"></canvas>
-      </view>
+  <!-- 田字格预览 -->
+  <view class="preview-section">
+    <view class="section-title">田字格预览</view>
+    <view class="preview-area">
+      <canvas class="preview-canvas" canvas-id="previewCanvas"></canvas>
     </view>
   </view>
   
   <!-- 控制按钮 -->
   <view class="control-section">
     <button class="control-btn" bindtap="clearCanvas">清空</button>
-    <button class="control-btn primary" bindtap="generateImage">生成图片</button>
-    <button class="control-btn" bindtap="saveImage">保存</button>
+    <button class="control-btn primary" bindtap="generateImage">生成字帖</button>
+    <button class="control-btn" bindtap="saveImage">保存到相册</button>
   </view>
   
   <!-- 生成结果 -->
   <view class="result-section" wx:if="{{generatedImage}}">
     <view class="section-title">生成结果</view>
     <image class="result-image" src="{{generatedImage}}" mode="aspectFit"></image>
+    <button class="save-btn" bindtap="saveToAlbum">保存到相册</button>
   </view>
+  
+  <!-- 生成用隐藏画布 -->
+  <canvas canvas-id="practiceCanvas" class="hidden-canvas"></canvas>
 </view>

@@ -69,28 +69,28 @@ Page({
       .fields({ node: true, size: true })
       .exec((res) => {
         if (!res || !res[0]) return;
-        
+
         const canvas = res[0].node;
         const ctx = canvas.getContext('2d');
         const { canvasSize, dpr } = this.data;
-        
+
         const size = canvasSize * dpr / 2;
         canvas.width = size * 2;
         canvas.height = size * 2;
         ctx.scale(dpr, dpr);
-        
+
         const centerX = size;
         const centerY = size;
-        
+
         ctx.fillStyle = '#faf8f5';
         ctx.fillRect(0, 0, size * 2, size * 2);
-        
+
         this.data.ringData.forEach(term => {
           this.drawTermRing(ctx, term, centerX, centerY);
         });
-        
+
         this.drawCenter(ctx, centerX, centerY, size * 0.25);
-        
+
         this.data.ringData.filter(t => t.hasPhoto).forEach(term => {
           this.drawPhotoDot(ctx, term, centerX, centerY);
         });
@@ -99,11 +99,11 @@ Page({
 
   drawTermRing(ctx, term, cx, cy) {
     const { radius, intensity, order, name, season } = term;
-    
+
     const startAngle = (term.angle - 7.5) * Math.PI / 180;
     const endAngle = (term.angle + 7.5) * Math.PI / 180;
     const ringWidth = 8 + intensity * 20;
-    
+
     const seasonColors = {
       spring: '#8B4513',
       summer: '#228B22',
@@ -112,15 +112,15 @@ Page({
     };
     const baseColor = seasonColors[season] || '#999';
     const alpha = 0.3 + intensity * 0.7;
-    
+
     ctx.beginPath();
     ctx.arc(cx, cy, radius, startAngle, endAngle);
     ctx.arc(cx, cy, radius + ringWidth, endAngle, startAngle, true);
     ctx.closePath();
-    
+
     ctx.fillStyle = this.hexToRgba(baseColor, alpha);
     ctx.fill();
-    
+
     if (intensity > 0.7) {
       ctx.beginPath();
       ctx.arc(cx, cy, radius + 2, startAngle + 0.05, endAngle - 0.05);
@@ -128,13 +128,13 @@ Page({
       ctx.lineWidth = 2;
       ctx.stroke();
     }
-    
+
     if (intensity > 0.3) {
       const labelAngle = term.angle * Math.PI / 180;
       const labelRadius = radius + ringWidth + 15;
       const lx = cx + Math.cos(labelAngle) * labelRadius;
       const ly = cy + Math.sin(labelAngle) * labelRadius;
-      
+
       ctx.font = `${10 + intensity * 4}px sans-serif`;
       ctx.fillStyle = baseColor;
       ctx.textAlign = 'center';
@@ -151,13 +151,13 @@ Page({
       ctx.lineWidth = 1;
       ctx.stroke();
     }
-    
+
     ctx.font = 'bold 24px serif';
     ctx.fillStyle = '#2c1810';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(`${this.data.year}`, cx, cy - 10);
-    
+
     ctx.font = '14px serif';
     ctx.fillStyle = '#8B4513';
     ctx.fillText('岁时', cx, cy + 15);
@@ -168,12 +168,12 @@ Page({
     const r = term.radius + 15;
     const x = cx + Math.cos(angle) * r;
     const y = cy + Math.sin(angle) * r;
-    
+
     ctx.beginPath();
     ctx.arc(x, y, 4, 0, Math.PI * 2);
     ctx.fillStyle = '#FF6B6B';
     ctx.fill();
-    
+
     ctx.beginPath();
     ctx.arc(x, y, 6, 0, Math.PI * 2);
     ctx.strokeStyle = '#FF6B6B';
@@ -195,7 +195,7 @@ Page({
       this.setData({ summary: cached });
       return;
     }
-    
+
     try {
       const ai = wx.cloud.extend.AI;
       const res = await ai.createCompletion({
@@ -211,14 +211,14 @@ Page({
         }],
         maxTokens: 200
       });
-      
+
       const summary = res.choices[0].message.content.trim();
       this.setData({ summary });
       wx.setStorageSync(cacheKey, summary);
-      
+
     } catch (err) {
-      this.setData({ 
-        summary: `四时行焉，百物生焉。${this.data.year}年，你与${stats.totalTerms}个节气相遇，在${stats.totalCustoms}次习俗中触摸时间的纹理，于寻常日子里，寻回中国人过日子的仪式感。` 
+      this.setData({
+        summary: `四时行焉，百物生焉。${this.data.year}年，你与${stats.totalTerms}个节气相遇，在${stats.totalCustoms}次习俗中触摸时间的纹理，于寻常日子里，寻回中国人过日子的仪式感。`
       });
     }
   },
@@ -235,18 +235,18 @@ Page({
     const { canvasSize } = this.data;
     const cx = canvasSize / 2;
     const cy = canvasSize / 2;
-    
+
     const dx = x - cx;
     const dy = y - cy;
     const angle = Math.atan2(dy, dx) * 180 / Math.PI;
     const normalizedAngle = angle < 0 ? angle + 360 : angle;
-    
+
     const closest = this.data.ringData.reduce((best, term) => {
       const diff = Math.abs(term.angle - normalizedAngle);
       const bestDiff = Math.abs(best.angle - normalizedAngle);
       return diff < bestDiff ? term : best;
     });
-    
+
     wx.navigateTo({
       url: `/minsu/minsu/pages/solar-detail/solar-detail?id=${closest.id}`
     });
@@ -261,7 +261,7 @@ Page({
 
   async exportRingImage() {
     wx.showLoading({ title: '生成中...' });
-    
+
     const query = wx.createSelectorQuery().in(this);
     query.select('#ring-canvas')
       .fields({ node: true })
@@ -270,9 +270,9 @@ Page({
           wx.hideLoading();
           return;
         }
-        
+
         const canvas = res[0].node;
-        
+
         wx.canvasToTempFilePath({
           canvas: canvas,
           x: 0, y: 0,

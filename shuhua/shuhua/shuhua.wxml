@@ -2,7 +2,7 @@
 <view class="shuhua-container">
   
   <!-- 主视觉区轮播图 -->
-  <view class="hero">
+  <view class="hero" bindtap="onBannerTap" data-index="0">
     <swiper class="hero-swiper" indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true">
       <swiper-item wx:for="{{bannerList}}" wx:key="index">
         <image src="{{item.image}}" class="hero-image" />

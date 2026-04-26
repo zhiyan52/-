@@ -68,7 +68,8 @@ Page({
     score: 0,
     timer: 30,
     timerInterval: null,
-    aiAnalysis: ''
+    aiAnalysis: '',
+    aiAnalysisLoading: false
   },
 
   /**
@@ -166,9 +167,32 @@ Page({
 
   // 获取AI解析
   getAIAnalysis() {
+    const { currentQuestion, selectedOption, isCorrect } = this.data;
+
     this.setData({
-      aiAnalysis: this.data.currentQuestion.aiAnalysis
+      aiAnalysisLoading: true,
+      aiAnalysis: ''
     });
+
+    // 模拟AI解析，避免云函数调用失败
+    setTimeout(() => {
+      // 先使用预设的AI解析作为默认值
+      let analysis = currentQuestion.aiAnalysis;
+
+      // 可以根据问题类型添加不同的解析内容
+      if (currentQuestion.question.includes('论语')) {
+        analysis = '《论语》是孔子及其弟子的言行录，是儒家学派的经典著作。"仁"是孔子思想的核心，体现了对他人的关爱与尊重。在《论语》中，孔子多次强调"仁"的重要性，认为"仁"是君子的必备品质。孔子的思想对中国传统文化产生了深远的影响，至今仍被人们所重视。';
+      } else if (currentQuestion.question.includes('史记')) {
+        analysis = '《史记》是西汉史学家司马迁撰写的中国第一部纪传体通史，记载了上至上古传说中的黄帝时代，下至汉武帝太初四年间共3000多年的历史。《史记》开创了纪传体史书的先河，以人物传记为中心，兼具史学价值和文学价值，被鲁迅誉为"史家之绝唱，无韵之离骚"。';
+      } else if (currentQuestion.question.includes('将进酒')) {
+        analysis = '李白的《将进酒》展现了盛唐文人的豪放不羁，"天生我材必有用，千金散尽还复来"体现了李白对个人价值的肯定和对物质财富的超然态度。这首诗以黄河之水起兴，表达了对时光易逝的感慨和对人生的热爱，成为中国文学史上的经典名句。';
+      }
+
+      this.setData({
+        aiAnalysis: analysis,
+        aiAnalysisLoading: false
+      });
+    }, 1000);
   },
 
   // 下一题

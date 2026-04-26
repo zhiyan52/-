@@ -39,14 +39,40 @@
   padding-left: 16rpx;
 }
 
-/* 书体选择 */
+/* 文字输入区域 */
+.text-input-section {
+  margin-bottom: 40rpx;
+}
+
+.text-input {
+  width: 100%;
+  min-height: 160rpx;
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+  border: 2rpx solid #E0E0E0;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  resize: none;
+}
+
+.text-count {
+  font-size: 20rpx;
+  color: #999;
+  text-align: right;
+  margin-top: 8rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+/* 字体选择 */
 .font-section {
   margin-bottom: 40rpx;
 }
 
 .font-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20rpx;
 }
 
@@ -80,98 +106,56 @@
   font-family: "STKaiti", "KaiTi", serif;
 }
 
-/* 字帖选择 */
-.copybook-section {
+/* 行列布局设置 */
+.layout-section {
   margin-bottom: 40rpx;
 }
 
-.copybook-list {
+.layout-options {
   display: flex;
-  overflow-x: auto;
   gap: 20rpx;
-  padding-bottom: 10rpx;
+  flex-wrap: wrap;
 }
 
-.copybook-item {
-  flex: 0 0 200rpx;
+.layout-item {
   background: #FFFFFF;
   border-radius: 16rpx;
-  padding: 16rpx;
+  padding: 20rpx 30rpx;
   text-align: center;
   border: 2rpx solid #E0E0E0;
   transition: all 0.3s ease;
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #1A365D;
+  font-family: "STKaiti", "KaiTi", serif;
 }
 
-.copybook-item.active {
+.layout-item.active {
   border-color: #D4A017;
   background: #FFF9E6;
   box-shadow: 0 4rpx 12rpx rgba(212, 160, 23, 0.2);
 }
 
-.copybook-image {
-  width: 160rpx;
-  height: 160rpx;
-  border-radius: 8rpx;
-  margin-bottom: 12rpx;
-}
-
-.copybook-name {
-  font-size: 24rpx;
-  font-weight: bold;
-  color: #1A365D;
-  margin-bottom: 4rpx;
-  font-family: "STKaiti", "KaiTi", serif;
-}
-
-.copybook-author {
-  font-size: 18rpx;
-  color: #666;
-  font-family: "STKaiti", "KaiTi", serif;
-}
-
-/* 临帖区域 */
-.practice-section {
+/* 田字格预览 */
+.preview-section {
   margin-bottom: 40rpx;
 }
 
-.practice-area {
-  display: flex;
-  gap: 20rpx;
+.preview-area {
   background: #FFFFFF;
   border-radius: 16rpx;
   padding: 20rpx;
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
   border: 2rpx solid #E0E0E0;
-}
-
-.original-section,
-.practice-section {
-  flex: 1;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 }
 
-.section-label {
-  font-size: 20rpx;
-  font-weight: bold;
-  color: #1A365D;
-  margin-bottom: 12rpx;
-  font-family: "STKaiti", "KaiTi", serif;
-  text-align: center;
-}
-
-.original-image {
-  flex: 1;
-  width: 100%;
-  border-radius: 8rpx;
-  border: 1rpx solid #E0E0E0;
-}
-
-.practice-canvas {
-  flex: 1;
-  width: 100%;
-  background: #FFFFFF;
+.preview-canvas {
+  width: 300rpx;
+  height: 400rpx;
+  background: #FFFFFF !important;
   border-radius: 8rpx;
   border: 1rpx solid #E0E0E0;
 }
@@ -219,14 +203,38 @@
   border-radius: 16rpx;
   border: 2rpx solid #E0E0E0;
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 20rpx;
+}
+
+.save-btn {
+  width: 100%;
+  height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  font-family: "STKaiti", "KaiTi", serif;
+  background: #D4A017;
+  color: #FFFFFF;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.save-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 生成用隐藏画布 */
+.hidden-canvas {
+  position: fixed;
+  left: -9999px;
+  top: -9999px;
+  width: 750rpx;
+  height: 1000rpx;
 }
 
 /* 响应式调整 */
 @media (max-width: 375px) {
-  .practice-area {
-    flex-direction: column;
-  }
-  
   .font-grid {
     grid-template-columns: 1fr;
   }
@@ -237,5 +245,14 @@
   
   .control-btn {
     width: 100%;
+  }
+  
+  .layout-options {
+    justify-content: center;
+  }
+  
+  .preview-canvas {
+    width: 260rpx;
+    height: 350rpx;
   }
 }

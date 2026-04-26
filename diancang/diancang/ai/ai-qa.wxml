@@ -53,9 +53,12 @@
       <text class="result {{isCorrect ? 'correct' : 'wrong'}}">{{isCorrect ? '✅ 回答正确' : '❌ 回答错误'}}</text>
     </view>
     <text class="answer-explanation">{{currentQuestion.explanation}}</text>
-    <view class="ai-analysis" wx:if="{{aiAnalysis}}">
+    <view class="ai-analysis" wx:if="{{aiAnalysis || aiAnalysisLoading}}">
       <text class="ai-analysis-title">AI深度解析</text>
-      <text class="ai-analysis-content">{{aiAnalysis}}</text>
+      <text class="ai-analysis-content" wx:if="{{!aiAnalysisLoading}}">{{aiAnalysis}}</text>
+      <view class="ai-loading" wx:if="{{aiAnalysisLoading}}">
+        <text>AI正在深度解析中...</text>
+      </view>
     </view>
   </view>
   

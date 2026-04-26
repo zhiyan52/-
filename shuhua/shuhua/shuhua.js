@@ -40,7 +40,7 @@ Page({
 
   onLoad() {
     wx.setNavigationBarTitle({ title: '书画雅韵' });
-    
+
     // 初始化云开发并加载图片
     this.initCloudAndLoadImages();
   },
@@ -51,12 +51,12 @@ Page({
       console.error('云开发未初始化');
       return;
     }
-    
+
     wx.cloud.init({
       env: 'cloud1-8glc9jqob91870fc',
       traceUser: true
     });
-    
+
     this.loadCloudImages();
   },
 
@@ -64,34 +64,34 @@ Page({
   loadCloudImages() {
     const { modules, featuredArtworks, bannerList } = this.data;
     const cloudFileIDs = [];
-    
+
     // 收集模块图标
     modules.forEach(item => {
       if (item.icon && item.icon.startsWith('cloud://')) {
         cloudFileIDs.push(item.icon);
       }
     });
-    
+
     // 收集精选书画图片
     featuredArtworks.forEach(item => {
       if (item.image && item.image.startsWith('cloud://')) {
         cloudFileIDs.push(item.image);
       }
     });
-    
+
     // 收集轮播图
     bannerList.forEach(item => {
       if (item.image && item.image.startsWith('cloud://')) {
         cloudFileIDs.push(item.image);
       }
     });
-    
+
     if (cloudFileIDs.length === 0) {
       // 即使没有云存储图片，也要设置模块分组
       this.setModuleRows();
       return;
     }
-    
+
     wx.cloud.getTempFileURL({
       fileList: cloudFileIDs,
       success: (res) => {
@@ -101,31 +101,31 @@ Page({
             tempUrlMap[cloudFileIDs[index]] = file.tempFileURL;
           }
         });
-        
+
         // 更新模块图标
         const updatedModules = modules.map(item => ({
           ...item,
           icon: tempUrlMap[item.icon] || item.icon
         }));
-        
+
         // 更新精选书画
         const updatedArtworks = featuredArtworks.map(item => ({
           ...item,
           image: tempUrlMap[item.image] || item.image
         }));
-        
+
         // 更新轮播图
         const updatedBannerList = bannerList.map(item => ({
           ...item,
           image: tempUrlMap[item.image] || item.image
         }));
-        
+
         this.setData({
           modules: updatedModules,
           featuredArtworks: updatedArtworks,
           bannerList: updatedBannerList
         });
-        
+
         // 设置模块分组
         this.setModuleRows();
       },
@@ -229,6 +229,14 @@ Page({
   navigateToVoice() {
     wx.navigateTo({
       url: '/shuhua/shuhua/ai/ai-voice'
+    });
+  },
+
+  // 轮播图点击事件
+  onBannerTap() {
+    // 点击轮播图跳转到AI临帖页面
+    wx.navigateTo({
+      url: '/shuhua/shuhua/pages/lintie/lintie'
     });
   }
 });
