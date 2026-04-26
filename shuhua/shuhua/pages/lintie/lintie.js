@@ -62,43 +62,40 @@ Page({
     previewContext.setFillStyle('#ffffff');
     previewContext.fillRect(0, 0, 300, 400);
 
-    if (!customText) {
-      // 没有文字时直接绘制空白背景
-      previewContext.draw();
-      return;
-    }
-
     // 每行字数
     const charsPerRow = parseInt(selectedLayout);
 
     // 计算总字数和行数
     const totalChars = customText.length;
-    const totalRows = Math.ceil(totalChars / charsPerRow);
+    const totalRows = Math.max(1, Math.ceil(totalChars / charsPerRow));
 
     // 画布尺寸
     const canvasWidth = 300;
     const canvasHeight = 400;
 
-    // 计算每个田字格的尺寸
+    // 计算每个田字格的尺寸（简化计算）
     const padding = 20; // 边距
     const gap = 10; // 田字格之间的间距
+    const maxCellSize = 60; // 最大田字格尺寸
+
+    // 计算实际田字格大小
     const availableWidth = canvasWidth - 2 * padding;
-    const cellSize = Math.floor((availableWidth - (charsPerRow - 1) * gap) / charsPerRow);
+    const availableHeight = canvasHeight - 2 * padding;
+    const cellSize = Math.min(
+      Math.floor((availableWidth - (charsPerRow - 1) * gap) / charsPerRow),
+      Math.floor((availableHeight - (totalRows - 1) * gap) / totalRows),
+      maxCellSize
+    );
 
-    // 计算总宽度和起始X位置（居中）
+    // 计算起始位置（居中）
     const totalWidth = charsPerRow * cellSize + (charsPerRow - 1) * gap;
+    const totalHeight = totalRows * cellSize + (totalRows - 1) * gap;
     const startX = (canvasWidth - totalWidth) / 2;
-
-    // 计算最大行数（确保田字格均匀分布）
-    const maxRows = Math.min(totalRows, 8); // 限制最大行数
-
-    // 计算总高度和起始Y位置（居中）
-    const totalHeight = maxRows * cellSize + (maxRows - 1) * gap;
     const startY = (canvasHeight - totalHeight) / 2;
 
     // 绘制田字格和文字
     let index = 0;
-    for (let row = 0; row < maxRows; row++) {
+    for (let row = 0; row < totalRows; row++) {
       for (let col = 0; col < charsPerRow; col++) {
         const x = startX + col * (cellSize + gap);
         const y = startY + row * (cellSize + gap);
@@ -141,10 +138,14 @@ Page({
 
   // 绘制文字
   drawCharacter(ctx, char, x, y, size, font) {
-    ctx.setFontSize(size * 0.6);
+    // 计算合适的字体大小，确保文字在田字格内
+    const fontSize = size * 0.5;
+    ctx.setFontSize(fontSize);
     ctx.setFillStyle('#000');
     ctx.setTextAlign('center');
     ctx.setTextBaseline('middle');
+
+    // 绘制文字，确保在田字格中心
     ctx.fillText(char, x + size / 2, y + size / 2);
   },
 
@@ -176,32 +177,35 @@ Page({
 
     // 计算总字数和行数
     const totalChars = customText.length;
-    const totalRows = Math.ceil(totalChars / charsPerRow);
+    const totalRows = Math.max(1, Math.ceil(totalChars / charsPerRow));
 
     // 画布尺寸
     const canvasWidth = 750;
     const canvasHeight = 1000;
 
-    // 计算每个田字格的尺寸
+    // 计算每个田字格的尺寸（简化计算）
     const padding = 50; // 边距
-    const gap = 20; // 田字格之间的间距
+    const gap = 15; // 田字格之间的间距
+    const maxCellSize = 100; // 最大田字格尺寸
+
+    // 计算实际田字格大小
     const availableWidth = canvasWidth - 2 * padding;
-    const cellSize = Math.floor((availableWidth - (charsPerRow - 1) * gap) / charsPerRow);
+    const availableHeight = canvasHeight - 2 * padding;
+    const cellSize = Math.min(
+      Math.floor((availableWidth - (charsPerRow - 1) * gap) / charsPerRow),
+      Math.floor((availableHeight - (totalRows - 1) * gap) / totalRows),
+      maxCellSize
+    );
 
-    // 计算总宽度和起始X位置（居中）
+    // 计算起始位置（居中）
     const totalWidth = charsPerRow * cellSize + (charsPerRow - 1) * gap;
+    const totalHeight = totalRows * cellSize + (totalRows - 1) * gap;
     const startX = (canvasWidth - totalWidth) / 2;
-
-    // 计算最大行数（确保田字格均匀分布）
-    const maxRows = Math.min(totalRows, 8); // 限制最大行数
-
-    // 计算总高度和起始Y位置（居中）
-    const totalHeight = maxRows * cellSize + (maxRows - 1) * gap;
     const startY = (canvasHeight - totalHeight) / 2;
 
     // 绘制田字格和文字
     let index = 0;
-    for (let row = 0; row < maxRows; row++) {
+    for (let row = 0; row < totalRows; row++) {
       for (let col = 0; col < charsPerRow; col++) {
         const x = startX + col * (cellSize + gap);
         const y = startY + row * (cellSize + gap);

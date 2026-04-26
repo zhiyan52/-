@@ -130,7 +130,7 @@ Page({
       const aiMessage = {
         id: Date.now() + 1,
         type: 'ai',
-        content: result?.answer || '抱歉，我暂时无法回答这个问题，请尝试其他问题。'
+        content: result && result.answer ? result.answer : '抱歉，我暂时无法回答这个问题，请尝试其他问题。'
       };
 
       this.setData({
