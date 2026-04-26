@@ -198,7 +198,7 @@ Page({
     const { id: classicId } = this.data.selectedClassic;
     const { id: periodId } = this.data.selectedTimePeriod;
 
-    const scene = this.data.scenes[classicId]?.[periodId];
+    const scene = this.data.scenes[classicId] && this.data.scenes[classicId][periodId];
 
     if (scene) {
       this.setData({
