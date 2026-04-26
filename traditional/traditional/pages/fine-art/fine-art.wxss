@@ -318,7 +318,7 @@
 /* 响应式调整 */
 @media (max-width: 375px) {
   .categories-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20rpx;
   }
   
@@ -334,13 +334,8 @@
     font-size: 36rpx;
   }
   
-  .category-card {
-    padding: 32rpx 20rpx;
-  }
-  
   .category-icon {
-    width: 100rpx;
-    height: 100rpx;
+    height: 140rpx;
   }
   
   .recommendation-image {
