@@ -1,0 +1,8 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "非遗地图",
+  "navigationBarBackgroundColor": "#7a4a19",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#f8f5f0",
+  "backgroundTextStyle": "dark"
+}

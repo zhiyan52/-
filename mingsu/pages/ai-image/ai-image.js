@@ -8,7 +8,7 @@ Page({
     colorIndex: 0,
     imageUrl: '',
     loading: false,
-    
+
     // 主题图片映射 - 云存储路径
     themeImages: {
       '春节': 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/cee5695f868e1956e82db81adcc3d904.jpg',
@@ -54,7 +54,7 @@ Page({
     // 优先从本地映射获取图片
     const { theme, themeImages, styles, styleIndex, colors, colorIndex } = this.data;
     let imageUrl = themeImages[theme];
-    
+
     if (imageUrl) {
       // 成功从本地映射获取图片
       setTimeout(() => {
@@ -65,10 +65,10 @@ Page({
       // 如果本地映射没有，调用AI生成
       const style = styles[styleIndex];
       const color = colors[colorIndex];
-      
+
       // 生成图片URL（模拟）
       imageUrl = `https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=${encodeURIComponent(`${theme} ${style} ${color} style, traditional Chinese ink painting`)}&image_size=square_hd`;
-      
+
       // 模拟AI生成图片的延迟
       setTimeout(() => {
         this.setData({ imageUrl, loading: false });
