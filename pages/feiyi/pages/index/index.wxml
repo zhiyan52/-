@@ -53,7 +53,7 @@
         <image class="feature-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/opera.jpg" mode="aspectFill" />
         <text>非遗掌间</text>
       </navigator>
-      <navigator url="/traditional/traditional/pages/craftDetail/craftDetail" class="feature-item {{currentCategory === 'art' ? 'active' : ''}}">
+      <navigator url="/pages/cultural-map/cultural-map" class="feature-item {{currentCategory === 'art' ? 'active' : ''}}">
         <image class="feature-image" src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/feiyi/jiyi.jpg" mode="aspectFill" />
         <text>非遗地图</text>
       </navigator> 
