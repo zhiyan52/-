@@ -1,4 +1,4 @@
-// AI书画意境生图页面逻辑 - 使用hunyuan-image云函数
+// AI书画意境生图页面逻辑 - 使用云存储图片
 Page({
   data: {
     // 推荐关键词
@@ -12,6 +12,17 @@ Page({
       '花鸟画',
       '人物画'
     ],
+    // 云存储图片映射
+    keywordImages: {
+      '兰亭集序意境': 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/aishengtu/83acab37b22ac792ff8830f6b7951a05.jpg',
+      '水墨竹石图': 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/aishengtu/8f3f5c187ec767aa67a08e18ae925b47.png',
+      '工笔牡丹': 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/aishengtu/067e8eece99e515766115f186f6a3f0b.jpg',
+      '千里江山图风格': 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/aishengtu/0ad903ae993c401d3d69c1338dbbd00b.jpg',
+      '书法卷轴': 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/aishengtu/9cc60758dca4ba722e869c43d0467119.jpg',
+      '山水画意境': 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/aishengtu/efbebe26c2222ab9b30d4653ea797abc.jpg',
+      '花鸟画': 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/aishengtu/dbe6b17e44fb63811b4becc9fed13dbf.jpg',
+      '人物画': 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/shuhua/aishengtu/1a32c72a5e4836ec6de04ed3b1c9db52.jpg'
+    },
     keyword: '',
     generatedImage: null,
     isGenerating: false,
@@ -33,7 +44,7 @@ Page({
     this.setData({ keyword, imageSource: '' });
   },
 
-  // 生成图片
+  // 生成图片 - 使用本地图片
   generateImage() {
     if (!this.data.keyword) {
       wx.showToast({ title: '请输入或选择关键词', icon: 'none' });
@@ -42,40 +53,22 @@ Page({
 
     this.setData({ isGenerating: true, generatedImage: null, imageSource: '' });
 
-    wx.cloud.callFunction({
-      name: 'hunyuan-image',
-      data: {
-        keyword: this.data.keyword,
-        prompt: `${this.data.keyword} 中国传统书画风格，水墨国画，古风，细腻典雅，文化底蕴深厚`
-      },
-      success: (res) => {
-        if (res.result && res.result.success) {
-          this.setData({
-            generatedImage: res.result.imageUrl,
-            imageSource: res.result.source || 'unknown'
-          });
-
-          if (res.result.source === 'local_backup') {
-            wx.showToast({
-              title: '已使用本地图片',
-              icon: 'none',
-              duration: 2000
-            });
-          } else {
-            wx.showToast({ title: '生成成功！', icon: 'success' });
-          }
-        } else {
-          wx.showToast({ title: res.result.error || '生成失败', icon: 'none' });
-        }
-      },
-      fail: (err) => {
-        console.error('AI生图失败：', err);
-        wx.showToast({ title: '生成失败，请重试', icon: 'none' });
-      },
-      complete: () => {
-        this.setData({ isGenerating: false });
+    // 模拟生成延迟
+    setTimeout(() => {
+      const { keyword, keywordImages } = this.data;
+      let imageUrl = keywordImages[keyword];
+      
+      // 如果没有匹配的关键词，使用默认图片
+      if (!imageUrl) {
+        imageUrl = `https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=${encodeURIComponent(keyword + ' 中国传统书画风格')}&image_size=landscape_4_3`;
       }
-    });
+
+      this.setData({
+        generatedImage: imageUrl,
+        imageSource: 'cloud',
+        isGenerating: false
+      });
+    }, 1000);
   },
 
   // 保存图片
