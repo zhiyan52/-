@@ -6,7 +6,7 @@
       <text class="back-icon">←</text>
       <text class="nav-title">返回</text>
     </view>
-    <text class="nav-center">典藏列表</text>
+    <text class="nav-center">古籍典藏</text>
     <view class="nav-right">
       <text class="filter-icon" bindtap="togglePinyin">拼音</text>
       <text class="filter-icon" bindtap="showFilter">🔍</text>
