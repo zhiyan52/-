@@ -1,0 +1,173 @@
+/* 智能问答页面样式 */
+.ai-qa-container {
+  background-color: #fafffe;
+  min-height: 100vh;
+  padding: 20rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  text-align: center;
+  padding: 40rpx 0 30rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: 500;
+  color: #333;
+  letter-spacing: 2rpx;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #888;
+  margin-top: 10rpx;
+  display: block;
+}
+
+.faq-section {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.faq-list {
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.faq-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  font-size: 28rpx;
+  color: #333;
+  flex: 1;
+}
+
+.faq-arrow {
+  font-size: 40rpx;
+  color: #999;
+}
+
+.chat-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 400rpx;
+}
+
+.chat-box {
+  flex: 1;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  max-height: 600rpx;
+}
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.message-item {
+  display: flex;
+  gap: 15rpx;
+  align-items: flex-start;
+}
+
+.message-item:has(.user) {
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  flex-shrink: 0;
+}
+
+.message-avatar.user-avatar {
+  background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.message-avatar.system-avatar {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.message-content {
+  padding: 15rpx 20rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  color: #333;
+  line-height: 1.5;
+  max-width: 500rpx;
+  word-wrap: break-word;
+}
+
+.message-content.user {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+}
+
+.message-content.ai {
+  background: #fff;
+}
+
+.message-content.system {
+  background: #fff;
+  border: 1rpx dashed #ccc;
+}
+
+.input-section {
+  display: flex;
+  gap: 15rpx;
+  align-items: center;
+  padding: 10rpx 0;
+}
+
+.input-box {
+  flex: 1;
+  height: 80rpx;
+  padding: 0 20rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 40rpx;
+  font-size: 26rpx;
+}
+
+.send-button {
+  width: 120rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  background: #333;
+  color: #fff;
+  font-size: 26rpx;
+}

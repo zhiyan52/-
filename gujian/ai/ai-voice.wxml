@@ -11,18 +11,30 @@
       <view class="building-item" bindtap="selectBuilding" data-building="forbidden-city">
         <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/gongdian1.jpg" class="building-image" />
         <text class="building-name">故宫</text>
+        <view class="audio-status" wx:if="{{buildings['forbidden-city'].audioUrl}}">已选择</view>
+        <view class="audio-status not-uploaded" wx:else>未选择</view>
+        <button class="upload-btn" catchtap="uploadAudio" data-building="forbidden-city">选择音频</button>
       </view>
       <view class="building-item" bindtap="selectBuilding" data-building="summer-palace">
         <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/zhineng/yinhe.jpg" class="building-image" />
         <text class="building-name">颐和园</text>
+        <view class="audio-status" wx:if="{{buildings['summer-palace'].audioUrl}}">已选择</view>
+        <view class="audio-status not-uploaded" wx:else>未选择</view>
+        <button class="upload-btn" catchtap="uploadAudio" data-building="summer-palace">选择音频</button>
       </view>
       <view class="building-item" bindtap="selectBuilding" data-building="temple-of-heaven">
         <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/zhineng/tiantan.jpg" class="building-image" />
         <text class="building-name">天坛</text>
+        <view class="audio-status" wx:if="{{buildings['temple-of-heaven'].audioUrl}}">已选择</view>
+        <view class="audio-status not-uploaded" wx:else>未选择</view>
+        <button class="upload-btn" catchtap="uploadAudio" data-building="temple-of-heaven">选择音频</button>
       </view>
       <view class="building-item" bindtap="selectBuilding" data-building="suzhou-garden">
         <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/gujian/zhineng/yuanlin.jpg" class="building-image" />
         <text class="building-name">苏州园林</text>
+        <view class="audio-status" wx:if="{{buildings['suzhou-garden'].audioUrl}}">已选择</view>
+        <view class="audio-status not-uploaded" wx:else>未选择</view>
+        <button class="upload-btn" catchtap="uploadAudio" data-building="suzhou-garden">选择音频</button>
       </view>
     </view>
   </view>
@@ -34,7 +46,7 @@
         <image src="{{selectedBuilding.image}}" class="player-image" />
         <view class="player-details">
           <text class="player-desc">{{selectedBuilding.desc}}</text>
-          <text class="player-duration">讲解时长：{{selectedBuilding.duration}}</text>
+          <text class="player-duration">讲解时长：{{duration}}</text>
         </view>
       </view>
       
@@ -68,9 +80,10 @@
     <text class="tips-title">使用提示</text>
     <view class="tips-content">
       <text class="tips-text">1. 选择您感兴趣的古建筑</text>
-      <text class="tips-text">2. 点击播放按钮开始语音讲解</text>
-      <text class="tips-text">3. 可随时暂停、停止或重复播放</text>
-      <text class="tips-text">4. 拖动进度条调整播放位置</text>
+      <text class="tips-text">2. 点击"选择音频"按钮选择本地音频文件</text>
+      <text class="tips-text">3. 点击播放按钮开始语音讲解</text>
+      <text class="tips-text">4. 可随时暂停、停止或重复播放</text>
+      <text class="tips-text">5. 拖动进度条调整播放位置</text>
     </view>
   </view>
 </view>

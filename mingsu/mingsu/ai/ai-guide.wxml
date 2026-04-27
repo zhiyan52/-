@@ -1,164 +1,45 @@
-<!--mingsu/mingsu/ai/ai-guide.wxml-->
-<view class="page-container">
-  <!-- 顶部标题 -->
-  <view class="page-title">
-    <text>民俗智能导览</text>
+<!-- 智能导览页面 -->
+<view class="ai-guide-container">
+  <view class="header">
+    <text class="title">智能导览</text>
+    <text class="subtitle">AI为您讲解民俗</text>
   </view>
 
-  <!-- 平面图上传区域 -->
-  <view class="map-upload-section">
-    <view class="upload-title">
-      <text>上传民俗场馆/街区平面图</text>
-    </view>
-    <view class="upload-container">
-      <button class="upload-btn" bindtap="uploadMap">
-        {{venueMapUrl ? '重新上传地图' : '点击上传地图'}}
-      </button>
-    </view>
-  </view>
-
-  <!-- 分区导航 -->
-  <view class="zone-nav">
-    <view class="zone-tabs">
-      <view
-        wx:for="{{zones}}"
-        wx:key="id"
-        class="zone-tab {{activeZone === item.id ? 'active' : ''}}"
-        data-id="{{item.id}}"
-        bindtap="switchZone"
-      >
-        {{item.name}}
+  <view class="custom-list">
+    <text class="section-title">选择民俗</text>
+    <view class="custom-items">
+      <view class="custom-item" bindtap="selectCustom" data-custom="spring-festival">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/voi/1.jpg" class="custom-image" />
+        <text class="custom-name">春节</text>
+      </view>
+      <view class="custom-item" bindtap="selectCustom" data-custom="mid-autumn">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/voi/2.jpg" class="custom-image" />
+        <text class="custom-name">中秋节</text>
+      </view>
+      <view class="custom-item" bindtap="selectCustom" data-custom="dragon-boat">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/voi/3.jpg" class="custom-image" />
+        <text class="custom-name">端午节</text>
+      </view>
+      <view class="custom-item" bindtap="selectCustom" data-custom="double-ninth">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/voi/4.jpg" class="custom-image" />
+        <text class="custom-name">重阳节</text>
       </view>
     </view>
   </view>
 
-  <!-- 路线选择 -->
-  <view class="route-section">
-    <view class="route-title">
-      <text>选择游览路线</text>
-    </view>
-    <view class="route-options">
-      <view
-        wx:for="{{routeOptions}}"
-        wx:key="id"
-        class="route-option {{routeType === item.id ? 'active' : ''}} {{routeLoading ? 'loading' : ''}}"
-        data-id="{{item.id}}"
-        bindtap="selectRoute"
-      >
-        <view class="route-name">{{item.name}}</view>
-        <view class="route-desc">{{item.desc}}</view>
+  <view class="ai-content" wx:if="{{selectedCustom}}">
+    <text class="content-title">{{selectedCustom.name}}导览</text>
+    <view class="ai-response">
+      <view class="loading" wx:if="{{loading}}">
+        <text>AI正在生成讲解...</text>
+      </view>
+      <view wx:else>
+        <text class="ai-text">{{aiResponse}}</text>
       </view>
     </view>
-  </view>
-
-  <!-- 路线信息 -->
-  <view class="route-info">
-    <view class="route-info-title">
-      <text>路线信息</text>
+    <view class="control-buttons">
+      <button class="button" bindtap="startGuide">开始导览</button>
+      <button class="button" bindtap="stopGuide">停止导览</button>
     </view>
-    <view class="route-stats">
-      <view class="stat-item">
-        <view class="stat-value">{{routes[routeType] ? routes[routeType].length : 0}}</view>
-        <view class="stat-label">点位数量</view>
-      </view>
-      <view class="stat-item">
-        <view class="stat-value">{{routes[routeType] ? Math.round(routes[routeType].length * 15) : 0}}</view>
-        <view class="stat-label">预计分钟</view>
-      </view>
-      <view class="stat-item">
-        <view class="stat-value">{{routeType === 'recommended' ? '推荐路线' : routeType === 'family' ? '亲子民俗' : routeType === 'experience' ? '非遗体验' : '节庆打卡'}}</view>
-        <view class="stat-label">路线类型</view>
-      </view>
-    </view>
-  </view>
-
-  <!-- 热区编辑 -->
-  <view class="edit-section">
-    <view class="edit-title">
-      <text>热区管理</text>
-    </view>
-    <view class="edit-controls">
-      <button class="edit-btn primary" bindtap="toggleEditMode">
-        {{editMode ? '退出编辑' : '编辑热区'}}
-      </button>
-      <button class="edit-btn secondary" bindtap="addHotspot">
-        添加热区
-      </button>
-    </view>
-  </view>
-
-  <!-- 民俗场馆地图 -->
-  <view class="map-container" bindtap="handleMapTap" bindtouchmove="dragHotspot" bindtouchend="endDrag">
-    <!-- 平面图背景 -->
-    <image class="venue-map" src="{{venueMapUrl}}" mode="aspectFit"/>
-
-    <!-- 热区层 -->
-    <view class="hotspots-layer">
-      <!-- 民俗点位热区 -->
-      <view
-        wx:for="{{filteredPoints}}"
-        wx:key="id"
-        class="hotspot {{activePointId===item.id?'active':''}} {{editMode?'edit-mode':''}}"
-        style="left: {{item.position.x}}rpx; top: {{item.position.y}}rpx;"
-        data-id="{{item.id}}"
-        bindtap="{{editMode ? 'startDrag' : 'selectPoint'}}"
-      >
-        <view class="hotspot-marker">
-          <text class="hotspot-number">{{item.number}}</text>
-        </view>
-        <text class="hotspot-label">{{item.name}}</text>
-      </view>
-
-      <!-- 路线轨迹 -->
-      <view wx:if="showRoute" class="route-path">
-        <canvas canvas-id="routeCanvas" class="route-canvas"/>
-      </view>
-    </view>
-
-    <!-- 地图控制 -->
-    <view class="map-controls">
-      <button class="control-btn" bindtap="resetMap">复位</button>
-      <button class="control-btn" bindtap="toggleLabels">标签</button>
-      <button class="control-btn" bindtap="toggleRoute">路线</button>
-    </view>
-  </view>
-
-  <!-- 点位详情 -->
-  <view wx:if="showDetail" class="point-detail">
-    <view class="detail-header">
-      <view class="detail-title">{{selectedPoint.name}}</view>
-      <view class="close-btn" bindtap="closeDetail">×</view>
-    </view>
-    <view class="detail-content">
-      <view>{{selectedPoint.description}}</view>
-      <view class="ai-story" wx:if="selectedPoint.aiStory">
-        <view class="ai-story-title">AI生成背景故事</view>
-        <view class="ai-story-content">{{selectedPoint.aiStory}}</view>
-      </view>
-      <button wx:if="!selectedPoint.aiStory" class="story-btn" bindtap="generateAIStory">
-        生成AI背景故事
-      </button>
-    </view>
-  </view>
-
-  <!-- AI生成弹窗 -->
-  <view wx:if="showAiModal" class="ai-modal">
-    <view class="ai-modal-content">
-      <view class="ai-modal-title">AI生成中</view>
-      <view class="ai-modal-loading">
-        <view class="loading-spinner"></view>
-        <view class="ai-modal-message">正在为您生成精彩故事...</view>
-      </view>
-    </view>
-  </view>
-
-  <!-- 底部操作栏 -->
-  <view class="bottom-bar">
-    <button class="action-btn secondary" bindtap="share">
-      分享
-    </button>
-    <button class="action-btn primary" bindtap="startGuide">
-      开始导览
-    </button>
   </view>
 </view>

@@ -8,7 +8,7 @@
   
   <!-- 语音讲解列表 -->
   <view class="voice-list">
-    <view class="voice-item" wx:for="{{voiceList}}" wx:key="id" bindtap="togglePlay" data-id="{{item.id}}">
+    <view class="voice-item" wx:for="{{voiceList}}" wx:key="id">
       <image class="voice-cover" src="{{item.image}}" mode="aspectFill" />
       <view class="voice-info">
         <view class="voice-header">
@@ -25,10 +25,17 @@
             <text>{{item.views}}</text>
           </view>
         </view>
+        <view class="audio-status-container">
+          <view class="audio-status" wx:if="{{item.audioUrl}}">已选择</view>
+          <view class="audio-status not-selected" wx:else>未选择</view>
+        </view>
       </view>
-      <view class="play-btn {{currentPlaying === item.id ? 'playing' : ''}}">
-        <text wx:if="{{currentPlaying !== item.id}}">▶</text>
-        <text wx:else>⏸</text>
+      <view class="voice-actions">
+        <button class="select-audio-btn" catchtap="selectAudio" data-id="{{item.id}}">选择音频</button>
+        <view class="play-btn {{currentPlaying === item.id ? 'playing' : ''}}" bindtap="togglePlay" data-id="{{item.id}}">
+          <text wx:if="{{currentPlaying !== item.id}}">▶</text>
+          <text wx:else>⏸</text>
+        </view>
       </view>
     </view>
   </view>
@@ -39,6 +46,11 @@
     <view class="player-info">
       <text class="player-title">{{currentVoice.title}}</text>
       <text class="player-desc">{{currentVoice.description}}</text>
+      <view class="player-time">
+        <text>{{currentTime}}</text>
+        <text>/</text>
+        <text>{{duration}}</text>
+      </view>
     </view>
     <view class="player-controls">
       <view class="control-btn" bindtap="prevVoice">

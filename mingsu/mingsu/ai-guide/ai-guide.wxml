@@ -201,4 +201,79 @@
       <text>全屏地图</text>
     </button>
   </view>
+
+  <!-- AI助手区域 -->
+  <view class="ai-assistant-section">
+    <!-- 顶部装饰 -->
+    <view class="ai-header-decoration">
+      <view class="ai-decoration-line"></view>
+      <view class="ai-header-content">
+        <text class="ai-header-icon">📜</text>
+        <text class="ai-header-title">民俗先生</text>
+        <text class="ai-header-subtitle">AI民俗助手</text>
+      </view>
+      <view class="ai-decoration-line"></view>
+    </view>
+
+    <!-- 对话区域 -->
+    <scroll-view class="ai-chat-area" scroll-y enhanced show-scrollbar="{{false}}">
+      <!-- 用户输入展示 -->
+      <view class="ai-chat-section" wx:if="{{chatUserInput}}">
+        <view class="ai-chat-header ai-user-header">
+          <text class="ai-chat-label">您</text>
+        </view>
+        <view class="ai-chat-bubble ai-user-bubble">
+          <text class="ai-chat-text">{{chatUserInput}}</text>
+        </view>
+      </view>
+
+      <!-- AI回答展示 -->
+      <view class="ai-chat-section" wx:if="{{chatAnswer}}">
+        <view class="ai-chat-header ai-ai-header">
+          <text class="ai-chat-label">民俗先生</text>
+        </view>
+        <view class="ai-chat-bubble ai-ai-bubble">
+          <text class="ai-chat-text">{{chatAnswer}}</text>
+        </view>
+      </view>
+
+      <!-- 加载中提示 -->
+      <view class="ai-loading-section" wx:if="{{chatLoading}}">
+        <view class="ai-loading-dots">
+          <view class="ai-dot"></view>
+          <view class="ai-dot"></view>
+          <view class="ai-dot"></view>
+        </view>
+        <text class="ai-loading-text">民俗先生正在思考...</text>
+      </view>
+    </scroll-view>
+
+    <!-- 输入区域 -->
+    <view class="ai-input-section">
+      <view class="ai-input-decoration-left"></view>
+      <view class="ai-input-box">
+        <textarea 
+          class="ai-input-textarea" 
+          placeholder="请输入您的民俗文化疑问..." 
+          value="{{chatUserInput}}" 
+          bindinput="onChatInput"
+          disabled="{{chatLoading}}"
+          maxlength="500"
+          show-confirm-bar="{{false}}"
+        />
+        <view class="ai-input-actions">
+          <text class="ai-char-count">{{chatUserInput.length}}/500</text>
+          <button 
+            class="ai-send-btn {{chatUserInput ? 'active' : ''}}" 
+            bindtap="sendChatQuestion" 
+            disabled="{{chatLoading || !chatUserInput}}"
+          >
+            <text class="ai-send-icon">📝</text>
+            <text class="ai-send-text">{{chatLoading ? '思索中' : '询问'}}</text>
+          </button>
+        </view>
+      </view>
+      <view class="ai-input-decoration-right"></view>
+    </view>
+  </view>
 </view>

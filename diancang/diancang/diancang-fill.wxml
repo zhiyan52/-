@@ -11,7 +11,7 @@
   <view class="progress-section">
     <view class="progress-container">
       <view class="progress-bar">
-        <view class="progress-fill" style="width: {{((currentQuestionIndex + 1) / questions.length * 100) + '%'}}"></view>
+        <view class="progress-fill" style="width: {{(currentQuestionIndex + 1) / questions.length * 100}}%"></view>
       </view>
       <view class="progress-info">
         <text class="progress-text">第 {{currentQuestionIndex + 1}} 题</text>
@@ -99,7 +99,7 @@
     <view class="popup-content">
       <view class="popup-header">
         <text class="popup-title">词语释义</text>
-        <text class="popup-close" bindtap="closeWordMeaningPopup"></text>
+        <text class="popup-close" bindtap="closeWordMeaningPopup">×</text>
       </view>
       <view class="popup-body">
         <text class="word-text">{{selectedWord}}</text>
@@ -113,7 +113,7 @@
     <view class="popup-content">
       <view class="popup-header">
         <text class="popup-title">句子释义</text>
-        <text class="popup-close" bindtap="closeSentenceMeaningPopup"></text>
+        <text class="popup-close" bindtap="closeSentenceMeaningPopup">×</text>
       </view>
       <view class="popup-body">
         <text class="sentence-text">{{fullSentence}}</text>

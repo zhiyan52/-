@@ -1,2 +1,56 @@
-<!--mingsu/mingsu/ai/ai-qa.wxml-->
-<text>mingsu/mingsu/ai/ai-qa.wxml</text>
+<!-- 智能问答页面 -->
+<view class="ai-qa-container">
+  <view class="header">
+    <text class="title">智能问答</text>
+    <text class="subtitle">民俗文化知识问答</text>
+  </view>
+
+  <view class="faq-section">
+    <text class="section-title">常见问题</text>
+    <view class="faq-list">
+      <view class="faq-item" wx:for="{{faqList}}" wx:key="index" bindtap="selectQuestion" data-faq="{{item}}">
+        <text class="faq-question">{{item.question}}</text>
+        <view class="faq-arrow">
+          <text>›</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="chat-section">
+    <text class="section-title">开始对话</text>
+    <scroll-view class="chat-box" scroll-y scroll-into-view="message-{{messages.length - 1}}">
+      <view class="message-list">
+        <view class="message-item" wx:for="{{messages}}" wx:key="index" id="message-{{index}}">
+          <view class="message-avatar" wx:if="{{item.type === 'ai'}}">
+            <text>AI</text>
+          </view>
+          <view class="message-avatar user-avatar" wx:if="{{item.type === 'user'}}">
+            <text>我</text>
+          </view>
+          <view class="message-avatar system-avatar" wx:if="{{item.type === 'system'}}">
+            <text>系统</text>
+          </view>
+
+          <view class="message-content {{item.type}}">
+            <text>{{item.content}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <view class="input-section">
+      <input
+        class="input-box"
+        placeholder="请输入您的问题..."
+        value="{{inputValue}}"
+        bindinput="onInput"
+        confirm-type="send"
+        bindconfirm="sendMessage"
+      />
+      <button class="send-button" bindtap="sendMessage">
+        <text>发送</text>
+      </button>
+    </view>
+  </view>
+</view>

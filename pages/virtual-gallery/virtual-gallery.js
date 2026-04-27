@@ -1,6 +1,6 @@
 Page({
   data: {
-    // 360°序列图（你替换成自己的8～12张图）
+    // 360°序列图
     panoList: [
       "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/360/gugong/1.jpg",
       "cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/360/gugong/2.jpg",
@@ -43,31 +43,62 @@ Page({
   },
 
   onTouchStart(e) {
-    this.setData({ startX: e.touches[0].clientX });
+    this.setData({
+      startX: e.touches[0].clientX
+    });
   },
 
-  // 左右滑动切换360°视角
   onTouchMove(e) {
     const { startX, panoList } = this.data;
     const nowX = e.touches[0].clientX;
     const dx = nowX - startX;
 
-    if (Math.abs(dx) < 30) return;
+    // 计算滑动距离对应的图片索引变化
+    const threshold = 50; // 滑动阈值
+    if (Math.abs(dx) < threshold) return;
 
     const total = panoList.length;
     let next = this.data.current;
 
+    // 根据滑动方向切换图片
     if (dx > 0) {
+      // 向右滑动，显示上一张
       next = (next - 1 + total) % total;
     } else {
+      // 向左滑动，显示下一张
       next = (next + 1) % total;
     }
 
-    this.setData({ current: next, startX: nowX });
+    this.setData({
+      current: next,
+      startX: nowX
+    });
+  },
+
+  onTouchEnd() {
+    // 重置起始位置，确保下次滑动的准确性
+    this.setData({ startX: 0 });
+  },
+
+  // 上一张图片
+  prevImage() {
+    const { panoList, current } = this.data;
+    const total = panoList.length;
+    const next = (current - 1 + total) % total;
+    this.setData({ current: next });
+  },
+
+  // 下一张图片
+  nextImage() {
+    const { panoList, current } = this.data;
+    const total = panoList.length;
+    const next = (current + 1) % total;
+    this.setData({ current: next });
   },
 
   // 打开构件讲解
-  openInfo(index) {
+  openInfo(e) {
+    const index = e.currentTarget.dataset.index;
     this.setData({
       showModal: true,
       currentItem: this.data.infoList[index]

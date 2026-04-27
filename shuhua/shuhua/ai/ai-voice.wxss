@@ -92,10 +92,12 @@
 .play-control {
   display: flex;
   justify-content: center;
+  gap: 20rpx;
   margin-bottom: 30rpx;
 }
 
-.play-btn {
+.play-btn,
+.stop-btn {
   background-color: #8b7355;
   color: white;
   font-size: 24rpx;
@@ -105,11 +107,60 @@
   align-items: center;
   justify-content: center;
   font-family: 'STKaiti', 'KaiTi', serif;
+  border: none;
 }
 
-.play-icon {
+.stop-btn {
+  background-color: #999;
+}
+
+.play-icon,
+.stop-icon {
   font-size: 32rpx;
   margin-right: 10rpx;
+}
+
+.play-text,
+.stop-text {
+  font-size: 24rpx;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+  padding: 0 20rpx;
+}
+
+.current-time,
+.total-time {
+  font-size: 22rpx;
+  color: #666;
+  min-width: 90rpx;
+}
+
+.current-time {
+  text-align: left;
+}
+
+.total-time {
+  text-align: right;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8rpx;
+  background-color: #e5e5e5;
+  border-radius: 4rpx;
+  margin: 0 15rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8b7355, #a08060);
+  border-radius: 4rpx;
+  transition: width 0.3s ease;
 }
 
 .section-list {
@@ -126,6 +177,18 @@
   margin-bottom: 0;
   padding-bottom: 0;
   border-bottom: none;
+}
+
+.section-item.playing {
+  background-color: #faf8f3;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin: 0 -20rpx 30rpx;
+  border-bottom: none;
+}
+
+.section-item.playing .section-header {
+  margin-bottom: 20rpx;
 }
 
 .section-header {
@@ -154,6 +217,28 @@
   line-height: 1.6;
   color: #333;
   text-align: justify;
+}
+
+.section-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.play-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-indicator-icon {
+  font-size: 36rpx;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 .refresh-btn {

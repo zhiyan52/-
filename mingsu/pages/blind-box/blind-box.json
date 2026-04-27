@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "风物盲盒",
-  "usingComponents": {}
+  "navigationBarBackgroundColor": "#faf8f5",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#faf8f5",
+  "enablePullDownRefresh": false
 }

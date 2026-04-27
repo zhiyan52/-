@@ -1,2 +1,76 @@
-<!--mingsu/mingsu/ai/ai-voice.wxml-->
-<text>mingsu/mingsu/ai/ai-voice.wxml</text>
+<!-- 语音讲解页面 -->
+<view class="ai-voice-container">
+  <view class="header">
+    <text class="title">语音讲解</text>
+    <text class="subtitle">沉浸式民俗讲解体验</text>
+  </view>
+  
+  <view class="custom-section">
+    <text class="section-title">选择民俗</text>
+    <view class="custom-list">
+      <view class="custom-item" bindtap="selectCustom" data-custom="spring-festival">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/voi/1.jpg" class="custom-image" />
+        <text class="custom-name">春节</text>
+      </view>
+      <view class="custom-item" bindtap="selectCustom" data-custom="mid-autumn">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/voi/2.jpg" class="custom-image" />
+        <text class="custom-name">中秋节</text>
+      </view>
+      <view class="custom-item" bindtap="selectCustom" data-custom="dragon-boat">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/voi/3.jpg" class="custom-image" />
+        <text class="custom-name">端午节</text>
+      </view>
+      <view class="custom-item" bindtap="selectCustom" data-custom="double-ninth">
+        <image src="cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/voi/4.jpg" class="custom-image" />
+        <text class="custom-name">重阳节</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="player-section" wx:if="{{selectedCustom}}">
+    <text class="player-title">{{selectedCustom.name}}语音讲解</text>
+    <view class="player-content">
+      <view class="player-info">
+        <image src="{{selectedCustom.image}}" class="player-image" />
+        <view class="player-details">
+          <text class="player-desc">{{selectedCustom.desc}}</text>
+          <text class="player-duration">讲解时长：{{duration}}</text>
+        </view>
+      </view>
+
+      <view class="player-controls">
+        <button class="control-button" bindtap="playPause">
+          <text>{{isPlaying ? '暂停' : '播放'}}</text>
+        </button>
+        <button class="control-button" bindtap="stop">
+          <text>停止</text>
+        </button>
+        <button class="control-button" bindtap="repeat">
+          <text>重复</text>
+        </button>
+      </view>
+
+      <view class="progress-section">
+        <text class="current-time">{{currentTime}}</text>
+        <slider
+          class="progress-bar"
+          min="0"
+          max="100"
+          value="{{progress}}"
+          bindchange="seek"
+        />
+        <text class="total-time">{{selectedCustom.duration}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="tips-section">
+    <text class="tips-title">使用提示</text>
+    <view class="tips-content">
+      <text class="tips-text">1. 选择您感兴趣的民俗</text>
+      <text class="tips-text">2. 点击播放按钮开始语音讲解</text>
+      <text class="tips-text">3. 可随时暂停、停止或重复播放</text>
+      <text class="tips-text">4. 拖动进度条调整播放位置</text>
+    </view>
+  </view>
+</view>

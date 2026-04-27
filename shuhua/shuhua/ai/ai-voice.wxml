@@ -22,21 +22,39 @@
   <!-- 语音内容 -->
   <view wx:if="{{voiceContent && !loading && !error}}" class="voice-content">
     <text class="voice-title">{{voiceContent.title}}</text>
-    
+
     <!-- 播放控制 -->
     <view class="play-control">
       <button class="play-btn" bindtap="togglePlay">
         <text class="play-icon">{{isPlaying ? '⏸️' : '▶️'}}</text>
         <text class="play-text">{{isPlaying ? '暂停' : '播放'}}</text>
       </button>
+      <button class="stop-btn" bindtap="stopAudio" wx:if="{{currentSection}}">
+        <text class="stop-icon">⏹️</text>
+        <text class="stop-text">停止</text>
+      </button>
     </view>
-    
+
+    <!-- 播放进度 -->
+    <view class="progress-container" wx:if="{{currentSection}}">
+      <text class="current-time">{{currentTime}}</text>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{progress}}%"></view>
+      </view>
+      <text class="total-time">{{duration}}</text>
+    </view>
+
     <!-- 讲解列表 -->
     <view class="section-list">
-      <view wx:for="{{voiceContent.sections}}" wx:key="id" class="section-item">
-        <view class="section-header">
-          <text class="section-title">{{item.title}}</text>
-          <text class="section-duration">{{item.duration}}</text>
+      <view wx:for="{{voiceContent.sections}}" wx:key="id" class="section-item {{currentSection === item.id ? 'playing' : ''}}">
+        <view class="section-header" bindtap="playSection" data-id="{{item.id}}">
+          <view class="section-info">
+            <text class="section-title">{{item.title}}</text>
+            <text class="section-duration">{{item.duration}}</text>
+          </view>
+          <view class="play-indicator">
+            <text class="play-indicator-icon">{{currentSection === item.id && isPlaying ? '🔊' : '▶️'}}</text>
+          </view>
         </view>
         <text class="section-content">{{item.content}}</text>
       </view>

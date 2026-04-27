@@ -82,6 +82,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10rpx;
 }
 
 .play-status {
@@ -101,6 +102,37 @@
   font-size: 26rpx;
 }
 
+.audio-status-container {
+  display: flex;
+  margin-bottom: 5rpx;
+}
+
+.audio-status {
+  font-size: 22rpx;
+  color: #4CAF50;
+}
+
+.audio-status.not-selected {
+  color: #ff9800;
+}
+
+.voice-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.select-audio-btn {
+  font-size: 22rpx;
+  padding: 8rpx 20rpx;
+  background: #4CAF50;
+  color: #fff;
+  border-radius: 15rpx;
+  border: none;
+  margin: 0;
+}
+
 .play-btn {
   width: 80rpx;
   height: 80rpx;
@@ -111,7 +143,6 @@
   align-items: center;
   justify-content: center;
   font-size: 32rpx;
-  margin-left: 15rpx;
 }
 
 .play-btn.playing {
@@ -160,6 +191,12 @@
 .player-desc {
   font-size: 22rpx;
   color: #666;
+}
+
+.player-time {
+  font-size: 20rpx;
+  color: #999;
+  margin-top: 6rpx;
 }
 
 .player-controls {

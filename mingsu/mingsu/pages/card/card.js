@@ -64,64 +64,91 @@ Page({
     wx.showLoading({ title: '保存中...' });
 
     try {
-      // 获取卡片区域的宽高
-      const query = wx.createSelectorQuery();
-      query.select('.card-container').boundingClientRect();
-      query.exec(async (res) => {
-        if (res[0]) {
-          const { width, height } = res[0];
+      // 使用固定尺寸
+      const width = 600;
+      const height = 600;
 
-          // 使用canvas生成图片
-          const canvas = wx.createCanvasContext('cardCanvas');
+      // 下载背景图片
+      wx.downloadFile({
+        url: this.data.currentCard.background,
+        success: (downloadRes) => {
+          if (downloadRes.statusCode === 200) {
+            // 创建canvas
+            const canvas = wx.createCanvasContext('cardCanvas');
 
-          // 绘制背景
-          canvas.drawImage(this.data.currentCard.background, 0, 0, width, height);
+            // 清空画布
+            canvas.clearRect(0, 0, width, height);
 
-          // 绘制诗句
-          canvas.setFontSize(28);
-          canvas.setFillStyle(this.data.currentCard.textColor);
-          canvas.setTextAlign('center');
-          canvas.setTextBaseline('middle');
+            // 绘制背景
+            canvas.drawImage(downloadRes.tempFilePath, 0, 0, width, height);
 
-          // 处理换行
-          const lines = this.wrapText(this.data.currentCard.quote, 28, width - 80);
-          const lineHeight = 40;
-          const startY = height / 2 - (lines.length - 1) * lineHeight / 2;
+            // 绘制文字
+            const quote = this.data.currentCard.quote;
+            const textColor = this.data.currentCard.textColor;
 
-          lines.forEach((line, index) => {
-            canvas.fillText(line, width / 2, startY + index * lineHeight);
-          });
+            // 设置文字样式
+            canvas.setFontSize(36);
+            canvas.setFillStyle(textColor);
+            canvas.setTextAlign('center');
+            canvas.setTextBaseline('middle');
 
-          // 绘制完成
-          canvas.draw(false, async () => {
-            // 导出图片
-            wx.canvasToTempFilePath({
-              canvasId: 'cardCanvas',
-              success: (res) => {
-                // 保存到相册
-                wx.saveImageToPhotosAlbum({
-                  filePath: res.tempFilePath,
-                  success: () => {
-                    wx.hideLoading();
-                    wx.showToast({ title: '保存成功', icon: 'success' });
-                  },
-                  fail: (err) => {
-                    wx.hideLoading();
-                    wx.showToast({ title: '保存失败，请重试', icon: 'none' });
-                    console.error('保存图片失败:', err);
-                  }
-                });
-              },
-              fail: (err) => {
-                wx.hideLoading();
-                wx.showToast({ title: '生成图片失败', icon: 'none' });
-                console.error('生成图片失败:', err);
+            // 简单的文字换行
+            const lines = [];
+            let currentLine = '';
+            for (let i = 0; i < quote.length; i++) {
+              currentLine += quote[i];
+              if (currentLine.length >= 7) {
+                lines.push(currentLine);
+                currentLine = '';
               }
+            }
+            if (currentLine) lines.push(currentLine);
+
+            // 计算文字位置
+            const lineHeight = 50;
+            const startY = height / 2 - (lines.length - 1) * lineHeight / 2;
+
+            // 绘制每一行文字
+            lines.forEach((line, index) => {
+              canvas.fillText(line, width / 2, startY + index * lineHeight);
             });
-          });
-        } else {
+
+            // 绘制完成
+            canvas.draw(false, () => {
+              // 导出图片
+              wx.canvasToTempFilePath({
+                canvasId: 'cardCanvas',
+                success: (tempRes) => {
+                  // 保存到相册
+                  wx.saveImageToPhotosAlbum({
+                    filePath: tempRes.tempFilePath,
+                    success: () => {
+                      wx.hideLoading();
+                      wx.showToast({ title: '保存成功', icon: 'success' });
+                    },
+                    fail: (err) => {
+                      wx.hideLoading();
+                      wx.showToast({ title: '保存失败，请重试', icon: 'none' });
+                      console.error('保存图片失败:', err);
+                    }
+                  });
+                },
+                fail: (err) => {
+                  wx.hideLoading();
+                  wx.showToast({ title: '生成图片失败', icon: 'none' });
+                  console.error('生成图片失败:', err);
+                }
+              });
+            });
+          } else {
+            wx.hideLoading();
+            wx.showToast({ title: '下载图片失败', icon: 'none' });
+          }
+        },
+        fail: (err) => {
           wx.hideLoading();
-          wx.showToast({ title: '获取卡片信息失败', icon: 'none' });
+          wx.showToast({ title: '下载图片失败', icon: 'none' });
+          console.error('下载背景图片失败:', err);
         }
       });
     } catch (error) {
@@ -136,11 +163,21 @@ Page({
     const lines = [];
     let currentLine = '';
 
+    // 计算每个字符的平均宽度（中文字符大约是字体大小的0.8倍）
+    const charWidth = fontsize * 0.8;
+
     for (let i = 0; i < text.length; i++) {
-      currentLine += text[i];
-      if (currentLine.length > 7) { // 简单的换行判断
-        lines.push(currentLine);
-        currentLine = '';
+      const char = text[i];
+      currentLine += char;
+
+      // 计算当前行的宽度
+      const lineWidth = currentLine.length * charWidth;
+
+      if (lineWidth > maxWidth) {
+        // 超出宽度，回退一个字符并换行
+        const line = currentLine.substring(0, currentLine.length - 1);
+        lines.push(line);
+        currentLine = char;
       }
     }
 

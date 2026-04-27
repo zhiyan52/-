@@ -64,6 +64,26 @@
   font-weight: 400;
 }
 
+.audio-status {
+  font-size: 22rpx;
+  color: #4CAF50;
+  margin-top: 8rpx;
+}
+
+.audio-status.not-uploaded {
+  color: #ff9800;
+}
+
+.upload-btn {
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  padding: 8rpx 20rpx;
+  background-color: #4CAF50;
+  color: #fff;
+  border-radius: 20rpx;
+  border: none;
+}
+
 .player-section {
   margin-top: 50rpx;
   background: #f8f9fa;

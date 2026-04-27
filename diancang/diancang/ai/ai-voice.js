@@ -6,33 +6,135 @@ Page({
    */
   data: {
     contentList: [
-      { id: 1, title: '《论语》核心思想', description: '深入解析《论语》中的核心思想和文化价值' },
-      { id: 2, title: '《诗经》的艺术特色', description: '探讨《诗经》的艺术特色和文学价值' },
-      { id: 3, title: '中国书法发展史', description: '梳理中国书法的发展历程和主要流派' },
-      { id: 4, title: '传统节日的文化内涵', description: '解读传统节日背后的文化内涵和意义' },
-      { id: 5, title: '中国古代科技成就', description: '介绍中国古代的重要科技发明和成就' }
+      {
+        id: 1,
+        title: '《论语》核心思想',
+        description: '深入解析《论语》中的核心思想和文化价值',
+        audioUrl: 'https://freeopenapi.hihookeji.com/peiyin_api_voice_to_helper/mp3/user_tts/20260427/202604270027591777220879621625721.mp3'
+      },
+      {
+        id: 2,
+        title: '《诗经》的艺术特色',
+        description: '探讨《诗经》的艺术特色和文学价值',
+        audioUrl: 'https://example.com/audio/shijing.mp3'
+      },
+      {
+        id: 3,
+        title: '中国书法发展史',
+        description: '梳理中国书法的发展历程和主要流派',
+        audioUrl: 'https://example.com/audio/shufa.mp3'
+      },
+      {
+        id: 4,
+        title: '传统节日的文化内涵',
+        description: '解读传统节日背后的文化内涵和意义',
+        audioUrl: 'https://example.com/audio/jieri.mp3'
+      },
+      {
+        id: 5,
+        title: '中国古代科技成就',
+        description: '介绍中国古代的重要科技发明和成就',
+        audioUrl: 'https://example.com/audio/keji.mp3'
+      }
     ],
     selectedContent: 0,
     currentContent: {},
     isPlaying: false,
     currentTime: '00:00',
-    duration: '05:00',
+    duration: '00:00',
     progress: 0,
     volume: 80,
-    aiExplanation: ''
+    aiExplanation: '',
+    audioContext: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.initAudioContext();
+  },
 
+  /**
+   * 初始化音频上下文
+   */
+  initAudioContext() {
+    const audioContext = wx.createInnerAudioContext();
+
+    // 设置音量
+    audioContext.volume = this.data.volume / 100;
+
+    // 监听音频播放事件
+    audioContext.onPlay(() => {
+      this.setData({ isPlaying: true });
+    });
+
+    // 监听音频暂停事件
+    audioContext.onPause(() => {
+      this.setData({ isPlaying: false });
+    });
+
+    // 监听音频停止事件
+    audioContext.onStop(() => {
+      this.setData({
+        isPlaying: false,
+        currentTime: '00:00',
+        progress: 0
+      });
+    });
+
+    // 监听音频自然结束事件
+    audioContext.onEnded(() => {
+      this.setData({
+        isPlaying: false,
+        currentTime: '00:00',
+        progress: 0
+      });
+    });
+
+    // 监听音频播放进度更新事件
+    audioContext.onTimeUpdate(() => {
+      const currentTime = audioContext.currentTime;
+      const duration = audioContext.duration || 0;
+      const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
+      const minutes = Math.floor(currentTime / 60);
+      const seconds = Math.floor(currentTime % 60);
+      const currentTimeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+      const durationMinutes = Math.floor(duration / 60);
+      const durationSeconds = Math.floor(duration % 60);
+      const durationStr = `${durationMinutes.toString().padStart(2, '0')}:${durationSeconds.toString().padStart(2, '0')}`;
+
+      this.setData({
+        progress,
+        currentTime: currentTimeStr,
+        duration: durationStr
+      });
+    });
+
+    // 监听音频加载错误事件
+    audioContext.onError((err) => {
+      console.error('音频播放错误:', err);
+      wx.showToast({
+        title: '音频加载失败',
+        icon: 'none'
+      });
+      this.setData({ isPlaying: false });
+    });
+
+    this.setData({ audioContext });
   },
 
   // 选择讲解内容
   selectContent(e) {
     const contentId = e.currentTarget.dataset.id;
     const selectedContent = this.data.contentList.find(item => item.id === contentId);
+    const { audioContext } = this.data;
+
+    // 如果正在播放，则停止
+    if (this.data.isPlaying) {
+      audioContext.stop();
+    }
 
     this.setData({
       selectedContent: contentId,
@@ -78,43 +180,24 @@ Page({
 
   // 切换播放/暂停
   togglePlay() {
-    if (this.data.isPlaying) {
+    const { audioContext, isPlaying, currentContent } = this.data;
+
+    if (isPlaying) {
       // 暂停播放
-      clearInterval(this.data.playbackInterval);
-      this.setData({
-        isPlaying: false
-      });
+      audioContext.pause();
     } else {
       // 开始播放
-      this.setData({
-        isPlaying: true
-      });
-
-      // 模拟播放进度
-      let currentTime = 0;
-      const totalTime = 300; // 5分钟
-
-      this.data.playbackInterval = setInterval(() => {
-        currentTime += 1;
-        const progress = (currentTime / totalTime) * 100;
-        const minutes = Math.floor(currentTime / 60);
-        const seconds = currentTime % 60;
-        const currentTimeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
-        this.setData({
-          progress: progress,
-          currentTime: currentTimeStr
+      if (currentContent.audioUrl) {
+        // 设置音频源
+        audioContext.src = currentContent.audioUrl;
+        // 播放音频
+        audioContext.play();
+      } else {
+        wx.showToast({
+          title: '暂无音频文件',
+          icon: 'none'
         });
-
-        if (currentTime >= totalTime) {
-          clearInterval(this.data.playbackInterval);
-          this.setData({
-            isPlaying: false,
-            currentTime: '00:00',
-            progress: 0
-          });
-        }
-      }, 1000);
+      }
     }
   },
 

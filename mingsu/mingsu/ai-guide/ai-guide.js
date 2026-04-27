@@ -5,6 +5,11 @@ Page({
     venueName: '中国民俗文化村',
     venueMapUrl: '/images/folklore_floor_plan.jpg',
 
+    // AI聊天相关
+    chatUserInput: '',
+    chatAnswer: '',
+    chatLoading: false,
+
     // 民俗点位数据
     spots: [],
     filteredSpots: [],
@@ -405,7 +410,7 @@ Page({
           filePath: tempFilePaths[0],
           success: (uploadRes) => {
             const fileID = uploadRes.fileID;
-            
+
             // 更新地图URL
             this.setData({ venueMapUrl: fileID });
 
@@ -447,7 +452,7 @@ Page({
     if (!this.data.editMode) return;
 
     const { x, y } = e.detail;
-    
+
     // 显示添加热区的对话框
     wx.showModal({
       title: '添加热区',
@@ -477,10 +482,10 @@ Page({
 
           const updatedSpots = [...this.data.spots, newSpot];
           this.setData({ spots: updatedSpots, filteredSpots: updatedSpots });
-          
+
           // 保存到数据库
           this.saveSpots();
-          
+
           wx.showToast({ title: '热区添加成功', icon: 'success' });
         }
       }
@@ -490,7 +495,7 @@ Page({
   // 开始拖拽热区
   startDrag(e) {
     if (!this.data.editMode) return;
-    
+
     const id = e.currentTarget.dataset.id;
     this.setData({ isDragging: true, currentDragSpot: id });
   },
@@ -548,5 +553,49 @@ Page({
       path: '/mingsu/mingsu/ai-guide/ai-guide',
       imageUrl: this.data.venueMapUrl
     };
+  },
+
+  // AI聊天输入
+  onChatInput(e) {
+    this.setData({
+      chatUserInput: e.detail.value
+    });
+  },
+
+  // 发送问题到AI
+  sendChatQuestion() {
+    const { chatUserInput } = this.data;
+    if (!chatUserInput.trim()) {
+      wx.showToast({ title: '请输入问题', icon: 'none' });
+      return;
+    }
+
+    this.setData({ chatLoading: true, chatAnswer: '' });
+
+    // 使用自执行async函数
+    (async () => {
+      try {
+        // 创建模型实例，使用混元模型
+        const model = wx.cloud.extend.AI.createModel('hunyuan-exp');
+
+        // 发送请求
+        const res = await model.generateText({
+          model: 'hunyuan-turbos-latest',
+          messages: [
+            { role: 'system', content: '你是一位中国民俗文化专家，回答要简洁易懂，语言贴合古风，内容围绕中国民俗文化知识展开。' },
+            { role: 'user', content: chatUserInput }
+          ]
+        });
+
+        const answer = res.choices[0].message.content;
+        this.setData({ chatAnswer: answer });
+
+      } catch (err) {
+        console.error('AI调用失败：', err);
+        wx.showToast({ title: 'AI调用失败，请重试', icon: 'none' });
+      } finally {
+        this.setData({ chatLoading: false });
+      }
+    })();
   }
 });

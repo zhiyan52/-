@@ -80,50 +80,124 @@ Page({
   },
 
   initCheckinData() {
-    // 模拟数据
-    this.setData({
-      checkinData: {
-        totalDays: 45,
-        streakDays: 7,
-        totalPoints: 1250
-      },
-      rewards: [
-        {
-          id: 1,
-          title: '初露锋芒',
-          desc: '连续打卡7天',
-          icon: '🏅',
-          achieved: true
-        },
-        {
-          id: 2,
-          title: '文化达人',
-          desc: '连续打卡30天',
-          icon: '🎖️',
-          achieved: false
-        },
-        {
-          id: 3,
-          title: '传承使者',
-          desc: '连续打卡60天',
-          icon: '🌟',
-          achieved: false
-        },
-        {
-          id: 4,
-          title: '文化守护者',
-          desc: '连续打卡100天',
-          icon: '👑',
-          achieved: false
-        }
-      ]
-    });
+    const db = wx.cloud.database();
+    const openid = getApp().globalData.openid;
+
+    if (!openid) {
+      wx.showToast({ title: '请先登录', icon: 'none' });
+      return;
+    }
+
+    // 读取用户打卡记录
+    db.collection('user_checkin')
+      .where({ openid: openid })
+      .orderBy('date', 'desc')
+      .get()
+      .then(res => {
+        const checkinRecords = res.data;
+        const totalDays = checkinRecords.length;
+        const streakDays = this.calculateStreakDays(checkinRecords);
+        const totalPoints = totalDays * 10; // 假设每天打卡10积分
+
+        // 更新奖励状态
+        const rewards = [
+          {
+            id: 1,
+            title: '初露锋芒',
+            desc: '连续打卡7天',
+            icon: '🏅',
+            achieved: streakDays >= 7
+          },
+          {
+            id: 2,
+            title: '文化达人',
+            desc: '连续打卡30天',
+            icon: '🎖️',
+            achieved: streakDays >= 30
+          },
+          {
+            id: 3,
+            title: '传承使者',
+            desc: '连续打卡60天',
+            icon: '🌟',
+            achieved: streakDays >= 60
+          },
+          {
+            id: 4,
+            title: '文化守护者',
+            desc: '连续打卡100天',
+            icon: '👑',
+            achieved: streakDays >= 100
+          }
+        ];
+
+        this.setData({
+          checkinData: {
+            totalDays: totalDays,
+            streakDays: streakDays,
+            totalPoints: totalPoints
+          },
+          rewards: rewards
+        });
+
+        // 检查今日是否已打卡
+        this.checkTodayStatus();
+      })
+      .catch(err => {
+        console.error('读取打卡记录失败:', err);
+        // 失败时使用默认数据
+        this.setData({
+          checkinData: {
+            totalDays: 0,
+            streakDays: 0,
+            totalPoints: 0
+          }
+        });
+      });
+  },
+
+  calculateStreakDays(checkinRecords) {
+    if (checkinRecords.length === 0) return 0;
+
+    let streak = 0;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    for (let i = 0; i < checkinRecords.length; i++) {
+      const checkinDate = new Date(checkinRecords[i].date);
+      checkinDate.setHours(0, 0, 0, 0);
+
+      const expectedDate = new Date(today);
+      expectedDate.setDate(today.getDate() - streak);
+
+      if (checkinDate.getTime() === expectedDate.getTime()) {
+        streak++;
+      } else {
+        break;
+      }
+    }
+
+    return streak;
   },
 
   checkTodayStatus() {
+    const db = wx.cloud.database();
+    const openid = getApp().globalData.openid;
     const today = new Date().toDateString();
-    // 模拟检查今日是否已打卡
-    this.setData({ hasCheckedInToday: false });
+
+    if (openid) {
+      db.collection('user_checkin').where({
+        openid: openid,
+        date: today
+      }).get().then(res => {
+        this.setData({ hasCheckedInToday: res.data.length > 0 });
+      }).catch(err => {
+        console.error('检查今日打卡状态失败:', err);
+        this.setData({ hasCheckedInToday: false });
+      });
+    } else {
+      this.setData({ hasCheckedInToday: false });
+    }
   },
 
   generateCalendar() {
@@ -133,9 +207,43 @@ Page({
     const firstDayOfMonth = new Date(year, month - 1, 1).getDay();
     const calendarDays = [];
 
+    // 获取用户打卡记录
+    const db = wx.cloud.database();
+    const openid = getApp().globalData.openid;
+    let checkinDates = [];
+
+    if (openid) {
+      // 读取当月的打卡记录
+      const startDate = new Date(year, month - 1, 1).toDateString();
+      const endDate = new Date(year, month, 0).toDateString();
+
+      db.collection('user_checkin')
+        .where({
+          openid: openid,
+          date: db.command.gte(startDate),
+          date: db.command.lte(endDate)
+        })
+        .get()
+        .then(res => {
+          checkinDates = res.data.map(item => item.date);
+          this.generateCalendarWithData(year, month, daysInMonth, firstDayOfMonth, checkinDates);
+        })
+        .catch(err => {
+          console.error('读取打卡记录失败:', err);
+          this.generateCalendarWithData(year, month, daysInMonth, firstDayOfMonth, []);
+        });
+    } else {
+      this.generateCalendarWithData(year, month, daysInMonth, firstDayOfMonth, []);
+    }
+  },
+
+  generateCalendarWithData(year, month, daysInMonth, firstDayOfMonth, checkinDates) {
+    const calendarDays = [];
+
     // 添加上个月的日期
     for (let i = firstDayOfMonth - 1; i >= 0; i--) {
       const day = new Date(year, month - 1, -i).getDate();
+      const dateStr = new Date(year, month - 1, -i).toDateString();
       calendarDays.push({
         day: day,
         month: month - 1,
@@ -146,8 +254,17 @@ Page({
 
     // 添加当月的日期
     for (let i = 1; i <= daysInMonth; i++) {
-      // 模拟打卡状态
-      const status = Math.random() > 0.6 ? 'checked' : 'unchecked';
+      const dateStr = new Date(year, month - 1, i).toDateString();
+      const isChecked = checkinDates.includes(dateStr);
+      const isToday = dateStr === new Date().toDateString();
+
+      let status = 'unchecked';
+      if (isChecked) {
+        status = 'checked';
+      } else if (isToday) {
+        status = 'today';
+      }
+
       calendarDays.push({
         day: i,
         month: month,
@@ -200,11 +317,17 @@ Page({
 
   handleDailyCheckin() {
     const db = wx.cloud.database();
+    const openid = getApp().globalData.openid;
     const today = new Date().toDateString();
+
+    if (!openid) {
+      wx.showToast({ title: '请先登录', icon: 'none' });
+      return;
+    }
 
     // 检查今日是否已打卡
     db.collection('user_checkin').where({
-      openid: getApp().globalData.openid,
+      openid: openid,
       date: today
     }).get().then(res => {
       if (res.data.length > 0) {
@@ -213,7 +336,7 @@ Page({
         // 新增打卡记录
         db.collection('user_checkin').add({
           data: {
-            openid: getApp().globalData.openid,
+            openid: openid,
             date: today,
             createTime: db.serverDate()
           }
@@ -221,26 +344,83 @@ Page({
           this.setData({
             hasCheckedInToday: true,
             rewardPoints: 10,
-            showSuccessModal: true,
-            checkinData: {
-              ...this.data.checkinData,
-              totalDays: this.data.checkinData.totalDays + 1,
-              streakDays: this.data.checkinData.streakDays + 1,
-              totalPoints: this.data.checkinData.totalPoints + 10
-            }
+            showSuccessModal: true
           });
-          // 更新连续打卡天数
+          // 更新连续打卡天数和其他数据
           this.updateCheckinStreak();
         }).catch(err => {
-          wx.showToast({ title: '打卡失败', icon: 'none' });
+          console.error('打卡失败:', err);
+          wx.showToast({ title: '打卡失败，请重试', icon: 'none' });
         });
       }
+    }).catch(err => {
+      console.error('检查打卡状态失败:', err);
+      wx.showToast({ title: '操作失败，请重试', icon: 'none' });
     });
   },
 
   updateCheckinStreak() {
-    // 实现连续打卡逻辑
-    console.log('更新连续打卡天数');
+    const db = wx.cloud.database();
+    const openid = getApp().globalData.openid;
+
+    // 重新读取打卡记录并计算连续打卡天数
+    db.collection('user_checkin')
+      .where({ openid: openid })
+      .orderBy('date', 'desc')
+      .get()
+      .then(res => {
+        const checkinRecords = res.data;
+        const totalDays = checkinRecords.length;
+        const streakDays = this.calculateStreakDays(checkinRecords);
+        const totalPoints = totalDays * 10;
+
+        // 更新奖励状态
+        const rewards = [
+          {
+            id: 1,
+            title: '初露锋芒',
+            desc: '连续打卡7天',
+            icon: '🏅',
+            achieved: streakDays >= 7
+          },
+          {
+            id: 2,
+            title: '文化达人',
+            desc: '连续打卡30天',
+            icon: '🎖️',
+            achieved: streakDays >= 30
+          },
+          {
+            id: 3,
+            title: '传承使者',
+            desc: '连续打卡60天',
+            icon: '🌟',
+            achieved: streakDays >= 60
+          },
+          {
+            id: 4,
+            title: '文化守护者',
+            desc: '连续打卡100天',
+            icon: '👑',
+            achieved: streakDays >= 100
+          }
+        ];
+
+        this.setData({
+          checkinData: {
+            totalDays: totalDays,
+            streakDays: streakDays,
+            totalPoints: totalPoints
+          },
+          rewards: rewards
+        });
+
+        // 重新生成日历
+        this.generateCalendar();
+      })
+      .catch(err => {
+        console.error('更新连续打卡天数失败:', err);
+      });
   },
 
   completeTask(e) {

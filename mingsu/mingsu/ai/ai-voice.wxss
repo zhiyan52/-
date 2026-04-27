@@ -1,5 +1,5 @@
-/* 智能导览页面样式 */
-.ai-guide-container {
+/* 语音讲解页面样式 */
+.ai-voice-container {
   background-color: #fafffe;
   min-height: 100vh;
   padding: 20rpx 30rpx;
@@ -24,7 +24,7 @@
   display: block;
 }
 
-.custom-list {
+.custom-section {
   margin-top: 40rpx;
 }
 
@@ -36,7 +36,7 @@
   display: block;
 }
 
-.custom-items {
+.custom-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20rpx;
@@ -64,7 +64,7 @@
   font-weight: 400;
 }
 
-.ai-content {
+.player-section {
   margin-top: 50rpx;
   background: #f8f9fa;
   border-radius: 16rpx;
@@ -72,7 +72,7 @@
   box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
 }
 
-.content-title {
+.player-title {
   font-size: 32rpx;
   font-weight: 500;
   color: #333;
@@ -80,32 +80,48 @@
   display: block;
 }
 
-.ai-response {
+.player-content {
   background: #fff;
   border-radius: 12rpx;
   padding: 25rpx;
-  min-height: 200rpx;
+}
+
+.player-info {
+  display: flex;
+  gap: 20rpx;
   margin-bottom: 30rpx;
 }
 
-.loading {
-  text-align: center;
-  color: #888;
-  padding: 40rpx 0;
+.player-image {
+  width: 150rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
 }
 
-.ai-text {
+.player-details {
+  flex: 1;
+}
+
+.player-desc {
   font-size: 28rpx;
   color: #444;
-  line-height: 1.5;
+  line-height: 1.4;
+  margin-bottom: 10rpx;
+  display: block;
 }
 
-.control-buttons {
+.player-duration {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.player-controls {
   display: flex;
   gap: 20rpx;
+  margin-bottom: 30rpx;
 }
 
-.button {
+.control-button {
   flex: 1;
   height: 80rpx;
   line-height: 80rpx;
@@ -114,12 +130,63 @@
   font-weight: 500;
 }
 
-.button:first-child {
+.control-button:first-child {
   background: #333;
   color: #fff;
 }
 
-.button:last-child {
+.control-button:not(:first-child) {
   background: #f0f0f0;
   color: #333;
+}
+
+.progress-section {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.current-time,
+.total-time {
+  font-size: 24rpx;
+  color: #666;
+  width: 80rpx;
+  text-align: center;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8rpx;
+  background: #e0e0e0;
+  border-radius: 4rpx;
+}
+
+.tips-section {
+  margin-top: 50rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.tips-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.tips-content {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 25rpx;
+}
+
+.tips-text {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 10rpx;
+  display: block;
 }

@@ -11,7 +11,7 @@
   
   <!-- 语音讲解标题 -->
   <view class="voice-header">
-    <text class="voice-title">文心先生为您讲解</text>
+    
     <text class="voice-subtitle">AI智能语音讲解，带您领略传统文化之美</text>
   </view>
   
@@ -41,14 +41,14 @@
         <view class="progress-container">
           <text class="time">{{currentTime}}</text>
           <view class="progress-bar">
-            <view class="progress-fill" style="width: {{progress}}%"></view>
+            <view class="progress-fill" style="width: {{progress}}"></view>
           </view>
           <text class="time">{{duration}}</text>
         </view>
         <view class="volume-control">
           <text class="volume-icon">🔊</text>
           <view class="volume-bar">
-            <view class="volume-fill" style="width: {{volume}}%"></view>
+            <view class="volume-fill" style="width: {{volume}}"></view>
           </view>
         </view>
       </view>

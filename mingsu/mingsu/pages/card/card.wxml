@@ -14,7 +14,7 @@
       </view>
     </view>
     <!-- 隐藏的canvas用于生成图片 -->
-    <canvas canvas-id="cardCanvas" style="width: 300px; height: 300px; position: absolute; left: -9999px;"></canvas>
+    <canvas canvas-id="cardCanvas" style="width: 600px; height: 600px; position: absolute; left: -9999px;"></canvas>
   </view>
 
   <!-- 操作按钮 -->

@@ -1,2 +1,43 @@
-<!--mingsu/mingsu/ai/ai-recommend.wxml-->
-<text>mingsu/mingsu/ai/ai-recommend.wxml</text>
+<!-- 个性化推荐页面 -->
+<view class="ai-recommend-container">
+  <view class="header">
+    <text class="title">个性化推荐</text>
+    <text class="subtitle">根据您的兴趣推荐民俗</text>
+  </view>
+
+  <view class="history-section">
+    <text class="section-title">浏览历史</text>
+    <view class="history-list" wx:if="{{browsingHistory.length > 0}}">
+      <view class="history-item" wx:for="{{browsingHistory}}" wx:key="index">
+        <image src="{{item.image}}" class="history-image" />
+        <view class="history-info">
+          <text class="history-title">{{item.title}}</text>
+          <text class="history-time">{{item.time}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="empty-history" wx:else>
+      <text>暂无浏览历史</text>
+    </view>
+  </view>
+
+  <view class="recommend-section">
+    <text class="section-title">为您推荐</text>
+    <view class="recommend-list">
+      <view class="recommend-item" wx:for="{{recommendations}}" wx:key="index" bindtap="viewDetail" data-item="{{item}}">
+        <image src="{{item.image}}" class="recommend-image" />
+        <text class="recommend-title">{{item.title}}</text>
+        <text class="recommend-desc">{{item.desc}}</text>
+        <view class="recommend-tags">
+          <text class="tag" wx:for="{{item.tags}}" wx:key="tagIndex">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="refresh-section">
+    <button class="refresh-button" bindtap="refreshRecommendations">
+      <text>刷新推荐</text>
+    </button>
+  </view>
+</view>

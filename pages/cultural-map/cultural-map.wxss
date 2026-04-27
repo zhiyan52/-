@@ -95,7 +95,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=china%20map%20outline%20silhouette%20light%20blue%20background&image_size=landscape_16_9');
+  background-image: url('cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/voi/173771a2b9aa7ee252b99fea69ec7e0d.jpg');
   background-size: cover;
   background-position: center;
   opacity: 0.3;

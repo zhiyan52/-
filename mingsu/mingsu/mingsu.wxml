@@ -50,14 +50,7 @@
       </view>
       <text class="smart-feature-arrow">→</text>
     </view>
-    <view class="smart-feature-item" bindtap="navigateToLearning">
-      <text class="smart-feature-icon">🎓</text>
-      <view class="smart-feature-content">
-        <text class="smart-feature-title">AI深度学习</text>
-        <text class="smart-feature-desc">AI引导，深入学习民俗文化</text>
-      </view>
-      <text class="smart-feature-arrow">→</text>
-    </view>
+    
     <view class="smart-feature-item" bindtap="navigateToQA">
       <text class="smart-feature-icon">❓</text>
       <view class="smart-feature-content">
@@ -88,6 +81,6 @@
   <view class="footer-section">
     <text class="footer-text">传承中华传统文化</text>
     <text class="footer-subtext">感受民俗风物之美</text>
-    <text class="footer-copyright">© 2026 吴雅文轩</text>
+    <text class="footer-copyright">© 2026  民俗百味</text>
   </view>
 </view>

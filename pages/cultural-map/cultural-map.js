@@ -152,7 +152,7 @@ Page({
     return {
       title: '我的文化研学足迹报告',
       path: '/pages/cultural-map/cultural-map',
-      imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20cultural%20study%20map%20travel%20footprint%20report&image_size=landscape_16_9'
+      imageUrl: 'cloud://cloud1-8glc9jqob91870fc.636c-cloud1-8glc9jqob91870fc-1401141450/mingsu/voi/173771a2b9aa7ee252b99fea69ec7e0d.jpg'
     };
   },
 
